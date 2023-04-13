@@ -1,0 +1,74 @@
+{{ header }}
+<main id="account-download">
+  <div class="container">
+    <nav class="breadcrumb py-4" aria-label="breadcrumbs">
+      <ul>
+        {% for key, breadcrumb in breadcrumbs %}
+        {% if key < (breadcrumbs|length - 1) %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% else %}
+        <li><a>{{ breadcrumb.text }}</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </nav>
+    <div class="columns is-multiline">{{ column_left }}
+      {% if column_left and column_right %}
+      {% set class = 'column is-6-fullhd is-6-widescreen is-6-desktop is-12-tablet is-12-mobile' %}
+      {% elseif column_left or column_right %}
+      {% set class = 'column is-9-fullhd is-9-widescreen is-9-desktop is-12-tablet is-12-mobile' %}
+      {% else %}
+      {% set class = 'column is-12' %}
+      {% endif %}
+      <div id="content" class="{{ class }}">{{ content_top }}
+        <h1 class="title is-3">{{ heading_title }}</h1>
+        {% if downloads %}
+        <div class="box p-3 mb-3">
+          <div class="columns is-mobile is-multiline is-align-items-center">
+          {% for download in downloads %}
+          <div class="column is-1-desktop is-1-tablet is-2-mobile">
+            <p class="is-size-7 has-text-grey">{{ column_order_id }}</p>
+            <p>{{ download.order_id }}</p>
+          </div>
+          <div class="column is-5-desktop is-5-tablet is-10-mobile">
+            <p class="is-size-7 has-text-grey">{{ column_name }}</p>
+            <p>{{ download.name }}</p>
+          </div>
+          <div class="column is-2-desktop is-2-tablet is-6-mobile">
+            <p class="is-size-7 has-text-grey">{{ column_size }}</p>
+            <p>{{ download.size }}</p>
+          </div>
+          <div class="column is-2-desktop is-2-tablet is-6-mobile">
+            <p class="is-size-7 has-text-grey">{{ column_date_added }}</p>
+            <p>{{ download.date_added }}</p>
+          </div>
+          <div class="column is-2-desktop is-2-tablet is-12-mobile has-text-right">
+            <a href="{{ download.href }}" title="{{ button_download }}" class="button is-primary is-outlined">
+              <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                  <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                  <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                </svg>
+              </span>
+            </a>
+          </div>
+          {% endfor %}
+          </div>
+        </div>
+        <div class="columns is-align-items-center is-justify-content-space-between my-3">
+          <div class="column is-narrow">{{ pagination }}</div>
+          <div class="column is-narrow">{{ results }}</div>
+        </div>
+        {% else %}
+        <p>{{ text_empty }}</p>
+        {% endif %}
+        <div class="buttons my-5">
+          <a href="{{ continue }}" class="button is-primary is-outlined">{{ button_continue }}</a>
+        </div>
+        {{ content_bottom }}
+      </div>
+      {{ column_right }}
+    </div>
+  </div>
+</main>
+{{ footer }}

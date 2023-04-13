@@ -1,0 +1,94 @@
+{{ header }}
+<main id="account-recurring">
+  <div class="container">
+    <nav class="breadcrumb py-4" aria-label="breadcrumbs">
+      <ul>
+        {% for key, breadcrumb in breadcrumbs %}
+        {% if key < (breadcrumbs|length - 1) %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% else %}
+        <li><a>{{ breadcrumb.text }}</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </nav>
+    <div class="columns is-multiline">{{ column_left }}
+      {% if column_left and column_right %}
+      {% set class = 'column is-6-fullhd is-6-widescreen is-6-desktop is-12-tablet is-12-mobile' %}
+      {% elseif column_left or column_right %}
+      {% set class = 'column is-9-fullhd is-9-widescreen is-9-desktop is-12-tablet is-12-mobile' %}
+      {% else %}
+      {% set class = 'column is-12' %}
+      {% endif %}
+      <div id="content" class="{{ class }}">{{ content_top }}
+        <h2>{{ heading_title }}</h2>
+        <div class="table-container">
+          <table class="table is-fullwidth is-bordered">
+            <thead>
+              <tr>
+                <td colspan="2">{{ text_recurring_detail }}</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="width: 50%;"><b>{{ text_order_recurring_id }}</b> #{{ order_recurring_id }}<br />
+                  <b>{{ text_date_added }}</b> {{ date_added }}<br />
+                  <b>{{ text_status }}</b> {{ status }}<br />
+                  <b>{{ text_payment_method }}</b> {{ payment_method }}</td>
+                <td style="width: 50%;"><b>{{ text_order_id }}</b> <a href="{{ order }}">#{{ order_id }}</a><br />
+                  <b>{{ text_product }}</b> <a href="{{ product }}">{{ product_name }}</a><br />
+                  <b>{{ text_quantity }}</b> {{ product_quantity }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="table is-bordered is-fullwidth">
+            <thead>
+              <tr>
+                <td>{{ text_description }}</td>
+                <td>{{ text_reference }}</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="width: 50%;">{{ recurring_description }}</td>
+                <td style="width: 50%;">{{ reference }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>{{ text_transaction }}</h3>
+        <div class="table-container">
+          <table class="table is-bordered is-fullwidth">
+            <thead>
+              <tr>
+                <td>{{ column_date_added }}</td>
+                <td>{{ column_type }}</td>
+                <td>{{ column_amount }}</td>
+              </tr>
+            </thead>
+            <tbody>
+
+            {% if transactions %}
+            {% for transaction in transactions %}
+            <tr>
+              <td>{{ transaction.date_added }}</td>
+              <td>{{ transaction.type }}</td>
+              <td>{{ transaction.amount }}</td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+              <td colspan="3">{{ text_no_results }}</td>
+            </tr>
+            {% endif %}
+              </tbody>
+
+          </table>
+        </div>
+        {{ recurring }}{{ content_bottom }}
+      </div>
+      {{ column_right }}
+    </div>
+  </div>
+</main>
+{{ footer }}

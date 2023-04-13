@@ -1,0 +1,32 @@
+<div class="block">
+  <div class="title is-5 mb-3">
+    {{ text_title }}
+  </div>
+  {{ text_cod_confirm }}
+</div>
+<div class="buttons mb-0">
+  <button type="button" id="button-confirm" class="button is-primary is-fullwidth mb-0">{{ button_confirm }}</button>
+</div>
+
+<script>
+$('#button-confirm').on('click', function() {
+	$.ajax({
+		url: 'index.php?route=extension/payment/cod/confirm',
+		dataType: 'json',
+		beforeSend: function() {
+			$('#button-confirm').addClass('is-loading');
+		},
+		complete: function() {
+			$('#button-confirm').removeClass('is-loading');
+		},
+		success: function(json) {
+			if (json['redirect']) {
+				location = json['redirect'];
+			}
+		},
+		error: function(xhr, ajaxOptions, thrownError) {
+			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+		}
+	});
+});
+</script>

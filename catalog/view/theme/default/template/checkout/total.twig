@@ -1,0 +1,31 @@
+<div class="box mb-5">
+  <div class="title is-4">
+    {{ text_your_order }}
+  </div>
+  <ul class="heading-list">
+    {% for total in totals %}
+    <li class="is-flex is-justify-content-space-between is-align-items-center py-1">
+      <span class="has-background-white pr-1">
+        {{ total.title }}
+      </span>
+      <span class="has-background-white has-text-weight-bold pl-1">
+        {{ total.text }}
+      </span>
+    </li>
+    {% endfor %}
+    {% if weight %}
+    <li class="is-flex is-justify-content-space-between is-align-items-center py-1">
+      <span class="has-background-white pr-1">
+        {{ text_weight }}
+      </span>
+      <span class="has-background-white has-text-weight-bold pl-1">
+        {{ weight }}
+      </span>
+    </li>
+    {% endif %}
+  </ul>
+  <div class="buttons mt-5 mb-0">
+    <button id="confirm-checkout" class="button is-primary is-fullwidth">{{ text_checkout_confirm_button }}</button>
+    <a href="{{ cart }}" class="button is-primary is-light is-fullwidth mb-0">{{ text_to_cart }}</a>
+  </div>
+</div>

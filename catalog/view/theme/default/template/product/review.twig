@@ -1,0 +1,16 @@
+{% if reviews %}
+{% for review in reviews %}
+<div class="panel">
+  <div class="panel-block is-flex is-justify-content-space-between is-align-items-center">
+    <span><strong>{{ review.author }}</strong> <span class="tag {{ review.rating >= 4 ? 'is-success' : '' }}{{ review.rating >= 3 and review.rating < 4 ? 'is-warning' : '' }}{{ review.rating < 3 ? 'is-danger' : '' }} is-light">{{ review.rating }}</span></span>
+    <span class="text-right is-size-7">{{ review.date_added }}</span>
+  </div>
+  <div class="panel-block has-text-grey">
+    <p>{{ review.text }}</p>
+  </div>
+</div>
+{% endfor %}
+{{ pagination }}
+{% else %}
+<p>{{ text_no_reviews }}</p>
+{% endif %}

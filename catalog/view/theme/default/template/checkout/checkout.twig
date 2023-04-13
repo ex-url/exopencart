@@ -1,0 +1,96 @@
+{{ header }}
+<main id="checkout-page">
+  {{ content_top }}
+  <div class="container">
+    <nav class="breadcrumb py-4" aria-label="breadcrumbs">
+      <ul>
+        {% for key, breadcrumb in breadcrumbs %}
+        {% if key < (breadcrumbs|length - 1) %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% else %}
+        <li><a>{{ breadcrumb.text }}</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </nav>
+    {% if error_warning %}
+    <div class="notification is-danger is-light">{{ error_warning }}</div>
+    {% endif %}
+    <div class="columns is-multiline">
+      {{ column_left }}
+      {% if column_left and column_right %}
+      {% set class = 'column is-6-fullhd is-6-widescreen is-6-desktop is-12-tablet is-12-mobile' %}
+      {% elseif column_left or column_right %}
+      {% set class = 'column is-9-fullhd is-9-widescreen is-9-desktop is-12-tablet is-12-mobile' %}
+      {% else %}
+      {% set class = 'column is-12' %}
+      {% endif %}
+      <div id="content" class="{{ class }}">
+        <h1 class="title is-3">{{ heading_title }}</h1>
+        <div class="columns is-multiline" id="checkout-layout">
+          <div class="column is-9-fullhd is-9-widescreen is-8-desktop is-12-tablet is-12-mobile">
+            <div id="checkout-customer" class="mb-5">
+              <div class="box">
+                <div class="title is-5 mb-3">
+                  <div class="is-flex is-justify-content-space-between is-align-items-center">
+                    <span>{{ text_customer }}</span>
+                    {% if not logged %}
+                    <span class="button is-primary is-outlined login-trigger" data-redirect="/index.php?route=checkout/checkout">{{ text_login }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+                {% if logged %}
+                <p class="mb-2 has-text-grey has-text-weight-bold">
+                  {{ customer }}
+                </p>
+                <p class="mb-2 has-text-grey">
+                  {{ customer_email }}
+                </p>
+                <p class="mb-0 has-text-weight-bold">
+                  {{ customer_phone }}
+                </p>
+                {% elseif checkout_guest %}
+                {{ guest }}
+                {% else %}
+                {{ register }}
+                {% endif %}
+              </div>
+            </div>
+            {% if shipping_required %}
+            <div id="checkout-shipping" class="mb-5 is-relative">
+              <div class="box">
+                <div id="checkout-shipping-method">
+                  {{ shipping_methods }}
+                </div>
+                <div id="shipping-address" class="is-hidden"></div>
+              </div>
+            </div>
+            {% endif %}
+            <div id="checkout-payment" class="mb-5">
+              <div class="box">
+                {{ payment_methods }}
+              </div>
+            </div>
+          </div>
+          <div class="column is-3-fullhd is-3-widescreen is-4-desktop is-12-tablet is-12-mobile">
+            <div id="checkout-total" class="mb-5">
+              {{ total }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{ column_right }}
+  </div>
+</div>
+{{ content_bottom }}
+</main>
+
+<script>
+let zone_id = '{{ zone_id }}';
+let text_select = '{{ text_select }}';
+let text_none = '{{ text_none }}';
+let error_shipping = '{{ error_shipping }}';
+let error_payment = '{{ error_payment }}';
+</script>
+{{ footer }}

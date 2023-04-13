@@ -1,0 +1,189 @@
+{{ header }}
+<main id="cart-page">
+  {{ content_top }}
+  <div class="container">
+    <nav class="breadcrumb py-4" aria-label="breadcrumbs">
+      <ul>
+        {% for key, breadcrumb in breadcrumbs %}
+        {% if key < (breadcrumbs|length - 1) %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% else %}
+        <li><a>{{ breadcrumb.text }}</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </nav>
+    <div class="columns is-multiline">
+      {{ column_left }}
+      {% if column_left and column_right %}
+      {% set class = 'column is-6' %}
+      {% elseif column_left or column_right %}
+      {% set class = 'column is-9' %}
+      {% else %}
+      {% set class = 'column is-12' %}
+      {% endif %}
+      <div id="content" class="{{ class }}">
+        <h1 class="title is-3">{{ heading_title }}</h1>
+        {% if products %}
+        <div id="cart-content">
+          <div class="columns is-mobile is-multiline">
+            <div class="column is-9-fullhd is-9-widescreen is-8-desktop is-12-tablet is-12-mobile cart-products">
+              <div class="panel is-relative">
+                <form>
+                  {% for product in products %}
+                  <div class="panel-block is-block p-4">
+                    <div class="columns is-mobile is-flex-wrap-wrap">
+                      <div class="column is-2-fullhd is-2-widescreen is-2-desktop is-2-tablet is-4-mobile has-text-centered p-3">
+                        {% if product.thumb %}
+                        <a href="{{ product.href }}" class="is-block is-relative">
+                          <img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" />
+                        </a>
+                        <div>
+                          <span class="tag is-info is-light product-model">{{ product.model }}</span>
+                        </div>
+                        {% endif %}
+                      </div>
+                      <div class="column is-10-fullhd is-10-widescreen is-10-desktop is-10-tablet is-8-mobile is-10-desktop is-8-mobile">
+                        <div class="columns">
+                          <div class="column is-9-fullhd is-8-widescreen is-7-desktop is-8-tablet is-12-mobile">
+                            <a href="{{ product.href }}" class="title is-5 is-block has-text-link my-2">{{ product.name }}</a>
+                            {% if not product.stock %}
+                            <p><span class="tag is-danger">Предзаказ</span></p>
+                            {% endif %}
+                            {% if product.option %}
+                            <div class="cart-options">
+                              {% for option in product.option %}
+                              <small class="is-block has-text-grey">{{ option.name }}: <span class="has-text-black">{{ option.value }}</span></small>
+                              {% endfor %}
+                            </div>
+                            {% endif %}
+                          </div>
+                          <div class="column is-3-fullhd is-4-widescreen is-5-desktop is-4-tablet is-12-mobile">
+                            <div class="block mb-2">
+                              <div class="field is-grouped">
+                                <div class="field has-addons mb-0 quantity-counter">
+                                  <p class="control">
+                                    <a class="button minus">
+                                      <span class="icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
+                                          <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"/>
+                                        </svg>
+                                      </span>
+                                    </a>
+                                  </p>
+                                  <p class="control">
+                                    <input type="text" name="quantity" data-key="{{ product.cart_id }}" class="input has-text-centered input-quantity" value="{{ product.quantity }}" maxlength="5" />
+                                  </p>
+                                  <p class="control">
+                                    <a class="button plus">
+                                      <span class="icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                          <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                                        </svg>
+                                      </span>
+                                    </a>
+                                  </p>
+                                </div>
+                                <div class="field ml-3 mb-0">
+                                  <p class="control">
+                                    <a class="button is-danger is-outlined cart-delete-product" data-key="{{ product.cart_id }}">
+                                      <span class="icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                          <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                                        </svg>
+                                      </span>
+                                    </a>
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="block mb-3">
+                              <span class="per-one">{{ product.price }}</span> / <span class="has-text-weight-bold">{{ product.total }}</span>
+                            </div>
+                            {% if product.reward %}
+                            <div class="is-flex is-align-items-center cart-reward">
+                              <span class="icon-text">
+                                <span class="icon has-text-success">
+                                  <svg width="1.4rem" height="1.4rem" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 12V21.4C20 21.7314 19.7314 22 19.4 22H4.6C4.26863 22 4 21.7314 4 21.4V12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M21.4 7H2.6C2.26863 7 2 7.26863 2 7.6V11.4C2 11.7314 2.26863 12 2.6 12H21.4C21.7314 12 22 11.7314 22 11.4V7.6C22 7.26863 21.7314 7 21.4 7Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M12 22V7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M12 7H7.5C6.83696 7 6.20107 6.73661 5.73223 6.26777C5.26339 5.79893 5 5.16304 5 4.5C5 3.83696 5.26339 3.20107 5.73223 2.73223C6.20107 2.26339 6.83696 2 7.5 2C11 2 12 7 12 7Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M12 7H16.5C17.163 7 17.7989 6.73661 18.2678 6.26777C18.7366 5.79893 19 5.16304 19 4.5C19 3.83696 18.7366 3.20107 18.2678 2.73223C17.7989 2.26339 17.163 2 16.5 2C13 2 12 7 12 7Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                                  </svg>
+                                </span>
+                                <span>{{ product.reward }}</span>
+                              </span>
+                            </div>
+                            {% endif %}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </form>
+              </div>
+              {% if modules %}
+              <div class="box mb-5">
+                <div class="columns is-multiline">
+                  {% for module in modules %}
+                  {{ module }}
+                  {% endfor %}
+                </div>
+              </div>
+              {% endif %}
+            </div>
+            <div class="column is-3-fullhd is-3-widescreen is-4-desktop is-12-tablet is-12-mobile cart-total">
+              <div class="box mb-5">
+                <div class="title is-4">
+                  {{ text_your_order }}
+                </div>
+                <ul class="heading-list">
+                  {% for total in totals %}
+                  <li class="is-flex is-justify-content-space-between is-align-items-center py-1">
+                    <span class="has-background-white pr-1">
+                      {{ total.title }}
+                    </span>
+                    <span class="has-background-white has-text-weight-bold pl-1">
+                      {{ total.text }}
+                    </span>
+                  </li>
+                  {% endfor %}
+                </ul>
+                {% if weight %}
+                <div class="block my-2">
+                  <div class="is-flex is-justify-content-space-between">
+                    <span class="has-background-white pr-1">
+                      {{ text_weight }}
+                    </span>
+                    <span class="has-background-white has-text-weight-bold pl-1">
+                      {{ weight }}
+                    </span>
+                  </div>
+                </div>
+                {% endif %}
+                <div class="block mt-5 mb-0">
+                  <a href="{{ checkout }}" class="button is-primary is-fullwidth">{{ text_goto_checkout }}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% else %}
+        <div id="cart-content">
+          <div class="block">
+            {{ text_empty }}
+          </div>
+          <div class="buttons my-3">
+            <a href="{{ continue }}" class="button is-primary is-outlined">{{ button_continue }}</a>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      {{ column_right }}
+    </div>
+  </div>
+  {{ content_bottom }}
+</main>
+{{ footer }}

@@ -1,0 +1,12 @@
+{% if languages|length > 1 %}
+<form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-language">
+  <div class="select is-small is-link">
+    <select name="code">
+      {% for language in languages %}
+      <option value="{{ language.code }}" {{ language.code == code ? 'selected' : '' }}>{{ language.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <input type="hidden" name="redirect" value="{{ redirect }}" />
+</form>
+{% endif %}

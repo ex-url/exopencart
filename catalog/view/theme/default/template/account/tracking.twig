@@ -1,0 +1,135 @@
+{{ header }}
+<main id="account-tracking">
+  <div class="container">
+    <style>
+    #account-tracking .box {
+        word-break: break-all;
+    }
+    .autocomplete .dropdown-menu {
+      background: #fff;
+      box-shadow: 0 5px 10px 0 rgb(0 0 0 / 30%);
+      border-radius: 8px;
+    }
+    .autocomplete .dropdown-menu li {
+        padding: 5px 12px;
+    }
+    </style>
+    <nav class="breadcrumb py-4" aria-label="breadcrumbs">
+      <ul>
+        {% for key, breadcrumb in breadcrumbs %}
+        {% if key < (breadcrumbs|length - 1) %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% else %}
+        <li><a>{{ breadcrumb.text }}</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </nav>
+    <div class="columns is-multiline mb-5">{{ column_left }}
+      {% if column_left and column_right %}
+      {% set class = 'column is-6-fullhd is-6-widescreen is-6-desktop is-12-tablet is-12-mobile' %}
+      {% elseif column_left or column_right %}
+      {% set class = 'column is-9-fullhd is-9-widescreen is-9-desktop is-12-tablet is-12-mobile' %}
+      {% else %}
+      {% set class = 'column is-12' %}
+      {% endif %}
+      <div id="content" class="{{ class }}">{{ content_top }}
+        <h1 class="title is-3">{{ heading_title }}</h1>
+        <div class="content">
+          <p>{{ text_description }}</p>
+        </div>
+        <form class="columns is-mobile is-multiline">
+          <div class="column is-12">
+            <div class="title is-6">
+              {{ entry_code }}
+            </div>
+            <div class="content">
+              {{ text_common_tracking }}
+            </div>
+            <div class="block">
+              <div class="box common-tracking">
+                {{ host }}{{ code }}
+              </div>
+              <input type="hidden" id="input-code" value="{{ code }}">
+            </div>
+            <div class="block">
+              <span class="button is-primary is-light copy-common-tracking">
+                <span class="icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1zM3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4z"/>
+                  </svg>
+                </span>
+                <span>{{ text_copy }}</span>
+              </span>
+            </div>
+          </div>
+          <div class="column is-12">
+            <div class="field">
+              <label class="label" for="input-generator"><span data-toggle="tooltip" title="{{ help_generator }}">{{ entry_generator }}</span></label>
+              <div class="control autocomplete">
+                <input type="text" name="product" value="" placeholder="{{ entry_generator }}" id="input-generator" class="input" />
+              </div>
+            </div>
+          </div>
+          <div class="column is-12">
+            <div class="box particular-tracking">
+              {{ entry_link }}
+            </div>
+            <div class="block">
+              <span class="button is-primary is-light copy-particular-tracking">
+                <span class="icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1zM3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4z"/>
+                  </svg>
+                </span>
+                <span>{{ text_copy }}</span>
+              </span>
+            </div>
+          </div>
+        </form>
+        <div class="buttons">
+          <a href="{{ continue }}" class="button is-primary is-outlined">{{ button_continue }}</a>
+        </div>
+        {{ content_bottom }}
+      </div>
+      {{ column_right }}
+    </div>
+  </div>
+</main>
+<script>
+$(document).ready(function () {
+  $('input[name="product"]').autocomplete({
+  	source: function(request, response) {
+  		$.ajax({
+  			url: 'index.php?route=account/tracking/autocomplete&filter_name=' +  encodeURIComponent(request) + '&tracking=' + encodeURIComponent($('#input-code').val()),
+  			dataType: 'json',
+  			success: function(json) {
+  				response($.map(json, function(item) {
+  					return {
+  						label: item['name'],
+  						value: item['link']
+  					}
+  				}));
+  			}
+  		});
+  	},
+  	select: function(item) {
+  		$('input[name="product"]').val(item['label']);
+  		$('.particular-tracking').text(item['value']);
+  	}
+  });
+
+  $('.copy-common-tracking').on('click', function () {
+    copyToClipboard('.common-tracking');
+    $(this).toggleClass('is-success');
+  });
+
+  $('.copy-particular-tracking').on('click', function () {
+    copyToClipboard('.particular-tracking');
+    $(this).toggleClass('is-success');
+  });
+
+
+});
+</script>
+{{ footer }}

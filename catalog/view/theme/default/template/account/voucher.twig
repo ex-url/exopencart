@@ -1,0 +1,133 @@
+{{ header }}
+<main id="account-voucher-page">
+  <div class="container">
+    <nav class="breadcrumb py-4" aria-label="breadcrumbs">
+      <ul>
+        {% for key, breadcrumb in breadcrumbs %}
+        {% if key < (breadcrumbs|length - 1) %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% else %}
+        <li><a>{{ breadcrumb.text }}</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </nav>
+    {% if error_warning %}
+    <div class="notification is-danger is-light">{{ error_warning }}</div>
+    {% endif %}
+    <div class="columns is-multiline">
+      {{ column_left }}
+      {% if column_left and column_right %}
+      {% set class = 'column is-6-fullhd is-6-widescreen is-6-desktop is-12-tablet is-12-mobile' %}
+      {% elseif column_left or column_right %}
+      {% set class = 'column is-9-fullhd is-9-widescreen is-9-desktop is-12-tablet is-12-mobile' %}
+      {% else %}
+      {% set class = 'column is-12' %}
+      {% endif %}
+      <div id="content" class="{{ class }}">{{ content_top }}
+        <h1 class="title is-3">{{ heading_title }}</h1>
+        <p class="block">{{ text_description }}</p>
+        <form action="{{ action }}" class="columns is-multiline pb-5" method="post" enctype="multipart/form-data">
+          <div class="column is-6-desktop is-6-tablet is-12-mobile">
+            <div class="field">
+              <label class="label" for="input-to-name">{{ entry_to_name }}</label>
+              <input type="text" name="to_name" value="{{ to_name }}" id="input-to-name" class="input" />
+              {% if error_to_name %}
+              <div class="help is-danger">{{ error_to_name }}</div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="column is-6-desktop is-6-tablet is-12-mobile">
+            <div class="field">
+              <label class="label" for="input-to-email">{{ entry_to_email }}</label>
+              <input type="text" name="to_email" value="{{ to_email }}" id="input-to-email" class="input" />
+              {% if error_to_email %}
+              <div class="help is-danger">{{ error_to_email }}</div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="column is-6-desktop is-6-tablet is-12-mobile">
+            <div class="field">
+              <label class="label" for="input-from-name">{{ entry_from_name }}</label>
+              <input type="text" name="from_name" value="{{ from_name }}" id="input-from-name" class="input" />
+              {% if error_from_name %}
+              <div class="help is-danger">{{ error_from_name }}</div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="column is-6-desktop is-6-tablet is-12-mobile">
+            <div class="field">
+              <label class="label" for="input-from-email">{{ entry_from_email }}</label>
+              <input type="text" name="from_email" value="{{ from_email }}" id="input-from-email" class="input" />
+              {% if error_from_email %}
+              <div class="help is-danger">{{ error_from_email }}</div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="column is-6-desktop is-6-tablet is-12-mobile">
+            <div class="field">
+              <label class="label">{{ entry_theme }}</label>
+              <div class="control">
+                {% for voucher_theme in voucher_themes %}
+                {% if voucher_theme.voucher_theme_id == voucher_theme_id %}
+                <label class="radio">
+                  <input type="radio" name="voucher_theme_id" value="{{ voucher_theme.voucher_theme_id }}" checked="checked" />
+                  {{ voucher_theme.name }}
+                </label>
+                {% else %}
+                <label class="radio">
+                  <input type="radio" name="voucher_theme_id" value="{{ voucher_theme.voucher_theme_id }}" />
+                  {{ voucher_theme.name }}
+                </label>
+                {% endif %}
+                {% endfor %}
+                {% if error_theme %}
+                <div class="help is-danger">{{ error_theme }}</div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          <div class="column is-6-desktop is-6-tablet is-12-mobile">
+            <div class="field">
+              <label class="label" for="input-amount">
+                {{ entry_amount }}
+              </label>
+              <input type="text" name="amount" value="{{ amount }}" id="input-amount" class="input" size="5" />
+              {% if error_amount %}
+              <p class="help is-danger">{{ error_amount }}</p>
+              {% endif %}
+            </div>
+          </div>
+          <div class="column is-12">
+            <div class="field">
+              <label class="label" for="input-message"><span data-toggle="tooltip" title="{{ help_message }}">{{ entry_message }}</span></label>
+              <div class="control">
+                <textarea name="message" cols="40" rows="5" id="input-message" class="textarea">{{ message }}</textarea>
+              </div>
+            </div>
+          </div>
+          <div class="column is-12">
+            <div class="field">
+              <label class="checkbox">
+                {% if agree %}
+                <input type="checkbox" name="agree" value="1" checked="checked" />
+                {% else %}
+                <input type="checkbox" name="agree" value="1" />
+                {% endif %}
+                {{ text_agree }}
+              </label>
+            </div>
+          </div>
+          <div class="column is-12">
+            <div class="buttons">
+              <button type="submit" class="button is-primary is-outlined">{{ button_continue }}</button>
+            </div>
+          </div>
+        </form>
+        {{ content_bottom }}
+      </div>
+      {{ column_right }}
+    </div>
+  </div>
+</main>
+{{ footer }}

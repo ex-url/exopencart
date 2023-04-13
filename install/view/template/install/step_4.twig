@@ -1,0 +1,33 @@
+{{ header }}
+<div class="container">
+  <header>
+    <div class="row">
+      <div class="col-sm-6">
+        <h1 class="pull-left">4
+          <small>/4</small>
+        </h1>
+        <h3>{{ heading_title }}
+          <br>
+          <small>{{ text_step_4 }}</small>
+        </h3>
+      </div>
+      <div class="col-sm-6">
+        <div id="logo" class="pull-right hidden-xs"><img src="view/image/logo.png" width="200px" height="30px" alt="exopencart" title="exopencart" /></div>
+      </div>
+    </div>
+  </header>
+  <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }} <button type="button" class="close" data-dismiss="alert">&times;</button></div>
+  <div class="well">
+    <div class="row">
+      <div class="col-sm-5 col-sm-offset-1 text-center">
+        <p><i class="fa fa-shopping-cart fa-5x text-primary"></i></p>
+        <a href="../" class="btn btn-primary">{{ text_catalog }}</a>
+      </div>
+      <div class="col-sm-5 text-center">
+        <p><i class="fa fa-cog fa-5x white text-primary"></i></p>
+        <a href="../admin/" class="btn btn-primary">{{ text_admin }}</a>
+      </div>
+    </div>
+  </div>
+</div>
+{{ footer }}

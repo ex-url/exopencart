@@ -1,0 +1,65 @@
+{{ header }}
+<main id="account-login">
+  {{ content_top }}
+  <div class="container">
+    <nav class="breadcrumb py-4" aria-label="breadcrumbs">
+      <ul>
+        {% for key, breadcrumb in breadcrumbs %}
+        {% if key < (breadcrumbs|length - 1) %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% else %}
+        <li><a>{{ breadcrumb.text }}</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </nav>
+    <div class="columns is-multiline">
+      {{ column_left }}
+      {% if column_left and column_right %}
+      {% set class = 'column is-6-fullhd is-6-widescreen is-6-desktop is-12-tablet is-12-mobile' %}
+      {% elseif column_left or column_right %}
+      {% set class = 'column is-9-fullhd is-9-widescreen is-9-desktop is-12-tablet is-12-mobile' %}
+      {% else %}
+      {% set class = 'column is-12' %}
+      {% endif %}
+      <div id="content" class="{{ class }} pb-6">
+        {% if success %}
+        <div class="notification is-success is-light"><i class="fa fa-check-circle"></i> {{ success }}</div>
+        {% endif %}
+        {% if error_warning %}
+        <div class="notification is-danger is-light"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}</div>
+        {% endif %}
+        <div class="login-form">
+          <div class="title is-4">
+            {{ text_login }}
+          </div>
+          <form action="{{ action }}" method="post" enctype="multipart/form-data">
+            <div class="field">
+              <label class="label" for="input-email">{{ entry_email }}</label>
+              <input type="text" name="email" value="{{ email }}" placeholder="{{ entry_email }}" id="input-email" class="input" />
+            </div>
+            <div class="field">
+              <label class="label" for="input-password">{{ entry_password }}</label>
+              <input type="password" name="password" value="{{ password }}" placeholder="{{ entry_password }}" id="input-password" class="input" />
+            </div>
+            <div class="block">
+              <a href="{{ forgotten }}">{{ text_forgotten }}</a>
+            </div>
+            <div class="block">
+              <input type="hidden" name="redirect" value="{{ redirect }}" />
+              <button type="submit" class="button is-primary is-outlined">{{ button_login }}</button>
+            </div>
+          </form>
+          <hr>
+          <div class="block">
+            <p class="mb-2">Нет аккаунта?</p>
+            <a href="{{ register }}" class="button is-primary is-outlined">{{ button_create_account }}</a>
+          </div>
+        </div>
+      </div>
+      {{ column_right }}
+    </div>
+  </div>
+  {{ content_bottom }}
+</main>
+{{ footer }}

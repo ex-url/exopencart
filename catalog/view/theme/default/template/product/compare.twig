@@ -1,0 +1,160 @@
+{{ header }}
+<main id="compare-page">
+  {{ content_top }}
+  <div class="container">
+    <nav class="breadcrumb py-4" aria-label="breadcrumbs">
+      <ul>
+        {% for key, breadcrumb in breadcrumbs %}
+        {% if key < (breadcrumbs|length - 1) %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% else %}
+        <li><a>{{ breadcrumb.text }}</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </nav>
+    <div class="columns is-multiline">
+      {{ column_left }}
+      {% if column_left and column_right %}
+      {% set class = 'column is-6-fullhd is-6-widescreen is-6-desktop is-12-tablet is-12-mobile' %}
+      {% elseif column_left or column_right %}
+      {% set class = 'column is-9-fullhd is-9-widescreen is-9-desktop is-12-tablet is-12-mobile' %}
+      {% else %}
+      {% set class = 'column is-12' %}
+      {% endif %}
+      <div id="content" class="{{ class }}">
+        <h1 class="title is-3">{{ heading_title }}</h1>
+        {% if products %}
+        <div class="table-container mb-5">
+          <table class="table is-bordered is-striped is-fullwidth">
+            <thead>
+              <tr>
+                <td colspan="{{ products|length + 1 }}"><strong>{{ text_product }}</strong></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ text_name }}</td>
+                {% for product in products %}
+                <td><a href="{{ product.href }}"><strong>{{ product.name }}</strong></a></td>
+                {% endfor %}
+              </tr>
+              <tr>
+                <td>{{ text_image }}</td>
+                {% for product in products %}
+                <td class="text-center">
+                  {% if product.thumb %}
+                  <img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" />
+                  {% endif %}
+                </td>
+                {% endfor %}
+              </tr>
+              <tr>
+                <td>{{ text_price }}</td>
+                {% for product in products %}
+                <td>
+                  {% if product.price %}
+                  {% if not product.special %}
+                  {{ product.price }}
+                  {% else %}
+                  <strike>{{ product.price }}</strike> {{ product.special }}
+                  {% endif %}
+                  {% endif %}
+                </td>
+                {% endfor %}
+              </tr>
+              <tr>
+                <td>{{ text_model }}</td>
+                {% for product in products %}
+                <td>{{ product.model }}</td>
+                {% endfor %}
+              </tr>
+              <tr>
+                <td>{{ text_manufacturer }}</td>
+                {% for product in products %}
+                <td>{{ product.manufacturer }}</td>
+                {% endfor %}
+              </tr>
+              <tr>
+                <td>{{ text_availability }}</td>
+                {% for product in products %}
+                <td>{{ product.availability }}</td>
+                {% endfor %}
+              </tr>
+              {% if review_status %}
+              <tr>
+                <td>{{ text_rating }}</td>
+                {% for product in products %}
+                <td class="rating">
+                  {% for i in 1..5 %}
+                  {% if product.rating < i %} <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> {% else %} <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> {% endif %}
+                  {% endfor %} <br />
+                  {{ product.reviews }}
+                </td>
+                {% endfor %}
+              </tr>
+              {% endif %}
+              <tr>
+                <td>{{ text_summary }}</td>
+                {% for product in products %}
+                <td class="description">{{ product.description }}</td>
+                {% endfor %}
+              </tr>
+              <tr>
+                <td>{{ text_weight }}</td>
+                {% for product in products %}
+                <td>{{ product.weight }}</td>
+                {% endfor %}
+              </tr>
+              <tr>
+                <td>{{ text_dimension }}</td>
+                {% for product in products %}
+                <td>{{ product.length }} x {{ product.width }} x {{ product.height }}</td>
+                {% endfor %}
+              </tr>
+            </tbody>
+            {% for attribute_group in attribute_groups %}
+            <thead>
+              <tr>
+                <td colspan="{{ products|length + 1 }}"><strong>{{ attribute_group.name }}</strong></td>
+              </tr>
+            </thead>
+            {% for key, attribute in attribute_group.attribute %}
+            <tbody>
+              <tr>
+                <td>{{ attribute.name }}</td>
+                {% for product in products %}
+                {% if product.attribute[key] %}
+                <td>{{ product.attribute[key] }}</td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                {% endfor %}
+              </tr>
+            </tbody>
+            {% endfor %}
+            {% endfor %}
+            <tr>
+              <td></td>
+              {% for product in products %}
+              <td>
+                <button type="button" class="button is-primary is-outlined add-to-cart" data-product_id="{{ product.product_id }}" data-minimum="{{ product.minimum }}">{{ button_cart }}</button>
+                <a href="{{ product.remove }}" class="button is-danger is-outlined">{{ button_remove }}</a>
+              </td>
+              {% endfor %}
+            </tr>
+          </table>
+        </div>
+        {% else %}
+        <p>{{ text_empty }}</p>
+        <div class="buttons my-3">
+          <a href="{{ continue }}" class="button is-primary is-outlined">{{ button_continue }}</a>
+        </div>
+        {% endif %}
+      </div>
+      {{ column_right }}
+    </div>
+  </div>
+  {{ content_bottom }}
+</main>
+{{ footer }}

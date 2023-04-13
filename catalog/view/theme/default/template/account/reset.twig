@@ -1,0 +1,58 @@
+{{ header }}
+<main id="account-reset">
+  <div class="container">
+    <nav class="breadcrumb py-4" aria-label="breadcrumbs">
+      <ul>
+        {% for key, breadcrumb in breadcrumbs %}
+        {% if key < (breadcrumbs|length - 1) %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% else %}
+        <li><a>{{ breadcrumb.text }}</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </nav>
+    <div class="columns is-multiline">{{ column_left }}
+    {% if column_left and column_right %}
+    {% set class = 'column is-6-fullhd is-6-widescreen is-6-desktop is-12-tablet is-12-mobile' %}
+    {% elseif column_left or column_right %}
+    {% set class = 'column is-9-fullhd is-9-widescreen is-9-desktop is-12-tablet is-12-mobile' %}
+    {% else %}
+    {% set class = 'column is-12' %}
+    {% endif %}
+      <div id="content" class="{{ class }}">{{ content_top }}
+        <h1 class="title is-3">{{ heading_title }}</h1>
+        <form action="{{ action }}" method="post" enctype="multipart/form-data" style="max-width: 400px">
+          <fieldset>
+            <legend class="title is-5">{{ text_password }}</legend>
+            <div class="field">
+              <label class="label" for="input-password">{{ entry_password }}</label>
+              <div class="control">
+                <input type="password" name="password" value="{{ password }}" id="input-password" class="input" />
+                {% if error_password %}
+                <div class="help is-danger">{{ error_password }}</div>
+                {% endif %}
+              </div>
+            </div>
+            <div class="field">
+              <label class="label" for="input-confirm">{{ entry_confirm }}</label>
+              <div class="control">
+                <input type="password" name="confirm" value="{{ confirm }}" id="input-confirm" class="input" />
+                {% if error_confirm %}
+                <div class="help is-danger">{{ error_confirm }}</div>
+                {% endif %}
+              </div>
+            </div>
+          </fieldset>
+          <div class="buttons my-5">
+            <a href="{{ back }}" class="button">{{ button_back }}</a>
+            <button type="submit" class="button is-primary is-outlined">{{ button_continue }}</button>
+          </div>
+        </form>
+        {{ content_bottom }}
+      </div>
+      {{ column_right }}
+    </div>
+  </div>
+</main>
+{{ footer }}

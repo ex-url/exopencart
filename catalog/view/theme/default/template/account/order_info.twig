@@ -1,0 +1,155 @@
+{{ header }}
+<main id="account-order">
+  {{ content_top }}
+  <div class="container">
+    <nav class="breadcrumb py-4" aria-label="breadcrumbs">
+      <ul>
+        {% for key, breadcrumb in breadcrumbs %}
+        {% if key < (breadcrumbs|length - 1) %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% else %}
+        <li><a>{{ breadcrumb.text }}</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </nav>
+    {% if success %}
+    <div class="notification is-success is-light">{{ success }}</div>
+    {% endif %}
+    {% if error_warning %}
+    <div class="notification is-warning">{{ error_warning }}</div>
+    {% endif %}
+    <div class="columns is-multiline">{{ column_left }}
+      {% if column_left and column_right %}
+      {% set class = 'column is-6-fullhd is-6-widescreen is-6-desktop is-12-tablet is-12-mobile' %}
+      {% elseif column_left or column_right %}
+      {% set class = 'column is-9-fullhd is-9-widescreen is-9-desktop is-12-tablet is-12-mobile' %}
+      {% else %}
+      {% set class = 'column is-12' %}
+      {% endif %}
+      <div id="content" class="{{ class }} pb-6">
+        <h1 class="title is-3">{{ heading_title }}</h1>
+        <div class="box">
+          <div class="columns is-mobile is-multiline">
+            <div class="column is-6-desktop is-6-tablet is-12-mobile">
+              {% if invoice_no %}
+              <p><b>{{ text_invoice_no }}</b> {{ invoice_no }}</p>
+              {% endif %}
+              <p><b>{{ text_order_id }}</b> #{{ order_id }}</p>
+              <p><b>{{ text_date_added }}</b> {{ date_added }}</p>
+            </div>
+            <div class="column is-6-desktop is-6-tablet is-12-mobile">
+            {% if payment_method %}
+              <p><b>{{ text_payment_method }}</b> {{ payment_method }}</p>
+            {% endif %}
+            {% if shipping_method %}
+              <p><b>{{ text_shipping_method }}</b> {{ shipping_method }}</p>
+            {% endif %}
+            </div>
+            <div class="column is-12">
+              {% if shipping_address %}
+              <b>{{ text_shipping_address }}: </b>{{ shipping_address }}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          {% for product in products %}
+          <div class="columns is-mobile is-multiline">
+            <div class="column is-3-desktop is-8-tablet is-9-mobile">
+              <p class="is-size-7 has-text-grey">{{ column_name }}</p>
+              <p>
+                <a href="{{ product.href }}" target="_blank">{{ product.name }}</a>
+              </p>
+              {% for option in product.option %} <br />
+              <small> - {{ option.name }}: {{ option.value }}</small>
+              {% endfor %}
+            </div>
+            <div class="column is-2-desktop is-4-tablet is-3-mobile has-text-right">
+              <p class="is-size-7 has-text-grey">{{ column_model }}</p>
+              <p>{{ product.model }}</p>
+            </div>
+            <div class="column is-1-desktop is-4-tablet is-6-mobile">
+              <p class="is-size-7 has-text-grey">{{ column_quantity }}</p>
+              <p>{{ product.quantity }}</p>
+            </div>
+            <div class="column is-2-desktop is-4-tablet is-6-mobile has-text-right">
+              <p class="is-size-7 has-text-grey">{{ column_price }}</p>
+              <p>{{ product.price }}</p>
+            </div>
+            <div class="column is-2-desktop is-4-tablet is-6-mobile">
+              <p class="is-size-7 has-text-grey">{{ column_total }}</p>
+              <p>{{ product.total }}</p>
+            </div>
+            <div class="column is-2-desktop is-4-tablet is-6-mobile has-text-right">
+              {% if product.reorder %}
+              <a href="{{ product.reorder }}" title="{{ button_reorder }}" class="button is-primary is-outlined">
+                <span class="icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                  </svg>
+                </span>
+              </a>
+              {% endif %}
+              <a href="{{ product.return }}" title="{{ button_return }}" class="button is-danger is-outlined">
+                <span class="icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                    <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                  </svg>
+                </span>
+              </a>
+            </div>
+          </div>
+          <hr>
+          {% endfor %}
+          <div class="block has-text-right">
+            {% for total in totals %}
+            <p><span class="has-text-grey">{{ total.title }}:</span> <b>{{ total.text }}</b></p>
+            {% endfor %}
+          </div>
+        </div>
+        {% if comment %}
+        <div class="box">
+          <div class="title is-5">
+            {{ text_comment }}
+          </div>
+          <div class="block">
+            {{ comment }}
+          </div>
+        </div>
+        {% endif %}
+        {% if histories %}
+        <div class="box">
+          <div class="title is-5">{{ text_history }}</div>
+          {% for history in histories %}
+          <div class="columns is-mobile is-multiline">
+            <div class="column is-2-desktop is-3-tablet is-6-mobile">
+              <p class="is-size-7 has-text-grey">{{ column_date_added }}</p>
+              <p>{{ history.date_added }}</p>
+            </div>
+            <div class="column is-2-desktop is-3-tablet is-6-mobile">
+              <p class="is-size-7 has-text-grey">{{ column_status }}</p>
+              <p><span class="tag is-primary is-light">{{ history.status }}</span></p>
+            </div>
+            <div class="column is-8-desktop is-9-tablet is-12-mobile">
+              <p class="is-size-7 has-text-grey">{{ column_comment }}</p>
+              <p>{{ history.comment }}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+          {% else %}
+          <p>{{ text_no_results }}</p>
+        {% endif %}
+        <div class="buttons">
+          <a href="{{ continue }}" class="button is-primary is-outlined">{{ button_continue }}</a>
+        </div>
+      </div>
+      {{ column_right }}
+    </div>
+  </div>
+  {{ content_bottom }}
+</main>
+{{ footer }}

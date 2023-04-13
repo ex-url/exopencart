@@ -1,0 +1,69 @@
+{{ header }}
+<main id="account-reward">
+  {{ content_top }}
+  <div class="container">
+    <nav class="breadcrumb py-4" aria-label="breadcrumbs">
+      <ul>
+        {% for key, breadcrumb in breadcrumbs %}
+        {% if key < (breadcrumbs|length - 1) %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% else %}
+        <li><a>{{ breadcrumb.text }}</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </nav>
+    <div class="columns is-multiline">{{ column_left }}
+      {% if column_left and column_right %}
+      {% set class = 'column is-6-fullhd is-6-widescreen is-6-desktop is-12-tablet is-12-mobile' %}
+      {% elseif column_left or column_right %}
+      {% set class = 'column is-9-fullhd is-9-widescreen is-9-desktop is-12-tablet is-12-mobile' %}
+      {% else %}
+      {% set class = 'column is-12' %}
+      {% endif %}
+      <div id="content" class="{{ class }}">
+        <h1 class="title is-3">{{ heading_title }}</h1>
+        <p>{{ text_total }} <b>{{ total }}</b></p>
+        <div class="table-container mt-5">
+          <table class="table is-bordered is-fullwidth">
+            <thead>
+              <tr>
+                <td>{{ column_date_added }}</td>
+                <td>{{ column_description }}</td>
+                <td>{{ column_points }}</td>
+              </tr>
+            </thead>
+            <tbody>
+            {% if rewards %}
+            {% for reward in rewards %}
+            <tr>
+              <td>{{ reward.date_added }}</td>
+              <td>{% if reward.order_id %} <a href="{{ reward.href }}">{{ reward.description }}</a> {% else %}
+                {{ reward.description }}
+                {% endif %}
+              </td>
+              <td>{{ reward.points }}</td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+              <td class="text-center" colspan="3">{{ text_empty }}</td>
+            </tr>
+            {% endif %}
+              </tbody>
+          </table>
+        </div>
+        <div class="columns is-align-items-center is-justify-content-space-between my-3">
+          <div class="column is-narrow">{{ pagination }}</div>
+          <div class="column is-narrow">{{ results }}</div>
+        </div>
+        <div class="buttons">
+          <a href="{{ continue }}" class="button is-primary is-outlined">{{ button_continue }}</a>
+        </div>
+        {{ content_bottom }}
+      </div>
+      {{ column_right }}
+    </div>
+  </div>
+</main>
+{{ footer }}

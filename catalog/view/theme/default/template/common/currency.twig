@@ -1,0 +1,12 @@
+{% if currencies|length > 1 %}
+<form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-currency" class="mr-2">
+  <div class="select is-small is-link">
+    <select name="code">
+      {% for currency in currencies %}
+      <option value="{{ currency.code }}" {{ currency.code == code ? 'selected' : '' }}>{{ currency.symbol_left}}{{ currency.symbol_right }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <input type="hidden" name="redirect" value="{{ redirect }}" />
+</form>
+{% endif %}

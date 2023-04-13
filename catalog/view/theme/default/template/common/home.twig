@@ -1,0 +1,20 @@
+{{ header }}
+<main id="home-page">
+  {{ content_top }}
+  <div class="container">
+    <div class="columns is-multiline">
+    {{ column_left }}
+      {% if column_left and column_right %}
+      {% set class = 'column is-6-desktop is-12-mobile' %}
+      {% elseif column_left or column_right %}
+      {% set class = 'column is-9-desktop is-12-mobile' %}
+      {% else %}
+      {% set class = 'column is-12' %}
+      {% endif %}
+      <div id="content" class="{{ class }}"></div>
+      {{ column_right }}
+    </div>
+  </div>
+  {{ content_bottom }}
+</main>
+{{ footer }}

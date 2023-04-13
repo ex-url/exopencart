@@ -1,0 +1,58 @@
+{{ header }}
+<div id="manufacturer-list-page">
+  {{ content_top }}
+  <div class="container">
+    <nav class="breadcrumb py-4" aria-label="breadcrumbs">
+      <ul>
+        {% for key, breadcrumb in breadcrumbs %}
+        {% if key < (breadcrumbs|length - 1) %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% else %}
+        <li><a>{{ breadcrumb.text }}</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </nav>
+    <div class="columns is-multiline">
+      {{ column_left }}
+      {% if column_left and column_right %}
+      {% set class = 'column is-6-fullhd is-6-widescreen is-6-desktop is-12-tablet is-12-mobile' %}
+      {% elseif column_left or column_right %}
+      {% set class = 'column is-9-fullhd is-9-widescreen is-9-desktop is-12-tablet is-12-mobile' %}
+      {% else %}
+      {% set class = 'column is-12' %}
+      {% endif %}
+      <div id="content" class="{{ class }}">
+        <h1 class="title is-1">{{ heading_title }}</h1>
+        {% if categories %}
+        <p><strong>{{ text_index }}</strong>
+        {% for category in categories %}
+          &nbsp;&nbsp;&nbsp;<a href="index.php?route=product/manufacturer#{{ category.name }}">{{ category.name }}</a>
+        {% endfor %}
+        </p>
+        {% for category in categories %}
+        <div class="title is-3 py-3 mb-0" id="{{ category.name }}">{{ category.name }}</div>
+        {% if category.manufacturer %}
+        {% for manufacturers in category.manufacturer|batch(4) %}
+        <div class="buttons">
+          {% for manufacturer in manufacturers %}
+          <a class="button is-primary is-light" href="{{ manufacturer.href }}">{{ manufacturer.name }}</a>
+          {% endfor %}
+        </div>
+        <hr class="my-2">
+        {% endfor %}
+        {% endif %}
+        {% endfor %}
+        {% else %}
+        <p>{{ text_empty }}</p>
+        <div class="buttons my-3">
+          <a href="{{ continue }}" class="button is-primary is-outlined">{{ button_continue }}</a>
+        </div>
+        {% endif %}
+      </div>
+      {{ column_right }}
+    </div>
+  </div>
+  {{ content_bottom }}
+</div>
+{{ footer }}

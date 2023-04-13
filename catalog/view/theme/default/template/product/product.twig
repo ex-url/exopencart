@@ -1,0 +1,790 @@
+{{ header }}
+<main id="product-page">
+  {{ content_top }}
+  <div class="container">
+    <nav class="breadcrumb py-4" aria-label="breadcrumbs">
+      <ul>
+        {% for key, breadcrumb in breadcrumbs %}
+        {% if key < (breadcrumbs|length - 1) %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% else %}
+        <li><a>{{ breadcrumb.text }}</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </nav>
+    <div class="columns is-multiline">
+      {{ column_left }}
+      {% if column_left and column_right %}
+      {% set class = 'column is-6-fullhd is-6-widescreen is-6-desktop is-12-tablet is-12-mobile' %}
+      {% elseif column_left or column_right %}
+      {% set class = 'column is-9-fullhd is-9-widescreen is-9-desktop is-12-tablet is-12-mobile' %}
+      {% else %}
+      {% set class = 'column is-12' %}
+      {% endif %}
+      <div id="content" class="{{ class }}">
+        <h1 class="title is-3 has-text-weight-normal">{{ heading_title }}</h1>
+        <hr>
+        <div class="columns is-multiline">
+          {% if column_left and column_right %}
+          {% set class = 'column is-12-desktop is-12-tablet is-12-mobile' %}
+          {% elseif column_left or column_right %}
+          {% set class = 'column is-5-desktop is-12-tablet is-12-mobile' %}
+          {% else %}
+          {% set class = 'column is-4-desktop is-12-tablet is-12-mobile' %}
+          {% endif %}
+          <div class="{{ class }} product-images">
+            <ul class="has-text-centered slider-hidden" id="product-images">
+              {% if thumb or images %}
+              {% if thumb %}
+              <li data-thumb="{{ thumb }}" data-src="{{ popup }}">
+                <img src="{{ thumb }}" width="{{ image_width }}" height="{{ image_heigth }}" title="{{ heading_title }}" alt="{{ heading_title }}" />
+              </li>
+              {% endif %}
+              {% if images %}
+              {% for image in images %}
+              <li data-thumb="{{ image.thumb }}" data-src="{{ image.popup }}">
+                <img src="{{ image.thumb }}" width="{{ image_width }}" height="{{ image_heigth }}" title="{{ image.title ? image.title : heading_title }}" alt="{{  image.title ? image.title : heading_title  }}" />
+              </li>
+              {% endfor %}
+              {% endif %}
+              {% endif %}
+            </ul>
+            <div class="sticky-crutch"></div>
+          </div>
+          {% if column_left and column_right %}
+          {% set class = 'column is-12-desktop is-12-mobile' %}
+          {% elseif column_left or column_right %}
+          {% set class = 'column is-7-desktop is-12-mobile' %}
+          {% else %}
+          {% set class = 'column is-8-desktop is-12-mobile' %}
+          {% endif %}
+          <div class="{{ class }} product-info">
+            <div class="tabs is-toggle">
+              <ul>
+                <li class="has-background-white is-active" data-target="#description">
+                  <a>{{ tab_description }}</a>
+                </li>
+                {% if attribute_groups %}
+                <li class="has-background-white" data-target="#attributes">
+                  <a>{{ tab_attribute }}</a>
+                </li>
+                {% endif %}
+                {% if review_status %}
+                <li class="has-background-white" data-target="#reviews">
+                  <a>{{ tab_review }}</a>
+                </li>
+                {% endif %}
+              </ul>
+            </div>
+            <div id="description">
+              <div class="columns is-multiline mb-0">
+                {% if column_left and column_right %}
+                {% set class = 'column is-12-desktop is-12-mobile' %}
+                {% elseif column_left or column_right %}
+                {% set class = 'column is-12-desktop is-12-mobile' %}
+                {% else %}
+                {% set class = 'column is-6-desktop is-12-mobile' %}
+                {% endif %}
+                <div class="{{ class }} product-main-info">
+                  <div class="is-flex is-justify-content-space-between is-align-items-center">
+                    {% if price %}
+                    <div class="price is-relative">
+                      {% if not special %}
+                      <span class="is-size-2 has-text-weight-bold actual-price">{{ price }}</span>
+                      {% else %}
+                      <span class="is-size-2 has-text-weight-bold actual-price">{{ special }}</span>
+                      <span class="has-text-grey is-size-4 old-price">{{ price }}</span>
+                      {% endif %}
+                      {% if tax %}
+                      <span class="has-text-grey is-size-7 price-tax">{{ text_tax }} {{ tax }}</span>
+                      {% endif %}
+                    </div>
+                    {% endif %}
+                    {% if rating %}
+                    <span class="tag is-medium {{ rating >= 4 ? 'is-success' : '' }}{{ rating >= 3 and rating < 4 ? 'is-warning' : '' }}{{ rating < 3 ? 'is-danger' : '' }} is-light">
+                      <span class="icon-text">
+                        <span class="icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                          </svg>
+                        </span>
+                        <span class="has-text-weight-bold">{{ rating }}</span>
+                      </span>
+                    </span>
+                    {% endif %}
+                  </div>
+                  {% if price and discounts %}
+                  <div class="block mb-2 product-discounts is-clickable">
+                    <div class="dropdown is-hoverable">
+                      <div class="dropdown-trigger">
+                        <div class="title is-6">
+                          <span class="has-text-link">{{ text_wholesale }}</span>
+                        </div>
+                      </div>
+                      <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+                        <div class="dropdown-content">
+                          {% for discount in discounts %}
+                          <div class="dropdown-item is-size-6">
+                            <span class="has-text-weight-bold">{{ discount.quantity }}</span>
+                            <span class="">{{ text_discount }}</span>
+                            <span class="has-text-weight-bold">{{ discount.price }}</span>
+                          </div>
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endif %}
+                  <ul class="heading-list">
+                    {% if points %}
+                    <li class="is-flex is-justify-content-space-between is-align-items-center py-1">
+                      <span class="has-background-white pr-1">{{ text_points }}</span>
+                      <span class="has-background-white has-text-weight-bold pl-1">{{ points }}</span>
+                    </li>
+                    {% endif %}
+                    <li class="is-flex is-justify-content-space-between is-align-items-center py-1">
+                      <span class="has-background-white pr-1">{{ text_model }}</span>
+                      <span class="has-background-white has-text-weight-bold pl-1">{{ model }}</span>
+                    </li>
+                    <li class="is-flex is-justify-content-space-between is-align-items-center py-1">
+                      <span class="has-background-white pr-1">{{ text_stock }}</span>
+                      <span class="has-background-white has-text-weight-bold pl-1 {{ quantity > 0 ? 'has-text-success' : 'has-text-danger' }}">{{ stock }}</span>
+                    </li>
+                    {% if manufacturer %}
+                    <li class="is-flex is-justify-content-space-between is-align-items-center py-1">
+                      <span class="has-background-white pr-1">{{ text_manufacturer }}</span>
+                      <a class="has-background-white has-text-weight-bold pl-1" href="{{ manufacturers }}">{{ manufacturer }}</a>
+                    </li>
+                    {% endif %}
+                    {% if reward %}
+                    <li class="is-flex is-justify-content-space-between is-align-items-center py-1">
+                      <span class="has-background-white pr-1">{{ text_reward }}</span>
+                      <span class="has-background-white has-text-weight-bold pl-1">{{ reward }}</span>
+                    </li>
+                    {% endif %}
+                  </ul>
+                </div>
+                <div class="{{ class }} product-options">
+                  <div id="product">
+                    {% if options %}
+                    <div class="title is-4">{{ text_option }}</div>
+                    {% for option in options %}
+                    {% if option.type == 'select' %}
+                    <div class="field{% if option.required %} required {% endif %}">
+                      <label class="label" for="input-option{{ option.product_option_id }}">{{ option.name }}</label>
+                      <div class="control">
+                        <div class="select">
+                          <select name="option[{{ option.product_option_id }}]" id="input-option{{ option.product_option_id }}" >
+                            <option value="">{{ text_select }}</option>
+                            {% for option_value in option.product_option_value %}
+                            <option value="{{ option_value.product_option_value_id }}">{{ option_value.name }}
+                              {% if option_value.price %}
+                              ({{ option_value.price_prefix }}{{ option_value.price }})
+                              {% endif %}
+                            </option>
+                            {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    {% endif %}
+                    {% if option.type == 'radio' %}
+                    <div class="field{% if option.required %} required {% endif %}">
+                      <label class="label">{{ option.name }}</label>
+                      <div class="control" id="input-option{{ option.product_option_id }}">
+                        {% for option_value in option.product_option_value %}
+                        <div>
+                          <label class="radio">
+                            <input type="radio" name="option[{{ option.product_option_id }}]" value="{{ option_value.product_option_value_id }}" />
+                            {% if option_value.image %}
+                            <img src="{{ option_value.image }}" alt="{{ option_value.name }} {% if option_value.price %} {{ option_value.price_prefix }} {{ option_value.price }} {% endif %}" />{% endif %}
+                            {{ option_value.name }}
+                            {% if option_value.price %}
+                            <span class="tag">{{ option_value.price_prefix }}{{ option_value.price }}</span>
+                            {% endif %}
+                          </label>
+                        </div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                    {% endif %}
+                    {% if option.type == 'checkbox' %}
+                    <div class="field{% if option.required %} required {% endif %}">
+                      <label class="label">{{ option.name }}</label>
+                      <div class="control" id="input-option{{ option.product_option_id }}">
+                        {% for option_value in option.product_option_value %}
+                        <div>
+                          <label class="checkbox">
+                            <input type="checkbox" name="option[{{ option.product_option_id }}][]" value="{{ option_value.product_option_value_id }}" />
+                            {% if option_value.image %} <img src="{{ option_value.image }}" alt="{{ option_value.name }} {% if option_value.price %} {{ option_value.price_prefix }} {{ option_value.price }} {% endif %}" class="img-thumbnail" /> {% endif %}
+                            {{ option_value.name }}
+                            {% if option_value.price %}
+                            <span class="tag">{{ option_value.price_prefix }}{{ option_value.price }}</span>
+                            {% endif %}
+                          </label>
+                        </div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                    {% endif %}
+                    {% if option.type == 'text' %}
+                    <div class="field{% if option.required %} required {% endif %}">
+                      <label class="label" for="input-option{{ option.product_option_id }}">{{ option.name }}</label>
+                      <input type="text" name="option[{{ option.product_option_id }}]" value="{{ option.value }}" placeholder="{{ option.name }}" id="input-option{{ option.product_option_id }}" class="input" />
+                    </div>
+                    {% endif %}
+                    {% if option.type == 'textarea' %}
+                    <div class="field{% if option.required %} required {% endif %}">
+                      <label class="label" for="input-option{{ option.product_option_id }}">{{ option.name }}</label>
+                      <textarea name="option[{{ option.product_option_id }}]" rows="5" placeholder="{{ option.name }}" id="input-option{{ option.product_option_id }}" class="textarea">{{ option.value }}</textarea>
+                    </div>
+                    {% endif %}
+                    {% if option.type == 'file' %}
+                    <div class="field{% if option.required %} required {% endif %}">
+                      <label class="label">{{ option.name }}</label>
+                      <button type="button" id="button-upload{{ option.product_option_id }}" class="button is-primary is-outlined">{{ button_upload }}</button>
+                      <input type="hidden" name="option[{{ option.product_option_id }}]" value="" id="input-option{{ option.product_option_id }}" />
+                    </div>
+                    {% endif %}
+                    {% if option.type == 'date' %}
+                    <div class="field{% if option.required %} required {% endif %}">
+                      <label class="label" for="input-option{{ option.product_option_id }}">{{ option.name }}</label>
+                      <div class="control">
+                        <input type="date" name="option[{{ option.product_option_id }}]" value="{{ option.value }}" id="input-option{{ option.product_option_id }}" class="input" />
+                      </div>
+                    </div>
+                    {% endif %}
+                    {% if option.type == 'datetime' %}
+                    <div class="field{% if option.required %} required {% endif %}">
+                      <label class="label" for="input-option{{ option.product_option_id }}">{{ option.name }}</label>
+                      <div class="control">
+                        <input type="datetime-local" name="option[{{ option.product_option_id }}]" value="{{ option.value }}" id="input-option{{ option.product_option_id }}" class="input" />
+                      </div>
+                    </div>
+                    {% endif %}
+                    {% if option.type == 'time' %}
+                    <div class="field{% if option.required %} required {% endif %}">
+                      <label class="label" for="input-option{{ option.product_option_id }}">{{ option.name }}</label>
+                      <div class="control">
+                        <input type="time" name="option[{{ option.product_option_id }}]" value="{{ option.value }}" id="input-option{{ option.product_option_id }}" class="input" />
+                      </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                    {% if recurrings %}
+                    <hr>
+                    <div class="field required product-recurring">
+                      <label class="label">{{ text_payment_recurring }}</label>
+                      <div class="control">
+                        <div class="select is-fullwidth">
+                          <select name="recurring_id">
+                            <option value="">{{ text_select }}</option>
+                            {% for recurring in recurrings %}
+                            <option value="{{ recurring.recurring_id }}">{{ recurring.name }}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                      <div class="help is-info" id="recurring-description"></div>
+                    </div>
+                    <hr>
+                    {% endif %}
+                    <div class="is-flex is-align-items-center is-justify-content-space-between">
+                      <div class="field has-addons mb-0 quantity-counter">
+                        <p class="control">
+                          <a class="button minus">
+                            <span class="icon">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"/>
+                              </svg>
+                            </span>
+                          </a>
+                        </p>
+                        <p class="control">
+                          <input type="text" style="max-width: 60px" name="quantity" class="input has-text-centered input-quantity" value="{{ minimum }}" maxlength="5" />
+                        </p>
+                        <p class="control">
+                          <a class="button plus">
+                            <span class="icon">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                              </svg>
+                            </span>
+                          </a>
+                        </p>
+                        <p class="control">
+                          <button id="button-cart" class="button is-primary is-outlined" name="button">{{ button_cart }}</button>
+                        </p>
+                      </div>
+                      <input type="hidden" name="product_id" value="{{ product_id }}" />
+                      <div class="buttons is-right">
+                        <button type="button" class="button is-primary is-outlined add-to-wishlist" title="{{ button_wishlist }}" data-product_id="{{ product_id }}">
+                          <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
+                              <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                            </svg>
+                          </span>
+                        </button>
+                        <button type="button" class="button is-primary is-outlined add-to-compare" title="{{ button_compare }}" data-product_id="{{ product_id }}">
+                          <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
+                              <path d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5v12h-2V2h2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z"/>
+                            </svg>
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                    {% if minimum > 1 %}
+                    <p class="help is-danger">{{ text_minimum }}</p>
+                    {% endif %}
+                  </div>
+                </div>
+                {% if attribute_groups %}
+                <div id="attributes" class="column is-12 pb-0">
+                  <hr>
+                  <div class="title is-4">
+                    {{ tab_attribute }}
+                  </div>
+                  <div class="attribute-group">
+                    {% for attribute_group in attribute_groups %}
+                    <div class="title is-5 my-3">
+                      {{ attribute_group.name }}
+                    </div>
+                    <ul class="heading-list">
+                      {% for attribute in attribute_group.attribute %}
+                      <li class="is-flex is-justify-content-space-between is-align-items-center py-1">
+                        <span class="has-background-white pr-1">{{ attribute.name }}</span>
+                        <span class="has-background-white has-text-weight-bold pl-1">{{ attribute.text }}</span>
+                      </li>
+                      {% endfor %}
+                    </ul>
+                    {% endfor %}
+                  </div>
+                  <hr>
+                </div>
+                {% endif %}
+                <div class="column is-12 content mb-0">
+                  {{ description }}
+                </div>
+                {% if tags %}
+                <div class="column is-12 mt-3">
+                  <div class="title is-5 mb-2">
+                    {{ text_tags }}
+                  </div>
+                  {% for i in 0..tags|length - 1 %}
+                  {% if i < (tags|length - 1) %}
+                  <a class="tag is-medium is-link is-light" href="{{ tags[i].href }}">{{ tags[i].tag }}</a>
+                  {% else %}
+                  <a class="tag is-medium is-link is-light" href="{{ tags[i].href }}">{{ tags[i].tag }}</a>
+                  {% endif %}
+                  {% endfor %}
+                </div>
+                {% endif %}
+              </div>
+            </div>
+            {% if review_status %}
+            <hr>
+            <div id="reviews" class="mb-5">
+              <form id="form-review">
+                <div class="title is-4">
+                  {{ tab_review }}
+                </div>
+                <div id="review"></div>
+                <hr>
+                <h2 class="title is-4">{{ text_write }}</h2>
+                {% if review_guest %}
+                <div class="field" style="max-width: 400px">
+                  <label class="label" for="input-name">{{ entry_name }}</label>
+                  <input type="text" name="name" value="{{ customer_name }}" placeholder="{{ entry_name }}" id="input-name" class="input" />
+                </div>
+                <div class="field">
+                  <label class="label" for="input-review">{{ entry_review }}</label>
+                  <textarea name="text" rows="5" id="input-review" placeholder="{{ entry_review }}" class="textarea"></textarea>
+                </div>
+                <div class="field">
+                  <label class="label">{{ entry_rating }}</label>
+                  <div class="control is-flex is-align-items-center score">
+                    <span class="tag is-clickable mr-1" data-score="1">
+                      <span class="icon-text">
+                        <span class="icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                            <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                          </svg>
+                        </span>
+                        <span>1</span>
+                      </span>
+                    </span>
+                    <span class="tag is-clickable mr-1" data-score="2">
+                      <span class="icon-text">
+                        <span class="icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                            <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                          </svg>
+                        </span>
+                        <span>2</span>
+                      </span>
+                    </span>
+                    <span class="tag is-clickable mr-1" data-score="3">
+                      <span class="icon-text">
+                        <span class="icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                            <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                          </svg>
+                        </span>
+                        <span>3</span>
+                      </span>
+                    </span>
+                    <span class="tag is-clickable mr-1" data-score="4">
+                      <span class="icon-text">
+                        <span class="icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                            <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                          </svg>
+                        </span>
+                        <span>4</span>
+                      </span>
+                    </span>
+                    <span class="tag is-clickable" data-score="5">
+                      <span class="icon-text">
+                        <span class="icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                            <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                          </svg>
+                        </span>
+                        <span>5</span>
+                      </span>
+                    </span>
+                    <input type="hidden" name="rating" value="">
+                  </div>
+                </div>
+                {{ captcha }}
+                <div class="buttons">
+                  <button type="button" id="button-review" class="button is-primary is-outlined">{{ button_send }}</button>
+                </div>
+                {% else %}
+                {{ text_login }}
+                {% endif %}
+              </form>
+            </div>
+            {% endif %}
+          </div>
+          {% if products %}
+          <div class="column is-12 mt-3 mb-5 product-related">
+            <hr>
+            <h3 class="title is-4">{{ text_related }}</h3>
+            <div class="columns is-mobile is-multiline mt-5">
+              {% if column_left and column_right %}
+              {% set class = 'column is-6-fullhd is-6-widescreen is-12-desktop is-6-tablet is-12-mobile' %}
+              {% elseif column_left or column_right %}
+              {% set class = 'column is-4-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile' %}
+              {% else %}
+              {% set class = 'column is-3-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile' %}
+              {% endif %}
+              {% for product in products %}
+              <div class="{{ class }}">
+                <div class="box product-card">
+                  <div class="image">
+                    <a href="{{ product.href }}" class="is-flex is-justify-content-center">
+                      <img src="{{ product.thumb }}" loading="lazy" alt="{{ product.name }}" title="{{ product.name }}" />
+                      <span class="tag {{ product.quantity ? 'is-success' : 'is-danger' }} is-light stock">{{ product.stock }}</span>
+                    </a>
+                  </div>
+                  <div class="info">
+                    <a class="is-block title is-5 my-3 has-text-link" href="{{ product.href }}">{{ product.name }}</a>
+                    <div class="is-flex is-justify-content-space-between is-align-items-center">
+                      {% if product.price %}
+                      <div class="is-block my-3 price">
+                        {% if not product.special %}
+                        <span class="actual-price">{{ product.price }}</span>
+                        {% else %}
+                        <span class="actual-price">{{ product.special }}</span>
+                        <span class="has-text-grey old-price">{{ product.price }}</span>
+                        {% endif %}
+                        {% if product.tax %}
+                        <span class="has-text-grey is-size-7 price-tax">{{ text_tax }} {{ product.tax }}</span>
+                        {% endif %}
+                      </div>
+                      {% endif %}
+                      {% if product.rating %}
+                      <span class="tag {{ product.rating >= 4 ? 'is-success' : '' }}{{ product.rating >= 3 and product.rating < 4 ? 'is-warning' : '' }}{{ product.rating < 3 ? 'is-danger' : '' }}">
+                        <span class="icon-text">
+                          <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                              <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                            </svg>
+                          </span>
+                          <span class="has-text-weight-bold">{{ product.rating }}</span>
+                        </span>
+                      </span>
+                      {% endif %}
+                    </div>
+                    <div class="buttons">
+                      <button type="button" class="button is-primary is-outlined add-to-cart" data-product_id="{{ product.product_id }}" data-minimum="{{ product.minimum }}">
+                        {{ button_cart }}
+                      </button>
+                      <button type="button" class="button is-primary is-outlined add-to-wishlist" title="{{ button_wishlist }}" data-product_id="{{ product.product_id }}">
+                        <span class="icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                          </svg>
+                        </span>
+                      </button>
+                      <button type="button" class="button is-primary is-outlined add-to-compare" title="{{ button_compare }}" data-product_id="{{ product.product_id }}">
+                        <span class="icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5v12h-2V2h2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z"/>
+                          </svg>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      {{ column_right }}
+    </div>
+  </div>
+  {{ content_bottom }}
+</main>
+
+<script>
+$('select[name="recurring_id"], input[name="quantity"]').change(function(){
+  $.ajax({
+    url: 'index.php?route=product/product/getRecurringDescription',
+    type: 'post',
+    data: $('input[name="product_id"], input[name="quantity"], select[name="recurring_id"]'),
+    dataType: 'json',
+    beforeSend: function() {
+      $('#recurring-description').html('');
+    },
+    success: function(json) {
+      $('.product-recurring .help.is-danger').remove();
+
+      if (json['success']) {
+        $('#recurring-description').html(json['success']);
+      }
+    }
+  });
+});
+
+$('body').on('click', '.tabs.is-toggle li', function () {
+  if($(this).data('target')) {
+    $(this).siblings().removeClass('is-active');
+    $(this).addClass('is-active');
+
+    let offset = $(window).width() > 768 ? 70 : 45;
+    let top = $($(this).data('target')).offset().top;
+
+    $('html, body').stop().animate({scrollTop: top - offset}, 300);
+  }
+});
+
+$('#button-cart').on('click', function() {
+  $.ajax({
+    url: 'index.php?route=checkout/cart/add',
+    type: 'post',
+    data: $('#product input[type="text"], #product input[type="hidden"], #product input[type="date"], #product input[type="time"], #product input[type="datetime-local"], #product input[type="radio"]:checked, #product input[type="checkbox"]:checked, #product select, #product textarea'),
+    dataType: 'json',
+    beforeSend: function() {
+      $('#button-cart').addClass('is-loading');
+    },
+    complete: function() {
+      $('#button-cart').removeClass('is-loading');
+    },
+    success: function(json) {
+      $('.field .help.is-danger').remove();
+      $('.field .input, .field .select, .field .textarea').removeClass('is-danger');
+
+      if (json['error']) {
+        if (json['error']['option']) {
+          for (i in json['error']['option']) {
+            let el = $('#input-option' + i.replace('_', '-')).parents('.field');
+            el.find('.input, .select, .textarea').addClass('is-danger');
+            el.append('<div class="help is-danger">' + json['error']['option'][i] + '</div>');
+          }
+        }
+
+        if (json['error']['recurring']) {
+          $('select[name="recurring_id"]').after('<div class="help is-danger">' + json['error']['recurring'] + '</div>');
+        }
+
+        $('html, body').stop().animate({scrollTop: $('#product .help.is-danger').first().offset().top - 240}, 300);
+
+      }
+
+      if (json['success']) {
+
+        updateCartBadge(json['total']);
+
+        notification({
+          type: 'success',
+          text: json['success'],
+        });
+
+        $('#cart-modal .modal-card-body').load('index.php?route=common/cart/info .modal-cart-products');
+
+      }
+    },
+    error: function(xhr, ajaxOptions, thrownError) {
+      alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+    }
+  });
+});
+
+$('button[id^="button-upload"]').on('click', function() {
+  let node = this;
+
+  $('#form-upload').remove();
+
+  $('body').prepend('<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file" /></form>');
+
+  $('#form-upload input[name="file"]').trigger('click');
+
+  if (typeof timer != 'undefined') {
+    clearInterval(timer);
+  }
+
+  timer = setInterval(function() {
+    if ($('#form-upload input[name="file"]').val() != '') {
+      clearInterval(timer);
+
+      $.ajax({
+        url: 'index.php?route=tool/upload',
+        type: 'post',
+        dataType: 'json',
+        data: new FormData($('#form-upload')[0]),
+        cache: false,
+        contentType: false,
+        processData: false,
+        beforeSend: function() {
+          $(node).addClass('is-loading');
+        },
+        complete: function() {
+          $(node).removeClass('is-loading');
+        },
+        success: function(json) {
+          $(node).find('.is-danger, .is-success').remove();
+
+          if (json['error']) {
+            $(node).parent().append('<p class="help is-danger">' + json['error'] + '</p>');
+          }
+
+          if (json['success']) {
+            $(node).parent().find('.is-danger').remove();
+            $(node).parent().append('<p class="help is-success">' + json['success'] + '</p>');
+            $(node).parent().find('input').val(json['code']);
+          }
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+          alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+        }
+      });
+    }
+  }, 500);
+});
+
+$('#review').delegate('.pagination a', 'click', function(e) {
+  e.preventDefault();
+
+  $('#review').fadeOut(100);
+
+  $('#review').load(this.href);
+
+  $('#review').fadeIn(100, function () {
+    let top = $('#review').offset().top;
+    let offset = $(window).width() > 768 ? 130 : 65;
+
+    $('html, body').stop().animate({scrollTop: top - offset}, 300);
+  });
+});
+
+$('#review').load('index.php?route=product/product/review&product_id={{ product_id }}');
+
+$('#button-review').on('click', function() {
+  $.ajax({
+    url: 'index.php?route=product/product/write&product_id={{ product_id }}',
+    type: 'post',
+    dataType: 'json',
+    data: $("#form-review").serialize(),
+    beforeSend: function() {
+      $('#button-review').addClass('is-loading');
+    },
+    complete: function() {
+      $('#button-review').removeClass('is-loading');
+    },
+    success: function(json) {
+
+      $('#button-review').removeClass('is-loading');
+
+      $("#form-review").find('.help.is-danger').remove();
+      $("#form-review").find('.input.is-danger, .textarea.is-danger').removeClass('is-danger');
+
+      if (json['error']) {
+        for(let key in json['error']) {
+          if(json['error'][key]) {
+            $("#form-review").find('input[name="' + key + '"], textarea[name="' + key + '"]').parents('.field').append('<p class="help is-danger">' + json['error'][key] + '</p>');
+            $("#form-review").find('input[name="' + key + '"], textarea[name="' + key + '"]').addClass('is-danger');
+          }
+
+          if($('.google-captcha').length && key == 'captcha') {
+            $("#form-review").find('.google-captcha').append('<p class="help is-danger">' + json['error'][key] + '</p>');
+          }
+        }
+
+        if($('#form-review .input.is-danger, #form-review .textarea.is-danger, #form-review .field help.is-danger').length) {
+          $('html, body').stop().animate({scrollTop: $('#form-review .input.is-danger, #form-review .textarea.is-danger, #form-review .field help.is-danger').first().offset().top - 120 });
+        }
+      }
+
+      if (json['success']) {
+        notification({
+          type: 'success',
+          text: json['success']
+        });
+
+        $('#form-review').trigger('reset');
+        $('#form-review .score .tag.is-active').removeClass('is-active');
+      }
+    }
+  });
+});
+
+$(document).ready(function() {
+  $('#product-images').lightSlider({
+    gallery:true,
+    item:1,
+    loop:true,
+    thumbItem:6,
+    slideMargin:0,
+    thumbMargin: 15,
+    enableDrag: true,
+    pager: true,
+    controls: false,
+    gallery: false,
+    auto: true,
+    currentPagerPosition:'left',
+    onSliderLoad: function(el) {
+      $('#product-images').removeClass('slider-hidden');
+      el.lightGallery({
+        selector: '#product-images .lslide',
+        thumbnail:false,
+        showThumbByDefault: false,
+        share: false,
+        fullScreen: false,
+        autoplay:false,
+        autoplayControls: false,
+        download: false
+      });
+    }
+  });
+});
+
+</script>
+{{ footer }}

@@ -1,0 +1,64 @@
+<div id="cart-modal" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <div class="modal-card-head is-flex is-justify-content-space-between">
+      <p class="title is-4 mb-0">{{ text_cart }}</p>
+      <button class="delete is-large" aria-label="close"></button>
+    </div>
+    <div class="modal-card-body is-relative">
+      <div class="modal-cart-products pt-3">
+        {% if products or vouchers %}
+        {% for product in products %}
+        <div class="columns is-mobile modal-cart-product">
+          <div class="column is-narrow p-0">
+            {% if product.thumb %}
+            <a href="{{ product.href }}">
+              <img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" />
+            </a>
+            {% endif %}
+          </div>
+          <div class="column">
+            <p><a href="{{ product.href }}">{{ product.name }}</a> <span class="tag">x {{ product.quantity }}</span> </p>
+            {% if product.option %}
+            {% for option in product.option %} <br />
+              - <small>{{ option.name }} {{ option.value }}</small>
+            {% endfor %}
+            {% endif %}
+          </div>
+          <div class="column is-narrow">
+            <button class="button is-danger is-outlined cart-delete-product" name="button" data-key="{{ product.cart_id }}">
+              <span class="icon delete-cart-product">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                </svg>
+              </span>
+            </button>
+          </div>
+        </div>
+        {% endfor %}
+        <div class="cart-total">
+          <hr>
+          {% for total in totals %}
+          <div class="is-flex is-justify-content-flex-end is-align-items-center is-size-5">
+            <strong class="">{{ total.title }}:&nbsp;</strong>
+            <span class="">{{ total.text }}</span>
+          </div>
+          {% endfor %}
+        </div>
+        {% else %}
+        <div class="block has-text-centered">
+          <span class="icon is-large has-text-grey-light">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+            </svg>
+          </span>
+          <p class="text-center p-4">{{ text_empty }}</p>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="modal-card-foot">
+      <a href="{{ checkout }}" class="button is-primary">{{ text_checkout }}</a>
+    </div>
+  </div>
+</div>

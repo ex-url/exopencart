@@ -1,0 +1,19 @@
+<div class="py-6 anycategories">
+  <div class="container">
+    <div class="columns is-mobile is-multiline">
+      <div class="column is-12">
+        <h1 class="title is-1 mb-5">{{ heading_title }}</h1>
+      </div>
+      {% for category in categories %}
+      <div class="column is-3-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile">
+        <a class="box" href="{{ category.href }}">
+          <span class="image">
+            <img loading="lazy" height="{{ image_height }}px" width="{{ image_width }}px" src="{{ category.thumb }}" alt="{{ category.name }}" title="{{ category.name }}" />
+          </span>
+          <span class="title is-5 is-block mt-5 has-text-link">{{ category.name }}</span>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,142 @@
+<section id="menu" class="has-background-white">
+  <div class="container">
+    <nav class="navbar is-transparent">
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          {% if categories %}
+          <div class="navbar-item catalog-trigger">
+            <a rel="nofollow" class="navbar-link is-arrowless button is-light is-link pl-5 pr-4 is-flex is-aling-items-center">
+              <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                </svg>
+              </span>
+              <span>{{ text_category }}</span>
+            </a>
+          </div>
+          {% endif %}
+          {% if special %}
+          <a class="navbar-item" href="{{ special.href }}">
+            {{ special.name }}
+          </a>
+          {% endif %}
+          {% if brands %}
+          <a class="navbar-item" href="{{ brands.href }}">
+            {{ brands.name }}
+          </a>
+          {% endif %}
+          {{ blog }}
+          {% if informations %}
+          {% for information in informations %}
+          <a class="navbar-item" href="{{ information.href }}">
+            {{ information.title }}
+          </a>
+          {% endfor %}
+          {% endif %}
+          {% if contact %}
+          <a class="navbar-item" href="{{ contact.href }}">
+            {{ contact.name }}
+          </a>
+          {% endif %}
+        </div>
+        <div class="navbar-end">
+          <div class="is-flex is-align-items-center is-justify-content-flex-end has-background-white icons-menu">
+            <a rel="nofollow" class="is-hidden-desktop mobile-menu-trigger">
+              <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                </svg>
+              </span>
+            </a>
+            <a rel="nofollow" class="search-trigger">
+              <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg>
+              </span>
+            </a>
+            <a rel="nofollow" href="{{ compare }}" class="compare">
+              <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5v12h-2V2h2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z"/>
+                </svg>
+              </span>
+              <span class="has-background-danger has-text-white badge">{{ compare_badge_products }}</span>
+            </a>
+            <a rel="nofollow" class="wishlist" href="{{ wishlist }}">
+              <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                </svg>
+              </span>
+              <span class="has-background-danger has-text-white badge">{{ wishlist_badge_products }}</span>
+            </a>
+            <a rel="nofollow" class="account {{ not logged ? 'login-trigger' : '' }}" {% if logged %} href="{{ account }}" {% endif %}>
+              <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                </svg>
+              </span>
+              {% if not logged %}
+              <span class="has-background-danger not-logged"></span>
+              {% else %}
+              <span class="has-background-success logged"></span>
+              {% endif %}
+            </a>
+            <a href="{{ cart }}" class="cart-icon">
+              <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                  <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                </svg>
+              </span>
+              <span class="has-background-danger has-text-white badge">{{ cart_badge_products }}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+  {% if categories %}
+  <div class="modal is-justify-content-flex-start" id="catalog-modal">
+    <div class="modal-background"></div>
+    <div class="modal-content box p-3 mt-3">
+      <nav id="catalog">
+        <div class="columns is-mobile is-multiline">
+          {% for category in categories %}
+          {% if category.children %}
+          <div class="column is-3-fullhd is-3-widescreen is-4-desktop is-6-tablet is-12-mobile">
+            <div class="menu">
+              <ul class="menu-list">
+                <li><a class="has-text-weight-bold is-size-5 has-text-link" href="{{ category.href }}">{{ category.name }}</a></li>
+                <li>
+                  <ul class="menu-list">
+                    {% for children in category.children|batch(category.children|length / category.column|round(1, 'ceil')) %}
+                    {% for child in children %}
+                    <li>
+                      <a class="is-block" href="{{ child.href }}">- {{ child.name }}</a>
+                    </li>
+                    {% endfor %}
+                    {% endfor %}
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+          {% else %}
+          <div class="column is-3-desktop is-12-mobile">
+            <div class="menu">
+              <ul class="menu-list">
+                <li><a class="has-text-weight-bold has-text-link is-size-5" href="{{ category.href }}">{{ category.name }}</a></li>
+              </ul>
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </nav>
+    </div>
+    <button class="delete is-large is-dark" aria-label="close"></button>
+  </div>
+  {% endif %}
+</div>
+</section>

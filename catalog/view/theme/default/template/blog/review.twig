@@ -1,0 +1,16 @@
+{% if reviews %}
+{% for review in reviews %}
+<div class="panel">
+  <div class="panel-block is-flex is-justify-content-space-between is-align-items-center">
+    <span><strong>{{ review.author }}</strong></span>
+    <span class="text-right">{{ review.date_added }}</span>
+  </div>
+  <div class="panel-block">
+    <p>{{ review.text }}</p>
+  </div>
+</div>
+{% endfor %}
+<div class="text-right">{{ pagination }}</div>
+{% else %}
+<p>{{ text_no_reviews }}</p>
+{% endif %}

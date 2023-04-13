@@ -1,0 +1,33 @@
+<div class="block mb-0">
+  <div class="title is-5">
+    {{ text_title }}
+  </div>
+  <div class="block">
+    <p>{{ bank }}</p>
+  </div>
+  <div class="buttons mb-0">
+    <button type="button" id="button-confirm" class="button is-primary">{{ button_confirm }}</button>
+  </div>
+</div>
+<script>
+$('#button-confirm').on('click', function() {
+	$.ajax({
+		url: 'index.php?route=extension/payment/bank_transfer/confirm',
+		dataType: 'json',
+		beforeSend: function() {
+			$('#button-confirm').addClass('is-loading');
+		},
+		complete: function() {
+			$('#button-confirm').removeClass('is-loading');
+		},
+		success: function(json) {
+			if (json['redirect']) {
+				location = json['redirect'];
+			}
+		},
+		error: function(xhr, ajaxOptions, thrownError) {
+			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+		}
+	});
+});
+</script>

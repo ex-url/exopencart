@@ -1,0 +1,64 @@
+<div class="column is-4-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile">
+  <label class="label">{{ label_voucher }}</label>
+  <div class="field has-addons voucher mb-0">
+    <p class="control is-expanded">
+      <input type="text" name="voucher" value="{{ voucher }}" placeholder="{{ entry_voucher }}" id="input-voucher" class="input" />
+    </p>
+    <p class="control">
+      <button class="button has-text-primary" id="button-voucher">
+        <svg width="1.5em" height="1.5em" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7 12.5L10 15.5L17 8.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </p>
+  </div>
+  <script>
+  $('body').on('click', '#button-voucher', function() {
+    $.ajax({
+      url: 'index.php?route=extension/total/voucher/voucher',
+      type: 'post',
+      data: 'voucher=' + encodeURIComponent($('input[name=\'voucher\']').val()),
+      dataType: 'json',
+      beforeSend: function() {
+        $('#button-voucher').addClass('is-loading');
+      },
+      complete: function() {
+        $('#button-voucher').removeClass('is-loading');
+      },
+      success: function(json) {
+
+        $('#cart-content').load('index.php?route=checkout/cart #cart-content');
+
+        if (json['error']) {
+          $('#button-voucher').removeClass('is-loading');
+
+          notification({
+            type: 'danger',
+            text: json['error']
+          });
+        }
+
+        if(json['success']) {
+          $('#button-voucher').removeClass('is-loading');
+
+          notification({
+            type: 'success',
+            text: json['success']
+          });
+        }
+      },
+      error: function(xhr, ajaxOptions, thrownError) {
+        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+      }
+    });
+  });
+
+  $('body').on('keydown', '.voucher input[name="voucher"]', function(e) {
+    if (e.keyCode == 13) {
+      $('#button-voucher').click();
+    }
+  });
+  </script>
+
+</div>

@@ -1,0 +1,55 @@
+<div id="filter">
+  <div class="box has-background-white">
+    <div class="title is-4">
+      {{ heading_title }}
+    </div>
+    <div class="block">
+      {% for filter_group in filter_groups %}
+      <hr>
+      <div class="title is-5 has-text-primary">{{ filter_group.name }}</div>
+      <div class="filter-groups">
+        <div id="filter-group{{ filter_group.filter_group_id }}">
+          {% for filter in filter_group.filter %}
+          <div class="control">
+            <label class="checkbox">{% if filter.filter_id in filter_category %}
+              <input type="checkbox" name="filter[]" value="{{ filter.filter_id }}" checked="checked" />
+              {{ filter.name }}
+              {% else %}
+              <input type="checkbox" name="filter[]" value="{{ filter.filter_id }}" />
+              {{ filter.name }}
+              {% endif %}
+            </label>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="buttons">
+      <button type="button" id="button-filter" class="button is-primary is-outlined is-fullwidth">{{ button_filter }}</button>
+    </div>
+  </div>
+  <span class="delete is-hidden-desktop filter-trigger"></span>
+</div>
+<script>
+
+$(document).ready(function () {
+  if($('.filter-trigger').length && $('#filter').length) {
+    $('.filter-trigger').on('click', function () {
+      $(this).toggleClass('shown');
+      $('#filter').toggleClass('shown');
+    });
+  }
+});
+
+$('#button-filter').on('click', function() {
+  filter = [];
+
+  $('input[name^="filter"]:checked').each(function(element) {
+    filter.push(this.value);
+  });
+
+  location = '{{ action }}&filter=' + filter.join(',');
+});
+
+</script>

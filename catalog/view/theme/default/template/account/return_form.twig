@@ -1,0 +1,226 @@
+{{ header }}
+<main id="return-form-page">
+  {{ content_top }}
+  <div class="container">
+    <nav class="breadcrumb py-4" aria-label="breadcrumbs">
+      <ul>
+        {% for key, breadcrumb in breadcrumbs %}
+        {% if key < (breadcrumbs|length - 1) %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% else %}
+        <li><a>{{ breadcrumb.text }}</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </nav>
+    <div class="columns"> {{ column_left }}
+      {% if column_left and column_right %}
+      {% set class = 'column is-6-fullhd is-6-widescreen is-6-desktop is-12-tablet is-12-mobile' %}
+      {% elseif column_left or column_right %}
+      {% set class = 'column is-9-fullhd is-9-widescreen is-9-desktop is-12-tablet is-12-mobile' %}
+      {% else %}
+      {% set class = 'column is-12' %}
+      {% endif %}
+      <div id="content" class="{{ class }}">
+        {% if error_warning %}
+        <div class="notification is-danger is-light">{{ error_warning }}</div>
+        {% endif %}
+        <h1 class="title is-3">{{ heading_title }}</h1>
+        <p class="block">{{ text_description }}</p>
+        <form action="{{ action }}" method="post" enctype="multipart/form-data">
+          <fieldset class="columns is-mobile is-multiline">
+            <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile">
+              <div class="field">
+                <label class="label" for="input-firstname">{{ entry_firstname }}</label>
+                <div class="control">
+                  <input type="text" name="firstname" value="{{ firstname }}" placeholder="{{ entry_firstname }}" id="input-firstname" class="input" />
+                  {% if error_firstname %}
+                  <div class="help is-danger">{{ error_firstname }}</div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile">
+              <div class="field">
+                <label class="label" for="input-lastname">{{ entry_lastname }}</label>
+                <div class="control">
+                  <input type="text" name="lastname" value="{{ lastname }}" placeholder="{{ entry_lastname }}" id="input-lastname" class="input" />
+                  {% if error_lastname %}
+                  <div class="help is-danger">{{ error_lastname }}</div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile">
+              <div class="field">
+                <label class="label" for="input-email">{{ entry_email }}</label>
+                <div class="control">
+                  <input type="text" name="email" value="{{ email }}" placeholder="{{ entry_email }}" id="input-email" class="input" />
+                  {% if error_email %}
+                  <div class="help is-danger">{{ error_email }}</div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile">
+              <div class="field">
+                <label class="label" for="input-telephone">{{ entry_telephone }}</label>
+                <div class="control">
+                  <input type="text" name="telephone" value="{{ telephone }}" placeholder="{{ entry_telephone }}" id="input-telephone" class="input" />
+                  {% if error_telephone %}
+                  <div class="help is-danger">{{ error_telephone }}</div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile">
+              <div class="field">
+                <label class="label" for="input-order-id">{{ entry_order_id }}</label>
+                <div class="control">
+                  <input type="text" name="order_id" value="{{ order_id }}" placeholder="{{ entry_order_id }}" id="input-order-id" class="input" />
+                  {% if error_order_id %}
+                  <div class="help is-danger">{{ error_order_id }}</div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile">
+              <div class="field">
+                <label class="label" for="input-date-ordered">{{ entry_date_ordered }}</label>
+                <div class="control">
+                  <input type="date" name="date_ordered" value="{{ date_ordered }}" placeholder="{{ entry_date_ordered }}" id="input-date-ordered" class="input" />
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="columns is-mobile is-multiline my-5">
+            <div class="column is-12">
+              <legend class="title is-5">{{ text_product }}</legend>
+            </div>
+            <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile">
+              <div class="field">
+                <label class="label" for="input-product">{{ entry_product }}</label>
+                <div class="control">
+                  <input type="text" name="product" value="{{ product }}" placeholder="{{ entry_product }}" id="input-product" class="input" />
+                  {% if error_product %}
+                  <div class="help is-danger">{{ error_product }}</div>
+                  {% endif %}
+                </div>
+                <input type="hidden" name="product_id" value="{{ product_id }}">
+              </div>
+            </div>
+            <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile">
+              <div class="field">
+                <label class="label" for="input-model">{{ entry_model }}</label>
+                <div class="control">
+                  <input type="text" name="model" value="{{ model }}" placeholder="{{ entry_model }}" id="input-model" class="input" />
+                  {% if error_model %}
+                  <div class="help is-danger">{{ error_model }}</div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile">
+              <div class="field">
+                <label class="label" for="input-quantity">{{ entry_quantity }}</label>
+                <div class="control">
+                  <input type="text" name="quantity" value="{{ quantity }}" placeholder="{{ entry_quantity }}" id="input-quantity" class="input" />
+                </div>
+              </div>
+            </div>
+            <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile">
+              <div class="field">
+                <label class="label">{{ entry_opened }}</label>
+                <div class="control">
+                  <label class="radio"> {% if opened %}
+                    <input type="radio" name="opened" value="1" checked="checked" />
+                    {% else %}
+                    <input type="radio" name="opened" value="1" />
+                    {% endif %}
+                    {{ text_yes }}
+                  </label>
+                  <label class="radio"> {% if not opened %}
+                    <input type="radio" name="opened" value="0" checked="checked" />
+                    {% else %}
+                    <input type="radio" name="opened" value="0" />
+                    {% endif %}
+                    {{ text_no }}
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="column is-12">
+              <div class="field">
+                <label class="label">{{ entry_reason }}</label>
+                <div class="control controls">
+                {% for return_reason in return_reasons %}
+                  {% if return_reason.return_reason_id == return_reason_id %}
+                  <div class="">
+                    <input type="radio" id="reason{{return_reason.return_reason_id}}" name="return_reason_id" value="{{ return_reason.return_reason_id }}" checked="checked" />
+                    <label for="reason{{return_reason.return_reason_id}}">
+                      {{ return_reason.name }}
+                    </label>
+                  </div>
+                  {% else %}
+                  <div class="">
+                    <input type="radio" id="reason{{return_reason.return_reason_id}}" name="return_reason_id" value="{{ return_reason.return_reason_id }}" />
+                    <label for="reason{{ return_reason.return_reason_id }}">
+                      {{ return_reason.name }}
+                    </label>
+                  </div>
+                  {% endif %}
+                  {% endfor %}
+                  {% if error_reason %}
+                  <div class="help is-danger">{{ error_reason }}</div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            <div class="column is-12">
+              <div class="field">
+                <label class="label" for="input-comment">{{ entry_fault_detail }}</label>
+                <div class="control">
+                  <textarea name="comment" rows="5" placeholder="{{ entry_fault_detail }}" id="input-comment" class="textarea">{{ comment }}</textarea>
+                </div>
+              </div>
+            </div>
+            <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile">
+              {{ captcha }}
+            </div>
+            <div class="column is-12">
+              {% if text_agree %}
+              <div class="field">
+                {% if agree %}
+                <label class="checkbox">
+                  <input type="checkbox" name="agree" value="1" checked="checked" />
+                  {{ text_agree }}
+                </label>
+                {% else %}
+                <label class="checkbox">
+                  <input type="checkbox" name="agree" value="1" />
+                  {{ text_agree }}
+                </label>
+                {% endif %}
+                {% if error_agree %}
+                <p class="help is-danger">{{ error_agree }}</p>
+                {% endif %}
+              </div>
+              {% endif %}
+            </div>
+            <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile">
+              <a href="{{ back }}" class="button">{{ button_back }}</a>
+              <input type="submit" value="{{ button_submit }}" class="button is-primary" />
+            </div>
+          </fieldset>
+
+        </form>
+      </div>
+      {{ column_right }}
+    </div>
+    {{ content_bottom }}
+  </div>
+</main>
+<script>
+console.log('df');
+</script>
+{{ footer }}

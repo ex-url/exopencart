@@ -1,0 +1,17 @@
+<div class="box p-0 is-clipped">
+  <div id="banner{{ module }}">
+    {% for banner in banners %}
+    <div class="banner">
+      {% if banner.link %}
+      <a href="{{ banner.link }}" class="image">
+        <img loading="lazy" src="{{ banner.image }}" alt="{{ banner.title }}" />
+      </a>
+      {% else %}
+      <span class="image">
+        <img loading="lazy" src="{{ banner.image }}" alt="{{ banner.title }}" />
+      </span>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</div>

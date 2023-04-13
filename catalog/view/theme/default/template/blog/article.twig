@@ -1,0 +1,314 @@
+{{ header }}
+<main id="blog-article-page">
+  {{ content_top }}
+  <div class="container">
+    <nav class="breadcrumb py-4" aria-label="breadcrumbs">
+      <ul>
+        {% for key, breadcrumb in breadcrumbs %}
+        {% if key < (breadcrumbs|length - 1) %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% else %}
+        <li><a>{{ breadcrumb.text }}</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </nav>
+    <div class="columns is-multiline">
+      {{ column_left }}
+      {% if column_left and column_right %}
+      {% set class = 'column is-6-fullhd is-6-widescreen is-6-desktop is-12-tablet is-12-mobile' %}
+      {% elseif column_left or column_right %}
+      {% set class = 'column is-9-fullhd is-9-widescreen is-9-desktop is-12-tablet is-12-mobile' %}
+      {% else %}
+      {% set class = 'column is-12' %}
+      {% endif %}
+      <div id="content" class="{{ class }}">
+        <div class="blog-article">
+          <h1 class="title is-2">{{ heading_title }}</h1>
+          <div class="blog-article-images mb-5">
+            {% if images %}
+            <ul class="has-text-centered slider-hidden" id="article-images">
+            {% for image in images %}
+            <li data-thumb="{{ image.thumb }}" data-src="{{ image.popup }}">
+              <img src="{{ image.thumb }}" width="{{ image_width }}" height="{{ image_heigth }}" title="{{ image.title ? image.title : heading_title }}" alt="{{  image.title ? image.title : heading_title  }}" />
+            </li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+          <div class="content">
+            {{ description }}
+          </div>
+          {% if download_status and downloads %}
+          <hr>
+          <div class="downloads">
+            {% for download in downloads %}
+            <a href="{{ download.href }}" class="tag is-primary is-light is-medium" rel="nofollow">
+              <span class="icon-text">
+                <span class="icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                    <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                    <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                  </svg>
+                </span>
+                <span>{{ download.name }} | {{ download.size }}</span>
+              </span>
+            </a>
+            {% endfor %}
+          </div>
+          {% endif %}
+          {% if products %}
+          <div class="blog-related-products mb-6">
+            <h3 class="title is-4">{{ text_related_product }}</h3>
+            <div class="columns is-mobile is-multiline mt-5">
+              {% if column_left and column_right %}
+              {% set class = 'column is-6-fullhd is-6-widescreen is-12-desktop is-6-tablet is-12-mobile' %}
+              {% elseif column_left or column_right %}
+              {% set class = 'column is-4-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile' %}
+              {% else %}
+              {% set class = 'column is-3-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile' %}
+              {% endif %}
+              {% for product in products %}
+              <div class="{{ class }}">
+                <div class="box product-card">
+                  <div class="image">
+                    <a href="{{ product.href }}" class="is-flex is-justify-content-center">
+                      <img src="{{ product.thumb }}" loading="lazy" alt="{{ product.name }}" title="{{ product.name }}" />
+                    </a>
+                  </div>
+                  <div class="info">
+                    <a class="is-block title is-5 my-3 has-text-link" href="{{ product.href }}">{{ product.name }}</a>
+                    {% if product.price %}
+                    <div class="is-block my-3 price">
+                      {% if not product.special %}
+                      <span class="actual-price">{{ product.price }}</span>
+                      {% else %}
+                      <span class="actual-price">{{ product.special }}</span>
+                      <span class="has-text-grey old-price">{{ product.price }}</span>
+                      {% endif %}
+                      {% if product.tax %}
+                      <span class="has-text-grey is-size-7 price-tax">{{ text_tax }} {{ product.tax }}</span>
+                      {% endif %}
+                    </div>
+                    {% endif %}
+                    {% if product.rating %}
+                    <div class="rating">
+                      {% for i in 1..5 %}
+                      {% if product.rating < i %}
+                      <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> {% else %} <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>{% endif %}
+                      {% endfor %}
+                    </div>
+                    {% endif %}
+                    <div class="buttons">
+                      <button type="button" class="button is-primary is-outlined add-to-cart" data-product_id="{{ product.product_id }}" data-minimum="{{ product.minimum }}">
+                        {{ button_cart }}
+                      </button>
+                      <button type="button" class="button is-primary is-outlined add-to-wishlist" title="{{ button_wishlist }}" data-product_id="{{ product.product_id }}">
+                        <span class="icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                          </svg>
+                        </span>
+                      </button>
+                      <button type="button" class="button is-primary is-outlined add-to-compare" title="{{ button_compare }}" data-product_id="{{ product.product_id }}">
+                        <span class="icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5v12h-2V2h2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z"/>
+                          </svg>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+          {% if articles %}
+          <div class="blog-related-articles">
+            <h3 class="title is-4">{{ text_related }}</h3>
+            <div class="columns is-multiline">
+              {% if column_left and column_right %}
+              {% set class = 'column is-6-fullhd is-6-widescreen is-12-desktop is-6-tablet is-12-mobile' %}
+              {% elseif column_left or column_right %}
+              {% set class = 'column is-4-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile' %}
+              {% else %}
+              {% set class = 'column is-3-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile' %}
+              {% endif %}
+              {% for article in articles %}
+              <div class="{{ class }}">
+                <div class="box blog-card">
+                  <div class="blog-image">
+                    <a href="{{ article['href'] }}" class="has-text-centered image">
+                      <img src="{{ article['thumb'] }}" width="{{ image_width }}px" height="{{ image_height }}px" loading="lazy" alt="{{ article['name'] }}" title="{{ article['name'] }}" />
+                    </a>
+                  </div>
+                  <div class="info">
+                    <div class="title is-5 my-5"><a href="{{ article['href'] }}">{{ article['name'] }}</a></div>
+                    <div class="is-flex is-justify-content-space-between is-align-items-center mb-5">
+                      <span class="icon-text">
+                        <span class="icon has-text-primary">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"/>
+                            <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4zM11 7.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
+                          </svg>
+                        </span>
+                        <span class="has-text-grey">{{ article.date_added }}</span>
+                      </span>
+                      <span class="icon-text ml-2">
+                        <span class="icon has-text-primary">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                            <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                            <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                          </svg>
+                        </span>
+                        <span class="has-text-grey">{{ article.viewed }}</span>
+                      </span>
+                    </div>
+                    <div class="announcement">
+                      <p class="text">{{ article['description'] }}</p>
+                      <a href="{{ article.href }}">{{ button_more }}</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+          {% if review_status %}
+          <hr>
+          <div class="blog-article-comments mb-5">
+            <form id="form-comment">
+              <div id="comments" class="my-5"></div>
+              <div class="blog-add-comment">
+                <div class="title is-4">{{ text_write }}</div>
+                {% if review_guest %}
+                <div class="field" style="max-width: 400px">
+                  <label class="label" for="input-name">{{ entry_name }}</label>
+                  <input type="text" name="name" value="{{ customer_name }}" id="input-name" placeholder="{{ entry_name }}" class="input" />
+                </div>
+                <div class="field">
+                  <label class="label" for="input-review">{{ entry_review }}</label>
+                  <textarea name="text" rows="5" id="input-review" class="textarea" placeholder="{{ entry_review }}"></textarea>
+                </div>
+                {{ captcha }}
+                <div class="buttons">
+                  <button type="button" id="button-comment" class="button is-primary is-outlined">{{ button_send }}</button>
+                </div>
+                {% else %}
+                {{ text_login }}
+                {% endif %}
+              </div>
+            </form>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      {{ column_right }}
+    </div>
+  </div>
+  {{ content_bottom }}
+</main>
+
+<script>
+$('#comments').delegate('.pagination a', 'click', function(e) {
+  e.preventDefault();
+
+  $('#comments').fadeOut('slow');
+
+  $('#comments').load(this.href);
+
+  $('#comments').fadeIn('slow');
+});
+
+$('#comments').load('index.php?route=blog/article/review&article_id={{ article_id }}');
+
+$('#button-comment').on('click', function() {
+  $.ajax({
+    url: 'index.php?route=blog/article/write&article_id={{ article_id }}',
+    type: 'post',
+    dataType: 'json',
+    data: $("#form-comment").serialize(),
+    beforeSend: function() {
+      $('#button-comment').addClass('is-loading');
+    },
+    complete: function() {
+      $('#button-comment').removeClass('is-loading');
+    },
+    success: function(json) {
+      $('#button-comment').removeClass('is-loading');
+
+      $("#form-comment").find('.help.is-danger').remove();
+      $("#form-comment").find('.input.is-danger, .textarea.is-danger').removeClass('is-danger');
+
+      if (json['error']) {
+        for(let key in json['error']) {
+          if(json['error'][key]) {
+            $("#form-comment").find('input[name="' + key + '"], textarea[name="' + key + '"]').parents('.field').append('<p class="help is-danger">' + json['error'][key] + '</p>');
+            $("#form-comment").find('input[name="' + key + '"], textarea[name="' + key + '"]').addClass('is-danger');
+          }
+
+          if($('.google-captcha').length && key == 'captcha') {
+            $("#form-comment").find('.google-captcha').append('<p class="help is-danger">' + json['error'][key] + '</p>');
+          }
+        }
+
+        if($('#form-comment .input.is-danger, #form-comment .textarea.is-danger, #form-comment .field help.is-danger').length) {
+          $('html, body').stop().animate({scrollTop: $('#form-comment .input.is-danger, #form-comment .textarea.is-danger, #form-comment .field help.is-danger').first().offset().top - 120 });
+        }
+      }
+
+      if (json['success']) {
+        notification({
+          type: 'success',
+          text: json['success'],
+        });
+
+        $('#form-comment').trigger('reset');
+      }
+    }
+  });
+});
+
+$(document).ready(function() {
+  $('#article-images').lightSlider({
+    gallery:true,
+    item:2,
+    loop:true,
+    thumbItem:6,
+    slideMargin:0,
+    thumbMargin: 15,
+    enableDrag: true,
+    pager: true,
+    controls: false,
+    gallery: false,
+    auto: true,
+    currentPagerPosition:'left',
+    responsive : [
+      {
+        breakpoint:480,
+        settings: {
+          item:1,
+          slideMove:1
+        }
+      }
+    ],
+    onSliderLoad: function(el) {
+      $('#article-images').removeClass('slider-hidden');
+      el.lightGallery({
+        selector: '#article-images .lslide',
+        thumbnail:false,
+        showThumbByDefault: false,
+        share: false,
+        fullScreen: false,
+        autoplay:false,
+        autoplayControls: false,
+        download: false
+      });
+    }
+  });
+});
+</script>
+{{ footer }}

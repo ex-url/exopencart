@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<!--[if IE 8 ]><html dir="{{ direction }}" lang="{{ lang }}" class="ie8"><![endif]-->
+<!--[if IE 9 ]><html dir="{{ direction }}" lang="{{ lang }}" class="ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html dir="{{ direction }}" lang="{{ lang }}">
+<!--<![endif]-->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{{ title }}</title>
+  {% if robots %}
+  <meta name="robots" content="{{ robots }}" />
+  {% endif %}
+  <base href="{{ base }}" />
+  {% if description %}
+  <meta name="description" content="{{ description }}" />
+  {% endif %}
+  {% if keywords %}
+  <meta name="keywords" content="{{ keywords }}" />
+  {% endif %}
+  <meta property="og:title" content="{{ title }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ og_url }}" />
+  {% if og_image %}
+  <meta property="og:image" content="{{ og_image }}" />
+  {% else %}
+  <meta property="og:image" content="{{ logo }}" />
+  {% endif %}
+  <meta property="og:site_name" content="{{ name }}" />
+  {% for link in links %}
+  <link href="{{ link.href }}" rel="{{ link.rel }}" />
+  {% endfor %}
+  {% for style in styles %}
+  <link href="{{ style.href }}" type="text/css" rel="{{ style.rel }}" media="{{ style.media }}" />
+  {% endfor %}  
+  <script src="catalog/view/theme/default/js/jquery.min.js"></script>
+  {% for script in scripts %}
+  <script src="{{ script }}" defer></script>
+  {% endfor %}  
+  {% for analytic in analytics %}
+  {{ analytic }}
+  {% endfor %}
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="columns is-mobile is-align-items-center">
+        <div class="column">
+          <div class="columns is-mobile is-align-items-center is-justify-content-space-between">
+            <div id="logo" class="column is-3-desktop is-3-tablet is-12-mobile py-5">
+              {% if logo %}
+              {% if home == og_url %}
+              <span>
+                <img src="{{ logo }}" alt="{{ title }}">
+              </span>
+              {% else %}
+              <a href="{{ home }}">
+                <img src="{{ logo }}" alt="{{ title }}">
+              </a>
+              {% endif %}
+              {% else %}
+              <h1><a href="{{ home }}">{{ name }}</a></h1>
+              {% endif %}
+            </div>
+            <div class="column is-narrow is-hidden-mobile">
+              <a class="icon-text email" href="mailto:{{ email }}">
+                <span class="icon has-text-primary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+                  </svg>
+                </span>
+                <span class="has-text-weight-bold ">{{ email }}</span>
+              </a>
+              <a class="icon-text phone" href="tel:{{ telephone }}">
+                <span class="icon has-text-primary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z"/>
+                    <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                  </svg>
+                </span>
+                <span class="has-text-weight-bold ">{{ telephone }}</span>
+              </a>
+              {% if social_media %}
+              {% for item in social_media %}
+              {% if item.header %}
+              <a href="{{ item.url }}" target="_blank" class="icon-text {{ item.name }} ml-4">
+                <span class="icon">{{ item.icon|html_entity_decode }}</span>
+              </a>
+              {% endif %}
+              {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% if currency or language %}
+        <div class="column is-narrow">
+          <div class="is-flex is-align-items-center is-justify-content-flex-end localisation">
+            {{ currency }}
+            {{ language }}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    {{ search }}
+    {% if not logged %}
+    <div id="login-modal" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-content has-background-white p-5">
+        <div class="loading"><div class="spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+      </div>
+    </div>
+    {% endif %}
+  </header>
+  {{ menu }}

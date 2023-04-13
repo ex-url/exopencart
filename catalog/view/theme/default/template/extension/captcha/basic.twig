@@ -1,0 +1,10 @@
+<div class="field required captcha basic-captcha">
+  <label class="label" for="input-payment-captcha">{{ entry_captcha }}</label>
+  <div class="control is-flex">
+    <img src="index.php?route=extension/captcha/basic/captcha" alt="{{ entry_captcha }}" />
+    <input type="text" name="captcha" id="input-payment-captcha" placeholder="{{ entry_captcha }}" class="input ml-3" autocomplete="off" />
+  </div>
+  {% if error_captcha %}
+  <p class="help is-danger">{{ error_captcha }}</p>
+  {% endif %}
+</div>
