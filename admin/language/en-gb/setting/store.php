@@ -18,13 +18,15 @@ $_['text_payment']                 = 'Payment Address';
 
 // Column
 $_['column_name']                  = 'Store Name';
-$_['column_url']	               = 'Store URL';
+$_['column_url']                 = 'Store URL';
 $_['column_action']                = 'Action';
 
 // Entry
 $_['entry_url']                    = 'Store URL';
 $_['entry_ssl']                    = 'SSL URL';
 $_['entry_meta_title']             = 'Meta Title';
+$_['entry_title_seo_phrase']         = 'Add phrase to title';
+$_['entry_heading_seo_phrase']       = 'Add phrase to h1';
 $_['entry_meta_description']       = 'Meta Tag Description';
 $_['entry_meta_keyword']           = 'Meta Tag Keywords';
 $_['entry_layout']                 = 'Default Layout';
@@ -42,6 +44,7 @@ $_['entry_comment']                = 'Comment';
 $_['entry_location']               = 'Store Location';
 $_['entry_country']                = 'Country';
 $_['entry_zone']                   = 'Region / State';
+$_['entry_city']                   = 'City';
 $_['entry_language']               = 'Language';
 $_['entry_currency']               = 'Currency';
 $_['entry_tax']                    = 'Display Prices With Tax';

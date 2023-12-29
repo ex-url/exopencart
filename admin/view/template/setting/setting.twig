@@ -38,7 +38,7 @@
             <li><a href="#tab-image" data-toggle="tab">{{ tab_image }}</a></li>
             <li><a href="#tab-mail" data-toggle="tab">{{ tab_mail }}</a></li>
             <li><a href="#tab-server" data-toggle="tab">{{ tab_server }}</a></li>
-			<li><a href="#tab-seopro" data-toggle="tab">{{ tab_seopro }}</a></li>
+			      <li><a href="#tab-seopro" data-toggle="tab">{{ tab_seopro }}</a></li>
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="tab-general">
@@ -48,7 +48,34 @@
                   <input type="text" name="config_meta_title" value="{{ config_meta_title }}" placeholder="{{ entry_meta_title }}" id="input-meta-title" class="form-control" />
                   {% if error_meta_title %}
                   <div class="text-danger">{{ error_meta_title }}</div>
-                  {% endif %} </div>
+                  {% endif %} 
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-meta-title">{{ entry_title_seo_phrase }}</label>
+                <div class="col-sm-10">
+                  {% for language in languages %}
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                      <img src="language/{{ language.code }}/{{ language.code }}.png" title="{{ language.name }}" />
+                    </div>
+                    <input type="text" name="config_title_seo_phrase[{{ language.language_id }}]" value="{{ config_title_seo_phrase[language.language_id] }}" placeholder="{{ entry_heading }}" id="input-heading{{ language.language_id}}" class="form-control" />
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-meta-title">{{ entry_heading_seo_phrase }}</label>
+                <div class="col-sm-10">
+                  {% for language in languages %}
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                      <img src="language/{{ language.code }}/{{ language.code }}.png" title="{{ language.name }}" />
+                    </div>
+                    <input type="text" name="config_heading_seo_phrase[{{ language.language_id }}]" value="{{ config_heading_seo_phrase[language.language_id] }}" placeholder="{{ entry_heading }}" id="input-heading{{ language.language_id}}" class="form-control" />
+                  </div>
+                  {% endfor %}
+                </div>
               </div>
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-meta-description">{{ entry_meta_description }}</label>
@@ -250,27 +277,26 @@
                 <label class="col-sm-2 control-label" for="input-country">{{ entry_country }}</label>
                 <div class="col-sm-10">
                   <select name="config_country_id" id="input-country" class="form-control">
-
                     {% for country in countries %}
                     {% if country.country_id == config_country_id %}
-
                     <option value="{{ country.country_id }}" selected="selected">{{ country.name }}</option>
-
                     {% else %}
-
                     <option value="{{ country.country_id }}">{{ country.name }}</option>
-
                     {% endif %}
                     {% endfor %}
-
                   </select>
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-zone">{{ entry_zone }}</label>
                 <div class="col-sm-10">
-                  <select name="config_zone_id" id="input-zone" class="form-control">
-                  </select>
+                  <select name="config_zone_id" id="input-zone" class="form-control"></select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-city">{{ entry_city }}</label>
+                <div class="col-sm-10">
+                  <input type="text" name="config_city" value="{{ config_city }}" placeholder="{{ entry_city }}" id="input-city" class="form-control" />
                 </div>
               </div>
               <div class="form-group">

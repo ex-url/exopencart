@@ -40,6 +40,8 @@ $_['text_canonical_opencart']        = 'original OpenCart';
 
 // Entry
 $_['entry_meta_title']               = 'Meta Title';
+$_['entry_title_seo_phrase']         = 'Add phrase to title';
+$_['entry_heading_seo_phrase']       = 'Add phrase to h1';
 $_['entry_meta_description']         = 'Meta Tag Description';
 $_['entry_meta_keyword']             = 'Meta Tag Keywords';
 $_['entry_layout']                   = 'Default Layout';
@@ -63,6 +65,7 @@ $_['entry_comment']                  = 'Comment';
 $_['entry_location']                 = 'Store Location';
 $_['entry_country']                  = 'Country';
 $_['entry_zone']                     = 'Region / State';
+$_['entry_city']                     = 'City';
 $_['entry_timezone']                 = 'Time Zone';
 $_['entry_language']                 = 'Language';
 $_['entry_admin_language']           = 'Administration Language';
@@ -136,20 +139,20 @@ $_['entry_error_display']            = 'Display Errors';
 $_['entry_error_log']                = 'Log Errors';
 $_['entry_error_filename']           = 'Error Log Filename';
 $_['entry_status']                   = 'Status';
-$_['entry_seo_pro']                   	= 'Enable SeoPro';
-$_['entry_page_postfix']               	= 'Page postfix (like .html)';
-$_['entry_config_seo_url_include_path']	= 'Product url with categories';
+$_['entry_seo_pro']                     = 'Enable SeoPro';
+$_['entry_page_postfix']                 = 'Page postfix (like .html)';
+$_['entry_config_seo_url_include_path']  = 'Product url with categories';
 $_['entry_config_seo_url_cache']        = 'Enable seo pro cache';
-$_['entry_seopro_addslash']			   = 'Add slash for end of url';
-$_['entry_seopro_lowercase']		   = 'URLs lowercase';
-$_['entry_canonical_method']	     = 'Method of generation canonical, prev, next. <a target="_blank" href="https://opencartforum.com/topic/174539-sposob-vyvoda-tegov-canonical-prev-next-v-ocstore/">More</a>';
-$_['entry_add_prevnext']	         = 'Using prev, next for pagination';
-$_['entry_add_prevnext_help']	     = 'Work only with ocStore solution method';
-$_['entry_canonical_self']	         = 'Display tag canonical on base page';
-$_['entry_canonical_self_help']	     = 'Work only with ocStore solution method';
-$_['entry_canonical_method_help']	 = 'Choosing method for generate prev, next for pagination';
-$_['entry_noindex_status']	         = 'Using noindex for category, product, manufacturers, blog etc.';
-$_['entry_noindex_disallow_params']	 = 'Not use noindex for page with get params:';
+$_['entry_seopro_addslash']         = 'Add slash for end of url';
+$_['entry_seopro_lowercase']       = 'URLs lowercase';
+$_['entry_canonical_method']       = 'Method of generation canonical, prev, next. <a target="_blank" href="https://opencartforum.com/topic/174539-sposob-vyvoda-tegov-canonical-prev-next-v-ocstore/">More</a>';
+$_['entry_add_prevnext']           = 'Using prev, next for pagination';
+$_['entry_add_prevnext_help']       = 'Work only with ocStore solution method';
+$_['entry_canonical_self']           = 'Display tag canonical on base page';
+$_['entry_canonical_self_help']       = 'Work only with ocStore solution method';
+$_['entry_canonical_method_help']   = 'Choosing method for generate prev, next for pagination';
+$_['entry_noindex_status']           = 'Using noindex for category, product, manufacturers, blog etc.';
+$_['entry_noindex_disallow_params']   = 'Not use noindex for page with get params:';
 
 // Help
 $_['help_geocode']                   = 'Please enter your store location geocode manually.';
@@ -211,7 +214,7 @@ $_['help_maintenance']               = 'Prevents customers from browsing your st
 $_['help_password']                  = 'Allow forgotten password to be used for the admin. This will be disabled automatically if the system detects a hack attempt.';
 $_['help_encryption']                = 'Please provide a secret key that will be used to encrypt private information when processing orders.';
 $_['help_compression']               = 'GZIP for more efficient transfer to requesting clients. Compression level must be between 0 - 9.';
-$_['help_seo_pro']     				 = "Let's make seo great again!";
+$_['help_seo_pro']              = "Let's make seo great again!";
 
 // Error
 $_['error_warning']                  = 'Warning: Please check the form carefully for errors!';
