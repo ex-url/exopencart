@@ -370,6 +370,14 @@ class ControllerSettingStore extends Controller {
       $data['config_name'] = '';
     }
 
+    if (isset($this->request->post['config_city'])) {
+      $data['config_city'] = $this->request->post['config_city'];
+    } elseif (isset($store_info['config_city'])) {
+      $data['config_city'] = $store_info['config_city'];
+    } else {
+      $data['config_city'] = '';
+    }
+
     if (isset($this->request->post['config_owner'])) {
       $data['config_owner'] = $this->request->post['config_owner'];
     } elseif (isset($store_info['config_owner'])) {

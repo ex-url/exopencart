@@ -49,20 +49,35 @@
       <div class="columns is-mobile is-align-items-center">
         <div class="column">
           <div class="columns is-mobile is-align-items-center is-justify-content-space-between">
-            <div id="logo" class="column is-3-desktop is-3-tablet is-12-mobile py-5">
-              {% if logo %}
-              {% if home == og_url %}
-              <span>
-                <img src="{{ logo }}" alt="{{ title }}">
-              </span>
-              {% else %}
-              <a href="{{ home }}">
-                <img src="{{ logo }}" alt="{{ title }}">
-              </a>
-              {% endif %}
-              {% else %}
-              <h1><a href="{{ home }}">{{ name }}</a></h1>
-              {% endif %}
+            <div id="logo" class="column is-5-desktop is-6-tablet is-12-mobile py-5 is-flex is-align-items-center">
+              <div id="logo">
+                {% if logo %}
+                  {% if home == og_url %}
+                  <span>
+                    <img src="{{ logo }}" alt="{{ title }}">
+                  </span>
+                  {% else %}
+                  <a href="{{ home }}">
+                    <img src="{{ logo }}" alt="{{ title }}">
+                  </a>
+                  {% endif %}
+                  {% else %}
+                  <a class="title is-1 mb-0" href="{{ home }}">{{ name }}</a>
+                {% endif %}
+              </div>         
+              {% if show_stores %}
+                <div id="stores" class="is-clickable ml-5">
+                  <span class="icon-text">
+                    <span class="icon has-text-primary">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+                        <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                      </svg>
+                    </span>
+                    <span class="has-text-gray has-text-weight-bold is-hidden-mobile">{{ city }}</span>
+                  </span>
+                </div>
+                {% endif %}
             </div>
             <div class="column is-narrow is-hidden-mobile">
               <a class="icon-text email" href="mailto:{{ email }}">

@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.7
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Mar 24, 2023 at 10:44 AM
--- Server version: 5.7.21-20-beget-5.7.21-20-1-log
--- PHP Version: 5.6.40
+-- Host: mysql
+-- Generation Time: Jan 16, 2024 at 12:11 PM
+-- Server version: 5.7.41-log
+-- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `soevvl_demoex`
+-- Database: `exbasic`
 --
 
 -- --------------------------------------------------------
@@ -27,12 +26,7 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `oc_address`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 23, 2023 at 12:59 PM
--- Last check: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_address`;
 CREATE TABLE `oc_address` (
   `address_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
@@ -53,11 +47,7 @@ CREATE TABLE `oc_address` (
 --
 -- Table structure for table `oc_api`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_api`;
 CREATE TABLE `oc_api` (
   `api_id` int(11) NOT NULL,
   `username` varchar(64) NOT NULL,
@@ -72,18 +62,15 @@ CREATE TABLE `oc_api` (
 --
 
 INSERT INTO `oc_api` (`api_id`, `username`, `key`, `status`, `date_added`, `date_modified`) VALUES
-(1, 'Default', 'JF7IDMM0NftJcookH03MYJBLW1S3d4G37mhJqo7cp2Mb8xPwa0t80VcB79BrrAZNMZeJ14rmjGD5P9keti3GqyDC1uKmPtXyoe71Ae5yRi6UeS4Y7V4TZyhuvZy0LCfZAmTR0Xxg5Eb8W6rlTpLvY1nThlw0pLpzy2oztKgxO1YW4ZrOi9qXu5goorV7N9hJyIHHXb0IzD2Q2y9GOgHEpQz6XyXzTujVmQPGpmcmFDOfAFpKr9XMzUfs1tVZ6chT', 1, '2022-06-27 18:01:33', '2022-06-27 18:01:33');
+(1, 'Default', 'JF7IDMM0NftJcookH03MYJBLW1S3d4G37mhJqo7cp2Mb8xPwa0t80VcB79BrrAZNMZeJ14rmjGD5P9keti3GqyDC1uKmPtXyoe71Ae5yRi6UeS4Y7V4TZyhuvZy0LCfZAmTR0Xxg5Eb8W6rlTpLvY1nThlw0pLpzy2oztKgxO1YW4ZrOi9qXu5goorV7N9hJyIHHXb0IzD2Q2y9GOgHEpQz6XyXzTujVmQPGpmcmFDOfAFpKr9XMzUfs1tVZ6chT', 1, '2022-06-27 18:01:33', '2022-06-27 18:01:33'),
+(3, 'Default', 'qoTTq2OuUP9TOpUHWUnBTs25ZrtVf8PRRF31G2PPpottLhzpBHH6z4Y6gdCCwsmLaDn6d5S2DluMRsfCee1bm2MkGtbco4pwr8hwc0hErt7Ycww89zx2vUlAUwAVdvNnav7oM2ujODf8GTPXI9RF9Y0tJ0CY8PUxd41qK0rDHqx6jIFah1hMUuUcVQAEmUXg8hDCeLvMiUBO93GY6veXuIT1L4vNInVdeKrrg7037vWs8XSc8ODHo7mXYGDBfjqf', 1, '2023-03-31 14:17:12', '2023-03-31 14:17:12');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `oc_api_ip`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 23, 2023 at 12:58 PM
---
 
-DROP TABLE IF EXISTS `oc_api_ip`;
 CREATE TABLE `oc_api_ip` (
   `api_ip_id` int(11) NOT NULL,
   `api_id` int(11) NOT NULL,
@@ -105,18 +92,15 @@ INSERT INTO `oc_api_ip` (`api_ip_id`, `api_id`, `ip`) VALUES
 (9, 1, '212.102.39.205'),
 (10, 1, '212.102.39.199'),
 (11, 1, '88.147.179.183'),
-(12, 1, '88.147.174.227');
+(12, 1, '88.147.174.227'),
+(13, 3, '172.16.238.1');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `oc_api_session`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 23, 2023 at 01:50 PM
---
 
-DROP TABLE IF EXISTS `oc_api_session`;
 CREATE TABLE `oc_api_session` (
   `api_session_id` int(11) NOT NULL,
   `api_id` int(11) NOT NULL,
@@ -136,18 +120,15 @@ INSERT INTO `oc_api_session` (`api_session_id`, `api_id`, `session_id`, `ip`, `d
 (516, 1, '0925b960f53a6b6aae0b3208fd', '88.147.174.227', '2023-03-23 16:48:25', '2023-03-23 16:48:25'),
 (515, 1, '8023bdcb1ce22a5c3a5f59caa8', '88.147.174.227', '2023-03-23 16:47:17', '2023-03-23 16:47:17'),
 (514, 1, '6378c4d7e6feee7a9aa71fcf3f', '88.147.174.227', '2023-03-23 16:01:39', '2023-03-23 16:01:39'),
-(513, 1, 'ac916fda211176aee16b3e3ed4', '88.147.174.227', '2023-03-23 15:58:57', '2023-03-23 15:58:57');
+(513, 1, 'ac916fda211176aee16b3e3ed4', '88.147.174.227', '2023-03-23 15:58:57', '2023-03-23 15:58:57'),
+(518, 3, '42a9c733cf2d0cd705dd589a59', '172.16.238.1', '2023-03-31 17:20:28', '2023-03-31 17:20:28');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `oc_article`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 20, 2023 at 03:26 PM
---
 
-DROP TABLE IF EXISTS `oc_article`;
 CREATE TABLE `oc_article` (
   `article_id` int(11) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
@@ -176,11 +157,7 @@ INSERT INTO `oc_article` (`article_id`, `image`, `date_available`, `sort_order`,
 --
 -- Table structure for table `oc_article_description`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 18, 2023 at 03:25 PM
---
 
-DROP TABLE IF EXISTS `oc_article_description`;
 CREATE TABLE `oc_article_description` (
   `article_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
@@ -210,11 +187,7 @@ INSERT INTO `oc_article_description` (`article_id`, `language_id`, `name`, `desc
 --
 -- Table structure for table `oc_article_image`
 --
--- Creation: Mar 18, 2023 at 03:19 PM
--- Last update: Mar 18, 2023 at 03:25 PM
---
 
-DROP TABLE IF EXISTS `oc_article_image`;
 CREATE TABLE `oc_article_image` (
   `article_image_id` int(11) NOT NULL,
   `article_id` int(11) NOT NULL,
@@ -236,11 +209,7 @@ INSERT INTO `oc_article_image` (`article_image_id`, `article_id`, `image`, `titl
 --
 -- Table structure for table `oc_article_related`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_article_related`;
 CREATE TABLE `oc_article_related` (
   `article_id` int(11) NOT NULL,
   `related_id` int(11) NOT NULL
@@ -251,11 +220,7 @@ CREATE TABLE `oc_article_related` (
 --
 -- Table structure for table `oc_article_related_mn`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_article_related_mn`;
 CREATE TABLE `oc_article_related_mn` (
   `article_id` int(11) NOT NULL,
   `manufacturer_id` int(11) NOT NULL
@@ -266,11 +231,7 @@ CREATE TABLE `oc_article_related_mn` (
 --
 -- Table structure for table `oc_article_related_product`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_article_related_product`;
 CREATE TABLE `oc_article_related_product` (
   `article_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL
@@ -291,11 +252,7 @@ INSERT INTO `oc_article_related_product` (`article_id`, `product_id`) VALUES
 --
 -- Table structure for table `oc_article_related_wb`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_article_related_wb`;
 CREATE TABLE `oc_article_related_wb` (
   `article_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL
@@ -306,11 +263,7 @@ CREATE TABLE `oc_article_related_wb` (
 --
 -- Table structure for table `oc_article_to_blog_category`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 18, 2023 at 03:25 PM
---
 
-DROP TABLE IF EXISTS `oc_article_to_blog_category`;
 CREATE TABLE `oc_article_to_blog_category` (
   `article_id` int(11) NOT NULL,
   `blog_category_id` int(11) NOT NULL,
@@ -331,11 +284,7 @@ INSERT INTO `oc_article_to_blog_category` (`article_id`, `blog_category_id`, `ma
 --
 -- Table structure for table `oc_article_to_download`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 18, 2023 at 03:25 PM
---
 
-DROP TABLE IF EXISTS `oc_article_to_download`;
 CREATE TABLE `oc_article_to_download` (
   `article_id` int(11) NOT NULL,
   `download_id` int(11) NOT NULL
@@ -353,11 +302,7 @@ INSERT INTO `oc_article_to_download` (`article_id`, `download_id`) VALUES
 --
 -- Table structure for table `oc_article_to_layout`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 18, 2023 at 03:25 PM
---
 
-DROP TABLE IF EXISTS `oc_article_to_layout`;
 CREATE TABLE `oc_article_to_layout` (
   `article_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL,
@@ -378,11 +323,7 @@ INSERT INTO `oc_article_to_layout` (`article_id`, `store_id`, `layout_id`) VALUE
 --
 -- Table structure for table `oc_article_to_store`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 18, 2023 at 03:25 PM
---
 
-DROP TABLE IF EXISTS `oc_article_to_store`;
 CREATE TABLE `oc_article_to_store` (
   `article_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL DEFAULT '0'
@@ -402,11 +343,7 @@ INSERT INTO `oc_article_to_store` (`article_id`, `store_id`) VALUES
 --
 -- Table structure for table `oc_attribute`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_attribute`;
 CREATE TABLE `oc_attribute` (
   `attribute_id` int(11) NOT NULL,
   `attribute_group_id` int(11) NOT NULL,
@@ -610,11 +547,7 @@ INSERT INTO `oc_attribute` (`attribute_id`, `attribute_group_id`, `sort_order`) 
 --
 -- Table structure for table `oc_attribute_description`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 12:06 PM
---
 
-DROP TABLE IF EXISTS `oc_attribute_description`;
 CREATE TABLE `oc_attribute_description` (
   `attribute_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
@@ -819,11 +752,7 @@ INSERT INTO `oc_attribute_description` (`attribute_id`, `language_id`, `name`) V
 --
 -- Table structure for table `oc_attribute_group`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_attribute_group`;
 CREATE TABLE `oc_attribute_group` (
   `attribute_group_id` int(11) NOT NULL,
   `sort_order` int(3) NOT NULL
@@ -841,11 +770,7 @@ INSERT INTO `oc_attribute_group` (`attribute_group_id`, `sort_order`) VALUES
 --
 -- Table structure for table `oc_attribute_group_description`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 12:05 PM
---
 
-DROP TABLE IF EXISTS `oc_attribute_group_description`;
 CREATE TABLE `oc_attribute_group_description` (
   `attribute_group_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
@@ -865,11 +790,7 @@ INSERT INTO `oc_attribute_group_description` (`attribute_group_id`, `language_id
 --
 -- Table structure for table `oc_banner`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 07:39 AM
---
 
-DROP TABLE IF EXISTS `oc_banner`;
 CREATE TABLE `oc_banner` (
   `banner_id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL,
@@ -889,11 +810,7 @@ INSERT INTO `oc_banner` (`banner_id`, `name`, `status`) VALUES
 --
 -- Table structure for table `oc_banner_image`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 07:39 AM
---
 
-DROP TABLE IF EXISTS `oc_banner_image`;
 CREATE TABLE `oc_banner_image` (
   `banner_image_id` int(11) NOT NULL,
   `banner_id` int(11) NOT NULL,
@@ -935,11 +852,7 @@ INSERT INTO `oc_banner_image` (`banner_image_id`, `banner_id`, `language_id`, `t
 --
 -- Table structure for table `oc_blog_category`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 07:16 AM
---
 
-DROP TABLE IF EXISTS `oc_blog_category`;
 CREATE TABLE `oc_blog_category` (
   `blog_category_id` int(11) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
@@ -966,11 +879,7 @@ INSERT INTO `oc_blog_category` (`blog_category_id`, `image`, `parent_id`, `top`,
 --
 -- Table structure for table `oc_blog_category_description`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 07:16 AM
---
 
-DROP TABLE IF EXISTS `oc_blog_category_description`;
 CREATE TABLE `oc_blog_category_description` (
   `blog_category_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
@@ -997,11 +906,7 @@ INSERT INTO `oc_blog_category_description` (`blog_category_id`, `language_id`, `
 --
 -- Table structure for table `oc_blog_category_path`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 07:16 AM
---
 
-DROP TABLE IF EXISTS `oc_blog_category_path`;
 CREATE TABLE `oc_blog_category_path` (
   `blog_category_id` int(11) NOT NULL,
   `path_id` int(11) NOT NULL,
@@ -1021,11 +926,7 @@ INSERT INTO `oc_blog_category_path` (`blog_category_id`, `path_id`, `level`) VAL
 --
 -- Table structure for table `oc_blog_category_to_layout`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 07:16 AM
---
 
-DROP TABLE IF EXISTS `oc_blog_category_to_layout`;
 CREATE TABLE `oc_blog_category_to_layout` (
   `blog_category_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL,
@@ -1045,11 +946,7 @@ INSERT INTO `oc_blog_category_to_layout` (`blog_category_id`, `store_id`, `layou
 --
 -- Table structure for table `oc_blog_category_to_store`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 07:16 AM
---
 
-DROP TABLE IF EXISTS `oc_blog_category_to_store`;
 CREATE TABLE `oc_blog_category_to_store` (
   `blog_category_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL
@@ -1068,11 +965,7 @@ INSERT INTO `oc_blog_category_to_store` (`blog_category_id`, `store_id`) VALUES
 --
 -- Table structure for table `oc_cart`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 23, 2023 at 01:50 PM
---
 
-DROP TABLE IF EXISTS `oc_cart`;
 CREATE TABLE `oc_cart` (
   `cart_id` int(11) UNSIGNED NOT NULL,
   `api_id` int(11) NOT NULL,
@@ -1085,71 +978,12 @@ CREATE TABLE `oc_cart` (
   `date_added` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `oc_cart`
---
-
-INSERT INTO `oc_cart` (`cart_id`, `api_id`, `customer_id`, `session_id`, `product_id`, `recurring_id`, `option`, `quantity`, `date_added`) VALUES
-(446, 0, 2, 'ca8ad89fb0e8df29a37faba4c6', 28, 0, '[]', 1, '2022-08-11 13:43:31'),
-(449, 0, 3, 'ca8ad89fb0e8df29a37faba4c6', 40, 0, '[]', 1, '2022-08-11 14:18:20'),
-(450, 0, 3, 'ca8ad89fb0e8df29a37faba4c6', 48, 0, '[]', 1, '2022-08-11 14:18:20'),
-(452, 0, 4, 'ca8ad89fb0e8df29a37faba4c6', 40, 0, '[]', 1, '2022-08-11 14:32:37'),
-(458, 0, 5, '16bb8cc0a0f936c46a0aa5e795', 40, 0, '[]', 1, '2022-08-12 09:02:44'),
-(462, 0, 6, '16bb8cc0a0f936c46a0aa5e795', 40, 0, '[]', 5, '2022-08-12 13:55:41'),
-(477, 0, 7, '650c43dd7690f2e16b833601c4', 40, 0, '[]', 1, '2022-08-16 15:32:40'),
-(478, 0, 7, '650c43dd7690f2e16b833601c4', 48, 0, '[]', 1, '2022-08-16 15:32:40'),
-(480, 0, 8, '650c43dd7690f2e16b833601c4', 40, 0, '[]', 1, '2022-08-16 15:39:09'),
-(481, 0, 8, '650c43dd7690f2e16b833601c4', 40, 0, '[]', 1, '2022-08-16 15:39:09'),
-(483, 0, 9, '650c43dd7690f2e16b833601c4', 40, 0, '[]', 1, '2022-08-16 16:00:38'),
-(485, 0, 10, '650c43dd7690f2e16b833601c4', 40, 0, '[]', 1, '2022-08-16 16:04:55'),
-(487, 0, 11, '650c43dd7690f2e16b833601c4', 40, 0, '[]', 1, '2022-08-16 16:22:46'),
-(490, 0, 12, '650c43dd7690f2e16b833601c4', 40, 0, '[]', 1, '2022-08-16 16:30:44'),
-(491, 0, 12, '650c43dd7690f2e16b833601c4', 48, 0, '[]', 1, '2022-08-16 16:30:44'),
-(494, 0, 13, '650c43dd7690f2e16b833601c4', 40, 0, '[]', 1, '2022-08-16 16:38:16'),
-(495, 0, 13, '650c43dd7690f2e16b833601c4', 48, 0, '[]', 1, '2022-08-16 16:38:16'),
-(497, 0, 14, '650c43dd7690f2e16b833601c4', 40, 0, '[]', 2, '2022-08-16 16:59:39'),
-(500, 0, 15, '00d48e13ed9bb583b98e7c28a5', 40, 0, '[]', 1, '2022-08-17 07:48:40'),
-(501, 0, 15, '00d48e13ed9bb583b98e7c28a5', 48, 0, '[]', 1, '2022-08-17 07:48:40'),
-(509, 0, 16, '00d48e13ed9bb583b98e7c28a5', 40, 0, '[]', 1, '2022-08-17 12:54:50'),
-(510, 0, 16, '00d48e13ed9bb583b98e7c28a5', 48, 0, '[]', 1, '2022-08-17 12:54:50'),
-(513, 0, 17, '00d48e13ed9bb583b98e7c28a5', 40, 0, '[]', 2, '2022-08-17 12:56:44'),
-(514, 0, 17, '00d48e13ed9bb583b98e7c28a5', 48, 0, '[]', 2, '2022-08-17 12:56:44'),
-(517, 0, 20, '00d48e13ed9bb583b98e7c28a5', 40, 0, '[]', 1, '2022-08-17 14:23:19'),
-(519, 0, 21, '00d48e13ed9bb583b98e7c28a5', 40, 0, '[]', 1, '2022-08-17 14:25:56'),
-(522, 0, 22, '00d48e13ed9bb583b98e7c28a5', 40, 0, '[]', 1, '2022-08-17 14:41:20'),
-(523, 0, 22, '00d48e13ed9bb583b98e7c28a5', 48, 0, '[]', 1, '2022-08-17 14:41:20'),
-(525, 0, 23, '00d48e13ed9bb583b98e7c28a5', 40, 0, '[]', 1, '2022-08-17 14:48:17'),
-(527, 0, 24, '50583c001a81a438240d5e2725', 40, 0, '[]', 2, '2022-08-17 18:24:46'),
-(530, 0, 25, 'caa6dafb6e5baafc79febf5a70', 40, 0, '[]', 1, '2022-08-18 13:20:47'),
-(536, 0, 26, 'c1b2eab9bf88a7793c69e1aad3', 40, 0, '[]', 2, '2022-08-19 06:16:10'),
-(537, 0, 26, 'c1b2eab9bf88a7793c69e1aad3', 48, 0, '[]', 2, '2022-08-19 06:16:10'),
-(540, 0, 27, 'c1b2eab9bf88a7793c69e1aad3', 40, 0, '[]', 1, '2022-08-19 07:23:19'),
-(543, 0, 28, 'c1b2eab9bf88a7793c69e1aad3', 40, 0, '[]', 1, '2022-08-19 13:54:35'),
-(588, 0, 29, 'e578ff84e7db60d71073aa40ce', 40, 0, '[]', 3, '2022-08-26 08:53:30'),
-(600, 0, 1, '586e9cd624f1ecd37c558fd1c6', 40, 0, '[]', 2, '2022-08-30 09:30:14'),
-(621, 0, 30, '9bf41e98e0be64257af947ab73', 40, 0, '[]', 7, '2022-09-01 15:51:48'),
-(625, 0, 31, 'd75364cdb92e687b7220fa08ca', 40, 0, '[]', 1, '2022-09-06 07:02:43'),
-(650, 0, 32, 'a7f856b32c467d6d79ed26424b', 40, 0, '[]', 8, '2022-10-16 09:02:34'),
-(660, 0, 35, 'e5f9f061693d76b6e07f09adeb', 40, 0, '[]', 1, '2022-10-17 15:37:15'),
-(701, 0, 38, '3350498072ff00a64012faf026', 40, 0, '[]', 1, '2022-10-19 06:35:22'),
-(711, 0, 39, '32d68244bf924e1f0c1f9914e5', 40, 0, '[]', 1, '2022-10-20 13:26:58'),
-(740, 0, 42, '128a87c581b62291f6a1c10cdd', 40, 0, '[]', 2, '2022-10-22 12:09:29'),
-(763, 0, 44, '39172a956f8f40b7b29dc3541b', 40, 0, '[]', 1, '2022-10-24 08:19:37'),
-(832, 0, 55, 'f731bf1209bcccc1926e9a01c6', 40, 0, '[]', 2, '2022-11-03 14:04:26'),
-(842, 0, 57, '0cac87b7ff347b9039aefabf7b', 40, 0, '[]', 4, '2022-11-04 11:04:36'),
-(874, 0, 53, 'ba37462cafe74b2efb4a0fd08b', 28, 0, '[]', 1, '2022-11-09 17:54:15'),
-(895, 0, 60, '9c9f69ff1bb3f18a86bb93d0c2', 339, 0, '[]', 2, '2022-11-12 11:45:50');
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `oc_category`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 05:42 AM
---
 
-DROP TABLE IF EXISTS `oc_category`;
 CREATE TABLE `oc_category` (
   `category_id` int(11) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
@@ -1221,11 +1055,7 @@ INSERT INTO `oc_category` (`category_id`, `image`, `parent_id`, `top`, `column`,
 --
 -- Table structure for table `oc_category_description`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 05:42 AM
---
 
-DROP TABLE IF EXISTS `oc_category_description`;
 CREATE TABLE `oc_category_description` (
   `category_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
@@ -1342,11 +1172,7 @@ INSERT INTO `oc_category_description` (`category_id`, `language_id`, `name`, `de
 --
 -- Table structure for table `oc_category_filter`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 05:42 AM
---
 
-DROP TABLE IF EXISTS `oc_category_filter`;
 CREATE TABLE `oc_category_filter` (
   `category_id` int(11) NOT NULL,
   `filter_id` int(11) NOT NULL
@@ -1377,11 +1203,7 @@ INSERT INTO `oc_category_filter` (`category_id`, `filter_id`) VALUES
 --
 -- Table structure for table `oc_category_path`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 05:42 AM
---
 
-DROP TABLE IF EXISTS `oc_category_path`;
 CREATE TABLE `oc_category_path` (
   `category_id` int(11) NOT NULL,
   `path_id` int(11) NOT NULL,
@@ -1485,11 +1307,7 @@ INSERT INTO `oc_category_path` (`category_id`, `path_id`, `level`) VALUES
 --
 -- Table structure for table `oc_category_to_layout`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 05:42 AM
---
 
-DROP TABLE IF EXISTS `oc_category_to_layout`;
 CREATE TABLE `oc_category_to_layout` (
   `category_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL,
@@ -1512,11 +1330,7 @@ INSERT INTO `oc_category_to_layout` (`category_id`, `store_id`, `layout_id`) VAL
 --
 -- Table structure for table `oc_category_to_store`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 05:42 AM
---
 
-DROP TABLE IF EXISTS `oc_category_to_store`;
 CREATE TABLE `oc_category_to_store` (
   `category_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL
@@ -1580,11 +1394,7 @@ INSERT INTO `oc_category_to_store` (`category_id`, `store_id`) VALUES
 --
 -- Table structure for table `oc_country`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 12, 2022 at 07:48 AM
---
 
-DROP TABLE IF EXISTS `oc_country`;
 CREATE TABLE `oc_country` (
   `country_id` int(11) NOT NULL,
   `name` varchar(128) NOT NULL,
@@ -1859,11 +1669,7 @@ INSERT INTO `oc_country` (`country_id`, `name`, `iso_code_2`, `iso_code_3`, `add
 --
 -- Table structure for table `oc_coupon`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_coupon`;
 CREATE TABLE `oc_coupon` (
   `coupon_id` int(11) NOT NULL,
   `name` varchar(128) NOT NULL,
@@ -1895,11 +1701,7 @@ INSERT INTO `oc_coupon` (`coupon_id`, `name`, `code`, `type`, `discount`, `logge
 --
 -- Table structure for table `oc_coupon_category`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_coupon_category`;
 CREATE TABLE `oc_coupon_category` (
   `coupon_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL
@@ -1910,11 +1712,7 @@ CREATE TABLE `oc_coupon_category` (
 --
 -- Table structure for table `oc_coupon_history`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 12, 2022 at 07:18 AM
---
 
-DROP TABLE IF EXISTS `oc_coupon_history`;
 CREATE TABLE `oc_coupon_history` (
   `coupon_history_id` int(11) NOT NULL,
   `coupon_id` int(11) NOT NULL,
@@ -1929,11 +1727,7 @@ CREATE TABLE `oc_coupon_history` (
 --
 -- Table structure for table `oc_coupon_product`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_coupon_product`;
 CREATE TABLE `oc_coupon_product` (
   `coupon_product_id` int(11) NOT NULL,
   `coupon_id` int(11) NOT NULL,
@@ -1945,11 +1739,7 @@ CREATE TABLE `oc_coupon_product` (
 --
 -- Table structure for table `oc_csvprice_pro`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_csvprice_pro`;
 CREATE TABLE `oc_csvprice_pro` (
   `setting_id` int(11) NOT NULL,
   `key` varchar(64) NOT NULL,
@@ -1981,11 +1771,7 @@ INSERT INTO `oc_csvprice_pro` (`setting_id`, `key`, `value`, `serialized`) VALUE
 --
 -- Table structure for table `oc_csvprice_pro_crontab`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_csvprice_pro_crontab`;
 CREATE TABLE `oc_csvprice_pro_crontab` (
   `job_id` int(11) NOT NULL,
   `profile_id` int(11) NOT NULL,
@@ -2004,12 +1790,7 @@ CREATE TABLE `oc_csvprice_pro_crontab` (
 --
 -- Table structure for table `oc_csvprice_pro_images`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
--- Last check: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_csvprice_pro_images`;
 CREATE TABLE `oc_csvprice_pro_images` (
   `catalog_id` int(11) NOT NULL,
   `image_key` char(32) NOT NULL,
@@ -2022,11 +1803,7 @@ CREATE TABLE `oc_csvprice_pro_images` (
 --
 -- Table structure for table `oc_csvprice_pro_profiles`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_csvprice_pro_profiles`;
 CREATE TABLE `oc_csvprice_pro_profiles` (
   `profile_id` int(11) NOT NULL,
   `key` varchar(64) NOT NULL,
@@ -2051,11 +1828,7 @@ INSERT INTO `oc_csvprice_pro_profiles` (`profile_id`, `key`, `catalog`, `name`, 
 --
 -- Table structure for table `oc_currency`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 23, 2023 at 01:53 PM
---
 
-DROP TABLE IF EXISTS `oc_currency`;
 CREATE TABLE `oc_currency` (
   `currency_id` int(11) NOT NULL,
   `title` varchar(32) NOT NULL,
@@ -2073,19 +1846,15 @@ CREATE TABLE `oc_currency` (
 --
 
 INSERT INTO `oc_currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbol_right`, `decimal_place`, `value`, `status`, `date_modified`) VALUES
-(1, 'Рубль', 'RUB', '', ' р.', '0', 1.00000000, 1, '2023-03-23 16:53:34'),
-(2, 'US Dollar', 'USD', '$', '', '2', 0.01310492, 1, '2023-03-23 16:53:34');
+(1, 'Рубль', 'RUB', '', ' ₽', '0', 1.00000000, 1, '2024-01-16 14:28:51'),
+(2, 'US Dollar', 'USD', '$', '', '2', 0.01140547, 1, '2024-01-16 14:28:51');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `oc_customer`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 23, 2023 at 01:50 PM
---
 
-DROP TABLE IF EXISTS `oc_customer`;
 CREATE TABLE `oc_customer` (
   `customer_id` int(11) NOT NULL,
   `customer_group_id` int(11) NOT NULL,
@@ -2127,11 +1896,7 @@ INSERT INTO `oc_customer` (`customer_id`, `customer_group_id`, `store_id`, `lang
 --
 -- Table structure for table `oc_customer_activity`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_customer_activity`;
 CREATE TABLE `oc_customer_activity` (
   `customer_activity_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
@@ -2146,11 +1911,7 @@ CREATE TABLE `oc_customer_activity` (
 --
 -- Table structure for table `oc_customer_affiliate`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 12, 2022 at 07:19 AM
---
 
-DROP TABLE IF EXISTS `oc_customer_affiliate`;
 CREATE TABLE `oc_customer_affiliate` (
   `customer_id` int(11) NOT NULL,
   `company` varchar(40) NOT NULL,
@@ -2176,11 +1937,7 @@ CREATE TABLE `oc_customer_affiliate` (
 --
 -- Table structure for table `oc_customer_approval`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_customer_approval`;
 CREATE TABLE `oc_customer_approval` (
   `customer_approval_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
@@ -2193,11 +1950,7 @@ CREATE TABLE `oc_customer_approval` (
 --
 -- Table structure for table `oc_customer_group`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_customer_group`;
 CREATE TABLE `oc_customer_group` (
   `customer_group_id` int(11) NOT NULL,
   `approval` int(1) NOT NULL,
@@ -2216,11 +1969,7 @@ INSERT INTO `oc_customer_group` (`customer_group_id`, `approval`, `sort_order`) 
 --
 -- Table structure for table `oc_customer_group_description`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 07:31 AM
---
 
-DROP TABLE IF EXISTS `oc_customer_group_description`;
 CREATE TABLE `oc_customer_group_description` (
   `customer_group_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
@@ -2241,11 +1990,7 @@ INSERT INTO `oc_customer_group_description` (`customer_group_id`, `language_id`,
 --
 -- Table structure for table `oc_customer_history`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_customer_history`;
 CREATE TABLE `oc_customer_history` (
   `customer_history_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
@@ -2258,11 +2003,7 @@ CREATE TABLE `oc_customer_history` (
 --
 -- Table structure for table `oc_customer_ip`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 23, 2023 at 01:50 PM
---
 
-DROP TABLE IF EXISTS `oc_customer_ip`;
 CREATE TABLE `oc_customer_ip` (
   `customer_ip_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
@@ -2286,11 +2027,7 @@ INSERT INTO `oc_customer_ip` (`customer_ip_id`, `customer_id`, `ip`, `date_added
 --
 -- Table structure for table `oc_customer_login`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 18, 2023 at 01:03 PM
---
 
-DROP TABLE IF EXISTS `oc_customer_login`;
 CREATE TABLE `oc_customer_login` (
   `customer_login_id` int(11) NOT NULL,
   `email` varchar(96) NOT NULL,
@@ -2321,11 +2058,7 @@ INSERT INTO `oc_customer_login` (`customer_login_id`, `email`, `ip`, `total`, `d
 --
 -- Table structure for table `oc_customer_online`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_customer_online`;
 CREATE TABLE `oc_customer_online` (
   `ip` varchar(40) NOT NULL,
   `customer_id` int(11) NOT NULL,
@@ -2339,11 +2072,7 @@ CREATE TABLE `oc_customer_online` (
 --
 -- Table structure for table `oc_customer_reward`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_customer_reward`;
 CREATE TABLE `oc_customer_reward` (
   `customer_reward_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL DEFAULT '0',
@@ -2358,11 +2087,7 @@ CREATE TABLE `oc_customer_reward` (
 --
 -- Table structure for table `oc_customer_search`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_customer_search`;
 CREATE TABLE `oc_customer_search` (
   `customer_search_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL,
@@ -2382,11 +2107,7 @@ CREATE TABLE `oc_customer_search` (
 --
 -- Table structure for table `oc_customer_transaction`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_customer_transaction`;
 CREATE TABLE `oc_customer_transaction` (
   `customer_transaction_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
@@ -2401,11 +2122,7 @@ CREATE TABLE `oc_customer_transaction` (
 --
 -- Table structure for table `oc_customer_wishlist`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_customer_wishlist`;
 CREATE TABLE `oc_customer_wishlist` (
   `customer_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
@@ -2427,11 +2144,7 @@ INSERT INTO `oc_customer_wishlist` (`customer_id`, `product_id`, `date_added`) V
 --
 -- Table structure for table `oc_custom_field`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 07:34 AM
---
 
-DROP TABLE IF EXISTS `oc_custom_field`;
 CREATE TABLE `oc_custom_field` (
   `custom_field_id` int(11) NOT NULL,
   `type` varchar(32) NOT NULL,
@@ -2447,11 +2160,7 @@ CREATE TABLE `oc_custom_field` (
 --
 -- Table structure for table `oc_custom_field_customer_group`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_custom_field_customer_group`;
 CREATE TABLE `oc_custom_field_customer_group` (
   `custom_field_id` int(11) NOT NULL,
   `customer_group_id` int(11) NOT NULL,
@@ -2463,11 +2172,7 @@ CREATE TABLE `oc_custom_field_customer_group` (
 --
 -- Table structure for table `oc_custom_field_description`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 07:34 AM
---
 
-DROP TABLE IF EXISTS `oc_custom_field_description`;
 CREATE TABLE `oc_custom_field_description` (
   `custom_field_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
@@ -2479,11 +2184,7 @@ CREATE TABLE `oc_custom_field_description` (
 --
 -- Table structure for table `oc_custom_field_value`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_custom_field_value`;
 CREATE TABLE `oc_custom_field_value` (
   `custom_field_value_id` int(11) NOT NULL,
   `custom_field_id` int(11) NOT NULL,
@@ -2495,11 +2196,7 @@ CREATE TABLE `oc_custom_field_value` (
 --
 -- Table structure for table `oc_custom_field_value_description`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_custom_field_value_description`;
 CREATE TABLE `oc_custom_field_value_description` (
   `custom_field_value_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
@@ -2512,11 +2209,7 @@ CREATE TABLE `oc_custom_field_value_description` (
 --
 -- Table structure for table `oc_download`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Jan 14, 2023 at 08:14 AM
---
 
-DROP TABLE IF EXISTS `oc_download`;
 CREATE TABLE `oc_download` (
   `download_id` int(11) NOT NULL,
   `filename` varchar(160) NOT NULL,
@@ -2536,11 +2229,7 @@ INSERT INTO `oc_download` (`download_id`, `filename`, `mask`, `date_added`) VALU
 --
 -- Table structure for table `oc_download_description`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Jan 14, 2023 at 08:14 AM
---
 
-DROP TABLE IF EXISTS `oc_download_description`;
 CREATE TABLE `oc_download_description` (
   `download_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
@@ -2560,11 +2249,7 @@ INSERT INTO `oc_download_description` (`download_id`, `language_id`, `name`) VAL
 --
 -- Table structure for table `oc_event`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 23, 2023 at 01:46 PM
---
 
-DROP TABLE IF EXISTS `oc_event`;
 CREATE TABLE `oc_event` (
   `event_id` int(11) NOT NULL,
   `code` varchar(64) NOT NULL,
@@ -2633,11 +2318,7 @@ INSERT INTO `oc_event` (`event_id`, `code`, `trigger`, `action`, `status`, `sort
 --
 -- Table structure for table `oc_extension`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 18, 2023 at 01:04 PM
---
 
-DROP TABLE IF EXISTS `oc_extension`;
 CREATE TABLE `oc_extension` (
   `extension_id` int(11) NOT NULL,
   `type` varchar(32) NOT NULL,
@@ -2719,11 +2400,7 @@ INSERT INTO `oc_extension` (`extension_id`, `type`, `code`) VALUES
 --
 -- Table structure for table `oc_extension_install`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 21, 2023 at 12:21 PM
---
 
-DROP TABLE IF EXISTS `oc_extension_install`;
 CREATE TABLE `oc_extension_install` (
   `extension_install_id` int(11) NOT NULL,
   `extension_download_id` int(11) NOT NULL,
@@ -2736,11 +2413,7 @@ CREATE TABLE `oc_extension_install` (
 --
 -- Table structure for table `oc_extension_path`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 21, 2023 at 12:08 PM
---
 
-DROP TABLE IF EXISTS `oc_extension_path`;
 CREATE TABLE `oc_extension_path` (
   `extension_path_id` int(11) NOT NULL,
   `extension_install_id` int(11) NOT NULL,
@@ -2753,11 +2426,7 @@ CREATE TABLE `oc_extension_path` (
 --
 -- Table structure for table `oc_filter`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 12:04 PM
---
 
-DROP TABLE IF EXISTS `oc_filter`;
 CREATE TABLE `oc_filter` (
   `filter_id` int(11) NOT NULL,
   `filter_group_id` int(11) NOT NULL,
@@ -2782,11 +2451,7 @@ INSERT INTO `oc_filter` (`filter_id`, `filter_group_id`, `sort_order`) VALUES
 --
 -- Table structure for table `oc_filter_description`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 12:04 PM
---
 
-DROP TABLE IF EXISTS `oc_filter_description`;
 CREATE TABLE `oc_filter_description` (
   `filter_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
@@ -2819,11 +2484,7 @@ INSERT INTO `oc_filter_description` (`filter_id`, `language_id`, `filter_group_i
 --
 -- Table structure for table `oc_filter_group`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 21, 2022 at 07:32 AM
---
 
-DROP TABLE IF EXISTS `oc_filter_group`;
 CREATE TABLE `oc_filter_group` (
   `filter_group_id` int(11) NOT NULL,
   `sort_order` int(3) NOT NULL
@@ -2842,11 +2503,7 @@ INSERT INTO `oc_filter_group` (`filter_group_id`, `sort_order`) VALUES
 --
 -- Table structure for table `oc_filter_group_description`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 12:04 PM
---
 
-DROP TABLE IF EXISTS `oc_filter_group_description`;
 CREATE TABLE `oc_filter_group_description` (
   `filter_group_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
@@ -2868,11 +2525,7 @@ INSERT INTO `oc_filter_group_description` (`filter_group_id`, `language_id`, `na
 --
 -- Table structure for table `oc_fraudlabspro`
 --
--- Creation: Dec 16, 2022 at 08:46 AM
--- Last update: Dec 16, 2022 at 08:46 AM
---
 
-DROP TABLE IF EXISTS `oc_fraudlabspro`;
 CREATE TABLE `oc_fraudlabspro` (
   `order_id` varchar(11) NOT NULL,
   `is_country_match` char(2) NOT NULL,
@@ -2928,11 +2581,7 @@ CREATE TABLE `oc_fraudlabspro` (
 --
 -- Table structure for table `oc_geo_zone`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_geo_zone`;
 CREATE TABLE `oc_geo_zone` (
   `geo_zone_id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
@@ -2953,12 +2602,7 @@ INSERT INTO `oc_geo_zone` (`geo_zone_id`, `name`, `description`, `date_added`, `
 --
 -- Table structure for table `oc_googleshopping_category`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
--- Last check: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_googleshopping_category`;
 CREATE TABLE `oc_googleshopping_category` (
   `google_product_category` varchar(10) NOT NULL,
   `store_id` int(11) NOT NULL DEFAULT '0',
@@ -2970,11 +2614,7 @@ CREATE TABLE `oc_googleshopping_category` (
 --
 -- Table structure for table `oc_googleshopping_product`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_googleshopping_product`;
 CREATE TABLE `oc_googleshopping_product` (
   `product_advertise_google_id` int(11) UNSIGNED NOT NULL,
   `product_id` int(11) DEFAULT NULL,
@@ -3013,11 +2653,7 @@ INSERT INTO `oc_googleshopping_product` (`product_advertise_google_id`, `product
 --
 -- Table structure for table `oc_googleshopping_product_status`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_googleshopping_product_status`;
 CREATE TABLE `oc_googleshopping_product_status` (
   `product_id` int(11) NOT NULL DEFAULT '0',
   `store_id` int(11) NOT NULL DEFAULT '0',
@@ -3033,11 +2669,7 @@ CREATE TABLE `oc_googleshopping_product_status` (
 --
 -- Table structure for table `oc_googleshopping_product_target`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_googleshopping_product_target`;
 CREATE TABLE `oc_googleshopping_product_target` (
   `product_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL DEFAULT '0',
@@ -3049,12 +2681,7 @@ CREATE TABLE `oc_googleshopping_product_target` (
 --
 -- Table structure for table `oc_googleshopping_target`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
--- Last check: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_googleshopping_target`;
 CREATE TABLE `oc_googleshopping_target` (
   `advertise_google_target_id` int(11) UNSIGNED NOT NULL,
   `store_id` int(11) NOT NULL DEFAULT '0',
@@ -3072,11 +2699,7 @@ CREATE TABLE `oc_googleshopping_target` (
 --
 -- Table structure for table `oc_google_base_category`
 --
--- Creation: Dec 16, 2022 at 08:46 AM
--- Last update: Dec 16, 2022 at 08:46 AM
---
 
-DROP TABLE IF EXISTS `oc_google_base_category`;
 CREATE TABLE `oc_google_base_category` (
   `google_base_category_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
@@ -3087,11 +2710,7 @@ CREATE TABLE `oc_google_base_category` (
 --
 -- Table structure for table `oc_google_base_category_to_category`
 --
--- Creation: Dec 16, 2022 at 08:46 AM
--- Last update: Dec 16, 2022 at 08:46 AM
---
 
-DROP TABLE IF EXISTS `oc_google_base_category_to_category`;
 CREATE TABLE `oc_google_base_category_to_category` (
   `google_base_category_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL
@@ -3102,11 +2721,7 @@ CREATE TABLE `oc_google_base_category_to_category` (
 --
 -- Table structure for table `oc_information`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_information`;
 CREATE TABLE `oc_information` (
   `information_id` int(11) NOT NULL,
   `top` int(1) NOT NULL DEFAULT '0',
@@ -3132,11 +2747,7 @@ INSERT INTO `oc_information` (`information_id`, `top`, `bottom`, `sort_order`, `
 --
 -- Table structure for table `oc_information_description`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 12:17 PM
---
 
-DROP TABLE IF EXISTS `oc_information_description`;
 CREATE TABLE `oc_information_description` (
   `information_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
@@ -3169,11 +2780,7 @@ INSERT INTO `oc_information_description` (`information_id`, `language_id`, `titl
 --
 -- Table structure for table `oc_information_to_layout`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 12:17 PM
---
 
-DROP TABLE IF EXISTS `oc_information_to_layout`;
 CREATE TABLE `oc_information_to_layout` (
   `information_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL,
@@ -3196,11 +2803,7 @@ INSERT INTO `oc_information_to_layout` (`information_id`, `store_id`, `layout_id
 --
 -- Table structure for table `oc_information_to_store`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 12:17 PM
---
 
-DROP TABLE IF EXISTS `oc_information_to_store`;
 CREATE TABLE `oc_information_to_store` (
   `information_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL
@@ -3222,11 +2825,7 @@ INSERT INTO `oc_information_to_store` (`information_id`, `store_id`) VALUES
 --
 -- Table structure for table `oc_language`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_language`;
 CREATE TABLE `oc_language` (
   `language_id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
@@ -3243,19 +2842,15 @@ CREATE TABLE `oc_language` (
 --
 
 INSERT INTO `oc_language` (`language_id`, `name`, `code`, `locale`, `image`, `directory`, `sort_order`, `status`) VALUES
-(1, 'RUS', 'ru-ru', 'ru_RU.UTF-8,ru_RU,russian', 'gb.png', 'english', 1, 1),
-(2, 'ENG', 'en-gb', 'en-US,en_US.UTF-8,en_US,en-gb,english', '', '', 2, 1);
+(1, 'RU ', 'ru-ru', 'ru_RU.UTF-8,ru_RU,russian', 'gb.png', 'english', 1, 1),
+(2, 'EN ', 'en-gb', 'en-US,en_US.UTF-8,en_US,en-gb,english', '', '', 2, 1);
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `oc_layout`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_layout`;
 CREATE TABLE `oc_layout` (
   `layout_id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL
@@ -3291,11 +2886,7 @@ INSERT INTO `oc_layout` (`layout_id`, `name`) VALUES
 --
 -- Table structure for table `oc_layout_module`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 23, 2023 at 01:04 PM
---
 
-DROP TABLE IF EXISTS `oc_layout_module`;
 CREATE TABLE `oc_layout_module` (
   `layout_module_id` int(11) NOT NULL,
   `layout_id` int(11) NOT NULL,
@@ -3335,11 +2926,7 @@ INSERT INTO `oc_layout_module` (`layout_module_id`, `layout_id`, `code`, `positi
 --
 -- Table structure for table `oc_layout_route`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 23, 2023 at 01:04 PM
---
 
-DROP TABLE IF EXISTS `oc_layout_route`;
 CREATE TABLE `oc_layout_route` (
   `layout_route_id` int(11) NOT NULL,
   `layout_id` int(11) NOT NULL,
@@ -3370,18 +2957,33 @@ INSERT INTO `oc_layout_route` (`layout_route_id`, `layout_id`, `store_id`, `rout
 (79, 17, 0, 'product/manufacturer/info'),
 (97, 18, 0, 'product/product'),
 (170, 1, 0, 'common/home'),
-(171, 19, 0, 'product/special');
+(171, 19, 0, 'product/special'),
+(204, 15, 4, 'blog/category'),
+(203, 14, 4, 'blog/latest'),
+(202, 13, 4, 'product/search'),
+(201, 12, 4, 'product/compare'),
+(200, 5, 4, 'product/manufacturer'),
+(199, 4, 4, ''),
+(198, 9, 4, 'information/sitemap'),
+(197, 8, 4, 'information/contact'),
+(196, 7, 4, 'checkout/%'),
+(195, 11, 4, 'information/information'),
+(194, 2, 4, 'product/product'),
+(193, 3, 4, 'product/category'),
+(192, 10, 4, 'affiliate/%'),
+(191, 6, 4, 'account/%'),
+(205, 16, 4, 'blog/article'),
+(206, 17, 4, 'product/manufacturer/info'),
+(207, 18, 4, 'product/product'),
+(208, 1, 4, 'common/home'),
+(209, 19, 4, 'product/special');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `oc_length_class`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_length_class`;
 CREATE TABLE `oc_length_class` (
   `length_class_id` int(11) NOT NULL,
   `value` decimal(15,8) NOT NULL
@@ -3401,11 +3003,7 @@ INSERT INTO `oc_length_class` (`length_class_id`, `value`) VALUES
 --
 -- Table structure for table `oc_length_class_description`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_length_class_description`;
 CREATE TABLE `oc_length_class_description` (
   `length_class_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
@@ -3430,11 +3028,7 @@ INSERT INTO `oc_length_class_description` (`length_class_id`, `language_id`, `ti
 --
 -- Table structure for table `oc_location`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_location`;
 CREATE TABLE `oc_location` (
   `location_id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
@@ -3460,11 +3054,7 @@ INSERT INTO `oc_location` (`location_id`, `name`, `address`, `telephone`, `fax`,
 --
 -- Table structure for table `oc_manufacturer`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 12:09 PM
---
 
-DROP TABLE IF EXISTS `oc_manufacturer`;
 CREATE TABLE `oc_manufacturer` (
   `manufacturer_id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL,
@@ -3490,11 +3080,7 @@ INSERT INTO `oc_manufacturer` (`manufacturer_id`, `name`, `image`, `sort_order`,
 --
 -- Table structure for table `oc_manufacturer_description`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 12:09 PM
---
 
-DROP TABLE IF EXISTS `oc_manufacturer_description`;
 CREATE TABLE `oc_manufacturer_description` (
   `manufacturer_id` int(11) NOT NULL DEFAULT '0',
   `language_id` int(11) NOT NULL DEFAULT '0',
@@ -3524,11 +3110,7 @@ INSERT INTO `oc_manufacturer_description` (`manufacturer_id`, `language_id`, `de
 --
 -- Table structure for table `oc_manufacturer_to_layout`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 12:09 PM
---
 
-DROP TABLE IF EXISTS `oc_manufacturer_to_layout`;
 CREATE TABLE `oc_manufacturer_to_layout` (
   `manufacturer_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL,
@@ -3547,11 +3129,7 @@ INSERT INTO `oc_manufacturer_to_layout` (`manufacturer_id`, `store_id`, `layout_
 --
 -- Table structure for table `oc_manufacturer_to_store`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 12:09 PM
---
 
-DROP TABLE IF EXISTS `oc_manufacturer_to_store`;
 CREATE TABLE `oc_manufacturer_to_store` (
   `manufacturer_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL
@@ -3574,11 +3152,7 @@ INSERT INTO `oc_manufacturer_to_store` (`manufacturer_id`, `store_id`) VALUES
 --
 -- Table structure for table `oc_marketing`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_marketing`;
 CREATE TABLE `oc_marketing` (
   `marketing_id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
@@ -3593,11 +3167,7 @@ CREATE TABLE `oc_marketing` (
 --
 -- Table structure for table `oc_modification`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 21, 2023 at 12:21 PM
---
 
-DROP TABLE IF EXISTS `oc_modification`;
 CREATE TABLE `oc_modification` (
   `modification_id` int(11) NOT NULL,
   `extension_install_id` int(11) NOT NULL,
@@ -3616,11 +3186,7 @@ CREATE TABLE `oc_modification` (
 --
 -- Table structure for table `oc_modification_backup`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_modification_backup`;
 CREATE TABLE `oc_modification_backup` (
   `backup_id` int(11) NOT NULL,
   `modification_id` int(11) NOT NULL,
@@ -3634,11 +3200,7 @@ CREATE TABLE `oc_modification_backup` (
 --
 -- Table structure for table `oc_module`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 23, 2023 at 12:48 PM
---
 
-DROP TABLE IF EXISTS `oc_module`;
 CREATE TABLE `oc_module` (
   `module_id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL,
@@ -3672,43 +3234,46 @@ INSERT INTO `oc_module` (`module_id`, `name`, `code`, `setting`) VALUES
 --
 -- Table structure for table `oc_option`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 12:08 PM
---
 
-DROP TABLE IF EXISTS `oc_option`;
 CREATE TABLE `oc_option` (
   `option_id` int(11) NOT NULL,
   `type` varchar(32) NOT NULL,
   `sort_order` int(3) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `oc_option`
+--
+
+INSERT INTO `oc_option` (`option_id`, `type`, `sort_order`) VALUES
+(14, 'radio', 1);
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `oc_option_description`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 12:08 PM
---
 
-DROP TABLE IF EXISTS `oc_option_description`;
 CREATE TABLE `oc_option_description` (
   `option_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `name` varchar(128) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `oc_option_description`
+--
+
+INSERT INTO `oc_option_description` (`option_id`, `language_id`, `name`) VALUES
+(14, 1, 'Цвет'),
+(14, 2, 'Color');
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `oc_option_value`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_option_value`;
 CREATE TABLE `oc_option_value` (
   `option_value_id` int(11) NOT NULL,
   `option_id` int(11) NOT NULL,
@@ -3716,16 +3281,21 @@ CREATE TABLE `oc_option_value` (
   `sort_order` int(3) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `oc_option_value`
+--
+
+INSERT INTO `oc_option_value` (`option_value_id`, `option_id`, `image`, `sort_order`) VALUES
+(49, 14, '', 1),
+(50, 14, '', 2),
+(51, 14, '', 3);
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `oc_option_value_description`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_option_value_description`;
 CREATE TABLE `oc_option_value_description` (
   `option_value_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
@@ -3733,16 +3303,24 @@ CREATE TABLE `oc_option_value_description` (
   `name` varchar(128) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `oc_option_value_description`
+--
+
+INSERT INTO `oc_option_value_description` (`option_value_id`, `language_id`, `option_id`, `name`) VALUES
+(49, 1, 14, 'Белый'),
+(49, 2, 14, 'White'),
+(50, 1, 14, 'Красный'),
+(50, 2, 14, 'Red'),
+(51, 1, 14, 'Синий'),
+(51, 2, 14, 'Blue');
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `oc_order`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 23, 2023 at 01:50 PM
---
 
-DROP TABLE IF EXISTS `oc_order`;
 CREATE TABLE `oc_order` (
   `order_id` int(11) NOT NULL,
   `invoice_no` int(11) NOT NULL DEFAULT '0',
@@ -3825,11 +3403,7 @@ INSERT INTO `oc_order` (`order_id`, `invoice_no`, `invoice_prefix`, `store_id`, 
 --
 -- Table structure for table `oc_order_history`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 23, 2023 at 01:50 PM
---
 
-DROP TABLE IF EXISTS `oc_order_history`;
 CREATE TABLE `oc_order_history` (
   `order_history_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
@@ -3855,11 +3429,7 @@ INSERT INTO `oc_order_history` (`order_history_id`, `order_id`, `order_status_id
 --
 -- Table structure for table `oc_order_option`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_order_option`;
 CREATE TABLE `oc_order_option` (
   `order_option_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
@@ -3876,11 +3446,7 @@ CREATE TABLE `oc_order_option` (
 --
 -- Table structure for table `oc_order_product`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 23, 2023 at 01:50 PM
---
 
-DROP TABLE IF EXISTS `oc_order_product`;
 CREATE TABLE `oc_order_product` (
   `order_product_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
@@ -3912,11 +3478,7 @@ INSERT INTO `oc_order_product` (`order_product_id`, `order_id`, `product_id`, `n
 --
 -- Table structure for table `oc_order_recurring`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_order_recurring`;
 CREATE TABLE `oc_order_recurring` (
   `order_recurring_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
@@ -3945,11 +3507,7 @@ CREATE TABLE `oc_order_recurring` (
 --
 -- Table structure for table `oc_order_recurring_transaction`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_order_recurring_transaction`;
 CREATE TABLE `oc_order_recurring_transaction` (
   `order_recurring_transaction_id` int(11) NOT NULL,
   `order_recurring_id` int(11) NOT NULL,
@@ -3964,11 +3522,7 @@ CREATE TABLE `oc_order_recurring_transaction` (
 --
 -- Table structure for table `oc_order_shipment`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_order_shipment`;
 CREATE TABLE `oc_order_shipment` (
   `order_shipment_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
@@ -3982,11 +3536,7 @@ CREATE TABLE `oc_order_shipment` (
 --
 -- Table structure for table `oc_order_status`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 08:47 AM
---
 
-DROP TABLE IF EXISTS `oc_order_status`;
 CREATE TABLE `oc_order_status` (
   `order_status_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
@@ -4032,11 +3582,7 @@ INSERT INTO `oc_order_status` (`order_status_id`, `language_id`, `name`) VALUES
 --
 -- Table structure for table `oc_order_total`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 23, 2023 at 01:50 PM
---
 
-DROP TABLE IF EXISTS `oc_order_total`;
 CREATE TABLE `oc_order_total` (
   `order_total_id` int(10) NOT NULL,
   `order_id` int(11) NOT NULL,
@@ -4077,11 +3623,7 @@ INSERT INTO `oc_order_total` (`order_total_id`, `order_id`, `code`, `title`, `va
 --
 -- Table structure for table `oc_order_voucher`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_order_voucher`;
 CREATE TABLE `oc_order_voucher` (
   `order_voucher_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
@@ -4102,11 +3644,7 @@ CREATE TABLE `oc_order_voucher` (
 --
 -- Table structure for table `oc_product`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 24, 2023 at 07:06 AM
---
 
-DROP TABLE IF EXISTS `oc_product`;
 CREATE TABLE `oc_product` (
   `product_id` int(11) NOT NULL,
   `model` varchar(64) NOT NULL,
@@ -4147,416 +3685,412 @@ CREATE TABLE `oc_product` (
 --
 
 INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `isbn`, `mpn`, `location`, `quantity`, `stock_status_id`, `image`, `manufacturer_id`, `shipping`, `price`, `points`, `tax_class_id`, `date_available`, `weight`, `weight_class_id`, `length`, `width`, `height`, `length_class_id`, `subtract`, `minimum`, `sort_order`, `status`, `viewed`, `date_added`, `date_modified`, `noindex`) VALUES
-(1, '42069', '', '', '', '', '', '', '', 0, 5, 'catalog/demo/products/42069_0.jpg', 2, 1, '154990.0000', 0, 9, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 12, '2022-11-11 12:51:32', '2022-11-21 07:20:28', 1),
-(2, '42070', '', '', '', '', '', '', '', 1, 5, 'catalog/demo/products/42070_0.jpg', 2, 1, '147940.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(3, '42071', '', '', '', '', '', '', '', 2, 5, 'catalog/demo/products/42071_0.jpg', 1, 1, '142490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 23, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(4, '42072', '', '', '', '', '', '', '', 3, 5, 'catalog/demo/products/42072_0.jpg', 2, 1, '139990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 12, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(5, '42073', '', '', '', '', '', '', '', 4, 5, 'catalog/demo/products/42073_0.jpg', 2, 1, '139990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(6, '42074', '', '', '', '', '', '', '', 5, 5, 'catalog/demo/products/42074_0.jpg', 1, 1, '134990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 17, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(7, '42075', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/42075_0.jpg', 1, 1, '129990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 51, '2022-11-11 12:51:32', '2023-03-18 17:07:08', 1),
-(8, '42076', '', '', '', '', '', '', '', 7, 5, 'catalog/demo/products/42076_0.jpg', 2, 1, '128370.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(9, '42077', '', '', '', '', '', '', '', 8, 5, 'catalog/demo/products/42077_0.jpg', 2, 1, '124999.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(10, '42078', '', '', '', '', '', '', '', 9, 5, 'catalog/demo/products/42078_0.jpg', 2, 1, '124990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(11, '42117', '', '', '', '', '', '', '', 10, 5, 'catalog/demo/products/42117_0.jpg', 1, 1, '274990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(12, '42118', '', '', '', '', '', '', '', 11, 5, 'catalog/demo/products/42118_0.jpg', 1, 1, '201990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(13, '42119', '', '', '', '', '', '', '', 12, 5, 'catalog/demo/products/42119_0.jpg', 1, 1, '179990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 15, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(14, '42120', '', '', '', '', '', '', '', 13, 5, 'catalog/demo/products/42120_0.jpg', 1, 1, '179990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(15, '42121', '', '', '', '', '', '', '', 14, 5, 'catalog/demo/products/42121_0.jpg', 1, 1, '178990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(16, '42122', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/42122_0.jpg', 1, 1, '165990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(17, '42123', '', '', '', '', '', '', '', 16, 5, 'catalog/demo/products/42123_0.jpg', 1, 1, '159990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(18, '42124', '', '', '', '', '', '', '', 17, 5, 'catalog/demo/products/42124_0.jpg', 1, 1, '159990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(19, '42125', '', '', '', '', '', '', '', 18, 5, 'catalog/demo/products/42125_0.jpg', 1, 1, '159990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(20, '42126', '', '', '', '', '', '', '', 19, 5, 'catalog/demo/products/42126_0.jpg', 1, 1, '154990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 19, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(21, '42165', '', '', '', '', '', '', '', 20, 5, 'catalog/demo/products/42165_0.jpg', 3, 1, '449990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 12, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(22, '42166', '', '', '', '', '', '', '', 21, 5, 'catalog/demo/products/42166_0.jpg', 3, 1, '259990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 13, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(23, '42167', '', '', '', '', '', '', '', 21, 5, 'catalog/demo/products/42167_0.jpg', 0, 1, '118840.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(24, '42168', '', '', '', '', '', '', '', 23, 5, 'catalog/demo/products/42168_0.jpg', 0, 1, '70380.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(25, '42169', '', '', '', '', '', '', '', 24, 5, 'catalog/demo/products/42169_0.jpg', 0, 1, '8290.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 14, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(26, '42170', '', '', '', '', '', '', '', 25, 5, 'catalog/demo/products/42170_0.jpg', 0, 1, '5950.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 12, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(27, '42171', '', '', '', '', '', '', '', 26, 5, 'catalog/demo/products/42171_0.jpg', 0, 1, '5660.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(1, '42069', '', '', '', '', '', '', '', 0, 5, 'catalog/demo/products/42069_0.jpg', 2, 1, '154990.0000', 0, 9, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:32', '2022-11-21 07:20:28', 1),
+(2, '42070', '', '', '', '', '', '', '', 1, 5, 'catalog/demo/products/42070_0.jpg', 2, 1, '147940.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(3, '42071', '', '', '', '', '', '', '', 2, 5, 'catalog/demo/products/42071_0.jpg', 1, 1, '142490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(4, '42072', '', '', '', '', '', '', '', 3, 5, 'catalog/demo/products/42072_0.jpg', 2, 1, '139990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(5, '42073', '', '', '', '', '', '', '', 4, 5, 'catalog/demo/products/42073_0.jpg', 2, 1, '139990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(6, '42074', '', '', '', '', '', '', '', 5, 5, 'catalog/demo/products/42074_0.jpg', 1, 1, '134990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(7, '42075', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/42075_0.jpg', 1, 1, '129990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 19, '2022-11-11 12:51:32', '2023-03-18 17:07:08', 1),
+(8, '42076', '', '', '', '', '', '', '', 7, 5, 'catalog/demo/products/42076_0.jpg', 2, 1, '128370.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 2, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(9, '42077', '', '', '', '', '', '', '', 8, 5, 'catalog/demo/products/42077_0.jpg', 2, 1, '124999.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 2, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(10, '42078', '', '', '', '', '', '', '', 9, 5, 'catalog/demo/products/42078_0.jpg', 2, 1, '124990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(11, '42117', '', '', '', '', '', '', '', 10, 5, 'catalog/demo/products/42117_0.jpg', 1, 1, '274990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(12, '42118', '', '', '', '', '', '', '', 11, 5, 'catalog/demo/products/42118_0.jpg', 1, 1, '201990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(13, '42119', '', '', '', '', '', '', '', 12, 5, 'catalog/demo/products/42119_0.jpg', 1, 1, '179990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(14, '42120', '', '', '', '', '', '', '', 13, 5, 'catalog/demo/products/42120_0.jpg', 1, 1, '179990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(15, '42121', '', '', '', '', '', '', '', 14, 5, 'catalog/demo/products/42121_0.jpg', 1, 1, '178990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(16, '42122', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/42122_0.jpg', 1, 1, '165990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(17, '42123', '', '', '', '', '', '', '', 16, 5, 'catalog/demo/products/42123_0.jpg', 1, 1, '159990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(18, '42124', '', '', '', '', '', '', '', 17, 5, 'catalog/demo/products/42124_0.jpg', 1, 1, '159990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(19, '42125', '', '', '', '', '', '', '', 18, 5, 'catalog/demo/products/42125_0.jpg', 1, 1, '159990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(20, '42126', '', '', '', '', '', '', '', 19, 5, 'catalog/demo/products/42126_0.jpg', 1, 1, '154990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 11, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(21, '42165', '', '', '', '', '', '', '', 20, 5, 'catalog/demo/products/42165_0.jpg', 3, 1, '449990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(22, '42166', '', '', '', '', '', '', '', 21, 5, 'catalog/demo/products/42166_0.jpg', 3, 1, '259990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(23, '42167', '', '', '', '', '', '', '', 21, 5, 'catalog/demo/products/42167_0.jpg', 0, 1, '118840.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(24, '42168', '', '', '', '', '', '', '', 23, 5, 'catalog/demo/products/42168_0.jpg', 0, 1, '70380.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(25, '42169', '', '', '', '', '', '', '', 24, 5, 'catalog/demo/products/42169_0.jpg', 0, 1, '8290.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(26, '42170', '', '', '', '', '', '', '', 25, 5, 'catalog/demo/products/42170_0.jpg', 0, 1, '5950.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(27, '42171', '', '', '', '', '', '', '', 26, 5, 'catalog/demo/products/42171_0.jpg', 0, 1, '5660.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (28, '42172', '', '', '', '', '', '', '', 27, 5, 'catalog/demo/products/42172_0.jpg', 0, 1, '5399.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(29, '42173', '', '', '', '', '', '', '', 28, 5, 'catalog/demo/products/42173_0.jpg', 0, 1, '5290.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(30, '42174', '', '', '', '', '', '', '', 0, 5, 'catalog/demo/products/42174_0.jpg', 0, 1, '4890.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 11, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(31, '42183', '', '', '', '', '', '', '', 1, 5, 'catalog/demo/products/42183_0.jpg', 0, 1, '47590.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(32, '42184', '', '', '', '', '', '', '', 2, 5, 'catalog/demo/products/42184_0.jpg', 0, 1, '37590.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(33, '42185', '', '', '', '', '', '', '', 3, 5, 'catalog/demo/products/42185_0.jpg', 0, 1, '35600.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(34, '42186', '', '', '', '', '', '', '', 4, 5, 'catalog/demo/products/42186_0.jpg', 0, 1, '29990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(35, '42187', '', '', '', '', '', '', '', 5, 5, 'catalog/demo/products/42187_0.jpg', 4, 1, '29990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 15, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(36, '42188', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/42188_0.jpg', 0, 1, '28390.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 12, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(37, '42189', '', '', '', '', '', '', '', 7, 5, 'catalog/demo/products/42189_0.jpg', 0, 1, '27570.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(38, '42190', '', '', '', '', '', '', '', 8, 5, 'catalog/demo/products/42190_0.jpg', 0, 1, '26490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 21, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(39, '42191', '', '', '', '', '', '', '', 9, 5, 'catalog/demo/products/42191_0.jpg', 0, 1, '25190.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(40, '42192', '', '', '', '', '', '', '', 10, 5, 'catalog/demo/products/42192_0.jpg', 0, 1, '23990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(41, '42231', '', '', '', '', '', '', '', 11, 5, 'catalog/demo/products/42231_0.jpg', 0, 1, '13990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 14, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(42, '42232', '', '', '', '', '', '', '', 12, 5, 'catalog/demo/products/42232_0.jpg', 0, 1, '6590.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 11, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(43, '42233', '', '', '', '', '', '', '', 13, 5, 'catalog/demo/products/42233_0.jpg', 0, 1, '5990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 13, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(44, '42234', '', '', '', '', '', '', '', 14, 5, 'catalog/demo/products/42234_0.jpg', 0, 1, '5890.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 16, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(45, '42235', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/42235_0.jpg', 0, 1, '5230.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 24, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(46, '42236', '', '', '', '', '', '', '', 16, 5, 'catalog/demo/products/42236_0.jpg', 0, 1, '4990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(47, '42237', '', '', '', '', '', '', '', 17, 5, 'catalog/demo/products/42237_0.jpg', 0, 1, '4990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 11, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(48, '42238', '', '', '', '', '', '', '', 18, 5, 'catalog/demo/products/42238_0.jpg', 1, 1, '4990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(49, '42239', '', '', '', '', '', '', '', 19, 5, 'catalog/demo/products/42239_0.jpg', 2, 1, '4890.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 11, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(50, '42240', '', '', '', '', '', '', '', 20, 5, 'catalog/demo/products/42240_0.jpg', 2, 1, '4890.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(51, '42279', '', '', '', '', '', '', '', 21, 5, 'catalog/demo/products/42279_0.jpg', 5, 1, '402990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 11, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(52, '42280', '', '', '', '', '', '', '', 21, 5, 'catalog/demo/products/42280_0.jpg', 1, 1, '334990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 14, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(53, '42281', '', '', '', '', '', '', '', 23, 5, 'catalog/demo/products/42281_0.jpg', 5, 1, '329990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(54, '42282', '', '', '', '', '', '', '', 24, 5, 'catalog/demo/products/42282_0.jpg', 5, 1, '321990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 12, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(55, '42283', '', '', '', '', '', '', '', 25, 5, 'catalog/demo/products/42283_0.jpg', 1, 1, '299990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(56, '42284', '', '', '', '', '', '', '', 26, 5, 'catalog/demo/products/42284_0.jpg', 1, 1, '299990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 11, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(57, '42285', '', '', '', '', '', '', '', 27, 5, 'catalog/demo/products/42285_0.jpg', 5, 1, '298990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(58, '42287', '', '', '', '', '', '', '', 28, 5, 'catalog/demo/products/42287_0.jpg', 5, 1, '249990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 12, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(59, '42288', '', '', '', '', '', '', '', 29, 5, 'catalog/demo/products/42288_0.jpg', 1, 1, '234990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 16, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(60, '42289', '', '', '', '', '', '', '', 0, 5, 'catalog/demo/products/42289_0.jpg', 1, 1, '234990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(61, '42327', '', '', '', '', '', '', '', 1, 5, 'catalog/demo/products/42327_0.jpg', 0, 1, '151990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 11, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(62, '42328', '', '', '', '', '', '', '', 2, 5, 'catalog/demo/products/42328_0.jpg', 0, 1, '104990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(63, '42329', '', '', '', '', '', '', '', 3, 5, 'catalog/demo/products/42329_0.jpg', 0, 1, '99680.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 17, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(64, '42330', '', '', '', '', '', '', '', 4, 5, 'catalog/demo/products/42330_0.jpg', 0, 1, '93990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(65, '42333', '', '', '', '', '', '', '', 5, 5, 'catalog/demo/products/42333_0.jpg', 0, 1, '79990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(66, '42335', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/42335_0.jpg', 0, 1, '73990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(67, '42338', '', '', '', '', '', '', '', 7, 5, 'catalog/demo/products/42338_0.jpg', 0, 1, '72990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(68, '42339', '', '', '', '', '', '', '', 7, 5, 'catalog/demo/products/42339_0.jpg', 0, 1, '71060.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 13, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(69, '42340', '', '', '', '', '', '', '', 9, 5, 'catalog/demo/products/42340_0.jpg', 0, 1, '69990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 12, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(70, '42342', '', '', '', '', '', '', '', 10, 5, 'catalog/demo/products/42342_0.jpg', 0, 1, '67990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(71, '42375', '', '', '', '', '', '', '', 11, 5, 'catalog/demo/products/42375_0.jpg', 0, 1, '409030.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(72, '42376', '', '', '', '', '', '', '', 12, 5, 'catalog/demo/products/42376_0.jpg', 0, 1, '137790.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 15, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(73, '42377', '', '', '', '', '', '', '', 13, 5, 'catalog/demo/products/42377_0.jpg', 0, 1, '119120.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(74, '42378', '', '', '', '', '', '', '', 14, 5, 'catalog/demo/products/42378_0.jpg', 0, 1, '113030.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 14, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(75, '42379', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/42379_0.jpg', 0, 1, '92040.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 14, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(76, '42380', '', '', '', '', '', '', '', 16, 5, 'catalog/demo/products/42380_0.jpg', 4, 1, '89690.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(77, '42381', '', '', '', '', '', '', '', 17, 5, 'catalog/demo/products/42381_0.jpg', 4, 1, '86800.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(78, '42382', '', '', '', '', '', '', '', 18, 5, 'catalog/demo/products/42382_0.jpg', 0, 1, '85030.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 12, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(79, '42383', '', '', '', '', '', '', '', 19, 5, 'catalog/demo/products/42383_0.jpg', 0, 1, '81360.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 11, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(80, '42384', '', '', '', '', '', '', '', 20, 5, 'catalog/demo/products/42384_0.jpg', 0, 1, '79800.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(81, '42423', '', '', '', '', '', '', '', 21, 5, 'catalog/demo/products/42423_0.jpg', 0, 1, '404000.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(82, '42424', '', '', '', '', '', '', '', 22, 5, 'catalog/demo/products/42424_0.jpg', 0, 1, '194680.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(83, '42425', '', '', '', '', '', '', '', 23, 5, 'catalog/demo/products/42425_0.jpg', 0, 1, '187840.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(84, '42426', '', '', '', '', '', '', '', 24, 5, 'catalog/demo/products/42426_0.jpg', 0, 1, '119110.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(85, '42427', '', '', '', '', '', '', '', 25, 5, 'catalog/demo/products/42427_0.jpg', 0, 1, '108990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(86, '42428', '', '', '', '', '', '', '', 26, 5, 'catalog/demo/products/42428_0.jpg', 0, 1, '99790.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(87, '42429', '', '', '', '', '', '', '', 27, 5, 'catalog/demo/products/42429_0.jpg', 0, 1, '98990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 12, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(88, '42430', '', '', '', '', '', '', '', 28, 5, 'catalog/demo/products/42430_0.jpg', 0, 1, '94990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(89, '42431', '', '', '', '', '', '', '', 29, 5, 'catalog/demo/products/42431_0.jpg', 0, 1, '94290.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(90, '42432', '', '', '', '', '', '', '', 30, 5, 'catalog/demo/products/42432_0.jpg', 0, 1, '92990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(91, '42471', '', '', '', '', '', '', '', 30, 5, 'catalog/demo/products/42471_0.jpg', 0, 1, '17789.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(92, '42472', '', '', '', '', '', '', '', 32, 5, 'catalog/demo/products/42472_0.jpg', 0, 1, '15299.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(93, '42473', '', '', '', '', '', '', '', 33, 5, 'catalog/demo/products/42473_0.jpg', 0, 1, '15199.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(94, '42474', '', '', '', '', '', '', '', 0, 5, 'catalog/demo/products/42474_0.jpg', 0, 1, '0.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 13, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(95, '42475', '', '', '', '', '', '', '', 1, 5, 'catalog/demo/products/42475_0.jpg', 0, 1, '11885.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 11, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(96, '42476', '', '', '', '', '', '', '', 2, 5, 'catalog/demo/products/42476_0.jpg', 0, 1, '11649.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 14, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(97, '42477', '', '', '', '', '', '', '', 3, 5, 'catalog/demo/products/42477_0.jpg', 0, 1, '11499.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(98, '42478', '', '', '', '', '', '', '', 4, 5, 'catalog/demo/products/42478_0.jpg', 0, 1, '10489.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(99, '42479', '', '', '', '', '', '', '', 5, 5, 'catalog/demo/products/42479_0.jpg', 0, 1, '10399.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(100, '42480', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/42480_0.jpg', 0, 1, '9750.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 15, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(101, '42519', '', '', '', '', '', '', '', 7, 5, 'catalog/demo/products/42519_0.jpg', 0, 1, '129990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(102, '42520', '', '', '', '', '', '', '', 8, 5, 'catalog/demo/products/42520_0.jpg', 0, 1, '114270.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(103, '42521', '', '', '', '', '', '', '', 9, 5, 'catalog/demo/products/42521_0.jpg', 0, 1, '106990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(104, '42522', '', '', '', '', '', '', '', 10, 5, 'catalog/demo/products/42522_0.jpg', 0, 1, '106240.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(105, '42523', '', '', '', '', '', '', '', 11, 5, 'catalog/demo/products/42523_0.jpg', 0, 1, '104560.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(106, '42524', '', '', '', '', '', '', '', 12, 5, 'catalog/demo/products/42524_0.jpg', 0, 1, '98910.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(107, '42525', '', '', '', '', '', '', '', 13, 5, 'catalog/demo/products/42525_0.jpg', 0, 1, '96990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(108, '42526', '', '', '', '', '', '', '', 14, 5, 'catalog/demo/products/42526_0.jpg', 0, 1, '92990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(109, '42527', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/42527_0.jpg', 6, 1, '89990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(110, '42528', '', '', '', '', '', '', '', -1, 5, 'catalog/demo/products/42528_0.jpg', 0, 1, '81990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(111, '42550', '', '', '', '', '', '', '', 1, 5, 'catalog/demo/products/42550_0.jpg', 0, 1, '0.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(112, '42551', '', '', '', '', '', '', '', 2, 5, 'catalog/demo/products/42551_0.jpg', 0, 1, '0.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(113, '42552', '', '', '', '', '', '', '', 3, 5, 'catalog/demo/products/42552_0.jpg', 0, 1, '0.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 14, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(114, '42553', '', '', '', '', '', '', '', 4, 5, 'catalog/demo/products/42553_0.jpg', 0, 1, '0.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(115, '42554', '', '', '', '', '', '', '', 5, 5, 'catalog/demo/products/42554_0.jpg', 0, 1, '0.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(116, '42555', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/42555_0.jpg', 0, 1, '0.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(117, '42556', '', '', '', '', '', '', '', 7, 5, 'catalog/demo/products/42556_0.jpg', 6, 1, '0.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(118, '42557', '', '', '', '', '', '', '', 8, 5, 'catalog/demo/products/42557_0.jpg', 0, 1, '93490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 12, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(119, '42558', '', '', '', '', '', '', '', 9, 5, 'catalog/demo/products/42558_0.jpg', 0, 1, '44440.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(120, '42559', '', '', '', '', '', '', '', 10, 5, 'catalog/demo/products/42559_0.jpg', 0, 1, '34290.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 12, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(121, '42560', '', '', '', '', '', '', '', 11, 5, 'catalog/demo/products/42560_0.jpg', 0, 1, '26990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 11, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(122, '42561', '', '', '', '', '', '', '', 12, 5, 'catalog/demo/products/42561_0.jpg', 0, 1, '24990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 14, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(123, '42562', '', '', '', '', '', '', '', 13, 5, 'catalog/demo/products/42562_0.jpg', 0, 1, '24590.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(124, '42563', '', '', '', '', '', '', '', 14, 5, 'catalog/demo/products/42563_0.jpg', 0, 1, '20590.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(125, '42564', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/42564_0.jpg', 0, 1, '20390.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(126, '42565', '', '', '', '', '', '', '', 16, 5, 'catalog/demo/products/42565_0.jpg', 0, 1, '20190.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(127, '42566', '', '', '', '', '', '', '', 17, 5, 'catalog/demo/products/42566_0.jpg', 0, 1, '18490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(128, '42605', '', '', '', '', '', '', '', 18, 5, 'catalog/demo/products/42605_0.jpg', 0, 1, '222990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 11, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(129, '42606', '', '', '', '', '', '', '', 19, 5, 'catalog/demo/products/42606_0.jpg', 0, 1, '189990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 11, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(130, '42607', '', '', '', '', '', '', '', 20, 5, 'catalog/demo/products/42607_0.jpg', 0, 1, '179990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(131, '42608', '', '', '', '', '', '', '', 21, 5, 'catalog/demo/products/42608_0.jpg', 0, 1, '147220.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(132, '42609', '', '', '', '', '', '', '', 22, 5, 'catalog/demo/products/42609_0.jpg', 0, 1, '135000.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(133, '42610', '', '', '', '', '', '', '', 0, 5, 'catalog/demo/products/42610_0.jpg', 0, 1, '113690.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(134, '42611', '', '', '', '', '', '', '', 1, 5, 'catalog/demo/products/42611_0.jpg', 0, 1, '106990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 13, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(135, '42612', '', '', '', '', '', '', '', 2, 5, 'catalog/demo/products/42612_0.jpg', 0, 1, '101590.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 11, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(136, '42613', '', '', '', '', '', '', '', 3, 5, 'catalog/demo/products/42613_0.jpg', 0, 1, '100700.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(137, '42614', '', '', '', '', '', '', '', 4, 5, 'catalog/demo/products/42614_0.jpg', 0, 1, '99900.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(138, '42653', '', '', '', '', '', '', '', 5, 5, 'catalog/demo/products/42653_0.jpg', 0, 1, '48840.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 14, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(139, '42654', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/42654_0.jpg', 0, 1, '44490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(140, '42655', '', '', '', '', '', '', '', 7, 5, 'catalog/demo/products/42655_0.jpg', 0, 1, '42790.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 11, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(141, '42656', '', '', '', '', '', '', '', 8, 5, 'catalog/demo/products/42656_0.jpg', 0, 1, '39990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 12, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(142, '42657', '', '', '', '', '', '', '', 9, 5, 'catalog/demo/products/42657_0.jpg', 0, 1, '38030.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(143, '42658', '', '', '', '', '', '', '', 10, 5, 'catalog/demo/products/42658_0.jpg', 0, 1, '37999.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 11, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(144, '42659', '', '', '', '', '', '', '', 11, 5, 'catalog/demo/products/42659_0.jpg', 0, 1, '37750.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(145, '42660', '', '', '', '', '', '', '', 12, 5, 'catalog/demo/products/42660_0.jpg', 0, 1, '37390.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(146, '42661', '', '', '', '', '', '', '', 13, 5, 'catalog/demo/products/42661_0.jpg', 0, 1, '35080.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 13, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(147, '42662', '', '', '', '', '', '', '', 14, 5, 'catalog/demo/products/42662_0.jpg', 0, 1, '34999.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 13, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(148, '42701', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/42701_0.jpg', 0, 1, '39700.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(149, '42702', '', '', '', '', '', '', '', 16, 5, 'catalog/demo/products/42702_0.jpg', 0, 1, '25320.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(150, '42703', '', '', '', '', '', '', '', 17, 5, 'catalog/demo/products/42703_0.jpg', 0, 1, '23720.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(151, '42704', '', '', '', '', '', '', '', 18, 5, 'catalog/demo/products/42704_0.jpg', 0, 1, '22750.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(152, '42705', '', '', '', '', '', '', '', 19, 5, 'catalog/demo/products/42705_0.jpg', 0, 1, '21290.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(153, '42706', '', '', '', '', '', '', '', 20, 5, 'catalog/demo/products/42706_0.jpg', 0, 1, '21000.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(154, '42707', '', '', '', '', '', '', '', 21, 5, 'catalog/demo/products/42707_0.jpg', 0, 1, '20670.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(155, '42708', '', '', '', '', '', '', '', 22, 5, 'catalog/demo/products/42708_0.jpg', 0, 1, '19780.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(156, '42709', '', '', '', '', '', '', '', 23, 5, 'catalog/demo/products/42709_0.jpg', 0, 1, '19770.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(157, '42710', '', '', '', '', '', '', '', 24, 5, 'catalog/demo/products/42710_0.jpg', 0, 1, '19170.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(158, '42749', '', '', '', '', '', '', '', 25, 5, 'catalog/demo/products/42749_0.jpg', 0, 1, '90270.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(159, '42750', '', '', '', '', '', '', '', 26, 5, 'catalog/demo/products/42750_0.jpg', 0, 1, '89390.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(160, '42751', '', '', '', '', '', '', '', 27, 5, 'catalog/demo/products/42751_0.jpg', 0, 1, '89300.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(161, '42752', '', '', '', '', '', '', '', 28, 5, 'catalog/demo/products/42752_0.jpg', 0, 1, '88300.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(162, '42753', '', '', '', '', '', '', '', 29, 5, 'catalog/demo/products/42753_0.jpg', 0, 1, '84190.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 14, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(163, '42754', '', '', '', '', '', '', '', 30, 5, 'catalog/demo/products/42754_0.jpg', 0, 1, '75990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(164, '42755', '', '', '', '', '', '', '', 0, 5, 'catalog/demo/products/42755_0.jpg', 0, 1, '74490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 17, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(165, '42756', '', '', '', '', '', '', '', 1, 5, 'catalog/demo/products/42756_0.jpg', 0, 1, '71200.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(166, '42757', '', '', '', '', '', '', '', 2, 5, 'catalog/demo/products/42757_0.jpg', 0, 1, '66860.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(167, '42758', '', '', '', '', '', '', '', 3, 5, 'catalog/demo/products/42758_0.jpg', 0, 1, '65990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(168, '42797', '', '', '', '', '', '', '', 4, 5, 'catalog/demo/products/42797_0.jpg', 0, 1, '69990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(169, '42798', '', '', '', '', '', '', '', 5, 5, 'catalog/demo/products/42798_0.jpg', 0, 1, '59200.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(170, '42799', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/42799_0.jpg', 0, 1, '35180.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(171, '42800', '', '', '', '', '', '', '', 7, 5, 'catalog/demo/products/42800_0.jpg', 0, 1, '26910.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(172, '42801', '', '', '', '', '', '', '', 8, 5, 'catalog/demo/products/42801_0.jpg', 0, 1, '23030.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(173, '42802', '', '', '', '', '', '', '', 9, 5, 'catalog/demo/products/42802_0.jpg', 0, 1, '22140.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(174, '42803', '', '', '', '', '', '', '', 10, 5, 'catalog/demo/products/42803_0.jpg', 0, 1, '18820.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
-(175, '42804', '', '', '', '', '', '', '', 11, 5, 'catalog/demo/products/42804_0.jpg', 0, 1, '18690.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(176, '42805', '', '', '', '', '', '', '', 12, 5, 'catalog/demo/products/42805_0.jpg', 0, 1, '18660.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(177, '42806', '', '', '', '', '', '', '', 13, 5, 'catalog/demo/products/42806_0.jpg', 0, 1, '18370.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 12, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(178, '42845', '', '', '', '', '', '', '', 14, 5, 'catalog/demo/products/42845_0.jpg', 0, 1, '34990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(179, '42846', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/42846_0.jpg', 0, 1, '23640.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(180, '42847', '', '', '', '', '', '', '', 16, 5, 'catalog/demo/products/42847_0.jpg', 0, 1, '17020.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(181, '42848', '', '', '', '', '', '', '', 17, 5, 'catalog/demo/products/42848_0.jpg', 0, 1, '16990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(182, '42849', '', '', '', '', '', '', '', 18, 5, 'catalog/demo/products/42849_0.jpg', 0, 1, '16790.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(183, '42850', '', '', '', '', '', '', '', 19, 5, 'catalog/demo/products/42850_0.jpg', 0, 1, '16390.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(184, '42851', '', '', '', '', '', '', '', 20, 5, 'catalog/demo/products/42851_0.jpg', 0, 1, '15620.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(185, '42852', '', '', '', '', '', '', '', 21, 5, 'catalog/demo/products/42852_0.jpg', 0, 1, '15310.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(186, '42853', '', '', '', '', '', '', '', 22, 5, 'catalog/demo/products/42853_0.jpg', 0, 1, '14980.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(187, '42854', '', '', '', '', '', '', '', 23, 5, 'catalog/demo/products/42854_0.jpg', 0, 1, '13470.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(188, '42893', '', '', '', '', '', '', '', 24, 5, 'catalog/demo/products/42893_0.jpg', 0, 1, '64030.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(189, '42894', '', '', '', '', '', '', '', 25, 5, 'catalog/demo/products/42894_0.jpg', 0, 1, '55520.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(190, '42895', '', '', '', '', '', '', '', 26, 5, 'catalog/demo/products/42895_0.jpg', 0, 1, '52990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(191, '42896', '', '', '', '', '', '', '', 27, 5, 'catalog/demo/products/42896_0.jpg', 0, 1, '29300.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(192, '42897', '', '', '', '', '', '', '', 28, 5, 'catalog/demo/products/42897_0.jpg', 0, 1, '25030.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(193, '42898', '', '', '', '', '', '', '', 29, 5, 'catalog/demo/products/42898_0.jpg', 0, 1, '23030.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(194, '42899', '', '', '', '', '', '', '', 30, 5, 'catalog/demo/products/42899_0.jpg', 0, 1, '21590.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(195, '42900', '', '', '', '', '', '', '', 31, 5, 'catalog/demo/products/42900_0.jpg', 0, 1, '21350.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1);
+(29, '42173', '', '', '', '', '', '', '', 28, 5, 'catalog/demo/products/42173_0.jpg', 0, 1, '5290.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(30, '42174', '', '', '', '', '', '', '', 0, 5, 'catalog/demo/products/42174_0.jpg', 0, 1, '4890.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 25, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(31, '42183', '', '', '', '', '', '', '', 1, 5, 'catalog/demo/products/42183_0.jpg', 0, 1, '47590.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(32, '42184', '', '', '', '', '', '', '', 2, 5, 'catalog/demo/products/42184_0.jpg', 0, 1, '37590.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(33, '42185', '', '', '', '', '', '', '', 3, 5, 'catalog/demo/products/42185_0.jpg', 0, 1, '35600.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(34, '42186', '', '', '', '', '', '', '', 4, 5, 'catalog/demo/products/42186_0.jpg', 0, 1, '29990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(35, '42187', '', '', '', '', '', '', '', 5, 5, 'catalog/demo/products/42187_0.jpg', 4, 1, '29990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 21, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(36, '42188', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/42188_0.jpg', 0, 1, '28390.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(37, '42189', '', '', '', '', '', '', '', 7, 5, 'catalog/demo/products/42189_0.jpg', 0, 1, '27570.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(38, '42190', '', '', '', '', '', '', '', 8, 5, 'catalog/demo/products/42190_0.jpg', 0, 1, '26490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 34, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(39, '42191', '', '', '', '', '', '', '', 9, 5, 'catalog/demo/products/42191_0.jpg', 0, 1, '25190.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(40, '42192', '', '', '', '', '', '', '', 10, 5, 'catalog/demo/products/42192_0.jpg', 0, 1, '23990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(41, '42231', '', '', '', '', '', '', '', 11, 5, 'catalog/demo/products/42231_0.jpg', 0, 1, '13990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 158, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(42, '42232', '', '', '', '', '', '', '', 12, 5, 'catalog/demo/products/42232_0.jpg', 0, 1, '6590.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 55, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(43, '42233', '', '', '', '', '', '', '', 13, 5, 'catalog/demo/products/42233_0.jpg', 0, 1, '5990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(44, '42234', '', '', '', '', '', '', '', 14, 5, 'catalog/demo/products/42234_0.jpg', 0, 1, '5890.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 40, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(45, '42235', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/42235_0.jpg', 0, 1, '5230.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 602, '2022-11-11 12:51:32', '2023-12-11 13:28:56', 1),
+(46, '42236', '', '', '', '', '', '', '', 16, 5, 'catalog/demo/products/42236_0.jpg', 0, 1, '4990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(47, '42237', '', '', '', '', '', '', '', 17, 5, 'catalog/demo/products/42237_0.jpg', 0, 1, '4990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 35, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(48, '42238', '', '', '', '', '', '', '', 18, 5, 'catalog/demo/products/42238_0.jpg', 1, 1, '4990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 100, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(49, '42239', '', '', '', '', '', '', '', 19, 5, 'catalog/demo/products/42239_0.jpg', 2, 1, '4890.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 60, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(50, '42240', '', '', '', '', '', '', '', 20, 5, 'catalog/demo/products/42240_0.jpg', 2, 1, '4890.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 43, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(51, '42279', '', '', '', '', '', '', '', 21, 5, 'catalog/demo/products/42279_0.jpg', 5, 1, '402990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(52, '42280', '', '', '', '', '', '', '', 21, 5, 'catalog/demo/products/42280_0.jpg', 1, 1, '334990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(53, '42281', '', '', '', '', '', '', '', 23, 5, 'catalog/demo/products/42281_0.jpg', 5, 1, '329990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(54, '42282', '', '', '', '', '', '', '', 24, 5, 'catalog/demo/products/42282_0.jpg', 5, 1, '321990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(55, '42283', '', '', '', '', '', '', '', 25, 5, 'catalog/demo/products/42283_0.jpg', 1, 1, '299990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(56, '42284', '', '', '', '', '', '', '', 26, 5, 'catalog/demo/products/42284_0.jpg', 1, 1, '299990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(57, '42285', '', '', '', '', '', '', '', 27, 5, 'catalog/demo/products/42285_0.jpg', 5, 1, '298990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 2, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(58, '42287', '', '', '', '', '', '', '', 28, 5, 'catalog/demo/products/42287_0.jpg', 5, 1, '249990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(59, '42288', '', '', '', '', '', '', '', 29, 5, 'catalog/demo/products/42288_0.jpg', 1, 1, '234990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(60, '42289', '', '', '', '', '', '', '', 0, 5, 'catalog/demo/products/42289_0.jpg', 1, 1, '234990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(61, '42327', '', '', '', '', '', '', '', 1, 5, 'catalog/demo/products/42327_0.jpg', 0, 1, '151990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(62, '42328', '', '', '', '', '', '', '', 2, 5, 'catalog/demo/products/42328_0.jpg', 0, 1, '104990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(63, '42329', '', '', '', '', '', '', '', 3, 5, 'catalog/demo/products/42329_0.jpg', 0, 1, '99680.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(64, '42330', '', '', '', '', '', '', '', 4, 5, 'catalog/demo/products/42330_0.jpg', 0, 1, '93990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(65, '42333', '', '', '', '', '', '', '', 5, 5, 'catalog/demo/products/42333_0.jpg', 0, 1, '79990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(66, '42335', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/42335_0.jpg', 0, 1, '73990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 2, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(67, '42338', '', '', '', '', '', '', '', 7, 5, 'catalog/demo/products/42338_0.jpg', 0, 1, '72990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(68, '42339', '', '', '', '', '', '', '', 7, 5, 'catalog/demo/products/42339_0.jpg', 0, 1, '71060.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(69, '42340', '', '', '', '', '', '', '', 9, 5, 'catalog/demo/products/42340_0.jpg', 0, 1, '69990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(70, '42342', '', '', '', '', '', '', '', 10, 5, 'catalog/demo/products/42342_0.jpg', 0, 1, '67990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(71, '42375', '', '', '', '', '', '', '', 11, 5, 'catalog/demo/products/42375_0.jpg', 0, 1, '409030.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 2, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(72, '42376', '', '', '', '', '', '', '', 12, 5, 'catalog/demo/products/42376_0.jpg', 0, 1, '137790.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(73, '42377', '', '', '', '', '', '', '', 13, 5, 'catalog/demo/products/42377_0.jpg', 0, 1, '119120.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(74, '42378', '', '', '', '', '', '', '', 14, 5, 'catalog/demo/products/42378_0.jpg', 0, 1, '113030.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(75, '42379', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/42379_0.jpg', 0, 1, '92040.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(76, '42380', '', '', '', '', '', '', '', 16, 5, 'catalog/demo/products/42380_0.jpg', 4, 1, '89690.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(77, '42381', '', '', '', '', '', '', '', 17, 5, 'catalog/demo/products/42381_0.jpg', 4, 1, '86800.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(78, '42382', '', '', '', '', '', '', '', 18, 5, 'catalog/demo/products/42382_0.jpg', 0, 1, '85030.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(79, '42383', '', '', '', '', '', '', '', 19, 5, 'catalog/demo/products/42383_0.jpg', 0, 1, '81360.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(80, '42384', '', '', '', '', '', '', '', 20, 5, 'catalog/demo/products/42384_0.jpg', 0, 1, '79800.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(81, '42423', '', '', '', '', '', '', '', 21, 5, 'catalog/demo/products/42423_0.jpg', 0, 1, '404000.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(82, '42424', '', '', '', '', '', '', '', 22, 5, 'catalog/demo/products/42424_0.jpg', 0, 1, '194680.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(83, '42425', '', '', '', '', '', '', '', 23, 5, 'catalog/demo/products/42425_0.jpg', 0, 1, '187840.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(84, '42426', '', '', '', '', '', '', '', 24, 5, 'catalog/demo/products/42426_0.jpg', 0, 1, '119110.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(85, '42427', '', '', '', '', '', '', '', 25, 5, 'catalog/demo/products/42427_0.jpg', 0, 1, '108990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(86, '42428', '', '', '', '', '', '', '', 26, 5, 'catalog/demo/products/42428_0.jpg', 0, 1, '99790.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(87, '42429', '', '', '', '', '', '', '', 27, 5, 'catalog/demo/products/42429_0.jpg', 0, 1, '98990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(88, '42430', '', '', '', '', '', '', '', 28, 5, 'catalog/demo/products/42430_0.jpg', 0, 1, '94990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(89, '42431', '', '', '', '', '', '', '', 29, 5, 'catalog/demo/products/42431_0.jpg', 0, 1, '94290.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(90, '42432', '', '', '', '', '', '', '', 30, 5, 'catalog/demo/products/42432_0.jpg', 0, 1, '92990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(91, '42471', '', '', '', '', '', '', '', 30, 5, 'catalog/demo/products/42471_0.jpg', 0, 1, '17789.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(92, '42472', '', '', '', '', '', '', '', 32, 5, 'catalog/demo/products/42472_0.jpg', 0, 1, '15299.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 23, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(93, '42473', '', '', '', '', '', '', '', 33, 5, 'catalog/demo/products/42473_0.jpg', 0, 1, '15199.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 22, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(94, '42474', '', '', '', '', '', '', '', 0, 5, 'catalog/demo/products/42474_0.jpg', 0, 1, '0.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 34, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(95, '42475', '', '', '', '', '', '', '', 1, 5, 'catalog/demo/products/42475_0.jpg', 0, 1, '11885.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(96, '42476', '', '', '', '', '', '', '', 2, 5, 'catalog/demo/products/42476_0.jpg', 0, 1, '11649.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 24, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(97, '42477', '', '', '', '', '', '', '', 3, 5, 'catalog/demo/products/42477_0.jpg', 0, 1, '11499.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 2, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(98, '42478', '', '', '', '', '', '', '', 4, 5, 'catalog/demo/products/42478_0.jpg', 0, 1, '10489.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(99, '42479', '', '', '', '', '', '', '', 5, 5, 'catalog/demo/products/42479_0.jpg', 0, 1, '10399.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(100, '42480', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/42480_0.jpg', 0, 1, '9750.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 11, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(101, '42519', '', '', '', '', '', '', '', 7, 5, 'catalog/demo/products/42519_0.jpg', 0, 1, '129990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(102, '42520', '', '', '', '', '', '', '', 8, 5, 'catalog/demo/products/42520_0.jpg', 0, 1, '114270.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(103, '42521', '', '', '', '', '', '', '', 9, 5, 'catalog/demo/products/42521_0.jpg', 0, 1, '106990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(104, '42522', '', '', '', '', '', '', '', 10, 5, 'catalog/demo/products/42522_0.jpg', 0, 1, '106240.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(105, '42523', '', '', '', '', '', '', '', 11, 5, 'catalog/demo/products/42523_0.jpg', 0, 1, '104560.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(106, '42524', '', '', '', '', '', '', '', 12, 5, 'catalog/demo/products/42524_0.jpg', 0, 1, '98910.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(107, '42525', '', '', '', '', '', '', '', 13, 5, 'catalog/demo/products/42525_0.jpg', 0, 1, '96990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(108, '42526', '', '', '', '', '', '', '', 14, 5, 'catalog/demo/products/42526_0.jpg', 0, 1, '92990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(109, '42527', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/42527_0.jpg', 6, 1, '89990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(110, '42528', '', '', '', '', '', '', '', -1, 5, 'catalog/demo/products/42528_0.jpg', 0, 1, '81990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(111, '42550', '', '', '', '', '', '', '', 1, 5, 'catalog/demo/products/42550_0.jpg', 0, 1, '0.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(112, '42551', '', '', '', '', '', '', '', 2, 5, 'catalog/demo/products/42551_0.jpg', 0, 1, '0.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(113, '42552', '', '', '', '', '', '', '', 3, 5, 'catalog/demo/products/42552_0.jpg', 0, 1, '0.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(114, '42553', '', '', '', '', '', '', '', 4, 5, 'catalog/demo/products/42553_0.jpg', 0, 1, '0.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(115, '42554', '', '', '', '', '', '', '', 5, 5, 'catalog/demo/products/42554_0.jpg', 0, 1, '0.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(116, '42555', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/42555_0.jpg', 0, 1, '0.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(117, '42556', '', '', '', '', '', '', '', 7, 5, 'catalog/demo/products/42556_0.jpg', 6, 1, '0.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(118, '42557', '', '', '', '', '', '', '', 8, 5, 'catalog/demo/products/42557_0.jpg', 0, 1, '93490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(119, '42558', '', '', '', '', '', '', '', 9, 5, 'catalog/demo/products/42558_0.jpg', 0, 1, '44440.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(120, '42559', '', '', '', '', '', '', '', 10, 5, 'catalog/demo/products/42559_0.jpg', 0, 1, '34290.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(121, '42560', '', '', '', '', '', '', '', 11, 5, 'catalog/demo/products/42560_0.jpg', 0, 1, '26990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(122, '42561', '', '', '', '', '', '', '', 12, 5, 'catalog/demo/products/42561_0.jpg', 0, 1, '24990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(123, '42562', '', '', '', '', '', '', '', 13, 5, 'catalog/demo/products/42562_0.jpg', 0, 1, '24590.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(124, '42563', '', '', '', '', '', '', '', 14, 5, 'catalog/demo/products/42563_0.jpg', 0, 1, '20590.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(125, '42564', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/42564_0.jpg', 0, 1, '20390.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(126, '42565', '', '', '', '', '', '', '', 16, 5, 'catalog/demo/products/42565_0.jpg', 0, 1, '20190.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(127, '42566', '', '', '', '', '', '', '', 17, 5, 'catalog/demo/products/42566_0.jpg', 0, 1, '18490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(128, '42605', '', '', '', '', '', '', '', 18, 5, 'catalog/demo/products/42605_0.jpg', 0, 1, '222990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(129, '42606', '', '', '', '', '', '', '', 19, 5, 'catalog/demo/products/42606_0.jpg', 0, 1, '189990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(130, '42607', '', '', '', '', '', '', '', 20, 5, 'catalog/demo/products/42607_0.jpg', 0, 1, '179990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(131, '42608', '', '', '', '', '', '', '', 21, 5, 'catalog/demo/products/42608_0.jpg', 0, 1, '147220.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(132, '42609', '', '', '', '', '', '', '', 22, 5, 'catalog/demo/products/42609_0.jpg', 0, 1, '135000.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(133, '42610', '', '', '', '', '', '', '', 0, 5, 'catalog/demo/products/42610_0.jpg', 0, 1, '113690.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(134, '42611', '', '', '', '', '', '', '', 1, 5, 'catalog/demo/products/42611_0.jpg', 0, 1, '106990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(135, '42612', '', '', '', '', '', '', '', 2, 5, 'catalog/demo/products/42612_0.jpg', 0, 1, '101590.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(136, '42613', '', '', '', '', '', '', '', 3, 5, 'catalog/demo/products/42613_0.jpg', 0, 1, '100700.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(137, '42614', '', '', '', '', '', '', '', 4, 5, 'catalog/demo/products/42614_0.jpg', 0, 1, '99900.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(138, '42653', '', '', '', '', '', '', '', 5, 5, 'catalog/demo/products/42653_0.jpg', 0, 1, '48840.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(139, '42654', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/42654_0.jpg', 0, 1, '44490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(140, '42655', '', '', '', '', '', '', '', 7, 5, 'catalog/demo/products/42655_0.jpg', 0, 1, '42790.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(141, '42656', '', '', '', '', '', '', '', 8, 5, 'catalog/demo/products/42656_0.jpg', 0, 1, '39990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 14, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(142, '42657', '', '', '', '', '', '', '', 9, 5, 'catalog/demo/products/42657_0.jpg', 0, 1, '38030.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(143, '42658', '', '', '', '', '', '', '', 10, 5, 'catalog/demo/products/42658_0.jpg', 0, 1, '37999.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 13, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(144, '42659', '', '', '', '', '', '', '', 11, 5, 'catalog/demo/products/42659_0.jpg', 0, 1, '37750.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(145, '42660', '', '', '', '', '', '', '', 12, 5, 'catalog/demo/products/42660_0.jpg', 0, 1, '37390.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 22, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(146, '42661', '', '', '', '', '', '', '', 13, 5, 'catalog/demo/products/42661_0.jpg', 0, 1, '35080.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 11, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(147, '42662', '', '', '', '', '', '', '', 14, 5, 'catalog/demo/products/42662_0.jpg', 0, 1, '34999.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(148, '42701', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/42701_0.jpg', 0, 1, '39700.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(149, '42702', '', '', '', '', '', '', '', 16, 5, 'catalog/demo/products/42702_0.jpg', 0, 1, '25320.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(150, '42703', '', '', '', '', '', '', '', 17, 5, 'catalog/demo/products/42703_0.jpg', 0, 1, '23720.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(151, '42704', '', '', '', '', '', '', '', 18, 5, 'catalog/demo/products/42704_0.jpg', 0, 1, '22750.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(152, '42705', '', '', '', '', '', '', '', 19, 5, 'catalog/demo/products/42705_0.jpg', 0, 1, '21290.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(153, '42706', '', '', '', '', '', '', '', 20, 5, 'catalog/demo/products/42706_0.jpg', 0, 1, '21000.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(154, '42707', '', '', '', '', '', '', '', 21, 5, 'catalog/demo/products/42707_0.jpg', 0, 1, '20670.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(155, '42708', '', '', '', '', '', '', '', 22, 5, 'catalog/demo/products/42708_0.jpg', 0, 1, '19780.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(156, '42709', '', '', '', '', '', '', '', 23, 5, 'catalog/demo/products/42709_0.jpg', 0, 1, '19770.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(157, '42710', '', '', '', '', '', '', '', 24, 5, 'catalog/demo/products/42710_0.jpg', 0, 1, '19170.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(158, '42749', '', '', '', '', '', '', '', 25, 5, 'catalog/demo/products/42749_0.jpg', 0, 1, '90270.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 12, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(159, '42750', '', '', '', '', '', '', '', 26, 5, 'catalog/demo/products/42750_0.jpg', 0, 1, '89390.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(160, '42751', '', '', '', '', '', '', '', 27, 5, 'catalog/demo/products/42751_0.jpg', 0, 1, '89300.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(161, '42752', '', '', '', '', '', '', '', 28, 5, 'catalog/demo/products/42752_0.jpg', 0, 1, '88300.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(162, '42753', '', '', '', '', '', '', '', 29, 5, 'catalog/demo/products/42753_0.jpg', 0, 1, '84190.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(163, '42754', '', '', '', '', '', '', '', 30, 5, 'catalog/demo/products/42754_0.jpg', 0, 1, '75990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(164, '42755', '', '', '', '', '', '', '', 0, 5, 'catalog/demo/products/42755_0.jpg', 0, 1, '74490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(165, '42756', '', '', '', '', '', '', '', 1, 5, 'catalog/demo/products/42756_0.jpg', 0, 1, '71200.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(166, '42757', '', '', '', '', '', '', '', 2, 5, 'catalog/demo/products/42757_0.jpg', 0, 1, '66860.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(167, '42758', '', '', '', '', '', '', '', 3, 5, 'catalog/demo/products/42758_0.jpg', 0, 1, '65990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(168, '42797', '', '', '', '', '', '', '', 4, 5, 'catalog/demo/products/42797_0.jpg', 0, 1, '69990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(169, '42798', '', '', '', '', '', '', '', 5, 5, 'catalog/demo/products/42798_0.jpg', 0, 1, '59200.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(170, '42799', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/42799_0.jpg', 0, 1, '35180.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(171, '42800', '', '', '', '', '', '', '', 7, 5, 'catalog/demo/products/42800_0.jpg', 0, 1, '26910.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(172, '42801', '', '', '', '', '', '', '', 8, 5, 'catalog/demo/products/42801_0.jpg', 0, 1, '23030.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(173, '42802', '', '', '', '', '', '', '', 9, 5, 'catalog/demo/products/42802_0.jpg', 0, 1, '22140.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(174, '42803', '', '', '', '', '', '', '', 10, 5, 'catalog/demo/products/42803_0.jpg', 0, 1, '18820.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:52', 1),
+(175, '42804', '', '', '', '', '', '', '', 11, 5, 'catalog/demo/products/42804_0.jpg', 0, 1, '18690.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(176, '42805', '', '', '', '', '', '', '', 12, 5, 'catalog/demo/products/42805_0.jpg', 0, 1, '18660.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(177, '42806', '', '', '', '', '', '', '', 13, 5, 'catalog/demo/products/42806_0.jpg', 0, 1, '18370.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(178, '42845', '', '', '', '', '', '', '', 14, 5, 'catalog/demo/products/42845_0.jpg', 0, 1, '34990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(179, '42846', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/42846_0.jpg', 0, 1, '23640.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(180, '42847', '', '', '', '', '', '', '', 16, 5, 'catalog/demo/products/42847_0.jpg', 0, 1, '17020.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(181, '42848', '', '', '', '', '', '', '', 17, 5, 'catalog/demo/products/42848_0.jpg', 0, 1, '16990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(182, '42849', '', '', '', '', '', '', '', 18, 5, 'catalog/demo/products/42849_0.jpg', 0, 1, '16790.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 2, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(183, '42850', '', '', '', '', '', '', '', 19, 5, 'catalog/demo/products/42850_0.jpg', 0, 1, '16390.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(184, '42851', '', '', '', '', '', '', '', 20, 5, 'catalog/demo/products/42851_0.jpg', 0, 1, '15620.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 2, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(185, '42852', '', '', '', '', '', '', '', 21, 5, 'catalog/demo/products/42852_0.jpg', 0, 1, '15310.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(186, '42853', '', '', '', '', '', '', '', 22, 5, 'catalog/demo/products/42853_0.jpg', 0, 1, '14980.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(187, '42854', '', '', '', '', '', '', '', 23, 5, 'catalog/demo/products/42854_0.jpg', 0, 1, '13470.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(188, '42893', '', '', '', '', '', '', '', 24, 5, 'catalog/demo/products/42893_0.jpg', 0, 1, '64030.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(189, '42894', '', '', '', '', '', '', '', 25, 5, 'catalog/demo/products/42894_0.jpg', 0, 1, '55520.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(190, '42895', '', '', '', '', '', '', '', 26, 5, 'catalog/demo/products/42895_0.jpg', 0, 1, '52990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(191, '42896', '', '', '', '', '', '', '', 27, 5, 'catalog/demo/products/42896_0.jpg', 0, 1, '29300.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(192, '42897', '', '', '', '', '', '', '', 28, 5, 'catalog/demo/products/42897_0.jpg', 0, 1, '25030.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(193, '42898', '', '', '', '', '', '', '', 29, 5, 'catalog/demo/products/42898_0.jpg', 0, 1, '23030.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(194, '42899', '', '', '', '', '', '', '', 30, 5, 'catalog/demo/products/42899_0.jpg', 0, 1, '21590.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(195, '42900', '', '', '', '', '', '', '', 31, 5, 'catalog/demo/products/42900_0.jpg', 0, 1, '21350.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1);
 INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `isbn`, `mpn`, `location`, `quantity`, `stock_status_id`, `image`, `manufacturer_id`, `shipping`, `price`, `points`, `tax_class_id`, `date_available`, `weight`, `weight_class_id`, `length`, `width`, `height`, `length_class_id`, `subtract`, `minimum`, `sort_order`, `status`, `viewed`, `date_added`, `date_modified`, `noindex`) VALUES
-(196, '42901', '', '', '', '', '', '', '', 32, 5, 'catalog/demo/products/42901_0.jpg', 0, 1, '19410.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(197, '42902', '', '', '', '', '', '', '', 33, 5, 'catalog/demo/products/42902_0.jpg', 0, 1, '18560.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 11, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(198, '42941', '', '', '', '', '', '', '', 34, 5, 'catalog/demo/products/42941_0.jpg', 0, 1, '58990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 12, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(199, '42942', '', '', '', '', '', '', '', 35, 5, 'catalog/demo/products/42942_0.jpg', 0, 1, '46380.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(200, '42943', '', '', '', '', '', '', '', 36, 5, 'catalog/demo/products/42943_0.jpg', 0, 1, '42030.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(201, '42944', '', '', '', '', '', '', '', 37, 5, 'catalog/demo/products/42944_0.jpg', 0, 1, '35240.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(202, '42945', '', '', '', '', '', '', '', 38, 5, 'catalog/demo/products/42945_0.jpg', 0, 1, '29140.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(203, '42946', '', '', '', '', '', '', '', 39, 5, 'catalog/demo/products/42946_0.jpg', 0, 1, '27390.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 15, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(204, '42947', '', '', '', '', '', '', '', 40, 5, 'catalog/demo/products/42947_0.jpg', 0, 1, '26120.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(205, '42948', '', '', '', '', '', '', '', 41, 5, 'catalog/demo/products/42948_0.jpg', 0, 1, '25460.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(206, '42949', '', '', '', '', '', '', '', 42, 5, 'catalog/demo/products/42949_0.jpg', 0, 1, '24600.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 13, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(207, '42950', '', '', '', '', '', '', '', 43, 5, 'catalog/demo/products/42950_0.jpg', 0, 1, '24110.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(208, '42989', '', '', '', '', '', '', '', 0, 5, 'catalog/demo/products/42989_0.jpg', 0, 1, '17930.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(209, '42990', '', '', '', '', '', '', '', 1, 5, 'catalog/demo/products/42990_0.jpg', 0, 1, '15420.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(210, '42991', '', '', '', '', '', '', '', 2, 5, 'catalog/demo/products/42991_0.jpg', 0, 1, '15420.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(211, '42992', '', '', '', '', '', '', '', 3, 5, 'catalog/demo/products/42992_0.jpg', 0, 1, '15360.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(212, '42993', '', '', '', '', '', '', '', 4, 5, 'catalog/demo/products/42993_0.jpg', 0, 1, '12520.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(213, '42994', '', '', '', '', '', '', '', 5, 5, 'catalog/demo/products/42994_0.jpg', 0, 1, '8480.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(214, '42995', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/42995_0.jpg', 0, 1, '7640.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(215, '42996', '', '', '', '', '', '', '', 7, 5, 'catalog/demo/products/42996_0.jpg', 0, 1, '7635.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 13, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(196, '42901', '', '', '', '', '', '', '', 32, 5, 'catalog/demo/products/42901_0.jpg', 0, 1, '19410.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(197, '42902', '', '', '', '', '', '', '', 33, 5, 'catalog/demo/products/42902_0.jpg', 0, 1, '18560.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(198, '42941', '', '', '', '', '', '', '', 34, 5, 'catalog/demo/products/42941_0.jpg', 0, 1, '58990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(199, '42942', '', '', '', '', '', '', '', 35, 5, 'catalog/demo/products/42942_0.jpg', 0, 1, '46380.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(200, '42943', '', '', '', '', '', '', '', 36, 5, 'catalog/demo/products/42943_0.jpg', 0, 1, '42030.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(201, '42944', '', '', '', '', '', '', '', 37, 5, 'catalog/demo/products/42944_0.jpg', 0, 1, '35240.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(202, '42945', '', '', '', '', '', '', '', 38, 5, 'catalog/demo/products/42945_0.jpg', 0, 1, '29140.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(203, '42946', '', '', '', '', '', '', '', 39, 5, 'catalog/demo/products/42946_0.jpg', 0, 1, '27390.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(204, '42947', '', '', '', '', '', '', '', 40, 5, 'catalog/demo/products/42947_0.jpg', 0, 1, '26120.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(205, '42948', '', '', '', '', '', '', '', 41, 5, 'catalog/demo/products/42948_0.jpg', 0, 1, '25460.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(206, '42949', '', '', '', '', '', '', '', 42, 5, 'catalog/demo/products/42949_0.jpg', 0, 1, '24600.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(207, '42950', '', '', '', '', '', '', '', 43, 5, 'catalog/demo/products/42950_0.jpg', 0, 1, '24110.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(208, '42989', '', '', '', '', '', '', '', 0, 5, 'catalog/demo/products/42989_0.jpg', 0, 1, '17930.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(209, '42990', '', '', '', '', '', '', '', 1, 5, 'catalog/demo/products/42990_0.jpg', 0, 1, '15420.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(210, '42991', '', '', '', '', '', '', '', 2, 5, 'catalog/demo/products/42991_0.jpg', 0, 1, '15420.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(211, '42992', '', '', '', '', '', '', '', 3, 5, 'catalog/demo/products/42992_0.jpg', 0, 1, '15360.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(212, '42993', '', '', '', '', '', '', '', 4, 5, 'catalog/demo/products/42993_0.jpg', 0, 1, '12520.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(213, '42994', '', '', '', '', '', '', '', 5, 5, 'catalog/demo/products/42994_0.jpg', 0, 1, '8480.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(214, '42995', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/42995_0.jpg', 0, 1, '7640.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(215, '42996', '', '', '', '', '', '', '', 7, 5, 'catalog/demo/products/42996_0.jpg', 0, 1, '7635.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 2, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
 (216, '42997', '', '', '', '', '', '', '', 8, 5, 'catalog/demo/products/42997_0.jpg', 0, 1, '7635.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(217, '42998', '', '', '', '', '', '', '', 9, 5, 'catalog/demo/products/42998_0.jpg', 0, 1, '7480.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(218, '43016', '', '', '', '', '', '', '', 10, 5, 'catalog/demo/products/43016_0.jpg', 0, 1, '90860.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(219, '43017', '', '', '', '', '', '', '', 11, 5, 'catalog/demo/products/43017_0.jpg', 0, 1, '80890.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(220, '43018', '', '', '', '', '', '', '', 12, 5, 'catalog/demo/products/43018_0.jpg', 0, 1, '78930.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(221, '43019', '', '', '', '', '', '', '', 13, 5, 'catalog/demo/products/43019_0.jpg', 0, 1, '73490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(222, '43020', '', '', '', '', '', '', '', 14, 5, 'catalog/demo/products/43020_0.jpg', 0, 1, '69120.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(223, '43021', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/43021_0.jpg', 0, 1, '68190.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 2, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(224, '43022', '', '', '', '', '', '', '', 16, 5, 'catalog/demo/products/43022_0.jpg', 0, 1, '65430.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 2, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(225, '43023', '', '', '', '', '', '', '', 17, 5, 'catalog/demo/products/43023_0.jpg', 0, 1, '59690.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(226, '43024', '', '', '', '', '', '', '', 18, 5, 'catalog/demo/products/43024_0.jpg', 0, 1, '59500.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(227, '43025', '', '', '', '', '', '', '', 19, 5, 'catalog/demo/products/43025_0.jpg', 0, 1, '55490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(228, '43064', '', '', '', '', '', '', '', 20, 5, 'catalog/demo/products/43064_0.jpg', 0, 1, '78900.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 12, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(229, '43065', '', '', '', '', '', '', '', 21, 5, 'catalog/demo/products/43065_0.jpg', 0, 1, '64900.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(230, '43066', '', '', '', '', '', '', '', 22, 5, 'catalog/demo/products/43066_0.jpg', 0, 1, '59900.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(231, '43067', '', '', '', '', '', '', '', 23, 5, 'catalog/demo/products/43067_0.jpg', 0, 1, '54900.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(232, '43068', '', '', '', '', '', '', '', 24, 5, 'catalog/demo/products/43068_0.jpg', 0, 1, '50020.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 11, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(233, '43069', '', '', '', '', '', '', '', 25, 5, 'catalog/demo/products/43069_0.jpg', 0, 1, '47900.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(234, '43070', '', '', '', '', '', '', '', 26, 5, 'catalog/demo/products/43070_0.jpg', 0, 1, '42820.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(235, '43071', '', '', '', '', '', '', '', 27, 5, 'catalog/demo/products/43071_0.jpg', 0, 1, '42799.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(236, '43072', '', '', '', '', '', '', '', 28, 5, 'catalog/demo/products/43072_0.jpg', 0, 1, '36528.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 13, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(237, '43073', '', '', '', '', '', '', '', 29, 5, 'catalog/demo/products/43073_0.jpg', 0, 1, '36264.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 11, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(238, '43112', '', '', '', '', '', '', '', 30, 5, 'catalog/demo/products/43112_0.jpg', 0, 1, '17810.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(239, '43113', '', '', '', '', '', '', '', 31, 5, 'catalog/demo/products/43113_0.jpg', 0, 1, '14430.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(240, '43114', '', '', '', '', '', '', '', 32, 5, 'catalog/demo/products/43114_0.jpg', 0, 1, '10570.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(241, '43115', '', '', '', '', '', '', '', 33, 5, 'catalog/demo/products/43115_0.jpg', 0, 1, '10110.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(242, '43116', '', '', '', '', '', '', '', 34, 5, 'catalog/demo/products/43116_0.jpg', 0, 1, '10060.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(243, '43117', '', '', '', '', '', '', '', 35, 5, 'catalog/demo/products/43117_0.jpg', 0, 1, '8570.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(244, '43118', '', '', '', '', '', '', '', 0, 5, 'catalog/demo/products/43118_0.jpg', 0, 1, '8200.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(245, '43119', '', '', '', '', '', '', '', 1, 5, 'catalog/demo/products/43119_0.jpg', 0, 1, '8200.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(246, '43120', '', '', '', '', '', '', '', 2, 5, 'catalog/demo/products/43120_0.jpg', 0, 1, '7710.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(247, '43121', '', '', '', '', '', '', '', 3, 5, 'catalog/demo/products/43121_0.jpg', 0, 1, '7360.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(248, '43133', '', '', '', '', '', '', '', 4, 5, 'catalog/demo/products/43133_0.jpg', 0, 1, '22990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(249, '43134', '', '', '', '', '', '', '', 5, 5, 'catalog/demo/products/43134_0.jpg', 0, 1, '10150.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(250, '43135', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/43135_0.jpg', 0, 1, '9410.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(251, '43136', '', '', '', '', '', '', '', 7, 5, 'catalog/demo/products/43136_0.jpg', 0, 1, '9390.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(252, '43137', '', '', '', '', '', '', '', 8, 5, 'catalog/demo/products/43137_0.jpg', 0, 1, '9310.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 15, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(253, '43138', '', '', '', '', '', '', '', 9, 5, 'catalog/demo/products/43138_0.jpg', 0, 1, '9140.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(254, '43139', '', '', '', '', '', '', '', 10, 5, 'catalog/demo/products/43139_0.jpg', 0, 1, '8520.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 14, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(255, '43140', '', '', '', '', '', '', '', 11, 5, 'catalog/demo/products/43140_0.jpg', 0, 1, '8490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 12, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(256, '43141', '', '', '', '', '', '', '', 12, 5, 'catalog/demo/products/43141_0.jpg', 0, 1, '8390.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(257, '43142', '', '', '', '', '', '', '', 13, 5, 'catalog/demo/products/43142_0.jpg', 0, 1, '8250.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 12, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(258, '43181', '', '', '', '', '', '', '', 14, 5, 'catalog/demo/products/43181_0.jpg', 0, 1, '199990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(259, '43182', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/43182_0.jpg', 0, 1, '44690.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 11, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(260, '43183', '', '', '', '', '', '', '', 16, 5, 'catalog/demo/products/43183_0.jpg', 0, 1, '28760.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 13, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(261, '43184', '', '', '', '', '', '', '', 17, 5, 'catalog/demo/products/43184_0.jpg', 0, 0, '27990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 12, '2022-11-11 12:51:34', '2023-03-18 15:45:36', 1),
-(262, '43185', '', '', '', '', '', '', '', 18, 5, 'catalog/demo/products/43185_0.jpg', 0, 1, '24440.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 13, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(263, '43186', '', '', '', '', '', '', '', 19, 5, 'catalog/demo/products/43186_0.jpg', 0, 1, '21990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(264, '43187', '', '', '', '', '', '', '', 20, 5, 'catalog/demo/products/43187_0.jpg', 0, 1, '20990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(265, '43188', '', '', '', '', '', '', '', 21, 5, 'catalog/demo/products/43188_0.jpg', 0, 1, '19490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(266, '43189', '', '', '', '', '', '', '', 22, 5, 'catalog/demo/products/43189_0.jpg', 0, 1, '18990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 11, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(267, '43190', '', '', '', '', '', '', '', 23, 5, 'catalog/demo/products/43190_0.jpg', 0, 1, '18290.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 11, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(268, '43229', '', '', '', '', '', '', '', 24, 5, 'catalog/demo/products/43229_0.jpg', 0, 1, '14490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(269, '43230', '', '', '', '', '', '', '', 25, 5, 'catalog/demo/products/43230_0.jpg', 0, 1, '12250.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(270, '43231', '', '', '', '', '', '', '', 26, 5, 'catalog/demo/products/43231_0.jpg', 0, 1, '11740.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(271, '43232', '', '', '', '', '', '', '', 0, 5, 'catalog/demo/products/43232_0.jpg', 0, 1, '11690.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(272, '43233', '', '', '', '', '', '', '', 1, 5, 'catalog/demo/products/43233_0.jpg', 0, 1, '10490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(273, '43234', '', '', '', '', '', '', '', 2, 5, 'catalog/demo/products/43234_0.jpg', 0, 1, '10140.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(274, '43235', '', '', '', '', '', '', '', 3, 5, 'catalog/demo/products/43235_0.jpg', 4, 1, '7990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(275, '43236', '', '', '', '', '', '', '', 4, 5, 'catalog/demo/products/43236_0.jpg', 0, 1, '7140.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(276, '43237', '', '', '', '', '', '', '', 5, 5, 'catalog/demo/products/43237_0.jpg', 0, 1, '6490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(277, '43238', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/43238_0.jpg', 0, 1, '6480.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(278, '43277', '', '', '', '', '', '', '', 7, 5, 'catalog/demo/products/43277_0.jpg', 0, 1, '17990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(279, '43278', '', '', '', '', '', '', '', 8, 5, 'catalog/demo/products/43278_0.jpg', 0, 1, '14850.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(280, '43279', '', '', '', '', '', '', '', 9, 5, 'catalog/demo/products/43279_0.jpg', 0, 1, '14590.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(281, '43280', '', '', '', '', '', '', '', 10, 5, 'catalog/demo/products/43280_0.jpg', 0, 1, '12120.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(282, '43281', '', '', '', '', '', '', '', 11, 5, 'catalog/demo/products/43281_0.jpg', 0, 1, '8490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(283, '43282', '', '', '', '', '', '', '', 12, 5, 'catalog/demo/products/43282_0.jpg', 4, 1, '7540.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(284, '43283', '', '', '', '', '', '', '', 13, 5, 'catalog/demo/products/43283_0.jpg', 0, 1, '7240.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(285, '43284', '', '', '', '', '', '', '', 14, 5, 'catalog/demo/products/43284_0.jpg', 4, 1, '6990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(286, '43285', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/43285_0.jpg', 0, 1, '6470.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(287, '43286', '', '', '', '', '', '', '', 16, 5, 'catalog/demo/products/43286_0.jpg', 0, 1, '6400.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(288, '43311', '', '', '', '', '', '', '', 17, 5, 'catalog/demo/products/43311_0.jpg', 0, 1, '0.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(289, '43312', '', '', '', '', '', '', '', 18, 5, 'catalog/demo/products/43312_0.jpg', 0, 1, '12198.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(290, '43313', '', '', '', '', '', '', '', 19, 5, 'catalog/demo/products/43313_0.jpg', 0, 1, '6050.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(291, '43314', '', '', '', '', '', '', '', 20, 5, 'catalog/demo/products/43314_0.jpg', 0, 1, '5846.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(292, '43315', '', '', '', '', '', '', '', 21, 5, 'catalog/demo/products/43315_0.jpg', 0, 1, '5760.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(293, '43316', '', '', '', '', '', '', '', 22, 5, 'catalog/demo/products/43316_0.jpg', 0, 1, '5490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 12, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(294, '43317', '', '', '', '', '', '', '', 23, 5, 'catalog/demo/products/43317_0.jpg', 0, 1, '5040.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(295, '43318', '', '', '', '', '', '', '', 24, 5, 'catalog/demo/products/43318_0.jpg', 0, 1, '4570.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(296, '43319', '', '', '', '', '', '', '', 25, 5, 'catalog/demo/products/43319_0.jpg', 0, 1, '4390.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(297, '43320', '', '', '', '', '', '', '', 26, 5, 'catalog/demo/products/43320_0.jpg', 0, 1, '4180.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(298, '43321', '', '', '', '', '', '', '', 27, 5, 'catalog/demo/products/43321_0.jpg', 0, 1, '4160.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(299, '43360', '', '', '', '', '', '', '', 28, 5, 'catalog/demo/products/43360_0.jpg', 0, 1, '7590.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(300, '43361', '', '', '', '', '', '', '', 29, 5, 'catalog/demo/products/43361_0.jpg', 0, 1, '5490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(301, '43362', '', '', '', '', '', '', '', 30, 5, 'catalog/demo/products/43362_0.jpg', 0, 1, '5390.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
-(302, '43363', '', '', '', '', '', '', '', 31, 5, 'catalog/demo/products/43363_0.jpg', 0, 1, '5129.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(303, '43364', '', '', '', '', '', '', '', 32, 5, 'catalog/demo/products/43364_0.jpg', 0, 1, '4999.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(304, '43365', '', '', '', '', '', '', '', 33, 5, 'catalog/demo/products/43365_0.jpg', 0, 1, '4999.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(305, '43366', '', '', '', '', '', '', '', 34, 5, 'catalog/demo/products/43366_0.jpg', 0, 1, '4990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(306, '43367', '', '', '', '', '', '', '', 35, 5, 'catalog/demo/products/43367_0.jpg', 0, 1, '4759.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(307, '43368', '', '', '', '', '', '', '', 36, 5, 'catalog/demo/products/43368_0.jpg', 0, 1, '4749.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 11, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(308, '43369', '', '', '', '', '', '', '', 0, 5, 'catalog/demo/products/43369_0.jpg', 0, 1, '4590.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(309, '43408', '', '', '', '', '', '', '', 1, 5, 'catalog/demo/products/43408_0.jpg', 0, 1, '56890.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(217, '42998', '', '', '', '', '', '', '', 9, 5, 'catalog/demo/products/42998_0.jpg', 0, 1, '7480.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(218, '43016', '', '', '', '', '', '', '', 10, 5, 'catalog/demo/products/43016_0.jpg', 0, 1, '90860.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(219, '43017', '', '', '', '', '', '', '', 11, 5, 'catalog/demo/products/43017_0.jpg', 0, 1, '80890.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(220, '43018', '', '', '', '', '', '', '', 12, 5, 'catalog/demo/products/43018_0.jpg', 0, 1, '78930.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(221, '43019', '', '', '', '', '', '', '', 13, 5, 'catalog/demo/products/43019_0.jpg', 0, 1, '73490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(222, '43020', '', '', '', '', '', '', '', 14, 5, 'catalog/demo/products/43020_0.jpg', 0, 1, '69120.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(223, '43021', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/43021_0.jpg', 0, 1, '68190.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(224, '43022', '', '', '', '', '', '', '', 16, 5, 'catalog/demo/products/43022_0.jpg', 0, 1, '65430.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(225, '43023', '', '', '', '', '', '', '', 17, 5, 'catalog/demo/products/43023_0.jpg', 0, 1, '59690.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(226, '43024', '', '', '', '', '', '', '', 18, 5, 'catalog/demo/products/43024_0.jpg', 0, 1, '59500.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(227, '43025', '', '', '', '', '', '', '', 19, 5, 'catalog/demo/products/43025_0.jpg', 0, 1, '55490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(228, '43064', '', '', '', '', '', '', '', 20, 5, 'catalog/demo/products/43064_0.jpg', 0, 1, '78900.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(229, '43065', '', '', '', '', '', '', '', 21, 5, 'catalog/demo/products/43065_0.jpg', 0, 1, '64900.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(230, '43066', '', '', '', '', '', '', '', 22, 5, 'catalog/demo/products/43066_0.jpg', 0, 1, '59900.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(231, '43067', '', '', '', '', '', '', '', 23, 5, 'catalog/demo/products/43067_0.jpg', 0, 1, '54900.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(232, '43068', '', '', '', '', '', '', '', 24, 5, 'catalog/demo/products/43068_0.jpg', 0, 1, '50020.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(233, '43069', '', '', '', '', '', '', '', 25, 5, 'catalog/demo/products/43069_0.jpg', 0, 1, '47900.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(234, '43070', '', '', '', '', '', '', '', 26, 5, 'catalog/demo/products/43070_0.jpg', 0, 1, '42820.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 2, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(235, '43071', '', '', '', '', '', '', '', 27, 5, 'catalog/demo/products/43071_0.jpg', 0, 1, '42799.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(236, '43072', '', '', '', '', '', '', '', 28, 5, 'catalog/demo/products/43072_0.jpg', 0, 1, '36528.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(237, '43073', '', '', '', '', '', '', '', 29, 5, 'catalog/demo/products/43073_0.jpg', 0, 1, '36264.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(238, '43112', '', '', '', '', '', '', '', 30, 5, 'catalog/demo/products/43112_0.jpg', 0, 1, '17810.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(239, '43113', '', '', '', '', '', '', '', 31, 5, 'catalog/demo/products/43113_0.jpg', 0, 1, '14430.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(240, '43114', '', '', '', '', '', '', '', 32, 5, 'catalog/demo/products/43114_0.jpg', 0, 1, '10570.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(241, '43115', '', '', '', '', '', '', '', 33, 5, 'catalog/demo/products/43115_0.jpg', 0, 1, '10110.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(242, '43116', '', '', '', '', '', '', '', 34, 5, 'catalog/demo/products/43116_0.jpg', 0, 1, '10060.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(243, '43117', '', '', '', '', '', '', '', 35, 5, 'catalog/demo/products/43117_0.jpg', 0, 1, '8570.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(244, '43118', '', '', '', '', '', '', '', 0, 5, 'catalog/demo/products/43118_0.jpg', 0, 1, '8200.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(245, '43119', '', '', '', '', '', '', '', 1, 5, 'catalog/demo/products/43119_0.jpg', 0, 1, '8200.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(246, '43120', '', '', '', '', '', '', '', 2, 5, 'catalog/demo/products/43120_0.jpg', 0, 1, '7710.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(247, '43121', '', '', '', '', '', '', '', 3, 5, 'catalog/demo/products/43121_0.jpg', 0, 1, '7360.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(248, '43133', '', '', '', '', '', '', '', 4, 5, 'catalog/demo/products/43133_0.jpg', 0, 1, '22990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(249, '43134', '', '', '', '', '', '', '', 5, 5, 'catalog/demo/products/43134_0.jpg', 0, 1, '10150.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(250, '43135', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/43135_0.jpg', 0, 1, '9410.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(251, '43136', '', '', '', '', '', '', '', 7, 5, 'catalog/demo/products/43136_0.jpg', 0, 1, '9390.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(252, '43137', '', '', '', '', '', '', '', 8, 5, 'catalog/demo/products/43137_0.jpg', 0, 1, '9310.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(253, '43138', '', '', '', '', '', '', '', 9, 5, 'catalog/demo/products/43138_0.jpg', 0, 1, '9140.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(254, '43139', '', '', '', '', '', '', '', 10, 5, 'catalog/demo/products/43139_0.jpg', 0, 1, '8520.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(255, '43140', '', '', '', '', '', '', '', 11, 5, 'catalog/demo/products/43140_0.jpg', 0, 1, '8490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(256, '43141', '', '', '', '', '', '', '', 12, 5, 'catalog/demo/products/43141_0.jpg', 0, 1, '8390.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(257, '43142', '', '', '', '', '', '', '', 13, 5, 'catalog/demo/products/43142_0.jpg', 0, 1, '8250.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(258, '43181', '', '', '', '', '', '', '', 14, 5, 'catalog/demo/products/43181_0.jpg', 0, 1, '199990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(259, '43182', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/43182_0.jpg', 0, 1, '44690.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(260, '43183', '', '', '', '', '', '', '', 16, 5, 'catalog/demo/products/43183_0.jpg', 0, 1, '28760.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(261, '43184', '', '', '', '', '', '', '', 17, 5, 'catalog/demo/products/43184_0.jpg', 0, 0, '27990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2023-03-18 15:45:36', 1),
+(262, '43185', '', '', '', '', '', '', '', 18, 5, 'catalog/demo/products/43185_0.jpg', 0, 1, '24440.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 2, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(263, '43186', '', '', '', '', '', '', '', 19, 5, 'catalog/demo/products/43186_0.jpg', 0, 1, '21990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(264, '43187', '', '', '', '', '', '', '', 20, 5, 'catalog/demo/products/43187_0.jpg', 0, 1, '20990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(265, '43188', '', '', '', '', '', '', '', 21, 5, 'catalog/demo/products/43188_0.jpg', 0, 1, '19490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(266, '43189', '', '', '', '', '', '', '', 22, 5, 'catalog/demo/products/43189_0.jpg', 0, 1, '18990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(267, '43190', '', '', '', '', '', '', '', 23, 5, 'catalog/demo/products/43190_0.jpg', 0, 1, '18290.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 2, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(268, '43229', '', '', '', '', '', '', '', 24, 5, 'catalog/demo/products/43229_0.jpg', 0, 1, '14490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(269, '43230', '', '', '', '', '', '', '', 25, 5, 'catalog/demo/products/43230_0.jpg', 0, 1, '12250.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(270, '43231', '', '', '', '', '', '', '', 26, 5, 'catalog/demo/products/43231_0.jpg', 0, 1, '11740.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(271, '43232', '', '', '', '', '', '', '', 0, 5, 'catalog/demo/products/43232_0.jpg', 0, 1, '11690.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(272, '43233', '', '', '', '', '', '', '', 1, 5, 'catalog/demo/products/43233_0.jpg', 0, 1, '10490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(273, '43234', '', '', '', '', '', '', '', 2, 5, 'catalog/demo/products/43234_0.jpg', 0, 1, '10140.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(274, '43235', '', '', '', '', '', '', '', 3, 5, 'catalog/demo/products/43235_0.jpg', 4, 1, '7990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(275, '43236', '', '', '', '', '', '', '', 4, 5, 'catalog/demo/products/43236_0.jpg', 0, 1, '7140.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(276, '43237', '', '', '', '', '', '', '', 5, 5, 'catalog/demo/products/43237_0.jpg', 0, 1, '6490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(277, '43238', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/43238_0.jpg', 0, 1, '6480.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(278, '43277', '', '', '', '', '', '', '', 7, 5, 'catalog/demo/products/43277_0.jpg', 0, 1, '17990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(279, '43278', '', '', '', '', '', '', '', 8, 5, 'catalog/demo/products/43278_0.jpg', 0, 1, '14850.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(280, '43279', '', '', '', '', '', '', '', 9, 5, 'catalog/demo/products/43279_0.jpg', 0, 1, '14590.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(281, '43280', '', '', '', '', '', '', '', 10, 5, 'catalog/demo/products/43280_0.jpg', 0, 1, '12120.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(282, '43281', '', '', '', '', '', '', '', 11, 5, 'catalog/demo/products/43281_0.jpg', 0, 1, '8490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(283, '43282', '', '', '', '', '', '', '', 12, 5, 'catalog/demo/products/43282_0.jpg', 4, 1, '7540.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(284, '43283', '', '', '', '', '', '', '', 13, 5, 'catalog/demo/products/43283_0.jpg', 0, 1, '7240.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(285, '43284', '', '', '', '', '', '', '', 14, 5, 'catalog/demo/products/43284_0.jpg', 4, 1, '6990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(286, '43285', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/43285_0.jpg', 0, 1, '6470.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(287, '43286', '', '', '', '', '', '', '', 16, 5, 'catalog/demo/products/43286_0.jpg', 0, 1, '6400.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(288, '43311', '', '', '', '', '', '', '', 17, 5, 'catalog/demo/products/43311_0.jpg', 0, 1, '0.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(289, '43312', '', '', '', '', '', '', '', 18, 5, 'catalog/demo/products/43312_0.jpg', 0, 1, '12198.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(290, '43313', '', '', '', '', '', '', '', 19, 5, 'catalog/demo/products/43313_0.jpg', 0, 1, '6050.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(291, '43314', '', '', '', '', '', '', '', 20, 5, 'catalog/demo/products/43314_0.jpg', 0, 1, '5846.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(292, '43315', '', '', '', '', '', '', '', 21, 5, 'catalog/demo/products/43315_0.jpg', 0, 1, '5760.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(293, '43316', '', '', '', '', '', '', '', 22, 5, 'catalog/demo/products/43316_0.jpg', 0, 1, '5490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(294, '43317', '', '', '', '', '', '', '', 23, 5, 'catalog/demo/products/43317_0.jpg', 0, 1, '5040.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(295, '43318', '', '', '', '', '', '', '', 24, 5, 'catalog/demo/products/43318_0.jpg', 0, 1, '4570.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(296, '43319', '', '', '', '', '', '', '', 25, 5, 'catalog/demo/products/43319_0.jpg', 0, 1, '4390.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(297, '43320', '', '', '', '', '', '', '', 26, 5, 'catalog/demo/products/43320_0.jpg', 0, 1, '4180.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 2, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(298, '43321', '', '', '', '', '', '', '', 27, 5, 'catalog/demo/products/43321_0.jpg', 0, 1, '4160.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(299, '43360', '', '', '', '', '', '', '', 28, 5, 'catalog/demo/products/43360_0.jpg', 0, 1, '7590.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(300, '43361', '', '', '', '', '', '', '', 29, 5, 'catalog/demo/products/43361_0.jpg', 0, 1, '5490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(301, '43362', '', '', '', '', '', '', '', 30, 5, 'catalog/demo/products/43362_0.jpg', 0, 1, '5390.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:34', '2022-11-14 16:15:52', 1),
+(302, '43363', '', '', '', '', '', '', '', 31, 5, 'catalog/demo/products/43363_0.jpg', 0, 1, '5129.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(303, '43364', '', '', '', '', '', '', '', 32, 5, 'catalog/demo/products/43364_0.jpg', 0, 1, '4999.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(304, '43365', '', '', '', '', '', '', '', 33, 5, 'catalog/demo/products/43365_0.jpg', 0, 1, '4999.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(305, '43366', '', '', '', '', '', '', '', 34, 5, 'catalog/demo/products/43366_0.jpg', 0, 1, '4990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(306, '43367', '', '', '', '', '', '', '', 35, 5, 'catalog/demo/products/43367_0.jpg', 0, 1, '4759.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(307, '43368', '', '', '', '', '', '', '', 36, 5, 'catalog/demo/products/43368_0.jpg', 0, 1, '4749.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(308, '43369', '', '', '', '', '', '', '', 0, 5, 'catalog/demo/products/43369_0.jpg', 0, 1, '4590.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(309, '43408', '', '', '', '', '', '', '', 1, 5, 'catalog/demo/products/43408_0.jpg', 0, 1, '56890.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
 (310, '43409', '', '', '', '', '', '', '', 2, 5, 'catalog/demo/products/43409_0.jpg', 0, 1, '39599.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
 (311, '43410', '', '', '', '', '', '', '', 3, 5, 'catalog/demo/products/43410_0.jpg', 0, 1, '34990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(312, '43411', '', '', '', '', '', '', '', 4, 5, 'catalog/demo/products/43411_0.jpg', 0, 1, '33999.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(313, '43412', '', '', '', '', '', '', '', 5, 5, 'catalog/demo/products/43412_0.jpg', 0, 1, '33999.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(314, '43413', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/43413_0.jpg', 0, 1, '28176.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(315, '43414', '', '', '', '', '', '', '', 7, 5, 'catalog/demo/products/43414_0.jpg', 0, 1, '27549.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(312, '43411', '', '', '', '', '', '', '', 4, 5, 'catalog/demo/products/43411_0.jpg', 0, 1, '33999.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(313, '43412', '', '', '', '', '', '', '', 5, 5, 'catalog/demo/products/43412_0.jpg', 0, 1, '33999.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(314, '43413', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/43413_0.jpg', 0, 1, '28176.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(315, '43414', '', '', '', '', '', '', '', 7, 5, 'catalog/demo/products/43414_0.jpg', 0, 1, '27549.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
 (316, '43415', '', '', '', '', '', '', '', 8, 5, 'catalog/demo/products/43415_0.jpg', 0, 1, '27179.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(317, '43416', '', '', '', '', '', '', '', 9, 5, 'catalog/demo/products/43416_0.jpg', 0, 1, '25189.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(318, '43417', '', '', '', '', '', '', '', 10, 5, 'catalog/demo/products/43417_0.jpg', 0, 1, '22990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 11, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(319, '43437', '', '', '', '', '', '', '', 11, 5, 'catalog/demo/products/43437_0.jpg', 0, 1, '0.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(320, '43438', '', '', '', '', '', '', '', 12, 5, 'catalog/demo/products/43438_0.jpg', 0, 1, '0.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 11, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(321, '43439', '', '', '', '', '', '', '', 13, 5, 'catalog/demo/products/43439_0.jpg', 0, 1, '0.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(322, '43440', '', '', '', '', '', '', '', 14, 5, 'catalog/demo/products/43440_0.jpg', 0, 1, '48999.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(323, '43441', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/43441_0.jpg', 0, 1, '47599.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(324, '43442', '', '', '', '', '', '', '', 16, 5, 'catalog/demo/products/43442_0.jpg', 0, 1, '46999.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 12, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(325, '43443', '', '', '', '', '', '', '', 17, 5, 'catalog/demo/products/43443_0.jpg', 0, 1, '45569.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 11, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(326, '43444', '', '', '', '', '', '', '', 18, 5, 'catalog/demo/products/43444_0.jpg', 0, 1, '28860.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 11, '2022-11-11 12:51:35', '2022-12-16 13:14:48', 1),
-(327, '43445', '', '', '', '', '', '', '', 19, 5, 'catalog/demo/products/43445_0.jpg', 0, 1, '28499.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(328, '43446', '', '', '', '', '', '', '', 20, 5, 'catalog/demo/products/43446_0.jpg', 0, 1, '27539.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(329, '43447', '', '', '', '', '', '', '', 21, 5, 'catalog/demo/products/43447_0.jpg', 0, 1, '25090.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(330, '43448', '', '', '', '', '', '', '', 22, 5, 'catalog/demo/products/43448_0.jpg', 0, 1, '24499.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 11, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(331, '43449', '', '', '', '', '', '', '', 23, 5, 'catalog/demo/products/43449_0.jpg', 0, 1, '23749.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 11, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(332, '43488', '', '', '', '', '', '', '', 24, 5, 'catalog/demo/products/43488_0.jpg', 0, 1, '109990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(333, '43489', '', '', '', '', '', '', '', 25, 5, 'catalog/demo/products/43489_0.jpg', 0, 1, '13880.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(334, '43490', '', '', '', '', '', '', '', 26, 5, 'catalog/demo/products/43490_0.jpg', 0, 1, '12990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(335, '43491', '', '', '', '', '', '', '', 27, 5, 'catalog/demo/products/43491_0.jpg', 0, 1, '12930.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(336, '43492', '', '', '', '', '', '', '', 0, 5, 'catalog/demo/products/43492_0.jpg', 0, 1, '12880.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(337, '43493', '', '', '', '', '', '', '', 1, 5, 'catalog/demo/products/43493_0.jpg', 0, 1, '12620.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(338, '43494', '', '', '', '', '', '', '', 2, 5, 'catalog/demo/products/43494_0.jpg', 0, 1, '12250.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(339, '43495', '', '', '', '', '', '', '', 3, 5, 'catalog/demo/products/43495_0.jpg', 0, 1, '12150.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(340, '43496', '', '', '', '', '', '', '', 4, 5, 'catalog/demo/products/43496_0.jpg', 0, 1, '11280.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(341, '43497', '', '', '', '', '', '', '', 5, 5, 'catalog/demo/products/43497_0.jpg', 0, 1, '11150.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(342, '43498', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/43498_0.jpg', 0, 1, '9490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(343, '43499', '', '', '', '', '', '', '', 7, 5, 'catalog/demo/products/43499_0.jpg', 0, 1, '9270.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(344, '43500', '', '', '', '', '', '', '', 8, 5, 'catalog/demo/products/43500_0.jpg', 0, 1, '9060.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(345, '43501', '', '', '', '', '', '', '', 9, 5, 'catalog/demo/products/43501_0.jpg', 0, 1, '9000.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(346, '43502', '', '', '', '', '', '', '', 10, 5, 'catalog/demo/products/43502_0.jpg', 0, 1, '8970.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(347, '43503', '', '', '', '', '', '', '', 11, 5, 'catalog/demo/products/43503_0.jpg', 0, 1, '8960.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(348, '43542', '', '', '', '', '', '', '', 12, 5, 'catalog/demo/products/43542_0.jpg', 0, 1, '100130.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 11, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(349, '43543', '', '', '', '', '', '', '', 13, 5, 'catalog/demo/products/43543_0.jpg', 0, 1, '72510.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 12, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(350, '43544', '', '', '', '', '', '', '', 14, 5, 'catalog/demo/products/43544_0.jpg', 0, 1, '63290.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(351, '43545', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/43545_0.jpg', 0, 1, '62970.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(352, '43546', '', '', '', '', '', '', '', 16, 5, 'catalog/demo/products/43546_0.jpg', 0, 1, '48990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(353, '43547', '', '', '', '', '', '', '', 17, 5, 'catalog/demo/products/43547_0.jpg', 0, 1, '47990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(354, '43548', '', '', '', '', '', '', '', 18, 5, 'catalog/demo/products/43548_0.jpg', 0, 1, '45870.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(355, '43549', '', '', '', '', '', '', '', 19, 5, 'catalog/demo/products/43549_0.jpg', 0, 1, '44990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(356, '43550', '', '', '', '', '', '', '', 20, 5, 'catalog/demo/products/43550_0.jpg', 0, 1, '42590.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 13, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(357, '43551', '', '', '', '', '', '', '', 21, 5, 'catalog/demo/products/43551_0.jpg', 0, 1, '41550.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 12, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(358, '43590', '', '', '', '', '', '', '', 22, 5, 'catalog/demo/products/43590_0.jpg', 0, 1, '58010.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(359, '43591', '', '', '', '', '', '', '', 23, 5, 'catalog/demo/products/43591_0.jpg', 0, 1, '58010.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(360, '43592', '', '', '', '', '', '', '', 24, 5, 'catalog/demo/products/43592_0.jpg', 0, 1, '56670.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 13, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(361, '43593', '', '', '', '', '', '', '', 25, 5, 'catalog/demo/products/43593_0.jpg', 0, 1, '56490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(362, '43594', '', '', '', '', '', '', '', 26, 5, 'catalog/demo/products/43594_0.jpg', 0, 1, '55700.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(363, '43595', '', '', '', '', '', '', '', 27, 5, 'catalog/demo/products/43595_0.jpg', 0, 1, '54690.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(364, '43596', '', '', '', '', '', '', '', 28, 5, 'catalog/demo/products/43596_0.jpg', 0, 1, '54690.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 2, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(365, '43597', '', '', '', '', '', '', '', 29, 5, 'catalog/demo/products/43597_0.jpg', 0, 1, '54690.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(366, '43598', '', '', '', '', '', '', '', 30, 5, 'catalog/demo/products/43598_0.jpg', 0, 1, '54550.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(367, '43599', '', '', '', '', '', '', '', 31, 5, 'catalog/demo/products/43599_0.jpg', 0, 1, '53680.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(368, '43638', '', '', '', '', '', '', '', 0, 5, 'catalog/demo/products/43638_0.jpg', 0, 1, '6220.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(369, '43639', '', '', '', '', '', '', '', 1, 5, 'catalog/demo/products/43639_0.jpg', 0, 1, '5400.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(370, '43640', '', '', '', '', '', '', '', 2, 5, 'catalog/demo/products/43640_0.jpg', 0, 1, '5280.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(371, '43641', '', '', '', '', '', '', '', 3, 5, 'catalog/demo/products/43641_0.jpg', 0, 1, '5280.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(372, '43642', '', '', '', '', '', '', '', 4, 5, 'catalog/demo/products/43642_0.jpg', 0, 1, '4730.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(373, '43643', '', '', '', '', '', '', '', 5, 5, 'catalog/demo/products/43643_0.jpg', 0, 1, '4440.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(374, '43644', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/43644_0.jpg', 0, 1, '4170.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(375, '43645', '', '', '', '', '', '', '', 7, 5, 'catalog/demo/products/43645_0.jpg', 0, 1, '2910.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(376, '43646', '', '', '', '', '', '', '', 8, 5, 'catalog/demo/products/43646_0.jpg', 0, 1, '2890.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(377, '43647', '', '', '', '', '', '', '', 9, 5, 'catalog/demo/products/43647_0.jpg', 0, 1, '2860.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(378, '43686', '', '', '', '', '', '', '', 10, 5, 'catalog/demo/products/43686_0.jpg', 0, 1, '32990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(379, '43687', '', '', '', '', '', '', '', 11, 5, 'catalog/demo/products/43687_0.jpg', 0, 1, '27730.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(380, '43688', '', '', '', '', '', '', '', 12, 5, 'catalog/demo/products/43688_0.jpg', 0, 1, '24770.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 2, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(381, '43689', '', '', '', '', '', '', '', 13, 5, 'catalog/demo/products/43689_0.jpg', 0, 1, '23980.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(382, '43690', '', '', '', '', '', '', '', 14, 5, 'catalog/demo/products/43690_0.jpg', 0, 1, '22330.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 2, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(383, '43691', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/43691_0.jpg', 0, 1, '21990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(384, '43692', '', '', '', '', '', '', '', 16, 5, 'catalog/demo/products/43692_0.jpg', 0, 1, '21790.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(385, '43693', '', '', '', '', '', '', '', 17, 5, 'catalog/demo/products/43693_0.jpg', 0, 1, '21460.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 6, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(386, '43694', '', '', '', '', '', '', '', 18, 5, 'catalog/demo/products/43694_0.jpg', 0, 1, '21120.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(387, '43695', '', '', '', '', '', '', '', 19, 5, 'catalog/demo/products/43695_0.jpg', 0, 1, '20830.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(388, '43734', '', '', '', '', '', '', '', 20, 5, 'catalog/demo/products/43734_0.jpg', 0, 1, '56090.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(389, '43735', '', '', '', '', '', '', '', 21, 5, 'catalog/demo/products/43735_0.jpg', 0, 1, '55890.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(390, '43736', '', '', '', '', '', '', '', 22, 5, 'catalog/demo/products/43736_0.jpg', 0, 1, '46990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 9, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1);
+(317, '43416', '', '', '', '', '', '', '', 9, 5, 'catalog/demo/products/43416_0.jpg', 0, 1, '25189.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(318, '43417', '', '', '', '', '', '', '', 10, 5, 'catalog/demo/products/43417_0.jpg', 0, 1, '22990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(319, '43437', '', '', '', '', '', '', '', 11, 5, 'catalog/demo/products/43437_0.jpg', 0, 1, '0.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(320, '43438', '', '', '', '', '', '', '', 12, 5, 'catalog/demo/products/43438_0.jpg', 0, 1, '0.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(321, '43439', '', '', '', '', '', '', '', 13, 5, 'catalog/demo/products/43439_0.jpg', 0, 1, '0.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(322, '43440', '', '', '', '', '', '', '', 14, 5, 'catalog/demo/products/43440_0.jpg', 0, 1, '48999.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(323, '43441', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/43441_0.jpg', 0, 1, '47599.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(324, '43442', '', '', '', '', '', '', '', 16, 5, 'catalog/demo/products/43442_0.jpg', 0, 1, '46999.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(325, '43443', '', '', '', '', '', '', '', 17, 5, 'catalog/demo/products/43443_0.jpg', 0, 1, '45569.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(326, '43444', '', '', '', '', '', '', '', 18, 5, 'catalog/demo/products/43444_0.jpg', 0, 1, '28860.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-12-16 13:14:48', 1),
+(327, '43445', '', '', '', '', '', '', '', 19, 5, 'catalog/demo/products/43445_0.jpg', 0, 1, '28499.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(328, '43446', '', '', '', '', '', '', '', 20, 5, 'catalog/demo/products/43446_0.jpg', 0, 1, '27539.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 2, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(329, '43447', '', '', '', '', '', '', '', 21, 5, 'catalog/demo/products/43447_0.jpg', 0, 1, '25090.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(330, '43448', '', '', '', '', '', '', '', 22, 5, 'catalog/demo/products/43448_0.jpg', 0, 1, '24499.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(331, '43449', '', '', '', '', '', '', '', 23, 5, 'catalog/demo/products/43449_0.jpg', 0, 1, '23749.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(332, '43488', '', '', '', '', '', '', '', 24, 5, 'catalog/demo/products/43488_0.jpg', 0, 1, '109990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(333, '43489', '', '', '', '', '', '', '', 25, 5, 'catalog/demo/products/43489_0.jpg', 0, 1, '13880.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(334, '43490', '', '', '', '', '', '', '', 26, 5, 'catalog/demo/products/43490_0.jpg', 0, 1, '12990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(335, '43491', '', '', '', '', '', '', '', 27, 5, 'catalog/demo/products/43491_0.jpg', 0, 1, '12930.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(336, '43492', '', '', '', '', '', '', '', 0, 5, 'catalog/demo/products/43492_0.jpg', 0, 1, '12880.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(337, '43493', '', '', '', '', '', '', '', 1, 5, 'catalog/demo/products/43493_0.jpg', 0, 1, '12620.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(338, '43494', '', '', '', '', '', '', '', 2, 5, 'catalog/demo/products/43494_0.jpg', 0, 1, '12250.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(339, '43495', '', '', '', '', '', '', '', 3, 5, 'catalog/demo/products/43495_0.jpg', 0, 1, '12150.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(340, '43496', '', '', '', '', '', '', '', 4, 5, 'catalog/demo/products/43496_0.jpg', 0, 1, '11280.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(341, '43497', '', '', '', '', '', '', '', 5, 5, 'catalog/demo/products/43497_0.jpg', 0, 1, '11150.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(342, '43498', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/43498_0.jpg', 0, 1, '9490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(343, '43499', '', '', '', '', '', '', '', 7, 5, 'catalog/demo/products/43499_0.jpg', 0, 1, '9270.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(344, '43500', '', '', '', '', '', '', '', 8, 5, 'catalog/demo/products/43500_0.jpg', 0, 1, '9060.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(345, '43501', '', '', '', '', '', '', '', 9, 5, 'catalog/demo/products/43501_0.jpg', 0, 1, '9000.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(346, '43502', '', '', '', '', '', '', '', 10, 5, 'catalog/demo/products/43502_0.jpg', 0, 1, '8970.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(347, '43503', '', '', '', '', '', '', '', 11, 5, 'catalog/demo/products/43503_0.jpg', 0, 1, '8960.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(348, '43542', '', '', '', '', '', '', '', 12, 5, 'catalog/demo/products/43542_0.jpg', 0, 1, '100130.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(349, '43543', '', '', '', '', '', '', '', 13, 5, 'catalog/demo/products/43543_0.jpg', 0, 1, '72510.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(350, '43544', '', '', '', '', '', '', '', 14, 5, 'catalog/demo/products/43544_0.jpg', 0, 1, '63290.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(351, '43545', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/43545_0.jpg', 0, 1, '62970.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(352, '43546', '', '', '', '', '', '', '', 16, 5, 'catalog/demo/products/43546_0.jpg', 0, 1, '48990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(353, '43547', '', '', '', '', '', '', '', 17, 5, 'catalog/demo/products/43547_0.jpg', 0, 1, '47990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(354, '43548', '', '', '', '', '', '', '', 18, 5, 'catalog/demo/products/43548_0.jpg', 0, 1, '45870.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(355, '43549', '', '', '', '', '', '', '', 19, 5, 'catalog/demo/products/43549_0.jpg', 0, 1, '44990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(356, '43550', '', '', '', '', '', '', '', 20, 5, 'catalog/demo/products/43550_0.jpg', 0, 1, '42590.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(357, '43551', '', '', '', '', '', '', '', 21, 5, 'catalog/demo/products/43551_0.jpg', 0, 1, '41550.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(358, '43590', '', '', '', '', '', '', '', 22, 5, 'catalog/demo/products/43590_0.jpg', 0, 1, '58010.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(359, '43591', '', '', '', '', '', '', '', 23, 5, 'catalog/demo/products/43591_0.jpg', 0, 1, '58010.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(360, '43592', '', '', '', '', '', '', '', 24, 5, 'catalog/demo/products/43592_0.jpg', 0, 1, '56670.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(361, '43593', '', '', '', '', '', '', '', 25, 5, 'catalog/demo/products/43593_0.jpg', 0, 1, '56490.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(362, '43594', '', '', '', '', '', '', '', 26, 5, 'catalog/demo/products/43594_0.jpg', 0, 1, '55700.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(363, '43595', '', '', '', '', '', '', '', 27, 5, 'catalog/demo/products/43595_0.jpg', 0, 1, '54690.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 5, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(364, '43596', '', '', '', '', '', '', '', 28, 5, 'catalog/demo/products/43596_0.jpg', 0, 1, '54690.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 21, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(365, '43597', '', '', '', '', '', '', '', 29, 5, 'catalog/demo/products/43597_0.jpg', 0, 1, '54690.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(366, '43598', '', '', '', '', '', '', '', 30, 5, 'catalog/demo/products/43598_0.jpg', 0, 1, '54550.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(367, '43599', '', '', '', '', '', '', '', 31, 5, 'catalog/demo/products/43599_0.jpg', 0, 1, '53680.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(368, '43638', '', '', '', '', '', '', '', 0, 5, 'catalog/demo/products/43638_0.jpg', 0, 1, '6220.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(369, '43639', '', '', '', '', '', '', '', 1, 5, 'catalog/demo/products/43639_0.jpg', 0, 1, '5400.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(370, '43640', '', '', '', '', '', '', '', 2, 5, 'catalog/demo/products/43640_0.jpg', 0, 1, '5280.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(371, '43641', '', '', '', '', '', '', '', 3, 5, 'catalog/demo/products/43641_0.jpg', 0, 1, '5280.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(372, '43642', '', '', '', '', '', '', '', 4, 5, 'catalog/demo/products/43642_0.jpg', 0, 1, '4730.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(373, '43643', '', '', '', '', '', '', '', 5, 5, 'catalog/demo/products/43643_0.jpg', 0, 1, '4440.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(374, '43644', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/43644_0.jpg', 0, 1, '4170.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(375, '43645', '', '', '', '', '', '', '', 7, 5, 'catalog/demo/products/43645_0.jpg', 0, 1, '2910.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(376, '43646', '', '', '', '', '', '', '', 8, 5, 'catalog/demo/products/43646_0.jpg', 0, 1, '2890.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(377, '43647', '', '', '', '', '', '', '', 9, 5, 'catalog/demo/products/43647_0.jpg', 0, 1, '2860.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 10, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(378, '43686', '', '', '', '', '', '', '', 10, 5, 'catalog/demo/products/43686_0.jpg', 0, 1, '32990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(379, '43687', '', '', '', '', '', '', '', 11, 5, 'catalog/demo/products/43687_0.jpg', 0, 1, '27730.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(380, '43688', '', '', '', '', '', '', '', 12, 5, 'catalog/demo/products/43688_0.jpg', 0, 1, '24770.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(381, '43689', '', '', '', '', '', '', '', 13, 5, 'catalog/demo/products/43689_0.jpg', 0, 1, '23980.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(382, '43690', '', '', '', '', '', '', '', 14, 5, 'catalog/demo/products/43690_0.jpg', 0, 1, '22330.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(383, '43691', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/43691_0.jpg', 0, 1, '21990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(384, '43692', '', '', '', '', '', '', '', 16, 5, 'catalog/demo/products/43692_0.jpg', 0, 1, '21790.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(385, '43693', '', '', '', '', '', '', '', 17, 5, 'catalog/demo/products/43693_0.jpg', 0, 1, '21460.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(386, '43694', '', '', '', '', '', '', '', 18, 5, 'catalog/demo/products/43694_0.jpg', 0, 1, '21120.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(387, '43695', '', '', '', '', '', '', '', 19, 5, 'catalog/demo/products/43695_0.jpg', 0, 1, '20830.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(388, '43734', '', '', '', '', '', '', '', 20, 5, 'catalog/demo/products/43734_0.jpg', 0, 1, '56090.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(389, '43735', '', '', '', '', '', '', '', 21, 5, 'catalog/demo/products/43735_0.jpg', 0, 1, '55890.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(390, '43736', '', '', '', '', '', '', '', 22, 5, 'catalog/demo/products/43736_0.jpg', 0, 1, '46990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1);
 INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `isbn`, `mpn`, `location`, `quantity`, `stock_status_id`, `image`, `manufacturer_id`, `shipping`, `price`, `points`, `tax_class_id`, `date_available`, `weight`, `weight_class_id`, `length`, `width`, `height`, `length_class_id`, `subtract`, `minimum`, `sort_order`, `status`, `viewed`, `date_added`, `date_modified`, `noindex`) VALUES
-(391, '43737', '', '', '', '', '', '', '', 23, 5, 'catalog/demo/products/43737_0.jpg', 0, 1, '44790.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 3, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(392, '43738', '', '', '', '', '', '', '', 24, 5, 'catalog/demo/products/43738_0.jpg', 0, 1, '42790.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(393, '43739', '', '', '', '', '', '', '', 25, 5, 'catalog/demo/products/43739_0.jpg', 0, 1, '42090.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 8, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(394, '43740', '', '', '', '', '', '', '', 26, 5, 'catalog/demo/products/43740_0.jpg', 0, 1, '41990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 4, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(395, '43741', '', '', '', '', '', '', '', 27, 5, 'catalog/demo/products/43741_0.jpg', 0, 1, '41890.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(396, '43742', '', '', '', '', '', '', '', 28, 5, 'catalog/demo/products/43742_0.jpg', 0, 1, '41690.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 7, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(397, '43743', '', '', '', '', '', '', '', 29, 5, 'catalog/demo/products/43743_0.jpg', 0, 1, '39690.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 13, '2022-11-11 12:51:36', '2022-11-14 16:15:52', 1);
+(391, '43737', '', '', '', '', '', '', '', 23, 5, 'catalog/demo/products/43737_0.jpg', 0, 1, '44790.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(392, '43738', '', '', '', '', '', '', '', 24, 5, 'catalog/demo/products/43738_0.jpg', 0, 1, '42790.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(393, '43739', '', '', '', '', '', '', '', 25, 5, 'catalog/demo/products/43739_0.jpg', 0, 1, '42090.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(394, '43740', '', '', '', '', '', '', '', 26, 5, 'catalog/demo/products/43740_0.jpg', 0, 1, '41990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(395, '43741', '', '', '', '', '', '', '', 27, 5, 'catalog/demo/products/43741_0.jpg', 0, 1, '41890.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(396, '43742', '', '', '', '', '', '', '', 28, 5, 'catalog/demo/products/43742_0.jpg', 0, 1, '41690.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
+(397, '43743', '', '', '', '', '', '', '', 29, 5, 'catalog/demo/products/43743_0.jpg', 0, 1, '39690.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:36', '2022-11-14 16:15:52', 1);
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `oc_product_attribute`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 18, 2023 at 02:07 PM
---
 
-DROP TABLE IF EXISTS `oc_product_attribute`;
 CREATE TABLE `oc_product_attribute` (
   `product_id` int(11) NOT NULL,
   `attribute_id` int(11) NOT NULL,
@@ -4783,7 +4317,6 @@ INSERT INTO `oc_product_attribute` (`product_id`, `attribute_id`, `language_id`,
 (44, 21, 1, 'черный;'),
 (44, 22, 1, 'data-кабель в комплекте;'),
 (45, 23, 1, '3.25A,'),
-(45, 21, 1, 'черный;'),
 (46, 24, 1, '2xUSB-A + 2xUSB-C;'),
 (46, 20, 1, 'от бытовой сети;'),
 (46, 23, 1, '1.5A, 3A, 5A, 2.5A,'),
@@ -5987,9 +5520,9 @@ INSERT INTO `oc_product_attribute` (`product_id`, `attribute_id`, `language_id`,
 (258, 49, 1, '200Вт,'),
 (259, 123, 1, 'бедер, плеч, спины, шеи,'),
 (259, 125, 1, '5;'),
-(259, 126, 1, '2;');
+(259, 126, 1, '2;'),
+(259, 49, 1, '75Вт,');
 INSERT INTO `oc_product_attribute` (`product_id`, `attribute_id`, `language_id`, `text`) VALUES
-(259, 49, 1, '75Вт,'),
 (260, 123, 1, 'бедер, спины,'),
 (260, 124, 1, 'вибромассаж,'),
 (260, 125, 1, '2;'),
@@ -6728,19 +6261,17 @@ INSERT INTO `oc_product_attribute` (`product_id`, `attribute_id`, `language_id`,
 (261, 125, 1, '2;'),
 (261, 125, 2, ''),
 (7, 1, 1, '5.8&quot;, OLED, 2436x1125, 458PPI;'),
-(7, 7, 2, '');
+(7, 7, 2, ''),
+(45, 21, 2, ''),
+(45, 21, 1, 'черный;'),
+(45, 23, 2, '');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `oc_product_description`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 18, 2023 at 02:07 PM
--- Last check: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_product_description`;
 CREATE TABLE `oc_product_description` (
   `product_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
@@ -6800,7 +6331,6 @@ INSERT INTO `oc_product_description` (`product_id`, `language_id`, `name`, `desc
 (42, 1, 'Беспроводное зарядное устройство Canyon WS-404,  черный', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
 (43, 1, 'Сетевое зарядное устройство SATECHI Compact Charger,  серый', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
 (44, 1, 'Беспроводное зарядное устройство Prestigio ReVolt A7 3 в 1,  черный', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
-(45, 1, 'Беспроводное зар./устр. Xiaomi 50W Wireless Charging Stand 3.25A (PD) универсальное черный/золотисты', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
 (46, 1, 'Сетевое зарядное устройство Canyon H-100,  белый', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
 (47, 1, 'Беспроводное зарядное устройство Prestigio Revolt A9 3 в 1,  серый', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
 (48, 1, 'Беспроводное зарядное устройство Apple MagSafe MHXH3ZE/A,  белый', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
@@ -6866,9 +6396,9 @@ INSERT INTO `oc_product_description` (`product_id`, `language_id`, `name`, `desc
 (108, 1, 'Кофемашина Melitta F 63/0-201,  серебристый', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
 (109, 1, 'Кофемашина DeLonghi ECAM550.65.SB,  черный/серебристый', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
 (110, 1, 'Кофемашина Melitta Caffeo E 970-101 CI,  серебристый', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
-(111, 1, 'Кофемашина Nivona CafeRomatica NICR 970,  титановый/черный', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', '');
+(111, 1, 'Кофемашина Nivona CafeRomatica NICR 970,  титановый/черный', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
+(112, 1, 'Кофемашина Nivona CafeRomatica NICR 930,  титановый/черный', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', '');
 INSERT INTO `oc_product_description` (`product_id`, `language_id`, `name`, `description`, `tag`, `meta_title`, `meta_description`, `meta_keyword`, `meta_h1`) VALUES
-(112, 1, 'Кофемашина Nivona CafeRomatica NICR 930,  титановый/черный', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
 (113, 1, 'Кофемашина Bosch VeroCup 500 TIS30521RW,  серебристый', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
 (114, 1, 'Кофемашина Melitta Caffeo E 957-203,  черный', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
 (115, 1, 'Кофемашина Krups Espresseria EA82FE10,  серебристый', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
@@ -6980,9 +6510,9 @@ INSERT INTO `oc_product_description` (`product_id`, `language_id`, `name`, `desc
 (221, 1, 'Газонокосилка бензиновая AL-KO Premium 520 SP-B Plus,  51см, самоходная', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
 (222, 1, 'Газонокосилка аккумуляторная Makita DLM530Z,  53см, несамоходная', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
 (223, 1, 'Газонокосилка бензиновая AL-KO Comfort 46.0 SPI-A,  46см, самоходная', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
-(224, 1, 'Газонокосилка аккумуляторная BLACK+DECKER CLM5448PC2-QW,  48см, несамоходная', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', '');
+(224, 1, 'Газонокосилка аккумуляторная BLACK+DECKER CLM5448PC2-QW,  48см, несамоходная', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
+(225, 1, 'Газонокосилка бензиновая AL-KO Premium 470 SP-A,  46см, самоходная', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', '');
 INSERT INTO `oc_product_description` (`product_id`, `language_id`, `name`, `description`, `tag`, `meta_title`, `meta_description`, `meta_keyword`, `meta_h1`) VALUES
-(225, 1, 'Газонокосилка бензиновая AL-KO Premium 470 SP-A,  46см, самоходная', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
 (226, 1, 'Газонокосилка аккумуляторная DeWALT DCMW564P2,  48см, несамоходная', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
 (227, 1, 'Газонокосилка бензиновая CHAMPION LM5347EBS,  53см, самоходная', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
 (228, 1, 'Бассейн BESTWAY каркасный, 14812л, длина 549см, ПВХ/полиэстер, серый', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
@@ -7094,9 +6624,9 @@ INSERT INTO `oc_product_description` (`product_id`, `language_id`, `name`, `desc
 (334, 1, 'Гироскутер MIZAR MZ10RD,  10&quot;,  красный', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
 (335, 1, 'Гироскутер MIZAR MZ10YM,  10&quot;,  желтый', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
 (336, 1, 'Гироскутер MIZAR MZ10WM,  10&quot;,  белый', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
-(337, 1, 'Гироскутер MIZAR MZ10FE,  10&quot;,  многоцветный', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', '');
+(337, 1, 'Гироскутер MIZAR MZ10FE,  10&quot;,  многоцветный', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
+(338, 1, 'Самокат GLOBBER Ultimum Light, детский, 3-колесный, 125мм, 90мм, черный', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', '');
 INSERT INTO `oc_product_description` (`product_id`, `language_id`, `name`, `description`, `tag`, `meta_title`, `meta_description`, `meta_keyword`, `meta_h1`) VALUES
-(338, 1, 'Самокат GLOBBER Ultimum Light, детский, 3-колесный, 125мм, 90мм, черный', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
 (339, 1, 'Самокат GLOBBER Ultimum Lights, детский, 3-колесный, 125мм, 90мм, голубой/черный', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
 (340, 1, 'Самокат GLOBBER Ultimum, детский, 3-колесный, 125мм, 90мм, синий/черный', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
 (341, 1, 'Самокат GLOBBER Ultimum, детский, 3-колесный, 125мм, 90мм, голубой/черный', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
@@ -7202,9 +6732,9 @@ INSERT INTO `oc_product_description` (`product_id`, `language_id`, `name`, `desc
 (43, 2, 'AC charger SATECHI Compact Charger, gray', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
 (44, 2, 'Wireless charger Prestigio ReVolt A7 3 in 1, black', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
 (45, 2, 'Wireless Charger/Device Xiaomi 50W Wireless Charging Stand 3.25A (PD) universal black/gold', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
-(46, 2, 'Mains charger Canyon H-100, white', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '');
+(46, 2, 'Mains charger Canyon H-100, white', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
+(47, 2, 'Wireless charger Prestigio Revolt A9 3 in 1, gray', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '');
 INSERT INTO `oc_product_description` (`product_id`, `language_id`, `name`, `description`, `tag`, `meta_title`, `meta_description`, `meta_keyword`, `meta_h1`) VALUES
-(47, 2, 'Wireless charger Prestigio Revolt A9 3 in 1, gray', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
 (48, 2, 'Apple MagSafe MHXH3ZE/A Wireless Charger, White', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
 (49, 2, 'Wireless charger Samsung EP-P2400, white', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
 (50, 2, 'Wireless charger Samsung EP-P2400, black', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
@@ -7309,9 +6839,9 @@ INSERT INTO `oc_product_description` (`product_id`, `language_id`, `name`, `desc
 (149, 2, 'Hotfrost V115 PUF purifier without filters outdoor compressor white/grey', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
 (150, 2, 'Cooler HOTFROST 45AS, floor standing, compressor, button, silver', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
 (151, 2, 'Cooler HOTFROST V450ASM, floor standing, compressor, sensor, black/silver', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
-(152, 2, 'Cooler HOTFROST V400AS, floor standing, compressor, button, silver/black', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '');
+(152, 2, 'Cooler HOTFROST V400AS, floor standing, compressor, button, silver/black', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
+(153, 2, 'Cooler HIBERG UFK-653W, outdoor, compressor, button, white', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '');
 INSERT INTO `oc_product_description` (`product_id`, `language_id`, `name`, `description`, `tag`, `meta_title`, `meta_description`, `meta_keyword`, `meta_h1`) VALUES
-(153, 2, 'Cooler HIBERG UFK-653W, outdoor, compressor, button, white', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
 (154, 2, 'Cooler HOTFROST V400BS, floor standing, compressor, button, silver/black', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
 (155, 2, 'Cooler HOTFROST V25L, floor, compressor, &quot;push&quot; - tap, white', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
 (156, 2, 'Cooler HIBERG F-91FGB, outdoor, electronic, sensor, black', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
@@ -7420,9 +6950,9 @@ INSERT INTO `oc_product_description` (`product_id`, `language_id`, `name`, `desc
 (259, 2, 'Massage chair BRADEX KZ 0601, turquoise', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
 (260, 2, 'Massage cape Medisana MC 826, black', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
 (261, 1, 'Массажер Beurer MG850,  серый', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
-(262, 2, 'Massage cape Medisana MCG 820, silver', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '');
+(262, 2, 'Massage cape Medisana MCG 820, silver', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
+(263, 2, 'Massage cape Medisana MC 828, black', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '');
 INSERT INTO `oc_product_description` (`product_id`, `language_id`, `name`, `description`, `tag`, `meta_title`, `meta_description`, `meta_keyword`, `meta_h1`) VALUES
-(263, 2, 'Massage cape Medisana MC 828, black', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
 (264, 2, 'Massage cape Beurer MG295, black', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
 (265, 2, 'Massage cape Medisana MC 825, black', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
 (266, 2, 'Massage mat Beurer MG280, gray', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
@@ -7529,9 +7059,9 @@ INSERT INTO `oc_product_description` (`product_id`, `language_id`, `name`, `desc
 (367, 2, 'Bicycle FORMAT 1413 (2021), mountain (adult), frame 19&quot;, wheels 27.5&quot;, grey, 14.8kg', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
 (368, 2, 'Longboard Ridex Onyxia w.8.75&quot; d.40&quot; ABEC 9 col.:70x42mm red/black (UT-00018542)', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
 (369, 2, 'Longboard Termit 107290-MX w.10.2&quot; d.38.4&quot; ABEC 9 col.:70x51mm multicolor', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
-(370, 2, 'Longboard Ridex Canyon w.9.75&quot; d.69&quot; ABEC 7 col.:70x51mm purple (UT-00018574)', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '');
+(370, 2, 'Longboard Ridex Canyon w.9.75&quot; d.69&quot; ABEC 7 col.:70x51mm purple (UT-00018574)', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
+(371, 2, 'Longboard Ridex Spirit w.9.75&quot; d.39&quot; ABEC 7 col.:69x55mm blue/red (UT-00021025)', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '');
 INSERT INTO `oc_product_description` (`product_id`, `language_id`, `name`, `description`, `tag`, `meta_title`, `meta_description`, `meta_keyword`, `meta_h1`) VALUES
-(371, 2, 'Longboard Ridex Spirit w.9.75&quot; d.39&quot; ABEC 7 col.:69x55mm blue/red (UT-00021025)', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
 (372, 2, 'Skateboard Tempish Ontop W.9.1&quot; L.31.2&quot; ABEC 7 Col.:50x30mm Black (106000045)', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
 (373, 2, 'Longboard Ridex Laser w.8.75&quot; d.32&quot; ABEC 5 col.:70x51mm blue/pink (UT-00018573)', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
 (374, 2, 'Longboard Ridex Axolotl w.9.65&quot; d.31&quot; ABEC 5 col.:65x51mm blue/red (UT-00021023)', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
@@ -7558,19 +7088,15 @@ INSERT INTO `oc_product_description` (`product_id`, `language_id`, `name`, `desc
 (395, 2, 'Motor-rowing boat HUNTERBOAT Hunter 345 LKA, inflatable, white', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
 (396, 2, 'Boat motor rowing HUNTERBOAT Hunter 310 A, inflatable, gray', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
 (397, 2, 'Motor-rowing boat HUNTERBOAT Hunter Stealth 335, inflatable, blue', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
-(7, 1, 'Смартфон Apple iPhone 11 Pro 512Gb,  MWCE2RU/A,  серебристый', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', '');
+(7, 1, 'Смартфон Apple iPhone 11 Pro 512Gb,  MWCE2RU/A,  серебристый', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
+(45, 1, 'Беспроводное зар./устр. Xiaomi 50W Wireless Charging Stand 3.25A (PD) универсальное черный/золотисты', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `oc_product_discount`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
--- Last check: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_product_discount`;
 CREATE TABLE `oc_product_discount` (
   `product_discount_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
@@ -7587,11 +7113,7 @@ CREATE TABLE `oc_product_discount` (
 --
 -- Table structure for table `oc_product_filter`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 18, 2023 at 02:07 PM
---
 
-DROP TABLE IF EXISTS `oc_product_filter`;
 CREATE TABLE `oc_product_filter` (
   `product_id` int(11) NOT NULL,
   `filter_id` int(11) NOT NULL
@@ -7610,12 +7132,7 @@ INSERT INTO `oc_product_filter` (`product_id`, `filter_id`) VALUES
 --
 -- Table structure for table `oc_product_image`
 --
--- Creation: Mar 18, 2023 at 02:02 PM
--- Last update: Mar 18, 2023 at 02:07 PM
--- Last check: Mar 18, 2023 at 02:02 PM
---
 
-DROP TABLE IF EXISTS `oc_product_image`;
 CREATE TABLE `oc_product_image` (
   `product_image_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
@@ -7838,9 +7355,9 @@ INSERT INTO `oc_product_image` (`product_image_id`, `product_id`, `image`, `titl
 (211, 44, 'catalog/demo/products/42234_2.jpg', '', 2),
 (212, 44, 'catalog/demo/products/42234_3.jpg', '', 3),
 (213, 44, 'catalog/demo/products/42234_4.jpg', '', 4),
-(214, 45, 'catalog/demo/products/42235_1.jpg', '', 1),
-(215, 45, 'catalog/demo/products/42235_2.jpg', '', 2),
-(216, 45, 'catalog/demo/products/42235_3.jpg', '', 3),
+(1601, 45, 'catalog/demo/products/42235_3.jpg', '', 3),
+(1600, 45, 'catalog/demo/products/42235_2.jpg', '', 2),
+(1599, 45, 'catalog/demo/products/42235_1.jpg', '', 1),
 (217, 46, 'catalog/demo/products/42236_1.jpg', '', 1),
 (218, 46, 'catalog/demo/products/42236_2.jpg', '', 2),
 (219, 46, 'catalog/demo/products/42236_3.jpg', '', 3),
@@ -9125,11 +8642,7 @@ INSERT INTO `oc_product_image` (`product_image_id`, `product_id`, `image`, `titl
 --
 -- Table structure for table `oc_product_option`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_product_option`;
 CREATE TABLE `oc_product_option` (
   `product_option_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
@@ -9138,16 +8651,19 @@ CREATE TABLE `oc_product_option` (
   `required` tinyint(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `oc_product_option`
+--
+
+INSERT INTO `oc_product_option` (`product_option_id`, `product_id`, `option_id`, `value`, `required`) VALUES
+(1, 45, 14, '', 1);
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `oc_product_option_value`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_product_option_value`;
 CREATE TABLE `oc_product_option_value` (
   `product_option_value_id` int(11) NOT NULL,
   `product_option_id` int(11) NOT NULL,
@@ -9164,16 +8680,21 @@ CREATE TABLE `oc_product_option_value` (
   `weight_prefix` varchar(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `oc_product_option_value`
+--
+
+INSERT INTO `oc_product_option_value` (`product_option_value_id`, `product_option_id`, `product_id`, `option_id`, `option_value_id`, `quantity`, `subtract`, `price`, `price_prefix`, `points`, `points_prefix`, `weight`, `weight_prefix`) VALUES
+(1, 1, 45, 14, 49, 10, 1, '0.0000', '+', 0, '+', '0.00000000', '+'),
+(2, 1, 45, 14, 50, 10, 1, '500.0000', '+', 0, '+', '0.00000000', '+'),
+(3, 1, 45, 14, 51, 10, 1, '1800.0000', '+', 0, '+', '0.00000000', '+');
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `oc_product_recurring`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_product_recurring`;
 CREATE TABLE `oc_product_recurring` (
   `product_id` int(11) NOT NULL,
   `recurring_id` int(11) NOT NULL,
@@ -9185,11 +8706,7 @@ CREATE TABLE `oc_product_recurring` (
 --
 -- Table structure for table `oc_product_related`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_product_related`;
 CREATE TABLE `oc_product_related` (
   `product_id` int(11) NOT NULL,
   `related_id` int(11) NOT NULL
@@ -9200,11 +8717,7 @@ CREATE TABLE `oc_product_related` (
 --
 -- Table structure for table `oc_product_related_article`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_product_related_article`;
 CREATE TABLE `oc_product_related_article` (
   `article_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL
@@ -9215,11 +8728,7 @@ CREATE TABLE `oc_product_related_article` (
 --
 -- Table structure for table `oc_product_related_mn`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_product_related_mn`;
 CREATE TABLE `oc_product_related_mn` (
   `product_id` int(11) NOT NULL,
   `manufacturer_id` int(11) NOT NULL
@@ -9230,11 +8739,7 @@ CREATE TABLE `oc_product_related_mn` (
 --
 -- Table structure for table `oc_product_related_wb`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_product_related_wb`;
 CREATE TABLE `oc_product_related_wb` (
   `product_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL
@@ -9245,11 +8750,7 @@ CREATE TABLE `oc_product_related_wb` (
 --
 -- Table structure for table `oc_product_reward`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_product_reward`;
 CREATE TABLE `oc_product_reward` (
   `product_reward_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL DEFAULT '0',
@@ -9262,11 +8763,7 @@ CREATE TABLE `oc_product_reward` (
 --
 -- Table structure for table `oc_product_special`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 18, 2023 at 02:07 PM
---
 
-DROP TABLE IF EXISTS `oc_product_special`;
 CREATE TABLE `oc_product_special` (
   `product_special_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
@@ -9291,19 +8788,15 @@ INSERT INTO `oc_product_special` (`product_special_id`, `product_id`, `customer_
 (7, 6, 1, 1, '104990.0000', '0000-00-00', '0000-00-00'),
 (9, 8, 1, 1, '98370.0000', '0000-00-00', '0000-00-00'),
 (10, 9, 1, 1, '94999.0000', '0000-00-00', '0000-00-00'),
-(11, 10, 1, 1, '94990.0000', '0000-00-00', '0000-00-00');
+(11, 10, 1, 1, '94990.0000', '0000-00-00', '0000-00-00'),
+(19, 45, 1, 0, '4500.0000', '0000-00-00', '0000-00-00');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `oc_product_to_category`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 18, 2023 at 02:07 PM
--- Last check: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_product_to_category`;
 CREATE TABLE `oc_product_to_category` (
   `product_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
@@ -10115,11 +9608,7 @@ INSERT INTO `oc_product_to_category` (`product_id`, `category_id`, `main_categor
 --
 -- Table structure for table `oc_product_to_download`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_product_to_download`;
 CREATE TABLE `oc_product_to_download` (
   `product_id` int(11) NOT NULL,
   `download_id` int(11) NOT NULL
@@ -10130,11 +9619,7 @@ CREATE TABLE `oc_product_to_download` (
 --
 -- Table structure for table `oc_product_to_layout`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 18, 2023 at 02:07 PM
---
 
-DROP TABLE IF EXISTS `oc_product_to_layout`;
 CREATE TABLE `oc_product_to_layout` (
   `product_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL,
@@ -10149,18 +9634,15 @@ INSERT INTO `oc_product_to_layout` (`product_id`, `store_id`, `layout_id`) VALUE
 (1, 0, 0),
 (7, 0, 0),
 (326, 0, 0),
-(261, 0, 0);
+(261, 0, 0),
+(45, 0, 0);
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `oc_product_to_store`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 18, 2023 at 02:07 PM
---
 
-DROP TABLE IF EXISTS `oc_product_to_store`;
 CREATE TABLE `oc_product_to_store` (
   `product_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL DEFAULT '0'
@@ -10574,11 +10056,7 @@ INSERT INTO `oc_product_to_store` (`product_id`, `store_id`) VALUES
 --
 -- Table structure for table `oc_recurring`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 12:02 PM
---
 
-DROP TABLE IF EXISTS `oc_recurring`;
 CREATE TABLE `oc_recurring` (
   `recurring_id` int(11) NOT NULL,
   `price` decimal(10,4) NOT NULL,
@@ -10599,11 +10077,7 @@ CREATE TABLE `oc_recurring` (
 --
 -- Table structure for table `oc_recurring_description`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 12:02 PM
---
 
-DROP TABLE IF EXISTS `oc_recurring_description`;
 CREATE TABLE `oc_recurring_description` (
   `recurring_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
@@ -10615,11 +10089,7 @@ CREATE TABLE `oc_recurring_description` (
 --
 -- Table structure for table `oc_return`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_return`;
 CREATE TABLE `oc_return` (
   `return_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
@@ -10654,11 +10124,7 @@ INSERT INTO `oc_return` (`return_id`, `order_id`, `product_id`, `customer_id`, `
 --
 -- Table structure for table `oc_return_action`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_return_action`;
 CREATE TABLE `oc_return_action` (
   `return_action_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL DEFAULT '0',
@@ -10682,11 +10148,7 @@ INSERT INTO `oc_return_action` (`return_action_id`, `language_id`, `name`) VALUE
 --
 -- Table structure for table `oc_return_history`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_return_history`;
 CREATE TABLE `oc_return_history` (
   `return_history_id` int(11) NOT NULL,
   `return_id` int(11) NOT NULL,
@@ -10708,11 +10170,7 @@ INSERT INTO `oc_return_history` (`return_history_id`, `return_id`, `return_statu
 --
 -- Table structure for table `oc_return_reason`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_return_reason`;
 CREATE TABLE `oc_return_reason` (
   `return_reason_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL DEFAULT '0',
@@ -10740,11 +10198,7 @@ INSERT INTO `oc_return_reason` (`return_reason_id`, `language_id`, `name`) VALUE
 --
 -- Table structure for table `oc_return_status`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_return_status`;
 CREATE TABLE `oc_return_status` (
   `return_status_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL DEFAULT '0',
@@ -10768,11 +10222,7 @@ INSERT INTO `oc_return_status` (`return_status_id`, `language_id`, `name`) VALUE
 --
 -- Table structure for table `oc_review`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 12:16 PM
---
 
-DROP TABLE IF EXISTS `oc_review`;
 CREATE TABLE `oc_review` (
   `review_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
@@ -10790,18 +10240,15 @@ CREATE TABLE `oc_review` (
 --
 
 INSERT INTO `oc_review` (`review_id`, `product_id`, `customer_id`, `author`, `text`, `rating`, `status`, `date_added`, `date_modified`) VALUES
-(1, 7, 0, 'Jimmy Hendrix ', 'What the hell is online store?', 3, 1, '2022-11-12 21:43:01', '2022-12-16 12:16:06');
+(1, 7, 0, 'Jimmy Hendrix ', 'What the hell is online store?', 3, 1, '2022-11-12 21:43:01', '2022-12-16 12:16:06'),
+(2, 45, 0, 'Donald Trump', 'This is amazing product, I\'ll take everything!', 5, 1, '2023-12-05 16:37:59', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `oc_review_article`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 07:22 AM
---
 
-DROP TABLE IF EXISTS `oc_review_article`;
 CREATE TABLE `oc_review_article` (
   `review_article_id` int(11) NOT NULL,
   `article_id` int(11) NOT NULL,
@@ -10826,12 +10273,7 @@ INSERT INTO `oc_review_article` (`review_article_id`, `article_id`, `customer_id
 --
 -- Table structure for table `oc_seo_url`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 18, 2023 at 03:25 PM
--- Last check: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_seo_url`;
 CREATE TABLE `oc_seo_url` (
   `seo_url_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL,
@@ -10979,7 +10421,7 @@ INSERT INTO `oc_seo_url` (`seo_url_id`, `store_id`, `language_id`, `query`, `key
 (144, 0, 2, 'product_id=42', 'wireless-charger-canyon-ws-404-black'),
 (145, 0, 2, 'product_id=43', 'ac-charger-satechi-compact-charger-gray'),
 (146, 0, 2, 'product_id=44', 'wireless-charger-prestigio-revolt-a7-3-in-1-black'),
-(147, 0, 2, 'product_id=45', 'wireless-charger-device-xiaomi-50w-wireless-charging-stand-3-25a-pd-universal-black-gold'),
+(1081, 0, 2, 'product_id=45', 'wireless-charger-device-xiaomi-50w-wireless-charging-stand-3-25a-pd-universal-black-gold'),
 (148, 0, 2, 'product_id=46', 'mains-charger-canyon-h-100-white'),
 (149, 0, 2, 'product_id=47', 'wireless-charger-prestigio-revolt-a9-3-in-1-gray'),
 (150, 0, 2, 'product_id=48', 'apple-magsafe-mhxh3ze-a-wireless-charger-white'),
@@ -11389,7 +10831,7 @@ INSERT INTO `oc_seo_url` (`seo_url_id`, `store_id`, `language_id`, `query`, `key
 (557, 0, 1, 'product_id=42', 'besprovodnoe-zaryadnoe-ustrojstvo-canyon-ws-404-chernyj'),
 (558, 0, 1, 'product_id=43', 'setevoe-zaryadnoe-ustrojstvo-satechi-compact-charger-seryj'),
 (559, 0, 1, 'product_id=44', 'besprovodnoe-zaryadnoe-ustrojstvo-prestigio-revolt-a7-3-v-1-chernyj'),
-(560, 0, 1, 'product_id=45', 'besprovodnoe-zar-ustr-xiaomi-50w-wireless-charging-stand-3-25a-pd-universalnoe-chernyj-zolotisty'),
+(1080, 0, 1, 'product_id=45', 'besprovodnoe-zar-ustr-xiaomi-50w-wireless-charging-stand-3-25a-pd-universalnoe-chernyj-zolotisty'),
 (561, 0, 1, 'product_id=46', 'setevoe-zaryadnoe-ustrojstvo-canyon-h-100-belyj'),
 (562, 0, 1, 'product_id=47', 'besprovodnoe-zaryadnoe-ustrojstvo-prestigio-revolt-a9-3-v-1-seryj'),
 (563, 0, 1, 'product_id=48', 'besprovodnoe-zaryadnoe-ustrojstvo-apple-magsafe-mhxh3ze-a-belyj'),
@@ -11772,11 +11214,7 @@ INSERT INTO `oc_seo_url` (`seo_url_id`, `store_id`, `language_id`, `query`, `key
 --
 -- Table structure for table `oc_session`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 24, 2023 at 07:06 AM
---
 
-DROP TABLE IF EXISTS `oc_session`;
 CREATE TABLE `oc_session` (
   `session_id` varchar(32) NOT NULL,
   `data` text NOT NULL,
@@ -11788,46 +11226,14 @@ CREATE TABLE `oc_session` (
 --
 
 INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES
-('03e6da31f77c4630d0a7f5ba1d', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2023-03-24 11:36:22'),
-('05c708fb8610614144055617cc', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2023-03-24 09:09:21'),
-('067dbfc9654aabbfce7b273eb3', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2023-03-24 12:24:45'),
-('1d42e4bad4118c395995904508', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2023-03-24 08:10:58'),
-('27c3a3fc5f229f3cb60bbf77fb', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2023-03-24 14:32:25'),
-('328f0cc5e591e6b83987a3e885', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2023-03-24 14:33:08'),
-('3d5afab4b2977650d6fbc6503d', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2023-03-24 09:07:05'),
-('43dfdae47d3e007ddc3a704519', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2023-03-24 12:24:44'),
-('450bbcfaf7090ec1a348129c1e', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2023-03-24 12:36:11'),
-('45d701a6be2463c1605ea137f6', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2023-03-24 08:50:21'),
-('62058fea17ca5953100c12cef6', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2023-03-24 18:06:36'),
-('65204c381f527fa81f8c169979', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2023-03-24 07:56:43'),
-('65f6e3367e9469ad05e85ba3f0', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2023-03-24 14:33:09'),
-('6dc4e808c80b845b0bab94b5ef', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2023-03-24 14:32:23'),
-('70b649c20b79c80d5543039e3f', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2023-03-24 08:10:57'),
-('71bcd1e3ddf0dc3631684480c7', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2023-03-24 08:21:31'),
-('854af76e1d38c57e7d9d17f725', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2023-03-24 15:56:46'),
-('92f2d78727ef536ad2ff1d20a7', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2023-03-24 15:56:27'),
-('96e488c5ab4115350b6b08d88c', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2023-03-24 08:15:49'),
-('a6a5019b64058329ecc76c78ab', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2023-03-24 08:21:32'),
-('aef1b9dd1ca4c521170ee1dcb5', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2023-03-24 07:58:04'),
-('b0d09d2ea9d3eb216478707e9f', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2023-03-24 07:56:41'),
-('bd957546686ce9d35028e8e1d7', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2023-03-24 08:50:42'),
-('c07f0d29792a5ae56a205adfe9', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2023-03-24 09:51:08'),
-('d6fcb7cf6af610ef84d7088771', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2023-03-24 15:23:49'),
-('daf919966b54b94b4f2ea32371', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2023-03-24 11:36:23'),
-('e536f5ca7ea212d91bfaacef15', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2023-03-24 09:07:07'),
-('f9059e078d9375d49c6a2320bb', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2023-03-24 08:15:50'),
-('f9a6f8ce126f9eed85b3e437a4', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2023-03-24 15:23:59');
+('467c87508e18ecd9fef777d6ff', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"user_id\":\"1\",\"user_token\":\"nbRCbrDilT5D1owL3h51N8FIS2xP5PlO\",\"success\":\"\\u041d\\u0430\\u0441\\u0442\\u0440\\u043e\\u0439\\u043a\\u0438 \\u0443\\u0441\\u043f\\u0435\\u0448\\u043d\\u043e \\u0438\\u0437\\u043c\\u0435\\u043d\\u0435\\u043d\\u044b!\"}', '2024-01-16 15:10:10');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `oc_setting`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 21, 2023 at 12:21 PM
---
 
-DROP TABLE IF EXISTS `oc_setting`;
 CREATE TABLE `oc_setting` (
   `setting_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL DEFAULT '0',
@@ -11843,36 +11249,45 @@ CREATE TABLE `oc_setting` (
 
 INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `serialized`) VALUES
 (8130, 0, 'csvprice_pro', 'csvprice_pro_csv_import_mod', '2', 0),
-(8600, 0, 'theme_default', 'theme_default_image_location_height', '50', 0),
+(14762, 0, 'theme_default', 'theme_default_image_location_width', '268', 0),
 (9648, 0, 'captcha_basic', 'captcha_basic_status', '1', 0),
-(14513, 0, 'config', 'config_social_media', '[{\"name\":\"telegram\",\"url\":\"https:\\/\\/t.me\\/exopencart\",\"icon\":\"&lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;   &lt;path d=&quot;M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z&quot;\\/&gt; &lt;\\/svg&gt;\",\"contact\":\"1\",\"header\":\"1\"}]', 1),
+(15773, 4, 'config', 'config_logo', '', 0),
+(15772, 4, 'config', 'config_stock_checkout', '0', 0),
+(15771, 4, 'config', 'config_stock_display', '0', 0),
+(15770, 4, 'config', 'config_order_status_id', '16', 0),
+(15769, 4, 'config', 'config_checkout_id', '0', 0),
+(15768, 4, 'config', 'config_checkout_guest', '0', 0),
+(15767, 4, 'config', 'config_cart_weight', '0', 0),
+(15766, 4, 'config', 'config_account_id', '0', 0),
+(15765, 4, 'config', 'config_customer_price', '0', 0),
+(15764, 4, 'config', 'config_customer_group_id', '1', 0),
+(15763, 4, 'config', 'config_tax_customer', '', 0),
+(15762, 4, 'config', 'config_tax_default', '', 0),
+(15657, 0, 'config', 'config_noindex_status', '1', 0),
+(15658, 0, 'config', 'config_noindex_disallow_params', 'page', 0),
 (10423, 0, 'currency_cbr', 'currency_cbr_status', '1', 0),
-(14602, 0, 'config', 'config_add_prevnext', '0', 0),
-(14603, 0, 'config', 'config_noindex_status', '1', 0),
-(14604, 0, 'config', 'config_noindex_disallow_params', 'page', 0),
-(14579, 0, 'config', 'config_seo_url', '1', 0),
-(14580, 0, 'config', 'config_robots', 'abot\r\ndbot\r\nebot\r\nhbot\r\nkbot\r\nlbot\r\nmbot\r\nnbot\r\nobot\r\npbot\r\nrbot\r\nsbot\r\ntbot\r\nvbot\r\nybot\r\nzbot\r\nbot.\r\nbot/\r\n_bot\r\n.bot\r\n/bot\r\n-bot\r\n:bot\r\n(bot\r\ncrawl\r\nslurp\r\nspider\r\nseek\r\naccoona\r\nacoon\r\nadressendeutschland\r\nah-ha.com\r\nahoy\r\naltavista\r\nananzi\r\nanthill\r\nappie\r\narachnophilia\r\narale\r\naraneo\r\naranha\r\narchitext\r\naretha\r\narks\r\nasterias\r\natlocal\r\natn\r\natomz\r\naugurfind\r\nbackrub\r\nbannana_bot\r\nbaypup\r\nbdfetch\r\nbig brother\r\nbiglotron\r\nbjaaland\r\nblackwidow\r\nblaiz\r\nblog\r\nblo.\r\nbloodhound\r\nboitho\r\nbooch\r\nbradley\r\nbutterfly\r\ncalif\r\ncassandra\r\nccubee\r\ncfetch\r\ncharlotte\r\nchurl\r\ncienciaficcion\r\ncmc\r\ncollective\r\ncomagent\r\ncombine\r\ncomputingsite\r\ncsci\r\ncurl\r\ncusco\r\ndaumoa\r\ndeepindex\r\ndelorie\r\ndepspid\r\ndeweb\r\ndie blinde kuh\r\ndigger\r\nditto\r\ndmoz\r\ndocomo\r\ndownload express\r\ndtaagent\r\ndwcp\r\nebiness\r\nebingbong\r\ne-collector\r\nejupiter\r\nemacs-w3 search engine\r\nesther\r\nevliya celebi\r\nezresult\r\nfalcon\r\nfelix ide\r\nferret\r\nfetchrover\r\nfido\r\nfindlinks\r\nfireball\r\nfish search\r\nfouineur\r\nfunnelweb\r\ngazz\r\ngcreep\r\ngenieknows\r\ngetterroboplus\r\ngeturl\r\nglx\r\ngoforit\r\ngolem\r\ngrabber\r\ngrapnel\r\ngralon\r\ngriffon\r\ngromit\r\ngrub\r\ngulliver\r\nhamahakki\r\nharvest\r\nhavindex\r\nhelix\r\nheritrix\r\nhku www octopus\r\nhomerweb\r\nhtdig\r\nhtml index\r\nhtml_analyzer\r\nhtmlgobble\r\nhubater\r\nhyper-decontextualizer\r\nia_archiver\r\nibm_planetwide\r\nichiro\r\niconsurf\r\niltrovatore\r\nimage.kapsi.net\r\nimagelock\r\nincywincy\r\nindexer\r\ninfobee\r\ninformant\r\ningrid\r\ninktomisearch.com\r\ninspector web\r\nintelliagent\r\ninternet shinchakubin\r\nip3000\r\niron33\r\nisraeli-search\r\nivia\r\njack\r\njakarta\r\njavabee\r\njetbot\r\njumpstation\r\nkatipo\r\nkdd-explorer\r\nkilroy\r\nknowledge\r\nkototoi\r\nkretrieve\r\nlabelgrabber\r\nlachesis\r\nlarbin\r\nlegs\r\nlibwww\r\nlinkalarm\r\nlink validator\r\nlinkscan\r\nlockon\r\nlwp\r\nlycos\r\nmagpie\r\nmantraagent\r\nmapoftheinternet\r\nmarvin/\r\nmattie\r\nmediafox\r\nmediapartners\r\nmercator\r\nmerzscope\r\nmicrosoft url control\r\nminirank\r\nmiva\r\nmj12\r\nmnogosearch\r\nmoget\r\nmonster\r\nmoose\r\nmotor\r\nmultitext\r\nmuncher\r\nmuscatferret\r\nmwd.search\r\nmyweb\r\nnajdi\r\nnameprotect\r\nnationaldirectory\r\nnazilla\r\nncsa beta\r\nnec-meshexplorer\r\nnederland.zoek\r\nnetcarta webmap engine\r\nnetmechanic\r\nnetresearchserver\r\nnetscoop\r\nnewscan-online\r\nnhse\r\nnokia6682/\r\nnomad\r\nnoyona\r\nnutch\r\nnzexplorer\r\nobjectssearch\r\noccam\r\nomni\r\nopen text\r\nopenfind\r\nopenintelligencedata\r\norb search\r\nosis-project\r\npack rat\r\npageboy\r\npagebull\r\npage_verifier\r\npanscient\r\nparasite\r\npartnersite\r\npatric\r\npear.\r\npegasus\r\nperegrinator\r\npgp key agent\r\nphantom\r\nphpdig\r\npicosearch\r\npiltdownman\r\npimptrain\r\npinpoint\r\npioneer\r\npiranha\r\nplumtreewebaccessor\r\npogodak\r\npoirot\r\npompos\r\npoppelsdorf\r\npoppi\r\npopular iconoclast\r\npsycheclone\r\npublisher\r\npython\r\nrambler\r\nraven search\r\nroach\r\nroad runner\r\nroadhouse\r\nrobbie\r\nrobofox\r\nrobozilla\r\nrules\r\nsalty\r\nsbider\r\nscooter\r\nscoutjet\r\nscrubby\r\nsearch.\r\nsearchprocess\r\nsemanticdiscovery\r\nsenrigan\r\nsg-scout\r\nshai\'hulud\r\nshark\r\nshopwiki\r\nsidewinder\r\nsift\r\nsilk\r\nsimmany\r\nsite searcher\r\nsite valet\r\nsitetech-rover\r\nskymob.com\r\nsleek\r\nsmartwit\r\nsna-\r\nsnappy\r\nsnooper\r\nsohu\r\nspeedfind\r\nsphere\r\nsphider\r\nspinner\r\nspyder\r\nsteeler/\r\nsuke\r\nsuntek\r\nsupersnooper\r\nsurfnomore\r\nsven\r\nsygol\r\nszukacz\r\ntach black widow\r\ntarantula\r\ntempleton\r\n/teoma\r\nt-h-u-n-d-e-r-s-t-o-n-e\r\ntheophrastus\r\ntitan\r\ntitin\r\ntkwww\r\ntoutatis\r\nt-rex\r\ntutorgig\r\ntwiceler\r\ntwisted\r\nucsd\r\nudmsearch\r\nurl check\r\nupdated\r\nvagabondo\r\nvalkyrie\r\nverticrawl\r\nvictoria\r\nvision-search\r\nvolcano\r\nvoyager/\r\nvoyager-hc\r\nw3c_validator\r\nw3m2\r\nw3mir\r\nwalker\r\nwallpaper\r\nwanderer\r\nwauuu\r\nwavefire\r\nweb core\r\nweb hopper\r\nweb wombat\r\nwebbandit\r\nwebcatcher\r\nwebcopy\r\nwebfoot\r\nweblayers\r\nweblinker\r\nweblog monitor\r\nwebmirror\r\nwebmonkey\r\nwebquest\r\nwebreaper\r\nwebsitepulse\r\nwebsnarf\r\nwebstolperer\r\nwebvac\r\nwebwalk\r\nwebwatch\r\nwebwombat\r\nwebzinger\r\nwhizbang\r\nwhowhere\r\nwild ferret\r\nworldlight\r\nwwwc\r\nwwwster\r\nxenu\r\nxget\r\nxift\r\nxirq\r\nyandex\r\nyanga\r\nyeti\r\nyodao\r\nzao\r\nzippp\r\nzyborg', 0),
-(14596, 0, 'config', 'config_seopro_lowercase', '1', 0),
-(14597, 0, 'config', 'config_page_postfix', '', 0),
-(14598, 0, 'config', 'config_valide_param_flag', '0', 0),
-(14599, 0, 'config', 'config_valide_params', 'block\r\nfrommarket\r\ngclid\r\nfbclid\r\nkeyword\r\nlist_type\r\nopenstat\r\nopenstat_service\r\nopenstat_campaign\r\nopenstat_ad\r\nopenstat_source\r\nposition\r\nsource\r\ntracking\r\ntype\r\nyclid\r\nymclid\r\nuri\r\nurltype\r\nutm_source\r\nutm_medium\r\nutm_campaign\r\nutm_term\r\nutm_content', 0),
-(14600, 0, 'config', 'config_canonical_method', '1', 0),
-(14601, 0, 'config', 'config_canonical_self', '1', 0),
-(14595, 0, 'config', 'config_seopro_addslash', '0', 0),
-(14594, 0, 'config', 'config_seo_url_cache', '0', 0),
-(14593, 0, 'config', 'config_seo_url_include_path', '1', 0),
-(14592, 0, 'config', 'config_seo_pro', '1', 0),
-(14589, 0, 'config', 'config_error_display', '1', 0),
-(14590, 0, 'config', 'config_error_log', '1', 0),
-(14591, 0, 'config', 'config_error_filename', 'error.log', 0),
-(14581, 0, 'config', 'config_compression', '5', 0),
-(14582, 0, 'config', 'config_secure', '1', 0),
-(14583, 0, 'config', 'config_password', '1', 0),
-(14584, 0, 'config', 'config_shared', '0', 0),
-(14585, 0, 'config', 'config_encryption', 'AvDOHR6kH9BLEczAZNdGuwdmQ1KwCrGTxePAJH0lIiwmxodZoeUZqlWA2WaEQar2FWL94rQJ60XHDNlNBgba3kwgfrM1FXVUHdfQT0nyhcHJzUgdpvsqCsUy1t1QnzdGjyUZryrucbbj7X1T2zqIIBa0K7GLpX5b034Fch7ssF6TfCDF4GiUwnrTE4TrRRBP1OyYuGNdiY7RJB4XMpoSKMhxiOZ5nIJWNvGaNZHp12b1gM0XlThzVp5Ztwvzvwt6H7ziH2spSBIImkzQj4mnwWPNQyL9wBgkuI4uIjIArC3qAmTcNqDsVG34n90hPduSbATWqYg0Y47Q3dQeMdlZ8nbu82MxznvuYCo4alw9dBPhRALQdraYP0T4iPViWRGv3tvtPwLDUloSTNjXbBBLlxmtZVTpbGI8AOXWRPsA9TUzW7fZhxZWqYZBaOkoaCBldJz5x37nI4kadApCvgFztCL650RKVw6bfofTz67UiTyoEpG3PPdev3bA5mI10Kz42mLJEvuZEz7vyklzAe4CGRBtNf2yTyXD1OrevBnLKFNmhSrV7D9DfasWnk1RBv7QjuLSPqspSPTEOPIbjGPW5udGSOy5KjL4xwF7eoyGNCcPxmXdAZ8AOODJDCoUQtlVi92QJ3recF16kyPhsPKIbfpmXnLS0rvRFJQlUEGf6ytaN0g6iShTSalvYeqbXFjrfDug0NjQ3l6rvA5SOOveI0JB87ta4MWh41MihJIe5D88dkikE7zgczGczaT40blBb6ROHf3wcCb2wxEoKaR4ts8pkOeatfBLlLDptyq8cJTXD3CZLLLyXGz3EoqhHFPFUFO8UAjqY1UhsTZiItNd7Z4bIuvsluhAuP97spWjD0nNwH2iO7kn1DKFn9eMUAMRB4WXenuRKSDW6F7u4iyz0TW2aSMHYXxhsTAaXtIztyZmMK5rV1dG92HmZ6K9NOR4lyFnouvqAOgInF3UJw9Fz3ZRjQoNKl09ikipdl8GStDVARyhJN9tm1g9gmdA7M0u', 0),
-(14586, 0, 'config', 'config_file_max_size', '10000000', 0),
-(14587, 0, 'config', 'config_file_ext_allowed', 'zip\r\ntxt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc', 0),
-(14588, 0, 'config', 'config_file_mime_allowed', 'text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/tiff\r\nimage/svg+xml\r\napplication/zip\r\n&quot;application/zip&quot;\r\napplication/x-zip\r\n&quot;application/x-zip&quot;\r\napplication/x-zip-compressed\r\n&quot;application/x-zip-compressed&quot;\r\napplication/rar\r\n&quot;application/rar&quot;\r\napplication/x-rar\r\n&quot;application/x-rar&quot;\r\napplication/x-rar-compressed\r\n&quot;application/x-rar-compressed&quot;\r\napplication/octet-stream\r\n&quot;application/octet-stream&quot;\r\naudio/mpeg\r\nvideo/quicktime\r\napplication/pdf', 0),
+(15643, 0, 'config', 'config_error_display', '1', 0),
+(15644, 0, 'config', 'config_error_log', '1', 0),
+(15645, 0, 'config', 'config_error_filename', 'error.log', 0),
+(15656, 0, 'config', 'config_add_prevnext', '0', 0),
+(15655, 0, 'config', 'config_canonical_self', '1', 0),
+(15654, 0, 'config', 'config_canonical_method', '1', 0),
+(15648, 0, 'config', 'config_seo_url_cache', '0', 0),
+(15649, 0, 'config', 'config_seopro_addslash', '0', 0),
+(15650, 0, 'config', 'config_seopro_lowercase', '1', 0),
+(15651, 0, 'config', 'config_page_postfix', '', 0),
+(15652, 0, 'config', 'config_valide_param_flag', '0', 0),
+(15653, 0, 'config', 'config_valide_params', 'block\r\nfrommarket\r\ngclid\r\nfbclid\r\nkeyword\r\nlist_type\r\nopenstat\r\nopenstat_service\r\nopenstat_campaign\r\nopenstat_ad\r\nopenstat_source\r\nposition\r\nsource\r\ntracking\r\ntype\r\nyclid\r\nymclid\r\nuri\r\nurltype\r\nutm_source\r\nutm_medium\r\nutm_campaign\r\nutm_term\r\nutm_content', 0),
+(15646, 0, 'config', 'config_seo_pro', '0', 0),
+(15647, 0, 'config', 'config_seo_url_include_path', '0', 0),
+(15640, 0, 'config', 'config_file_max_size', '10000000', 0),
+(15641, 0, 'config', 'config_file_ext_allowed', 'zip\r\ntxt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc', 0),
+(15642, 0, 'config', 'config_file_mime_allowed', 'text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/tiff\r\nimage/svg+xml\r\napplication/zip\r\n&quot;application/zip&quot;\r\napplication/x-zip\r\n&quot;application/x-zip&quot;\r\napplication/x-zip-compressed\r\n&quot;application/x-zip-compressed&quot;\r\napplication/rar\r\n&quot;application/rar&quot;\r\napplication/x-rar\r\n&quot;application/x-rar&quot;\r\napplication/x-rar-compressed\r\n&quot;application/x-rar-compressed&quot;\r\napplication/octet-stream\r\n&quot;application/octet-stream&quot;\r\naudio/mpeg\r\nvideo/quicktime\r\napplication/pdf', 0),
+(15635, 0, 'config', 'config_compression', '5', 0),
+(15636, 0, 'config', 'config_secure', '1', 0),
+(15637, 0, 'config', 'config_password', '1', 0),
+(15638, 0, 'config', 'config_shared', '0', 0),
+(15639, 0, 'config', 'config_encryption', 'IjvqyxBZS33yoYZJNQdovTEeHPH6yZz5Isqln4icGEz0me795NEzFDbtBYJmLaFn6BxXLb1dwO4TwSk443Ip6D3mDlDMzRcWmp1cQOpfxwu9wW5lrDxk88XTE4Ypmn0cqgsFKNLhAkeJ3motC53xiZAGHlx78Py820d6eJDam0dnIOTCBPXeSrBI5Dz5MjumjsidMbfj1E88B1XZN7lxjo4QoaVBsHZYGSZittsyJBQUhHVuJfOogAjFRc4lK0BsM0RdX3HG1piEI8PgSnUoWdvY3GzpHU6w4pguFDqvaJtjtDCzdMAgyvZtzEO8KpdM3K30PnCj7uc22rD9q1r9jUe7t3Llry4zHYyDCN4V50FwOLORgENkGNaGi3r4lFs20rY1sBSCiIzRglBjtq9lDirNQKTpuHyuHdVMblBwF5JnjPccm6Z4Fj2LaKnUrCyvFUEFpfpMzJAFIpKG75JTv47BTv5nDKAAMy1J2aQ3gJf9UW6ACmAGKTFqbXCnoA148fJkiM1hJFzE3Eb4BQYlcetlWEq1YpAzXU50MClF5ClF5k5HVuhsJMNiasy6tnedsNNevcHzS5Qv7hTgEK15rqqoj0uvjLrmfPptQUx9BKCBTMu0W1WdZghz9DgUYgNC554GPZr8oKrfmuBOsDjT4emrZFnXPmRik7inLWj1qtLZN64c7OjpEC4MbsUH6UpY82Nw9Pj1CMZy7MG9RfxBrZ1LfdaxSig6FxNiRX6UvN8tIkRgBIfOPOca4hHBafP8oyPjcVvRHwUg8Vo3wPM9RbsvVB7FjMphKwzGByYV1iIxWgJSLz2LDmSN6xUjdmMa2aMpikzzfpyWLpcj010jb88ogwvi8NCYgoeTGfaCd1ahFr8W43wPbImQEMWCMRVPaWfbl3ZbGulF8AaOAjz22U2tTw9KdOBArn52819j0S6PQYRcMci4XZWf2qDKUccGhv1q28MAFKeXtEbNhBqcdTUUcuqifRw8hStUdVBArnbFlB5aGUQThPRUe1SeSUo4', 0),
 (2179, 0, 'payment_bank_transfer', 'payment_bank_transfer_bank1', 'После подтверждения заказа менеджер выставит вам счет на оплату', 0),
 (2178, 0, 'payment_cod', 'payment_cod_sort_order', '1', 0),
 (2177, 0, 'payment_cod', 'payment_cod_status', '1', 0),
@@ -11903,26 +11318,24 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (125, 0, 'total_voucher', 'total_voucher_status', '1', 0),
 (126, 0, 'module_category', 'module_category_status', '1', 0),
 (13845, 0, 'module_account', 'module_account_status', '1', 0),
-(8599, 0, 'theme_default', 'theme_default_image_location_width', '268', 0),
-(8598, 0, 'theme_default', 'theme_default_image_cart_height', '120', 0),
-(8597, 0, 'theme_default', 'theme_default_image_cart_width', '120', 0),
-(8596, 0, 'theme_default', 'theme_default_image_wishlist_height', '240', 0),
-(8595, 0, 'theme_default', 'theme_default_image_wishlist_width', '240', 0),
-(8594, 0, 'theme_default', 'theme_default_image_compare_height', '432', 0),
-(8593, 0, 'theme_default', 'theme_default_image_compare_width', '432', 0),
-(8592, 0, 'theme_default', 'theme_default_image_related_height', '200', 0),
-(8591, 0, 'theme_default', 'theme_default_image_related_width', '200', 0),
-(8590, 0, 'theme_default', 'theme_default_image_additional_height', '74', 0),
-(8589, 0, 'theme_default', 'theme_default_image_additional_width', '74', 0),
-(8588, 0, 'theme_default', 'theme_default_image_product_height', '240', 0),
-(8587, 0, 'theme_default', 'theme_default_image_product_width', '240', 0),
-(8586, 0, 'theme_default', 'theme_default_image_popup_height', '1000', 0),
-(8585, 0, 'theme_default', 'theme_default_image_popup_width', '1000', 0),
-(8584, 0, 'theme_default', 'theme_default_image_thumb_height', '432', 0),
-(8583, 0, 'theme_default', 'theme_default_image_thumb_width', '432', 0),
-(8582, 0, 'theme_default', 'theme_default_image_manufacturer_height', '80', 0),
-(8579, 0, 'theme_default', 'theme_default_image_category_width', '80', 0),
-(8581, 0, 'theme_default', 'theme_default_image_manufacturer_width', '80', 0),
+(14760, 0, 'theme_default', 'theme_default_image_cart_width', '120', 0),
+(14761, 0, 'theme_default', 'theme_default_image_cart_height', '120', 0),
+(14759, 0, 'theme_default', 'theme_default_image_wishlist_height', '240', 0),
+(14758, 0, 'theme_default', 'theme_default_image_wishlist_width', '240', 0),
+(14757, 0, 'theme_default', 'theme_default_image_compare_height', '432', 0),
+(14756, 0, 'theme_default', 'theme_default_image_compare_width', '432', 0),
+(14755, 0, 'theme_default', 'theme_default_image_related_height', '200', 0),
+(14754, 0, 'theme_default', 'theme_default_image_related_width', '200', 0),
+(14753, 0, 'theme_default', 'theme_default_image_additional_height', '74', 0),
+(14752, 0, 'theme_default', 'theme_default_image_additional_width', '74', 0),
+(14751, 0, 'theme_default', 'theme_default_image_product_height', '240', 0),
+(14750, 0, 'theme_default', 'theme_default_image_product_width', '240', 0),
+(14749, 0, 'theme_default', 'theme_default_image_popup_height', '1000', 0),
+(14748, 0, 'theme_default', 'theme_default_image_popup_width', '1000', 0),
+(14747, 0, 'theme_default', 'theme_default_image_thumb_height', '720', 0),
+(14745, 0, 'theme_default', 'theme_default_image_manufacturer_height', '80', 0),
+(14746, 0, 'theme_default', 'theme_default_image_thumb_width', '720', 0),
+(14744, 0, 'theme_default', 'theme_default_image_manufacturer_width', '80', 0),
 (9657, 0, 'dashboard_activity', 'dashboard_activity_sort_order', '7', 0),
 (9656, 0, 'dashboard_activity', 'dashboard_activity_status', '1', 0),
 (156, 0, 'dashboard_sale', 'dashboard_sale_status', '1', 0),
@@ -11996,40 +11409,27 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (11165, 0, 'dashboard_domovoy', 'dashboard_domovoy_sort_order', '10', 0),
 (11164, 0, 'dashboard_domovoy', 'dashboard_domovoy_status', '0', 0),
 (11163, 0, 'dashboard_domovoy', 'dashboard_domovoy_width', '6', 0),
-(14578, 0, 'config', 'config_maintenance', '0', 0),
-(14577, 0, 'config', 'config_mail_alert_email', '', 0),
-(14576, 0, 'config', 'config_mail_alert', '[\"order\"]', 1),
-(14575, 0, 'config', 'config_mail_smtp_timeout', '5', 0),
-(14574, 0, 'config', 'config_mail_smtp_port', '25', 0),
-(14573, 0, 'config', 'config_mail_smtp_password', '', 0),
-(14572, 0, 'config', 'config_mail_smtp_username', '', 0),
-(14571, 0, 'config', 'config_mail_smtp_hostname', '', 0),
-(14570, 0, 'config', 'config_mail_parameter', '', 0),
-(14569, 0, 'config', 'config_mail_engine', 'mail', 0),
-(14568, 0, 'config', 'config_icon', 'catalog/cart.png', 0),
-(14567, 0, 'config', 'config_logo', 'catalog/logo.png', 0),
-(14566, 0, 'config', 'config_captcha_page', '[\"register\",\"guest\",\"review\",\"return\",\"contact\"]', 1),
-(14565, 0, 'config', 'config_captcha', 'basic', 0),
-(14564, 0, 'config', 'config_return_status_id', '1', 0),
-(14563, 0, 'config', 'config_return_id', '9', 0),
-(14562, 0, 'config', 'config_affiliate_id', '10', 0),
-(14561, 0, 'config', 'config_affiliate_commission', '5', 0),
-(14560, 0, 'config', 'config_affiliate_auto', '0', 0),
-(14559, 0, 'config', 'config_affiliate_approval', '0', 0),
-(14558, 0, 'config', 'config_affiliate_group_id', '1', 0),
+(15633, 0, 'config', 'config_seo_url', '0', 0),
+(15634, 0, 'config', 'config_robots', 'abot\r\ndbot\r\nebot\r\nhbot\r\nkbot\r\nlbot\r\nmbot\r\nnbot\r\nobot\r\npbot\r\nrbot\r\nsbot\r\ntbot\r\nvbot\r\nybot\r\nzbot\r\nbot.\r\nbot/\r\n_bot\r\n.bot\r\n/bot\r\n-bot\r\n:bot\r\n(bot\r\ncrawl\r\nslurp\r\nspider\r\nseek\r\naccoona\r\nacoon\r\nadressendeutschland\r\nah-ha.com\r\nahoy\r\naltavista\r\nananzi\r\nanthill\r\nappie\r\narachnophilia\r\narale\r\naraneo\r\naranha\r\narchitext\r\naretha\r\narks\r\nasterias\r\natlocal\r\natn\r\natomz\r\naugurfind\r\nbackrub\r\nbannana_bot\r\nbaypup\r\nbdfetch\r\nbig brother\r\nbiglotron\r\nbjaaland\r\nblackwidow\r\nblaiz\r\nblog\r\nblo.\r\nbloodhound\r\nboitho\r\nbooch\r\nbradley\r\nbutterfly\r\ncalif\r\ncassandra\r\nccubee\r\ncfetch\r\ncharlotte\r\nchurl\r\ncienciaficcion\r\ncmc\r\ncollective\r\ncomagent\r\ncombine\r\ncomputingsite\r\ncsci\r\ncurl\r\ncusco\r\ndaumoa\r\ndeepindex\r\ndelorie\r\ndepspid\r\ndeweb\r\ndie blinde kuh\r\ndigger\r\nditto\r\ndmoz\r\ndocomo\r\ndownload express\r\ndtaagent\r\ndwcp\r\nebiness\r\nebingbong\r\ne-collector\r\nejupiter\r\nemacs-w3 search engine\r\nesther\r\nevliya celebi\r\nezresult\r\nfalcon\r\nfelix ide\r\nferret\r\nfetchrover\r\nfido\r\nfindlinks\r\nfireball\r\nfish search\r\nfouineur\r\nfunnelweb\r\ngazz\r\ngcreep\r\ngenieknows\r\ngetterroboplus\r\ngeturl\r\nglx\r\ngoforit\r\ngolem\r\ngrabber\r\ngrapnel\r\ngralon\r\ngriffon\r\ngromit\r\ngrub\r\ngulliver\r\nhamahakki\r\nharvest\r\nhavindex\r\nhelix\r\nheritrix\r\nhku www octopus\r\nhomerweb\r\nhtdig\r\nhtml index\r\nhtml_analyzer\r\nhtmlgobble\r\nhubater\r\nhyper-decontextualizer\r\nia_archiver\r\nibm_planetwide\r\nichiro\r\niconsurf\r\niltrovatore\r\nimage.kapsi.net\r\nimagelock\r\nincywincy\r\nindexer\r\ninfobee\r\ninformant\r\ningrid\r\ninktomisearch.com\r\ninspector web\r\nintelliagent\r\ninternet shinchakubin\r\nip3000\r\niron33\r\nisraeli-search\r\nivia\r\njack\r\njakarta\r\njavabee\r\njetbot\r\njumpstation\r\nkatipo\r\nkdd-explorer\r\nkilroy\r\nknowledge\r\nkototoi\r\nkretrieve\r\nlabelgrabber\r\nlachesis\r\nlarbin\r\nlegs\r\nlibwww\r\nlinkalarm\r\nlink validator\r\nlinkscan\r\nlockon\r\nlwp\r\nlycos\r\nmagpie\r\nmantraagent\r\nmapoftheinternet\r\nmarvin/\r\nmattie\r\nmediafox\r\nmediapartners\r\nmercator\r\nmerzscope\r\nmicrosoft url control\r\nminirank\r\nmiva\r\nmj12\r\nmnogosearch\r\nmoget\r\nmonster\r\nmoose\r\nmotor\r\nmultitext\r\nmuncher\r\nmuscatferret\r\nmwd.search\r\nmyweb\r\nnajdi\r\nnameprotect\r\nnationaldirectory\r\nnazilla\r\nncsa beta\r\nnec-meshexplorer\r\nnederland.zoek\r\nnetcarta webmap engine\r\nnetmechanic\r\nnetresearchserver\r\nnetscoop\r\nnewscan-online\r\nnhse\r\nnokia6682/\r\nnomad\r\nnoyona\r\nnutch\r\nnzexplorer\r\nobjectssearch\r\noccam\r\nomni\r\nopen text\r\nopenfind\r\nopenintelligencedata\r\norb search\r\nosis-project\r\npack rat\r\npageboy\r\npagebull\r\npage_verifier\r\npanscient\r\nparasite\r\npartnersite\r\npatric\r\npear.\r\npegasus\r\nperegrinator\r\npgp key agent\r\nphantom\r\nphpdig\r\npicosearch\r\npiltdownman\r\npimptrain\r\npinpoint\r\npioneer\r\npiranha\r\nplumtreewebaccessor\r\npogodak\r\npoirot\r\npompos\r\npoppelsdorf\r\npoppi\r\npopular iconoclast\r\npsycheclone\r\npublisher\r\npython\r\nrambler\r\nraven search\r\nroach\r\nroad runner\r\nroadhouse\r\nrobbie\r\nrobofox\r\nrobozilla\r\nrules\r\nsalty\r\nsbider\r\nscooter\r\nscoutjet\r\nscrubby\r\nsearch.\r\nsearchprocess\r\nsemanticdiscovery\r\nsenrigan\r\nsg-scout\r\nshai\'hulud\r\nshark\r\nshopwiki\r\nsidewinder\r\nsift\r\nsilk\r\nsimmany\r\nsite searcher\r\nsite valet\r\nsitetech-rover\r\nskymob.com\r\nsleek\r\nsmartwit\r\nsna-\r\nsnappy\r\nsnooper\r\nsohu\r\nspeedfind\r\nsphere\r\nsphider\r\nspinner\r\nspyder\r\nsteeler/\r\nsuke\r\nsuntek\r\nsupersnooper\r\nsurfnomore\r\nsven\r\nsygol\r\nszukacz\r\ntach black widow\r\ntarantula\r\ntempleton\r\n/teoma\r\nt-h-u-n-d-e-r-s-t-o-n-e\r\ntheophrastus\r\ntitan\r\ntitin\r\ntkwww\r\ntoutatis\r\nt-rex\r\ntutorgig\r\ntwiceler\r\ntwisted\r\nucsd\r\nudmsearch\r\nurl check\r\nupdated\r\nvagabondo\r\nvalkyrie\r\nverticrawl\r\nvictoria\r\nvision-search\r\nvolcano\r\nvoyager/\r\nvoyager-hc\r\nw3c_validator\r\nw3m2\r\nw3mir\r\nwalker\r\nwallpaper\r\nwanderer\r\nwauuu\r\nwavefire\r\nweb core\r\nweb hopper\r\nweb wombat\r\nwebbandit\r\nwebcatcher\r\nwebcopy\r\nwebfoot\r\nweblayers\r\nweblinker\r\nweblog monitor\r\nwebmirror\r\nwebmonkey\r\nwebquest\r\nwebreaper\r\nwebsitepulse\r\nwebsnarf\r\nwebstolperer\r\nwebvac\r\nwebwalk\r\nwebwatch\r\nwebwombat\r\nwebzinger\r\nwhizbang\r\nwhowhere\r\nwild ferret\r\nworldlight\r\nwwwc\r\nwwwster\r\nxenu\r\nxget\r\nxift\r\nxirq\r\nyandex\r\nyanga\r\nyeti\r\nyodao\r\nzao\r\nzippp\r\nzyborg', 0),
+(15632, 0, 'config', 'config_maintenance', '0', 0),
+(15631, 0, 'config', 'config_mail_alert_email', '', 0),
+(15630, 0, 'config', 'config_mail_alert', '[\"order\"]', 1),
+(15629, 0, 'config', 'config_mail_smtp_timeout', '5', 0),
+(15628, 0, 'config', 'config_mail_smtp_port', '25', 0),
+(15627, 0, 'config', 'config_mail_smtp_password', '', 0),
+(15626, 0, 'config', 'config_mail_smtp_username', '', 0),
+(15625, 0, 'config', 'config_mail_smtp_hostname', '', 0),
+(15624, 0, 'config', 'config_mail_parameter', '', 0),
+(15621, 0, 'config', 'config_logo', 'catalog/logo.png', 0),
 (14187, 0, 'developer', 'developer_theme', '0', 0),
-(14557, 0, 'config', 'config_stock_checkout', '1', 0),
-(14556, 0, 'config', 'config_stock_warning', '0', 0),
-(14555, 0, 'config', 'config_stock_display', '0', 0),
-(14554, 0, 'config', 'config_api_id', '1', 0),
-(14553, 0, 'config', 'config_fraud_status_id', '16', 0),
-(14551, 0, 'config', 'config_processing_status', '[\"2\",\"3\",\"1\",\"12\",\"5\"]', 1),
-(14552, 0, 'config', 'config_complete_status', '[\"3\",\"5\"]', 1),
-(8580, 0, 'theme_default', 'theme_default_image_category_height', '80', 0),
-(8578, 0, 'theme_default', 'theme_default_product_description_length', '160', 0),
-(8577, 0, 'theme_default', 'theme_default_product_limit', '10', 0),
-(8576, 0, 'theme_default', 'theme_default_status', '1', 0),
-(8575, 0, 'theme_default', 'theme_default_directory', 'default', 0),
+(15623, 0, 'config', 'config_mail_engine', 'mail', 0),
+(15622, 0, 'config', 'config_icon', 'catalog/cart.png', 0),
+(15620, 0, 'config', 'config_captcha_page', '[\"register\",\"guest\",\"review\",\"return\",\"contact\"]', 1),
+(15619, 0, 'config', 'config_captcha', 'basic', 0),
+(14743, 0, 'theme_default', 'theme_default_image_category_height', '80', 0),
+(14742, 0, 'theme_default', 'theme_default_image_category_width', '80', 0),
+(14741, 0, 'theme_default', 'theme_default_product_description_length', '160', 0),
+(14740, 0, 'theme_default', 'theme_default_product_limit', '10', 0),
 (1635, 0, 'shipping_pickup', 'shipping_pickup_geo_zone_id', '0', 0),
 (1636, 0, 'shipping_pickup', 'shipping_pickup_status', '1', 0),
 (1637, 0, 'shipping_pickup', 'shipping_pickup_sort_order', '1', 0),
@@ -12045,11 +11445,10 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (2183, 0, 'payment_bank_transfer', 'payment_bank_transfer_geo_zone_id', '0', 0),
 (2184, 0, 'payment_bank_transfer', 'payment_bank_transfer_status', '1', 0),
 (2185, 0, 'payment_bank_transfer', 'payment_bank_transfer_sort_order', '2', 0),
-(14550, 0, 'config', 'config_order_status_id', '1', 0),
-(14549, 0, 'config', 'config_checkout_id', '9', 0),
-(14548, 0, 'config', 'config_checkout_guest', '1', 0),
-(14547, 0, 'config', 'config_cart_weight', '1', 0),
-(14546, 0, 'config', 'config_invoice_prefix', 'INV-2022-00', 0),
+(15618, 0, 'config', 'config_return_status_id', '1', 0),
+(15617, 0, 'config', 'config_return_id', '9', 0),
+(15616, 0, 'config', 'config_affiliate_id', '10', 0),
+(15615, 0, 'config', 'config_affiliate_commission', '5', 0),
 (9615, 0, 'configblog', 'configblog_blog_menu', '1', 0),
 (9613, 0, 'configblog', 'configblog_article_description_length', '200', 0),
 (9614, 0, 'configblog', 'configblog_limit_admin', '20', 0),
@@ -12061,78 +11460,123 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (8133, 0, 'csvprice_pro', 'csvprice_pro_save_image_table', '1', 0),
 (8132, 0, 'csvprice_pro', 'csvprice_pro_image_download_mod', '1', 0),
 (8131, 0, 'csvprice_pro', 'csvprice_pro_each_iteration_timeout', '180', 0),
-(14545, 0, 'config', 'config_account_id', '9', 0),
-(14543, 0, 'config', 'config_customer_price', '0', 0),
-(14544, 0, 'config', 'config_login_attempts', '5', 0),
-(14542, 0, 'config', 'config_customer_group_display', '[\"1\"]', 1),
-(14541, 0, 'config', 'config_customer_group_id', '1', 0),
-(14540, 0, 'config', 'config_customer_search', '0', 0),
-(14539, 0, 'config', 'config_customer_activity', '0', 0),
-(14538, 0, 'config', 'config_customer_online', '0', 0),
-(14537, 0, 'config', 'config_tax_customer', 'shipping', 0),
-(14536, 0, 'config', 'config_tax_default', 'shipping', 0),
-(14535, 0, 'config', 'config_tax', '0', 0),
-(14534, 0, 'config', 'config_voucher_max', '1000', 0),
-(14533, 0, 'config', 'config_voucher_min', '1', 0),
-(14532, 0, 'config', 'config_review_guest', '1', 0),
-(14531, 0, 'config', 'config_review_status', '1', 0),
-(14530, 0, 'config', 'config_limit_autocomplete', '5', 0),
-(14529, 0, 'config', 'config_limit_admin', '20', 0),
-(14528, 0, 'config', 'config_product_count', '0', 0),
-(14527, 0, 'config', 'config_weight_class_id', '1', 0),
-(14526, 0, 'config', 'config_length_class_id', '1', 0),
-(14525, 0, 'config', 'config_currency_engine', 'cbr', 0),
-(14524, 0, 'config', 'config_currency_auto', '1', 0),
-(14523, 0, 'config', 'config_currency', 'RUB', 0),
-(14522, 0, 'config', 'config_admin_language', 'ru-ru', 0),
-(14521, 0, 'config', 'config_language', 'ru-ru', 0),
-(14520, 0, 'config', 'config_timezone', 'Europe/Moscow', 0),
-(14519, 0, 'config', 'config_zone_id', '2751', 0),
-(14518, 0, 'config', 'config_country_id', '176', 0),
-(14517, 0, 'config', 'config_location', '[\"1\",\"2\"]', 1),
-(14516, 0, 'config', 'config_comment', '', 0),
-(14515, 0, 'config', 'config_open', '10:00 - 18:00', 0),
-(14514, 0, 'config', 'config_image', '', 0),
+(15614, 0, 'config', 'config_affiliate_auto', '0', 0),
+(15613, 0, 'config', 'config_affiliate_approval', '0', 0),
+(15612, 0, 'config', 'config_affiliate_group_id', '1', 0),
+(15611, 0, 'config', 'config_stock_checkout', '1', 0),
+(15610, 0, 'config', 'config_stock_warning', '0', 0),
+(15608, 0, 'config', 'config_api_id', '3', 0),
+(15609, 0, 'config', 'config_stock_display', '0', 0),
+(15606, 0, 'config', 'config_complete_status', '[\"3\",\"5\"]', 1),
+(15607, 0, 'config', 'config_fraud_status_id', '16', 0),
+(15605, 0, 'config', 'config_processing_status', '[\"2\",\"3\",\"1\",\"12\",\"5\"]', 1),
+(15604, 0, 'config', 'config_order_status_id', '1', 0),
+(15603, 0, 'config', 'config_checkout_id', '9', 0),
+(15602, 0, 'config', 'config_checkout_guest', '1', 0),
+(15601, 0, 'config', 'config_cart_weight', '1', 0),
+(15600, 0, 'config', 'config_invoice_prefix', 'INV-2023-00', 0),
+(15599, 0, 'config', 'config_account_id', '9', 0),
+(15598, 0, 'config', 'config_login_attempts', '5', 0),
+(15597, 0, 'config', 'config_customer_price', '0', 0),
+(15596, 0, 'config', 'config_customer_group_display', '[\"1\"]', 1),
+(15595, 0, 'config', 'config_customer_group_id', '1', 0),
+(15594, 0, 'config', 'config_customer_search', '0', 0),
 (9460, 0, 'module_filter', 'module_filter_status', '1', 0),
 (9609, 0, 'configblog', 'configblog_meta_description', 'Свежие новости', 0),
 (9608, 0, 'configblog', 'configblog_meta_title', 'Свежие новости', 0),
 (9607, 0, 'configblog', 'configblog_html_h1', 'Свежие новости', 0),
 (9606, 0, 'configblog', 'configblog_name', 'Блог', 0),
 (9639, 0, 'captcha_google', 'captcha_google_key', '6LdHWUQhAAAAAD7F3tIMncbxuj_fiFgMeUC56hEM', 0),
-(14512, 0, 'config', 'config_fax', '', 0),
-(14510, 0, 'config', 'config_email', 'info@exopencart.ru', 0),
-(14511, 0, 'config', 'config_telephone', '+7 999 420 69 69', 0),
-(14509, 0, 'config', 'config_geocode', 'https://yandex.ru/map-widget/v1/?um=constructor%3Acf0da8fa05f10eb5764f1e0487b4b2a963a2a02ad1c06290acc58a05f78e5230&amp;amp;source=constructor', 0),
+(15593, 0, 'config', 'config_customer_activity', '0', 0),
+(15592, 0, 'config', 'config_customer_online', '0', 0),
+(15591, 0, 'config', 'config_tax_customer', 'shipping', 0),
+(15590, 0, 'config', 'config_tax_default', 'shipping', 0),
+(15586, 0, 'config', 'config_review_guest', '1', 0),
+(15587, 0, 'config', 'config_voucher_min', '1', 0),
 (9740, 0, 'fraudlabspro', 'fraud_fraudlabspro_review_status_id', '18', 0),
 (9741, 0, 'fraudlabspro', 'fraud_fraudlabspro_approve_status_id', '2', 0),
 (9742, 0, 'fraudlabspro', 'fraud_fraudlabspro_reject_status_id', '8', 0),
 (9795, 0, 'module_information', 'module_information_status', '1', 0),
-(9803, 0, 'module_store', 'module_store_status', '1', 0),
-(9802, 0, 'module_store', 'module_store_admin', '0', 0),
+(15777, 0, 'module_store', 'module_store_status', '0', 0),
+(15776, 0, 'module_store', 'module_store_admin', '0', 0),
 (9739, 0, 'fraudlabspro', 'fraud_fraudlabspro_order_status_id', '17', 0),
 (9738, 0, 'fraudlabspro', 'fraud_fraudlabspro_score', '80', 0),
 (9737, 0, 'feed_google_base', 'feed_google_base_status', '0', 0),
-(14508, 0, 'config', 'config_address', 'Здесь адрес, ул. дом, что-то еще', 0),
-(14507, 0, 'config', 'config_owner', 'Название организации', 0),
-(14506, 0, 'config', 'config_name', 'demo.exopencart.ru', 0),
-(14505, 0, 'config', 'config_layout_id', '4', 0),
-(14504, 0, 'config', 'config_theme', 'default', 0),
-(14503, 0, 'config', 'config_meta_keyword', '', 0),
+(15589, 0, 'config', 'config_tax', '0', 0),
+(15588, 0, 'config', 'config_voucher_max', '1000', 0),
 (13872, 0, 'menu_default', 'menu_default_settings', '{\"show_catalog\":\"1\",\"show_special\":\"1\",\"show_brands\":\"1\",\"show_blog\":\"1\",\"show_contacts\":\"1\"}', 1),
 (13871, 0, 'menu_default', 'menu_default_status', '1', 0),
-(14501, 0, 'config', 'config_meta_title', 'Бесплатный интернет-магазин', 0),
-(14502, 0, 'config', 'config_meta_description', 'Бесплатный интернет-магазин - exopencart.ru', 0);
+(15567, 0, 'config', 'config_image', '', 0),
+(15568, 0, 'config', 'config_open', '10:00 - 18:00', 0),
+(15569, 0, 'config', 'config_comment', '', 0),
+(15570, 0, 'config', 'config_location', '[\"1\",\"2\"]', 1),
+(15571, 0, 'config', 'config_country_id', '176', 0),
+(15572, 0, 'config', 'config_zone_id', '2751', 0),
+(15573, 0, 'config', 'config_city', 'Москва', 0),
+(15574, 0, 'config', 'config_timezone', 'Europe/Moscow', 0),
+(15575, 0, 'config', 'config_language', 'ru-ru', 0),
+(15576, 0, 'config', 'config_admin_language', 'ru-ru', 0),
+(15577, 0, 'config', 'config_currency', 'RUB', 0),
+(15578, 0, 'config', 'config_currency_auto', '1', 0),
+(15579, 0, 'config', 'config_currency_engine', 'cbr', 0),
+(15580, 0, 'config', 'config_length_class_id', '1', 0),
+(15581, 0, 'config', 'config_weight_class_id', '1', 0),
+(15582, 0, 'config', 'config_product_count', '0', 0),
+(15583, 0, 'config', 'config_limit_admin', '20', 0),
+(15584, 0, 'config', 'config_limit_autocomplete', '5', 0),
+(15585, 0, 'config', 'config_review_status', '1', 0),
+(15565, 0, 'config', 'config_fax', '', 0),
+(15566, 0, 'config', 'config_social_media', '[{\"name\":\"telegram\",\"url\":\"https:\\/\\/t.me\\/exopencart\",\"icon\":\"&lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;   &lt;path d=&quot;M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z&quot;\\/&gt; &lt;\\/svg&gt;\",\"contact\":\"1\",\"header\":\"1\"}]', 1),
+(14739, 0, 'theme_default', 'theme_default_status', '1', 0),
+(14738, 0, 'theme_default', 'theme_default_directory', 'default', 0),
+(14763, 0, 'theme_default', 'theme_default_image_location_height', '50', 0),
+(15564, 0, 'config', 'config_telephone', '+7 999 420 69 69', 0),
+(15563, 0, 'config', 'config_email', 'info@exopencart.ru', 0),
+(15562, 0, 'config', 'config_geocode', 'https://yandex.ru/map-widget/v1/?um=constructor%3Acf0da8fa05f10eb5764f1e0487b4b2a963a2a02ad1c06290acc58a05f78e5230&amp;amp;source=constructor', 0),
+(15561, 0, 'config', 'config_address', 'Здесь адрес, ул. дом, что-то еще', 0),
+(15560, 0, 'config', 'config_owner', 'Название организации', 0),
+(15556, 0, 'config', 'config_meta_keyword', '', 0),
+(15557, 0, 'config', 'config_theme', 'default', 0),
+(15558, 0, 'config', 'config_layout_id', '4', 0),
+(15559, 0, 'config', 'config_name', 'exopencart', 0),
+(15554, 0, 'config', 'config_heading_seo_phrase', '{\"1\":\"\",\"2\":\"\"}', 1),
+(15555, 0, 'config', 'config_meta_description', 'Бесплатный интернет-магазин - exopencart.ru', 0),
+(15552, 0, 'config', 'config_meta_title', 'Бесплатный интернет-магазин', 0),
+(15553, 0, 'config', 'config_title_seo_phrase', '{\"1\":\"\",\"2\":\"\"}', 1),
+(15761, 4, 'config', 'config_tax', '0', 0),
+(15760, 4, 'config', 'config_currency', 'RUB', 0),
+(15759, 4, 'config', 'config_language', 'ru-ru', 0),
+(15758, 4, 'config', 'config_city', 'Санкт-Петербург', 0),
+(15757, 4, 'config', 'config_zone_id', '2791', 0),
+(15756, 4, 'config', 'config_country_id', '176', 0),
+(15755, 4, 'config', 'config_comment', '', 0),
+(15754, 4, 'config', 'config_open', '', 0),
+(15753, 4, 'config', 'config_image', '', 0),
+(15752, 4, 'config', 'config_fax', '', 0),
+(15751, 4, 'config', 'config_telephone', '+7 999 420 69 69', 0),
+(15750, 4, 'config', 'config_email', 'info@exopencart.ru', 0),
+(15749, 4, 'config', 'config_geocode', '', 0),
+(15748, 4, 'config', 'config_address', 'г. Саратов ул. Мира 32', 0),
+(15745, 4, 'config', 'config_layout_id', '6', 0),
+(15747, 4, 'config', 'config_owner', 'Новый владелец', 0),
+(15746, 4, 'config', 'config_name', 'Новый магазин', 0),
+(15744, 4, 'config', 'config_theme', 'default', 0),
+(15743, 4, 'config', 'config_meta_keyword', '', 0),
+(15742, 4, 'config', 'config_meta_description', '', 0),
+(15741, 4, 'config', 'config_heading_seo_phrase', '{\"1\":\"\",\"2\":\"\"}', 1),
+(15740, 4, 'config', 'config_title_seo_phrase', '{\"1\":\"\",\"2\":\"\"}', 1),
+(15739, 4, 'config', 'config_meta_title', 'Новый магазин', 0),
+(15738, 4, 'config', 'config_ssl', 'https://new.exbasic.loc/', 0),
+(15737, 4, 'config', 'config_url', 'http://new.exbasic.loc/', 0),
+(15774, 4, 'config', 'config_icon', '', 0),
+(15775, 4, 'config', 'config_secure', '0', 0);
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `oc_shipping_courier`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_shipping_courier`;
 CREATE TABLE `oc_shipping_courier` (
   `shipping_courier_id` int(11) NOT NULL,
   `shipping_courier_code` varchar(255) NOT NULL DEFAULT '',
@@ -12156,11 +11600,7 @@ INSERT INTO `oc_shipping_courier` (`shipping_courier_id`, `shipping_courier_code
 --
 -- Table structure for table `oc_statistics`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 23, 2023 at 01:50 PM
---
 
-DROP TABLE IF EXISTS `oc_statistics`;
 CREATE TABLE `oc_statistics` (
   `statistics_id` int(11) NOT NULL,
   `code` varchar(64) NOT NULL,
@@ -12185,11 +11625,7 @@ INSERT INTO `oc_statistics` (`statistics_id`, `code`, `value`) VALUES
 --
 -- Table structure for table `oc_stock_status`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_stock_status`;
 CREATE TABLE `oc_stock_status` (
   `stock_status_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
@@ -12215,28 +11651,28 @@ INSERT INTO `oc_stock_status` (`stock_status_id`, `language_id`, `name`) VALUES
 --
 -- Table structure for table `oc_store`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 11:55 AM
---
 
-DROP TABLE IF EXISTS `oc_store`;
 CREATE TABLE `oc_store` (
   `store_id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL,
+  `city` varchar(64) NOT NULL,
   `url` varchar(255) NOT NULL,
   `ssl` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `oc_store`
+--
+
+INSERT INTO `oc_store` (`store_id`, `name`, `city`, `url`, `ssl`) VALUES
+(4, 'Новый магазин', 'Санкт-Петербург', 'http://new.exbasic.loc/', 'https://new.exbasic.loc/');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `oc_tax_class`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_tax_class`;
 CREATE TABLE `oc_tax_class` (
   `tax_class_id` int(11) NOT NULL,
   `title` varchar(32) NOT NULL,
@@ -12258,11 +11694,7 @@ INSERT INTO `oc_tax_class` (`tax_class_id`, `title`, `description`, `date_added`
 --
 -- Table structure for table `oc_tax_rate`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_tax_rate`;
 CREATE TABLE `oc_tax_rate` (
   `tax_rate_id` int(11) NOT NULL,
   `geo_zone_id` int(11) NOT NULL DEFAULT '0',
@@ -12286,11 +11718,7 @@ INSERT INTO `oc_tax_rate` (`tax_rate_id`, `geo_zone_id`, `name`, `rate`, `type`,
 --
 -- Table structure for table `oc_tax_rate_to_customer_group`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_tax_rate_to_customer_group`;
 CREATE TABLE `oc_tax_rate_to_customer_group` (
   `tax_rate_id` int(11) NOT NULL,
   `customer_group_id` int(11) NOT NULL
@@ -12309,11 +11737,7 @@ INSERT INTO `oc_tax_rate_to_customer_group` (`tax_rate_id`, `customer_group_id`)
 --
 -- Table structure for table `oc_tax_rule`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_tax_rule`;
 CREATE TABLE `oc_tax_rule` (
   `tax_rule_id` int(11) NOT NULL,
   `tax_class_id` int(11) NOT NULL,
@@ -12337,11 +11761,7 @@ INSERT INTO `oc_tax_rule` (`tax_rule_id`, `tax_class_id`, `tax_rate_id`, `based`
 --
 -- Table structure for table `oc_theme`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_theme`;
 CREATE TABLE `oc_theme` (
   `theme_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL,
@@ -12356,11 +11776,7 @@ CREATE TABLE `oc_theme` (
 --
 -- Table structure for table `oc_translation`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Dec 16, 2022 at 08:01 AM
---
 
-DROP TABLE IF EXISTS `oc_translation`;
 CREATE TABLE `oc_translation` (
   `translation_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL,
@@ -12376,11 +11792,7 @@ CREATE TABLE `oc_translation` (
 --
 -- Table structure for table `oc_upload`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_upload`;
 CREATE TABLE `oc_upload` (
   `upload_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -12402,11 +11814,7 @@ INSERT INTO `oc_upload` (`upload_id`, `name`, `filename`, `code`, `date_added`) 
 --
 -- Table structure for table `oc_user`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Mar 23, 2023 at 12:51 PM
---
 
-DROP TABLE IF EXISTS `oc_user`;
 CREATE TABLE `oc_user` (
   `user_id` int(11) NOT NULL,
   `user_group_id` int(11) NOT NULL,
@@ -12428,7 +11836,7 @@ CREATE TABLE `oc_user` (
 --
 
 INSERT INTO `oc_user` (`user_id`, `user_group_id`, `username`, `password`, `salt`, `firstname`, `lastname`, `email`, `image`, `code`, `ip`, `status`, `date_added`) VALUES
-(1, 1, 'soev_admin', 'a907766e22351ad5c335dab816711a942b4e11f3', 'ma8htBCDk', 'So', 'Evg', 'info@exopencart.ru', '', '', '88.147.174.227', 1, '2022-06-27 18:01:33'),
+(1, 1, 'admin', '4dada4c6137693d5f0bff0abf20d792023bc7f88', 'yaJRpsoy7', 'John', 'Doe', 'info@exopencart.ru', '', '', '172.16.238.1', 1, '2023-03-31 14:17:12'),
 (2, 1, 'login', 'de4bb245dbe2df4992af9519659c6fbca7b828a0', 'p98QYCO6p', 'Дмитрий', 'Медведев', 'medved@prived.ru', '', '', '88.147.174.227', 1, '2023-03-23 15:51:04');
 
 -- --------------------------------------------------------
@@ -12436,11 +11844,7 @@ INSERT INTO `oc_user` (`user_id`, `user_group_id`, `username`, `password`, `salt
 --
 -- Table structure for table `oc_user_group`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Feb 21, 2023 at 02:15 PM
---
 
-DROP TABLE IF EXISTS `oc_user_group`;
 CREATE TABLE `oc_user_group` (
   `user_group_id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL,
@@ -12452,7 +11856,7 @@ CREATE TABLE `oc_user_group` (
 --
 
 INSERT INTO `oc_user_group` (`user_group_id`, `name`, `permission`) VALUES
-(1, 'Administrator', '{\"access\":[\"blog\\/article\",\"blog\\/category\",\"blog\\/review\",\"blog\\/setting\",\"catalog\\/attribute\",\"catalog\\/attribute_group\",\"catalog\\/category\",\"catalog\\/download\",\"catalog\\/filter\",\"catalog\\/information\",\"catalog\\/manufacturer\",\"catalog\\/option\",\"catalog\\/product\",\"catalog\\/recurring\",\"catalog\\/review\",\"common\\/column_left\",\"common\\/developer\",\"common\\/filemanager\",\"common\\/profile\",\"common\\/security\",\"customer\\/custom_field\",\"customer\\/customer\",\"customer\\/customer_approval\",\"customer\\/customer_group\",\"design\\/banner\",\"design\\/layout\",\"design\\/seo_url\",\"design\\/theme\",\"design\\/translation\",\"event\\/language\",\"event\\/statistics\",\"event\\/theme\",\"extension\\/advertise\\/google\",\"extension\\/analytics\\/google\",\"extension\\/captcha\\/basic\",\"extension\\/captcha\\/google\",\"extension\\/currency\\/cbr\",\"extension\\/currency\\/ecb\",\"extension\\/currency\\/fixer\",\"extension\\/currency\\/nbu\",\"extension\\/dashboard\\/activity\",\"extension\\/dashboard\\/chart\",\"extension\\/dashboard\\/customer\",\"extension\\/dashboard\\/map\",\"extension\\/dashboard\\/online\",\"extension\\/dashboard\\/order\",\"extension\\/dashboard\\/recent\",\"extension\\/dashboard\\/sale\",\"extension\\/extension\\/advertise\",\"extension\\/extension\\/analytics\",\"extension\\/extension\\/captcha\",\"extension\\/extension\\/currency\",\"extension\\/extension\\/dashboard\",\"extension\\/extension\\/feed\",\"extension\\/extension\\/fraud\",\"extension\\/extension\\/menu\",\"extension\\/extension\\/module\",\"extension\\/extension\\/payment\",\"extension\\/extension\\/report\",\"extension\\/extension\\/shipping\",\"extension\\/extension\\/theme\",\"extension\\/extension\\/total\",\"extension\\/feed\\/google_base\",\"extension\\/feed\\/google_sitemap\",\"extension\\/feed\\/unisender\",\"extension\\/feed\\/yandex_market\",\"extension\\/feed\\/yandex_turbo\",\"extension\\/fraud\\/fraudlabspro\",\"extension\\/fraud\\/ip\",\"extension\\/fraud\\/maxmind\",\"extension\\/menu\\/default\",\"extension\\/module\\/account\",\"extension\\/module\\/amazon_login\",\"extension\\/module\\/amazon_pay\",\"extension\\/module\\/anycategories\",\"extension\\/module\\/banner\",\"extension\\/module\\/bestseller\",\"extension\\/module\\/blog_category\",\"extension\\/module\\/blog_featured\",\"extension\\/module\\/blog_latest\",\"extension\\/module\\/carousel\",\"extension\\/module\\/category\",\"extension\\/module\\/divido_calculator\",\"extension\\/module\\/featured\",\"extension\\/module\\/featured_article\",\"extension\\/module\\/featured_product\",\"extension\\/module\\/filter\",\"extension\\/module\\/google_hangouts\",\"extension\\/module\\/html\",\"extension\\/module\\/information\",\"extension\\/module\\/klarna_checkout_module\",\"extension\\/module\\/latest\",\"extension\\/module\\/laybuy_layout\",\"extension\\/module\\/paypal_smart_button\",\"extension\\/module\\/pilibaba_button\",\"extension\\/module\\/pp_braintree_button\",\"extension\\/module\\/sagepay_direct_cards\",\"extension\\/module\\/sagepay_server_cards\",\"extension\\/module\\/slideshow\",\"extension\\/module\\/special\",\"extension\\/module\\/store\",\"extension\\/payment\\/alipay\",\"extension\\/payment\\/alipay_cross\",\"extension\\/payment\\/amazon_login_pay\",\"extension\\/payment\\/authorizenet_aim\",\"extension\\/payment\\/authorizenet_sim\",\"extension\\/payment\\/bank_transfer\",\"extension\\/payment\\/bluepay_hosted\",\"extension\\/payment\\/bluepay_redirect\",\"extension\\/payment\\/cardconnect\",\"extension\\/payment\\/cardinity\",\"extension\\/payment\\/cheque\",\"extension\\/payment\\/cod\",\"extension\\/payment\\/divido\",\"extension\\/payment\\/eway\",\"extension\\/payment\\/firstdata\",\"extension\\/payment\\/firstdata_remote\",\"extension\\/payment\\/free_checkout\",\"extension\\/payment\\/g2apay\",\"extension\\/payment\\/globalpay\",\"extension\\/payment\\/globalpay_remote\",\"extension\\/payment\\/klarna_account\",\"extension\\/payment\\/klarna_checkout\",\"extension\\/payment\\/klarna_invoice\",\"extension\\/payment\\/laybuy\",\"extension\\/payment\\/liqpay\",\"extension\\/payment\\/nochex\",\"extension\\/payment\\/ocstore_w1\",\"extension\\/payment\\/paymate\",\"extension\\/payment\\/paypal\",\"extension\\/payment\\/paypoint\",\"extension\\/payment\\/payza\",\"extension\\/payment\\/perpetual_payments\",\"extension\\/payment\\/pilibaba\",\"extension\\/payment\\/pp_braintree\",\"extension\\/payment\\/pp_express\",\"extension\\/payment\\/pp_payflow\",\"extension\\/payment\\/pp_payflow_iframe\",\"extension\\/payment\\/pp_pro\",\"extension\\/payment\\/pp_pro_iframe\",\"extension\\/payment\\/pp_standard\",\"extension\\/payment\\/realex\",\"extension\\/payment\\/realex_remote\",\"extension\\/payment\\/sagepay_direct\",\"extension\\/payment\\/sagepay_server\",\"extension\\/payment\\/sagepay_us\",\"extension\\/payment\\/securetrading_pp\",\"extension\\/payment\\/securetrading_ws\",\"extension\\/payment\\/skrill\",\"extension\\/payment\\/squareup\",\"extension\\/payment\\/twocheckout\",\"extension\\/payment\\/web_payment_software\",\"extension\\/payment\\/webmoney_wmb\",\"extension\\/payment\\/webmoney_wme\",\"extension\\/payment\\/webmoney_wmk\",\"extension\\/payment\\/webmoney_wmr\",\"extension\\/payment\\/webmoney_wmu\",\"extension\\/payment\\/webmoney_wmv\",\"extension\\/payment\\/webmoney_wmz\",\"extension\\/payment\\/wechat_pay\",\"extension\\/payment\\/worldpay\",\"extension\\/report\\/customer_activity\",\"extension\\/report\\/customer_order\",\"extension\\/report\\/customer_reward\",\"extension\\/report\\/customer_search\",\"extension\\/report\\/customer_transaction\",\"extension\\/report\\/marketing\",\"extension\\/report\\/product_purchased\",\"extension\\/report\\/product_viewed\",\"extension\\/report\\/sale_coupon\",\"extension\\/report\\/sale_order\",\"extension\\/report\\/sale_return\",\"extension\\/report\\/sale_shipping\",\"extension\\/report\\/sale_tax\",\"extension\\/shipping\\/auspost\",\"extension\\/shipping\\/ec_ship\",\"extension\\/shipping\\/fedex\",\"extension\\/shipping\\/flat\",\"extension\\/shipping\\/free\",\"extension\\/shipping\\/item\",\"extension\\/shipping\\/parcelforce_48\",\"extension\\/shipping\\/pickup\",\"extension\\/shipping\\/royal_mail\",\"extension\\/shipping\\/ups\",\"extension\\/shipping\\/usps\",\"extension\\/shipping\\/weight\",\"extension\\/theme\\/default\",\"extension\\/total\\/coupon\",\"extension\\/total\\/credit\",\"extension\\/total\\/handling\",\"extension\\/total\\/klarna_fee\",\"extension\\/total\\/low_order_fee\",\"extension\\/total\\/reward\",\"extension\\/total\\/shipping\",\"extension\\/total\\/sub_total\",\"extension\\/total\\/tax\",\"extension\\/total\\/total\",\"extension\\/total\\/voucher\",\"localisation\\/country\",\"localisation\\/currency\",\"localisation\\/geo_zone\",\"localisation\\/language\",\"localisation\\/length_class\",\"localisation\\/location\",\"localisation\\/order_status\",\"localisation\\/return_action\",\"localisation\\/return_reason\",\"localisation\\/return_status\",\"localisation\\/stock_status\",\"localisation\\/tax_class\",\"localisation\\/tax_rate\",\"localisation\\/weight_class\",\"localisation\\/zone\",\"mail\\/affiliate\",\"mail\\/customer\",\"mail\\/forgotten\",\"mail\\/return\",\"mail\\/reward\",\"mail\\/transaction\",\"marketing\\/contact\",\"marketing\\/coupon\",\"marketing\\/marketing\",\"marketplace\\/api\",\"marketplace\\/event\",\"marketplace\\/extension\",\"marketplace\\/install\",\"marketplace\\/installer\",\"marketplace\\/modification\",\"report\\/online\",\"report\\/report\",\"report\\/statistics\",\"sale\\/order\",\"sale\\/recurring\",\"sale\\/return\",\"sale\\/voucher\",\"sale\\/voucher_theme\",\"search\\/search\",\"setting\\/setting\",\"setting\\/store\",\"startup\\/error\",\"startup\\/event\",\"startup\\/login\",\"startup\\/permission\",\"startup\\/router\",\"startup\\/sass\",\"startup\\/startup\",\"tool\\/backup\",\"tool\\/log\",\"tool\\/upload\",\"user\\/api\",\"user\\/user\",\"user\\/user_permission\"],\"modify\":[\"blog\\/article\",\"blog\\/category\",\"blog\\/review\",\"blog\\/setting\",\"catalog\\/attribute\",\"catalog\\/attribute_group\",\"catalog\\/category\",\"catalog\\/download\",\"catalog\\/filter\",\"catalog\\/information\",\"catalog\\/manufacturer\",\"catalog\\/option\",\"catalog\\/product\",\"catalog\\/recurring\",\"catalog\\/review\",\"common\\/column_left\",\"common\\/developer\",\"common\\/filemanager\",\"common\\/profile\",\"common\\/security\",\"customer\\/custom_field\",\"customer\\/customer\",\"customer\\/customer_approval\",\"customer\\/customer_group\",\"design\\/banner\",\"design\\/layout\",\"design\\/seo_url\",\"design\\/theme\",\"design\\/translation\",\"event\\/language\",\"event\\/statistics\",\"event\\/theme\",\"extension\\/advertise\\/google\",\"extension\\/analytics\\/google\",\"extension\\/captcha\\/basic\",\"extension\\/captcha\\/google\",\"extension\\/currency\\/cbr\",\"extension\\/currency\\/ecb\",\"extension\\/currency\\/fixer\",\"extension\\/currency\\/nbu\",\"extension\\/dashboard\\/activity\",\"extension\\/dashboard\\/chart\",\"extension\\/dashboard\\/customer\",\"extension\\/dashboard\\/map\",\"extension\\/dashboard\\/online\",\"extension\\/dashboard\\/order\",\"extension\\/dashboard\\/recent\",\"extension\\/dashboard\\/sale\",\"extension\\/extension\\/advertise\",\"extension\\/extension\\/analytics\",\"extension\\/extension\\/captcha\",\"extension\\/extension\\/currency\",\"extension\\/extension\\/dashboard\",\"extension\\/extension\\/feed\",\"extension\\/extension\\/fraud\",\"extension\\/extension\\/menu\",\"extension\\/extension\\/module\",\"extension\\/extension\\/payment\",\"extension\\/extension\\/report\",\"extension\\/extension\\/shipping\",\"extension\\/extension\\/theme\",\"extension\\/extension\\/total\",\"extension\\/feed\\/google_base\",\"extension\\/feed\\/google_sitemap\",\"extension\\/feed\\/unisender\",\"extension\\/feed\\/yandex_market\",\"extension\\/feed\\/yandex_turbo\",\"extension\\/fraud\\/fraudlabspro\",\"extension\\/fraud\\/ip\",\"extension\\/fraud\\/maxmind\",\"extension\\/menu\\/default\",\"extension\\/module\\/account\",\"extension\\/module\\/amazon_login\",\"extension\\/module\\/amazon_pay\",\"extension\\/module\\/anycategories\",\"extension\\/module\\/banner\",\"extension\\/module\\/bestseller\",\"extension\\/module\\/blog_category\",\"extension\\/module\\/blog_featured\",\"extension\\/module\\/blog_latest\",\"extension\\/module\\/carousel\",\"extension\\/module\\/category\",\"extension\\/module\\/divido_calculator\",\"extension\\/module\\/featured\",\"extension\\/module\\/featured_article\",\"extension\\/module\\/featured_product\",\"extension\\/module\\/filter\",\"extension\\/module\\/google_hangouts\",\"extension\\/module\\/html\",\"extension\\/module\\/information\",\"extension\\/module\\/klarna_checkout_module\",\"extension\\/module\\/latest\",\"extension\\/module\\/laybuy_layout\",\"extension\\/module\\/paypal_smart_button\",\"extension\\/module\\/pilibaba_button\",\"extension\\/module\\/pp_braintree_button\",\"extension\\/module\\/sagepay_direct_cards\",\"extension\\/module\\/sagepay_server_cards\",\"extension\\/module\\/slideshow\",\"extension\\/module\\/special\",\"extension\\/module\\/store\",\"extension\\/payment\\/alipay\",\"extension\\/payment\\/alipay_cross\",\"extension\\/payment\\/amazon_login_pay\",\"extension\\/payment\\/authorizenet_aim\",\"extension\\/payment\\/authorizenet_sim\",\"extension\\/payment\\/bank_transfer\",\"extension\\/payment\\/bluepay_hosted\",\"extension\\/payment\\/bluepay_redirect\",\"extension\\/payment\\/cardconnect\",\"extension\\/payment\\/cardinity\",\"extension\\/payment\\/cheque\",\"extension\\/payment\\/cod\",\"extension\\/payment\\/divido\",\"extension\\/payment\\/eway\",\"extension\\/payment\\/firstdata\",\"extension\\/payment\\/firstdata_remote\",\"extension\\/payment\\/free_checkout\",\"extension\\/payment\\/g2apay\",\"extension\\/payment\\/globalpay\",\"extension\\/payment\\/globalpay_remote\",\"extension\\/payment\\/klarna_account\",\"extension\\/payment\\/klarna_checkout\",\"extension\\/payment\\/klarna_invoice\",\"extension\\/payment\\/laybuy\",\"extension\\/payment\\/liqpay\",\"extension\\/payment\\/nochex\",\"extension\\/payment\\/ocstore_w1\",\"extension\\/payment\\/paymate\",\"extension\\/payment\\/paypal\",\"extension\\/payment\\/paypoint\",\"extension\\/payment\\/payza\",\"extension\\/payment\\/perpetual_payments\",\"extension\\/payment\\/pilibaba\",\"extension\\/payment\\/pp_braintree\",\"extension\\/payment\\/pp_express\",\"extension\\/payment\\/pp_payflow\",\"extension\\/payment\\/pp_payflow_iframe\",\"extension\\/payment\\/pp_pro\",\"extension\\/payment\\/pp_pro_iframe\",\"extension\\/payment\\/pp_standard\",\"extension\\/payment\\/realex\",\"extension\\/payment\\/realex_remote\",\"extension\\/payment\\/sagepay_direct\",\"extension\\/payment\\/sagepay_server\",\"extension\\/payment\\/sagepay_us\",\"extension\\/payment\\/securetrading_pp\",\"extension\\/payment\\/securetrading_ws\",\"extension\\/payment\\/skrill\",\"extension\\/payment\\/squareup\",\"extension\\/payment\\/twocheckout\",\"extension\\/payment\\/web_payment_software\",\"extension\\/payment\\/webmoney_wmb\",\"extension\\/payment\\/webmoney_wme\",\"extension\\/payment\\/webmoney_wmk\",\"extension\\/payment\\/webmoney_wmr\",\"extension\\/payment\\/webmoney_wmu\",\"extension\\/payment\\/webmoney_wmv\",\"extension\\/payment\\/webmoney_wmz\",\"extension\\/payment\\/wechat_pay\",\"extension\\/payment\\/worldpay\",\"extension\\/report\\/customer_activity\",\"extension\\/report\\/customer_order\",\"extension\\/report\\/customer_reward\",\"extension\\/report\\/customer_search\",\"extension\\/report\\/customer_transaction\",\"extension\\/report\\/marketing\",\"extension\\/report\\/product_purchased\",\"extension\\/report\\/product_viewed\",\"extension\\/report\\/sale_coupon\",\"extension\\/report\\/sale_order\",\"extension\\/report\\/sale_return\",\"extension\\/report\\/sale_shipping\",\"extension\\/report\\/sale_tax\",\"extension\\/shipping\\/auspost\",\"extension\\/shipping\\/ec_ship\",\"extension\\/shipping\\/fedex\",\"extension\\/shipping\\/flat\",\"extension\\/shipping\\/free\",\"extension\\/shipping\\/item\",\"extension\\/shipping\\/parcelforce_48\",\"extension\\/shipping\\/pickup\",\"extension\\/shipping\\/royal_mail\",\"extension\\/shipping\\/ups\",\"extension\\/shipping\\/usps\",\"extension\\/shipping\\/weight\",\"extension\\/theme\\/default\",\"extension\\/total\\/coupon\",\"extension\\/total\\/credit\",\"extension\\/total\\/handling\",\"extension\\/total\\/klarna_fee\",\"extension\\/total\\/low_order_fee\",\"extension\\/total\\/reward\",\"extension\\/total\\/shipping\",\"extension\\/total\\/sub_total\",\"extension\\/total\\/tax\",\"extension\\/total\\/total\",\"extension\\/total\\/voucher\",\"localisation\\/country\",\"localisation\\/currency\",\"localisation\\/geo_zone\",\"localisation\\/language\",\"localisation\\/length_class\",\"localisation\\/location\",\"localisation\\/order_status\",\"localisation\\/return_action\",\"localisation\\/return_reason\",\"localisation\\/return_status\",\"localisation\\/stock_status\",\"localisation\\/tax_class\",\"localisation\\/tax_rate\",\"localisation\\/weight_class\",\"localisation\\/zone\",\"mail\\/affiliate\",\"mail\\/customer\",\"mail\\/forgotten\",\"mail\\/return\",\"mail\\/reward\",\"mail\\/transaction\",\"marketing\\/contact\",\"marketing\\/coupon\",\"marketing\\/marketing\",\"marketplace\\/api\",\"marketplace\\/event\",\"marketplace\\/extension\",\"marketplace\\/install\",\"marketplace\\/installer\",\"marketplace\\/modification\",\"report\\/online\",\"report\\/report\",\"report\\/statistics\",\"sale\\/order\",\"sale\\/recurring\",\"sale\\/return\",\"sale\\/voucher\",\"sale\\/voucher_theme\",\"search\\/search\",\"setting\\/setting\",\"setting\\/store\",\"startup\\/error\",\"startup\\/event\",\"startup\\/login\",\"startup\\/permission\",\"startup\\/router\",\"startup\\/sass\",\"startup\\/startup\",\"tool\\/backup\",\"tool\\/log\",\"tool\\/upload\",\"user\\/api\",\"user\\/user\",\"user\\/user_permission\"]}'),
+(1, 'Administrator', '{\"access\":[\"blog\\/article\",\"blog\\/category\",\"blog\\/review\",\"blog\\/setting\",\"catalog\\/attribute\",\"catalog\\/attribute_group\",\"catalog\\/category\",\"catalog\\/download\",\"catalog\\/filter\",\"catalog\\/information\",\"catalog\\/manufacturer\",\"catalog\\/option\",\"catalog\\/product\",\"catalog\\/recurring\",\"catalog\\/review\",\"common\\/column_left\",\"common\\/developer\",\"common\\/filemanager\",\"common\\/profile\",\"common\\/security\",\"customer\\/custom_field\",\"customer\\/customer\",\"customer\\/customer_approval\",\"customer\\/customer_group\",\"design\\/banner\",\"design\\/layout\",\"design\\/seo_url\",\"design\\/theme\",\"design\\/translation\",\"event\\/language\",\"event\\/statistics\",\"event\\/theme\",\"extension\\/advertise\\/google\",\"extension\\/analytics\\/google\",\"extension\\/captcha\\/basic\",\"extension\\/captcha\\/google\",\"extension\\/currency\\/cbr\",\"extension\\/currency\\/ecb\",\"extension\\/currency\\/fixer\",\"extension\\/currency\\/nbu\",\"extension\\/dashboard\\/activity\",\"extension\\/dashboard\\/chart\",\"extension\\/dashboard\\/customer\",\"extension\\/dashboard\\/map\",\"extension\\/dashboard\\/online\",\"extension\\/dashboard\\/order\",\"extension\\/dashboard\\/recent\",\"extension\\/dashboard\\/sale\",\"extension\\/extension\\/advertise\",\"extension\\/extension\\/analytics\",\"extension\\/extension\\/captcha\",\"extension\\/extension\\/currency\",\"extension\\/extension\\/dashboard\",\"extension\\/extension\\/feed\",\"extension\\/extension\\/fraud\",\"extension\\/extension\\/menu\",\"extension\\/extension\\/module\",\"extension\\/extension\\/payment\",\"extension\\/extension\\/report\",\"extension\\/extension\\/shipping\",\"extension\\/extension\\/theme\",\"extension\\/extension\\/total\",\"extension\\/feed\\/google_base\",\"extension\\/feed\\/google_sitemap\",\"extension\\/feed\\/unisender\",\"extension\\/feed\\/yandex_market\",\"extension\\/feed\\/yandex_turbo\",\"extension\\/fraud\\/fraudlabspro\",\"extension\\/fraud\\/ip\",\"extension\\/fraud\\/maxmind\",\"extension\\/menu\\/default\",\"extension\\/module\\/account\",\"extension\\/module\\/amazon_login\",\"extension\\/module\\/amazon_pay\",\"extension\\/module\\/anycategories\",\"extension\\/module\\/banner\",\"extension\\/module\\/bestseller\",\"extension\\/module\\/blog_category\",\"extension\\/module\\/blog_featured\",\"extension\\/module\\/blog_latest\",\"extension\\/module\\/carousel\",\"extension\\/module\\/category\",\"extension\\/module\\/divido_calculator\",\"extension\\/module\\/featured\",\"extension\\/module\\/featured_article\",\"extension\\/module\\/featured_product\",\"extension\\/module\\/filter\",\"extension\\/module\\/google_hangouts\",\"extension\\/module\\/html\",\"extension\\/module\\/information\",\"extension\\/module\\/klarna_checkout_module\",\"extension\\/module\\/latest\",\"extension\\/module\\/laybuy_layout\",\"extension\\/module\\/paypal_smart_button\",\"extension\\/module\\/pilibaba_button\",\"extension\\/module\\/pp_braintree_button\",\"extension\\/module\\/sagepay_direct_cards\",\"extension\\/module\\/sagepay_server_cards\",\"extension\\/module\\/slideshow\",\"extension\\/module\\/special\",\"extension\\/module\\/store\",\"extension\\/payment\\/alipay\",\"extension\\/payment\\/alipay_cross\",\"extension\\/payment\\/amazon_login_pay\",\"extension\\/payment\\/authorizenet_aim\",\"extension\\/payment\\/authorizenet_sim\",\"extension\\/payment\\/bank_transfer\",\"extension\\/payment\\/bluepay_hosted\",\"extension\\/payment\\/bluepay_redirect\",\"extension\\/payment\\/cardconnect\",\"extension\\/payment\\/cardinity\",\"extension\\/payment\\/cheque\",\"extension\\/payment\\/cod\",\"extension\\/payment\\/divido\",\"extension\\/payment\\/eway\",\"extension\\/payment\\/firstdata\",\"extension\\/payment\\/firstdata_remote\",\"extension\\/payment\\/free_checkout\",\"extension\\/payment\\/g2apay\",\"extension\\/payment\\/globalpay\",\"extension\\/payment\\/globalpay_remote\",\"extension\\/payment\\/klarna_account\",\"extension\\/payment\\/klarna_checkout\",\"extension\\/payment\\/klarna_invoice\",\"extension\\/payment\\/laybuy\",\"extension\\/payment\\/liqpay\",\"extension\\/payment\\/nochex\",\"extension\\/payment\\/ocstore_w1\",\"extension\\/payment\\/paymate\",\"extension\\/payment\\/paypal\",\"extension\\/payment\\/paypoint\",\"extension\\/payment\\/payza\",\"extension\\/payment\\/perpetual_payments\",\"extension\\/payment\\/pilibaba\",\"extension\\/payment\\/pp_braintree\",\"extension\\/payment\\/pp_express\",\"extension\\/payment\\/pp_payflow\",\"extension\\/payment\\/pp_payflow_iframe\",\"extension\\/payment\\/pp_pro\",\"extension\\/payment\\/pp_pro_iframe\",\"extension\\/payment\\/pp_standard\",\"extension\\/payment\\/realex\",\"extension\\/payment\\/realex_remote\",\"extension\\/payment\\/sagepay_direct\",\"extension\\/payment\\/sagepay_server\",\"extension\\/payment\\/sagepay_us\",\"extension\\/payment\\/securetrading_pp\",\"extension\\/payment\\/securetrading_ws\",\"extension\\/payment\\/skrill\",\"extension\\/payment\\/squareup\",\"extension\\/payment\\/twocheckout\",\"extension\\/payment\\/web_payment_software\",\"extension\\/payment\\/webmoney_wmb\",\"extension\\/payment\\/webmoney_wme\",\"extension\\/payment\\/webmoney_wmk\",\"extension\\/payment\\/webmoney_wmr\",\"extension\\/payment\\/webmoney_wmu\",\"extension\\/payment\\/webmoney_wmv\",\"extension\\/payment\\/webmoney_wmz\",\"extension\\/payment\\/wechat_pay\",\"extension\\/payment\\/worldpay\",\"extension\\/report\\/customer_activity\",\"extension\\/report\\/customer_order\",\"extension\\/report\\/customer_reward\",\"extension\\/report\\/customer_search\",\"extension\\/report\\/customer_transaction\",\"extension\\/report\\/marketing\",\"extension\\/report\\/product_purchased\",\"extension\\/report\\/product_viewed\",\"extension\\/report\\/sale_coupon\",\"extension\\/report\\/sale_order\",\"extension\\/report\\/sale_return\",\"extension\\/report\\/sale_shipping\",\"extension\\/report\\/sale_tax\",\"extension\\/shipping\\/auspost\",\"extension\\/shipping\\/ec_ship\",\"extension\\/shipping\\/fedex\",\"extension\\/shipping\\/flat\",\"extension\\/shipping\\/free\",\"extension\\/shipping\\/item\",\"extension\\/shipping\\/parcelforce_48\",\"extension\\/shipping\\/pickup\",\"extension\\/shipping\\/royal_mail\",\"extension\\/shipping\\/ups\",\"extension\\/shipping\\/usps\",\"extension\\/shipping\\/weight\",\"extension\\/theme\\/default\",\"extension\\/total\\/coupon\",\"extension\\/total\\/credit\",\"extension\\/total\\/handling\",\"extension\\/total\\/klarna_fee\",\"extension\\/total\\/low_order_fee\",\"extension\\/total\\/reward\",\"extension\\/total\\/shipping\",\"extension\\/total\\/sub_total\",\"extension\\/total\\/tax\",\"extension\\/total\\/total\",\"extension\\/total\\/voucher\",\"localisation\\/country\",\"localisation\\/currency\",\"localisation\\/geo_zone\",\"localisation\\/language\",\"localisation\\/length_class\",\"localisation\\/location\",\"localisation\\/order_status\",\"localisation\\/return_action\",\"localisation\\/return_reason\",\"localisation\\/return_status\",\"localisation\\/stock_status\",\"localisation\\/tax_class\",\"localisation\\/tax_rate\",\"localisation\\/weight_class\",\"localisation\\/zone\",\"mail\\/affiliate\",\"mail\\/customer\",\"mail\\/forgotten\",\"mail\\/return\",\"mail\\/reward\",\"mail\\/transaction\",\"marketing\\/contact\",\"marketing\\/coupon\",\"marketing\\/marketing\",\"marketplace\\/api\",\"marketplace\\/event\",\"marketplace\\/extension\",\"marketplace\\/install\",\"marketplace\\/installer\",\"marketplace\\/modification\",\"report\\/online\",\"report\\/report\",\"report\\/statistics\",\"sale\\/order\",\"sale\\/recurring\",\"sale\\/return\",\"sale\\/voucher\",\"sale\\/voucher_theme\",\"search\\/search\",\"setting\\/setting\",\"setting\\/store\",\"startup\\/error\",\"startup\\/event\",\"startup\\/login\",\"startup\\/permission\",\"startup\\/router\",\"startup\\/sass\",\"startup\\/startup\",\"tool\\/backup\",\"tool\\/log\",\"tool\\/upload\",\"user\\/api\",\"user\\/user\",\"user\\/user_permission\",\"extension\\/module\\/divido_calculator\"],\"modify\":[\"blog\\/article\",\"blog\\/category\",\"blog\\/review\",\"blog\\/setting\",\"catalog\\/attribute\",\"catalog\\/attribute_group\",\"catalog\\/category\",\"catalog\\/download\",\"catalog\\/filter\",\"catalog\\/information\",\"catalog\\/manufacturer\",\"catalog\\/option\",\"catalog\\/product\",\"catalog\\/recurring\",\"catalog\\/review\",\"common\\/column_left\",\"common\\/developer\",\"common\\/filemanager\",\"common\\/profile\",\"common\\/security\",\"customer\\/custom_field\",\"customer\\/customer\",\"customer\\/customer_approval\",\"customer\\/customer_group\",\"design\\/banner\",\"design\\/layout\",\"design\\/seo_url\",\"design\\/theme\",\"design\\/translation\",\"event\\/language\",\"event\\/statistics\",\"event\\/theme\",\"extension\\/advertise\\/google\",\"extension\\/analytics\\/google\",\"extension\\/captcha\\/basic\",\"extension\\/captcha\\/google\",\"extension\\/currency\\/cbr\",\"extension\\/currency\\/ecb\",\"extension\\/currency\\/fixer\",\"extension\\/currency\\/nbu\",\"extension\\/dashboard\\/activity\",\"extension\\/dashboard\\/chart\",\"extension\\/dashboard\\/customer\",\"extension\\/dashboard\\/map\",\"extension\\/dashboard\\/online\",\"extension\\/dashboard\\/order\",\"extension\\/dashboard\\/recent\",\"extension\\/dashboard\\/sale\",\"extension\\/extension\\/advertise\",\"extension\\/extension\\/analytics\",\"extension\\/extension\\/captcha\",\"extension\\/extension\\/currency\",\"extension\\/extension\\/dashboard\",\"extension\\/extension\\/feed\",\"extension\\/extension\\/fraud\",\"extension\\/extension\\/menu\",\"extension\\/extension\\/module\",\"extension\\/extension\\/payment\",\"extension\\/extension\\/report\",\"extension\\/extension\\/shipping\",\"extension\\/extension\\/theme\",\"extension\\/extension\\/total\",\"extension\\/feed\\/google_base\",\"extension\\/feed\\/google_sitemap\",\"extension\\/feed\\/unisender\",\"extension\\/feed\\/yandex_market\",\"extension\\/feed\\/yandex_turbo\",\"extension\\/fraud\\/fraudlabspro\",\"extension\\/fraud\\/ip\",\"extension\\/fraud\\/maxmind\",\"extension\\/menu\\/default\",\"extension\\/module\\/account\",\"extension\\/module\\/amazon_login\",\"extension\\/module\\/amazon_pay\",\"extension\\/module\\/anycategories\",\"extension\\/module\\/banner\",\"extension\\/module\\/bestseller\",\"extension\\/module\\/blog_category\",\"extension\\/module\\/blog_featured\",\"extension\\/module\\/blog_latest\",\"extension\\/module\\/carousel\",\"extension\\/module\\/category\",\"extension\\/module\\/divido_calculator\",\"extension\\/module\\/featured\",\"extension\\/module\\/featured_article\",\"extension\\/module\\/featured_product\",\"extension\\/module\\/filter\",\"extension\\/module\\/google_hangouts\",\"extension\\/module\\/html\",\"extension\\/module\\/information\",\"extension\\/module\\/klarna_checkout_module\",\"extension\\/module\\/latest\",\"extension\\/module\\/laybuy_layout\",\"extension\\/module\\/paypal_smart_button\",\"extension\\/module\\/pilibaba_button\",\"extension\\/module\\/pp_braintree_button\",\"extension\\/module\\/sagepay_direct_cards\",\"extension\\/module\\/sagepay_server_cards\",\"extension\\/module\\/slideshow\",\"extension\\/module\\/special\",\"extension\\/module\\/store\",\"extension\\/payment\\/alipay\",\"extension\\/payment\\/alipay_cross\",\"extension\\/payment\\/amazon_login_pay\",\"extension\\/payment\\/authorizenet_aim\",\"extension\\/payment\\/authorizenet_sim\",\"extension\\/payment\\/bank_transfer\",\"extension\\/payment\\/bluepay_hosted\",\"extension\\/payment\\/bluepay_redirect\",\"extension\\/payment\\/cardconnect\",\"extension\\/payment\\/cardinity\",\"extension\\/payment\\/cheque\",\"extension\\/payment\\/cod\",\"extension\\/payment\\/divido\",\"extension\\/payment\\/eway\",\"extension\\/payment\\/firstdata\",\"extension\\/payment\\/firstdata_remote\",\"extension\\/payment\\/free_checkout\",\"extension\\/payment\\/g2apay\",\"extension\\/payment\\/globalpay\",\"extension\\/payment\\/globalpay_remote\",\"extension\\/payment\\/klarna_account\",\"extension\\/payment\\/klarna_checkout\",\"extension\\/payment\\/klarna_invoice\",\"extension\\/payment\\/laybuy\",\"extension\\/payment\\/liqpay\",\"extension\\/payment\\/nochex\",\"extension\\/payment\\/ocstore_w1\",\"extension\\/payment\\/paymate\",\"extension\\/payment\\/paypal\",\"extension\\/payment\\/paypoint\",\"extension\\/payment\\/payza\",\"extension\\/payment\\/perpetual_payments\",\"extension\\/payment\\/pilibaba\",\"extension\\/payment\\/pp_braintree\",\"extension\\/payment\\/pp_express\",\"extension\\/payment\\/pp_payflow\",\"extension\\/payment\\/pp_payflow_iframe\",\"extension\\/payment\\/pp_pro\",\"extension\\/payment\\/pp_pro_iframe\",\"extension\\/payment\\/pp_standard\",\"extension\\/payment\\/realex\",\"extension\\/payment\\/realex_remote\",\"extension\\/payment\\/sagepay_direct\",\"extension\\/payment\\/sagepay_server\",\"extension\\/payment\\/sagepay_us\",\"extension\\/payment\\/securetrading_pp\",\"extension\\/payment\\/securetrading_ws\",\"extension\\/payment\\/skrill\",\"extension\\/payment\\/squareup\",\"extension\\/payment\\/twocheckout\",\"extension\\/payment\\/web_payment_software\",\"extension\\/payment\\/webmoney_wmb\",\"extension\\/payment\\/webmoney_wme\",\"extension\\/payment\\/webmoney_wmk\",\"extension\\/payment\\/webmoney_wmr\",\"extension\\/payment\\/webmoney_wmu\",\"extension\\/payment\\/webmoney_wmv\",\"extension\\/payment\\/webmoney_wmz\",\"extension\\/payment\\/wechat_pay\",\"extension\\/payment\\/worldpay\",\"extension\\/report\\/customer_activity\",\"extension\\/report\\/customer_order\",\"extension\\/report\\/customer_reward\",\"extension\\/report\\/customer_search\",\"extension\\/report\\/customer_transaction\",\"extension\\/report\\/marketing\",\"extension\\/report\\/product_purchased\",\"extension\\/report\\/product_viewed\",\"extension\\/report\\/sale_coupon\",\"extension\\/report\\/sale_order\",\"extension\\/report\\/sale_return\",\"extension\\/report\\/sale_shipping\",\"extension\\/report\\/sale_tax\",\"extension\\/shipping\\/auspost\",\"extension\\/shipping\\/ec_ship\",\"extension\\/shipping\\/fedex\",\"extension\\/shipping\\/flat\",\"extension\\/shipping\\/free\",\"extension\\/shipping\\/item\",\"extension\\/shipping\\/parcelforce_48\",\"extension\\/shipping\\/pickup\",\"extension\\/shipping\\/royal_mail\",\"extension\\/shipping\\/ups\",\"extension\\/shipping\\/usps\",\"extension\\/shipping\\/weight\",\"extension\\/theme\\/default\",\"extension\\/total\\/coupon\",\"extension\\/total\\/credit\",\"extension\\/total\\/handling\",\"extension\\/total\\/klarna_fee\",\"extension\\/total\\/low_order_fee\",\"extension\\/total\\/reward\",\"extension\\/total\\/shipping\",\"extension\\/total\\/sub_total\",\"extension\\/total\\/tax\",\"extension\\/total\\/total\",\"extension\\/total\\/voucher\",\"localisation\\/country\",\"localisation\\/currency\",\"localisation\\/geo_zone\",\"localisation\\/language\",\"localisation\\/length_class\",\"localisation\\/location\",\"localisation\\/order_status\",\"localisation\\/return_action\",\"localisation\\/return_reason\",\"localisation\\/return_status\",\"localisation\\/stock_status\",\"localisation\\/tax_class\",\"localisation\\/tax_rate\",\"localisation\\/weight_class\",\"localisation\\/zone\",\"mail\\/affiliate\",\"mail\\/customer\",\"mail\\/forgotten\",\"mail\\/return\",\"mail\\/reward\",\"mail\\/transaction\",\"marketing\\/contact\",\"marketing\\/coupon\",\"marketing\\/marketing\",\"marketplace\\/api\",\"marketplace\\/event\",\"marketplace\\/extension\",\"marketplace\\/install\",\"marketplace\\/installer\",\"marketplace\\/modification\",\"report\\/online\",\"report\\/report\",\"report\\/statistics\",\"sale\\/order\",\"sale\\/recurring\",\"sale\\/return\",\"sale\\/voucher\",\"sale\\/voucher_theme\",\"search\\/search\",\"setting\\/setting\",\"setting\\/store\",\"startup\\/error\",\"startup\\/event\",\"startup\\/login\",\"startup\\/permission\",\"startup\\/router\",\"startup\\/sass\",\"startup\\/startup\",\"tool\\/backup\",\"tool\\/log\",\"tool\\/upload\",\"user\\/api\",\"user\\/user\",\"user\\/user_permission\",\"extension\\/module\\/divido_calculator\"]}'),
 (10, 'Demonstration', '');
 
 -- --------------------------------------------------------
@@ -12460,11 +11864,7 @@ INSERT INTO `oc_user_group` (`user_group_id`, `name`, `permission`) VALUES
 --
 -- Table structure for table `oc_voucher`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_voucher`;
 CREATE TABLE `oc_voucher` (
   `voucher_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
@@ -12492,11 +11892,7 @@ INSERT INTO `oc_voucher` (`voucher_id`, `order_id`, `code`, `from_name`, `from_e
 --
 -- Table structure for table `oc_voucher_history`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_voucher_history`;
 CREATE TABLE `oc_voucher_history` (
   `voucher_history_id` int(11) NOT NULL,
   `voucher_id` int(11) NOT NULL,
@@ -12510,11 +11906,7 @@ CREATE TABLE `oc_voucher_history` (
 --
 -- Table structure for table `oc_voucher_theme`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_voucher_theme`;
 CREATE TABLE `oc_voucher_theme` (
   `voucher_theme_id` int(11) NOT NULL,
   `image` varchar(255) NOT NULL
@@ -12534,11 +11926,7 @@ INSERT INTO `oc_voucher_theme` (`voucher_theme_id`, `image`) VALUES
 --
 -- Table structure for table `oc_voucher_theme_description`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_voucher_theme_description`;
 CREATE TABLE `oc_voucher_theme_description` (
   `voucher_theme_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
@@ -12559,11 +11947,7 @@ INSERT INTO `oc_voucher_theme_description` (`voucher_theme_id`, `language_id`, `
 --
 -- Table structure for table `oc_weight_class`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_weight_class`;
 CREATE TABLE `oc_weight_class` (
   `weight_class_id` int(11) NOT NULL,
   `value` decimal(15,8) NOT NULL DEFAULT '0.00000000'
@@ -12584,11 +11968,7 @@ INSERT INTO `oc_weight_class` (`weight_class_id`, `value`) VALUES
 --
 -- Table structure for table `oc_weight_class_description`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_weight_class_description`;
 CREATE TABLE `oc_weight_class_description` (
   `weight_class_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
@@ -12615,11 +11995,7 @@ INSERT INTO `oc_weight_class_description` (`weight_class_id`, `language_id`, `ti
 --
 -- Table structure for table `oc_zone`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_zone`;
 CREATE TABLE `oc_zone` (
   `zone_id` int(11) NOT NULL,
   `country_id` int(11) NOT NULL,
@@ -16751,11 +16127,7 @@ INSERT INTO `oc_zone` (`zone_id`, `country_id`, `name`, `code`, `status`) VALUES
 --
 -- Table structure for table `oc_zone_to_geo_zone`
 --
--- Creation: Nov 15, 2022 at 09:17 AM
--- Last update: Nov 15, 2022 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `oc_zone_to_geo_zone`;
 CREATE TABLE `oc_zone_to_geo_zone` (
   `zone_to_geo_zone_id` int(11) NOT NULL,
   `country_id` int(11) NOT NULL,
@@ -17901,19 +17273,19 @@ ALTER TABLE `oc_address`
 -- AUTO_INCREMENT for table `oc_api`
 --
 ALTER TABLE `oc_api`
-  MODIFY `api_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `api_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `oc_api_ip`
 --
 ALTER TABLE `oc_api_ip`
-  MODIFY `api_ip_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `api_ip_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `oc_api_session`
 --
 ALTER TABLE `oc_api_session`
-  MODIFY `api_session_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=518;
+  MODIFY `api_session_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=519;
 
 --
 -- AUTO_INCREMENT for table `oc_article`
@@ -17961,7 +17333,7 @@ ALTER TABLE `oc_blog_category`
 -- AUTO_INCREMENT for table `oc_cart`
 --
 ALTER TABLE `oc_cart`
-  MODIFY `cart_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=908;
+  MODIFY `cart_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `oc_category`
@@ -18105,7 +17477,7 @@ ALTER TABLE `oc_event`
 -- AUTO_INCREMENT for table `oc_extension`
 --
 ALTER TABLE `oc_extension`
-  MODIFY `extension_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `extension_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT for table `oc_extension_install`
@@ -18177,7 +17549,7 @@ ALTER TABLE `oc_layout_module`
 -- AUTO_INCREMENT for table `oc_layout_route`
 --
 ALTER TABLE `oc_layout_route`
-  MODIFY `layout_route_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=172;
+  MODIFY `layout_route_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=210;
 
 --
 -- AUTO_INCREMENT for table `oc_length_class`
@@ -18225,13 +17597,13 @@ ALTER TABLE `oc_module`
 -- AUTO_INCREMENT for table `oc_option`
 --
 ALTER TABLE `oc_option`
-  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `oc_option_value`
 --
 ALTER TABLE `oc_option_value`
-  MODIFY `option_value_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `option_value_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `oc_order`
@@ -18309,19 +17681,19 @@ ALTER TABLE `oc_product_discount`
 -- AUTO_INCREMENT for table `oc_product_image`
 --
 ALTER TABLE `oc_product_image`
-  MODIFY `product_image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1596;
+  MODIFY `product_image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1602;
 
 --
 -- AUTO_INCREMENT for table `oc_product_option`
 --
 ALTER TABLE `oc_product_option`
-  MODIFY `product_option_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `oc_product_option_value`
 --
 ALTER TABLE `oc_product_option_value`
-  MODIFY `product_option_value_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_option_value_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `oc_product_reward`
@@ -18333,7 +17705,7 @@ ALTER TABLE `oc_product_reward`
 -- AUTO_INCREMENT for table `oc_product_special`
 --
 ALTER TABLE `oc_product_special`
-  MODIFY `product_special_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `product_special_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `oc_recurring`
@@ -18375,7 +17747,7 @@ ALTER TABLE `oc_return_status`
 -- AUTO_INCREMENT for table `oc_review`
 --
 ALTER TABLE `oc_review`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `oc_review_article`
@@ -18387,13 +17759,13 @@ ALTER TABLE `oc_review_article`
 -- AUTO_INCREMENT for table `oc_seo_url`
 --
 ALTER TABLE `oc_seo_url`
-  MODIFY `seo_url_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1078;
+  MODIFY `seo_url_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1082;
 
 --
 -- AUTO_INCREMENT for table `oc_setting`
 --
 ALTER TABLE `oc_setting`
-  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14605;
+  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15778;
 
 --
 -- AUTO_INCREMENT for table `oc_statistics`
@@ -18411,7 +17783,7 @@ ALTER TABLE `oc_stock_status`
 -- AUTO_INCREMENT for table `oc_store`
 --
 ALTER TABLE `oc_store`
-  MODIFY `store_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `store_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `oc_tax_class`
