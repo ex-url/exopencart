@@ -103,7 +103,7 @@ $_['button_category_add']           = 'Add Category';
 $_['button_order']                  = 'View Order';
 $_['button_order_recurring']        = 'View Recurring Order';
 $_['button_buy']                    = 'Buy';
-$_['button_developer']              = 'Developer Setting'; 
+$_['button_developer']              = 'Developer Setting';
 
 // Tab
 $_['tab_affiliate']                 = 'Affiliate';
@@ -127,7 +127,7 @@ $_['tab_log']                       = 'Log';
 $_['tab_image']                     = 'Image';
 $_['tab_option']                    = 'Option';
 $_['tab_server']                    = 'Server';
-$_['tab_seopro']       				= 'SeoPro';
+$_['tab_seopro']                    = 'SeoPro';
 $_['tab_seo']                       = 'SEO';
 $_['tab_store']                     = 'Store';
 $_['tab_special']                   = 'Special';
@@ -135,7 +135,7 @@ $_['tab_session']                   = 'Session';
 $_['tab_local']                     = 'Local';
 $_['tab_mail']                      = 'Mail';
 $_['tab_module']                    = 'Module';
-$_['tab_related']          	 		= 'Related';
+$_['tab_related']                   = 'Related';
 $_['tab_payment']                   = 'Payment Details';
 $_['tab_product']                   = 'Products';
 $_['tab_reward']                    = 'Reward Points';

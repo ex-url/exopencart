@@ -102,11 +102,11 @@ $_['button_link']                   = 'Ссылка';
 $_['button_currency']               = 'Обновить курсы валют';
 $_['button_apply']                  = 'Применить';
 $_['button_category_add']           = 'Добавить категорию';
-$_['button_enable']           		= 'Включить';
-$_['button_disable']          		= 'Отключить';
+$_['button_enable']               = 'Включить';
+$_['button_disable']              = 'Отключить';
 
 // Tab
-$_['tab_affiliate']                 = 'Филиал';
+$_['tab_affiliate']                 = 'Партнёрство';
 $_['tab_address']                   = 'Адрес';
 $_['tab_additional']                = 'Дополнительные';
 $_['tab_admin']                     = 'Администратор';
@@ -126,7 +126,7 @@ $_['tab_log']                       = 'Лог';
 $_['tab_image']                     = 'Изображения';
 $_['tab_option']                    = 'Опции';
 $_['tab_server']                    = 'Сервер';
-$_['tab_seopro']       				= 'SeoPro';
+$_['tab_seopro']                    = 'SeoPro';
 $_['tab_seo']                       = 'SEO';
 $_['tab_store']                     = 'Магазин';
 $_['tab_special']                   = 'Акции';
@@ -149,9 +149,9 @@ $_['tab_recurring']                 = 'Регулярные платежи';
 $_['tab_action']                    = 'Действие';
 $_['tab_google']                    = 'Google';
 $_['tab_sms']                       = 'SMS';
-$_['tab_extra_tab']          		= 'Доп Таб';
-$_['tab_module']          	 		= 'Таб';
-$_['tab_related']          	 		= 'Рекомендуем';
+$_['tab_extra_tab']              = 'Доп Таб';
+$_['tab_module']                 = 'Таб';
+$_['tab_related']                 = 'Рекомендуем';
 
 // Error
 $_['error_exception']               = 'Ошибка кода(%s): %s в %s на строке %s';
