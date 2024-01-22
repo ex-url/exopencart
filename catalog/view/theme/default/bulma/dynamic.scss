@@ -1,0 +1,62 @@
+@charset "utf-8";
+
+// Import a Google Font
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,700&display=swap');
+
+// Update Bulma's global variables
+$family-sans-serif: "Nunito Sans", sans-serif;
+$body-size: 16px;
+
+// Set your brand colors
+$blue: #0055d4;
+$green: #009646;
+$red: #c30000;
+$purple: #dd0093;
+$pink: #e890bb;
+$black: #000000;
+$yellow: #ffc21c;
+
+// set styles for elements and components
+$radius-small: 6px;
+$radius: 12px;
+$radius-large: 18px;
+
+$title-weight: 700;
+$title-color: $black;
+
+$gap: 32px;
+$container-max-width: 1408px;
+
+$primary: $blue;
+$warning: $yellow;
+$link: $blue;
+$success: $green;
+
+$gap: 32px;
+
+$tablet: 641px;
+$desktop: 960px + (2 * $gap);
+$widescreen: 1280px + (2 * $gap);
+$fullhd: 1600px + (2 * $gap);
+
+$box-link-hover-shadow: 0 0.5em 1em -0.125em rgba($primary, 0.1), 0 0 0 1px $primary;
+
+$breadcrumb-item-color: hsl(0, 0%, 86%);
+$breadcrumb-item-hover-color: hsl(0, 0%, 71%);
+
+$pagination-current-color: #fff;
+$pagination-current-border-color: $primary;
+$pagination-current-background-color: $primary;
+
+$tabs-toggle-link-active-background-color: $primary;
+$tabs-toggle-link-active-border-color: $primary;
+
+// Import only what you need from Bulma
+@import "scss/utilities/_all";
+@import "scss/base/_all";
+@import "scss/elements/_all";
+@import "scss/form/_all";
+@import "scss/components/_all";
+@import "scss/grid/_all";
+@import "scss/helpers/_all";
+@import "scss/layout/_all";

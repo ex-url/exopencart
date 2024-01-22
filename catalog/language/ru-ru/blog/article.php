@@ -18,6 +18,7 @@ $_['button_more']       = 'Читать дальше';
 $_['text_tax']          = 'Без НДС:';
 $_['text_related']       = 'Похожие статьи';
 $_['text_related_product']       = 'Сопутствующие товары';
+$_['text_instock']             = 'В наличии';
 
 // Entry
 $_['entry_name']        = 'Ваше имя';

@@ -16,16 +16,8 @@ class ControllerBlogArticle extends Controller {
 			'separator' => false
 		);
 
-		$configblog_name = $this->config->get('configblog_name');
-
-		if (!empty($configblog_name)) {
-			$name = $this->config->get('configblog_name');
-		} else {
-			$name = $this->language->get('text_blog');
-		}
-
 		$data['breadcrumbs'][] = array(
-			'text' => $name,
+			'text' => $this->language->get('text_blog'),
 			'href' => $this->url->link('blog/latest')
 		);
 
@@ -277,17 +269,19 @@ class ControllerBlogArticle extends Controller {
 				$data['text_tax'] = $this->language->get('text_tax');
 
 				$data['products'][] = array(
-					'product_id' => $result['product_id'],
-					'thumb'   	 => $image,
-					'name'    	 => $result['name'],
-					'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('configblog_article_description_length')) . '..',
-					'price'   	 => $price,
-					'special' 	 => $special,
-					'rating'     => $rating,
-					'tax'        => $tax,
+					'product_id'  => $result['product_id'],
+					'thumb'       => $image,
+					'name'        => $result['name'],
+					'description' => utf8_substr(trim(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8'))), 0, $this->config->get('theme_' . $this->config->get('config_theme') . '_product_description_length')) . '..',
+					'price'       => $price,
+					'special'     => $special,
+					'stock_status'=> $result['stock_status'],
+					'stock'       => $result['quantity'] <= 0 ? $result['stock_status'] : $this->language->get('text_instock'),
+					'quantity'    => $result['quantity'],
+					'tax'         => $tax,
 					'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
-					'reviews'    => sprintf($this->language->get('text_reviews'), (int)$result['reviews']),
-					'href'    	 => $this->url->link('product/product', 'product_id=' . $result['product_id']),
+					'rating'      => $rating,
+					'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'])
 				);
 			}
 

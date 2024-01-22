@@ -1,0 +1,154 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right">
+        <button class="btn btn-danger" id="reset" data-toggle="tooltip" data-loading-text="..." title="{{ text_reset }}"><i class="fa fa-refresh"></i></button>
+        <button class="btn btn-success" id="generate" data-toggle="tooltip" data-loading-text="..." title="{{ text_generate }}"><i class="fa fa-paint-brush"></i></button>
+        <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a>
+      </div>
+      <h1>{{ heading_title }}</h1>
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    {% if error_warning %}
+    <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-pencil"></i> {{ text_edit }}</h3>
+      </div>
+      <div class="panel-body">
+        <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-module" class="form-horizontal">
+          <fieldset>
+            <input type="hidden" name="reset" value="0">
+            <legend>{{ text_vars }}</legend>
+            <p>{{ text_explanation }}</p>
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="input-status">
+                <span data-toggle="tooltip" title="{{ help_directory }}">{{ entry_directory }}</span>
+              </label>
+              <div class="col-sm-10">
+                <select name="module_extheme_directory" id="input-directory" class="form-control">
+                  {% for directory in directories %}
+                  {% if directory == theme_default_directory %}
+                  <option value="{{ directory }}" selected="selected">{{ directory }}</option>
+                  {% else %}
+                  <option value="{{ directory }}">{{ directory }}</option>
+                  {% endif %}
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-12" for="input-scss">{{ entry_vars }}</label>
+              <div class="col-sm-12">
+                <textarea name="module_extheme_scss" placeholder="{{ entry_scss }}" id="input-scss" class="form-control">{{ module_extheme_scss }}</textarea>
+              </div>
+            </div>
+          </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<link href="view/javascript/codemirror/lib/codemirror.css" rel="stylesheet" />
+<link href="view/javascript/codemirror/lib/fullscreen.css" rel="stylesheet" />
+<link href="view/javascript/codemirror/theme/monokai.css" rel="stylesheet" />
+<script type="text/javascript" src="view/javascript/codemirror/lib/codemirror.js"></script>
+<script type="text/javascript" src="view/javascript/codemirror/lib/fullscreen.js"></script>
+<script type="text/javascript" src="view/javascript/codemirror/lib/css.js"></script>
+<script type="text/javascript" src="view/javascript/codemirror/lib/sass.js"></script>
+<script type="text/javascript" src="view/javascript/codemirror/lib/formatting.js"></script>
+
+<script>
+
+  let editorElement = document.getElementById('input-scss');
+
+  const editor = CodeMirror.fromTextArea(editorElement, {
+    mode: 'sass',
+    htmlMode: false,
+    lineNumbers: true,
+    theme: 'monokai',
+    fullScreen: false
+  });
+
+  let fullscreen = document.createElement("button");
+
+  $(fullscreen).html('<i class="fa fa-arrows-alt" aria-hidden="true"></i>');
+
+  fullscreen.addEventListener("click", function(e) {
+    e.preventDefault();
+    editor.setOption("fullScreen", !editor.getOption("fullScreen"));
+  });
+
+  editor.getWrapperElement().appendChild(fullscreen);
+
+  editor.on('change', function () {
+    let code = editor.getValue();
+    editorElement.value = code;
+  })
+
+  $('#generate').on('click', function (e) {
+
+    let $button = $(this);
+    let $form = $('#form-module');
+
+    $.ajax({
+      url: 'index.php?route=extension/module/extheme/generate&user_token={{ user_token }}',
+      type: 'post',
+      data: $form.serialize(),
+      processData: false,
+      dataType: 'json',
+      beforeSend: function () {
+        $button.button('loading');
+      },
+      success: function(json) {
+        location.reload();
+      },
+      complete: function(data) {
+        $button.button('reset');
+      }
+    });
+
+    return false;
+  });
+
+  $('#reset').on('click', function (e) {
+
+    let $button = $(this);
+    let $form = $('#form-module');
+
+    $form.find('input[name="reset"]').val(1);
+
+    $.ajax({
+      url: 'index.php?route=extension/module/extheme/generate&user_token={{ user_token }}',
+      type: 'post',
+      data: $form.serialize(),
+      processData: false,
+      dataType: 'json',
+      beforeSend: function () {
+        $button.button('loading');
+      },
+      success: function(json) {
+        location.reload();
+        $button.button('reset');
+      },
+      complete: function(data) {
+        $button.button('reset');
+      }
+    });
+
+    return false;
+  });
+</script>
+{{ footer }}
