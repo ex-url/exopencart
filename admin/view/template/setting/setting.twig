@@ -48,7 +48,7 @@
                   <input type="text" name="config_meta_title" value="{{ config_meta_title }}" placeholder="{{ entry_meta_title }}" id="input-meta-title" class="form-control" />
                   {% if error_meta_title %}
                   <div class="text-danger">{{ error_meta_title }}</div>
-                  {% endif %} 
+                  {% endif %}
                 </div>
               </div>
               <div class="form-group">
@@ -752,19 +752,13 @@
                   <div class="col-sm-10">
                     <select name="config_account_id" id="input-account" class="form-control">
                       <option value="0">{{ text_none }}</option>
-
                       {% for information in informations %}
                       {% if information.information_id == config_account_id %}
-
                       <option value="{{ information.information_id }}" selected="selected">{{ information.title }}</option>
-
                       {% else %}
-
                       <option value="{{ information.information_id }}">{{ information.title }}</option>
-
                       {% endif %}
                       {% endfor %}
-
                     </select>
                   </div>
                 </div>
@@ -1755,7 +1749,7 @@
     row++;
 
   }
-  
+
 $('select[name=\'config_theme\']').on('change', function() {
 	$.ajax({
 		url: 'index.php?route=setting/setting/theme&user_token={{ user_token }}&theme=' + this.value,

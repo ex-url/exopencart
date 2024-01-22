@@ -1,0 +1,23 @@
+<div class="privacy p-5 has-background-white is-hidden">
+  <div class="columns is-multiline is-aling-items-center">
+    <div class="column">
+      {{ content[language_id].text}} <a target="_blank" href="{{ url }}">{{ title }}</a>
+    </div>
+    <div class="column is-narrow">
+      <button type="button" class="button is-primary is-light">{{ content[language_id].button}}</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    $('.privacy button').on('click', function () {
+      localStorage.setItem('agree', true);
+      $('.privacy').fadeOut(300);
+    });
+
+    if(!localStorage.getItem('agree')) {
+      $('.privacy').removeClass('is-hidden');
+    }
+  });
+</script>

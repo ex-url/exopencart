@@ -40,6 +40,10 @@ class ControllerCommonFooter extends Controller {
       $data['stores'] = $this->load->controller('extension/module/store');
     }
 
+    if ($this->config->get('module_privacy_status')) {
+      $data['privacy'] = $this->load->controller('extension/module/privacy');
+    }
+
     // Whos Online
     if ($this->config->get('config_customer_online')) {
       $this->load->model('tool/online');
