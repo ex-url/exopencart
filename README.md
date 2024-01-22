@@ -4,6 +4,8 @@ The platform is based on the ocStore open-source e-commerce solution, which in t
 ## Main differences from the standard ocStore
 - The default template has been completely rewritten. Bulma is used as a UI framework in the catalog instead of bootstrap.
 
+- There is ready to go bulma SCSS compiler as an extension. Just override bulma variables you need, click the button and your theme is done!
+
 - Blog functionality has been cleaned of dirt and now works fine.
 
 - Modules that have headers (featured, latest, special, etc) allow you to specify them in several languages and display the specified value on the catalog side (instead of the value taken from the localization file in the base ocStore/OpenCart 3);
