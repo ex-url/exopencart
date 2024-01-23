@@ -530,30 +530,38 @@ input[type="search"]::-webkit-search-results-decoration {
   top: 1rem;
   right: 1rem;
 }
+
 .basic-captcha img {
   border-radius: 8px;
 }
+
 .slider-hidden {
   height: 1px;
   opacity: 0;
   filter: alpha(opacity=0);
   overflow: hidden;
 }
+
 .slideshow0 {
   padding-top: 1rem;
 }
+
 .slideshow-item img {
   border-radius: 10px;
 }
+
 .telegram svg {
   color: #0088cc;
 }
+
 .vk svg {
   color: #0077FF;
 }
+
 .youtube svg {
   color: #ff0000;
 }
+
 .mobile-contacts {
   position: fixed;
   bottom: 2rem;
@@ -562,9 +570,11 @@ input[type="search"]::-webkit-search-results-decoration {
   transition: all 0.4s ease;
   z-index: 1;
 }
+
 .mobile-contacts.shown {
   transform: translateX(-5rem);
 }
+
 .mobile-contacts .mobile-contacts-trigger {
   line-height: 1;
   border: none;
@@ -575,9 +585,11 @@ input[type="search"]::-webkit-search-results-decoration {
   transition: all 0.2s ease;
   animation: rotatedshake 4s cubic-bezier(.36, .07, .19, .97) infinite;
 }
+
 .mobile-contacts .mobile-contacts-trigger.shown {
   animation: none;
 }
+
 .mobile-contacts-list {
   position: absolute;
   bottom: calc(100% + 5px);
@@ -589,15 +601,18 @@ input[type="search"]::-webkit-search-results-decoration {
   right: -10rem;
   padding: 5px 0;
 }
+
 .mobile-contacts-list.shown {
   transform: translateX(-10rem);
 }
+
 .mobile-contacts-list>a {
   display: block;
   width: 36px;
   height: 36px;
   margin: 4px auto;
 }
+
 footer .scroll-top-trigger {
   position: fixed;
   width: 36px;
@@ -609,18 +624,22 @@ footer .scroll-top-trigger {
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   transition: all 0.4s ease;
+  z-index: 1;
 }
 
 footer .scroll-top-trigger.shown {
   transform: translateY(-5rem);
 }
+
 .privacy {
   position: fixed;
   bottom: 0;
+  left: 0;
   z-index: 9;
   width: 100%;
   box-shadow: 0 0 15px 0 rgb(0 0 0 / 50%);
 }
+
 @keyframes rotating {
   from {
     -ms-transform: rotate(0deg);
