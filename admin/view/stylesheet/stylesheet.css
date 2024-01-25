@@ -600,7 +600,6 @@ input[type="checkbox"]:checked::after, .checkbox input[type="checkbox"]:checked:
   padding: 15px;
   color: #0055d4;
   line-height: 42px;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, .4);
 }
 
 .tile .tile-body i {
@@ -614,6 +613,7 @@ input[type="checkbox"]:checked::after, .checkbox input[type="checkbox"]:checked:
 
 .tile .tile-body h2 {
   font-size: 42px;
+  font-weight: bold;
 }
 
 .tile-footer {
@@ -1130,8 +1130,12 @@ input[type="checkbox"]:checked::after, .checkbox input[type="checkbox"]:checked:
 .pagination-link {
   display: inline-block;
   padding: 10px 14px;
-  border: 1px solid;
+  background: #ebf3ff;
   line-height: 1;
   margin-right: 7px;
   border-radius: 5px;
+}
+.pagination-link.is-current {
+  background: #f2f2f2;
+  font-weight: bold;
 }

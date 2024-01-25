@@ -3,15 +3,15 @@
 // *	@license	GNU General Public License version 3; see LICENSE.txt
 
 // Heading
-$_['heading_title']                        = 'Регулярные платежи';
+$_['heading_title']                        = 'Подписки';
 
 // Text
 $_['text_success']                         = 'Настройки успешно изменены!';
-$_['text_list']                            = 'Список регулярных платежей';
+$_['text_list']                            = 'Список подписок';
 $_['text_add']                             = 'Добавить';
 $_['text_edit']                            = 'Редактирование';
-$_['text_filter']      					   = 'Фильтр';
-$_['text_payment_profiles']                = 'Регулярные платежи';
+$_['text_filter']      				         	   = 'Фильтр';
+$_['text_payment_profiles']                = 'Платёжные профили';
 $_['text_status_active']                   = 'Включен';
 $_['text_status_inactive']                 = 'Выключен';
 $_['text_status_cancelled']                = 'Отменен';
@@ -21,7 +21,7 @@ $_['text_status_pending']                  = 'Ожидает';
 $_['text_transactions']                    = 'Операции';
 $_['text_cancel_confirm']                  = 'Удаление профиля нельзя отменить! Вы уверены?';
 $_['text_transaction_date_added']          = 'Дата добавления';
-$_['text_transaction_payment'] 			   = 'Платеж';
+$_['text_transaction_payment'] 			     = 'Платеж';
 $_['text_transaction_outstanding_payment'] = 'Непоступивший платеж';
 $_['text_transaction_skipped']             = 'Платеж пропущен';
 $_['text_transaction_failed']              = 'Проблема с оплатой';
@@ -53,14 +53,14 @@ $_['entry_status']                         = 'Статус';
 $_['entry_type']                           = 'Тип';
 $_['entry_action']                         = 'Действие';
 $_['entry_email']                          = 'E-Mail';
-$_['entry_description']                    = 'Описание регулярного платежа';
+$_['entry_description']                    = 'Описание подписки';
 $_['entry_product']                        = 'Товар';
 $_['entry_quantity']                       = 'Количество';
 $_['entry_amount']                         = 'Итого';
-$_['entry_recurring']                      = 'Регулярный платеж';
+$_['entry_recurring']                      = 'Подписка';
 $_['entry_payment_method']                 = 'Способ оплаты';
 
 // Error / Success
 $_['error_not_cancelled']                  = 'Ошибка: %s';
 $_['error_not_found']                      = 'Нельзя закрыть регулярный профиль!';
-$_['text_cancelled']                       = 'Регулярный платеж был закрыт';
+$_['text_cancelled']                       = 'Подписка была закрыта';
