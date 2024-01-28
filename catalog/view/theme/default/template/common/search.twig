@@ -19,3 +19,76 @@
   </div>
   <button class="delete is-large" aria-label="close"></button>
 </div>
+
+<script>
+  $(document).ready(function () {
+
+    $('body').on('click', '.search-trigger, #search-modal .delete, #search-modal .modal-background', function () {
+      $('#search-modal').toggleClass('is-active');
+
+      if ($('#search-modal').hasClass('is-active')) {
+        $('#search-modal').find('input[name="search"]').focus();
+        $('#search-modal').find('input[name="search"]').trigger('input');
+      } else {
+        $('#search-modal').find('input[name="search"]').blur();
+        $('#search-modal .live-results').fadeOut(300);
+      }
+    });
+
+    $('.search-reset').on('click', function () {
+      $(this).parent().find('input[name="search"]').val('');
+      $(this).parent().find('input[name="search"]').trigger('input');
+      $(this).parent().find('input[name="search"]').focus();
+      $('#search-modal .live-results').fadeOut(300);
+    });
+
+    $('.search input[name="search"]').on('keydown', function (e) {
+      if (e.keyCode == 13) {
+        let url = $('base').attr('href') + 'index.php?route=product/search&description=true';
+
+        let value = $('.search input[name="search"]').val();
+
+        if (value) {
+          url += '&search=' + encodeURIComponent(value);
+        }
+
+        location = url;
+      }
+    });
+
+    $('input[name="search"]').on('input', function () {
+      if ($(this).val().length > 0) {
+        $(this).parent().find('.search-reset').addClass('shown');
+      } else {
+        $(this).parent().find('.search-reset').removeClass('shown');
+      }
+    });
+
+    // live search
+
+    let liveSearch = null;
+
+    $('.search input[name="search"]').on('input', function () {
+    $input = $(this);
+
+    if($(this).val().length > 2) {
+      clearTimeout(liveSearch);
+
+      liveSearch = setTimeout(function () {
+        $.ajax({
+          url: 'index.php?route=common/search/live&description=true&search=' + $input.val(),
+          dataType: 'html',
+          success: function(html) {
+            $('#search-modal .live-results').remove();
+            $('#search-modal .field.search').after(html);
+          },
+          error: function (e) {
+            console.log(e);
+          }
+        });
+      }, 1000);
+      }
+    });
+
+});
+</script>

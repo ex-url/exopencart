@@ -9,10 +9,6 @@ Options +FollowSymlinks
 # Prevent Directory listing
 Options -Indexes
 
-php_flag display_startup_errors on
-php_flag display_errors on
-php_flag html_errors on
-
 # Prevent Direct Access to files
 <FilesMatch "(?i)((\.tpl|\.twig|\.ini|\.log|(?<!robots)\.txt))">
  Require all denied

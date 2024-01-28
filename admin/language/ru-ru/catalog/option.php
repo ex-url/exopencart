@@ -22,6 +22,8 @@ $_['text_file']           = 'Файл';
 $_['text_date']           = 'Дата';
 $_['text_datetime']       = 'Дата и время';
 $_['text_time']           = 'Время';
+$_['text_option']         = 'Опция';
+$_['text_value']          = 'Значения опции';
 
 // Column
 $_['column_name']         = 'Название опции';

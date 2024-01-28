@@ -367,46 +367,6 @@ $(document).ready(function () {
     $(this).fadeOut(200);
   });
 
-  /* Search */
-  $('body').on('click', '.search-trigger, #search-modal .delete, #search-modal .modal-background', function () {
-    $('#search-modal').toggleClass('is-active');
-
-    if ($('#search-modal').hasClass('is-active')) {
-      $('#search-modal').find('input[name="search"]').focus();
-      $('#search-modal').find('input[name="search"]').trigger('input');
-    } else {
-      $('#search-modal').find('input[name="search"]').blur();
-    }
-  });
-
-  $('.search-reset').on('click', function () {
-    $(this).parent().find('input[name="search"]').val('');
-    $(this).parent().find('input[name="search"]').trigger('input'); // to remove reset button
-    $(this).parent().find('input[name="search"]').focus();
-  });
-
-  $('.search input[name="search"]').on('keydown', function (e) {
-    if (e.keyCode == 13) {
-      let url = $('base').attr('href') + 'index.php?route=product/search&description=true';
-
-      let value = $('.search input[name="search"]').val();
-
-      if (value) {
-        url += '&search=' + encodeURIComponent(value);
-      }
-
-      location = url;
-    }
-  });
-
-  $('input[name="search"]').on('input', function () {
-    if ($(this).val().length > 0) {
-      $(this).parent().find('.search-reset').addClass('shown');
-    } else {
-      $(this).parent().find('.search-reset').removeClass('shown');
-    }
-  });
-
   // score
   $('body').on('click', '.score .tag', function () {
     $(this).siblings().removeClass('is-active');
