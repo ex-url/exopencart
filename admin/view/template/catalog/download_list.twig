@@ -2,7 +2,9 @@
 <div id="content">
   <div class="page-header">
     <div class="container-fluid">
-      <div class="pull-right"><a href="{{ add }}" data-toggle="tooltip" title="{{ button_add }}" class="btn btn-primary"><i class="fa fa-plus"></i></a>
+      <div class="pull-right">
+        <button type="button" data-toggle="tooltip" title="{{ button_filter }}" onclick="$('#filter-files').toggleClass('hidden');" class="btn btn-info"><i class="fa fa-filter"></i></button>
+        <a href="{{ add }}" data-toggle="tooltip" title="{{ button_add }}" class="btn btn-primary"><i class="fa fa-plus"></i></a>
         <button type="button" data-toggle="tooltip" title="{{ button_delete }}" class="btn btn-danger" onclick="confirm('{{ text_confirm }}') ? $('#form-download').submit() : false;"><i class="fa fa-trash-o"></i></button>
       </div>
       <h1>{{ heading_title }}</h1>
@@ -24,59 +26,162 @@
       <button type="button" class="close" data-dismiss="alert">&times;</button>
     </div>
     {% endif %}
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title"><i class="fa fa-list"></i> {{ text_list }}</h3>
-      </div>
-      <div class="panel-body">
-        <form action="{{ delete }}" method="post" enctype="multipart/form-data" id="form-download">
-          <div class="table-responsive">
-            <table class="table table-bordered table-hover">
-              <thead>
-                <tr>
-                  <td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);" /></td>
-                  <td class="text-left">{% if sort == 'dd.name' %}
-                    <a href="{{ sort_name }}" class="{{ order|lower }}">{{ column_name }}</a>
-                    {% else %}
-                    <a href="{{ sort_name }}">{{ column_name }}</a>
-                    {% endif %}</td>
-                  <td class="text-right">{% if sort == 'd.date_added' %}
-                    <a href="{{ sort_date_added }}" class="{{ order|lower }}">{{ column_date_added }}</a>
-                    {% else %}
-                    <a href="{{ sort_date_added }}">{{ column_date_added }}</a>
-                    {% endif %}</td>
-                  <td class="text-right">{{ column_action }}</td>
-                </tr>
-              </thead>
-              <tbody>
-                {% if downloads %}
-                {% for download in downloads %}
-                <tr>
-                  <td class="text-center">{% if download.download_id in selected %}
-                    <input type="checkbox" name="selected[]" value="{{ download.download_id }}" checked="checked" />
-                    {% else %}
-                    <input type="checkbox" name="selected[]" value="{{ download.download_id }}" />
-                    {% endif %}</td>
-                  <td class="text-left">{{ download.name }}</td>
-                  <td class="text-right">{{ download.date_added }}</td>
-                  <td class="text-right"><a href="{{ download.edit }}" data-toggle="tooltip" title="{{ button_edit }}" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
-                </tr>
-                {% endfor %}
-                {% else %}
-                <tr>
-                  <td class="text-center" colspan="6">{{ text_no_results }}</td>
-                </tr>
-                {% endif %}
-              </tbody>
-            </table>
+    <div id="filter-files" class="col-md-12 col-sm-12 hidden">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-filter"></i> {{ text_filter }}</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <div class="form-group">
+                <label class="control-label" for="input-name">{{ entry_name }}</label>
+                <div class="input-group">
+                  <input type="text" name="filter_name" value="{{ filter_name }}" placeholder="{{ entry_name }}" id="input-name" class="form-control" />
+                  <div class="input-group-btn">
+                    <button type="button" id="button-clear-input-name" class="btn btn-default"><i class="fa fa-times"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <div class="form-group">
+                <label class="control-label" for="input-filename">{{ entry_filename }}</label>
+                <div class="input-group">
+                  <input type="text" name="filter_filename" value="{{ filter_filename }}" placeholder="{{ entry_filename }}" id="input-filename" class="form-control" />
+                  <div class="input-group-btn">
+                    <button type="button" id="button-clear-input-filename" class="btn btn-default"><i class="fa fa-times"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <div class="form-group">
+                <label class="control-label" for="input-mask">{{ entry_mask }}</label>
+                <div class="input-group">
+                  <input type="text" name="filter_mask" value="{{ filter_mask }}" placeholder="{{ entry_mask }}" id="input-mask" class="form-control" />
+                  <div class="input-group-btn">
+                    <button type="button" id="button-clear-input-mask" class="btn btn-default"><i class="fa fa-times"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="form-group text-right">
+                <button type="button" id="button-filter" class="btn btn-default"><i class="fa fa-filter"></i> {{ button_filter }}</button>
+                <button type="button" id="button-clear-filter" class="btn btn-default"><i class="fa fa-times"></i><span class="hidden-sm"> {{ button_clear }}</span></button>
+              </div>
+            </div>
           </div>
-        </form>
-        <div class="row">
-          <div class="col-sm-6 text-left">{{ pagination }}</div>
-          <div class="col-sm-6 text-right">{{ results }}</div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-{{ footer }}
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-list"></i> {{ text_list }}</h3>
+        </div>
+        <div class="panel-body">
+          <form action="{{ delete }}" method="post" enctype="multipart/form-data" id="form-download">
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);" /></td>
+                    <td class="text-left">{% if sort == 'dd.name' %}
+                      <a href="{{ sort_name }}" class="{{ order|lower }}">{{ column_name }}</a>
+                      {% else %}
+                      <a href="{{ sort_name }}">{{ column_name }}</a>
+                      {% endif %}</td>
+                      <td class="text-right">{% if sort == 'd.date_added' %}
+                        <a href="{{ sort_date_added }}" class="{{ order|lower }}">{{ column_date_added }}</a>
+                        {% else %}
+                        <a href="{{ sort_date_added }}">{{ column_date_added }}</a>
+                        {% endif %}</td>
+                        <td class="text-right">{{ column_action }}</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% if downloads %}
+                      {% for download in downloads %}
+                      <tr>
+                        <td class="text-center">{% if download.download_id in selected %}
+                          <input type="checkbox" name="selected[]" value="{{ download.download_id }}" checked="checked" />
+                          {% else %}
+                          <input type="checkbox" name="selected[]" value="{{ download.download_id }}" />
+                          {% endif %}</td>
+                          <td class="text-left">{{ download.name }}</td>
+                          <td class="text-right">{{ download.date_added }}</td>
+                          <td class="text-right"><a href="{{ download.edit }}" data-toggle="tooltip" title="{{ button_edit }}" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                        <tr>
+                          <td class="text-center" colspan="6">{{ text_no_results }}</td>
+                        </tr>
+                        {% endif %}
+                      </tbody>
+                    </table>
+                  </div>
+                </form>
+                <div class="row">
+                  <div class="col-sm-6 text-left">{{ pagination }}</div>
+                  <div class="col-sm-6 text-right">{{ results }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <script>
+          $('#button-filter').on('click', function() {
+            var url = '';
+
+            var filter_name = $('input[name="filter_name"]').val();
+
+            if (filter_name) {
+              url += '&filter_name=' + encodeURIComponent(filter_name);
+            }
+            var filter_filename = $('input[name="filter_filename"]').val();
+
+            if (filter_filename) {
+              url += '&filter_filename=' + encodeURIComponent(filter_filename);
+            }
+            var filter_mask = $('input[name="filter_mask"]').val();
+
+            if (filter_mask) {
+              url += '&filter_mask=' + encodeURIComponent(filter_mask);
+            }
+
+            location = 'index.php?route=catalog/download&user_token={{ user_token }}' + url;
+          });
+
+          $('#button-clear-filter').on('click', function() {
+            location = 'index.php?route=catalog/download&user_token={{ user_token }}';
+          });
+
+          $('input[name="filter_name"], input[name="filter_filename"], input[name="filter_mask"]').keypress(function (e) {
+            if (e.which == 13) {
+              $('#button-filter').trigger('click');
+              return false;
+            }
+          });
+
+          $('#button-clear-input-name').on('click',function(){
+            $('input[name="filter_name"]').val('');
+            $('#button-filter').trigger('click');
+          });
+
+          $('#button-clear-input-filename').on('click',function(){
+            $('input[name="filter_filename"]').val('');
+            $('#button-filter').trigger('click');
+          });
+
+          $('#button-clear-input-mask').on('click',function(){
+            $('input[name="filter_mask"]').val('');
+            $('#button-filter').trigger('click');
+          });
+
+          </script>
+        </div>
+      </div>
+      {{ footer }}

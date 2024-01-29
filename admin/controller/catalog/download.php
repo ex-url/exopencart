@@ -121,6 +121,24 @@ class ControllerCatalogDownload extends Controller {
 	}
 
 	protected function getList() {
+		if (isset($this->request->get['filter_name'])) {
+			$filter_name = $this->request->get['filter_name'];
+		} else {
+			$filter_name = '';
+		}
+
+		if (isset($this->request->get['filter_filename'])) {
+			$filter_filename = $this->request->get['filter_filename'];
+		} else {
+			$filter_filename = '';
+		}
+
+		if (isset($this->request->get['filter_mask'])) {
+			$filter_mask = $this->request->get['filter_mask'];
+		} else {
+			$filter_mask = '';
+		}
+
 		if (isset($this->request->get['sort'])) {
 			$sort = $this->request->get['sort'];
 		} else {
@@ -153,6 +171,16 @@ class ControllerCatalogDownload extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
+		if (isset($this->request->get['filter_name'])) {
+			$url .= '&filter_name=' . urlencode(html_entity_decode($this->request->get['filter_name'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_filename'])) {
+			$url .= '&filter_filename=' . urlencode(html_entity_decode($this->request->get['filter_filename'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_mask'])) {
+			$url .= '&filter_mask=' . urlencode(html_entity_decode($this->request->get['filter_mask'], ENT_QUOTES, 'UTF-8'));
+		}
+
 		$data['breadcrumbs'] = array();
 
 		$data['breadcrumbs'][] = array(
@@ -171,13 +199,18 @@ class ControllerCatalogDownload extends Controller {
 		$data['downloads'] = array();
 
 		$filter_data = array(
+			'filter_name' => $filter_name,
+			'filter_filename' => $filter_filename,
+			'filter_mask' => $filter_mask,
 			'sort'  => $sort,
 			'order' => $order,
 			'start' => ($page - 1) * $this->config->get('config_limit_admin'),
 			'limit' => $this->config->get('config_limit_admin')
 		);
 
-		$download_total = $this->model_catalog_download->getTotalDownloads();
+		$data['user_token'] = $this->session->data['user_token'];
+
+		$download_total = $this->model_catalog_download->getTotalDownloads($filter_data);
 
 		$results = $this->model_catalog_download->getDownloads($filter_data);
 
@@ -210,7 +243,7 @@ class ControllerCatalogDownload extends Controller {
 			$data['selected'] = array();
 		}
 
-		$url = '';
+		//$url = '';
 
 		if ($order == 'ASC') {
 			$url .= '&order=DESC';
@@ -225,7 +258,25 @@ class ControllerCatalogDownload extends Controller {
 		$data['sort_name'] = $this->url->link('catalog/download', 'user_token=' . $this->session->data['user_token'] . '&sort=dd.name' . $url, true);
 		$data['sort_date_added'] = $this->url->link('catalog/download', 'user_token=' . $this->session->data['user_token'] . '&sort=d.date_added' . $url, true);
 
+		$data['filter_name'] = $filter_name;
+		$data['filter_filename'] = $filter_filename;
+		$data['filter_mask'] = $filter_mask;
+
 		$url = '';
+
+		if (isset($this->request->get['page'])) {
+			$url .= '&page=' . $this->request->get['page'];
+		}
+
+		if (isset($this->request->get['filter_name'])) {
+			$url .= '&filter_name=' . urlencode(html_entity_decode($this->request->get['filter_name'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_filename'])) {
+			$url .= '&filter_filename=' . urlencode(html_entity_decode($this->request->get['filter_filename'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_mask'])) {
+			$url .= '&filter_mask=' . urlencode(html_entity_decode($this->request->get['filter_mask'], ENT_QUOTES, 'UTF-8'));
+		}
 
 		if (isset($this->request->get['sort'])) {
 			$url .= '&sort=' . $this->request->get['sort'];
@@ -369,12 +420,12 @@ class ControllerCatalogDownload extends Controller {
 		}
 
 		foreach ($this->request->post['download_description'] as $language_id => $value) {
-			if ((utf8_strlen($value['name']) < 3) || (utf8_strlen($value['name']) > 64)) {
+			if ((utf8_strlen($value['name']) < 3) || (utf8_strlen($value['name']) > 512)) {
 				$this->error['name'][$language_id] = $this->language->get('error_name');
 			}
 		}
 
-		if ((utf8_strlen($this->request->post['filename']) < 3) || (utf8_strlen($this->request->post['filename']) > 128)) {
+		if ((utf8_strlen($this->request->post['filename']) < 3) || (utf8_strlen($this->request->post['filename']) > 512)) {
 			$this->error['filename'] = $this->language->get('error_filename');
 		}
 
@@ -382,7 +433,7 @@ class ControllerCatalogDownload extends Controller {
 			$this->error['filename'] = $this->language->get('error_exists');
 		}
 
-		if ((utf8_strlen($this->request->post['mask']) < 3) || (utf8_strlen($this->request->post['mask']) > 128)) {
+		if ((utf8_strlen($this->request->post['mask']) < 3) || (utf8_strlen($this->request->post['mask']) > 512)) {
 			$this->error['mask'] = $this->language->get('error_mask');
 		}
 
