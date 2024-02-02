@@ -409,8 +409,6 @@ class ControllerBlogArticle extends Controller {
 
 		$download_info = $this->model_blog_article->getDownload($article_id, $download_id);
 
-
-
 		if ($download_info) {
 			$file = DIR_DOWNLOAD . $download_info['filename'];
 			$mask = basename($download_info['mask']);

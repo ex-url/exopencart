@@ -2,13 +2,13 @@
   <div class="live-results box p-3">
     {% for product in products %}
       <div class="columns is-mobile mb-0 is-align-items-center">
-        <div class="image column is-narrow has-text-centered">
+        <div class="image column is-3-desktop is-3-tablet is-4-mobile has-text-centered">
           <a href="{{ product.href }}" class="is-flex is-justify-content-center">
             <img src="{{ product.thumb }}" loading="lazy" alt="{{ product.name }}" title="{{ product.name }}" />
           </a>
           <span class="tag {{ product.quantity ? 'is-success' : 'is-danger' }} is-light stock">{{ product.stock }}</span>
         </div>
-        <div class="info column">
+        <div class="info column is-9-desktop is-9-tablet is-8-mobile">
           <a class="is-block is-size-6 mb-1 has-text-link" href="{{ product.href }}">{{ product.name }}</a>          
           <div class="is-flex is-justify-content-space-between is-align-items-center">
             {% if product.price %}
