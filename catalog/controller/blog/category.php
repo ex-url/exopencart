@@ -62,12 +62,12 @@ class ControllerBlogCategory extends Controller {
 			'href' => $this->url->link('common/home')
 		);
 
-		$configblog_name = $this->config->get('configblog_name');
+		$configblog_name = $this->config->get('configblog_name')[$this->config->get('config_language_id')];
 
 		if (!empty($configblog_name)) {
-			$name = $this->config->get('configblog_name');
+			$name = $configblog_name;
 		} else {
-			$name = $this->language->get('text_blog');
+			$name = $this->language->get('heading_title');
 		}
 
 		$data['breadcrumbs'][] = array(

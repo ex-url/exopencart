@@ -55,10 +55,10 @@ class ControllerBlogLatest extends Controller {
 			$limit = $this->config->get('configblog_article_limit');
 		}
 
-		$configblog_html_h1 = $this->config->get('configblog_html_h1');
+		$configblog_html_h1 = $this->config->get('configblog_html_h1')[$this->config->get('config_language_id')];
 
 		if (!empty($configblog_html_h1)) {
-			$data['heading_title'] = $this->config->get('configblog_html_h1');
+			$data['heading_title'] = $configblog_html_h1;
 		} else {
 			$data['heading_title'] = $this->language->get('heading_title');
 		}
@@ -66,13 +66,13 @@ class ControllerBlogLatest extends Controller {
 		$configblog_meta_title = $this->config->get('configblog_meta_title');
 
 		if (!empty($configblog_meta_title)) {
-			$this->document->setTitle($this->config->get('configblog_meta_title'));
+			$this->document->setTitle($this->config->get('configblog_meta_title')[$this->config->get('config_language_id')]);
 		} else {
 			$this->document->setTitle($this->language->get('heading_title'));
 		}
 
-		$this->document->setDescription($this->config->get('configblog_meta_description'));
-		$this->document->setKeywords($this->config->get('configblog_meta_keyword'));
+		$this->document->setDescription($this->config->get('configblog_meta_description')[$this->config->get('config_language_id')]);
+		$this->document->setKeywords($this->config->get('configblog_meta_keyword')[$this->config->get('config_language_id')]);
 
 		$data['breadcrumbs'] = array();
 
@@ -81,10 +81,10 @@ class ControllerBlogLatest extends Controller {
 			'href' => $this->url->link('common/home')
 		);
 
-		$configblog_name = $this->config->get('configblog_name');
+		$configblog_name = $this->config->get('configblog_name')[$this->config->get('config_language_id')];
 
 		if (!empty($configblog_name)) {
-			$name = $this->config->get('configblog_name');
+			$name = $configblog_name;
 		} else {
 			$name = $this->language->get('heading_title');
 		}

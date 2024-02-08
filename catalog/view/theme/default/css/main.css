@@ -816,7 +816,6 @@ footer .scroll-top-trigger.shown {
 @media (max-width: 640px) {
   .modal-content {
     max-height: 100%;
-    height: 100%;
   }
 
   .title.is-1 {

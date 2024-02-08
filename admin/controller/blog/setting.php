@@ -57,6 +57,10 @@ class ControllerBlogSetting extends Controller {
 		$data['help_review_guest'] = $this->language->get('help_review_guest');
 		$data['help_review_mail'] = $this->language->get('help_review_mail');
 
+		$this->load->model('localisation/language');
+
+    $data['languages'] = $this->model_localisation_language->getLanguages();
+
 		$data['button_save'] = $this->language->get('button_save');
 		$data['button_cancel'] = $this->language->get('button_cancel');
 
