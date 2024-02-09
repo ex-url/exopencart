@@ -5,8 +5,23 @@
     <span><strong>{{ review.author }}</strong></span>
     <span class="text-right">{{ review.date_added }}</span>
   </div>
-  <div class="panel-block">
-    <p>{{ review.text }}</p>
+  <div class="panel-block is-block">
+    <p class="has-text-grey">{{ review.text }}</p>
+    {% if review.reply %}
+    <div class="mt-2">
+      <p>
+        <span class="tag is-primary is-light is-medium mr-1">
+          <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5"/>
+            </svg>
+          </span>
+          <span>{{ replier }}</span>
+        </span>
+        {{ review.reply }}
+      </p>
+    </div>
+    {% endif %}
   </div>
 </div>
 {% endfor %}

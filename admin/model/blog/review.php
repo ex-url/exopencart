@@ -4,7 +4,7 @@
 
 class ModelBlogReview extends Model {
 	public function addReview($data) {
-		$this->db->query("INSERT INTO " . DB_PREFIX . "review_article SET author = '" . $this->db->escape($data['author']) . "', article_id = '" . (int)$data['article_id'] . "', text = '" . $this->db->escape(strip_tags($data['text'])) . "', rating = '" . (int)$data['rating'] . "', status = '" . (int)$data['status'] . "', date_added = '" . $this->db->escape($data['date_added']) . "'");
+		$this->db->query("INSERT INTO " . DB_PREFIX . "review_article SET author = '" . $this->db->escape($data['author']) . "', article_id = '" . (int)$data['article_id'] . "', text = '" . $this->db->escape(strip_tags($data['text'])) . "', reply = '" . $this->db->escape(strip_tags($data['reply'])) . "', status = '" . (int)$data['status'] . "', date_added = '" . $this->db->escape($data['date_added']) . "'");
 
 		$review_article_id = $this->db->getLastId();
 
@@ -14,7 +14,7 @@ class ModelBlogReview extends Model {
 	}
 
 	public function editReview($review_article_id, $data) {
-		$this->db->query("UPDATE " . DB_PREFIX . "review_article SET author = '" . $this->db->escape($data['author']) . "', article_id = '" . (int)$data['article_id'] . "', text = '" . $this->db->escape(strip_tags($data['text'])) . "', rating = '" . (int)$data['rating'] . "', status = '" . (int)$data['status'] . "', date_added = '" . $this->db->escape($data['date_added']) . "', date_modified = NOW() WHERE review_article_id = '" . (int)$review_article_id . "'");
+		$this->db->query("UPDATE " . DB_PREFIX . "review_article SET author = '" . $this->db->escape($data['author']) . "', article_id = '" . (int)$data['article_id'] . "', text = '" . $this->db->escape(strip_tags($data['text'])) . "', reply = '" . $this->db->escape(strip_tags($data['reply'])) . "', status = '" . (int)$data['status'] . "', date_added = '" . $this->db->escape($data['date_added']) . "', date_modified = NOW() WHERE review_article_id = '" . (int)$review_article_id . "'");
 
 		$this->cache->delete('article');
 	}

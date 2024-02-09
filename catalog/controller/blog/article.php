@@ -462,11 +462,13 @@ class ControllerBlogArticle extends Controller {
 
 		$results = $this->model_blog_review->getReviewsByArticleId($this->request->get['article_id'], ($page - 1) * 5, 5);
 
+		$data['replier'] = $this->config->get('config_name');
+
 		foreach ($results as $result) {
 			$data['reviews'][] = array(
 				'author'     => $result['author'],
 				'text'       => $result['text'],
-				'rating'     => (int)$result['rating'],
+				'reply'       => $result['reply'],
 				'reviews'    => sprintf($this->language->get('text_reviews'), (int)$review_total),
 				'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added']))
 			);

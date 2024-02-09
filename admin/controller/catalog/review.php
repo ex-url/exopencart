@@ -520,6 +520,14 @@ class ControllerCatalogReview extends Controller {
 			$data['text'] = '';
 		}
 
+		if (isset($this->request->post['reply'])) {
+			$data['reply'] = $this->request->post['reply'];
+		} elseif (!empty($review_info)) {
+			$data['reply'] = $review_info['reply'];
+		} else {
+			$data['reply'] = '';
+		}
+
 		if (isset($this->request->post['rating'])) {
 			$data['rating'] = $this->request->post['rating'];
 		} elseif (!empty($review_info)) {

@@ -76,6 +76,7 @@ class ControllerBlogReview extends Controller {
 		$this->load->model('blog/review');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
+
 			$this->model_blog_review->editReview($this->request->get['review_article_id'], $this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -520,12 +521,12 @@ class ControllerBlogReview extends Controller {
 			$data['text'] = '';
 		}
 
-		if (isset($this->request->post['rating'])) {
-			$data['rating'] = $this->request->post['rating'];
+		if (isset($this->request->post['reply'])) {
+			$data['reply'] = $this->request->post['reply'];
 		} elseif (!empty($review_info)) {
-			$data['rating'] = $review_info['rating'];
+			$data['reply'] = $review_info['reply'];
 		} else {
-			$data['rating'] = '';
+			$data['reply'] = '';
 		}
 
 		if (isset($this->request->post['date_added'])) {
@@ -566,10 +567,6 @@ class ControllerBlogReview extends Controller {
 
 		if (utf8_strlen($this->request->post['text']) < 1) {
 			$this->error['text'] = $this->language->get('error_text');
-		}
-
-		if (!isset($this->request->post['rating']) || $this->request->post['rating'] < 0 || $this->request->post['rating'] > 5) {
-			$this->error['rating'] = $this->language->get('error_rating');
 		}
 
 		return !$this->error;

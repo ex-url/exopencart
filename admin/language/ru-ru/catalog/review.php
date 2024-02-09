@@ -25,7 +25,8 @@ $_['entry_product']     = 'Товар';
 $_['entry_author']      = 'Автор';
 $_['entry_rating']      = 'Рейтинг';
 $_['entry_status']      = 'Статус';
-$_['entry_text']        = 'Текст';
+$_['entry_text']        = 'Текст отзыва';
+$_['entry_reply']        = 'Текст ответа';
 $_['entry_date_added']  = 'Дата добавления';
 
 // Help

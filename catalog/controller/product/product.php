@@ -567,6 +567,7 @@ class ControllerProductProduct extends Controller {
 			$page = 1;
 		}
 
+		$data['replier'] = $this->config->get('config_name');
 		$data['reviews'] = array();
 
 		$review_total = $this->model_catalog_review->getTotalReviewsByProductId($this->request->get['product_id']);
@@ -577,6 +578,7 @@ class ControllerProductProduct extends Controller {
 			$data['reviews'][] = array(
 				'author'     => $result['author'],
 				'text'       => nl2br($result['text']),
+				'reply'       => nl2br($result['reply']),
 				'rating'     => (int)$result['rating'],
 				'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added']))
 			);

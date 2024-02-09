@@ -23,6 +23,7 @@ $_['entry_author']      = 'Author';
 $_['entry_rating']      = 'Rating';
 $_['entry_status']      = 'Status';
 $_['entry_text']        = 'Text';
+$_['entry_reply']        = 'Reply';
 $_['entry_date_added']  = 'Date Added';
 
 // Help
