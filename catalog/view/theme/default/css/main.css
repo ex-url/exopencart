@@ -2,10 +2,6 @@
   line-height: 0;
 }
 
-#logo img {
-  max-width: 175px;
-}
-
 #menu {
   position: sticky;
   top: -0.5px;

@@ -61,6 +61,9 @@ $_['entry_order_status']           = 'Order Status';
 $_['entry_stock_display']          = 'Display Stock';
 $_['entry_stock_checkout']         = 'Stock Checkout';
 $_['entry_logo']                   = 'Store Logo';
+$_['entry_logo_size']                = 'Logo size, px';
+$_['entry_logo_width']               = 'Width, px';
+$_['entry_logo_height']              = 'Height, px';
 $_['entry_icon']                   = 'Icon';
 $_['entry_secure']                 = 'Use SSL';
 
@@ -84,6 +87,7 @@ $_['help_order_status']            = 'Set the default order status when an order
 $_['help_stock_display']           = 'Display stock quantity on the product page.';
 $_['help_stock_checkout']          = 'Allow customers to still checkout if the products they are ordering are not in stock.';
 $_['help_icon']                    = 'The icon should be a PNG that is 16px x 16px.';
+$_['help_logo_size']               = 'Set a size of your logo. By default it has 200х60 px size.';
 $_['help_secure']                  = 'To use SSL check with your host if a SSL certificate is installed.';
 
 // Error

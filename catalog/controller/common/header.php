@@ -6,6 +6,7 @@ class ControllerCommonHeader extends Controller {
   public function index() {
     // Analytics
     $this->load->model('setting/extension');
+    $this->load->model('tool/image');
 
     $data['analytics'] = array();
 
@@ -24,7 +25,8 @@ class ControllerCommonHeader extends Controller {
     }
 
     if (is_file(DIR_IMAGE . $this->config->get('config_icon'))) {
-      $this->document->addLink($server . 'image/favicon.svg', 'icon');
+      $this->model_tool_image->resize($this->config->get('config_icon'), 256, 256);
+      $this->document->addLink($server . 'image/' . $this->config->get('config_icon'), 'icon');
     }
 
     $template_folder = $this->config->get('theme_default_directory');
@@ -48,11 +50,17 @@ class ControllerCommonHeader extends Controller {
     $data['city'] = $this->config->get('config_city');
     $data['show_stores'] = $this->config->get('module_store_status');
 
+    $logo_width = $this->config->get('config_logo_width') ? (int)$this->config->get('config_logo_width') : 200;
+    $logo_height = $this->config->get('config_logo_height') ? (int)$this->config->get('config_logo_height') : 40;
+
     if (is_file(DIR_IMAGE . $this->config->get('config_logo'))) {
-      $data['logo'] = $server . 'image/' . $this->config->get('config_logo');
+      $data['logo'] = $this->model_tool_image->resize($this->config->get('config_logo'), $logo_width * 2, $logo_height * 2);
     } else {
       $data['logo'] = '';
     }
+
+    $data['logo_width'] = $logo_width;
+    $data['logo_height'] = $logo_height;
 
     $this->load->language('common/header');
 

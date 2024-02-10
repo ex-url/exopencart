@@ -642,6 +642,22 @@ class ControllerSettingStore extends Controller {
       $data['config_logo'] = '';
     }
 
+    if (isset($this->request->post['config_logo_width'])) {
+      $data['config_logo_width'] = $this->request->post['config_logo_width'];
+    } elseif (isset($store_info['config_logo_width'])) {
+      $data['config_logo_width'] = $store_info['config_logo_width'];
+    } else {
+      $data['config_logo_width'] = 200;
+    }
+
+    if (isset($this->request->post['config_logo_height'])) {
+      $data['config_logo_height'] = $this->request->post['config_logo_height'];
+    } elseif (isset($store_info['config_logo_height'])) {
+      $data['config_logo_height'] = $store_info['config_logo_height'];
+    } else {
+      $data['config_logo_height'] = 60;
+    }
+
     if (isset($this->request->post['config_logo']) && is_file(DIR_IMAGE . $this->request->post['config_logo'])) {
       $data['logo'] = $this->model_tool_image->resize($this->request->post['config_logo'], 100, 100);
     } elseif (isset($store_info['config_logo']) && is_file(DIR_IMAGE . $store_info['config_logo'])) {

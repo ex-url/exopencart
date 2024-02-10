@@ -18,6 +18,30 @@
 
 - Изменен состав и порядок пунктов главного навигационного меню панели управления;
 
+## Обновления в версии 1.0
+
+- в настройках системы теперь можно указать произвольные SEO фразы для каждого магазина, которые можно использовать для автоматической генерации SEO заголовков страниц и отдельных модулей;
+
+- модуль Магазин был сильно доработан и теперь если он включен то рядом с логотипом (в стандартном шаблоне) будет отобажаться текущий магазин (текущий город, если делать для каждого города поддомен), при клике на который будет всплывать модальное окно с выбором из всех имеющихся магазинов;
+
+- изменана страница в режиме обслуживания;
+
+- по-умолчанию доступн модуль с SASS компилятором для Bulma UI, дающий полный контроль над темой оформления;
+
+- по-умолчанию есть модуль для предупреждения о согласии со сбором персональных данных, который позволяет указать произольный текст на несколькоих языках, отображающийся при первом посещении сайта, текст на кнопке согласия, а также ссылку на статью в которой изложены правила и условия использования сайта;
+
+- реализован живой поиск по каталогу;
+
+- в админ. панели в разлеле файлы для скачивания добавлена возможность поиска по файлам;
+
+- для блога теперь есть возможность указать произвольные SEO заголовки на нескольких языках;
+
+- реализован функционал для управления ответами на отзывы и комментарии
+
+- реализован функционал управления размерами изображения логотипа;
+
+Если вы увидели баг, добро пожаловать в Issues!
+
 ## Почему bulma?
 Просто нравится! На мой взгляд, он (фреймоворк) предлагает лучший баланс между готовыми стилями (как в bootstrap) и модификаторами (как в tailwingcss), а также мне нравится именование классов, оно кажется более понятным и удобным. Кроме того, Bulma — это CSS-фреймворк, без всякого JS, который позволяет очень гибко управлять поведением UI-компонентов на страницах сайта.
 
@@ -48,6 +72,30 @@ The platform is based on the ocStore open-source e-commerce solution, which in t
 - Updated control panel style;
 
 - Changed the composition and order of items in the main navigation menu of the control panel;
+
+## Updates in version 1.0
+
+- in the system settings you can now specify arbitrary SEO phrases for each store, which can be used to automatically generate SEO page titles and individual modules;
+
+- the Store module has been greatly improved and now if it is enabled, next to the logo (in the standard template) the current store will be displayed (the current city, if you make a subdomain for each city), when you click on it, a modal window will pop up with a choice from all available stores ;
+
+- the page in maintenance mode has been changed;
+
+- by default, a module with a SASS compiler for Bulma UI is available, giving full control over the design theme;
+
+- by default, there is a module for warning about consent to the collection of personal data, which allows you to specify free text in several languages that is displayed when you first visit the site, text on the consent button, as well as a link to an article that sets out the rules and conditions for using the site;
+
+- implemented live search in the catalog;
+
+- to the admin. The ability to search by files has been added to the panel in the files for downloads section;
+
+- for a blog it is now possible to specify custom SEO titles in several languages;
+
+- implemented functionality for managing responses to reviews and comments
+
+- functionality for managing logo image sizes has been implemented;
+
+If you saw a bug, welcome to Issues!
 
 ## Why bulma?
 I just love it! In my opinion it offers the best balance between pre-made styles (like in bootstrap) and modifiers (like in tailwind), and I also like class naming, it feels more clear and convenient. In addition, Bulma is a CSS framework, without any JS, which allows you to very flexibly control the behavior of the UI components on the site pages.

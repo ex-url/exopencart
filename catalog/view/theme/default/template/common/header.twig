@@ -34,11 +34,11 @@
   {% endfor %}
   {% for style in styles %}
   <link href="{{ style.href }}" type="text/css" rel="{{ style.rel }}" media="{{ style.media }}" />
-  {% endfor %}  
+  {% endfor %}
   <script src="catalog/view/theme/default/js/jquery.min.js"></script>
   {% for script in scripts %}
   <script src="{{ script }}" defer></script>
-  {% endfor %}  
+  {% endfor %}
   {% for analytic in analytics %}
   {{ analytic }}
   {% endfor %}
@@ -54,17 +54,17 @@
                 {% if logo %}
                   {% if home == og_url %}
                   <span>
-                    <img src="{{ logo }}" alt="{{ title }}">
+                    <img src="{{ logo }}" width="{{ logo_width }}px"  height="{{ logo_height }}px" alt="{{ title }}">
                   </span>
                   {% else %}
                   <a href="{{ home }}">
-                    <img src="{{ logo }}" alt="{{ title }}">
+                    <img src="{{ logo }}" width="{{ logo_width }}px"  height="{{ logo_height }}px" alt="{{ title }}">
                   </a>
                   {% endif %}
                   {% else %}
                   <a class="title is-1 mb-0" href="{{ home }}">{{ name }}</a>
                 {% endif %}
-              </div>         
+              </div>
               {% if show_stores %}
                 <div id="stores" class="is-clickable ml-5">
                   <span class="icon-text">
