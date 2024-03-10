@@ -9,6 +9,8 @@ $_['heading_title']    = 'Developer Settings';
 $_['text_success']     = 'Success: You have modified developer settings!';
 $_['text_theme']       = 'theme';
 $_['text_sass']        = 'SASS';
+$_['text_css']        = 'CSS';
+$_['text_js']        = 'JS';
 $_['text_systemcache'] = 'System';
 $_['text_imgcache']       = 'Images';
 $_['text_allcache']       = 'All';
@@ -22,6 +24,8 @@ $_['column_action']    = 'Action';
 // Entry
 $_['entry_theme']      = 'Theme';
 $_['entry_sass']       = 'SASS';
+$_['entry_css']       = 'Compress CSS';
+$_['entry_js']       = 'Compress JS';
 $_['entry_cache']      = 'Cache';
 $_['entry_systemcache']      = 'System Cache';
 $_['entry_imgcache']       = 'Images Cache';

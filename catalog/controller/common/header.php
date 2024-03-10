@@ -41,11 +41,11 @@ class ControllerCommonHeader extends Controller {
     $data['keywords'] = $this->document->getKeywords();
     $data['links'] = $this->document->getLinks();
     $data['robots'] = $this->document->getRobots();
-    $data['styles'] = $this->document->getStyles();
-    $data['scripts'] = $this->document->getScripts('header');
+    $data['styles'] = !$this->config->get('developer_css') ? $this->document->getStyles() : $this->getCompressedStyles();
+    $data['scripts'] = !$this->config->get('developer_js') ? $this->document->getScripts('header') : $this->getCompressedScripts();
+    $data['comporess_js'] = !$this->config->get('developer_js');
     $data['lang'] = $this->language->get('code');
     $data['direction'] = $this->language->get('direction');
-
     $data['name'] = $this->config->get('config_name');
     $data['city'] = $this->config->get('config_city');
     $data['show_stores'] = $this->config->get('module_store_status');
@@ -72,8 +72,6 @@ class ControllerCommonHeader extends Controller {
     }
 
     $data['og_image'] = $this->document->getOgImage();
-
-
 
     // Wishlist
     if ($this->customer->isLogged()) {
@@ -116,5 +114,88 @@ class ControllerCommonHeader extends Controller {
     $data['menu'] = $this->load->controller('common/menu');
 
     return $this->load->view('common/header', $data);
+  }
+
+  private function getCompressedStyles() {
+    $styles = $this->document->getStyles();
+    $hash = md5(implode((array_keys($styles))));
+
+    if(!is_dir(DIR_APPLICATION . 'compressed')) {
+      mkdir(DIR_APPLICATION . 'compressed', 0755);
+    }
+
+    if(is_file(DIR_APPLICATION . 'compressed/styles.' . $hash . '.css')) {
+      return array(
+        'compressed' => array(
+          'href'  => 'catalog/compressed/styles.' . $hash . '.css',
+          'rel'   => 'stylesheet',
+          'media' => 'screen'
+        )
+      );
+    } else {
+      $minifier = new MatthiasMullie\Minify\CSS();
+
+      // bulma should be the first because of charset
+      $ordered = [];
+      $ordered[] = array(
+        'href' => 'catalog/view/theme/default/css/ui.min.css',
+        'rel' => 'stylesheet',
+        'media' => 'screen'
+      );
+
+      foreach ($styles as $style) {
+        if($style['href'] !== 'catalog/view/theme/default/css/ui.min.css') {
+          $ordered[] = $style;
+        }
+      }
+
+      foreach ($ordered as $style) {
+        $minifier->add(DIR_ROOT . $style['href']);
+      }
+
+      $minifier->minify(DIR_APPLICATION . 'compressed/styles.' . $hash . '.css');
+
+      return array(
+        'compressed' => array(
+          'href'  => 'catalog/compressed/styles.' . $hash . '.css',
+          'rel'   => 'stylesheet',
+          'media' => 'screen'
+        )
+      );
+    }
+  }
+
+  private function getCompressedScripts() {
+    $scripts = $this->document->getScripts();
+    $hash = md5(implode((array_keys($scripts))));
+
+    if(!is_dir(DIR_APPLICATION . 'compressed')) {
+      mkdir(DIR_APPLICATION . 'compressed', 0755);
+    }
+
+    if(is_file(DIR_APPLICATION . 'compressed/scripts.' . $hash . '.css')) {
+      return array(
+        'compressed' => 'catalog/compressed/scripts.' . $hash . '.css'
+      );
+    } else {
+      $minifier = new MatthiasMullie\Minify\JS();
+
+      $ordered = [];
+      $ordered[] = 'catalog/view/theme/default/js/jquery.min.js';
+
+      foreach ($scripts as $script) {
+        $ordered[] = $script;
+      }
+
+      foreach ($ordered as $script) {
+        $minifier->add(DIR_ROOT . $script);
+      }
+
+      $minifier->minify(DIR_APPLICATION . 'compressed/scripts.' . $hash . '.js');
+
+      return array(
+        'compressed' => 'catalog/compressed/scripts.' . $hash . '.js'
+      );
+    }
   }
 }

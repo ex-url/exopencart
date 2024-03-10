@@ -32,12 +32,17 @@
   {% for link in links %}
   <link href="{{ link.href }}" rel="{{ link.rel }}" />
   {% endfor %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
   {% for style in styles %}
   <link href="{{ style.href }}" type="text/css" rel="{{ style.rel }}" media="{{ style.media }}" />
   {% endfor %}
+  {% if comporess_js %}
   <script src="catalog/view/theme/default/js/jquery.min.js"></script>
+  {% endif %}
   {% for script in scripts %}
-  <script src="{{ script }}" defer></script>
+  <script src="{{ script }}"></script>
   {% endfor %}
   {% for analytic in analytics %}
   {{ analytic }}

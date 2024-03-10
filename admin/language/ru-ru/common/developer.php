@@ -9,6 +9,8 @@ $_['heading_title']    = 'Настройки разработчика';
 $_['text_success']     = 'Настройки успешно изменены!';
 $_['text_theme']       = 'Шаблон';
 $_['text_sass']        = 'SASS';
+$_['text_css']        = 'CSS';
+$_['text_js']        = 'JS';
 $_['text_systemcache']       = 'Системный';
 $_['text_imgcache']       = 'Изображений';
 $_['text_allcache']       = 'Весь';
@@ -22,6 +24,8 @@ $_['column_action']    = 'Действие';
 // Entry
 $_['entry_theme']      = 'Шаблон';
 $_['entry_sass']       = 'SASS';
+$_['entry_css']       = 'Сжатие CSS';
+$_['entry_js']       = 'Сжатие JS';
 $_['entry_cache']      = 'Кэш';
 $_['entry_systemcache']      = 'Системный кэш';
 $_['entry_imgcache']       = 'Кэш изображений';

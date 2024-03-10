@@ -7,6 +7,8 @@ class ControllerCommonDeveloper extends Controller {
 
 		$data['developer_theme'] = $this->config->get('developer_theme');
 		$data['developer_sass'] = $this->config->get('developer_sass');
+		$data['developer_css'] = $this->config->get('developer_css');
+		$data['developer_js'] = $this->config->get('developer_js');
 
 		$eval = false;
 
@@ -60,7 +62,7 @@ class ControllerCommonDeveloper extends Controller {
 				foreach ($directories as $directory) {
 					$files = glob($directory . '/*');
 
-					foreach ($files as $file) { 
+					foreach ($files as $file) {
 						if (is_file($file)) {
 							unlink($file);
 						}
@@ -93,9 +95,9 @@ class ControllerCommonDeveloper extends Controller {
 			if (is_file($file) && is_file(DIR_APPLICATION . 'view/stylesheet/sass/_bootstrap.scss')) {
 				unlink($file);
 			}
-			 
+
 			$files = glob(DIR_CATALOG  . 'view/theme/*/stylesheet/sass/_bootstrap.scss');
-			 
+
 			foreach ($files as $file) {
 				$file = substr($file, 0, -21) . '/bootstrap.css';
 
@@ -105,6 +107,58 @@ class ControllerCommonDeveloper extends Controller {
 			}
 
 			$json['success'] = sprintf($this->language->get('text_cache'), $this->language->get('text_sass'));
+		}
+
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+	}
+
+	public function css() {
+		$this->load->language('common/developer');
+
+		$json = array();
+
+		if (!$this->user->hasPermission('modify', 'common/developer')) {
+			$json['error'] = $this->language->get('error_permission');
+		} else {
+			$styles = scandir(DIR_CATALOG . 'compressed');
+
+			foreach ($styles as $file) {
+				if(strpos($file, 'styles') !== false) {
+					if ($file !== "." && $file !== "..") {
+		        $path = realpath(DIR_CATALOG . 'compressed' . DIRECTORY_SEPARATOR . $file);
+		        unlink($path);
+			    }
+				}
+			}
+
+			$json['success'] = sprintf($this->language->get('text_cache'), $this->language->get('text_css'));
+		}
+
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+	}
+
+	public function js() {
+		$this->load->language('common/developer');
+
+		$json = array();
+
+		if (!$this->user->hasPermission('modify', 'common/developer')) {
+			$json['error'] = $this->language->get('error_permission');
+		} else {
+			$scripts = scandir(DIR_CATALOG . 'compressed');
+
+			foreach ($scripts as $file) {
+				if(strpos($file, 'scripts') !== false) {
+					if ($file !== "." && $file !== "..") {
+		        $path = realpath(DIR_CATALOG . 'compressed' . DIRECTORY_SEPARATOR . $file);
+		        unlink($path);
+			    }
+				}
+			}
+
+			$json['success'] = sprintf($this->language->get('text_cache'), $this->language->get('text_js'));
 		}
 
 		$this->response->addHeader('Content-Type: application/json');
