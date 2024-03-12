@@ -26,7 +26,7 @@
 
 - изменана страница в режиме обслуживания;
 
-- по-умолчанию доступн модуль с SASS компилятором для Bulma UI, дающий полный контроль над темой оформления;
+- по-умолчанию доступен модуль с SASS компилятором для Bulma UI, дающий полный контроль над темой оформления;
 
 - по-умолчанию есть модуль для предупреждения о согласии со сбором персональных данных, который позволяет указать произольный текст на несколькоих языках, отображающийся при первом посещении сайта, текст на кнопке согласия, а также ссылку на статью в которой изложены правила и условия использования сайта;
 
@@ -39,6 +39,12 @@
 - реализован функционал для управления ответами на отзывы и комментарии
 
 - реализован функционал управления размерами изображения логотипа;
+
+- реализован функционал опционального сжатия CSS и JS файлов
+
+- реализован функционал опционального создания миниатюр изображений в формете .webp
+
+- в папке storage инициализирован composer, теперь можно быстро и легко работать с зависимостями
 
 Если вы увидели баг, добро пожаловать в Issues!
 
@@ -94,6 +100,12 @@ The platform is based on the ocStore open-source e-commerce solution, which in t
 - implemented functionality for managing responses to reviews and comments
 
 - functionality for managing logo image sizes has been implemented;
+
+- implemented functionality for optional compression of CSS and JS files
+
+- functionality for optionally creating thumbnail images in .webp format has been implemented
+
+- composer is initialized in the storage folder, now you can quickly and easily work with dependencies
 
 If you saw a bug, welcome to Issues!
 
