@@ -4,8 +4,8 @@
 /admin/config.php
 /php.ini
 
-#comporessed
-/catalog/comporessed/
+#compressed
+/catalog/compressed/
 # Image Cache Files
 /image/cache/*
 !/image/cache/index.html
