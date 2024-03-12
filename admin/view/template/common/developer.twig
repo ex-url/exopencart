@@ -134,6 +134,36 @@
           <td class="text-right"><button type="button" value="js" data-toggle="tooltip" title="{{ button_refresh }}" class="btn btn-warning"><i class="fa fa-refresh"></i></button></td>
         </tr>
         <tr>
+          <td>{{ entry_webp }}</td>
+          <td>
+            <div class="btn-group" data-toggle="buttons">
+              {% if developer_webp %}
+              <label class="btn btn-success active">
+                <input type="radio" name="developer_webp" value="1" autocomplete="off" checked>
+                {{ button_on }}
+              </label>
+              {% else %}
+              <label class="btn btn-success">
+                <input type="radio" name="developer_webp" value="1" autocomplete="off">
+                {{ button_on }}
+              </label>
+              {% endif %}
+              {% if not developer_webp %}
+              <label class="btn btn-danger active">
+                <input type="radio" name="developer_webp" value="0" autocomplete="off" checked>
+                {{ button_off }}
+              </label>
+              {% else %}
+              <label class="btn btn-danger">
+                <input type="radio" name="developer_webp" value="0" autocomplete="off">
+                {{ button_off }}
+              </label>
+              {% endif %}
+            </div>
+          </td>
+          <td class="text-right"><button type="button" value="imgcache" data-toggle="tooltip" title="{{ button_refresh }}" class="btn btn-warning"><i class="fa fa-refresh"></i></button></td>
+        </tr>
+        <tr>
           <td colspan="2">{{ entry_systemcache }}</td>
           <td class="text-right"><button type="button" value="systemcache" data-toggle="tooltip" title="{{ button_refresh }}" class="btn btn-warning"><i class="fa fa-refresh"></i></button></td>
         </tr>
@@ -150,17 +180,17 @@
   </div>
 </div>
 <script type="text/javascript"><!--
-$('input[name="developer_theme"], input[name="developer_sass"], input[name="developer_css"], input[name="developer_js"]').on('change', function() {
+$('input[name="developer_theme"], input[name="developer_sass"], input[name="developer_css"], input[name="developer_js"], input[name="developer_webp"]').on('change', function() {
   $.ajax({
     url: 'index.php?route=common/developer/edit&user_token={{ user_token }}',
     type: 'post',
-    data: $('input[name="developer_theme"]:checked, input[name="developer_sass"]:checked, input[name="developer_css"]:checked, input[name="developer_js"]:checked'),
+    data: $('input[name="developer_theme"]:checked, input[name="developer_sass"]:checked, input[name="developer_css"]:checked, input[name="developer_js"]:checked, input[name="developer_webp"]:checked'),
     dataType: 'json',
     beforeSend: function() {
-      $('input[name="developer_theme"], input[name="developer_sass"], input[name="developer_css"], input[name="developer_js"]').prop('disabled', true);
+      $('input[name="developer_theme"], input[name="developer_sass"], input[name="developer_css"], input[name="developer_js"], input[name="developer_webp"]').prop('disabled', true);
     },
     complete: function() {
-      $('input[name="developer_theme"], input[name="developer_sass"], input[name="developer_css"], input[name="developer_js"]').prop('disabled', false);
+      $('input[name="developer_theme"], input[name="developer_sass"], input[name="developer_css"], input[name="developer_js"], input[name="developer_webp"]').prop('disabled', false);
     },
     success: function(json) {
       $('.alert-dismissible').remove();

@@ -12,10 +12,10 @@ $_['text_sass']        = 'SASS';
 $_['text_css']        = 'CSS';
 $_['text_js']        = 'JS';
 $_['text_systemcache']       = 'Системный';
-$_['text_imgcache']       = 'Изображений';
+$_['text_imgcache']       = 'изображений';
 $_['text_allcache']       = 'Весь';
 $_['text_cache']       = 'Вы очистили %s кэш!';
-$_['text_img_cache']       = 'Вы очистили Кэш %s !';
+$_['text_img_cache']       = 'Вы очистили кэш %s !';
 
 // Column
 $_['column_component'] = 'Компонент';
@@ -26,6 +26,7 @@ $_['entry_theme']      = 'Шаблон';
 $_['entry_sass']       = 'SASS';
 $_['entry_css']       = 'Сжатие CSS';
 $_['entry_js']       = 'Сжатие JS';
+$_['entry_webp']       = 'Кэш изображений в .webp';
 $_['entry_cache']      = 'Кэш';
 $_['entry_systemcache']      = 'Системный кэш';
 $_['entry_imgcache']       = 'Кэш изображений';

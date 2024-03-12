@@ -26,6 +26,7 @@ $_['entry_theme']      = 'Theme';
 $_['entry_sass']       = 'SASS';
 $_['entry_css']       = 'Compress CSS';
 $_['entry_js']       = 'Compress JS';
+$_['entry_webp']       = 'Cache images to .webp';
 $_['entry_cache']      = 'Cache';
 $_['entry_systemcache']      = 'System Cache';
 $_['entry_imgcache']       = 'Images Cache';
