@@ -5,7 +5,7 @@
 /php.ini
 
 #comporessed
-/catalog/comporessed/*
+/catalog/comporessed/
 # Image Cache Files
 /image/cache/*
 !/image/cache/index.html

@@ -135,7 +135,7 @@ class ControllerCommonHeader extends Controller {
     } else {
       $minifier = new MatthiasMullie\Minify\CSS();
 
-      // bulma should be the first because of charset
+      // bulma should be the first because of the charset and easy way to overwrite its styles
       $ordered = [];
       $ordered[] = array(
         'href' => 'catalog/view/theme/default/css/ui.min.css',
