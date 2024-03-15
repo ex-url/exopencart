@@ -173,9 +173,9 @@ class ControllerCommonHeader extends Controller {
       mkdir(DIR_APPLICATION . 'compressed', 0755);
     }
 
-    if(is_file(DIR_APPLICATION . 'compressed/scripts.' . $hash . '.css')) {
+    if(is_file(DIR_APPLICATION . 'compressed/scripts.' . $hash . '.js')) {
       return array(
-        'compressed' => 'catalog/compressed/scripts.' . $hash . '.css'
+        'compressed' => 'catalog/compressed/scripts.' . $hash . '.js'
       );
     } else {
       $minifier = new MatthiasMullie\Minify\JS();
