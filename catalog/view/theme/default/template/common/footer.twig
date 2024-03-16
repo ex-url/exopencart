@@ -1,9 +1,3 @@
-{% if stores %}
-  {{ stores }}
-{% endif %}
-{% if privacy %}
-  {{ privacy }}
-{% endif %}
 <footer class="footer">
   <div class="container">
     <div class="columns is-mobile is-multiline">
@@ -11,7 +5,7 @@
       <div class="column is-3-widescreen is-3-desktop is-6-tablet is-12-mobile">
         <h5 class="title is-5">{{ text_information }}</h5>
         <ul class="list-unstyled">
-         {% for information in informations %}
+          {% for information in informations %}
           <li><a href="{{ information.href }}">{{ information.title }}</a></li>
           {% endfor %}
         </ul>
@@ -97,6 +91,12 @@
       </svg>
     </span>
   </div>
+  {% if stores %}
+  {{ stores }}
+  {% endif %}
+  {% if privacy %}
+  {{ privacy }}
+  {% endif %}
 </footer>
 {% for style in styles %}
 <link href="{{ style.href }}" type="text/css" rel="{{ style.rel }}" media="{{ style.media }}" />
@@ -108,4 +108,5 @@
 exopencart is open source software which is based on opencart.com project. The OpenCart itself is open source software too, so you are free to remove the powered by information if you want, but its generally accepted practise to make a small donation.
 Please donate via PayPal to donate@opencart.com and don't forget about exopencart too. You could find it on exopencart.ru and exopencart.com
 //-->
-</body></html>
+</body>
+</html>

@@ -1,7 +1,15 @@
+body {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100vh;
+}
+main {
+  flex:1;
+}
 #logo {
   line-height: 0;
 }
-
 #menu {
   position: sticky;
   top: -0.5px;
