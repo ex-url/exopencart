@@ -463,42 +463,41 @@ $(document).ready(function () {
     $('html, body').animate({ scrollTop: 0 }, 500);
   });
 
-});
+  $('body').on('click', '.agree', function (e) {
+    $('#agree-modal').remove();
 
-/* Agree to Terms */
-$('body').on('click', '.agree', function (e) {
-  e.preventDefault();
+    let trigger = this;
 
-  $('#agree-modal').remove();
+    $.ajax({
+      url: $(trigger).attr('href'),
+      type: 'get',
+      dataType: 'html',
+      success: function (data) {
+        html = '<div id="agree-modal" class="modal">';
+        html += '  <div class="modal-background"></div>';
+        html += '  <div class="modal-content">';
+        html += '    <div class="box is-relative">';
+        html += '       <div class="content">' + data + '</div>';
+        html += '  			<button class="delete is-large is-absolute"></button>';
+        html += '    </div>';
+        html += '  </div>';
+        html += '</div>';
 
-  let trigger = this;
+        $('body').append(html);
 
-  $.ajax({
-    url: $(trigger).attr('href'),
-    type: 'get',
-    dataType: 'html',
-    success: function (data) {
-      html = '<div id="agree-modal" class="modal">';
-      html += '  <div class="modal-background"></div>';
-      html += '  <div class="modal-content">';
-      html += '    <div class="box is-relative">';
-      html += '       <div class="content">' + data + '</div>';
-      html += '  			<button class="delete is-large is-absolute"></button>';
-      html += '    </div>';
-      html += '  </div>';
-      html += '</div>';
+        $('#agree-modal').addClass('is-active');
 
-      $('body').append(html);
+        $('#agree-modal .modal-background, #agree-modal .modal-content, #agree-modal .modal-close').click(function () {
+          $('#agree-modal').removeClass('is-active');
+          $('#agree-modal').unbind();
+          $('#agree-modal').remove();
+        });
+      }
+    });
 
-      $('#agree-modal').addClass('is-active');
-
-      $('#agree-modal .modal-background, #agree-modal .modal-content, #agree-modal .modal-close').click(function () {
-        $('#agree-modal').removeClass('is-active');
-        $('#agree-modal').unbind();
-        $('#agree-modal').remove();
-      });
-    }
+    return false;
   });
+
 });
 
 // Autocomplete */

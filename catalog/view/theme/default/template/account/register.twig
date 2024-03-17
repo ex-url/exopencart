@@ -36,7 +36,7 @@
                 <div class="checkbox">
                   <label class="label">
                     <input type="checkbox" name="agree" {{ agree ? 'checked' : '' }} value="1">
-                    <span class="agreed">{{ text_agree }}</span>
+                    {{ text_agree }}
                   </label>
                 </div>
                 {% if error_agree %}
