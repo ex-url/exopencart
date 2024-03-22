@@ -14,6 +14,7 @@ $_['text_register_account']        = 'Создание учётной запис
 $_['text_returning_customer']      = 'Постоянный покупатель';
 $_['text_i_am_returning_customer'] = 'Я совершал здесь покупки ранее и регистрировался';
 $_['text_forgotten']               = 'Забыли пароль?';
+$_['text_no_account']              = 'Нет аккаунта?';
 $_['button_create_account']        = 'Создать аккаунт';
 
 // Entry
