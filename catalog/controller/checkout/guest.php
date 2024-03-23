@@ -54,7 +54,7 @@ class ControllerCheckoutGuest extends Controller {
 		if (isset($this->session->data['guest']['customer_group_id'])) {
 			$data['customer_group_id'] = $this->session->data['guest']['customer_group_id'];
 		} else {
-			$data['customer_group_id'] = $this->config->get('config_customer_group_id');
+			$data['customer_group_id'] = $this->session->data['guest']['customer_group_id'] = $this->config->get('config_customer_group_id');
 		}
 
 		// Custom Fields

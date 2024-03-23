@@ -137,7 +137,7 @@ class ControllerCheckoutConfirm extends Controller {
 				$order_data['lastname'] = $this->session->data['guest']['lastname'];
 				$order_data['email'] = $this->session->data['guest']['email'];
 				$order_data['telephone'] = $this->session->data['guest']['telephone'];
-				$order_data['custom_field'] = $this->session->data['guest']['custom_field'];
+				$order_data['custom_field'] = isset($this->session->data['guest']['custom_field']) ? $this->session->data['guest']['custom_field'] : [];
 			}
 
 			$order_data['payment_firstname'] = $this->session->data['payment_address']['firstname'];
@@ -328,7 +328,7 @@ class ControllerCheckoutConfirm extends Controller {
 			$this->session->data['order_id'] = $this->model_checkout_order->addOrder($order_data);
 
 			$data['payment'] = $this->load->controller('extension/payment/' . $this->session->data['payment_method']['code']);
-			
+
 		} else {
 			$data['redirect'] = $redirect;
 		}

@@ -245,21 +245,21 @@ async function confirmCheckout() {
 
   await updateCheckoutCustomer().then(response => {
     proceed = response.done ? true : false;
-    !proceed ? $button.removeClass('is-loading') : '';
   });
 
-  if($('#checkout-shipping-method input[type="radio"]').is(':checked')) {
+  if(proceed && $('#checkout-shipping-method input[type="radio"]').is(':checked')) {
 
     if($('#shipping-pickup-form').length) {
       await updatePickupPoint().then(response => {
         proceed = response.done ? true : false;
-        !proceed ? $button.removeClass('is-loading') : '';
+        proceed ? $button.removeClass('is-loading') : '';
       })
     }
 
     if($('#shipping-address-form').length) {
       await updateShippingAddress().then(response => {
         proceed = response.done ? true : false;
+        proceed ? $button.removeClass('is-loading') : '';
       })
     }
 
@@ -275,8 +275,6 @@ async function confirmCheckout() {
     $('#checkout-payment form > .title').first().append('<p class="help is-danger">' + error_payment + '</p>');
     proceed = false;
     $button.removeClass('is-loading');
-  } else {
-    proceed = true;
   }
 
   if(proceed) {
@@ -291,7 +289,6 @@ async function confirmCheckout() {
   } else {
     $('html, body').animate({scrollTop: $('#checkout-layout p.help.is-danger').first().offset().top - 120 });
   }
-
 }
 
 function getZoneList() {
