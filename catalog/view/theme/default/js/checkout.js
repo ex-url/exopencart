@@ -51,6 +51,10 @@ async function updateCheckoutCustomer() {
     beforeSend: function () {},
     success: function (json) {
 
+      if(json['redirect']) {
+        location = json['redirect'];
+      }
+
       $form.find('.help.is-danger').remove();
       $form.find('.input.is-danger').removeClass('is-danger');
 
@@ -97,6 +101,9 @@ async function updateCheckoutCustomer() {
       }
 
     },
+    error: function (err) {
+      console.log(err);
+    }
   });
 
   return result;
@@ -118,6 +125,10 @@ async function updateShippingMethod(){
     },
     success: function(json){
       spinner.remove('#checkout-shipping');
+
+      if(json['redirect']) {
+        location = json['redirect'];
+      }
 
       $('#checkout-shipping-method form > .title p').remove();
 
@@ -146,6 +157,10 @@ async function updateShippingAddress() {
     cache: false,
     beforeSend: function () {},
     success: function (json) {
+
+      if(json['redirect']) {
+        location = json['redirect'];
+      }
 
       $form.find('.help.is-danger').remove();
       $form.find('.input.is-danger').removeClass('is-danger');
@@ -202,6 +217,10 @@ async function updatePickupPoint(){
     },
     success: function(json){
 
+      if(json['redirect']) {
+        location = json['redirect'];
+      }
+
       $form.find('.select').removeClass('is-loading');
       $form.find('.select').next().remove();
 
@@ -229,6 +248,11 @@ async function updatePaymentMethod () {
 
     },
     success: function (json) {
+
+      if(json['redirect']) {
+        location = json['redirect'];
+      }
+
       $('#checkout-payment form > .title p').remove();
     }
   });

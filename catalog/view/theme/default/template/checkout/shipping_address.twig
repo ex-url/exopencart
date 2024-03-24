@@ -37,11 +37,7 @@
     <div class="select is-fullwidth">
       <select name="address_id">
         {% for address in addresses %}
-        {% if address.address_id == address_id %}
-        <option value="{{ address.address_id }}" selected="selected">{{ address.zone }}, {{ address.city }}, {{ address.address_1 }}, {{ address.address_2 }}</option>
-        {% else %}
         <option value="{{ address.address_id }}">{{ address.zone }}, {{ address.city }}, {{ address.address_1 }}, {{ address.address_2 }}</option>
-        {% endif %}
         {% endfor %}
       </select>
     </div>

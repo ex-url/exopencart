@@ -1,10 +1,26 @@
 <div class="field required captcha basic-captcha">
   <label class="label" for="input-payment-captcha">{{ entry_captcha }}</label>
   <div class="control is-flex">
-    <img src="index.php?route=extension/captcha/basic/captcha" alt="{{ entry_captcha }}" />
+    <button type="button" class="button is-primary is-light mr-3">
+      <span class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+          <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
+        </svg>
+      </span>
+    </button>
+    <img src="index.php?route=extension/captcha/basic/captcha" width="120px" height="40px" alt="{{ entry_captcha }}" />
     <input type="text" name="captcha" id="input-payment-captcha" placeholder="{{ entry_captcha }}" class="input ml-3" autocomplete="off" />
   </div>
   {% if error_captcha %}
   <p class="help is-danger">{{ error_captcha }}</p>
   {% endif %}
 </div>
+
+<script>
+  $('.basic-captcha .button').on('click', function () {
+    $('.basic-captcha img').attr('src', '');
+    $('.basic-captcha img').attr('src', 'index.php?route=extension/captcha/basic/captcha&' + new Date().getTime());
+    $('input[name="captcha"]').val('');
+  });
+</script>
