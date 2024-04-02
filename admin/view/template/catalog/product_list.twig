@@ -212,9 +212,9 @@
                         <td class="text-left">{{ product.name }}</td>
                         <td class="text-left">{{ product.model }}</td>
                         <td class="text-right">{% if product.special %} <span style="text-decoration: line-through;">{{ product.price }}</span><br/>
-                          <div class="text-danger">{{ product.special }}</div>
+                          <div class="text-danger"><b>{{ product.special }}</b></div>
                           {% else %}
-                          {{ product.price }}
+                          <b>{{ product.price }}</b>
                           {% endif %}</td>
                           <td class="text-right">{% if product.quantity <= 0 %} <span class="label label-warning">{{ product.quantity }}</span> {% elseif product.quantity <= 5 %} <span class="label label-danger">{{ product.quantity }}</span> {% else %} <span class="label label-success">{{ product.quantity }}</span> {% endif %}</td>
                           <td class="text-left">{{ product.status }}</td>
