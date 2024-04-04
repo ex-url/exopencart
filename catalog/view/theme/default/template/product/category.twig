@@ -30,13 +30,11 @@
         <hr>
         {% if categories %}
         <div class="title is-4 has-text-grey">{{ text_refine }}</div>
-        {% if categories|length <= 5 %}
-        <div class="block category-children">
-          {% for category in categories %}
-          <a href="{{ category.href }}" class="tag is-link is-light is-medium mb-1">{{ category.name }}</a>
-          {% endfor %}
-        </div>
-        {% endif %}
+          <div class="block category-children">
+            {% for category in categories %}
+            <a href="{{ category.href }}" class="tag is-link is-light is-medium mb-1">{{ category.name }}</a>
+            {% endfor %}
+          </div>
         {% endif %}
         {% if products %}
         <div class="is-flex is-justify-content-space-between is-align-items-center category-toolbar">

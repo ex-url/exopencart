@@ -117,14 +117,15 @@ class ControllerCommonHeader extends Controller {
   }
 
   private function getCompressedStyles() {
+    $template_folder = $this->config->get('theme_default_directory');
     $styles = $this->document->getStyles();
     $hash = md5(implode((array_keys($styles))));
 
-    if(!is_dir(DIR_APPLICATION . 'compressed')) {
+    if (!is_dir(DIR_APPLICATION . 'compressed')) {
       mkdir(DIR_APPLICATION . 'compressed', 0755);
     }
 
-    if(is_file(DIR_APPLICATION . 'compressed/styles.' . $hash . '.css')) {
+    if (is_file(DIR_APPLICATION . 'compressed/styles.' . $hash . '.css')) {
       return array(
         'compressed' => array(
           'href'  => 'catalog/compressed/styles.' . $hash . '.css',
@@ -138,13 +139,13 @@ class ControllerCommonHeader extends Controller {
       // bulma should be the first because of the charset and easy way to overwrite its styles
       $ordered = [];
       $ordered[] = array(
-        'href' => 'catalog/view/theme/default/css/ui.min.css',
+        'href' => 'catalog/view/theme/' . $template_folder . '/css/ui.min.css',
         'rel' => 'stylesheet',
         'media' => 'screen'
       );
 
       foreach ($styles as $style) {
-        if($style['href'] !== 'catalog/view/theme/default/css/ui.min.css') {
+        if ($style['href'] !== 'catalog/view/theme/' . $template_folder . '/css/ui.min.css') {
           $ordered[] = $style;
         }
       }
@@ -169,11 +170,11 @@ class ControllerCommonHeader extends Controller {
     $scripts = $this->document->getScripts();
     $hash = md5(implode((array_keys($scripts))));
 
-    if(!is_dir(DIR_APPLICATION . 'compressed')) {
+    if (!is_dir(DIR_APPLICATION . 'compressed')) {
       mkdir(DIR_APPLICATION . 'compressed', 0755);
     }
 
-    if(is_file(DIR_APPLICATION . 'compressed/scripts.' . $hash . '.js')) {
+    if (is_file(DIR_APPLICATION . 'compressed/scripts.' . $hash . '.js')) {
       return array(
         'compressed' => 'catalog/compressed/scripts.' . $hash . '.js'
       );
