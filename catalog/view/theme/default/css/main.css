@@ -80,6 +80,7 @@
 .modal-background {
   background-color: rgb(255 255 255 / 75%);
   backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
 }
 
 #search-modal .delete,
