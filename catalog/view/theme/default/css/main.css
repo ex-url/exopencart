@@ -126,7 +126,11 @@
 .grid .description {
   display: none;
 }
-
+#product-page #content > .tabs {
+    position: sticky;
+    top: 59px;
+    z-index: 2;
+}
 .product-card .image a .stock {
   position: absolute;
   left: 0;
@@ -710,7 +714,6 @@ footer .scroll-top-trigger.shown {
     border-radius: 0;
   }
 
-  .product-info .tabs,
   #product-images {
     top: 0.75rem;
   }
@@ -795,7 +798,10 @@ footer .scroll-top-trigger.shown {
     bottom: 1.5rem;
     z-index: 1;
   }
-
+  #product-page #content > .tabs {
+      top: 0px;
+      margin: 0 -0.75rem;
+  }
   .product-cards .column,
   .blog-cards .column {
     padding-top: 0;

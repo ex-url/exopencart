@@ -23,7 +23,24 @@
       {% set class = 'column is-12' %}
       {% endif %}
       <div id="content" class="{{ class }}">
-        <h1 class="title is-3 has-text-weight-normal">{{ heading_title }}</h1>
+        <div class="tabs has-background-white">
+          <ul>
+            <li class="has-background-white is-active" data-target="#heading">
+              <a>{{ tab_description }}</a>
+            </li>
+            {% if attribute_groups %}
+            <li class="has-background-white" data-target="#attributes">
+              <a>{{ tab_attribute }}</a>
+            </li>
+            {% endif %}
+            {% if review_status %}
+            <li class="has-background-white" data-target="#reviews">
+              <a>{{ tab_review }}</a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+        <h1 class="title is-3 mt-5 has-text-weight-normal" id="heading">{{ heading_title }}</h1>
         <hr>
         <div class="columns is-multiline">
           {% if column_left and column_right %}
@@ -60,23 +77,6 @@
           {% set class = 'column is-8-desktop is-12-mobile' %}
           {% endif %}
           <div class="{{ class }} product-info">
-            <div class="tabs is-toggle">
-              <ul>
-                <li class="has-background-white is-active" data-target="#description">
-                  <a>{{ tab_description }}</a>
-                </li>
-                {% if attribute_groups %}
-                <li class="has-background-white" data-target="#attributes">
-                  <a>{{ tab_attribute }}</a>
-                </li>
-                {% endif %}
-                {% if review_status %}
-                <li class="has-background-white" data-target="#reviews">
-                  <a>{{ tab_review }}</a>
-                </li>
-                {% endif %}
-              </ul>
-            </div>
             <div id="description">
               <div class="columns is-multiline mb-0">
                 {% if column_left and column_right %}
@@ -576,7 +576,7 @@ $('select[name="recurring_id"], input[name="quantity"]').change(function(){
   });
 });
 
-$('body').on('click', '.tabs.is-toggle li', function () {
+$('body').on('click', '.tabs li', function () {
   if($(this).data('target')) {
     $(this).siblings().removeClass('is-active');
     $(this).addClass('is-active');
