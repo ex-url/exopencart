@@ -4,7 +4,10 @@
     <div class="modal-card-head">
       <p class="modal-card-title">{{ heading_title }}</p>
     </div>
-    <div class="modal-card-body">
+    <div class="px-4 pt-4 pb-0 has-background-white" style="display: none">
+      <input id="search-store" class="input" type="text" value="" placeholder="{{ text_search }}">
+    </div>
+    <div class="modal-card-body p-4">
       <div class="columns is-multiline is-variable is-2">
         {% for store in stores %}
         {% if store.store_id == store_id %}
@@ -50,6 +53,24 @@
   $(document).ready(function() {
     $('#stores, #stores-modal .modal-background, #stores-modal .modal-card-foot button').on('click', function() {
       $('#stores-modal').toggleClass('is-active');
+    });
+
+    if($('#stores-modal .box').length > 0) {
+      $('#search-store').parent().show();
+    }
+
+    $('#search-store').on('input', function() {
+      $input = $(this);
+
+      $('#stores-modal .box').hide();
+
+      $('#stores-modal .box').each(function(i, el) {
+        $found = $(el).find('.text').text().toLowerCase().includes($input.val());
+
+        if ($found) {
+          $(el).show();
+        }
+      });
     });
   });
 </script>
