@@ -62,9 +62,9 @@
     $('#search-store').on('input', function() {
       $input = $(this);
 
-      $('#stores-modal .box').hide();
+      $('#stores-modal .column').hide();
 
-      $('#stores-modal .box').each(function(i, el) {
+      $('#stores-modal .column').each(function(i, el) {
         $found = $(el).find('.text').text().toLowerCase().includes($input.val());
 
         if ($found) {

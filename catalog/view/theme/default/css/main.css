@@ -82,7 +82,9 @@
   backdrop-filter: blur(7px);
   -webkit-backdrop-filter: blur(7px);
 }
-
+#stores-modal .modal-card {
+  height: 100%;
+}
 #search-modal .delete,
 #catalog-modal .delete {
   position: fixed;
