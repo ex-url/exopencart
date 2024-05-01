@@ -60,12 +60,12 @@
     }
 
     $('#search-store').on('input', function() {
-      $input = $(this);
+      let $input = $(this);
 
       $('#stores-modal .column').hide();
 
       $('#stores-modal .column').each(function(i, el) {
-        $found = $(el).find('.text').text().toLowerCase().includes($input.val());
+        let $found = $(el).find('.text').text().toLowerCase().includes($input.val().toLowerCase());
 
         if ($found) {
           $(el).show();
