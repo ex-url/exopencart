@@ -1,4 +1,12 @@
 <footer class="footer">
+  {% if not logged %}
+  <div id="login-modal" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <div class="loading"><div class="spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+    </div>
+  </div>
+  {% endif %}
   <div class="container">
     <div class="columns is-mobile is-multiline">
       {% if informations %}

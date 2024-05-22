@@ -111,18 +111,15 @@
   overflow: hidden;
 }
 
-#login-modal .modal-content {
-  min-height: 486px;
-  border-radius: 12px;
+#login-modal .modal-card {
+  min-height: 386px;
+  border-radius: 18px;
   box-shadow: 0 5px 10px 0 rgb(0 0 0 / 20%);
   max-width: 400px;
 }
 
 #account-login .login-form {
   max-width: 400px;
-  box-shadow: 0 5px 10px 0 rgb(0 0 0 / 20%);
-  padding: 1.5rem;
-  border-radius: 12px;
 }
 
 .grid .description {

@@ -354,8 +354,8 @@ $(document).ready(function () {
     $('#login-modal').toggleClass('is-active');
     const trigger = $(this);
 
-    if (!$('#login-modal .modal-content .login-form').length) {
-      $('#login-modal .modal-content').load('/index.php?route=account/login .login-form', function () {
+    if ($('#login-modal .modal-card .loading').length) {
+      $('#login-modal .modal-card').load('/index.php?route=account/login/modal', function () {
         if (trigger.data('redirect')) {
           $('#login-modal form').find('input[name="redirect"]').val(window.location.origin + trigger.data('redirect'));
         }

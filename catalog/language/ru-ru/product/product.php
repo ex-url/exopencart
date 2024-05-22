@@ -45,7 +45,7 @@ $_['entry_good']               = 'Хорошо';
 $_['entry_bad']                = 'Плохо';
 
 // Tabs
-$_['tab_description']          = 'Основное';
+$_['tab_general']              = 'Основное';
 $_['tab_attribute']            = 'Характеристики';
 $_['tab_review']               = 'Отзывы&nbsp;<span class="tag">%s</span>';
 
