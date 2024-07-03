@@ -303,12 +303,18 @@ $(document).ready(function () {
   // update cart
   $('body').on('change', '.input-quantity', function (e) {
     e.preventDefault();
-    cart.update($(this).data('key'), $(this).val());
-  });
-  $('.input-quantity').on('keydown', function (e) {
-    e.preventDefault();
-    if (e.keyCode == 13) {
+    setTimeout(() => {
       cart.update($(this).data('key'), $(this).val());
+    }, 10);
+
+  });
+
+  $('body').on('keydown', '.input-quantity', function (e) {
+    if (e.keyCode == 13) {
+      e.preventDefault();
+      setTimeout(() => {
+        cart.update($(this).data('key'), $(this).val());
+      }, 10);
     }
   });
 
