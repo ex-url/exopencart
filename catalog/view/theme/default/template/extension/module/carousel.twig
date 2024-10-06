@@ -1,19 +1,21 @@
-<div class="py-6 carousel carousel{{ module }}">
+<div class="carousel py-6">
   <div class="container">
-    <div id="carousel{{ module }}" class="slider-hidden">
-      {% for banner in banners %}
-      <div class="carousel-item">
-        {% if banner.link %}
-        <a href="{{ banner.link }}" class="image">
-          <img class="mx-auto" src="{{ banner.image }}" alt="{{ banner.title }}" width="{{ width }}px" height="{{ height }}px"/>
-        </a>
-        {% else %}
-        <span class="image">
-          <img class="mx-auto" src="{{ banner.image }}" alt="{{ banner.title }}" width="{{ width }}px" height="{{ height }}px"/>
-        </span>
-        {% endif %}
-      </div>
-      {% endfor %}
+    <div id="carousel{{ module }}" class="swiper">
+      <div class="swiper-wrapper">
+        {% for banner in banners %}
+          <div class="swiper-slide">
+            {% if banner.link %}
+            <a href="{{ banner.link }}" class="image">
+              <img class="mx-auto" src="{{ banner.image }}" alt="{{ banner.title }}" width="{{ width }}px" height="{{ height }}px"/>
+            </a>
+            {% else %}
+            <span class="image">
+              <img class="mx-auto" src="{{ banner.image }}" alt="{{ banner.title }}" width="{{ width }}px" height="{{ height }}px"/>
+            </span>
+            {% endif %}
+          </div>
+          {% endfor %}
+      </div>   
     </div>
   </div>
 </div>
@@ -21,36 +23,27 @@
 <script>
 $(document).ready(function(){
 
-  $('#carousel{{ module }}').lightSlider({
-    item: {{ desktop_items }},
-    loop:true,
-    slideMove:1,
-    easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
-    speed: 200,
-    pause: 3000,
-    slideMargin: 0,
-    auto: true,
-    controls: false,
-    onSliderLoad: function() {
-      $('#carousel{{ module }}').removeClass('slider-hidden');
+const swiper = new Swiper('#carousel{{ module }}', {
+    slidesPerView: 2,
+    loop: true,
+    autoplay: {
+      delay: 5000,
     },
-    responsive : [
-      {
-        breakpoint:1024,
-        settings: {
-          item:{{ tablet_items }},
-          slideMove:1,
-          slideMargin:0,
-        }
+    speed: 750,
+    breakpoints: {
+      480: {
+        slidesPerView: {{ mobile_items }},
+        spaceBetween: 30
       },
-      {
-        breakpoint:640,
-        settings: {
-          item:{{ mobile_items }},
-          slideMove:1
-        }
+      768: {
+        slidesPerView: {{ tablet_items }},
+        spaceBetween: 40
+      },
+      960: {
+        slidesPerView: {{ desktop_items }},
+        spaceBetween: 40
       }
-    ]
-  });
+    }
+  }); 
 });
 </script>

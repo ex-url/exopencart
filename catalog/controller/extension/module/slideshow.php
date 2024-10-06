@@ -8,8 +8,8 @@ class ControllerExtensionModuleSlideshow extends Controller {
 		$this->load->model('tool/image');
 
 		$template_folder = $this->config->get('theme_default_directory');
-		$this->document->addStyle('catalog/view/theme/' . $template_folder . '/js/ls/css/lightslider.min.css');
-		$this->document->addScript('catalog/view/theme/' . $template_folder . '/js/ls/js/lightslider.min.js');
+		$this->document->addStyle('catalog/view/theme/' . $template_folder . '/css/swiper.min.css');
+		$this->document->addScript('catalog/view/theme/' . $template_folder . '/js/swiper.min.js');
 
 		$data['banners'] = array();
 

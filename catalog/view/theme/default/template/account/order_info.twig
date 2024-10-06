@@ -8,7 +8,7 @@
         {% if key < (breadcrumbs|length - 1) %}
         <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
         {% else %}
-        <li><a>{{ breadcrumb.text }}</a></li>
+        <li><span>{{ breadcrumb.text }}</span></li>
         {% endif %}
         {% endfor %}
       </ul>

@@ -8,7 +8,7 @@
         {% if key < (breadcrumbs|length - 1) %}
         <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
         {% else %}
-        <li><a>{{ breadcrumb.text }}</a></li>
+        <li><span>{{ breadcrumb.text }}</span></li>
         {% endif %}
         {% endfor %}
       </ul>
@@ -22,7 +22,8 @@
       {% else %}
       {% set class = 'column is-12' %}
       {% endif %}
-      <div id="content" class="{{ class }}">
+      <div id="content" class="{{ class }}">        
+        <h1 class="title is-3 has-text-weight-normal" id="heading">{{ heading_title }}</h1>
         <div class="tabs has-background-white">
           <ul>
             <li class="has-background-white is-active" data-target="#heading">
@@ -40,8 +41,6 @@
             {% endif %}
           </ul>
         </div>
-        <h1 class="title is-3 mt-5 has-text-weight-normal" id="heading">{{ heading_title }}</h1>
-        <hr>
         <div class="columns is-multiline">
           {% if column_left and column_right %}
           {% set class = 'column is-12-desktop is-12-tablet is-12-mobile' %}
@@ -50,23 +49,28 @@
           {% else %}
           {% set class = 'column is-4-desktop is-12-tablet is-12-mobile' %}
           {% endif %}
-          <div class="{{ class }} product-images">
-            <ul class="has-text-centered slider-hidden" id="product-images">
-              {% if thumb or images %}
+          <div class="product-images {{ class }}">
+            <div id="product-images" class="swiper">
+              <div class="swiper-wrapper">
               {% if thumb %}
-              <li data-thumb="{{ thumb }}" data-src="{{ popup }}">
-                <img src="{{ thumb }}" width="{{ image_width }}" height="{{ image_heigth }}" title="{{ heading_title }}" alt="{{ heading_title }}" />
-              </li>
+                <div class="swiper-slide">
+                  <a href="{{ popup }}" data-fancybox="product" data-caption="{{ heading_title }}">
+                    <img src="{{ thumb }}" width="{{ image_width }}" height="{{ image_heigth }}" title="{{ heading_title }}" alt="{{ heading_title }}" /> 
+                  </a>
+                </div>
               {% endif %}
               {% if images %}
-              {% for image in images %}
-              <li data-thumb="{{ image.thumb }}" data-src="{{ image.popup }}">
-                <img src="{{ image.thumb }}" width="{{ image_width }}" height="{{ image_heigth }}" title="{{ image.title ? image.title : heading_title }}" alt="{{  image.title ? image.title : heading_title  }}" />
-              </li>
-              {% endfor %}
+                {% for image in images %}
+                  <div class="swiper-slide">
+                    <a href="{{ image.popup }}" data-fancybox="product" data-caption="{{ image.title ? image.title : heading_title }}">
+                      <img src="{{ image.thumb }}" width="{{ image_width }}" height="{{ image_heigth }}" title="{{ image.title ? image.title : heading_title }}" alt="{{ image.title ? image.title : heading_title }}" /> 
+                    </a>
+                  </div>
+                  {% endfor %}
               {% endif %}
-              {% endif %}
-            </ul>
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
             <div class="sticky-crutch"></div>
           </div>
           {% if column_left and column_right %}
@@ -755,33 +759,20 @@ $('#button-review').on('click', function() {
 });
 
 $(document).ready(function() {
-  $('#product-images').lightSlider({
-    gallery:true,
-    item:1,
-    loop:true,
-    thumbItem:6,
-    slideMargin:0,
-    thumbMargin: 15,
-    enableDrag: true,
-    pager: true,
-    controls: false,
-    gallery: false,
-    auto: true,
-    currentPagerPosition:'left',
-    onSliderLoad: function(el) {
-      $('#product-images').removeClass('slider-hidden');
-      el.lightGallery({
-        selector: '#product-images .lslide',
-        thumbnail:false,
-        showThumbByDefault: false,
-        share: false,
-        fullScreen: false,
-        autoplay:false,
-        autoplayControls: false,
-        download: false
-      });
-    }
+  const swiper = new Swiper('#product-images', {
+    slidesPerView: 1,
+    loop: true,
+    pagination: {
+      el: '#product-images .swiper-pagination',
+      clickable: true,
+    },
+    autoplay: {
+      delay: 5000,
+    },
+    speed: 750
   });
+
+  Fancybox.bind("[data-fancybox]");
 });
 
 </script>

@@ -8,7 +8,7 @@
         {% if key < (breadcrumbs|length - 1) %}
         <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
         {% else %}
-        <li><a>{{ breadcrumb.text }}</a></li>
+        <li><span>{{ breadcrumb.text }}</span></li>
         {% endif %}
         {% endfor %}
       </ul>
@@ -46,7 +46,7 @@
                       <div class="column is-10-fullhd is-10-widescreen is-10-desktop is-10-tablet is-8-mobile is-10-desktop is-8-mobile">
                         <div class="columns">
                           <div class="column is-9-fullhd is-8-widescreen is-7-desktop is-8-tablet is-12-mobile">
-                            <a href="{{ product.href }}" class="title is-5 is-block has-text-link my-2">{{ product.name }}</a>
+                            <a href="{{ product.href }}" class="is-size-5-desktop is-size-5-tablet is-size-6-mobile is-block has-text-link my-2">{{ product.name }}</a>
                             {% if not product.stock %}
                             <p><span class="tag is-danger">Предзаказ</span></p>
                             {% endif %}

@@ -238,11 +238,11 @@ class ControllerProductProduct extends Controller {
 			$this->document->setDescription($product_info['meta_description']);
 			$this->document->setKeywords($product_info['meta_keyword']);
 			$this->document->addLink($this->url->link('product/product', 'product_id=' . $this->request->get['product_id']), 'canonical');
-			$this->document->addStyle('catalog/view/theme/' . $template_folder . '/js/lg/css/lightgallery.min.css');
-			$this->document->addScript('catalog/view/theme/' . $template_folder . '/js/lg/js/lightgallery-all.min.js');
-			$this->document->addStyle('catalog/view/theme/' . $template_folder . '/js/ls/css/lightslider.min.css');
-			$this->document->addScript('catalog/view/theme/' . $template_folder . '/js/ls/js/lightslider.min.js');
-
+			$this->document->addStyle('catalog/view/theme/' . $template_folder . '/css/swiper.min.css');
+			$this->document->addScript('catalog/view/theme/' . $template_folder . '/js/swiper.min.js');
+			$this->document->addStyle('catalog/view/theme/' . $template_folder . '/css/fancybox.min.css');
+			$this->document->addScript('catalog/view/theme/' . $template_folder . '/js/fancybox.min.js');
+		
 			$data['text_minimum'] = sprintf($this->language->get('text_minimum'), $product_info['minimum']);
 			$data['text_login'] = sprintf($this->language->get('text_login'), $this->url->link('account/login', '', true), $this->url->link('account/register', '', true));
 

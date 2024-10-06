@@ -1,4 +1,4 @@
-<nav class="panel is-shadowless mb-5 category-menu">
+<nav class="panel mb-5 is-clipped">
   {% for category in categories %}
   {% if category.category_id == category_id %}
   <a href="{{ category.href }}" class="panel-block is-active">{{ category.name }}</a>

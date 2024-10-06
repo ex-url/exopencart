@@ -4599,7 +4599,7 @@ fieldset[disabled] .select select:hover {
   white-space: nowrap;
 }
 
-.breadcrumb a {
+.breadcrumb a, .breadcrumb span {
   align-items: center;
   color: #485fc7;
   display: flex;
@@ -4607,7 +4607,7 @@ fieldset[disabled] .select select:hover {
   padding: 0 0.75em;
 }
 
-.breadcrumb a:hover {
+.breadcrumb a:hover, .breadcrumb span:hover {
   color: #363636;
 }
 

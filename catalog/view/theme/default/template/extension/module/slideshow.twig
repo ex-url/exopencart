@@ -1,55 +1,37 @@
 <div class="slideshow slideshow{{ module }}">
   <div class="container">
-    <div id="slideshow{{ module }}" class="slider-hidden">
-      {% for banner in banners %}
-      <div class="slideshow-item">
-        {% if banner.link %}
-        <a href="{{ banner.link }}">
-          <img src="{{ banner.image }}" alt="{{ banner.title }}" loading="lazy" width="{{ width }}px" height="{{ height }}px" class="image" />
-        </a>
-        {% else %}
-        <img src="{{ banner.image }}" alt="{{ banner.title }}" loading="lazy" width="{{ width }}px" height="{{ height }}px" class="image" />
-        {% endif %}
+    <div id="slideshow{{ module }}" class="swiper">
+      <div class="swiper-wrapper">
+        {% for banner in banners %}
+          <div class="swiper-slide">
+            {% if banner.link %}
+            <a href="{{ banner.link }}">
+              <img src="{{ banner.image }}" alt="{{ banner.title }}" loading="lazy" width="{{ width }}px" height="{{ height }}px" class="image" />
+            </a>
+            {% else %}
+            <img src="{{ banner.image }}" alt="{{ banner.title }}" loading="lazy" width="{{ width }}px" height="{{ height }}px" class="image" />
+            {% endif %}
+          </div>
+          {% endfor %}
       </div>
-      {% endfor %}
-    </div>
+      <div class="swiper-pagination"></div>    
+    </div>    
   </div>
 </div>
 
 <script>
 
 $(document).ready(function(){
-
-  $('#slideshow{{ module }}').lightSlider({
-    item: 1,
-    loop:true,
-    slideMove:1,
-    easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
-    speed: 500,
-    pause: 4000,
-    slideMargin: 0,
-    auto: true,
-    controls: false,
-    onSliderLoad: function() {
-      $('#slideshow{{ module }}').removeClass('slider-hidden');
+  const swiper = new Swiper('#slideshow{{ module }}', {
+    loop: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
     },
-    responsive : [
-      {
-        breakpoint:960,
-        settings: {
-          item:1,
-          slideMove:1,
-          slideMargin:0,
-        }
-      },
-      {
-        breakpoint:480,
-        settings: {
-          item:1,
-          slideMove:1
-        }
-      }
-    ]
-  });
+    autoplay: {
+      delay: 5000,
+    },
+    speed: 750
+  }); 
 });
 </script>
