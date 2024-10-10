@@ -1,20 +1,25 @@
+* {
+  outline: none !important;
+}
+
 body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 100vh;
 }
-body > main {
+
+body>main {
   flex: 1;
 }
+
 #logo {
   line-height: 0;
 }
 
 #menu {
   position: sticky;
-  top: -0.5px;
-  /* because of chromium bug */
+  top: 0;
   z-index: 3;
   box-shadow: 0 2px 5px 0 rgb(0 0 0 / 7%);
 }
@@ -137,7 +142,7 @@ body > main {
   display: none;
 }
 
-#product-page #content > .tabs {
+#product-page #content>.tabs {
   position: sticky;
   top: 59px;
   z-index: 2;

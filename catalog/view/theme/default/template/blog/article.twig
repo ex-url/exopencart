@@ -25,17 +25,18 @@
       <div id="content" class="{{ class }}">
         <div class="blog-article">
           <h1 class="title is-2">{{ heading_title }}</h1>
-          <div class="blog-article-images mb-5">
-            {% if images %}
-            <ul class="has-text-centered slider-hidden" id="article-images">
+          {% if images %}
+          <div id="article-images" class="swiper mb-5">            
+            <div class="swiper-wrapper">
             {% for image in images %}
-            <li data-thumb="{{ image.thumb }}" data-src="{{ image.popup }}">
-              <img src="{{ image.thumb }}" width="{{ image_width }}" height="{{ image_heigth }}" title="{{ image.title ? image.title : heading_title }}" alt="{{  image.title ? image.title : heading_title  }}" />
-            </li>
+              <a href="{{ image.popup }}" data-fancybox="article" class="swiper-slide">
+                <img src="{{ image.thumb }}" width="{{ image_width }}" height="{{ image_heigth }}" title="{{ image.title ? image.title : heading_title }}" alt="{{  image.title ? image.title : heading_title  }}" />
+              </a>
             {% endfor %}
-            </ul>
-            {% endif %}
+            </div>
+            <div class="swiper-pagination"></div>           
           </div>
+          {% endif %}
           <div class="content">
             {{ description }}
           </div>
@@ -283,42 +284,20 @@ $('#button-comment').on('click', function() {
 });
 
 $(document).ready(function() {
-  $('#article-images').lightSlider({
-    gallery:true,
-    item:2,
-    loop:true,
-    thumbItem:6,
-    slideMargin:0,
-    thumbMargin: 15,
-    enableDrag: true,
-    pager: true,
-    controls: false,
-    gallery: false,
-    auto: true,
-    currentPagerPosition:'left',
-    responsive : [
-      {
-        breakpoint:480,
-        settings: {
-          item:1,
-          slideMove:1
-        }
-      }
-    ],
-    onSliderLoad: function(el) {
-      $('#article-images').removeClass('slider-hidden');
-      el.lightGallery({
-        selector: '#article-images .lslide',
-        thumbnail:false,
-        showThumbByDefault: false,
-        share: false,
-        fullScreen: false,
-        autoplay:false,
-        autoplayControls: false,
-        download: false
-      });
-    }
+  const swiper = new Swiper('#article-images', {
+    slidesPerView: 2,
+    loop: true,
+    pagination: {
+      el: '#article-images .swiper-pagination',
+      clickable: true,
+    },
+    autoplay: {
+      delay: 5000,
+    },
+    speed: 750
   });
+
+  Fancybox.bind("[data-fancybox]");
 });
 </script>
 {{ footer }}
