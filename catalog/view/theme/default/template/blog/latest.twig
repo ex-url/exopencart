@@ -1,13 +1,17 @@
 {{ header }}
 <main id="blog-latest-page">
   <div class="container">
-    <nav class="breadcrumb py-4" aria-label="breadcrumbs">
+    <nav class="breadcrumb py-4" aria-label="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
       <ul>
         {% for key, breadcrumb in breadcrumbs %}
         {% if key < (breadcrumbs|length - 1) %}
-        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="{{ breadcrumb.href }}" itemprop="item">{{ breadcrumb.text }}</a>
+        </li>
         {% else %}
-        <li><span>{{ breadcrumb.text }}</span></li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="item">{{ breadcrumb.text }}</span>
+        </li>
         {% endif %}
         {% endfor %}
       </ul>

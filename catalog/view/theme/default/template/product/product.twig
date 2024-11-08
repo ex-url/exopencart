@@ -2,13 +2,17 @@
 <main id="product-page">
   {{ content_top }}
   <div class="container">
-    <nav class="breadcrumb py-4" aria-label="breadcrumbs">
+    <nav class="breadcrumb py-4" aria-label="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
       <ul>
         {% for key, breadcrumb in breadcrumbs %}
         {% if key < (breadcrumbs|length - 1) %}
-        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="{{ breadcrumb.href }}" itemprop="item">{{ breadcrumb.text }}</a>
+        </li>
         {% else %}
-        <li><span>{{ breadcrumb.text }}</span></li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="item">{{ breadcrumb.text }}</span>
+        </li>
         {% endif %}
         {% endfor %}
       </ul>
@@ -22,8 +26,8 @@
       {% else %}
       {% set class = 'column is-12' %}
       {% endif %}
-      <div id="content" class="{{ class }}">        
-        <h1 class="title is-3 has-text-weight-normal" id="heading">{{ heading_title }}</h1>
+      <div id="content" class="{{ class }}" itemscope itemtype="https://schema.org/Product">        
+        <h1 class="title is-3 has-text-weight-normal" id="heading" itemprop="name">{{ heading_title }}</h1>
         <div class="tabs has-background-white">
           <ul>
             <li class="has-background-white is-active" data-target="#heading">
@@ -55,7 +59,7 @@
               {% if thumb %}
                 <div class="swiper-slide">
                   <a href="{{ popup }}" data-fancybox="product" data-caption="{{ heading_title }}">
-                    <img src="{{ thumb }}" width="{{ image_width }}" height="{{ image_heigth }}" title="{{ heading_title }}" alt="{{ heading_title }}" /> 
+                    <img src="{{ thumb }}" itemprop="image" width="{{ image_width }}" height="{{ image_heigth }}" title="{{ heading_title }}" alt="{{ heading_title }}" /> 
                   </a>
                 </div>
               {% endif %}
@@ -63,7 +67,7 @@
                 {% for image in images %}
                   <div class="swiper-slide">
                     <a href="{{ image.popup }}" data-fancybox="product" data-caption="{{ image.title ? image.title : heading_title }}">
-                      <img src="{{ image.thumb }}" width="{{ image_width }}" height="{{ image_heigth }}" title="{{ image.title ? image.title : heading_title }}" alt="{{ image.title ? image.title : heading_title }}" /> 
+                      <img src="{{ image.thumb }}" itemprop="image" width="{{ image_width }}" height="{{ image_heigth }}" title="{{ image.title ? image.title : heading_title }}" alt="{{ image.title ? image.title : heading_title }}" /> 
                     </a>
                   </div>
                   {% endfor %}
@@ -89,14 +93,14 @@
               {% else %}
               {% set class = 'column is-6-desktop is-12-mobile' %}
               {% endif %}
-              <div class="product-main-info {{ class }}">
+              <div class="product-main-info {{ class }}" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
                 <div class="is-flex is-justify-content-space-between is-align-items-center">
                   {% if price %}
                   <div class="price is-relative">
                     {% if not special %}
-                    <span class="is-size-2 has-text-weight-bold actual-price">{{ price }}</span>
+                    <span class="is-size-2 has-text-weight-bold actual-price" itemprop="price">{{ price }}</span>
                     {% else %}
-                    <span class="is-size-2 has-text-weight-bold actual-price">{{ special }}</span>
+                    <span class="is-size-2 has-text-weight-bold actual-price" itemprop="price">{{ special }}</span>
                     <span class="has-text-grey is-size-4 old-price">{{ price }}</span>
                     {% endif %}
                     {% if tax %}
@@ -152,7 +156,7 @@
                   </li>
                   <li class="is-flex is-justify-content-space-between is-align-items-center py-1">
                     <span class="has-background-white pr-1">{{ text_stock }}</span>
-                    <span class="has-background-white has-text-weight-bold pl-1 {{ quantity > 0 ? 'has-text-success' : 'has-text-danger' }}">{{ stock }}</span>
+                    <span class="has-background-white has-text-weight-bold pl-1 {{ quantity > 0 ? 'has-text-success' : 'has-text-danger' }}" itemprop="availability">{{ stock }}</span>
                   </li>
                   {% if manufacturer %}
                   <li class="is-flex is-justify-content-space-between is-align-items-center py-1">
@@ -366,7 +370,7 @@
                 <hr>
               </div>
               {% endif %}
-              <div id="description" class="column is-12 content mb-0">
+              <div id="description" itemprop="description" class="column is-12 content mb-0">
                 {{ description }}
               </div>
               {% if tags %}
