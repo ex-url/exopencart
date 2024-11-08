@@ -41,16 +41,25 @@
         {% if products %}
         <div class="is-flex is-justify-content-space-between is-align-items-center category-toolbar">
           <div class="block mb-0">
+            <button type="button" class="filter-trigger button is-primary is-outlined is-hidden">
+              <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path d="M7 11.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5z"/>
+                </svg>
+              </span>
+              <span>{{ text_filter_trigger }}</span>
+            </button>
             <div class="dropdown is-hoverable">
               <div class="dropdown-trigger">
-                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <button class="button" aria-haspopup="true" aria-controls="dropdown-sort">
                   <span class="icon has-text-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" class="bi bi-sort-down-alt" viewBox="0 0 16 16">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
                       <path d="M3.5 3.5a.5.5 0 0 0-1 0v8.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L3.5 12.293V3.5zm4 .5a.5.5 0 0 1 0-1h1a.5.5 0 0 1 0 1h-1zm0 3a.5.5 0 0 1 0-1h3a.5.5 0 0 1 0 1h-3zm0 3a.5.5 0 0 1 0-1h5a.5.5 0 0 1 0 1h-5zM7 12.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5z"/>
                     </svg>
                   </span>
                   <span class="icon has-text-link p-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="1rem" height="1rem" viewBox="0 0 16 16">
                       <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                     </svg>
                   </span>
@@ -60,7 +69,7 @@
                 <div class="dropdown-content">
                   {% for sorts in sorts %}
                   {% if sorts.value == '%s-%s'|format(sort, order) %}
-                  <a class="dropdown-item is-active" rel="nofollow">
+                  <a href="{{ sorts.href }}" class="dropdown-item is-active" rel="nofollow">
                     {{ sorts.text }}
                   </a>
                   {% else %}
@@ -74,7 +83,7 @@
             </div>
             <div class="dropdown is-hoverable">
               <div class="dropdown-trigger">
-                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <button class="button" aria-haspopup="true" aria-controls="dropdown-show">
                   <span class="icon has-text-link">
                     <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
                       <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
@@ -92,7 +101,7 @@
                 <div class="dropdown-content">
                   {% for limits in limits %}
                   {% if limits.value == limit %}
-                  <a class="dropdown-item is-active" rel="nofollow">
+                  <a href="{{ limits.href }}" class="dropdown-item is-active" rel="nofollow">
                     {{ limits.text }}
                   </a>
                   {% else %}

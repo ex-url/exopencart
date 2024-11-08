@@ -98,6 +98,7 @@ class ControllerCommonHeader extends Controller {
     $data['checkout'] = $this->url->link('checkout/checkout', '', true);
     $data['contact'] = $this->url->link('information/contact');
     $data['telephone'] = $this->config->get('config_telephone');
+    $data['tel_link'] = preg_replace('/[^+\d]/', '', $this->config->get('config_telephone'));
     $data['email'] = $this->config->get('config_email');
     $data['social_media'] = $this->config->get('config_social_media');
 

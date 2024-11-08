@@ -9,7 +9,7 @@
         <div class="product-card box">
           <div class="image">
             <a href="{{ product.href }}" class="is-flex is-justify-content-center">
-              <img src="{{ product.thumb }}" width="{{ image_width }}px" height="{{ image_height }}px" loading="lazy" alt="{{ product.name }}" title="{{ product.name }}" />
+              <img src="{{ product.thumb }}" width="{{ image_width }}" height="{{ image_height }}" loading="lazy" alt="{{ product.name }}" title="{{ product.name }}" />
               <span class="tag {{ product.quantity ? 'is-success' : 'is-danger' }} is-light stock">{{ product.stock }}</span>
             </a>
           </div>

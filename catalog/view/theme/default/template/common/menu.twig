@@ -5,14 +5,14 @@
         <div class="navbar-start">
           {% if categories %}
           <div class="navbar-item catalog-trigger">
-            <a rel="nofollow" class="button is-light is-primary pl-5 pr-4 is-flex is-aling-items-center">
+            <button class="button is-light is-primary pl-5 pr-4 is-flex is-aling-items-center">
               <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
                   <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"/>
                 </svg>
               </span>
               <span>{{ text_category }}</span>
-            </a>
+            </button>
           </div>
           {% endif %}
           {% if special %}
@@ -41,20 +41,20 @@
         </div>
         <div class="navbar-end">
           <div class="is-flex is-align-items-center is-justify-content-flex-end has-background-white icons-menu">
-            <a rel="nofollow" class="mobile-menu-trigger is-hidden-desktop has-text-primary">
+            <span class="mobile-menu-trigger is-hidden-desktop has-text-primary">
               <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
                 </svg>
               </span>
-            </a>
-            <a rel="nofollow" class="search-trigger has-text-primary">
+            </span>
+            <span class="search-trigger has-text-primary">
               <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor" viewBox="0 0 16 16">
                   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                 </svg>
               </span>
-            </a>
+            </span>
             <a rel="nofollow" href="{{ compare }}" class="compare has-text-primary">
               <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor" viewBox="0 0 16 16">
@@ -71,19 +71,28 @@
               </span>
               <span class="has-background-danger has-text-white badge">{{ wishlist_badge_products }}</span>
             </a>
-            <a rel="nofollow" class="account has-text-primary {{ not logged ? 'login-trigger' : '' }}" {% if logged %} href="{{ account }}" {% endif %}>
+            {% if logged %}
+            <a rel="nofollow" class="account has-text-primary" href="{{ account }}">
               <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor" viewBox="0 0 16 16">
                   <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
                   <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
                 </svg>
               </span>
-              {% if not logged %}
-              <span class="has-background-danger not-logged"></span>
-              {% else %}
               <span class="has-background-success logged"></span>
-              {% endif %}
             </a>
+            {% else %}
+            <span class="account login-trigger has-text-primary is-clickable">
+              <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                </svg>
+              </span>
+              <span class="has-background-danger not-logged"></span>
+            </span>
+            {% endif %}
+            
             <a href="{{ cart }}" class="cart-icon has-text-primary">
               <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
@@ -139,5 +148,4 @@
     <button class="delete is-large is-dark" aria-label="close"></button>
   </div>
   {% endif %}
-</div>
 </section>

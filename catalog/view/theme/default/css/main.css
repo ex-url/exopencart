@@ -32,7 +32,8 @@ body>main {
   line-height: 1;
 }
 
-#menu .icons-menu>a {
+#menu .icons-menu>a,
+#menu .icons-menu>span {
   padding: 1rem;
   display: block;
   position: relative;

@@ -6,10 +6,10 @@
           <div class="swiper-slide">
             {% if banner.link %}
             <a href="{{ banner.link }}">
-              <img src="{{ banner.image }}" alt="{{ banner.title }}" loading="lazy" width="{{ width }}px" height="{{ height }}px" class="image" />
+              <img src="{{ banner.image }}" alt="{{ banner.title }}" loading="lazy" width="{{ width }}" height="{{ height }}" class="image" />
             </a>
             {% else %}
-            <img src="{{ banner.image }}" alt="{{ banner.title }}" loading="lazy" width="{{ width }}px" height="{{ height }}px" class="image" />
+            <img src="{{ banner.image }}" alt="{{ banner.title }}" loading="lazy" width="{{ width }}" height="{{ height }}" class="image" />
             {% endif %}
           </div>
           {% endfor %}
@@ -25,7 +25,7 @@ $(document).ready(function(){
   const swiper = new Swiper('#slideshow{{ module }}', {
     loop: true,
     pagination: {
-      el: '.swiper-pagination',
+      el: '#slideshow{{ module }} .swiper-pagination',
       clickable: true,
     },
     autoplay: {

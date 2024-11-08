@@ -6,11 +6,11 @@
           <div class="swiper-slide">
             {% if banner.link %}
             <a href="{{ banner.link }}" class="image">
-              <img class="mx-auto" src="{{ banner.image }}" alt="{{ banner.title }}" width="{{ width }}px" height="{{ height }}px"/>
+              <img class="mx-auto" src="{{ banner.image }}" alt="{{ banner.title }}" width="{{ width }}" height="{{ height }}"/>
             </a>
             {% else %}
             <span class="image">
-              <img class="mx-auto" src="{{ banner.image }}" alt="{{ banner.title }}" width="{{ width }}px" height="{{ height }}px"/>
+              <img class="mx-auto" src="{{ banner.image }}" alt="{{ banner.title }}" width="{{ width }}" height="{{ height }}"/>
             </span>
             {% endif %}
           </div>
