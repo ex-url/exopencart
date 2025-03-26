@@ -13,6 +13,11 @@ body>main {
   flex: 1;
 }
 
+img,
+iframe {
+  vertical-align: middle;
+}
+
 #logo {
   line-height: 0;
 }
