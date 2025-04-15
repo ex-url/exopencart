@@ -136,27 +136,110 @@ class Image {
   }
 
   /**
+   * Resize image
    *
-   *
-   * @param	int	$width
-   * @param	int	$height
-   * @param	string	$default
+   * @param int $width
+   * @param int $height
+   * @param string $mode 'default', 'crop', 'scale'
    */
-  public function resize(int $width = 0, int $height = 0, $default = '') {
+  public function resize(int $width = 0, int $height = 0, $mode = 'default') {
     if (!$this->width || !$this->height) {
       return;
     }
 
     $xpos = 0;
     $ypos = 0;
-    $scale = 1;
+
+    if ($mode === 'scale') {
+      $scale = min($width / $this->width, $height / $this->height);
+      $new_width = (int)($this->width * $scale);
+      $new_height = (int)($this->height * $scale);
+
+      $image_old = $this->image;
+      $this->image = imagecreatetruecolor($new_width, $new_height);
+
+      if ($this->mime == 'image/png' || $this->mime == 'image/webp') {
+        imagealphablending($this->image, false);
+        imagesavealpha($this->image, true);
+        $background = imagecolorallocatealpha($this->image, 255, 255, 255, 127);
+        imagecolortransparent($this->image, $background);
+      } else {
+        $background = imagecolorallocate($this->image, 255, 255, 255);
+      }
+
+      imagefilledrectangle($this->image, 0, 0, $new_width, $new_height, $background);
+
+      imagecopyresampled($this->image, $image_old, 0, 0, 0, 0, $new_width, $new_height, $this->width, $this->height);
+      imagedestroy($image_old);
+
+      $this->width = $new_width;
+      $this->height = $new_height;
+
+      return;
+    }
+
+    if ($mode === 'crop') {
+      $image_ratio = $this->width / $this->height;
+      $target_ratio = $width / $height;
+
+      if ($image_ratio > $target_ratio) {
+        $new_height = $height;
+        $new_width = (int)($height * $image_ratio);
+        $crop_width = ($new_width - $width) / 2;
+        $crop_height = 0;
+      } else {
+        $new_width = $width;
+        $new_height = (int)($width / $image_ratio);
+        $crop_width = 0;
+        $crop_height = ($new_height - $height) / 2;
+      }
+
+      $image_old = $this->image;
+      $temp_image = imagecreatetruecolor($new_width, $new_height);
+
+      if ($this->mime == 'image/png' || $this->mime == 'image/webp') {
+        imagealphablending($temp_image, false);
+        imagesavealpha($temp_image, true);
+        $background = imagecolorallocatealpha($temp_image, 255, 255, 255, 127);
+        imagecolortransparent($temp_image, $background);
+      } else {
+        $background = imagecolorallocate($temp_image, 255, 255, 255);
+      }
+
+      imagefilledrectangle($temp_image, 0, 0, $new_width, $new_height, $background);
+
+      imagecopyresampled($temp_image, $image_old, 0, 0, 0, 0, $new_width, $new_height, $this->width, $this->height);
+
+      $this->image = imagecreatetruecolor($width, $height);
+
+      if ($this->mime == 'image/png' || $this->mime == 'image/webp') {
+        imagealphablending($this->image, false);
+        imagesavealpha($this->image, true);
+        $background = imagecolorallocatealpha($this->image, 255, 255, 127);
+        imagecolortransparent($this->image, $background);
+      } else {
+        $background = imagecolorallocate($this->image, 255, 255, 255);
+      }
+
+      imagefilledrectangle($this->image, 0, 0, $width, $height, $background);
+
+      imagecopy($this->image, $temp_image, 0, 0, $crop_width, $crop_height, $width, $height);
+
+      imagedestroy($image_old);
+      imagedestroy($temp_image);
+
+      $this->width = $width;
+      $this->height = $height;
+
+      return;
+    }
 
     $scale_w = $width / $this->width;
     $scale_h = $height / $this->height;
 
-    if ($default == 'w') {
+    if ($mode == 'w') {
       $scale = $scale_w;
-    } elseif ($default == 'h') {
+    } elseif ($mode == 'h') {
       $scale = $scale_h;
     } else {
       $scale = min($scale_w, $scale_h);
@@ -174,19 +257,10 @@ class Image {
     $image_old = $this->image;
     $this->image = imagecreatetruecolor($width, $height);
 
-    if ($this->mime == 'image/png') {
+    if ($this->mime == 'image/png' || $this->mime == 'image/webp') {
       imagealphablending($this->image, false);
       imagesavealpha($this->image, true);
-
       $background = imagecolorallocatealpha($this->image, 255, 255, 255, 127);
-
-      imagecolortransparent($this->image, $background);
-    } else if ($this->mime == 'image/webp') {
-      imagealphablending($this->image, false);
-      imagesavealpha($this->image, true);
-
-      $background = imagecolorallocatealpha($this->image, 255, 255, 255, 127);
-
       imagecolortransparent($this->image, $background);
     } else {
       $background = imagecolorallocate($this->image, 255, 255, 255);

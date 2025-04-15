@@ -4,16 +4,16 @@
     <nav class="breadcrumb py-4" aria-label="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
       <ul>
         {% for key, breadcrumb in breadcrumbs %}
-        {% if key < (breadcrumbs|length - 1) %}
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        {% if key < (breadcrumbs|length - 1) %} <li itemprop="itemListElement" itemscope
+          itemtype="https://schema.org/ListItem">
           <a href="{{ breadcrumb.href }}" itemprop="item">{{ breadcrumb.text }}</a>
-        </li>
-        {% else %}
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <span itemprop="item">{{ breadcrumb.text }}</span>
-        </li>
-        {% endif %}
-        {% endfor %}
+          </li>
+          {% else %}
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <span itemprop="item">{{ breadcrumb.text }}</span>
+          </li>
+          {% endif %}
+          {% endfor %}
       </ul>
     </nav>
     <div class="columns is-multiline">
@@ -34,36 +34,22 @@
         {% endif %}
         <form action="{{ action }}" method="post" enctype="multipart/form-data">
           <div class="columns is-multiline">
-            {% if text_agree %}
-            <div class="column is-12">
-              <div class="field required">
-                <div class="checkbox">
-                  <label class="label">
-                    <input type="checkbox" name="agree" {{ agree ? 'checked' : '' }} value="1">
-                    {{ text_agree }}
-                  </label>
-                </div>
-                {% if error_agree %}
-                <p class="help is-danger">{{ error_agree }}</p>
-                {% endif %}
-              </div>
-            </div>
-            {% endif %}
             <div class="column is-12 {{ customer_groups|length > 1 ? 'required' : 'is-hidden' }}">
               <div class="field">
                 <label class="label">{{ entry_customer_group }}</label>
                 <div class="control">
                   {% for customer_group in customer_groups %}
                   {% if customer_group.customer_group_id == customer_group_id %}
-                    <label class="radio">
-                      <input type="radio" name="customer_group_id" value="{{ customer_group.customer_group_id }}" checked="checked" />
-                      {{ customer_group.name }}
-                    </label>
+                  <label class="radio">
+                    <input type="radio" name="customer_group_id" value="{{ customer_group.customer_group_id }}"
+                      checked="checked" />
+                    {{ customer_group.name }}
+                  </label>
                   {% else %}
-                    <label class="radio">
-                      <input type="radio" name="customer_group_id" value="{{ customer_group.customer_group_id }}" />
-                      {{ customer_group.name }}
-                    </label>
+                  <label class="radio">
+                    <input type="radio" name="customer_group_id" value="{{ customer_group.customer_group_id }}" />
+                    {{ customer_group.name }}
+                  </label>
                   {% endif %}
                   {% endfor %}
                 </div>
@@ -73,7 +59,8 @@
               <div class="field required">
                 <label class="label">{{ entry_firstname }}</label>
                 <div class="control">
-                  <input type="text" name="firstname" value="{{ firstname }}" placeholder="{{ entry_firstname }}" class="input">
+                  <input type="text" name="firstname" value="{{ firstname }}" placeholder="{{ entry_firstname }}"
+                    class="input">
                 </div>
                 {% if error_firstname %}
                 <p class="help is-danger">{{ error_firstname }}</p>
@@ -84,7 +71,8 @@
               <div class="field required">
                 <label class="label">{{ entry_lastname }}</label>
                 <div class="control">
-                  <input type="text" name="lastname" value="{{ lastname }}" placeholder="{{ entry_lastname }}" class="input">
+                  <input type="text" name="lastname" value="{{ lastname }}" placeholder="{{ entry_lastname }}"
+                    class="input">
                 </div>
                 {% if error_lastname %}
                 <p class="help is-danger">{{ error_lastname }}</p>
@@ -95,7 +83,8 @@
               <div class="field required">
                 <label class="label">{{ entry_telephone }}</label>
                 <div class="control">
-                  <input type="text" name="telephone" value="{{ telephone }}" placeholder="{{ entry_telephone }}" class="input">
+                  <input type="text" name="telephone" value="{{ telephone }}" placeholder="{{ entry_telephone }}"
+                    class="input">
                 </div>
                 {% if error_telephone %}
                 <p class="help is-danger">{{ error_telephone }}</p>
@@ -137,17 +126,25 @@
             </div>
             {% for custom_field in custom_fields %}
             {% if custom_field.type == 'select' %}
-            <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile {% if custom_field.required %} required {% endif %} custom-field" data-sort="{{ custom_field.sort_order }}">
+            <div
+              class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile {% if custom_field.required %} required {% endif %} custom-field"
+              data-sort="{{ custom_field.sort_order }}">
               <div class="field">
-                <label class="label" for="custom-field{{ custom_field.custom_field_id }}">{{ custom_field.name }}</label>
+                <label class="label" for="custom-field{{ custom_field.custom_field_id }}">{{ custom_field.name
+                  }}</label>
                 <div class="control">
-                  <select name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]" id="custom-field{{ custom_field.custom_field_id }}" id="custom-field{{ custom_field.custom_field_id }}" class="input">
+                  <select name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]"
+                    id="custom-field{{ custom_field.custom_field_id }}"
+                    id="custom-field{{ custom_field.custom_field_id }}" class="input">
                     <option value="">{{ text_select }}</option>
                     {% for custom_field_value in custom_field.custom_field_value %}
-                    {% if account_custom_field[custom_field.custom_field_id] and custom_field_value.custom_field_value_id == account_custom_field[custom_field.custom_field_id] %}
-                    <option value="{{ custom_field_value.custom_field_value_id }}" selected="selected">{{ custom_field_value.name }}</option>
+                    {% if account_custom_field[custom_field.custom_field_id] and
+                    custom_field_value.custom_field_value_id == account_custom_field[custom_field.custom_field_id] %}
+                    <option value="{{ custom_field_value.custom_field_value_id }}" selected="selected">{{
+                      custom_field_value.name }}</option>
                     {% else %}
-                    <option value="{{ custom_field_value.custom_field_value_id }}">{{ custom_field_value.name }}</option>
+                    <option value="{{ custom_field_value.custom_field_value_id }}">{{ custom_field_value.name }}
+                    </option>
                     {% endif %}
                     {% endfor %}
                   </select>
@@ -159,23 +156,32 @@
             </div>
             {% endif %}
             {% if custom_field.type == 'radio' %}
-            <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile {% if custom_field.required %} required {% endif %} custom-field" data-sort="{{ custom_field.sort_order }}">
+            <div
+              class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile {% if custom_field.required %} required {% endif %} custom-field"
+              data-sort="{{ custom_field.sort_order }}">
               <div class="field">
                 <label class="label">{{ custom_field.name }}</label>
                 <div class="control">
-                    {% for custom_field_value in custom_field.custom_field_value %}
-                      {% if account_custom_field[custom_field.custom_field_id] and custom_field_value.custom_field_value_id == account_custom_field[custom_field.custom_field_id] %}
-                      <label class="radio">
-                        <input type="radio" name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]" id="custom-field{{ custom_field.custom_field_id }}" value="{{ custom_field_value.custom_field_value_id }}" checked="checked" />
-                        {{ custom_field_value.name }}
-                      </label>
-                      {% else %}
-                      <label class="radio">
-                        <input type="radio" name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]" id="custom-field{{ custom_field.custom_field_id }}" value="{{ custom_field_value.custom_field_value_id }}" />
-                        {{ custom_field_value.name }}
-                      </label>
-                      {% endif %}
-                    {% endfor %}
+                  {% for custom_field_value in custom_field.custom_field_value %}
+                  {% if account_custom_field[custom_field.custom_field_id] and custom_field_value.custom_field_value_id
+                  == account_custom_field[custom_field.custom_field_id] %}
+                  <label class="radio">
+                    <input type="radio"
+                      name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]"
+                      id="custom-field{{ custom_field.custom_field_id }}"
+                      value="{{ custom_field_value.custom_field_value_id }}" checked="checked" />
+                    {{ custom_field_value.name }}
+                  </label>
+                  {% else %}
+                  <label class="radio">
+                    <input type="radio"
+                      name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]"
+                      id="custom-field{{ custom_field.custom_field_id }}"
+                      value="{{ custom_field_value.custom_field_value_id }}" />
+                    {{ custom_field_value.name }}
+                  </label>
+                  {% endif %}
+                  {% endfor %}
                   {% if error_custom_field[custom_field.custom_field_id] %}
                   <div class="help is-danger">{{ error_custom_field[custom_field.custom_field_id] }}</div>
                   {% endif %}
@@ -184,23 +190,30 @@
             </div>
             {% endif %}
             {% if custom_field.type == 'checkbox' %}
-            <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile {% if custom_field.required %} required {% endif %} custom-field" data-sort="{{ custom_field.sort_order }}">
+            <div
+              class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile {% if custom_field.required %} required {% endif %} custom-field"
+              data-sort="{{ custom_field.sort_order }}">
               <div class="field">
                 <label class="label">{{ custom_field.name }}</label>
                 <div class="control">
-                    {% for custom_field_value in custom_field.custom_field_value %}
-                      {% if account_custom_field[custom_field.custom_field_id] and custom_field_value.custom_field_value_id in account_custom_field[custom_field.custom_field_id] %}
-                      <label class="checkbox">
-                        <input id="custom-field{{ custom_field.custom_field_id }}" type="checkbox" name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}][]" value="{{ custom_field_value.custom_field_value_id }}" checked="checked" />
-                        {{ custom_field_value.name }}
-                      </label>
-                      {% else %}
-                      <label class="checkbox">
-                        <input id="custom-field{{ custom_field.custom_field_id }}" type="checkbox" name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}][]" value="{{ custom_field_value.custom_field_value_id }}" />
-                        {{ custom_field_value.name }}
-                      </label>
-                      {% endif %}
-                    {% endfor %}
+                  {% for custom_field_value in custom_field.custom_field_value %}
+                  {% if account_custom_field[custom_field.custom_field_id] and custom_field_value.custom_field_value_id
+                  in account_custom_field[custom_field.custom_field_id] %}
+                  <label class="checkbox">
+                    <input id="custom-field{{ custom_field.custom_field_id }}" type="checkbox"
+                      name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}][]"
+                      value="{{ custom_field_value.custom_field_value_id }}" checked="checked" />
+                    {{ custom_field_value.name }}
+                  </label>
+                  {% else %}
+                  <label class="checkbox">
+                    <input id="custom-field{{ custom_field.custom_field_id }}" type="checkbox"
+                      name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}][]"
+                      value="{{ custom_field_value.custom_field_value_id }}" />
+                    {{ custom_field_value.name }}
+                  </label>
+                  {% endif %}
+                  {% endfor %}
                   {% if error_custom_field[custom_field.custom_field_id] %}
                   <div class="help is-danger">{{ error_custom_field[custom_field.custom_field_id] }}</div>
                   {% endif %}
@@ -210,11 +223,18 @@
             {% endif %}
             {% if custom_field.type == 'text' %}
             {{ custom_field.required }}
-            <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile {% if custom_field.required %} required {% endif %} custom-field" data-sort="{{ custom_field.sort_order }}">
+            <div
+              class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile {% if custom_field.required %} required {% endif %} custom-field"
+              data-sort="{{ custom_field.sort_order }}">
               <div class="field">
-                <label class="label" for="custom-field{{ custom_field.custom_field_id }}">{{ custom_field.name }}</label>
+                <label class="label" for="custom-field{{ custom_field.custom_field_id }}">{{ custom_field.name
+                  }}</label>
                 <div class="control">
-                  <input type="text" name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]" value="{% if account_custom_field[custom_field.custom_field_id] %}{{ account_custom_field[custom_field.custom_field_id] }}{% else %}{{ custom_field.value }}{% endif %}" placeholder="{{ custom_field.name }}" id="custom-field{{ custom_field.custom_field_id }}" id="custom-field{{ custom_field.custom_field_id }}" class="input" />
+                  <input type="text"
+                    name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]"
+                    value="{% if account_custom_field[custom_field.custom_field_id] %}{{ account_custom_field[custom_field.custom_field_id] }}{% else %}{{ custom_field.value }}{% endif %}"
+                    placeholder="{{ custom_field.name }}" id="custom-field{{ custom_field.custom_field_id }}"
+                    id="custom-field{{ custom_field.custom_field_id }}" class="input" />
                   {% if error_custom_field[custom_field.custom_field_id] %}
                   <div class="help is-danger">{{ error_custom_field[custom_field.custom_field_id] }}</div>
                   {% endif %}
@@ -223,11 +243,17 @@
             </div>
             {% endif %}
             {% if custom_field.type == 'textarea' %}
-            <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile {% if custom_field.required %} required {% endif %}custom-field" data-sort="{{ custom_field.sort_order }}">
+            <div
+              class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile {% if custom_field.required %} required {% endif %}custom-field"
+              data-sort="{{ custom_field.sort_order }}">
               <div class="field">
-                <label class="label" for="custom-field{{ custom_field.custom_field_id }}">{{ custom_field.name }}</label>
+                <label class="label" for="custom-field{{ custom_field.custom_field_id }}">{{ custom_field.name
+                  }}</label>
                 <div class="control">
-                  <textarea name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]" rows="5" placeholder="{{ custom_field.name }}"  id="custom-field{{ custom_field.custom_field_id }}" id="custom-field{{ custom_field.custom_field_id }}" class="input">{% if account_custom_field[custom_field.custom_field_id] %}{{ account_custom_field[custom_field.custom_field_id] }}{% else %}{{ custom_field.value }}{% endif %}</textarea>
+                  <textarea name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]"
+                    rows="5" placeholder="{{ custom_field.name }}" id="custom-field{{ custom_field.custom_field_id }}"
+                    id="custom-field{{ custom_field.custom_field_id }}"
+                    class="input">{% if account_custom_field[custom_field.custom_field_id] %}{{ account_custom_field[custom_field.custom_field_id] }}{% else %}{{ custom_field.value }}{% endif %}</textarea>
                   {% if error_custom_field[custom_field.custom_field_id] %}
                   <div class="help is-danger">{{ error_custom_field[custom_field.custom_field_id] }}</div>
                   {% endif %}
@@ -236,12 +262,18 @@
             </div>
             {% endif %}
             {% if custom_field.type == 'file' %}
-            <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile {% if custom_field.required %} required {% endif %} custom-field" data-sort="{{ custom_field.sort_order }}">
+            <div
+              class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile {% if custom_field.required %} required {% endif %} custom-field"
+              data-sort="{{ custom_field.sort_order }}">
               <div class="field">
                 <label class="label">{{ custom_field.name }}</label>
                 <div class="control">
-                  <button type="button" id="button-custom-field {{ custom_field.custom_field_id }}" id="custom-field{{ custom_field.custom_field_id }}" class="btn btn-default"><i class="fa fa-upload"></i> {{ button_upload }}</button>
-                  <input type="hidden" name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]" value="{% if account_custom_field[custom_field.custom_field_id] %}{{ account_custom_field[custom_field.custom_field_id] }} {% endif %}" />
+                  <button type="button" id="button-custom-field {{ custom_field.custom_field_id }}"
+                    id="custom-field{{ custom_field.custom_field_id }}" class="btn btn-default"><i
+                      class="fa fa-upload"></i> {{ button_upload }}</button>
+                  <input type="hidden"
+                    name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]"
+                    value="{% if account_custom_field[custom_field.custom_field_id] %}{{ account_custom_field[custom_field.custom_field_id] }} {% endif %}" />
                   {% if error_custom_field[custom_field.custom_field_id] %}
                   <div class="help is-danger">{{ error_custom_field[custom_field.custom_field_id] }}</div>
                   {% endif %}
@@ -250,11 +282,17 @@
             </div>
             {% endif %}
             {% if custom_field.type == 'date' %}
-            <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile {% if custom_field.required %} required {% endif %}custom-field" data-sort="{{ custom_field.sort_order }}">
+            <div
+              class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile {% if custom_field.required %} required {% endif %}custom-field"
+              data-sort="{{ custom_field.sort_order }}">
               <div class="field">
-                <label class="label" for="custom-field{{ custom_field.custom_field_id }}">{{ custom_field.name }}</label>
+                <label class="label" for="custom-field{{ custom_field.custom_field_id }}">{{ custom_field.name
+                  }}</label>
                 <div class="control">
-                  <input id="custom-field{{ custom_field.custom_field_id }}" class="input" type="date" name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]" value="{% if account_custom_field[custom_field.custom_field_id] %}{{ account_custom_field[custom_field.custom_field_id] }}{% else %}{{ custom_field.value }}{% endif %}" placeholder="{{ custom_field.name }}" id="custom-field{{ custom_field.custom_field_id }}"/>
+                  <input id="custom-field{{ custom_field.custom_field_id }}" class="input" type="date"
+                    name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]"
+                    value="{% if account_custom_field[custom_field.custom_field_id] %}{{ account_custom_field[custom_field.custom_field_id] }}{% else %}{{ custom_field.value }}{% endif %}"
+                    placeholder="{{ custom_field.name }}" id="custom-field{{ custom_field.custom_field_id }}" />
                 </div>
                 {% if error_custom_field[custom_field.custom_field_id] %}
                 <p class="help is-danger">{{ error_custom_field[custom_field.custom_field_id] }}</p>
@@ -263,12 +301,19 @@
             </div>
             {% endif %}
             {% if custom_field.type == 'time' %}
-            <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile {% if custom_field.required %} required {% endif %} custom-field" data-sort="{{ custom_field.sort_order }}">
+            <div
+              class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile {% if custom_field.required %} required {% endif %} custom-field"
+              data-sort="{{ custom_field.sort_order }}">
               <div class="field">
-                <label class="label" for="custom-field{{ custom_field.custom_field_id }}">{{ custom_field.name }}</label>
+                <label class="label" for="custom-field{{ custom_field.custom_field_id }}">{{ custom_field.name
+                  }}</label>
                 <div class="control">
                   <div class="input-group time">
-                    <input id="custom-field{{ custom_field.custom_field_id }}" type="text" name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]" value="{% if account_custom_field[custom_field.custom_field_id] %}{{ account_custom_field[custom_field.custom_field_id] }}{% else %}{{ custom_field.value }}{% endif %}" placeholder="{{ custom_field.name }}" data-date-format="HH:mm" id="custom-field{{ custom_field.custom_field_id }}" class="input" />
+                    <input id="custom-field{{ custom_field.custom_field_id }}" type="text"
+                      name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]"
+                      value="{% if account_custom_field[custom_field.custom_field_id] %}{{ account_custom_field[custom_field.custom_field_id] }}{% else %}{{ custom_field.value }}{% endif %}"
+                      placeholder="{{ custom_field.name }}" data-date-format="HH:mm"
+                      id="custom-field{{ custom_field.custom_field_id }}" class="input" />
                     <span class="input-group-btn">
                       <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
                     </span>
@@ -281,12 +326,19 @@
             </div>
             {% endif %}
             {% if custom_field.type == 'time' %}
-            <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile {% if custom_field.required %} required {% endif %} custom-field" data-sort="{{ custom_field.sort_order }}">
+            <div
+              class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile {% if custom_field.required %} required {% endif %} custom-field"
+              data-sort="{{ custom_field.sort_order }}">
               <div class="field">
-                <label class="label" for="custom-field{{ custom_field.custom_field_id }}">{{ custom_field.name }}</label>
+                <label class="label" for="custom-field{{ custom_field.custom_field_id }}">{{ custom_field.name
+                  }}</label>
                 <div class="control">
                   <div class="input-group datetime">
-                    <input id="custom-field{{ custom_field.custom_field_id }}" type="text" name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]" value="{% if account_custom_field[custom_field.custom_field_id] %}{{ account_custom_field[custom_field.custom_field_id] }}{% else %}{{ custom_field.value }}{% endif %}" placeholder="{{ custom_field.name }}" data-date-format="YYYY-MM-DD HH:mm" id="custom-field{{ custom_field.custom_field_id }}" class="input" />
+                    <input id="custom-field{{ custom_field.custom_field_id }}" type="text"
+                      name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]"
+                      value="{% if account_custom_field[custom_field.custom_field_id] %}{{ account_custom_field[custom_field.custom_field_id] }}{% else %}{{ custom_field.value }}{% endif %}"
+                      placeholder="{{ custom_field.name }}" data-date-format="YYYY-MM-DD HH:mm"
+                      id="custom-field{{ custom_field.custom_field_id }}" class="input" />
                     <span class="input-group-btn">
                       <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
                     </span>
@@ -299,6 +351,21 @@
             </div>
             {% endif %}
             {% endfor %}
+            {% if text_agree %}
+            <div class="column is-12">
+              <div class="field required">
+                <div class="checkbox">
+                  <label class="label">
+                    <input type="checkbox" name="agree" {{ agree ? 'checked' : '' }} value="1">
+                    {{ text_agree }}
+                  </label>
+                </div>
+                {% if error_agree %}
+                <p class="help is-danger">{{ error_agree }}</p>
+                {% endif %}
+              </div>
+            </div>
+            {% endif %}
             {% if captcha %}
             <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile">
               {{ captcha }}
@@ -306,7 +373,7 @@
             {% endif %}
             <div class="column is-12">
               <div class="buttons">
-                <button type="submit" class="button is-primary">{{ button_continue }}</button>
+                <button type="submit" class="button is-primary">{{ button_register }}</button>
               </div>
             </div>
           </div>
@@ -319,103 +386,103 @@
 </main>
 
 <script>
-// Sort the custom fields
-$('.custom-field[data-sort]').detach().each(function() {
-  if ($(this).attr('data-sort') >= 0 && $(this).attr('data-sort') <= $('.field-wrapper').length) {
-    $('.field-wrapper').eq($(this).attr('data-sort')).before(this);
-  }
-
-  if ($(this).attr('data-sort') > $('.field-wrapper').length) {
-    $('.field-wrapper:last').after(this);
-  }
-
-  if ($(this).attr('data-sort') == $('.field-wrapper').length) {
-    $('.field-wrapper:last').after(this);
-  }
-
-  if ($(this).attr('data-sort') < -$('.field-wrapper').length) {
-    $('.field-wrapper:first').before(this);
-  }
-});
-
-$('button[id^="button-custom-field"]').on('click', function() {
-  let element = this;
-
-  $('#form-upload').remove();
-
-  $('body').prepend('<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file" /></form>');
-
-  $('#form-upload input[name="file"]').trigger('click');
-
-  if (typeof timer != 'undefined') {
-    clearInterval(timer);
-  }
-
-  timer = setInterval(function() {
-    if ($('#form-upload input[name="file"]').val() != '') {
-      clearInterval(timer);
-
-      $.ajax({
-        url: 'index.php?route=tool/upload',
-        type: 'post',
-        dataType: 'json',
-        data: new FormData($('#form-upload')[0]),
-        cache: false,
-        contentType: false,
-        processData: false,
-        beforeSend: function() {
-          $(element).addClass('is-loading');
-        },
-        complete: function() {
-          $(element).removeClass('is-loading');
-        },
-        success: function(json) {
-          $(element).parent().find('.help is-danger').remove();
-
-          if (json['error']) {
-            $(element).parent().find('input').after('<div class="help is-danger">' + json['error'] + '</div>');
-          }
-
-          if (json['success']) {
-            alert(json['success']);
-
-            $(element).parent().find('input').val(json['code']);
-          }
-        },
-        error: function(xhr, ajaxOptions, thrownError) {
-          alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-        }
-      });
+  // Sort the custom fields
+  $('.custom-field[data-sort]').detach().each(function () {
+    if ($(this).attr('data-sort') >= 0 && $(this).attr('data-sort') <= $('.field-wrapper').length) {
+      $('.field-wrapper').eq($(this).attr('data-sort')).before(this);
     }
-  }, 500);
-});
 
-$('input[name="customer_group_id"]').on('change', function() {
+    if ($(this).attr('data-sort') > $('.field-wrapper').length) {
+      $('.field-wrapper:last').after(this);
+    }
 
-	$.ajax({
-		url: 'index.php?route=account/register/customfield&customer_group_id=' + this.value,
-		dataType: 'json',
-		success: function(json) {
-			$('.custom-field').hide();
-			$('.custom-field').removeClass('required');
+    if ($(this).attr('data-sort') == $('.field-wrapper').length) {
+      $('.field-wrapper:last').after(this);
+    }
 
-			for (i = 0; i < json.length; i++) {
-				custom_field = json[i];
+    if ($(this).attr('data-sort') < -$('.field-wrapper').length) {
+      $('.field-wrapper:first').before(this);
+    }
+  });
 
-				$('#custom-field' + custom_field['custom_field_id']).parents('.custom-field').show();
+  $('button[id^="button-custom-field"]').on('click', function () {
+    let element = this;
 
-				if (custom_field['required']) {
-					$('#custom-field' + custom_field['custom_field_id']).parents('.custom-field').addClass('required');
-				}
-			}
-		},
-		error: function(xhr, ajaxOptions, thrownError) {
-			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-		}
-	});
-});
+    $('#form-upload').remove();
 
-$('input[name="customer_group_id"]:checked').trigger('change');
+    $('body').prepend('<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file" /></form>');
+
+    $('#form-upload input[name="file"]').trigger('click');
+
+    if (typeof timer != 'undefined') {
+      clearInterval(timer);
+    }
+
+    timer = setInterval(function () {
+      if ($('#form-upload input[name="file"]').val() != '') {
+        clearInterval(timer);
+
+        $.ajax({
+          url: 'index.php?route=tool/upload',
+          type: 'post',
+          dataType: 'json',
+          data: new FormData($('#form-upload')[0]),
+          cache: false,
+          contentType: false,
+          processData: false,
+          beforeSend: function () {
+            $(element).addClass('is-loading');
+          },
+          complete: function () {
+            $(element).removeClass('is-loading');
+          },
+          success: function (json) {
+            $(element).parent().find('.help is-danger').remove();
+
+            if (json['error']) {
+              $(element).parent().find('input').after('<div class="help is-danger">' + json['error'] + '</div>');
+            }
+
+            if (json['success']) {
+              alert(json['success']);
+
+              $(element).parent().find('input').val(json['code']);
+            }
+          },
+          error: function (xhr, ajaxOptions, thrownError) {
+            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+          }
+        });
+      }
+    }, 500);
+  });
+
+  $('input[name="customer_group_id"]').on('change', function () {
+
+    $.ajax({
+      url: 'index.php?route=account/register/customfield&customer_group_id=' + this.value,
+      dataType: 'json',
+      success: function (json) {
+        $('.custom-field').hide();
+        $('.custom-field').removeClass('required');
+
+        for (i = 0; i < json.length; i++) {
+          custom_field = json[i];
+
+          $('#custom-field' + custom_field['custom_field_id']).parents('.custom-field').show();
+
+          if (custom_field['required']) {
+            $('#custom-field' + custom_field['custom_field_id']).parents('.custom-field').addClass('required');
+          }
+        }
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+      }
+    });
+  });
+
+  $('input[name="customer_group_id"]:checked').trigger('change');
 
 </script>
 

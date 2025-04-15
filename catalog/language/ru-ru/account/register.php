@@ -15,6 +15,9 @@ $_['text_newsletter']      = 'Рассылка новостей';
 $_['text_your_password']   = 'Ваш пароль';
 $_['text_agree']           = 'Соглашаюсь на обработку персональных данных на условиях статьи <a href="%s" class="agree"><b>%s</b></a>';
 
+
+$_['button_register']      = 'Создать аккаунт';
+
 // Entry
 $_['entry_customer_group'] = 'Группа покупателей';
 $_['entry_firstname']      = 'Имя';

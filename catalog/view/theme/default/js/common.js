@@ -481,11 +481,11 @@ $(document).ready(function () {
       success: function (data) {
         html = '<div id="agree-modal" class="modal">';
         html += '  <div class="modal-background"></div>';
-        html += '  <div class="modal-content">';
-        html += '    <div class="box is-relative">';
+        html += '  <div class="modal-card is-relative" style="width:100%; max-width: 1366px;">';
+        html += '    <div class="modal-card-body">';
         html += '       <div class="content">' + data + '</div>';
-        html += '  			<button class="delete is-large is-absolute"></button>';
         html += '    </div>';
+        html += '  	<button class="delete is-large is-absolute"></button>';
         html += '  </div>';
         html += '</div>';
 
@@ -493,9 +493,8 @@ $(document).ready(function () {
 
         $('#agree-modal').addClass('is-active');
 
-        $('#agree-modal .modal-background, #agree-modal .modal-content, #agree-modal .modal-close').click(function () {
+        $('#agree-modal .modal-background, #agree-modal, #agree-modal .delete').click(function () {
           $('#agree-modal').removeClass('is-active');
-          $('#agree-modal').unbind();
           $('#agree-modal').remove();
         });
       }

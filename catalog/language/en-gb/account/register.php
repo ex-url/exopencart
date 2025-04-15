@@ -11,6 +11,8 @@ $_['text_newsletter']      = 'Newsletter';
 $_['text_your_password']   = 'Your Password';
 $_['text_agree']           = 'I have read and agree to the <a href="%s" class="agree"><b>%s</b></a>';
 
+$_['button_register']      = 'Create an account';
+
 // Entry
 $_['entry_customer_group'] = 'Customer Group';
 $_['entry_firstname']      = 'First Name';
