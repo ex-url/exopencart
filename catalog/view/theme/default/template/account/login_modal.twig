@@ -3,6 +3,7 @@
   <button class="delete is-large"></button>
 </div>
 <form id="login-modal-form" class="modal-card-body" action="{{ action }}" method="post" enctype="multipart/form-data">
+  <input type="hidden" name="redirect" value="{{ redirect }}" />
   <div class="field">
     <label class="label" for="input-email">{{ entry_email }}</label>
     <input type="text" name="email" value="{{ email }}" placeholder="{{ entry_email }}" id="input-email" class="input" />
@@ -15,8 +16,7 @@
     <a href="{{ forgotten }}">{{ text_forgotten }}</a>
   </div>
 </form>
-<div class="modal-card-foot is-justify-content-space-between">
-  <input type="hidden" name="redirect" value="{{ redirect }}" />
+<div class="modal-card-foot is-justify-content-space-between">  
   <button type="submit" class="button is-primary is-outlined" form="login-modal-form">
     <span class="icon">
       <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
