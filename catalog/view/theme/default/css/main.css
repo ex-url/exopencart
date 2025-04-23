@@ -613,20 +613,16 @@ input[type="search"]::-webkit-search-results-decoration {
   box-shadow: 0 2px 12px 0 rgb(0 0 0 / 20%);
   border-radius: 32px;
   text-align: center;
-  width: 48px;
   transition: all 0.5s ease;
-  right: -10rem;
-  padding: 5px 0;
+  right: -20rem;
 }
 
 .mobile-contacts-list.shown {
-  transform: translateX(-10rem);
+  transform: translateX(-20rem);
 }
 
 .mobile-contacts-list>a {
   display: block;
-  width: 36px;
-  height: 36px;
   margin: 4px auto;
 }
 

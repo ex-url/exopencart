@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Feb 26, 2025 at 07:00 PM
--- Server version: 5.6.51-log
+-- Generation Time: Apr 23, 2025 at 12:28 PM
+-- Server version: 5.7.41-log
 -- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `exopencart`
+-- Database: `exbasic`
 --
 
 -- --------------------------------------------------------
@@ -148,7 +148,8 @@ INSERT INTO `oc_api_session` (`api_session_id`, `api_id`, `session_id`, `ip`, `d
 (569, 3, '760ba544bbe397d14e863fdca7', '172.16.238.1', '2024-03-24 13:50:43', '2024-03-24 10:50:50'),
 (570, 3, '69ef3b783bc8d8729ab708da01', '172.16.238.1', '2024-03-24 13:50:51', '2024-03-24 13:50:51'),
 (571, 4, '3dab4c6f7f5f4c7bfd4dd2dea7', '172.16.238.1', '2024-11-25 20:36:06', '2024-11-25 20:36:06'),
-(572, 4, '87b46f02b9a28ba01273984c6c', '172.16.238.1', '2024-11-25 21:30:21', '2024-11-25 21:30:21');
+(572, 4, '87b46f02b9a28ba01273984c6c', '172.16.238.1', '2024-11-25 21:30:21', '2024-11-25 21:30:21'),
+(573, 4, '83bce5dbab25de3824c2b178ef', '172.16.238.1', '2025-04-23 15:24:55', '2025-04-23 15:24:55');
 
 -- --------------------------------------------------------
 
@@ -159,26 +160,24 @@ INSERT INTO `oc_api_session` (`api_session_id`, `api_id`, `session_id`, `ip`, `d
 CREATE TABLE `oc_article` (
   `article_id` int(11) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
-  `date_available` date NOT NULL,
   `sort_order` int(11) NOT NULL DEFAULT '0',
   `article_review` tinyint(1) NOT NULL DEFAULT '0',
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `noindex` tinyint(1) NOT NULL DEFAULT '1',
-  `date_added` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `date_published` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `date_modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `viewed` int(5) NOT NULL DEFAULT '0',
-  `gstatus` int(11) NOT NULL DEFAULT '0'
+  `date_published` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_added` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_article`
 --
 
-INSERT INTO `oc_article` (`article_id`, `image`, `date_available`, `sort_order`, `article_review`, `status`, `noindex`, `date_added`, `date_published`, `date_modified`, `viewed`, `gstatus`) VALUES
-(127, 'catalog/demo/news/news2.jpg', '0000-00-00', 1, 0, 1, 1, '2022-11-14 15:39:22', '0000-00-00 00:00:00', '2024-10-06 11:39:07', 93, 0),
-(128, 'catalog/demo/news/news3.jpg', '0000-00-00', 1, 0, 1, 1, '2022-11-14 15:56:52', '0000-00-00 00:00:00', '2024-01-30 16:20:50', 65, 0),
-(126, 'catalog/demo/news/news1.jpg', '0000-00-00', 1, 0, 1, 1, '2022-11-14 14:57:02', '0000-00-00 00:00:00', '2024-10-06 11:38:39', 47, 0);
+INSERT INTO `oc_article` (`article_id`, `image`, `sort_order`, `article_review`, `status`, `noindex`, `viewed`, `date_published`, `date_added`, `date_modified`) VALUES
+(127, 'catalog/demo/news/news2.jpg', 1, 0, 1, 1, 96, '2023-04-14 00:00:00', '2025-04-23 06:25:05', '2025-04-23 11:03:34'),
+(128, 'catalog/demo/news/news3.jpg', 1, 0, 1, 1, 76, '2025-04-23 06:25:05', '2025-04-23 06:25:05', '2025-04-23 06:25:05'),
+(126, 'catalog/demo/news/news1.jpg', 1, 0, 1, 1, 51, '2025-04-21 00:00:00', '2025-04-23 06:25:05', '2025-04-23 10:30:56');
 
 -- --------------------------------------------------------
 
@@ -206,9 +205,9 @@ INSERT INTO `oc_article_description` (`article_id`, `language_id`, `name`, `desc
 (128, 1, 'Сухое изложение фактов', 'В попытках придумать контент для демонстранционных новостей всякое приходит в голову. Можете считать это фактом номер раз. Второй факт, вы только ознакомились с первым фактом. И не поспоришь ведь. Если с первым фактом хоть чуть-чуть можно, то второй - железобетонный, даже не пытайтесь. Хотите узнать третий? Третий факт так и останется неизвестным и это тоже факт. Уже четвертый, следите за руками и держитесь крепче!', '', '', '', '', ''),
 (128, 2, 'Dry Fact Sheet', '&lt;p&gt;In trying to come up with content for demo news, everything comes to mind. You can consider this fact number one. The second fact, you just got acquainted with the first fact. And you can\'t argue. If the first fact is at least a little bit possible, then the second is reinforced concrete, don\'t even try. Do you want to know the third one? The third fact will remain unknown and this is also a fact. Already the fourth, watch your hands and hold on tight!&lt;/p&gt;&lt;p&gt;The sentences here may not be correct from the point of view of a native speaker, but this is normal, Google translator is not very good yet.&lt;br&gt;&lt;/p&gt;', '', '', '', '', ''),
 (126, 2, 'Store owner on exopencart talks about his pleasant experience', '&lt;p&gt;&lt;b&gt;exopencart: &lt;/b&gt;Vasily, please tell us about your experience with the exopencart platform?&lt;/p&gt;&lt;p&gt;&lt;b&gt;Vasily:&lt;/b&gt; Of course, with pleasure. The experience is extremely positive! It all started with a simple request &quot;free online store&quot;, I saw a link to exopencart.ru. At first I didn’t believe it, but my soul wanted freebies so much that I decided and watched the video “How to make a free online store”. Everything turned out to be very simple, literally in two hours I bought myself a domain, hosting, set up a platform and already added products, and at the same time I dreamed about the life of the owner of a successful online store. I received my first order the next day. Something like this.&lt;/p&gt;&lt;p&gt;&lt;b&gt;exopencart:&lt;/b&gt; It\'s always great to hear success stories from our platform users. What do you wish for those who doubt?&lt;/p&gt;&lt;p&gt;&lt;b&gt;Vasily:&lt;/b&gt; Do not hesitate to find out, you have to try!&lt;/p&gt;&lt;p&gt;&lt;b&gt;exopencart: &lt;/b&gt;My life motto!&lt;/p&gt;', '', '', '', '', ''),
+(127, 2, 'How to grab luck by the tail and not lose touch with reality', '&lt;p&gt;The question is relevant. First, let\'s define the terminology. It is better to see once than to hear a hundred times. For example, you want to create an online store and are looking for a platform for it. Luck is when you find exopencart.ru. Okay, luckily we figured it out. What\'s with reality? It\'s a little more complicated here, refresh your knowledge in the general theory of relativity, quantum mechanics, and then come and discuss this burning issue.&lt;br&gt;&lt;/p&gt;', '', '', '', '', ''),
 (126, 1, 'Владелец магазина на exopencart рассказывает о своем приятном опыте', '&lt;p&gt;&lt;b&gt;exopencart: &lt;/b&gt;Василий, расскажите пожалуйста о вашем опыте использования платформы exopencart?&lt;/p&gt;&lt;p&gt;&lt;b&gt;Василий: &lt;/b&gt;Конечно, с удовольствием. Опыт исключительно положительный! Всё началось с простого запроса &quot;бесплатный интернет магазин&quot;, увидел ссылку на exopencart.ru. Сначала не поверил, но душа так хотела халявы, что решился и посмотрел видео &quot;Как сделать бесплатный интернет-магазин&quot;. Оказалось всё очень просто, буквально за два часа купил себе домен, хостинг, поставил платформу и уже добавлял товары, а параллельно мечтал о жизни владельца успешного интернет-магазина. На следующий день уже получил первый заказ. Как-то так.&lt;/p&gt;&lt;p&gt;&lt;b&gt;exopencart: &lt;/b&gt;Всегда приятно слышать истории успеха пользователей нашей платформы. Что пожелаете тем, кто сомневается?&lt;/p&gt;&lt;p&gt;&lt;b&gt;Василий:&lt;/b&gt; Не соменевайтесь, чтобы узнать, надо попробовать!&lt;/p&gt;&lt;p&gt;&lt;b&gt;exopencart: &lt;/b&gt;Мой девиз по жизни!&lt;/p&gt;', '', '', '', '', ''),
-(127, 1, 'Как схватить удачу за хвост и не потерять связь с реальностью', '&lt;p&gt;Вопрос актуальный. Для начала давайте определимся с терминологией. Лучше один раз увидеть, чем сто раз услышасть. Например, вы хотите создать интернет-магазин и ищите для него платформу. Удача - это когда вы нашли exopencart.ru. Окей, с удачей разобрались. Что с реальностью? Тут немножно сложнее, освежите ваши знания в общей теории относительности, квантовой механике, а потом приходите, обсудим этот животрепещущий вопрос.&lt;/p&gt;', '', '', '', '', ''),
-(127, 2, 'How to grab luck by the tail and not lose touch with reality', '&lt;p&gt;The question is relevant. First, let\'s define the terminology. It is better to see once than to hear a hundred times. For example, you want to create an online store and are looking for a platform for it. Luck is when you find exopencart.ru. Okay, luckily we figured it out. What\'s with reality? It\'s a little more complicated here, refresh your knowledge in the general theory of relativity, quantum mechanics, and then come and discuss this burning issue.&lt;br&gt;&lt;/p&gt;', '', '', '', '', '');
+(127, 1, 'Как схватить удачу за хвост и не потерять связь с реальностью', '&lt;p&gt;Вопрос актуальный. Для начала давайте определимся с терминологией. Лучше один раз увидеть, чем сто раз услышасть. Например, вы хотите создать интернет-магазин и ищите для него платформу. Удача - это когда вы нашли exopencart.ru. Окей, с удачей разобрались. Что с реальностью? Тут немножно сложнее, освежите ваши знания в общей теории относительности, квантовой механике, а потом приходите, обсудим этот животрепещущий вопрос.&lt;/p&gt;', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -229,11 +228,11 @@ CREATE TABLE `oc_article_image` (
 --
 
 INSERT INTO `oc_article_image` (`article_image_id`, `article_id`, `image`, `title`, `sort_order`) VALUES
-(3987, 126, 'catalog/profile-pic.png', 'avatar', 1),
 (3984, 128, 'catalog/demo/computers.jpg', '', 0),
 (3985, 128, 'catalog/demo/gaming_computer.jpg', '', 0),
 (3986, 128, 'catalog/demo/gaming_laptops.jpg', '', 0),
-(3988, 126, 'catalog/logo.png', 'ex', 2);
+(3992, 126, 'catalog/logo.png', 'ex', 2),
+(3991, 126, 'catalog/profile-pic.png', 'avatar', 1);
 
 -- --------------------------------------------------------
 
@@ -1891,8 +1890,8 @@ CREATE TABLE `oc_currency` (
 --
 
 INSERT INTO `oc_currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbol_right`, `decimal_place`, `value`, `status`, `date_modified`) VALUES
-(1, 'Рубль', 'RUB', '', ' ₽', '0', 1.00000000, 1, '2025-02-26 21:47:22'),
-(2, 'US Dollar', 'USD', '$', '', '2', 0.01163766, 1, '2025-02-26 21:47:22');
+(1, 'Рубль', 'RUB', '', ' ₽', '0', 1.00000000, 1, '2025-04-23 15:27:41'),
+(2, 'US Dollar', 'USD', '$', '', '2', 0.01227566, 1, '2025-04-23 15:27:41');
 
 -- --------------------------------------------------------
 
@@ -1934,8 +1933,7 @@ INSERT INTO `oc_customer` (`customer_id`, `customer_group_id`, `store_id`, `lang
 (69, 1, 0, 1, 'Михаил', 'Прохоров', 'prohor@exopencart.ru', '+7 987 654 32 10', '', 'e7f55f364ffcbded3a712d1ab56a9581959073a6', '6mEEFzKoN', NULL, NULL, 0, 0, '', '88.147.174.227', 1, 0, '', '', '2023-03-23 16:48:08'),
 (70, 1, 0, 1, 'Аркадий', 'Ротенберг', 'rotenberg@exopencart.ru', '+7 987 654 32 10', '', 'd5befea1d7d59bfe6e2a32f9cf3916ac01649db1', 'P6ZIHr0l3', NULL, NULL, 0, 0, '', '88.147.174.227', 1, 0, '', '', '2023-03-23 16:50:03'),
 (66, 1, 0, 1, 'Олег', 'Тиньков', 'tinkov@exopencart.ru', '+7 987 654 32 10', '', '51746fe9c5688c79286a2259e362fc95e99524a1', '5FEEvqREL', NULL, NULL, 0, 79, '', '172.16.238.1', 1, 0, '', '', '2023-03-23 16:00:39'),
-(67, 1, 0, 1, 'Роман', 'Абрамович', 'abramovich@exopencart.ru', '+7 987 654 32 10', '', 'a0557000e6b720521130c3f0a7cc58af5c6689e7', 'sIkasTYzl', NULL, NULL, 0, 0, '', '88.147.174.227', 1, 0, '', '', '2023-03-23 16:12:12'),
-(79, 1, 0, 1, 'Василий', 'Алибабаевич', 'info@tinfo.ru', '+79876543210', '', '6c396bc4ae74f4abe225d88e81c39153ecf64ef0', 'eKbol4OTd', NULL, NULL, 0, 0, '', '172.16.238.1', 1, 0, '', '', '2024-04-05 20:56:21');
+(67, 1, 0, 1, 'Роман', 'Абрамович', 'abramovich@exopencart.ru', '+7 987 654 32 10', '', 'a0557000e6b720521130c3f0a7cc58af5c6689e7', 'sIkasTYzl', NULL, NULL, 0, 0, '', '88.147.174.227', 1, 0, '', '', '2023-03-23 16:12:12');
 
 -- --------------------------------------------------------
 
@@ -2067,8 +2065,7 @@ INSERT INTO `oc_customer_ip` (`customer_ip_id`, `customer_id`, `ip`, `date_added
 (99, 68, '88.147.174.227', '2023-03-23 16:35:32'),
 (98, 67, '88.147.174.227', '2023-03-23 16:12:40'),
 (97, 66, '88.147.174.227', '2023-03-23 16:01:00'),
-(103, 66, '172.16.238.1', '2024-02-12 15:34:02'),
-(111, 79, '172.16.238.1', '2024-04-05 20:56:21');
+(103, 66, '172.16.238.1', '2024-02-12 15:34:02');
 
 -- --------------------------------------------------------
 
@@ -2954,10 +2951,7 @@ INSERT INTO `oc_layout_module` (`layout_module_id`, `layout_id`, `code`, `positi
 (20, 5, '0', 'column_left', 2),
 (293, 1, 'html.41', 'content_top', 10),
 (292, 1, 'blog_featured.33', 'content_top', 9),
-(216, 14, 'blog_category', 'column_right', 0),
 (290, 1, 'bestseller.39', 'content_top', 7),
-(106, 15, 'blog_category', 'column_right', 0),
-(107, 16, 'blog_category', 'column_right', 0),
 (248, 6, 'account', 'column_right', 0),
 (291, 1, 'blog_latest.32', 'content_top', 8),
 (281, 3, 'blog_featured.33', 'content_bottom', 0),
@@ -2999,9 +2993,9 @@ INSERT INTO `oc_layout_route` (`layout_route_id`, `layout_id`, `store_id`, `rout
 (45, 5, 0, 'product/manufacturer'),
 (52, 12, 0, 'product/compare'),
 (53, 13, 0, 'product/search'),
-(146, 14, 0, 'blog/latest'),
-(81, 15, 0, 'blog/category'),
-(82, 16, 0, 'blog/article'),
+(225, 14, 0, 'blog/latest'),
+(226, 15, 0, 'blog/category'),
+(227, 16, 0, 'blog/article'),
 (79, 17, 0, 'product/manufacturer/info'),
 (97, 18, 0, 'product/product'),
 (220, 1, 0, 'common/home'),
@@ -3779,7 +3773,7 @@ INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `is
 (21, '42165', '', '', '', '', '', '', '', 20, 5, 'catalog/demo/products/42165_0.jpg', 3, 1, '449990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (22, '42166', '', '', '', '', '', '', '', 21, 5, 'catalog/demo/products/42166_0.jpg', 3, 1, '259990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (23, '42167', '', '', '', '', '', '', '', 21, 5, 'catalog/demo/products/42167_0.jpg', 0, 1, '118840.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(24, '42168', '', '', '', '', '', '', '', 23, 5, 'catalog/demo/products/42168_0.jpg', 0, 1, '70380.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(24, '42168', '', '', '', '', '', '', '', 23, 5, 'catalog/demo/products/42168_0.jpg', 0, 1, '70380.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 2, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (25, '42169', '', '', '', '', '', '', '', 24, 5, 'catalog/demo/products/42169_0.jpg', 0, 1, '8290.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (26, '42170', '', '', '', '', '', '', '', 25, 5, 'catalog/demo/products/42170_0.jpg', 0, 1, '5950.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (27, '42171', '', '', '', '', '', '', '', 26, 5, 'catalog/demo/products/42171_0.jpg', 0, 1, '5660.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
@@ -3800,7 +3794,7 @@ INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `is
 (42, '42232', '', '', '', '', '', '', '', 12, 5, 'catalog/demo/products/42232_0.jpg', 0, 1, '6590.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (43, '42233', '', '', '', '', '', '', '', 13, 5, 'catalog/demo/products/42233_0.jpg', 0, 1, '5990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (44, '42234', '', '', '', '', '', '', '', 14, 5, 'catalog/demo/products/42234_0.jpg', 0, 1, '5890.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(45, '42235', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/42235_0.jpg', 0, 1, '5230.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 30, '2022-11-11 12:51:32', '2025-02-26 21:51:59', 1),
+(45, '42235', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/42235_0.jpg', 0, 1, '5230.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 31, '2022-11-11 12:51:32', '2025-02-26 21:51:59', 1),
 (46, '42236', '', '', '', '', '', '', '', 16, 5, 'catalog/demo/products/42236_0.jpg', 0, 1, '4990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (47, '42237', '', '', '', '', '', '', '', 17, 5, 'catalog/demo/products/42237_0.jpg', 0, 1, '4990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (48, '42238', '', '', '', '', '', '', '', 18, 5, 'catalog/demo/products/42238_0.jpg', 1, 1, '4990.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
@@ -4082,7 +4076,7 @@ INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `is
 (323, '43441', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/43441_0.jpg', 0, 1, '47599.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
 (324, '43442', '', '', '', '', '', '', '', 16, 5, 'catalog/demo/products/43442_0.jpg', 0, 1, '46999.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
 (325, '43443', '', '', '', '', '', '', '', 17, 5, 'catalog/demo/products/43443_0.jpg', 0, 1, '45569.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
-(326, '43444', '', '', '', '', '', '', '', 18, 5, 'catalog/demo/products/43444_0.jpg', 0, 1, '28860.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-12-16 13:14:48', 1),
+(326, '43444', '', '', '', '', '', '', '', 18, 5, 'catalog/demo/products/43444_0.jpg', 0, 1, '28860.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 1, '2022-11-11 12:51:35', '2022-12-16 13:14:48', 1),
 (327, '43445', '', '', '', '', '', '', '', 19, 5, 'catalog/demo/products/43445_0.jpg', 0, 1, '28499.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
 (328, '43446', '', '', '', '', '', '', '', 20, 5, 'catalog/demo/products/43446_0.jpg', 0, 1, '27539.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
 (329, '43447', '', '', '', '', '', '', '', 21, 5, 'catalog/demo/products/43447_0.jpg', 0, 1, '25090.0000', 0, 0, '2022-11-11', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, 1, 0, '2022-11-11 12:51:35', '2022-11-14 16:15:52', 1),
@@ -11283,10 +11277,10 @@ INSERT INTO `oc_seo_url` (`seo_url_id`, `store_id`, `language_id`, `query`, `key
 (914, 0, 2, 'common/home', 'en'),
 (917, 0, 1, 'blog_category_id=73', 'documentatsiya'),
 (918, 0, 2, 'blog_category_id=73', 'dosc'),
-(1139, 0, 2, 'article_id=126', 'store-owner-on-exopencart-talks-about-his-pleasant-experience'),
-(1138, 0, 1, 'article_id=126', 'Владелец магазина на exopencart рассказывает о своем приятном опыте'),
-(1141, 0, 2, 'article_id=127', 'how-to-grab-luck-by-the-tail-and-not-lose-touch-with-reality'),
-(1140, 0, 1, 'article_id=127', 'kak-skhvatit-udachu-za-hvost-i-ne-poteryat-svyaz-s-realnostyu'),
+(1149, 0, 2, 'article_id=126', 'store-owner-on-exopencart-talks-about-his-pleasant-experience'),
+(1148, 0, 1, 'article_id=126', 'Владелец магазина на exopencart рассказывает о своем приятном опыте'),
+(1153, 0, 2, 'article_id=127', 'how-to-grab-luck-by-the-tail-and-not-lose-touch-with-reality'),
+(1152, 0, 1, 'article_id=127', 'kak-skhvatit-udachu-za-hvost-i-ne-poteryat-svyaz-s-realnostyu'),
 (1115, 0, 2, 'article_id=128', 'dry-fact-sheet'),
 (1114, 0, 1, 'article_id=128', 'suhoe-izlozhenie-faktov'),
 (1046, 0, 1, 'manufacturer_id=1', 'apple'),
@@ -11303,7 +11297,10 @@ INSERT INTO `oc_seo_url` (`seo_url_id`, `store_id`, `language_id`, `query`, `key
 (1041, 0, 1, 'asdf', 'asdfa'),
 (1047, 0, 2, 'manufacturer_id=1', 'en-apple'),
 (1120, 0, 1, 'product/special', 'rasprodazha'),
-(1121, 0, 2, 'product/special', 'sale');
+(1121, 0, 2, 'product/special', 'sale'),
+(1154, 0, 1, 'information/contact', 'contacts'),
+(1155, 0, 2, 'information/contact', 'contacts'),
+(1156, 0, 1, 'blog/latest', 'blog');
 
 -- --------------------------------------------------------
 
@@ -11322,7 +11319,8 @@ CREATE TABLE `oc_session` (
 --
 
 INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES
-('e0887eb7deb483035802bd0a82', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"captcha\":\"83a5e7\",\"user_id\":\"1\",\"user_token\":\"6tcgDzTMtPvFmxe4uU6u6AoLiwEov95S\"}', '2025-02-26 22:20:17');
+('69b3a3e85a0a3a8e774adb4573', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"captcha\":\"4239f4\",\"user_id\":\"1\",\"user_token\":\"AGYKQDGMvRsUpcN5KkakGYNKExN72eXF\",\"payment_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"\",\"address_2\":\"\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\\u041c\\u043e\\u0441\\u043a\\u043e\\u0432\\u0441\\u043a\\u0430\\u044f \\u043e\\u0431\\u043b\\u0430\\u0441\\u0442\\u044c\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"shipping_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"\",\"address_2\":\"\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\\u041c\\u043e\\u0441\\u043a\\u043e\\u0432\\u0441\\u043a\\u0430\\u044f \\u043e\\u0431\\u043b\\u0430\\u0441\\u0442\\u044c\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"guest\":{\"customer_group_id\":\"1\"}}', '2025-04-23 15:51:42'),
+('83bce5dbab25de3824c2b178ef', '{\"api_id\":\"4\"}', '2025-04-23 15:48:55');
 
 -- --------------------------------------------------------
 
@@ -11895,8 +11893,7 @@ CREATE TABLE `oc_user` (
 --
 
 INSERT INTO `oc_user` (`user_id`, `user_group_id`, `username`, `password`, `salt`, `firstname`, `lastname`, `email`, `image`, `code`, `ip`, `status`, `date_added`) VALUES
-(1, 1, 'admin', 'bd2e7b7899898ac88df43bbc72beea06a179f840', 'vjDkn1RLc', 'John', 'Doe', 'info@exopencart.ru', '', '', '172.16.238.1', 1, '2024-07-21 10:51:48'),
-(2, 1, 'login', 'de4bb245dbe2df4992af9519659c6fbca7b828a0', 'p98QYCO6p', 'Дмитрий', 'Медведев', 'medved@prived.ru', '', '', '88.147.174.227', 1, '2023-03-23 15:51:04');
+(1, 1, 'admin', 'bd2e7b7899898ac88df43bbc72beea06a179f840', 'vjDkn1RLc', 'John', 'Doe', 'info@exopencart.ru', '', '', '172.16.238.1', 1, '2024-07-21 10:51:48');
 
 -- --------------------------------------------------------
 
@@ -17341,7 +17338,7 @@ ALTER TABLE `oc_api_ip`
 -- AUTO_INCREMENT for table `oc_api_session`
 --
 ALTER TABLE `oc_api_session`
-  MODIFY `api_session_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=573;
+  MODIFY `api_session_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=574;
 
 --
 -- AUTO_INCREMENT for table `oc_article`
@@ -17353,7 +17350,7 @@ ALTER TABLE `oc_article`
 -- AUTO_INCREMENT for table `oc_article_image`
 --
 ALTER TABLE `oc_article_image`
-  MODIFY `article_image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3989;
+  MODIFY `article_image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3993;
 
 --
 -- AUTO_INCREMENT for table `oc_attribute`
@@ -17389,7 +17386,7 @@ ALTER TABLE `oc_blog_category`
 -- AUTO_INCREMENT for table `oc_cart`
 --
 ALTER TABLE `oc_cart`
-  MODIFY `cart_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `cart_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `oc_category`
@@ -17605,7 +17602,7 @@ ALTER TABLE `oc_layout_module`
 -- AUTO_INCREMENT for table `oc_layout_route`
 --
 ALTER TABLE `oc_layout_route`
-  MODIFY `layout_route_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=224;
+  MODIFY `layout_route_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=228;
 
 --
 -- AUTO_INCREMENT for table `oc_length_class`
@@ -17815,7 +17812,7 @@ ALTER TABLE `oc_review_article`
 -- AUTO_INCREMENT for table `oc_seo_url`
 --
 ALTER TABLE `oc_seo_url`
-  MODIFY `seo_url_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1146;
+  MODIFY `seo_url_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1157;
 
 --
 -- AUTO_INCREMENT for table `oc_setting`

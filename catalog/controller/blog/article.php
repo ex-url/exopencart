@@ -174,7 +174,6 @@ class ControllerBlogArticle extends Controller {
       $data['article_review'] = (int)$article_info['article_review'];
       $data['reviews'] = sprintf($this->language->get('text_reviews'), (int)$article_info['reviews']);
       $data['rating'] = (int)$article_info['rating'];
-      $data['gstatus'] = (int)$article_info['gstatus'];
       $data['description'] = html_entity_decode($article_info['description'], ENT_QUOTES, 'UTF-8');
 
       $data['articles'] = array();
@@ -225,7 +224,7 @@ class ControllerBlogArticle extends Controller {
           'name'       => $result['name'],
           'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('configblog_article_description_length')) . '..',
           'rating'     => $rating,
-          'date_added'  => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
+          'date_published'  => date($this->language->get('date_format_short'), strtotime($result['date_published'])),
           'viewed'      => $result['viewed'],
           'reviews'    => sprintf($this->language->get('text_reviews'), (int)$result['reviews']),
           'href'       => $this->url->link('blog/article', 'article_id=' . $result['article_id']),
@@ -469,7 +468,7 @@ class ControllerBlogArticle extends Controller {
         'text'       => $result['text'],
         'reply'       => $result['reply'],
         'reviews'    => sprintf($this->language->get('text_reviews'), (int)$review_total),
-        'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added']))
+        'date_published' => date($this->language->get('date_format_short'), strtotime($result['date_published']))
       );
     }
 

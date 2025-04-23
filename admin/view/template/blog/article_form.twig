@@ -118,26 +118,25 @@
                 <label class="col-sm-2 control-label" for="input-status">{{ entry_status }}</label>
                 <div class="col-sm-10">
                   <select name="status" id="input-status" class="form-control">
-
-
                     {% if status %}
-
-
                     <option value="1" selected="selected">{{ text_enabled }}</option>
                     <option value="0">{{ text_disabled }}</option>
-
-
                     {% else %}
-
-
                     <option value="1">{{ text_enabled }}</option>
                     <option value="0" selected="selected">{{ text_disabled }}</option>
-
-
                     {% endif %}
-
-
                   </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-date-available">{{ entry_date_published }}</label>
+                <div class="col-sm-3">
+                  <div class="input-group date">
+                    <input type="text" name="date_published" value="{{ date_published }}" placeholder="{{ entry_date_published }}" data-date-format="YYYY-MM-DD" id="input-date-published" class="form-control"/>
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>
+                    </span>
+                  </div>
                 </div>
               </div>
               <div class="form-group">
