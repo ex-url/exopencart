@@ -323,11 +323,6 @@ $(document).ready(function () {
     cart.remove($(this).data('key'), $(this));
   });
 
-  // catalog trigger
-  $('body').on('click', '.catalog-trigger, #catalog-modal .delete, #catalog-modal .modal-background', function () {
-    $('#catalog-modal').toggleClass('is-active');
-  });
-
   //counters
   $('body').on('click', '.minus, .plus', function () {
     if ($(this).attr('class').includes('minus')) {
@@ -347,17 +342,41 @@ $(document).ready(function () {
   });
 
   // mobile menu trigger
-  $('body').on('click', '.mobile-menu-trigger, #menu .modal-background', function () {
+  $('body').on('click', '.mobile-menu-trigger', function (e) {
+    e.stopPropagation();
     $('#menu').toggleClass('shown');
     $('.mobile-menu-trigger').toggleClass('shown');
+  });
+
+  $('body').on('click', '#menu .modal-background, #menu.shown', function (e) {
+    if (!$(e.target).closest('.mobile-menu-trigger').length) {
+      $('#menu').removeClass('shown');
+      $('.mobile-menu-trigger').removeClass('shown');
+    }
+  });
+
+  $('#menu .navbar-item.has-dropdown').on('click', function (e) {
+
+    if ($(window).width() <= 768) {
+      e.preventDefault();
+      $(this).parent().find('.navbar-dropdown').slideToggle(300);
+    }
   });
 
   $('body').on('click', '.cart-trigger, #cart-modal .delete, #cart-modal .modal-background', function () {
     $('#cart-modal').toggleClass('is-active');
   });
 
-  $('body').on('click', '.login-trigger, #login-modal .delete, #login-modal .modal-background', function () {
-    $('#login-modal').toggleClass('is-active');
+  $('body').on('click', '.login-trigger, #login-modal .delete, #login-modal .modal-background', function (e) {
+    if ($(e.currentTarget).hasClass('modal-background') || $(e.currentTarget).hasClass('delete')) {
+      $('#login-modal').addClass('is-animated');
+
+      $('#login-modal .modal-background').one('animationend', function () {
+        $('#login-modal').removeClass('is-animated is-active');
+      });
+    } else {
+      $('#login-modal').addClass('is-active');
+    }
     const trigger = $(this);
 
     if ($('#login-modal .modal-card .loading').length) {
@@ -493,9 +512,15 @@ $(document).ready(function () {
 
         $('#agree-modal').addClass('is-active');
 
-        $('#agree-modal .modal-background, #agree-modal, #agree-modal .delete').click(function () {
-          $('#agree-modal').removeClass('is-active');
-          $('#agree-modal').remove();
+        $('#agree-modal .modal-background, #agree-modal, #agree-modal .delete').click(function (e) {
+          if ($(e.currentTarget).hasClass('modal-background') || $(e.currentTarget).hasClass('delete')) {
+            $('#agree-modal').addClass('is-animated');
+
+            $('#agree-modal .modal-background').one('animationend', function () {
+              $('#agree-modal').removeClass('is-animated is-active');
+              $('#agree-modal').remove();
+            });
+          }
         });
       }
     });

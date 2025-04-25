@@ -118,7 +118,15 @@
     </span>
   </div>
   {% if stores %}
-  {{ stores }}
+  <script>
+    $.ajax({
+      url: '/index.php?route=extension/module/store',
+      dataType: 'html',
+      success: function(html) {
+        $('footer').append(html);
+      }
+    })
+  </script>
   {% endif %}
   {% if privacy %}
   {{ privacy }}

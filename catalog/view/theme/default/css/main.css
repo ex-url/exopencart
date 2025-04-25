@@ -107,13 +107,6 @@ iframe {
   height: 100%;
 }
 
-#search-modal .delete,
-#catalog-modal .delete {
-  position: fixed;
-  right: 1rem;
-  top: 1rem;
-}
-
 .search-reset {
   transform: scale(0);
   transition: all 0.2s ease;
@@ -671,6 +664,68 @@ footer .scroll-top-trigger.shown {
   }
 }
 
+@keyframes fadeOutModalBackground {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInModalBackground {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInModalContent {
+  from {
+    opacity: 0;
+    transform: translateY(-5%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOutModalContent {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(5%);
+  }
+}
+
+.modal.is-active .modal-background {
+  animation: fadeInModalBackground 0.3s;
+}
+
+.modal.is-active .modal-content,
+.modal.is-active .modal-card {
+  animation: fadeInModalContent 0.3s;
+}
+
+.modal.is-active.is-animated .modal-background {
+  animation: fadeOutModalBackground 0.3s;
+}
+
+.modal.is-active.is-animated .modal-content,
+.modal.is-active.is-animated .modal-card {
+  animation: fadeOutModalContent 0.3s;
+}
+
 .hypnotize {
   animation: rotating 2s infinite linear;
 }
@@ -701,10 +756,51 @@ footer .scroll-top-trigger.shown {
 
   #menu.shown {
     top: 0;
+    background: rgb(0 0 0 / 70%) !important;
+    backdrop-filter: blur(12px);
+  }
+
+  #menu .navbar {
+    min-height: auto;
+  }
+
+  #menu .navbar-menu {
+    padding: 0;
+  }
+
+  #menu .navbar-start {
+    display: flex;
+    flex-direction: column-reverse;
+    position: fixed;
+    width: calc(100% - 2rem);
+    bottom: -20rem;
+    margin: 1rem;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    text-align: center;
+    background: #fff;
+    padding: 1rem .75rem;
+    transition: all 0.3s ease;
+  }
+
+  #menu.shown .navbar-start {
+    transform: translateY(-24rem);
+  }
+
+  #menu .navbar-link:not(.is-arrowless) {
+    padding-right: 0.75em;
   }
 
   #menu .navbar-menu {
     display: block;
+  }
+
+  .mobile-menu-trigger {
+    transition: all 0.3s ease;
+  }
+
+  .mobile-menu-trigger.shown {
+    transform: rotate(90deg);
   }
 
   .icons-menu {
@@ -779,15 +875,14 @@ footer .scroll-top-trigger.shown {
     padding: 0;
   }
 
-  #search-modal .delete,
-  #catalog-modal .delete {
-    top: initial;
-    right: initial;
-    bottom: 1rem;
+  #menu .navbar-dropdown {
+    display: none;
   }
 
-  #menu .navbar-menu {
-    display: block;
+  #catalog-modal .delete {
+    top: 0;
+    right: initial;
+    bottom: 1rem;
   }
 
   #menu .catalog-trigger {
@@ -823,10 +918,6 @@ footer .scroll-top-trigger.shown {
 
   .product-info .tabs {
     top: 0.75rem;
-  }
-
-  .mobile-menu-trigger.shown {
-    transform: rotate(90deg);
   }
 }
 

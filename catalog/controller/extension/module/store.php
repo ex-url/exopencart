@@ -36,7 +36,8 @@ class ControllerExtensionModuleStore extends Controller {
         'url'      => HTTP_SERVER . 'index.php?route=common/home&session_id=' . $this->session->getId()
       );
 
-      return $this->load->view('extension/module/store', $data);
+      //return $this->load->view('extension/module/store', $data);
+      $this->response->setOutput($this->load->view('extension/module/store', $data));
     }
   }
 }

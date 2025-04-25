@@ -37,9 +37,7 @@ class ControllerCommonFooter extends Controller {
     $data['based'] = sprintf($this->language->get('text_based'), $this->config->get('config_name'), date('Y', time()));
     $data['copyright'] = sprintf($this->language->get('text_copyright'), $this->config->get('config_name'), date('Y', time()));
 
-    if ($this->config->get('module_store_status')) {
-      $data['stores'] = $this->load->controller('extension/module/store');
-    }
+    $data['stores'] = $this->config->get('module_store_status');
 
     if ($this->config->get('module_privacy_status')) {
       $data['privacy'] = $this->load->controller('extension/module/privacy');

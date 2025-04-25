@@ -3,6 +3,7 @@
   <div class="modal-card">
     <div class="modal-card-head">
       <p class="modal-card-title">{{ heading_title }}</p>
+      <button class="delete is-large" aria-label="close"></button>
     </div>
     <div class="px-4 pt-4 pb-0 has-background-white" style="display: none">
       <input id="search-store" class="input" type="text" value="" placeholder="{{ text_search }}">
@@ -42,17 +43,21 @@
         {% endfor %}
       </div>
     </div>
-    <div class="modal-card-foot">
-      <div class="buttons">
-        <button class="button is-primary is-outlined">Отмена</button>
-      </div>
-    </div>
   </div>
 </div>
 <script>
   $(document).ready(function() {
-    $('#stores, #stores-modal .modal-background, #stores-modal .modal-card-foot button').on('click', function() {
-      $('#stores-modal').toggleClass('is-active');
+    $('body').on('click', '#stores, #stores-modal .modal-background, #stores-modal .delete', function (e) {
+
+      if ($(e.currentTarget).hasClass('modal-background') || $(e.currentTarget).hasClass('delete')) {
+        $('#stores-modal').addClass('is-animated');
+
+        $('#stores-modal .modal-background').one('animationend', function () {
+          $('#stores-modal').removeClass('is-animated is-active');
+        });
+      } else {
+        $('#stores-modal').addClass('is-active');
+      }
     });
 
     if($('#stores-modal .box').length > 0) {

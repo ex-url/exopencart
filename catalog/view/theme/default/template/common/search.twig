@@ -16,23 +16,28 @@
         </span>
       </div>
     </div>
-  </div>
-  <button class="delete is-large" aria-label="close"></button>
+  </div>  
 </div>
 
 <script>
   $(document).ready(function () {
 
-    $('body').on('click', '.search-trigger, #search-modal .delete, #search-modal .modal-background', function () {
-      $('#search-modal').toggleClass('is-active');
+    $('body').on('click', '.search-trigger, #search-modal .modal-background', function (e) {
+      if ($(e.currentTarget).hasClass('modal-background')) {
+        $('#search-modal').addClass('is-animated');
 
-      if ($('#search-modal').hasClass('is-active')) {
-        $('#search-modal').find('input[name="search"]').focus();
-        $('#search-modal').find('input[name="search"]').trigger('input');
-      } else {
+        $('#search-modal .modal-background').one('animationend', function () {
+          $('#search-modal').removeClass('is-animated is-active');
+        });
+
         $('#search-modal').find('input[name="search"]').blur();
         $('#search-modal .live-results').fadeOut(300);
+      } else {
+        $('#search-modal').addClass('is-active');
+        $('#search-modal').find('input[name="search"]').focus();
+        $('#search-modal').find('input[name="search"]').trigger('input');
       }
+
     });
 
     $('.search-reset').on('click', function () {
@@ -63,8 +68,6 @@
         $(this).parent().find('.search-reset').removeClass('shown');
       }
     });
-
-    // live search
 
     let liveSearch = null;
 
