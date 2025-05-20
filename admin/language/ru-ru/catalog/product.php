@@ -86,6 +86,7 @@ $_['entry_required']         = 'Необходимо';
 $_['entry_status']           = 'Статус';
 $_['entry_noindex']          = 'Индексация';
 $_['entry_sort_order']       = 'Порядок сортировки';
+$_['entry_redirect']         = 'Редирект 301';
 $_['entry_category']         = 'Категории';
 $_['entry_sub_category']     = 'включая подкатегории';
 $_['entry_main_category']    = 'Главная категория';

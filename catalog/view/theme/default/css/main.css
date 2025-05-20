@@ -98,7 +98,7 @@ iframe {
 }
 
 .modal-background {
-  background-color: rgb(255 255 255 / 75%);
+  background-color: rgb(0 0 0 / 50%);
   backdrop-filter: blur(7px);
   -webkit-backdrop-filter: blur(7px);
 }
@@ -687,7 +687,7 @@ footer .scroll-top-trigger.shown {
 @keyframes fadeInModalContent {
   from {
     opacity: 0;
-    transform: translateY(-5%);
+    transform: translateY(5%);
   }
 
   to {

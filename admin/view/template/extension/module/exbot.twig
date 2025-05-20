@@ -1,0 +1,285 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right">
+        <button type="submit" form="form-module" name="apply" value="1" data-toggle="tooltip" title="{{ button_apply }}"
+          class="btn btn-success"><i class="fa fa-repeat"></i></button>
+        <button type="submit" form="form-module" data-toggle="tooltip" title="{{ button_save }}"
+          class="btn btn-primary"><i class="fa fa-save"></i></button>
+        <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i
+            class="fa fa-reply"></i></a>
+      </div>
+      <h1>{{ heading_title }}</h1>
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    {% if error_warning %}
+    <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+    {% if success %}
+    <div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> {{ success }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-pencil"></i> {{ text_edit }}</h3>
+      </div>
+      <div class="panel-body">
+        <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-module"
+          class="form-horizontal">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab-params" data-toggle="tab">{{ tab_params }}</a></li>
+            <li><a href="#tab-users" data-toggle="tab">{{ tab_users }}</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab-params">
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-status">{{ entry_status }}</label>
+                <div class="col-sm-10">
+                  <select name="module_exbot_status" id="input-status" class="form-control">
+                    {% if module_exbot_status %}
+                    <option value="1" selected="selected">{{ text_enabled }}</option>
+                    <option value="0">{{ text_disabled }}</option>
+                    {% else %}
+                    <option value="1">{{ text_enabled }}</option>
+                    <option value="0" selected="selected">{{ text_disabled }}</option>
+                    {% endif %}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-bot-token">{{ entry_bot_token }}</label>
+                <div class="col-sm-10">
+                  <input type="password" name="module_exbot_settings[bot_token]"
+                    value="{{ module_exbot_settings.bot_token }}" placeholder="{{ entry_bot_token }}"
+                    id="input-bot-token" class="form-control" />
+                </div>
+              </div>
+              {% if module_exbot_settings.bot_token %}
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-bot-token">{{ entry_webhook }}</label>
+                <div class="col-sm-10">
+                  <div class="buttons">
+                    {% if webhook %}
+                    <button class="btn btn-danger" data-target="#delete-webhook-modal" data-toggle="modal"
+                      type="button">{{ button_delete_webhook }}</button>
+                    {% else %}
+                    <button class="btn btn-success" data-target="#set-webhook-modal" data-toggle="modal"
+                      type="button">{{ button_set_webhook }}</button>
+                    {% endif %}
+                  </div>
+                  <input type="hidden" name="module_exbot_settings[token]" value="{{ module_exbot_settings.token }}">
+                </div>
+              </div>
+              {% endif %}
+            </div>
+            <div class="tab-pane" id="tab-users">
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-social-media">{{ entry_users }}</label>
+                <div class="col-sm-10" id="users">
+                  {% if module_exbot_settings.users %}
+                  {% set row = 0 %}
+                  {% for user in module_exbot_settings.users %}
+                  <div class="row" id="media-row-{{ row }}">
+                    <div class="col-sm-3">
+                      <input type="text" name="module_exbot_settings[users][{{ row }}][id]" value="{{ user.id }}"
+                        placeholder="{{ entry_user_id }}" class="form-control" />
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="">
+                        <label style="margin-bottom: 0">
+                          {% if user.client %}
+                          <input type="checkbox" name="module_exbot_settings[users][{{ row }}][client]" checked
+                            value="1">
+                          {% else %}
+                          <input type="checkbox" name="module_exbot_settings[users][{{ row }}][client]" value="1">
+                          {% endif %}
+                          {{ entry_client_group }}
+                        </label>
+                      </div>
+                      <div class="">
+                        <label style="margin-bottom: 0">
+                          {% if user.employ %}
+                          <input type="checkbox" name="module_exbot_settings[users][{{ row }}][employ]" checked
+                            value="1">
+                          {% else %}
+                          <input type="checkbox" name="module_exbot_settings[users][{{ row }}][employ]" value="1">
+                          {% endif %}
+                          {{ entry_employ_group }}
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-sm-1 text-right">
+                      <button type="button" class="btn btn-danger" onclick="$(this).parents('.row').remove()"><i
+                          class="fa fa-trash"></i></button>
+                    </div>
+                  </div>
+                  {% set row = row + 1 %}
+                  {% endfor %}
+                  {% else %}
+                  <div class="row">
+                    <input type="hidden" name="module_exbot_settings[users][]" value="">
+                  </div>
+                  {% endif %}
+                </div>
+                <div class="col-sm-12 text-right">
+                  <button type="button" class="btn btn-primary" onclick="addUser()"><i class="fa fa-plus"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% if not webhook %}
+<div id="set-webhook-modal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">{{ entry_webhook_modal_title_set }}</h4>
+      </div>
+      <div class="modal-body">
+        <p class="alert alert-info">{{ entry_webhook_host_message }}</p>
+        <form id="set-webhook-form">
+          <input type="text" name="host" class="form-control" placeholder="{{ entry_webhook_host_placeholder }}">
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">{{ button_cancel }}</button>
+        <button id="trigger-set" type="button" class="btn btn-success">{{ button_set }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+<div id="delete-webhook-modal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">{{ entry_webhook_modal_title_delete }}</h4>
+      </div>
+      <div class="modal-body">
+        <p class="alert alert-danger" style="word-wrap: break-word;">{{ webhook }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">{{ button_cancel }}</button>
+        <button id="trigger-delete" type="button" class="btn btn-danger">{{ button_delete_webhook }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+
+<script>
+  let row = $('#users input[type="hidden"]').length ? 0 : $('#users > .row').length;
+
+  function addUser() {
+
+    if ($('#users input[type="hidden"]').length) {
+      $('#users input[type="hidden"]').remove();
+      $('#users .row').remove();
+    }
+
+    let html = '<div class="row" id="user-row-' + row + '">';
+
+    html += '<div class="col-sm-3">';
+    html += '<input type="text" name="module_exbot_settings[users][' + row + '][name]" value="" placeholder="{{ entry_user_id }}" class="form-control" />';
+    html += '</div>';
+    html += '<div class="col-sm-2">';
+    html += '<div class="">';
+    html += '<label style="margin-bottom: 0">';
+    html += '<input type="checkbox" name="module_exbot_settings[users][' + row + '][client]" checked value="1">';
+    html += ' {{ entry_client_group }}';
+    html += '</label>';
+    html += '</div>';
+    html += '<div class="">';
+    html += '<label style="margin-bottom: 0">';
+    html += '<input type="checkbox" name="module_exbot_settings[users][' + row + '][employ]" checked value="1">';
+    html += ' {{ entry_employ_group }}';
+    html += '</label>';
+    html += '</div>';
+    html += '</div>';
+    html += '<div class="col-sm-1 text-right">';
+    html += '<button type="button" class="btn btn-danger" onclick="$(\'#user-row-' + row + '\').remove();"><i class="fa fa-trash"></i></button>';
+    html += '</div>';
+    html += '</div>'
+
+    $('#users').append(html);
+
+    row++;
+
+    $('')
+
+  }
+
+  $('#trigger-set').on('click', function (e) {
+    e.preventDefault();
+
+    $form = $('#set-webhook-form');
+    $button = $(this);
+
+    $.ajax({
+      type: 'post',
+      url: 'index.php?route=extension/module/exbot/setWebhook&user_token={{ user_token }}',
+      dataType: 'json',
+      data: $form.serialize(),
+      beforeSend: function () {
+        $button.button('loading');
+      },
+      success: function (json) {
+        $button.button('reset');
+
+        if (json['result']) {
+          location.href = 'index.php?route=extension/module/exbot&user_token={{ user_token }}';
+        }
+      },
+      error: function (err) {
+        console.log(err);
+
+      }
+    })
+  });
+
+  $('#trigger-delete').on('click', function (e) {
+    e.preventDefault();
+
+    $button = $(this);
+
+    $.ajax({
+      type: 'get',
+      url: 'index.php?route=extension/module/exbot/deleteWebhook&user_token={{ user_token }}',
+      dataType: 'json',
+      beforeSend: function () {
+        $button.button('loading');
+      },
+      success: function (json) {
+        $button.button('reset');
+
+        if (json['result']) {
+          location.href = 'index.php?route=extension/module/exbot&user_token={{ user_token }}';
+        }
+      },
+      error: function (err) {
+        console.log(err);
+
+      }
+    })
+  });
+</script>
+{{ footer }}

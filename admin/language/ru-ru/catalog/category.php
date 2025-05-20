@@ -36,6 +36,7 @@ $_['entry_image']            = 'Изображение';
 $_['entry_top']              = 'Главное меню';
 $_['entry_column']           = 'Столбцы';
 $_['entry_sort_order']       = 'Порядок сортировки';
+$_['entry_redirect']         = 'Редирект 301';
 $_['entry_status']           = 'Статус';
 $_['entry_noindex']          = 'Индексация';
 $_['entry_layout']           = 'Изменить макет';

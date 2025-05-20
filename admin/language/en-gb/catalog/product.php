@@ -80,6 +80,7 @@ $_['entry_option_value']     = 'Option Value';
 $_['entry_required']         = 'Required';
 $_['entry_status']           = 'Status';
 $_['entry_sort_order']       = 'Sort Order';
+$_['entry_redirect']         = 'Redirect 301';
 $_['entry_category']         = 'Categories';
 $_['entry_sub_category']     = 'include subcategories';
 $_['entry_main_category']    = 'Main Category';

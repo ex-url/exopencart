@@ -35,6 +35,7 @@ $_['entry_image']            = 'Image';
 $_['entry_top']              = 'Top';
 $_['entry_column']           = 'Columns';
 $_['entry_sort_order']       = 'Sort Order';
+$_['entry_redirect']         = 'Redirect 301';
 $_['entry_status']           = 'Status';
 $_['entry_layout']           = 'Layout Override';
 $_['entry_noindex']          = 'Index';

@@ -118,6 +118,10 @@ class ControllerProductCategory extends Controller {
 
 		if ($category_info) {
 
+			if($category_info['redirect'] != '') {
+				header('Location: ' . $category_info['redirect'], true, 301);
+			}
+
 			if ($category_info['meta_title']) {
 				$this->document->setTitle($category_info['meta_title']);
 			} else {

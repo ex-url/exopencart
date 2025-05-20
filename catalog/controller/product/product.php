@@ -162,6 +162,11 @@ class ControllerProductProduct extends Controller {
 		$product_info = $this->model_catalog_product->getProduct($product_id);
 
 		if ($product_info) {
+
+			if ($product_info['redirect'] != '') {
+				header('Location: ' . $product_info['redirect'], true, 301);
+			}
+
 			$url = '';
 
 			if (isset($this->request->get['path'])) {
@@ -242,7 +247,7 @@ class ControllerProductProduct extends Controller {
 			$this->document->addScript('catalog/view/theme/' . $template_folder . '/js/swiper.min.js');
 			$this->document->addStyle('catalog/view/theme/' . $template_folder . '/css/fancybox.min.css');
 			$this->document->addScript('catalog/view/theme/' . $template_folder . '/js/fancybox.min.js');
-		
+
 			$data['text_minimum'] = sprintf($this->language->get('text_minimum'), $product_info['minimum']);
 			$data['text_login'] = sprintf($this->language->get('text_login'), $this->url->link('account/login', '', true), $this->url->link('account/register', '', true));
 
@@ -261,7 +266,7 @@ class ControllerProductProduct extends Controller {
 
 			$shipping = $product_info['shipping'];
 
-			if($shipping) {
+			if ($shipping) {
 				$data['shipping'] = $shipping;
 			} else {
 				$data['shipping'] = $shipping;
@@ -448,7 +453,7 @@ class ControllerProductProduct extends Controller {
 					'description' => utf8_substr(trim(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8'))), 0, $this->config->get('theme_' . $this->config->get('config_theme') . '_product_description_length')) . '..',
 					'price'       => $price,
 					'special'     => $special,
-					'stock_status'=> $result['stock_status'],
+					'stock_status' => $result['stock_status'],
 					'stock'       => $result['quantity'] <= 0 ? $result['stock_status'] : $this->language->get('text_instock'),
 					'quantity'    => $result['quantity'],
 					'tax'         => $tax,
