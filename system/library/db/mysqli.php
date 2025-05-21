@@ -10,7 +10,7 @@ final class MySQLi {
 			throw new \Exception('Error: ' . $this->connection->connect_error . '<br />Error No: ' . $this->connection->connect_errno);
 		}
 
-		$this->connection->set_charset("utf8");
+		$this->connection->set_charset("utf8mb4");
 		$this->connection->query("SET SQL_MODE = ''");
 		$this->connection->query("SET SESSION sql_mode = 'NO_ENGINE_SUBSTITUTION'");
 	}

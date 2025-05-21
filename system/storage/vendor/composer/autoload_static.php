@@ -16,6 +16,7 @@ class ComposerStaticInit539726f02a98ce818a9d1ca32bac66df
         'T' => 
         array (
             'Twig\\' => 5,
+            'TelegramBot\\Api\\' => 16,
         ),
         'S' => 
         array (
@@ -39,6 +40,10 @@ class ComposerStaticInit539726f02a98ce818a9d1ca32bac66df
         'Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
+        ),
+        'TelegramBot\\Api\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/telegram-bot/api/src',
         ),
         'Symfony\\Polyfill\\Php80\\' => 
         array (
