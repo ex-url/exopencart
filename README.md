@@ -1,3 +1,12 @@
+# Как пользоваться
+Просто скопируйте репозиторий и установите платформу как обычно
+
+```bash
+git clone https://github.com/ex-url/exopencart
+```
+
+Обратите внимание, что кодировка для БД изменена на utf8mb4 с COLLATE utf8mb4_unicode_ci. В основном для поддержки эмодзи.
+
 # Расширенный OpenCart
 Платформа основана на решении для электронной коммерции с открытым исходным кодом ocStore, которое, в свою очередь, основано на оригинальном проекте OpenCart 3. Несмотря на первоначальную направленность на разработку интернет-магазинов, платформа подходит для решения любых задач по разработке сайтов для бизнеса, предоставляя набор готовых функциональных блоков с четкой и логичной реализацией, одинаковой для любого сайта независимо от цели его создания и задач, которые он должен решить.
 
@@ -58,6 +67,13 @@
 Это мой первый проект на GitHub и мой первый вклад в сообщество открытого исходного кода. Выгодные предложения, конструктивная критика и донаты приветствуются, остальное по ситуации.
 
 # For english speakers
+
+# Simply clone the repository and install the platform as usual
+
+```bash
+git clone https://github.com/ex-url/exopencart
+```
+Note that the database encoding has been changed to utf8mb4 with COLLATE utf8mb4_unicode_ci, primarily to support emojis.
 
 # Extended OpenCart
 The platform is based on the ocStore open-source e-commerce solution, which in turn is based on the original OpenCart 3 project. Despite the initial focus on the development of online stores, the platform is suitable for solving any tasks in developing websites for business, providing a set of ready-made functional blocks with a clear and logical implementation, which is the same for any site, regardless of the purpose of its creation and the tasks that it must solve.
