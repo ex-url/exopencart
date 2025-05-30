@@ -9,7 +9,13 @@ $_['text_edit']              = 'Редактировать главное мен
 
 // Entry
 $_['entry_status']     = 'Статус';
+$_['entry_cache']     = 'Кэшировать меню';
 $_['entry_show_catalog']     = 'Показывать каталог';
+$_['entry_show_images']     = 'Показывать изображения категорий';
+$_['entry_image_size']     = 'Размеры изображений';
+$_['entry_width']     = 'Ширина';
+$_['entry_height']     = 'Высота';
+$_['entry_catalog_button']     = 'Текст на кнопке каталога';
 $_['entry_show_special']     = 'Показывать акции';
 $_['entry_show_blog']     = 'Показывать блог';
 $_['entry_show_brands']     = 'Показывать бренды';

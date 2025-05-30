@@ -7,15 +7,12 @@ class ControllerBlogMenu extends Controller {
 
 		$this->load->language('blog/menu');
 
-		$configblog_name = $this->config->get('configblog_name');
-
 		$data['text_blog'] = $this->config->get('configblog_name')[$this->config->get('config_language_id')];
 
 		$data['text_all'] = $this->language->get('text_all');
 
 		$data['blog'] = $this->url->link('blog/latest');
 
-		// Menu
 		$this->load->model('blog/category');
 
 		$this->load->model('blog/article');

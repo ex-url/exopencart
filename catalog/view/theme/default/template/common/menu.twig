@@ -121,17 +121,24 @@
           {% for category in categories %}
           {% if category.children %}
           <div class="column is-3-fullhd is-3-widescreen is-4-desktop is-6-tablet is-12-mobile">
-            <div class="menu">
+            <div class="menu">                       
               <ul class="menu-list">
-                <li><a class="has-text-weight-bold is-size-5 has-text-primary" href="{{ category.href }}">{{ category.name }}</a></li>
+                <li>
+                  <a class="has-text-weight-bold is-size-5 has-text-primary" href="{{ category.href }}">
+                    {% if category.image %}
+                    <span class="is-block mb-3">
+                      <img src="{{ category.image}}" alt="{{ category.name }}">
+                    </span>
+                    {% endif %}     
+                    <span>{{ category.name }}</span>                    
+                  </a>
+                </li>
                 <li>
                   <ul class="menu-list">
-                    {% for children in category.children|batch(category.children|length / category.column|round(1, 'ceil')) %}
-                    {% for child in children %}
+                    {% for child in category.children %}
                     <li>
-                      <a class="is-block" href="{{ child.href }}">- {{ child.name }}</a>
+                      <a class="is-block" href="{{ child.href }}">{{ child.name }}</a>
                     </li>
-                    {% endfor %}
                     {% endfor %}
                   </ul>
                 </li>
@@ -163,9 +170,11 @@
 
         $('#catalog-modal .modal-background').one('animationend', function () {
           $('#catalog-modal').removeClass('is-animated is-active');
+          history.replaceState(null, null, window.location.pathname + window.location.search);
         });
       } else {
         $('#catalog-modal').addClass('is-active');
+        history.pushState(null, null, '#catalog-modal');
       }
     });
   {% endif %}

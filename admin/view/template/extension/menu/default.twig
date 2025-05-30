@@ -41,48 +41,76 @@
               </div>
             </div>
             <div class="form-group">
+              <label class="col-sm-2 control-label">{{ entry_cache }}</label>
+              <div class="col-sm-10">
+                <label class="radio-inline">
+                  <input type="radio" name="menu_default_settings[cache]" value="1" {{ menu_default_settings.cache ? 'checked="checked"' : '' }} />
+                  {{ text_yes }}
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="menu_default_settings[cache]" value="0" {{ not menu_default_settings.cache ? 'checked="checked"' : '' }} />
+                  {{ text_no }}
+                </label>
+              </div>
+            </div>
+            <div class="form-group" id="show-catalog">
               <label class="col-sm-2 control-label">{{ entry_show_catalog }}</label>
               <div class="col-sm-10">
                 <label class="radio-inline">
-                  {% if menu_default_settings.show_catalog %}
-                  <input type="radio" name="menu_default_settings[show_catalog]" value="1" checked="checked"/>
+                  <input type="radio" name="menu_default_settings[show_catalog]" value="1" {{ menu_default_settings.show_catalog ? 'checked="checked"' : '' }} />
                   {{ text_yes }}
-                  {% else %}
-                  <input type="radio" name="menu_default_settings[show_catalog]" value="1"/>
-                  {{ text_yes }}
-                  {% endif %}
                 </label>
                 <label class="radio-inline">
-                  {% if not menu_default_settings.show_catalog %}
-                  <input type="radio" name="menu_default_settings[show_catalog]" value="0" checked="checked"/>
+                  <input type="radio" name="menu_default_settings[show_catalog]" value="0" {{ not menu_default_settings.show_catalog ? 'checked="checked"' : '' }} />
                   {{ text_no }}
-                  {% else %}
-                  <input type="radio" name="menu_default_settings[show_catalog]" value="0"/>
-                  {{ text_no }}
-                  {% endif %}
                 </label>
+              </div>
+            </div>
+            <div class="form-group catalog-settings {{ menu_default_settings.show_catalog ? '' : 'hidden' }}">
+              <label class="col-sm-2 control-label" for="input-heading">{{ entry_catalog_button }}</label>
+              <div class="col-sm-10">
+                {% for language in languages %}
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <img src="language/{{ language.code }}/{{ language.code }}.png" title="{{ language.name }}" />
+                  </div>
+                  <input type="text" name="menu_default_settings[button][{{ language.language_id}}]" value="{{ menu_default_settings.button[language.language_id] ? menu_default_settings.button[language.language_id] : '' }}" placeholder="{{ entry_catalog_button }}" id="input-button{{ language.language_id}}" class="form-control" />
+                </div></br>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="form-group catalog-settings {{ menu_default_settings.show_catalog ? '' : 'hidden' }}">
+              <label class="col-sm-2 control-label">{{ entry_show_images }}</label>
+              <div class="col-sm-10">
+                <label class="radio-inline">
+                  <input type="radio" name="menu_default_settings[show_images]" value="1" {{ menu_default_settings.show_images ? 'checked="checked"' : '' }} />
+                  {{ text_yes }}
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="menu_default_settings[show_images]" value="0" {{ not menu_default_settings.show_images ? 'checked="checked"' : '' }} />
+                  {{ text_no }}
+                </label>
+              </div>
+            </div>
+            <div class="form-group catalog-settings {{ menu_default_settings.show_catalog ? '' : 'hidden' }}">
+              <label class="col-sm-2 control-label">{{ entry_image_size }}</label>
+              <div class="col-sm-2">
+                <input type="text" name="menu_default_settings[width]" value="{{ menu_default_settings.width }}" placeholder="{{ entry_width }}" class="form-control" />
+              </div>
+              <div class="col-sm-2">
+                <input type="text" name="menu_default_settings[height]" value="{{ menu_default_settings.height }}" placeholder="{{ entry_height }}" class="form-control" />
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-2 control-label">{{ entry_show_special }}</label>
               <div class="col-sm-10">
                 <label class="radio-inline">
-                  {% if menu_default_settings.show_special %}
-                  <input type="radio" name="menu_default_settings[show_special]" value="1" checked="checked"/>
+                  <input type="radio" name="menu_default_settings[show_special]" value="1" {{ menu_default_settings.show_special ? 'checked="checked"' : '' }} />
                   {{ text_yes }}
-                  {% else %}
-                  <input type="radio" name="menu_default_settings[show_special]" value="1"/>
-                  {{ text_yes }}
-                  {% endif %}
                 </label>
                 <label class="radio-inline">
-                  {% if not menu_default_settings.show_special %}
-                  <input type="radio" name="menu_default_settings[show_special]" value="0" checked="checked"/>
+                  <input type="radio" name="menu_default_settings[show_special]" value="0" {{ not menu_default_settings.show_special ? 'checked="checked"' : '' }} />
                   {{ text_no }}
-                  {% else %}
-                  <input type="radio" name="menu_default_settings[show_special]" value="0"/>
-                  {{ text_no }}
-                  {% endif %}
                 </label>
               </div>
             </div>
@@ -90,45 +118,25 @@
               <label class="col-sm-2 control-label">{{ entry_show_brands }}</label>
               <div class="col-sm-10">
                 <label class="radio-inline">
-                  {% if menu_default_settings.show_brands %}
-                  <input type="radio" name="menu_default_settings[show_brands]" value="1" checked="checked"/>
+                  <input type="radio" name="menu_default_settings[show_brands]" value="1" {{ menu_default_settings.show_brands ? 'checked="checked"' : '' }} />
                   {{ text_yes }}
-                  {% else %}
-                  <input type="radio" name="menu_default_settings[show_brands]" value="1"/>
-                  {{ text_yes }}
-                  {% endif %}
                 </label>
                 <label class="radio-inline">
-                  {% if not menu_default_settings.show_brands %}
-                  <input type="radio" name="menu_default_settings[show_brands]" value="0" checked="checked"/>
+                  <input type="radio" name="menu_default_settings[show_brands]" value="0" {{ not menu_default_settings.show_brands ? 'checked="checked"' : '' }} />
                   {{ text_no }}
-                  {% else %}
-                  <input type="radio" name="menu_default_settings[show_brands]" value="0"/>
-                  {{ text_no }}
-                  {% endif %}
-                </label>
+                </label>                
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-2 control-label">{{ entry_show_blog }}</label>
               <div class="col-sm-10">
                 <label class="radio-inline">
-                  {% if menu_default_settings.show_blog %}
-                  <input type="radio" name="menu_default_settings[show_blog]" value="1" checked="checked"/>
+                  <input type="radio" name="menu_default_settings[show_blog]" value="1" {{ menu_default_settings.show_blog ? 'checked="checked"' : '' }} />
                   {{ text_yes }}
-                  {% else %}
-                  <input type="radio" name="menu_default_settings[show_blog]" value="1"/>
-                  {{ text_yes }}
-                  {% endif %}
                 </label>
                 <label class="radio-inline">
-                  {% if not menu_default_settings.show_blog %}
-                  <input type="radio" name="menu_default_settings[show_blog]" value="0" checked="checked"/>
+                  <input type="radio" name="menu_default_settings[show_blog]" value="0" {{ not menu_default_settings.show_blog ? 'checked="checked"' : '' }} />
                   {{ text_no }}
-                  {% else %}
-                  <input type="radio" name="menu_default_settings[show_blog]" value="0"/>
-                  {{ text_no }}
-                  {% endif %}
                 </label>
               </div>
             </div>
@@ -136,22 +144,12 @@
               <label class="col-sm-2 control-label">{{ entry_show_contacts }}</label>
               <div class="col-sm-10">
                 <label class="radio-inline">
-                  {% if menu_default_settings.show_contacts %}
-                  <input type="radio" name="menu_default_settings[show_contacts]" value="1" checked="checked"/>
+                  <input type="radio" name="menu_default_settings[show_contacts]" value="1" {{ menu_default_settings.show_contacts ? 'checked="checked"' : '' }} />
                   {{ text_yes }}
-                  {% else %}
-                  <input type="radio" name="menu_default_settings[show_contacts]" value="1"/>
-                  {{ text_yes }}
-                  {% endif %}
                 </label>
                 <label class="radio-inline">
-                  {% if not menu_default_settings.show_contacts %}
-                  <input type="radio" name="menu_default_settings[show_contacts]" value="0" checked="checked"/>
+                  <input type="radio" name="menu_default_settings[show_contacts]" value="0" {{ not menu_default_settings.show_contacts ? 'checked="checked"' : '' }} />
                   {{ text_no }}
-                  {% else %}
-                  <input type="radio" name="menu_default_settings[show_contacts]" value="0"/>
-                  {{ text_no }}
-                  {% endif %}
                 </label>
               </div>
             </div>
@@ -160,4 +158,15 @@
       </div>
     </div>
   </div>
+
+  <script>
+    $('#show-catalog input[type="radio"]').on('change', function (e) {
+      if($(this).val() == 1) {
+        $('.catalog-settings').removeClass('hidden');
+      } else  {
+        $('.catalog-settings').addClass('hidden');
+      }   
+    });
+  </script>
+
   {{ footer }}

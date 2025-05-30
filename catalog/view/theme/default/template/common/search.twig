@@ -28,12 +28,14 @@
 
         $('#search-modal .modal-background').one('animationend', function () {
           $('#search-modal').removeClass('is-animated is-active');
+          history.replaceState(null, null, window.location.pathname + window.location.search);
         });
 
         $('#search-modal').find('input[name="search"]').blur();
         $('#search-modal .live-results').fadeOut(300);
       } else {
         $('#search-modal').addClass('is-active');
+        history.pushState(null, null, '#search-modal');
         $('#search-modal').find('input[name="search"]').focus();
         $('#search-modal').find('input[name="search"]').trigger('input');
       }

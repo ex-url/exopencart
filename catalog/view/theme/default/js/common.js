@@ -355,14 +355,6 @@ $(document).ready(function () {
     }
   });
 
-  $('#menu .navbar-item.has-dropdown').on('click', function (e) {
-
-    if ($(window).width() <= 768) {
-      e.preventDefault();
-      $(this).parent().find('.navbar-dropdown').slideToggle(300);
-    }
-  });
-
   $('body').on('click', '.cart-trigger, #cart-modal .delete, #cart-modal .modal-background', function () {
     $('#cart-modal').toggleClass('is-active');
   });
@@ -373,9 +365,11 @@ $(document).ready(function () {
 
       $('#login-modal .modal-background').one('animationend', function () {
         $('#login-modal').removeClass('is-animated is-active');
+        history.replaceState(null, null, window.location.pathname + window.location.search);
       });
     } else {
       $('#login-modal').addClass('is-active');
+      history.pushState(null, null, '#login-modal');
     }
     const trigger = $(this);
 
@@ -483,6 +477,27 @@ $(document).ready(function () {
       $('.scroll-top-trigger').removeClass('shown');
     }
   });
+
+  $(window).on('popstate', function (e) {
+    // close modals on popstate
+    let $opened = $('.modal.is-active');
+
+    if($opened.length) {
+      let id = $opened.attr('id');
+      let hash = '#' + id;
+
+      if(window.location.hash !== hash) {
+        $opened.addClass('is-animated');
+        $opened.find('.modal-background').one('animationend', ()=> {
+          $opened.removeClass('is-animated is-active')
+        });
+      }
+    }
+  });
+
+  if (window.location.hash.includes('-modal')) {    
+    $(window.location.hash).addClass('is-active');
+  }
 
   $('.scroll-top-trigger').on('click', function () {
     $('html, body').animate({ scrollTop: 0 }, 500);

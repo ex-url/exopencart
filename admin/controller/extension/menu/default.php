@@ -13,6 +13,8 @@ class ControllerExtensionMenuDefault extends Controller {
 
 			$this->model_setting_setting->editSetting('menu_default', $this->request->post);
 
+			$this->cache->delete('main_menu*');
+
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			if(isset($this->request->post['apply']) && $this->request->post['apply'] == 1) {
@@ -48,6 +50,9 @@ class ControllerExtensionMenuDefault extends Controller {
 		$data['action'] = $this->url->link('extension/menu/default', 'user_token=' . $this->session->data['user_token'], true);
 
 		$data['cancel'] = $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=menu', true);
+
+    $this->load->model('localisation/language');
+    $data['languages'] = $this->model_localisation_language->getLanguages();
 
 		if (isset($this->request->post['menu_default_status'])) {
 			$data['menu_default_status'] = $this->request->post['menu_default_status'];

@@ -1,11 +1,11 @@
+
 # Как пользоваться
-Просто скопируйте репозиторий и установите платформу как обычно
+Просто скопируйте репозиторий и установите платформу как обычно. Гарантировано работает в окружении php 7.2-7.4 и MySql 5.7
+Имейте ввиду, что кодировка для БД изменена на utf8mb4 с COLLATE utf8mb4_unicode_ci. В основном для поддержки эмодзи.
 
 ```bash
 git clone https://github.com/ex-url/exopencart
 ```
-
-Обратите внимание, что кодировка для БД изменена на utf8mb4 с COLLATE utf8mb4_unicode_ci. В основном для поддержки эмодзи.
 
 # Расширенный OpenCart
 Платформа основана на решении для электронной коммерции с открытым исходным кодом ocStore, которое, в свою очередь, основано на оригинальном проекте OpenCart 3. Несмотря на первоначальную направленность на разработку интернет-магазинов, платформа подходит для решения любых задач по разработке сайтов для бизнеса, предоставляя набор готовых функциональных блоков с четкой и логичной реализацией, одинаковой для любого сайта независимо от цели его создания и задач, которые он должен решить.
@@ -55,6 +55,21 @@ git clone https://github.com/ex-url/exopencart
 
 - в папке storage инициализирован composer, теперь можно быстро и легко работать с зависимостями
 
+- добавлен отдельный шаблон страницы успешного оформления заказа
+
+- добавлены режимы crop и scale при создании миниатюр кэшированных изображений
+
+- встроен Telegram-бот с вебхуками в один клик
+
+- добавлен программный редирект 301 для категорий и товаров
+
+- добавлена возможность копировать экземпляры модулей со всем настройками
+
+- для меню добавлена возможность указания произвольного названия каталога
+
+- для меню добавлена возможность включения/включения кэширования с учётом языка и магазина
+
+
 Если вы увидели баг, добро пожаловать в Issues!
 
 ## Почему bulma?
@@ -68,7 +83,8 @@ git clone https://github.com/ex-url/exopencart
 
 # For english speakers
 
-# Simply clone the repository and install the platform as usual
+Just clone the repository and install the platform as usual. Guaranteed to work in environments with PHP 7.2–7.4 and MySQL 5.7.
+Please note that the database encoding has been changed to utf8mb4 with COLLATE utf8mb4_unicode_ci, primarily to support emojis.
 
 ```bash
 git clone https://github.com/ex-url/exopencart
@@ -122,6 +138,20 @@ The platform is based on the ocStore open-source e-commerce solution, which in t
 - functionality for optionally creating thumbnail images in .webp format has been implemented
 
 - composer is initialized in the storage folder, now you can quickly and easily work with dependencies
+
+- added a separate template for the successful order completion page  
+
+- added crop and scale modes for creating thumbnails of cached images  
+
+- integrated a Telegram bot with webhooks
+
+- added programmatic 301 redirects for categories and products
+
+- added the ability to copy instances of modules with all settings
+
+- added the ability to specify an arbitrary directory name for the menu
+
+- added the ability to enable/enable caching for the menu, taking into account the language and store
 
 If you saw a bug, welcome to Issues!
 
