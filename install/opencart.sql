@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: May 30, 2025 at 03:10 PM
--- Server version: 5.7.35-38
+-- Generation Time: May 31, 2025 at 01:06 PM
+-- Server version: 5.7.41-log
 -- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -42,6 +42,16 @@ CREATE TABLE `oc_address` (
   `custom_field` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `oc_address`
+--
+
+INSERT INTO `oc_address` (`address_id`, `customer_id`, `firstname`, `lastname`, `company`, `address_1`, `address_2`, `city`, `postcode`, `country_id`, `zone_id`, `custom_field`) VALUES
+(79, 66, 'Олег', 'Тиньков', '', 'Залупина', '123', 'Москва', '12341234', 176, 2751, ''),
+(80, 66, 'Олег', 'Тиньков', 'Зингер', 'Соловьева', '32 кв. 5', 'Мурманск', '123412ё', 176, 2762, ''),
+(81, 66, 'Олег', 'Тиньков', '', 'Залупна', '123', 'Иркутск', '1234', 176, 2740, ''),
+(82, 66, 'Олег', 'Тиньков', '', 'Залупна', '123', 'Иркутск', '1234', 176, 2740, '');
+
 -- --------------------------------------------------------
 
 --
@@ -63,7 +73,7 @@ CREATE TABLE `oc_api` (
 
 INSERT INTO `oc_api` (`api_id`, `username`, `key`, `status`, `date_added`, `date_modified`) VALUES
 (5, 'Default', 'isXV1YRxnkq5FoGST0yQVCDOzYEjVpjmwVIdH5L82OOisI3uyVGBUAqEHEDX73z0S44GwRHG2crKxU5khOGvyos93uj1pLxTwcz45PmdaOD2SRosgQj4MumdVIdk4esviUVpntIOrOwngTDV96lNPT4HV4TrQWQ742Zf3AWfKGK26inEoVpY41YwzDrsjowHlc42jTUF0G3mOw8dPsmCo6nSbYNXbDJy16i5FX58XgyAUKgeuEITN0A8DuMwKH20', 1, '2025-05-09 14:00:52', '2025-05-21 14:13:17'),
-(6, 'Default', 'ju7DtluQGhvkuXSF5kLjGQn582J4WrJV68dgwofHhZmMHpKut0vBTdupzOQ3cly7PSNUeJudaMvUin5wJdnoJ7X7P7hg0o7DopFbSzOnEQ37qnGz4EpGlbHmAVoIBbYCWl6nfH2VbTzsR3J6HLCN492NEgLnHn4shZHPmMHU3OSa8yzHL3Tq4wuSVmandPEF7S7X5hDchTbbJrTi0cNQ5LGlZ1AATftLY2QtsIxMzliz4zlkiibHN5XonVOqVxb6', 1, '2025-05-21 14:06:12', '2025-05-21 14:06:12');
+(6, 'Default', 'aHsnRA4TSgQqcfTJybD1nmDu0Ig1n8pYgwoTbvyMDFpzxUOtiLCo1IarjFxuKgy3VTf7aBnlUs2C9cXebdwUdb7bBuYLQpYt5xLvDGHBPmAPtwmk6kf7BpeJvCFzKVCDrxjW0ezF2U3IBvU1QvlLvVha71Wm9gIPJ06M1k48ah4icUdj2kwu3OBrwbBgmHJpQxWA1Ampp1EAI1aIWLLh9oizmCoXml1AN8g6hGDBM95rLMrGzcq6BY9dLTVW5w72', 1, '2025-05-27 19:00:49', '2025-05-27 19:00:49');
 
 -- --------------------------------------------------------
 
@@ -120,9 +130,7 @@ INSERT INTO `oc_api_session` (`api_session_id`, `api_id`, `session_id`, `ip`, `d
 (576, 5, '8b48d88f1f196ec3a83af10d74', '172.16.238.1', '2025-05-21 14:13:23', '2025-05-21 14:13:23'),
 (575, 5, '60ee53cecc4a653974ba11bb89', '172.16.238.1', '2025-05-21 14:13:19', '2025-05-21 11:13:22'),
 (574, 5, 'b6e8e85dd49178ac6f8eb2c5bc', '172.16.238.1', '2025-05-21 14:12:55', '2025-05-21 14:12:55'),
-(578, 6, '71263332b1d4e471e8107bee2d', '172.16.238.1', '2025-05-21 17:27:35', '2025-05-21 17:27:35'),
-(579, 6, '0caf78b4c2508a51dae2ece266', '172.16.238.1', '2025-05-30 17:53:16', '2025-05-30 17:53:16'),
-(580, 6, '04786c432a331a6bb6dab9160b', '172.16.238.1', '2025-05-30 18:09:13', '2025-05-30 18:09:13');
+(578, 6, '4f6de5e580490c9151c75ac0b8', '172.16.238.1', '2025-05-31 16:04:24', '2025-05-31 16:04:24');
 
 -- --------------------------------------------------------
 
@@ -1022,7 +1030,7 @@ CREATE TABLE `oc_category` (
 --
 
 INSERT INTO `oc_category` (`category_id`, `image`, `parent_id`, `top`, `column`, `sort_order`, `redirect`, `status`, `date_added`, `date_modified`, `noindex`) VALUES
-(1, 'catalog/demo/products/42071_0.jpg', 0, 1, 1, 1, '', 1, '2022-11-11 12:51:32', '2025-05-21 17:09:07', 1),
+(1, 'catalog/demo/products/42071_0.jpg', 0, 1, 1, 1, '', 1, '2022-11-11 12:51:32', '2025-05-20 14:58:21', 1),
 (2, 'catalog/demo/products/42071_0.jpg', 1, 0, 0, 1, '', 1, '2022-11-11 12:51:32', '2022-11-21 07:15:27', 1),
 (3, 'catalog/demo/products/42126_0.jpg', 1, 0, 0, 2, '', 1, '2022-11-11 12:51:32', '2022-11-11 13:51:54', 1),
 (4, 'catalog/demo/products/42167_0.jpg', 1, 0, 0, 3, '', 1, '2022-11-11 12:51:32', '2022-11-11 12:51:32', 1),
@@ -1755,6 +1763,95 @@ CREATE TABLE `oc_coupon_product` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `oc_csvprice_pro`
+--
+
+CREATE TABLE `oc_csvprice_pro` (
+  `setting_id` int(11) NOT NULL,
+  `key` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `value` text COLLATE utf8mb4_unicode_ci,
+  `serialized` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `oc_csvprice_pro`
+--
+
+INSERT INTO `oc_csvprice_pro` (`setting_id`, `key`, `value`, `serialized`) VALUES
+(1, 'version', '5.0.12.14', 0),
+(2, 'ProductSetting', 'eyJ0b19zdG9yZSI6WzBdLCJsYXlvdXQiOltdLCJzdGF0dXMiOjEsInRheF9jbGFzc19pZCI6MCwibWluaW11bSI6MSwic29ydF9vcmRlciI6MTAwLCJzdWJ0cmFjdCI6MSwic3RvY2tfc3RhdHVzX2lkIjowLCJzaGlwcGluZyI6MCwibGVuZ3RoX2NsYXNzX2lkIjoxLCJ3ZWlnaHRfY2xhc3NfaWQiOjEsIm9wdGlvbl90eXBlIjoic2VsZWN0Iiwib3B0aW9uX3JlcXVpcmVkIjowLCJvcHRpb25fdmFsdWUiOiIiLCJvcHRpb25fcXVhbnRpdHkiOjAsIm9wdGlvbl9zdWJ0cmFjdF9zdG9jayI6MCwib3B0aW9uX3ByaWNlX3ByZWZpeCI6IisiLCJvcHRpb25fcG9pbnRzX3ByZWZpeCI6IisiLCJvcHRpb25fcG9pbnRzX2RlZmF1bHQiOjAsIm9wdGlvbl93ZWlnaHRfcHJlZml4IjoiKyIsIm9wdGlvbl93ZWlnaHRfZGVmYXVsdCI6MH0=', 1),
+(3, 'ProductExport', 'eyJmaWxlX2VuY29kaW5nIjoiVVRGLTgiLCJjc3ZfZGVsaW1pdGVyIjoiOyIsImxhbmd1YWdlX2lkIjoiMSIsImZyb21fc3RvcmUiOlsiMCJdLCJleHBvcnRfY2F0ZWdvcnkiOiIwIiwiZGVsaW1pdGVyX2NhdGVnb3J5IjoifCIsImNhdGVnb3J5X3BhcmVudCI6IjEiLCJleHBvcnRfcmVsYXRlZCI6Im9mZiIsImltYWdlX3VybCI6IjAiLCJsaW1pdF9zdGFydCI6IjAiLCJsaW1pdF9lbmQiOiIxMDAwIiwicHJvZHVjdF9maWx0ZXIiOiIwIiwiZmlsdGVyX25hbWUiOiIiLCJmaWx0ZXJfc2t1IjoiIiwiZmlsdGVyX2xvY2F0aW9uIjoiIiwiZmlsdGVyX3ByaWNlX3ByZWZpeCI6IjEiLCJmaWx0ZXJfcHJpY2UiOiIiLCJmaWx0ZXJfcHJpY2Vfc3RhcnQiOiIiLCJmaWx0ZXJfcHJpY2VfZW5kIjoiIiwiZmlsdGVyX3F1YW50aXR5X3ByZWZpeCI6IjEiLCJmaWx0ZXJfcXVhbnRpdHkiOiIiLCJmaWx0ZXJfc3RvY2tfc3RhdHVzIjoiMCIsImZpbHRlcl9zdGF0dXMiOiIzIiwiZmllbGRzX3NldCI6eyJfSURfIjoiMSIsIl9OQU1FXyI6IjEiLCJfTUFOVUZBQ1RVUkVSXyI6IjEifX0=', 1),
+(4, 'ProductImport', 'eyJmaWxlX2VuY29kaW5nIjoiVVRGLTgiLCJjc3ZfZGVsaW1pdGVyIjoiOyIsImxhbmd1YWdlX2lkIjoiMSIsIm1vZGUiOiIyIiwia2V5X2ZpZWxkIjoiX0lEXyIsImtleV9maWVsZF9tYW51ZmFjdHVyZXIiOiIiLCJpbXBvcnRfaWQiOiIwIiwiZGVsaW1pdGVyX2NhdGVnb3J5IjoifCIsImZpbGxfY2F0ZWdvcnkiOiIxIiwidG9wIjoiMSIsImNvbHVtbiI6IjEiLCJpbWFnZV9kb3dubG9hZCI6IjAiLCJpbWdfaW5pdGlhbF9kaXIiOiIiLCJjYWxjX21vZGVfMSI6IjAiLCJjYWxjX3ZhbHVlXzEiOiIiLCJjYWxjX21vZGVfMiI6IjAiLCJjYWxjX3ZhbHVlXzIiOiIiLCJlbXB0eV9maWVsZCI6IjEiLCJwcm9kdWN0X2Rpc2FibGUiOiIwIiwicXVhbnRpdHlfcmVzZXQiOiIwIiwiaXRlcl9saW1pdCI6IjAiLCJza2lwX21hbnVmYWN0dXJlciI6IjAiLCJ0b19tYW51ZmFjdHVyZXIiOiIiLCJza2lwX2ltcG9ydF9zdG9yZSI6IjEiLCJza2lwX21haW5fY2F0ZWdvcnkiOiIxIiwibWFpbl9jYXRlZ29yeV9pZCI6IiIsInNraXBfY2F0ZWdvcnkiOiIxIiwicHJvZHVjdF9jYXRlZ29yeSI6IjAiLCJpbWdfcGF0aCI6IiIsImltcG9ydF9yZWxhdGVkX3R5cGUiOiIwIiwiZXhjbHVkZV9maWx0ZXIiOiIwIiwiZXhjbHVkZV9maWx0ZXJfbmFtZSI6IiIsImV4Y2x1ZGVfZmlsdGVyX2Rlc2MiOiIiLCJleGNsdWRlX2ZpbHRlcl9hdHRyIjoiIn0=', 1),
+(5, 'CategoryExport', 'eyJmaWxlX2VuY29kaW5nIjoiVVRGLTgiLCJjc3ZfZGVsaW1pdGVyIjoiOyIsImxhbmd1YWdlX2lkIjoiMSIsImZyb21fc3RvcmUiOlsiMCJdLCJkZWxpbWl0ZXJfY2F0ZWdvcnkiOiJ8IiwiY2F0ZWdvcnlfcGFyZW50IjoiMCIsImltYWdlX3VybCI6IjAiLCJmaWVsZHNfc2V0Ijp7Il9JRF8iOiIxIiwiX05BTUVfIjoiMSIsIl9TRU9fS0VZV09SRF8iOiIxIiwiX0RFU0NSSVBUSU9OXyI6IjEifX0=', 1),
+(6, 'CategoryImport', 'eyJmaWxlX2VuY29kaW5nIjoiVVRGLTgiLCJjc3ZfZGVsaW1pdGVyIjoiOyIsImxhbmd1YWdlX2lkIjoiMiIsIm1vZGUiOiIyIiwia2V5X2ZpZWxkIjoiX0lEXyIsImRlbGltaXRlcl9jYXRlZ29yeSI6InwiLCJ0b19zdG9yZSI6WyIwIl0sInNvcnRfb3JkZXIiOiIxIiwic3RhdHVzIjoiMSIsImNhdGVnb3J5X2Rpc2FibGUiOiIwIiwiaW1wb3J0X2lkIjoiMCIsImltYWdlX2Rvd25sb2FkIjoiMCJ9', 1),
+(7, 'ManufacturerExport', 'eyJmaWxlX2VuY29kaW5nIjoiVVRGLTgiLCJjc3ZfZGVsaW1pdGVyIjoiOyIsImxhbmd1YWdlX2lkIjoiMSIsImZyb21fc3RvcmUiOlsiMCJdLCJpbWFnZV91cmwiOiIwIiwiZmllbGRzX3NldCI6eyJfSURfIjoiMSIsIl9OQU1FXyI6IjEiLCJfU0VPX0tFWVdPUkRfIjoiMSIsIl9ERVNDUklQVElPTl8iOiIxIiwiX0lNQUdFXyI6IjEifX0=', 1),
+(8, 'ManufacturerImport', 'eyJmaWxlX2VuY29kaW5nIjoiVVRGLTgiLCJjc3ZfZGVsaW1pdGVyIjoiOyIsImxhbmd1YWdlX2lkIjoiMSIsIm1vZGUiOiIyIiwia2V5X2ZpZWxkIjoiX0lEXyIsInRvX3N0b3JlIjpbIjAiXSwiaW1wb3J0X2lkIjoiMCIsInNvcnRfb3JkZXIiOiIxIiwiaW1hZ2VfZG93bmxvYWQiOiIwIn0=', 1),
+(9, 'CoreType', 'eyJCQVNFX1BSSUNFX0RJU0NPVU5UIjowLCJCQVNFX1BSSUNFX1NQRUNJQUwiOjAsIk1BSU5fQ0FURUdPUlkiOjEsIk1FVEFfSDEiOjEsIkNBVEVHT1JZX01FVEFfSDEiOjEsIk1BTlVGQUNUVVJFUl9ERVNDUklQVElPTiI6MSwiTUFOVUZBQ1RVUkVSX0RFU0NSSVBUSU9OX05BTUUiOjAsIlBST0RVQ1RfT1BUSU9OX0xJTktTIjowLCJDU1ZQUklDRVBST19QTFVHSU5TIjpbXX0=', 1),
+(10, 'Session', 'eyJsYW5ndWFnZSI6InJ1LXJ1IiwiY3VycmVuY3kiOiJSVUIiLCJjYXB0Y2hhIjoiZThlZWVjIiwidXNlcl9pZCI6IjEiLCJ1c2VyX3Rva2VuIjoiMzlhbHNVUVpvV0xZSmlvNTFSdmRjdXdEQ0RBR2JmNGYiLCJwYXltZW50X2FkZHJlc3MiOnsiYWRkcmVzc19pZCI6MCwiY291bnRyeV9pZCI6IjE3NiIsInpvbmVfaWQiOiIyNzYxIiwiZmlyc3RuYW1lIjoiIiwibGFzdG5hbWUiOiIiLCJjb21wYW55IjoiIiwiYWRkcmVzc18xIjoiIiwiYWRkcmVzc18yIjoiIiwiYWRkcmVzc19mb3JtYXQiOiJ7cG9zdGNvZGV9IHt6b25lfSB7Y2l0eX0ge2FkZHJlc3NfMX0ge2FkZHJlc3NfMn0iLCJwb3N0Y29kZSI6IiIsImNpdHkiOiIiLCJ6b25lIjoiXHUwNDFjXHUwNDNlXHUwNDQxXHUwNDNhXHUwNDMyXHUwNDMwIiwiem9uZV9jb2RlIjoiIiwiY291bnRyeSI6Ilx1MDQyMFx1MDQzZVx1MDQ0MVx1MDQ0MVx1MDQzOFx1MDQzOVx1MDQ0MVx1MDQzYVx1MDQzMFx1MDQ0ZiBcdTA0MjRcdTA0MzVcdTA0MzRcdTA0MzVcdTA0NDBcdTA0MzBcdTA0NDZcdTA0MzhcdTA0NGYiLCJjdXN0b21fZmllbGQiOm51bGx9LCJzaGlwcGluZ19hZGRyZXNzIjpmYWxzZSwiYWNjb3VudCI6Imd1ZXN0IiwibGFzdF9vcmRlcl9pZCI6MTcsImZpbGVfbWFuYWdlcl9kaXJlY3RvcnkiOiJcL2hvbWVcL3NcL3NvZXZ2bFwvZXguYmlkenoucnVcL3B1YmxpY19odG1sXC9pbWFnZVwvY2F0YWxvZ1wvZGVtb1wvbWFudWZhY3R1cmVycyIsImRyaXZlciI6Ik1hbnVmYWN0dXJlciIsInRhYnMiOnsiUHJvZHVjdCI6InRhYl9pbXBvcnQiLCJDYXRlZ29yeSI6InRhYl9pbXBvcnQiLCJNYW51ZmFjdHVyZXIiOiJ0YWJfaW1wb3J0In0sInVwbG9hZGVkX2ZpbGVfbmFtZSI6InByb2R1Y3RfZXhwb3J0XzAtMTAwMF8yMDIyLTExLTE0LTE2MTAgKDEpLmNzdiIsImNzdl9wcm9jZXNzaW5nX2ZpbGVfbmFtZSI6IlwvaG9tZVwvc1wvc29ldnZsXC9leC5iaWR6ei5ydVwvc3RvcmFnZVwvY3N2cHJpY2VfcHJvXC8xNjY4NDQyNTQ5IiwiY3VzdG9tZXJfaWQiOiI1OSIsInN1Y2Nlc3MiOiJcdTA0MThcdTA0M2NcdTA0M2ZcdTA0M2VcdTA0NDBcdTA0NDIgXHUwNDM0XHUwNDMwXHUwNDNkXHUwNDNkXHUwNDRiXHUwNDQ1IFx1MDQzN1x1MDQzMFx1MDQzMlx1MDQzNVx1MDQ0MFx1MDQ0OFx1MDQ1MVx1MDQzZCE8YnIgXC8+XHUwNDEyXHUwNDQxXHUwNDM1XHUwNDMzXHUwNDNlIFx1MDQzZVx1MDQzMVx1MDQ0MFx1MDQzMFx1MDQzMVx1MDQzZVx1MDQ0Mlx1MDQzMFx1MDQzZFx1MDQzZSA8Yj42PFwvYj4gXHUwNDQxXHUwNDQyXHUwNDQwXHUwNDNlXHUwNDNhITxiciBcLz48YnIgXC8+IFx1MDQxZVx1MDQzMVx1MDQzZFx1MDQzZVx1MDQzMlx1MDQzYlx1MDQzNVx1MDQzZFx1MDQzZTogPGI+NjxcL2I+PGJyIFwvPlx1MDQxNFx1MDQzZVx1MDQzMVx1MDQzMFx1MDQzMlx1MDQzYlx1MDQzNVx1MDQzZFx1MDQzZTogPGI+MDxcL2I+PFwvYj48YnIgXC8+XHUwNDFmXHUwNDQwXHUwNDNlXHUwNDNmXHUwNDQzXHUwNDQ5XHUwNDM1XHUwNDNkXHUwNDNlOiA8Yj4wPFwvYj4ifQ==', 1),
+(11, 'LicenseKey', 'apeioqpoewrpqoewiurpod', 0),
+(12, 'productFieldSetting', 'IiI=', 1),
+(13, 'ProductAttributeField', 'IiI=', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oc_csvprice_pro_crontab`
+--
+
+CREATE TABLE `oc_csvprice_pro_crontab` (
+  `job_id` int(11) NOT NULL,
+  `profile_id` int(11) NOT NULL,
+  `job_key` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `job_type` enum('import','export') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `job_file_location` enum('dir','web','ftp') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `job_time_start` datetime NOT NULL,
+  `job_offline` tinyint(1) NOT NULL DEFAULT '0',
+  `job_data` text COLLATE utf8mb4_unicode_ci,
+  `status` tinyint(1) NOT NULL DEFAULT '0',
+  `serialized` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oc_csvprice_pro_images`
+--
+
+CREATE TABLE `oc_csvprice_pro_images` (
+  `catalog_id` int(11) NOT NULL,
+  `image_key` char(32) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image_path` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `webp` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oc_csvprice_pro_profiles`
+--
+
+CREATE TABLE `oc_csvprice_pro_profiles` (
+  `profile_id` int(11) NOT NULL,
+  `key` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `catalog` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'product',
+  `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `value` text COLLATE utf8mb4_unicode_ci,
+  `serialized` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `oc_csvprice_pro_profiles`
+--
+
+INSERT INTO `oc_csvprice_pro_profiles` (`profile_id`, `key`, `catalog`, `name`, `value`, `serialized`) VALUES
+(1, 'profile_import', 'product', 'Default Product Import', 'eyJjc3Zfc2V0dGluZyI6eyJ0b19zdG9yZSI6WzBdLCJsYXlvdXQiOltdLCJzdGF0dXMiOjEsInRheF9jbGFzc19pZCI6MCwibWluaW11bSI6MSwic29ydF9vcmRlciI6MTAwLCJzdWJ0cmFjdCI6MSwic3RvY2tfc3RhdHVzX2lkIjowLCJzaGlwcGluZyI6MCwibGVuZ3RoX2NsYXNzX2lkIjoxLCJ3ZWlnaHRfY2xhc3NfaWQiOjEsIm9wdGlvbl90eXBlIjoic2VsZWN0Iiwib3B0aW9uX3JlcXVpcmVkIjowLCJvcHRpb25fdmFsdWUiOiIiLCJvcHRpb25fcXVhbnRpdHkiOjAsIm9wdGlvbl9zdWJ0cmFjdF9zdG9jayI6MCwib3B0aW9uX3ByaWNlX3ByZWZpeCI6IisiLCJvcHRpb25fcG9pbnRzX3ByZWZpeCI6IisiLCJvcHRpb25fcG9pbnRzX2RlZmF1bHQiOjAsIm9wdGlvbl93ZWlnaHRfcHJlZml4IjoiKyIsIm9wdGlvbl93ZWlnaHRfZGVmYXVsdCI6MH0sImNzdl9pbXBvcnQiOnsiZmlsZV9lbmNvZGluZyI6IlVURi04IiwiY3N2X2RlbGltaXRlciI6IjsiLCJjc3ZfaW1wb3J0IjowLCJtb2RlIjoyLCJjYWxjX21vZGUiOjAsImxhbmd1YWdlX2lkIjoxLCJrZXlfZmllbGQiOiJfSURfIiwiZXhwb3J0X3JlbGF0ZWRfdHlwZSI6MCwiaW1hZ2VfZG93bmxvYWQiOjAsInNraXBfaW1wb3J0X3N0b3JlIjoxLCJza2lwX21hbnVmYWN0dXJlciI6MSwic2tpcF9tYWluX2NhdGVnb3J5IjoxLCJza2lwX2NhdGVnb3J5IjoxLCJpdGVyX2xpbWl0IjowLCJkZWxpbWl0ZXJfY2F0ZWdvcnkiOiJ8IiwiZmlsbF9jYXRlZ29yeSI6MCwidG9wIjoxLCJjb2x1bW4iOjF9LCJjc3ZfcHJvZHVjdF9maWVsZCI6W119', 1),
+(2, 'profile_export', 'product', 'Default Product Export', 'eyJjc3Zfc2V0dGluZyI6eyJ0b19zdG9yZSI6WzBdLCJsYXlvdXQiOltdLCJzdGF0dXMiOjEsInRheF9jbGFzc19pZCI6MCwibWluaW11bSI6MSwic29ydF9vcmRlciI6MTAwLCJzdWJ0cmFjdCI6MSwic3RvY2tfc3RhdHVzX2lkIjowLCJzaGlwcGluZyI6MCwibGVuZ3RoX2NsYXNzX2lkIjoxLCJ3ZWlnaHRfY2xhc3NfaWQiOjEsIm9wdGlvbl90eXBlIjoic2VsZWN0Iiwib3B0aW9uX3JlcXVpcmVkIjowLCJvcHRpb25fdmFsdWUiOiIiLCJvcHRpb25fcXVhbnRpdHkiOjAsIm9wdGlvbl9zdWJ0cmFjdF9zdG9jayI6MCwib3B0aW9uX3ByaWNlX3ByZWZpeCI6IisiLCJvcHRpb25fcG9pbnRzX3ByZWZpeCI6IisiLCJvcHRpb25fcG9pbnRzX2RlZmF1bHQiOjAsIm9wdGlvbl93ZWlnaHRfcHJlZml4IjoiKyIsIm9wdGlvbl93ZWlnaHRfZGVmYXVsdCI6MH0sImNzdl9leHBvcnQiOnsiZmlsZV9lbmNvZGluZyI6IlVURi04IiwiY3N2X2RlbGltaXRlciI6IjsiLCJsYW5ndWFnZV9pZCI6MSwiZnJvbV9zdG9yZSI6W10sInByb2R1Y3RfY2F0ZWdvcnkiOjAsImV4cG9ydF9jYXRlZ29yeSI6MCwiZXhwb3J0X3JlbGF0ZWQiOiJvZmYiLCJkZWxpbWl0ZXJfY2F0ZWdvcnkiOiJ8IiwicHJvZHVjdF9tYW51ZmFjdHVyZXIiOjAsImltYWdlX3VybCI6MCwibGltaXRfc3RhcnQiOjAsImxpbWl0X2VuZCI6MTAwMCwicHJvZHVjdF9maWx0ZXIiOjAsImZpbHRlcl9uYW1lIjoiIiwiZmlsdGVyX3NrdSI6IiIsImZpbHRlcl9sb2NhdGlvbiI6IiIsImZpbHRlcl9wcmljZV9wcmVmaXgiOjEsImZpbHRlcl9wcmljZSI6IiIsImZpbHRlcl9wcmljZV9zdGFydCI6IiIsImZpbHRlcl9wcmljZV9lbmQiOiIiLCJmaWx0ZXJfcXVhbnRpdHlfcHJlZml4IjoxLCJmaWx0ZXJfcXVhbnRpdHkiOiIiLCJmaWx0ZXJfc3RvY2tfc3RhdHVzIjowLCJmaWx0ZXJfc3RhdHVzIjozLCJmaWVsZHNfc2V0Ijp7Il9OQU1FXyI6MSwiX0lEXyI6MX19LCJjc3ZfcHJvZHVjdF9maWVsZCI6W119', 1),
+(3, 'profile_import', 'order', 'Default Order Import', 'eyJjc3ZfaW1wb3J0Ijp7ImZpbGVfZW5jb2RpbmciOiJVVEYtOCIsImNzdl9kZWxpbWl0ZXIiOiI7IiwiZmllbGRfaWQiOiJfSURfIiwiZmllbGRfc3RhdHVzX2lkIjoiX1NUQVRVU19JRF8iLCJmaWVsZF9zdGF0dXMiOiJfU1RBVFVTXyIsImZpZWxkX2NvbW1lbnQiOiJfQ09NTUVOVF8iLCJmaWVsZF9ub3RpZnkiOiJfTk9USUZZXyIsImFwaV9pZCI6IjAifX0=', 1),
+(4, 'profile_export', 'order', 'Default Order Export', 'eyJjc3ZfZXhwb3J0Ijp7ImZpbHRlcl9vcmRlcl9pZCI6IiIsImZpbHRlcl9jdXN0b21lciI6IiIsImZpbHRlcl9vcmRlcl9zdGF0dXNfaWQiOiIqIiwiZmlsdGVyX3RpbWVfaW50ZXJ2YWwiOiIwIiwiZmlsdGVyX2RhdGVfYWRkZWRfc3RhcnQiOiIiLCJmaWx0ZXJfZGF0ZV9hZGRlZF9lbmQiOiIiLCJmaWx0ZXJfZGF0ZV9tb2RpZmllZF9zdGFydCI6IiIsImZpbHRlcl9kYXRlX21vZGlmaWVkX2VuZCI6IiIsImZpbHRlcl90b3RhbF9wcmVmaXgiOiIxIiwiZmlsdGVyX3RvdGFsX3N1bSI6IiIsImZyb21fc3RvcmUiOlsiMCJdfSwiY3N2X3NldHRpbmciOnsiZmlsZV9lbmNvZGluZyI6IlVURi04IiwiZGVsaW1pdGVyIjoiOyIsImNzdl90aXRsZSI6IjAiLCJmaWVsZHNfc2V0Ijp7Im9yZGVyX2lkIjp7InN0YXR1cyI6IjEiLCJjYXB0aW9uIjoib3JkZXJfaWQifSwiaW52b2ljZV9ubyI6eyJzdGF0dXMiOiIwIiwiY2FwdGlvbiI6Imludm9pY2Vfbm8ifSwiaW52b2ljZV9kYXRlIjp7InN0YXR1cyI6IjAiLCJjYXB0aW9uIjoiaW52b2ljZV9kYXRlIn0sInN0b3JlX2lkIjp7InN0YXR1cyI6IjAiLCJjYXB0aW9uIjoic3RvcmVfaWQifSwic3RvcmVfbmFtZSI6eyJzdGF0dXMiOiIwIiwiY2FwdGlvbiI6InN0b3JlX25hbWUifSwic3RvcmVfdXJsIjp7InN0YXR1cyI6IjAiLCJjYXB0aW9uIjoic3RvcmVfdXJsIn0sImN1c3RvbWVyX2lkIjp7InN0YXR1cyI6IjAiLCJjYXB0aW9uIjoiY3VzdG9tZXJfaWQifSwiY3VzdG9tZXJfZ3JvdXBfaWQiOnsic3RhdHVzIjoiMCIsImNhcHRpb24iOiJjdXN0b21lcl9ncm91cF9pZCJ9LCJmaXJzdG5hbWUiOnsic3RhdHVzIjoiMCIsImNhcHRpb24iOiJmaXJzdG5hbWUifSwibGFzdG5hbWUiOnsic3RhdHVzIjoiMCIsImNhcHRpb24iOiJsYXN0bmFtZSJ9LCJmaXJzdG5hbWVfbGFzdG5hbWUiOnsic3RhdHVzIjoiMCIsImNhcHRpb24iOiJmaXJzdG5hbWVfbGFzdG5hbWUifSwiZW1haWwiOnsic3RhdHVzIjoiMCIsImNhcHRpb24iOiJlbWFpbCJ9LCJ0ZWxlcGhvbmUiOnsic3RhdHVzIjoiMCIsImNhcHRpb24iOiJ0ZWxlcGhvbmUifSwiZmF4Ijp7InN0YXR1cyI6IjAiLCJjYXB0aW9uIjoiZmF4In0sInBheW1lbnRfZmlyc3RuYW1lIjp7InN0YXR1cyI6IjAiLCJjYXB0aW9uIjoicGF5bWVudF9maXJzdG5hbWUifSwicGF5bWVudF9sYXN0bmFtZSI6eyJzdGF0dXMiOiIwIiwiY2FwdGlvbiI6InBheW1lbnRfbGFzdG5hbWUifSwicGF5bWVudF9jb21wYW55Ijp7InN0YXR1cyI6IjAiLCJjYXB0aW9uIjoicGF5bWVudF9jb21wYW55In0sInBheW1lbnRfYWRkcmVzc18xIjp7InN0YXR1cyI6IjAiLCJjYXB0aW9uIjoicGF5bWVudF9hZGRyZXNzXzEifSwicGF5bWVudF9hZGRyZXNzXzIiOnsic3RhdHVzIjoiMCIsImNhcHRpb24iOiJwYXltZW50X2FkZHJlc3NfMiJ9LCJwYXltZW50X2NpdHkiOnsic3RhdHVzIjoiMCIsImNhcHRpb24iOiJwYXltZW50X2NpdHkifSwicGF5bWVudF9wb3N0Y29kZSI6eyJzdGF0dXMiOiIwIiwiY2FwdGlvbiI6InBheW1lbnRfcG9zdGNvZGUifSwicGF5bWVudF9jb3VudHJ5Ijp7InN0YXR1cyI6IjAiLCJjYXB0aW9uIjoicGF5bWVudF9jb3VudHJ5In0sInBheW1lbnRfem9uZSI6eyJzdGF0dXMiOiIwIiwiY2FwdGlvbiI6InBheW1lbnRfem9uZSJ9LCJwYXltZW50X21ldGhvZCI6eyJzdGF0dXMiOiIwIiwiY2FwdGlvbiI6InBheW1lbnRfbWV0aG9kIn0sInBheW1lbnRfY29kZSI6eyJzdGF0dXMiOiIwIiwiY2FwdGlvbiI6InBheW1lbnRfY29kZSJ9LCJzaGlwcGluZ19maXJzdG5hbWUiOnsic3RhdHVzIjoiMCIsImNhcHRpb24iOiJzaGlwcGluZ19maXJzdG5hbWUifSwic2hpcHBpbmdfbGFzdG5hbWUiOnsic3RhdHVzIjoiMCIsImNhcHRpb24iOiJzaGlwcGluZ19sYXN0bmFtZSJ9LCJzaGlwcGluZ19jb21wYW55Ijp7InN0YXR1cyI6IjAiLCJjYXB0aW9uIjoic2hpcHBpbmdfY29tcGFueSJ9LCJzaGlwcGluZ19hZGRyZXNzXzEiOnsic3RhdHVzIjoiMCIsImNhcHRpb24iOiJzaGlwcGluZ19hZGRyZXNzXzEifSwic2hpcHBpbmdfYWRkcmVzc18yIjp7InN0YXR1cyI6IjAiLCJjYXB0aW9uIjoic2hpcHBpbmdfYWRkcmVzc18yIn0sInNoaXBwaW5nX2NpdHkiOnsic3RhdHVzIjoiMCIsImNhcHRpb24iOiJzaGlwcGluZ19jaXR5In0sInNoaXBwaW5nX3Bvc3Rjb2RlIjp7InN0YXR1cyI6IjAiLCJjYXB0aW9uIjoic2hpcHBpbmdfcG9zdGNvZGUifSwic2hpcHBpbmdfY291bnRyeSI6eyJzdGF0dXMiOiIwIiwiY2FwdGlvbiI6InNoaXBwaW5nX2NvdW50cnkifSwic2hpcHBpbmdfem9uZSI6eyJzdGF0dXMiOiIwIiwiY2FwdGlvbiI6InNoaXBwaW5nX3pvbmUifSwic2hpcHBpbmdfbWV0aG9kIjp7InN0YXR1cyI6IjAiLCJjYXB0aW9uIjoic2hpcHBpbmdfbWV0aG9kIn0sInNoaXBwaW5nX2NvZGUiOnsic3RhdHVzIjoiMCIsImNhcHRpb24iOiJzaGlwcGluZ19jb2RlIn0sInNoaXBwaW5nX2Nvc3QiOnsic3RhdHVzIjoiMCIsImNhcHRpb24iOiJzaGlwcGluZ19jb3N0In0sImNvbW1lbnQiOnsic3RhdHVzIjoiMCIsImNhcHRpb24iOiJjb21tZW50In0sInRheF90b3RhbCI6eyJzdGF0dXMiOiIwIiwiY2FwdGlvbiI6InRheF90b3RhbCJ9LCJjb3Vwb25fdGl0bGUiOnsic3RhdHVzIjoiMCIsImNhcHRpb24iOiJjb3Vwb25fdGl0bGUifSwiY291cG9uX3RvdGFsIjp7InN0YXR1cyI6IjAiLCJjYXB0aW9uIjoiY291cG9uX3RvdGFsIn0sInZvdWNoZXJfdGl0bGUiOnsic3RhdHVzIjoiMCIsImNhcHRpb24iOiJ2b3VjaGVyX3RpdGxlIn0sInZvdWNoZXJfdG90YWwiOnsic3RhdHVzIjoiMCIsImNhcHRpb24iOiJ2b3VjaGVyX3RvdGFsIn0sInRvdGFsIjp7InN0YXR1cyI6IjEiLCJjYXB0aW9uIjoidG90YWwifSwib3JkZXJfc3RhdHVzIjp7InN0YXR1cyI6IjAiLCJjYXB0aW9uIjoib3JkZXJfc3RhdHVzIn0sIm9yZGVyX3N0YXR1c19pZCI6eyJzdGF0dXMiOiIwIiwiY2FwdGlvbiI6Im9yZGVyX3N0YXR1c19pZCJ9LCJhZmZpbGlhdGVfaWQiOnsic3RhdHVzIjoiMCIsImNhcHRpb24iOiJhZmZpbGlhdGVfaWQifSwiY29tbWlzc2lvbiI6eyJzdGF0dXMiOiIwIiwiY2FwdGlvbiI6ImNvbW1pc3Npb24ifSwiY3VycmVuY3lfY29kZSI6eyJzdGF0dXMiOiIwIiwiY2FwdGlvbiI6ImN1cnJlbmN5X2NvZGUifSwiaXAiOnsic3RhdHVzIjoiMCIsImNhcHRpb24iOiJpcCJ9LCJkYXRlX2FkZGVkIjp7InN0YXR1cyI6IjEiLCJjYXB0aW9uIjoiZGF0ZV9hZGRlZCJ9LCJkYXRlX21vZGlmaWVkIjp7InN0YXR1cyI6IjAiLCJjYXB0aW9uIjoiZGF0ZV9tb2RpZmllZCJ9LCJwcm9kdWN0X2lkIjp7InN0YXR1cyI6IjAiLCJjYXB0aW9uIjoicHJvZHVjdF9pZCJ9LCJwcm9kdWN0X3RvdGFsX3F1YW50aXR5Ijp7InN0YXR1cyI6IjAiLCJjYXB0aW9uIjoicHJvZHVjdF90b3RhbF9xdWFudGl0eSJ9LCJwcm9kdWN0X25hbWUiOnsic3RhdHVzIjoiMCIsImNhcHRpb24iOiJwcm9kdWN0X25hbWUifSwicHJvZHVjdF9vcHRpb25zIjp7InN0YXR1cyI6IjAiLCJjYXB0aW9uIjoicHJvZHVjdF9vcHRpb25zIn0sInByb2R1Y3RfbW9kZWwiOnsic3RhdHVzIjoiMCIsImNhcHRpb24iOiJwcm9kdWN0X21vZGVsIn0sInByb2R1Y3Rfc2t1Ijp7InN0YXR1cyI6IjAiLCJjYXB0aW9uIjoicHJvZHVjdF9za3UifSwicHJvZHVjdF9lYW4iOnsic3RhdHVzIjoiMCIsImNhcHRpb24iOiJwcm9kdWN0X2VhbiJ9LCJwcm9kdWN0X2phbiI6eyJzdGF0dXMiOiIwIiwiY2FwdGlvbiI6InByb2R1Y3RfamFuIn0sInByb2R1Y3RfaXNibiI6eyJzdGF0dXMiOiIwIiwiY2FwdGlvbiI6InByb2R1Y3RfaXNibiJ9LCJwcm9kdWN0X21wbiI6eyJzdGF0dXMiOiIwIiwiY2FwdGlvbiI6InByb2R1Y3RfbXBuIn0sInByb2R1Y3RfdXBjIjp7InN0YXR1cyI6IjAiLCJjYXB0aW9uIjoicHJvZHVjdF91cGMifSwicHJvZHVjdF9sb2NhdGlvbiI6eyJzdGF0dXMiOiIwIiwiY2FwdGlvbiI6InByb2R1Y3RfbG9jYXRpb24ifSwicHJvZHVjdF93ZWlnaHQiOnsic3RhdHVzIjoiMCIsImNhcHRpb24iOiJwcm9kdWN0X3dlaWdodCJ9LCJwcm9kdWN0X2F0dHJpYnV0ZXMiOnsic3RhdHVzIjoiMCIsImNhcHRpb24iOiJwcm9kdWN0X2F0dHJpYnV0ZXMifSwicHJvZHVjdF9tYW51ZmFjdHVyZXIiOnsic3RhdHVzIjoiMCIsImNhcHRpb24iOiJwcm9kdWN0X21hbnVmYWN0dXJlciJ9LCJwcm9kdWN0X3F1YW50aXR5Ijp7InN0YXR1cyI6IjAiLCJjYXB0aW9uIjoicHJvZHVjdF9xdWFudGl0eSJ9LCJwcm9kdWN0X3ByaWNlIjp7InN0YXR1cyI6IjAiLCJjYXB0aW9uIjoicHJvZHVjdF9wcmljZSJ9LCJwcm9kdWN0X3RvdGFsIjp7InN0YXR1cyI6IjAiLCJjYXB0aW9uIjoicHJvZHVjdF90b3RhbCJ9LCJwcm9kdWN0X3RheCI6eyJzdGF0dXMiOiIwIiwiY2FwdGlvbiI6InByb2R1Y3RfdGF4In0sInByb2R1Y3RfcmV3YXJkIjp7InN0YXR1cyI6IjAiLCJjYXB0aW9uIjoicHJvZHVjdF9yZXdhcmQifX19fQ==', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `oc_currency`
 --
 
@@ -1775,8 +1872,8 @@ CREATE TABLE `oc_currency` (
 --
 
 INSERT INTO `oc_currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbol_right`, `decimal_place`, `value`, `status`, `date_modified`) VALUES
-(1, 'Рубль', 'RUB', '', ' ₽', '0', 1.00000000, 1, '2025-05-30 17:54:12'),
-(2, 'US Dollar', 'USD', '$', '', '2', 0.01271988, 1, '2025-05-30 17:54:12');
+(1, 'Рубль', 'RUB', '', ' ₽', '0', 1.00000000, 1, '2025-05-31 16:04:44'),
+(2, 'US Dollar', 'USD', '$', '', '2', 0.01271988, 1, '2025-05-31 16:04:44');
 
 -- --------------------------------------------------------
 
@@ -1808,6 +1905,17 @@ CREATE TABLE `oc_customer` (
   `code` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
   `date_added` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `oc_customer`
+--
+
+INSERT INTO `oc_customer` (`customer_id`, `customer_group_id`, `store_id`, `language_id`, `firstname`, `lastname`, `email`, `telephone`, `fax`, `password`, `salt`, `cart`, `wishlist`, `newsletter`, `address_id`, `custom_field`, `ip`, `status`, `safe`, `token`, `code`, `date_added`) VALUES
+(68, 1, 0, 1, 'Олег', 'Дерипаска', 'deripaska@exopencart.ru', '+7 987 654 32 10', '', '992f6436e10afa6082fdd533e24dd6ba3db3249d', 'JHEMoDVwE', NULL, NULL, 0, 0, '', '88.147.174.227', 1, 0, '', '', '2023-03-23 16:34:50'),
+(69, 1, 0, 1, 'Михаил', 'Прохоров', 'prohor@exopencart.ru', '+7 987 654 32 10', '', 'e7f55f364ffcbded3a712d1ab56a9581959073a6', '6mEEFzKoN', NULL, NULL, 0, 0, '', '88.147.174.227', 1, 0, '', '', '2023-03-23 16:48:08'),
+(70, 1, 0, 1, 'Аркадий', 'Ротенберг', 'rotenberg@exopencart.ru', '+7 987 654 32 10', '', 'd5befea1d7d59bfe6e2a32f9cf3916ac01649db1', 'P6ZIHr0l3', NULL, NULL, 0, 0, '', '88.147.174.227', 1, 0, '', '', '2023-03-23 16:50:03'),
+(66, 1, 0, 1, 'Олег', 'Тиньков', 'tinkov@exopencart.ru', '+7 987 654 32 10', '', '51746fe9c5688c79286a2259e362fc95e99524a1', '5FEEvqREL', NULL, NULL, 0, 79, '', '172.16.238.1', 1, 0, '', '', '2023-03-23 16:00:39'),
+(67, 1, 0, 1, 'Роман', 'Абрамович', 'abramovich@exopencart.ru', '+7 987 654 32 10', '', 'a0557000e6b720521130c3f0a7cc58af5c6689e7', 'sIkasTYzl', NULL, NULL, 0, 0, '', '88.147.174.227', 1, 0, '', '', '2023-03-23 16:12:12');
 
 -- --------------------------------------------------------
 
@@ -1928,6 +2036,18 @@ CREATE TABLE `oc_customer_ip` (
   `ip` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
   `date_added` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `oc_customer_ip`
+--
+
+INSERT INTO `oc_customer_ip` (`customer_ip_id`, `customer_id`, `ip`, `date_added`) VALUES
+(100, 69, '88.147.174.227', '2023-03-23 16:48:08'),
+(101, 70, '88.147.174.227', '2023-03-23 16:50:04'),
+(99, 68, '88.147.174.227', '2023-03-23 16:35:32'),
+(98, 67, '88.147.174.227', '2023-03-23 16:12:40'),
+(97, 66, '88.147.174.227', '2023-03-23 16:01:00'),
+(103, 66, '172.16.238.1', '2024-02-12 15:34:02');
 
 -- --------------------------------------------------------
 
@@ -2244,6 +2364,7 @@ INSERT INTO `oc_extension` (`extension_id`, `type`, `code`) VALUES
 (3, 'total', 'sub_total'),
 (4, 'total', 'tax'),
 (5, 'total', 'total'),
+(6, 'module', 'banner'),
 (7, 'module', 'carousel'),
 (8, 'total', 'credit'),
 (9, 'shipping', 'flat'),
@@ -2296,6 +2417,7 @@ INSERT INTO `oc_extension` (`extension_id`, `type`, `code`) VALUES
 (65, 'module', 'special'),
 (66, 'module', 'bestseller'),
 (68, 'module', 'filter'),
+(80, 'module', 'information'),
 (79, 'module', 'store'),
 (75, 'feed', 'google_base'),
 (93, 'module', 'extheme'),
@@ -3620,7 +3742,7 @@ INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `is
 (42, '42232', '', '', '', '', '', '', '', 12, 5, 'catalog/demo/products/42232_0.jpg', 0, 1, '6590.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (43, '42233', '', '', '', '', '', '', '', 13, 5, 'catalog/demo/products/42233_0.jpg', 0, 1, '5990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (44, '42234', '', '', '', '', '', '', '', 14, 5, 'catalog/demo/products/42234_0.jpg', 0, 1, '5890.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(45, '42235', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/42235_0.jpg', 0, 1, '5230.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2025-02-26 21:51:59', 1),
+(45, '42235', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/42235_0.jpg', 0, 1, '5230.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 3, '2022-11-11 12:51:32', '2025-02-26 21:51:59', 1),
 (46, '42236', '', '', '', '', '', '', '', 16, 5, 'catalog/demo/products/42236_0.jpg', 0, 1, '4990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (47, '42237', '', '', '', '', '', '', '', 17, 5, 'catalog/demo/products/42237_0.jpg', 0, 1, '4990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (48, '42238', '', '', '', '', '', '', '', 18, 5, 'catalog/demo/products/42238_0.jpg', 1, 1, '4990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
@@ -3635,7 +3757,7 @@ INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `is
 (57, '42285', '', '', '', '', '', '', '', 27, 5, 'catalog/demo/products/42285_0.jpg', 5, 1, '298990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (58, '42287', '', '', '', '', '', '', '', 28, 5, 'catalog/demo/products/42287_0.jpg', 5, 1, '249990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (59, '42288', '', '', '', '', '', '', '', 29, 5, 'catalog/demo/products/42288_0.jpg', 1, 1, '234990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(60, '42289', '', '', '', '', '', '', '', 0, 5, 'catalog/demo/products/42289_0.jpg', 1, 1, '234990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 1, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(60, '42289', '', '', '', '', '', '', '', 0, 5, 'catalog/demo/products/42289_0.jpg', 1, 1, '234990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (61, '42327', '', '', '', '', '', '', '', 1, 5, 'catalog/demo/products/42327_0.jpg', 0, 1, '151990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (62, '42328', '', '', '', '', '', '', '', 2, 5, 'catalog/demo/products/42328_0.jpg', 0, 1, '104990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (63, '42329', '', '', '', '', '', '', '', 3, 5, 'catalog/demo/products/42329_0.jpg', 0, 1, '99680.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
@@ -5820,7 +5942,7 @@ INSERT INTO `oc_seo_url` (`seo_url_id`, `store_id`, `language_id`, `query`, `key
 (45, 0, 1, 'category_id=45', 'skejtbordy-i-longbordy'),
 (46, 0, 1, 'category_id=46', 'palatki-i-tenty'),
 (47, 0, 1, 'category_id=47', 'lodki'),
-(1188, 0, 2, 'category_id=1', 'smartphones-and-gadgets'),
+(1176, 0, 2, 'category_id=1', 'smartphones-and-gadgets'),
 (951, 0, 1, 'category_id=2', 'smartfony'),
 (58, 0, 2, 'category_id=3', 'tablets'),
 (59, 0, 2, 'category_id=4', 'quadcopters'),
@@ -6098,7 +6220,7 @@ INSERT INTO `oc_seo_url` (`seo_url_id`, `store_id`, `language_id`, `query`, `key
 (943, 0, 1, 'manufacturer_id=5', 'msi'),
 (944, 0, 1, 'manufacturer_id=6', 'delonghi'),
 (952, 0, 2, 'category_id=2', 'smartphones'),
-(1187, 0, 1, 'category_id=1', 'smartfony-i-gadzhety'),
+(1175, 0, 1, 'category_id=1', 'smartfony-i-gadzhety'),
 (991, 0, 1, 'category_id=13', 'bytovaya-tekhnika'),
 (1041, 0, 1, 'asdf', 'asdfa'),
 (1047, 0, 2, 'manufacturer_id=1', 'en-apple'),
@@ -6125,9 +6247,8 @@ CREATE TABLE `oc_session` (
 --
 
 INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES
-('04786c432a331a6bb6dab9160b', '{\"api_id\":\"6\"}', '2025-05-30 18:33:13'),
-('091b57944d0661d83734a2f6a1', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"user_id\":\"1\",\"user_token\":\"EkibGCAWu1O73MiDzon8UO2HdE73c677\",\"compare\":[],\"payment_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"\",\"address_2\":\"\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\\u041c\\u043e\\u0441\\u043a\\u043e\\u0432\\u0441\\u043a\\u0430\\u044f \\u043e\\u0431\\u043b\\u0430\\u0441\\u0442\\u044c\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"shipping_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"\",\"address_2\":\"\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\\u041c\\u043e\\u0441\\u043a\\u043e\\u0432\\u0441\\u043a\\u0430\\u044f \\u043e\\u0431\\u043b\\u0430\\u0441\\u0442\\u044c\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"guest\":{\"customer_group_id\":\"1\"}}', '2025-05-30 18:34:06'),
-('0caf78b4c2508a51dae2ece266', '{\"api_id\":\"6\"}', '2025-05-30 18:17:16');
+('4b9c0efe49d03b6cf3f22accde', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"user_id\":\"1\",\"user_token\":\"82ZJSwqK0F62uicG0rlfi1MfodaeQWbz\"}', '2025-05-31 16:29:48'),
+('4f6de5e580490c9151c75ac0b8', '{\"api_id\":\"6\"}', '2025-05-31 16:28:24');
 
 -- --------------------------------------------------------
 
@@ -6150,9 +6271,9 @@ CREATE TABLE `oc_setting` (
 
 INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `serialized`) VALUES
 (8130, 0, 'csvprice_pro', 'csvprice_pro_csv_import_mod', '2', 0),
-(20881, 0, 'developer', 'developer_webp', '0', 0),
-(20880, 0, 'developer', 'developer_js', '0', 0),
-(20879, 0, 'developer', 'developer_css', '0', 0),
+(19750, 0, 'developer', 'developer_webp', '0', 0),
+(19749, 0, 'developer', 'developer_js', '0', 0),
+(19748, 0, 'developer', 'developer_css', '0', 0),
 (16996, 0, 'configblog', 'configblog_image_related_height', '300', 0),
 (16995, 0, 'configblog', 'configblog_image_related_width', '450', 0),
 (16994, 0, 'configblog', 'configblog_image_article_height', '300', 0),
@@ -6161,19 +6282,9 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (16990, 0, 'configblog', 'configblog_review_mail', '1', 0),
 (10423, 0, 'currency_cbr', 'currency_cbr_status', '1', 0),
 (16991, 0, 'configblog', 'configblog_image_category_width', '50', 0),
-(20753, 0, 'config', 'config_noindex_status', '1', 0),
-(20754, 0, 'config', 'config_noindex_disallow_params', 'page', 0),
-(20750, 0, 'config', 'config_canonical_method', '1', 0),
-(20743, 0, 'config', 'config_seo_url_include_path', '1', 0),
-(20744, 0, 'config', 'config_seo_url_cache', '0', 0),
-(20745, 0, 'config', 'config_seopro_addslash', '0', 0),
-(20746, 0, 'config', 'config_seopro_lowercase', '1', 0),
-(20747, 0, 'config', 'config_page_postfix', '', 0),
-(20748, 0, 'config', 'config_valide_param_flag', '0', 0),
-(20749, 0, 'config', 'config_valide_params', 'block\r\nfrommarket\r\ngclid\r\nfbclid\r\nkeyword\r\nlist_type\r\nopenstat\r\nopenstat_service\r\nopenstat_campaign\r\nopenstat_ad\r\nopenstat_source\r\nposition\r\nsource\r\ntracking\r\ntype\r\nyclid\r\nymclid\r\nuri\r\nurltype\r\nutm_source\r\nutm_medium\r\nutm_campaign\r\nutm_term\r\nutm_content', 0),
-(20742, 0, 'config', 'config_seo_pro', '1', 0),
-(20741, 0, 'config', 'config_error_filename', 'error.log', 0),
-(20740, 0, 'config', 'config_error_log', '1', 0),
+(20852, 0, 'config', 'config_file_mime_allowed', 'text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/tiff\r\nimage/svg+xml\r\napplication/zip\r\n&quot;application/zip&quot;\r\napplication/x-zip\r\n&quot;application/x-zip&quot;\r\napplication/x-zip-compressed\r\n&quot;application/x-zip-compressed&quot;\r\napplication/rar\r\n&quot;application/rar&quot;\r\napplication/x-rar\r\n&quot;application/x-rar&quot;\r\napplication/x-rar-compressed\r\n&quot;application/x-rar-compressed&quot;\r\napplication/octet-stream\r\n&quot;application/octet-stream&quot;\r\naudio/mpeg\r\nvideo/quicktime\r\napplication/pdf', 0),
+(20851, 0, 'config', 'config_file_ext_allowed', 'zip\r\ntxt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc', 0),
+(20850, 0, 'config', 'config_file_max_size', '10000000', 0),
 (16043, 0, 'module_privacy', 'module_privacy_status', '1', 0),
 (16989, 0, 'configblog', 'configblog_review_guest', '1', 0),
 (16988, 0, 'configblog', 'configblog_review_status', '1', 0),
@@ -6278,7 +6389,7 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (201, 0, 'report_product_purchased', 'report_product_purchased_sort_order', '11', 0),
 (202, 0, 'report_marketing', 'report_marketing_status', '1', 0),
 (203, 0, 'report_marketing', 'report_marketing_sort_order', '12', 0),
-(20878, 0, 'developer', 'developer_sass', '0', 0),
+(19747, 0, 'developer', 'developer_sass', '0', 0),
 (16980, 0, 'configblog', 'configblog_meta_title', '{\"1\":\"\\u0417\\u0430\\u0433\\u043e\\u043b\\u043e\\u0432\\u043e\\u043a \\u0434\\u043b\\u044f \\u043b\\u0443\\u0447\\u0448\\u0435\\u0433\\u043e \\u0431\\u043b\\u043e\\u0433\\u0430\",\"2\":\"The best blog title\"}', 1),
 (16981, 0, 'configblog', 'configblog_meta_description', '{\"1\":\"\\u041c\\u0435\\u0442\\u0430 \\u043e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435 \\u043b\\u0443\\u0447\\u0448\\u0435\\u0433\\u043e \\u0431\\u043b\\u043e\\u0433\\u0430\",\"2\":\"The best blog meta description\"}', 1),
 (10426, 0, 'currency_nbu', 'currency_nbu_status', '1', 0),
@@ -6293,17 +6404,12 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (11165, 0, 'dashboard_domovoy', 'dashboard_domovoy_sort_order', '10', 0),
 (11164, 0, 'dashboard_domovoy', 'dashboard_domovoy_status', '0', 0),
 (11163, 0, 'dashboard_domovoy', 'dashboard_domovoy_width', '6', 0),
-(20739, 0, 'config', 'config_error_display', '1', 0),
-(20731, 0, 'config', 'config_compression', '9', 0),
-(20732, 0, 'config', 'config_secure', '1', 0),
-(20733, 0, 'config', 'config_password', '1', 0),
-(20734, 0, 'config', 'config_shared', '0', 0),
-(20756, 0, 'config', 'config_encryption', 'cM2tIPGWvkOKnka1T2ApYFF2nV5CIAwCy09yzcLOEPFm1baLNzONFDh8gdst0YY3Ggu29NGmypatelkylXGqjjPDgZaCLOzdkWgHF3oGfBCWUpvUMk86az9JLqvVg6ldF4oVyBpIi7zKXLQbBG7e7Q1HbRLfEUIhZ341YAv5VUSVLHt9CPV1FvA4qVfr1n0ve010WLtEQvST2lRc8Ul9cOFEVWrPQW4aI0hscdTWTdAJOk7cQS4TwdLkWWlYh5sYvC3lvph5EbFxYRXDyB4fg4hO76p87yTOHNzMm9kxMC7lKJHmhOQ4TtewElIhNkwCLPRrcXMrLTLGLZGq55UX9GQauMEiVOwdIQYj6TS1yLlkz9EhvOnWlXR8MEorcbNll3qgHSwOd3t5sPNzuag33OYQcYgZ7Tuda7PNujSyWWHmrXpH5KpzdDKGr50aij4sNPwU1vXpCzSjjALKsOf0oT85k1n0VdrBZZ7WFnJ8aVGrCm3a8Z5hLKGmLtMeg6t9VGgprfoI31RM4QBL82T2U7Rde4F5zBnc7e2TFenv9mffcwOWAGbezJzDA5XesW4MKQv8Fb0CNMB7RL56rn1wGsP3SxtQofoNJQVcVK7KgTE1OSOYaOcNam92wcOE32xZAs9AQdfsZCbLrw8YnfNJ7kmhVOuIV28QgLgCFmVFHWQ1ZpKGhurTkOky0aK6owHt87jVaj2OwiEjOBMmH01sHOPdK5iSnDeY74zVHjJ0CFw7MJlJWzA71KpYIr0a3J7RSBB7PQM7iRqJZOHVCVXYiIv3CSscOFPxyZyf12ZCJFICzTIFJzJOPbhS8daoDCukrhPExm2l9oZB1KbFexsea84xZ0BMlWgroSCGzAgqhsUiqKe9LO1GcruVcNPaVpQF9UbXTJDN6ZwGvGTO0vZ5Q64v2qCafCNBUS1W1quPOwINT7T6JpLvySZegQCf9P1Ftf9NbctDCY0V2JGx8T3yJT1UUGH8C3MRw3ohddEHZFDXD614B29Oi5Z8ShVqsOw6', 0),
-(20737, 0, 'config', 'config_file_ext_allowed', 'zip\r\ntxt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc', 0),
-(20738, 0, 'config', 'config_file_mime_allowed', 'text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/tiff\r\nimage/svg+xml\r\napplication/zip\r\n&quot;application/zip&quot;\r\napplication/x-zip\r\n&quot;application/x-zip&quot;\r\napplication/x-zip-compressed\r\n&quot;application/x-zip-compressed&quot;\r\napplication/rar\r\n&quot;application/rar&quot;\r\napplication/x-rar\r\n&quot;application/x-rar&quot;\r\napplication/x-rar-compressed\r\n&quot;application/x-rar-compressed&quot;\r\napplication/octet-stream\r\n&quot;application/octet-stream&quot;\r\naudio/mpeg\r\nvideo/quicktime\r\napplication/pdf', 0),
-(20877, 0, 'developer', 'developer_theme', '0', 0),
-(20751, 0, 'config', 'config_canonical_self', '1', 0),
-(20752, 0, 'config', 'config_add_prevnext', '0', 0),
+(20845, 0, 'config', 'config_compression', '9', 0),
+(20846, 0, 'config', 'config_secure', '1', 0),
+(20847, 0, 'config', 'config_password', '1', 0),
+(20848, 0, 'config', 'config_shared', '0', 0),
+(20849, 0, 'config', 'config_encryption', '5Z2O7K8T1So08hvRc3oXZ2eUwm0Bb2mDZAOyFgGd6k822nfVvKGPWIyIo9sbiCbI8yXmCeOKcHc6L9fAvjxZqsgiDDQgo1luHef1Q75SZEiywBmlJbDj1gsD6dRQHmoqbKIbvtkAiUD9HjrpRwILIaFaW47NUkUNAfILwQHcV02h7GoUi9Q59gy6e0jJO9mJ0LQu9KaLhBsKHNp9GXau28q2fDeliZ3haHMXtvpj4sS6j3soLIHmKyRINQ93Xs8aSHq9MRKljfA0TZq12ZpVNZvHuMWVNE20rTGFoVQvfc8uqluGhiKBslA9yX5v9oSgIQvGd5mImgF3zkZnyIm68JTsU04bPc9QRo24LCNGYARQ40JLWVNdPxJgGB4S8iuWDWLdTZrD1DGjPpCyAHAdEi28kEkePWzDlO3idDyoflDnasCIrksLBvRAcUe6R6Eg84K2pBHUI9zLy5X5m37os407sCpC73hTdRN3GpwOR0aeUHkZj06O7HbiTtBgFnUJEqV2MercqkNogIOUjYRzpENB607zSDRmESYDhE5bdWGOHynrXD84IccXl6dWSPyDaePJyvvrVGdBSzcKHWPKROLlwZDLxd2yZpZUrfM7BVQlL3jHdpxe9IlRMUnTqcYMByQHZbdJLE7R5PPIGApoxxyO4M1PaI2c355QAq0Y5OQT3aWo8GHa1GOQTrnu6HWeZAHPmpZWwuM24AjpBNbHE0GW3DgfNW5qJkbBcaFETRCkimKi6EXXvPs5wVMKWedZswiyRdBKixpjuzkl3LHSXvita8CntiIJkBr6495Erk3GbE4VtogQhdMgbcH3PcdFm2KzZIvLMvAQrpauFVODpcIcgQLCuU1nhgSVfepdb5Sd66OsLcpYkbXKMAQIPUmLp2jrqwqsqpV2mEviWAiwlV8iQ4u8nl2ISVipRSi9D3tvqa3RKDkSiSptKUBfHFwNiDrtphXVYnmmFqDSNdnJtZfPkjxTPatpOa1V2mcjt10TUcskDhV9YRFHbepUIpzf', 0),
+(19746, 0, 'developer', 'developer_theme', '0', 0),
 (19035, 0, 'theme_default', 'theme_default_image_thumb_width', '720', 0),
 (19034, 0, 'theme_default', 'theme_default_image_manufacturer_height', '80', 0),
 (19033, 0, 'theme_default', 'theme_default_image_manufacturer_width', '80', 0),
@@ -6329,115 +6435,131 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (8133, 0, 'csvprice_pro', 'csvprice_pro_save_image_table', '1', 0),
 (8132, 0, 'csvprice_pro', 'csvprice_pro_image_download_mod', '1', 0),
 (8131, 0, 'csvprice_pro', 'csvprice_pro_each_iteration_timeout', '180', 0),
-(20730, 0, 'config', 'config_robots', 'abot\r\ndbot\r\nebot\r\nhbot\r\nkbot\r\nlbot\r\nmbot\r\nnbot\r\nobot\r\npbot\r\nrbot\r\nsbot\r\ntbot\r\nvbot\r\nybot\r\nzbot\r\nbot.\r\nbot/\r\n_bot\r\n.bot\r\n/bot\r\n-bot\r\n:bot\r\n(bot\r\ncrawl\r\nslurp\r\nspider\r\nseek\r\naccoona\r\nacoon\r\nadressendeutschland\r\nah-ha.com\r\nahoy\r\naltavista\r\nananzi\r\nanthill\r\nappie\r\narachnophilia\r\narale\r\naraneo\r\naranha\r\narchitext\r\naretha\r\narks\r\nasterias\r\natlocal\r\natn\r\natomz\r\naugurfind\r\nbackrub\r\nbannana_bot\r\nbaypup\r\nbdfetch\r\nbig brother\r\nbiglotron\r\nbjaaland\r\nblackwidow\r\nblaiz\r\nblog\r\nblo.\r\nbloodhound\r\nboitho\r\nbooch\r\nbradley\r\nbutterfly\r\ncalif\r\ncassandra\r\nccubee\r\ncfetch\r\ncharlotte\r\nchurl\r\ncienciaficcion\r\ncmc\r\ncollective\r\ncomagent\r\ncombine\r\ncomputingsite\r\ncsci\r\ncurl\r\ncusco\r\ndaumoa\r\ndeepindex\r\ndelorie\r\ndepspid\r\ndeweb\r\ndie blinde kuh\r\ndigger\r\nditto\r\ndmoz\r\ndocomo\r\ndownload express\r\ndtaagent\r\ndwcp\r\nebiness\r\nebingbong\r\ne-collector\r\nejupiter\r\nemacs-w3 search engine\r\nesther\r\nevliya celebi\r\nezresult\r\nfalcon\r\nfelix ide\r\nferret\r\nfetchrover\r\nfido\r\nfindlinks\r\nfireball\r\nfish search\r\nfouineur\r\nfunnelweb\r\ngazz\r\ngcreep\r\ngenieknows\r\ngetterroboplus\r\ngeturl\r\nglx\r\ngoforit\r\ngolem\r\ngrabber\r\ngrapnel\r\ngralon\r\ngriffon\r\ngromit\r\ngrub\r\ngulliver\r\nhamahakki\r\nharvest\r\nhavindex\r\nhelix\r\nheritrix\r\nhku www octopus\r\nhomerweb\r\nhtdig\r\nhtml index\r\nhtml_analyzer\r\nhtmlgobble\r\nhubater\r\nhyper-decontextualizer\r\nia_archiver\r\nibm_planetwide\r\nichiro\r\niconsurf\r\niltrovatore\r\nimage.kapsi.net\r\nimagelock\r\nincywincy\r\nindexer\r\ninfobee\r\ninformant\r\ningrid\r\ninktomisearch.com\r\ninspector web\r\nintelliagent\r\ninternet shinchakubin\r\nip3000\r\niron33\r\nisraeli-search\r\nivia\r\njack\r\njakarta\r\njavabee\r\njetbot\r\njumpstation\r\nkatipo\r\nkdd-explorer\r\nkilroy\r\nknowledge\r\nkototoi\r\nkretrieve\r\nlabelgrabber\r\nlachesis\r\nlarbin\r\nlegs\r\nlibwww\r\nlinkalarm\r\nlink validator\r\nlinkscan\r\nlockon\r\nlwp\r\nlycos\r\nmagpie\r\nmantraagent\r\nmapoftheinternet\r\nmarvin/\r\nmattie\r\nmediafox\r\nmediapartners\r\nmercator\r\nmerzscope\r\nmicrosoft url control\r\nminirank\r\nmiva\r\nmj12\r\nmnogosearch\r\nmoget\r\nmonster\r\nmoose\r\nmotor\r\nmultitext\r\nmuncher\r\nmuscatferret\r\nmwd.search\r\nmyweb\r\nnajdi\r\nnameprotect\r\nnationaldirectory\r\nnazilla\r\nncsa beta\r\nnec-meshexplorer\r\nnederland.zoek\r\nnetcarta webmap engine\r\nnetmechanic\r\nnetresearchserver\r\nnetscoop\r\nnewscan-online\r\nnhse\r\nnokia6682/\r\nnomad\r\nnoyona\r\nnutch\r\nnzexplorer\r\nobjectssearch\r\noccam\r\nomni\r\nopen text\r\nopenfind\r\nopenintelligencedata\r\norb search\r\nosis-project\r\npack rat\r\npageboy\r\npagebull\r\npage_verifier\r\npanscient\r\nparasite\r\npartnersite\r\npatric\r\npear.\r\npegasus\r\nperegrinator\r\npgp key agent\r\nphantom\r\nphpdig\r\npicosearch\r\npiltdownman\r\npimptrain\r\npinpoint\r\npioneer\r\npiranha\r\nplumtreewebaccessor\r\npogodak\r\npoirot\r\npompos\r\npoppelsdorf\r\npoppi\r\npopular iconoclast\r\npsycheclone\r\npublisher\r\npython\r\nrambler\r\nraven search\r\nroach\r\nroad runner\r\nroadhouse\r\nrobbie\r\nrobofox\r\nrobozilla\r\nrules\r\nsalty\r\nsbider\r\nscooter\r\nscoutjet\r\nscrubby\r\nsearch.\r\nsearchprocess\r\nsemanticdiscovery\r\nsenrigan\r\nsg-scout\r\nshai\'hulud\r\nshark\r\nshopwiki\r\nsidewinder\r\nsift\r\nsilk\r\nsimmany\r\nsite searcher\r\nsite valet\r\nsitetech-rover\r\nskymob.com\r\nsleek\r\nsmartwit\r\nsna-\r\nsnappy\r\nsnooper\r\nsohu\r\nspeedfind\r\nsphere\r\nsphider\r\nspinner\r\nspyder\r\nsteeler/\r\nsuke\r\nsuntek\r\nsupersnooper\r\nsurfnomore\r\nsven\r\nsygol\r\nszukacz\r\ntach black widow\r\ntarantula\r\ntempleton\r\n/teoma\r\nt-h-u-n-d-e-r-s-t-o-n-e\r\ntheophrastus\r\ntitan\r\ntitin\r\ntkwww\r\ntoutatis\r\nt-rex\r\ntutorgig\r\ntwiceler\r\ntwisted\r\nucsd\r\nudmsearch\r\nurl check\r\nupdated\r\nvagabondo\r\nvalkyrie\r\nverticrawl\r\nvictoria\r\nvision-search\r\nvolcano\r\nvoyager/\r\nvoyager-hc\r\nw3c_validator\r\nw3m2\r\nw3mir\r\nwalker\r\nwallpaper\r\nwanderer\r\nwauuu\r\nwavefire\r\nweb core\r\nweb hopper\r\nweb wombat\r\nwebbandit\r\nwebcatcher\r\nwebcopy\r\nwebfoot\r\nweblayers\r\nweblinker\r\nweblog monitor\r\nwebmirror\r\nwebmonkey\r\nwebquest\r\nwebreaper\r\nwebsitepulse\r\nwebsnarf\r\nwebstolperer\r\nwebvac\r\nwebwalk\r\nwebwatch\r\nwebwombat\r\nwebzinger\r\nwhizbang\r\nwhowhere\r\nwild ferret\r\nworldlight\r\nwwwc\r\nwwwster\r\nxenu\r\nxget\r\nxift\r\nxirq\r\nyandex\r\nyanga\r\nyeti\r\nyodao\r\nzao\r\nzippp\r\nzyborg', 0),
-(20736, 0, 'config', 'config_file_max_size', '10000000', 0),
+(20827, 0, 'config', 'config_captcha', '', 0),
+(20828, 0, 'config', 'config_captcha_page', '[\"register\",\"guest\",\"review\",\"return\",\"contact\"]', 1),
+(20829, 0, 'config', 'config_logo', 'catalog/logo.png', 0),
+(20830, 0, 'config', 'config_logo_width', '175', 0),
+(20831, 0, 'config', 'config_logo_height', '35', 0),
+(20832, 0, 'config', 'config_icon', 'catalog/favicon.png', 0),
+(20833, 0, 'config', 'config_mail_engine', 'mail', 0),
+(20834, 0, 'config', 'config_mail_parameter', '', 0),
+(20835, 0, 'config', 'config_mail_smtp_hostname', '', 0),
+(20836, 0, 'config', 'config_mail_smtp_username', '', 0),
+(20837, 0, 'config', 'config_mail_smtp_password', '', 0),
+(20838, 0, 'config', 'config_mail_smtp_port', '25', 0),
+(20839, 0, 'config', 'config_mail_smtp_timeout', '5', 0),
+(20840, 0, 'config', 'config_mail_alert', '[\"order\"]', 1),
+(20841, 0, 'config', 'config_mail_alert_email', '', 0),
+(20842, 0, 'config', 'config_maintenance', '0', 0),
+(20843, 0, 'config', 'config_seo_url', '1', 0),
+(20844, 0, 'config', 'config_robots', 'abot\r\ndbot\r\nebot\r\nhbot\r\nkbot\r\nlbot\r\nmbot\r\nnbot\r\nobot\r\npbot\r\nrbot\r\nsbot\r\ntbot\r\nvbot\r\nybot\r\nzbot\r\nbot.\r\nbot/\r\n_bot\r\n.bot\r\n/bot\r\n-bot\r\n:bot\r\n(bot\r\ncrawl\r\nslurp\r\nspider\r\nseek\r\naccoona\r\nacoon\r\nadressendeutschland\r\nah-ha.com\r\nahoy\r\naltavista\r\nananzi\r\nanthill\r\nappie\r\narachnophilia\r\narale\r\naraneo\r\naranha\r\narchitext\r\naretha\r\narks\r\nasterias\r\natlocal\r\natn\r\natomz\r\naugurfind\r\nbackrub\r\nbannana_bot\r\nbaypup\r\nbdfetch\r\nbig brother\r\nbiglotron\r\nbjaaland\r\nblackwidow\r\nblaiz\r\nblog\r\nblo.\r\nbloodhound\r\nboitho\r\nbooch\r\nbradley\r\nbutterfly\r\ncalif\r\ncassandra\r\nccubee\r\ncfetch\r\ncharlotte\r\nchurl\r\ncienciaficcion\r\ncmc\r\ncollective\r\ncomagent\r\ncombine\r\ncomputingsite\r\ncsci\r\ncurl\r\ncusco\r\ndaumoa\r\ndeepindex\r\ndelorie\r\ndepspid\r\ndeweb\r\ndie blinde kuh\r\ndigger\r\nditto\r\ndmoz\r\ndocomo\r\ndownload express\r\ndtaagent\r\ndwcp\r\nebiness\r\nebingbong\r\ne-collector\r\nejupiter\r\nemacs-w3 search engine\r\nesther\r\nevliya celebi\r\nezresult\r\nfalcon\r\nfelix ide\r\nferret\r\nfetchrover\r\nfido\r\nfindlinks\r\nfireball\r\nfish search\r\nfouineur\r\nfunnelweb\r\ngazz\r\ngcreep\r\ngenieknows\r\ngetterroboplus\r\ngeturl\r\nglx\r\ngoforit\r\ngolem\r\ngrabber\r\ngrapnel\r\ngralon\r\ngriffon\r\ngromit\r\ngrub\r\ngulliver\r\nhamahakki\r\nharvest\r\nhavindex\r\nhelix\r\nheritrix\r\nhku www octopus\r\nhomerweb\r\nhtdig\r\nhtml index\r\nhtml_analyzer\r\nhtmlgobble\r\nhubater\r\nhyper-decontextualizer\r\nia_archiver\r\nibm_planetwide\r\nichiro\r\niconsurf\r\niltrovatore\r\nimage.kapsi.net\r\nimagelock\r\nincywincy\r\nindexer\r\ninfobee\r\ninformant\r\ningrid\r\ninktomisearch.com\r\ninspector web\r\nintelliagent\r\ninternet shinchakubin\r\nip3000\r\niron33\r\nisraeli-search\r\nivia\r\njack\r\njakarta\r\njavabee\r\njetbot\r\njumpstation\r\nkatipo\r\nkdd-explorer\r\nkilroy\r\nknowledge\r\nkototoi\r\nkretrieve\r\nlabelgrabber\r\nlachesis\r\nlarbin\r\nlegs\r\nlibwww\r\nlinkalarm\r\nlink validator\r\nlinkscan\r\nlockon\r\nlwp\r\nlycos\r\nmagpie\r\nmantraagent\r\nmapoftheinternet\r\nmarvin/\r\nmattie\r\nmediafox\r\nmediapartners\r\nmercator\r\nmerzscope\r\nmicrosoft url control\r\nminirank\r\nmiva\r\nmj12\r\nmnogosearch\r\nmoget\r\nmonster\r\nmoose\r\nmotor\r\nmultitext\r\nmuncher\r\nmuscatferret\r\nmwd.search\r\nmyweb\r\nnajdi\r\nnameprotect\r\nnationaldirectory\r\nnazilla\r\nncsa beta\r\nnec-meshexplorer\r\nnederland.zoek\r\nnetcarta webmap engine\r\nnetmechanic\r\nnetresearchserver\r\nnetscoop\r\nnewscan-online\r\nnhse\r\nnokia6682/\r\nnomad\r\nnoyona\r\nnutch\r\nnzexplorer\r\nobjectssearch\r\noccam\r\nomni\r\nopen text\r\nopenfind\r\nopenintelligencedata\r\norb search\r\nosis-project\r\npack rat\r\npageboy\r\npagebull\r\npage_verifier\r\npanscient\r\nparasite\r\npartnersite\r\npatric\r\npear.\r\npegasus\r\nperegrinator\r\npgp key agent\r\nphantom\r\nphpdig\r\npicosearch\r\npiltdownman\r\npimptrain\r\npinpoint\r\npioneer\r\npiranha\r\nplumtreewebaccessor\r\npogodak\r\npoirot\r\npompos\r\npoppelsdorf\r\npoppi\r\npopular iconoclast\r\npsycheclone\r\npublisher\r\npython\r\nrambler\r\nraven search\r\nroach\r\nroad runner\r\nroadhouse\r\nrobbie\r\nrobofox\r\nrobozilla\r\nrules\r\nsalty\r\nsbider\r\nscooter\r\nscoutjet\r\nscrubby\r\nsearch.\r\nsearchprocess\r\nsemanticdiscovery\r\nsenrigan\r\nsg-scout\r\nshai\'hulud\r\nshark\r\nshopwiki\r\nsidewinder\r\nsift\r\nsilk\r\nsimmany\r\nsite searcher\r\nsite valet\r\nsitetech-rover\r\nskymob.com\r\nsleek\r\nsmartwit\r\nsna-\r\nsnappy\r\nsnooper\r\nsohu\r\nspeedfind\r\nsphere\r\nsphider\r\nspinner\r\nspyder\r\nsteeler/\r\nsuke\r\nsuntek\r\nsupersnooper\r\nsurfnomore\r\nsven\r\nsygol\r\nszukacz\r\ntach black widow\r\ntarantula\r\ntempleton\r\n/teoma\r\nt-h-u-n-d-e-r-s-t-o-n-e\r\ntheophrastus\r\ntitan\r\ntitin\r\ntkwww\r\ntoutatis\r\nt-rex\r\ntutorgig\r\ntwiceler\r\ntwisted\r\nucsd\r\nudmsearch\r\nurl check\r\nupdated\r\nvagabondo\r\nvalkyrie\r\nverticrawl\r\nvictoria\r\nvision-search\r\nvolcano\r\nvoyager/\r\nvoyager-hc\r\nw3c_validator\r\nw3m2\r\nw3mir\r\nwalker\r\nwallpaper\r\nwanderer\r\nwauuu\r\nwavefire\r\nweb core\r\nweb hopper\r\nweb wombat\r\nwebbandit\r\nwebcatcher\r\nwebcopy\r\nwebfoot\r\nweblayers\r\nweblinker\r\nweblog monitor\r\nwebmirror\r\nwebmonkey\r\nwebquest\r\nwebreaper\r\nwebsitepulse\r\nwebsnarf\r\nwebstolperer\r\nwebvac\r\nwebwalk\r\nwebwatch\r\nwebwombat\r\nwebzinger\r\nwhizbang\r\nwhowhere\r\nwild ferret\r\nworldlight\r\nwwwc\r\nwwwster\r\nxenu\r\nxget\r\nxift\r\nxirq\r\nyandex\r\nyanga\r\nyeti\r\nyodao\r\nzao\r\nzippp\r\nzyborg', 0),
 (9460, 0, 'module_filter', 'module_filter_status', '1', 0),
 (16979, 0, 'configblog', 'configblog_html_h1', '{\"1\":\"\\u041b\\u0443\\u0447\\u0448\\u0438\\u0439 \\u0431\\u043b\\u043e\\u0433\",\"2\":\"The best blog\"}', 1),
 (16978, 0, 'configblog', 'configblog_name', '{\"1\":\"\\u0411\\u043b\\u043e\\u0433\",\"2\":\"Blog\"}', 1),
 (9740, 0, 'fraudlabspro', 'fraud_fraudlabspro_review_status_id', '18', 0),
 (9741, 0, 'fraudlabspro', 'fraud_fraudlabspro_approve_status_id', '2', 0),
 (9742, 0, 'fraudlabspro', 'fraud_fraudlabspro_reject_status_id', '8', 0),
+(9795, 0, 'module_information', 'module_information_status', '1', 0),
 (19730, 0, 'module_store', 'module_store_status', '0', 0),
 (19729, 0, 'module_store', 'module_store_admin', '0', 0),
 (9739, 0, 'fraudlabspro', 'fraud_fraudlabspro_order_status_id', '17', 0),
 (9738, 0, 'fraudlabspro', 'fraud_fraudlabspro_score', '80', 0),
 (9737, 0, 'feed_google_base', 'feed_google_base_status', '0', 0),
-(20729, 0, 'config', 'config_seo_url', '1', 0),
-(20886, 0, 'menu_default', 'menu_default_status', '1', 0),
-(20887, 0, 'menu_default', 'menu_default_settings', '{\"cache\":\"0\",\"show_catalog\":\"1\",\"button\":{\"1\":\"\",\"2\":\"\"},\"show_images\":\"0\",\"width\":\"60\",\"height\":\"60\",\"show_special\":\"1\",\"show_brands\":\"1\",\"show_blog\":\"1\",\"show_contacts\":\"1\"}', 1),
-(20728, 0, 'config', 'config_maintenance', '0', 0),
-(20727, 0, 'config', 'config_mail_alert_email', '', 0),
-(20726, 0, 'config', 'config_mail_alert', '[\"order\"]', 1),
-(20725, 0, 'config', 'config_mail_smtp_timeout', '5', 0),
-(20724, 0, 'config', 'config_mail_smtp_port', '25', 0),
-(20723, 0, 'config', 'config_mail_smtp_password', '', 0),
-(20722, 0, 'config', 'config_mail_smtp_username', '', 0),
-(20721, 0, 'config', 'config_mail_smtp_hostname', '', 0),
-(20720, 0, 'config', 'config_mail_parameter', '', 0),
-(20719, 0, 'config', 'config_mail_engine', 'mail', 0),
-(20717, 0, 'config', 'config_logo_height', '35', 0),
-(20718, 0, 'config', 'config_icon', 'catalog/favicon.png', 0),
+(20826, 0, 'config', 'config_return_status_id', '1', 0),
+(20881, 0, 'menu_default', 'menu_default_status', '1', 0),
+(20882, 0, 'menu_default', 'menu_default_settings', '{\"cache\":\"0\",\"show_catalog\":\"1\",\"button\":{\"1\":\"\",\"2\":\"\"},\"show_images\":\"0\",\"width\":\"60\",\"height\":\"60\",\"show_special\":\"1\",\"show_brands\":\"1\",\"show_blog\":\"1\",\"show_contacts\":\"1\"}', 1),
+(20825, 0, 'config', 'config_return_id', '9', 0),
+(20824, 0, 'config', 'config_affiliate_id', '10', 0),
+(20823, 0, 'config', 'config_affiliate_commission', '5', 0),
+(20822, 0, 'config', 'config_affiliate_auto', '0', 0),
+(20821, 0, 'config', 'config_affiliate_approval', '0', 0),
+(20820, 0, 'config', 'config_affiliate_group_id', '1', 0),
+(20819, 0, 'config', 'config_stock_checkout', '1', 0),
+(20818, 0, 'config', 'config_stock_warning', '0', 0),
+(20817, 0, 'config', 'config_stock_display', '0', 0),
+(20816, 0, 'config', 'config_api_id', '6', 0),
+(20815, 0, 'config', 'config_fraud_status_id', '16', 0),
 (19030, 0, 'theme_default', 'theme_default_product_description_length', '160', 0),
 (19029, 0, 'theme_default', 'theme_default_product_limit', '12', 0),
 (19028, 0, 'theme_default', 'theme_default_status', '1', 0),
-(20716, 0, 'config', 'config_logo_width', '175', 0),
-(20715, 0, 'config', 'config_logo', 'catalog/logo.png', 0),
-(20714, 0, 'config', 'config_captcha_page', '[\"register\",\"guest\",\"review\",\"return\",\"contact\"]', 1),
-(20713, 0, 'config', 'config_captcha', '', 0),
-(20711, 0, 'config', 'config_return_id', '9', 0),
-(20712, 0, 'config', 'config_return_status_id', '1', 0),
-(20709, 0, 'config', 'config_affiliate_commission', '5', 0),
-(20710, 0, 'config', 'config_affiliate_id', '10', 0),
-(20708, 0, 'config', 'config_affiliate_auto', '0', 0),
-(20707, 0, 'config', 'config_affiliate_approval', '0', 0),
-(20706, 0, 'config', 'config_affiliate_group_id', '1', 0),
-(20705, 0, 'config', 'config_stock_checkout', '1', 0),
-(20704, 0, 'config', 'config_stock_warning', '0', 0),
+(20814, 0, 'config', 'config_complete_status', '[\"3\",\"5\"]', 1),
+(20813, 0, 'config', 'config_processing_status', '[\"2\",\"3\",\"1\",\"12\",\"5\"]', 1),
+(20812, 0, 'config', 'config_order_status_id', '1', 0),
+(20811, 0, 'config', 'config_checkout_id', '9', 0),
+(20810, 0, 'config', 'config_checkout_guest', '1', 0),
+(20809, 0, 'config', 'config_cart_weight', '1', 0),
+(20808, 0, 'config', 'config_invoice_prefix', 'INV-2025-00', 0),
+(20807, 0, 'config', 'config_account_id', '9', 0),
+(20806, 0, 'config', 'config_login_attempts', '5', 0),
+(20805, 0, 'config', 'config_customer_price', '0', 0),
 (16041, 0, 'module_privacy', 'module_privacy_content', '{\"1\":{\"button\":\"\\u0417\\u0430\\u043c\\u0435\\u0447\\u0430\\u0442\\u0435\\u043b\\u044c\\u043d\\u043e\",\"text\":\"\\u041f\\u0440\\u043e\\u0434\\u043e\\u043b\\u0436\\u0430\\u044f \\u0438\\u0441\\u043f\\u043e\\u043b\\u044c\\u0437\\u043e\\u0432\\u0430\\u043d\\u0438\\u0435 \\u044d\\u0442\\u043e\\u0433\\u043e \\u0441\\u0430\\u0439\\u0442\\u0430 \\u0432\\u044b \\u043f\\u043e\\u0434\\u0442\\u0432\\u0435\\u0440\\u0436\\u0434\\u0430\\u0435\\u0442\\u0435, \\u0447\\u0442\\u043e \\u043e\\u0437\\u043d\\u0430\\u043a\\u043e\\u043c\\u0438\\u043b\\u0438\\u0441\\u044c \\u0438 \\u043f\\u0440\\u0438\\u043d\\u0438\\u043c\\u0430\\u0435\\u0442\\u0435 \\u0443\\u0441\\u043b\\u043e\\u0432\\u0438\\u044f \\u0441\\u0442\\u0430\\u0442\\u044c\\u0438\"},\"2\":{\"button\":\"I agree\",\"text\":\"By continuing to use this site you confirm that you have read and accept the terms of the article\"}}', 1),
 (16042, 0, 'module_privacy', 'module_privacy_information', '9', 0),
 (19027, 0, 'theme_default', 'theme_default_directory', 'default', 0),
 (19756, 0, 'module_extheme', 'module_extheme_changed', '1', 0),
 (19755, 0, 'module_extheme', 'module_extheme_directory', 'default', 0),
-(20703, 0, 'config', 'config_stock_display', '0', 0),
-(20757, 0, 'config', 'config_api_id', '6', 0),
-(20700, 0, 'config', 'config_complete_status', '[\"3\",\"5\"]', 1),
-(20701, 0, 'config', 'config_fraud_status_id', '16', 0),
-(20699, 0, 'config', 'config_processing_status', '[\"2\",\"3\",\"1\",\"12\",\"5\"]', 1),
-(20698, 0, 'config', 'config_order_status_id', '1', 0),
-(20697, 0, 'config', 'config_checkout_id', '9', 0),
-(20696, 0, 'config', 'config_checkout_guest', '1', 0),
-(20695, 0, 'config', 'config_cart_weight', '1', 0),
-(20694, 0, 'config', 'config_invoice_prefix', 'INV-2025-00', 0),
-(20693, 0, 'config', 'config_account_id', '9', 0),
-(20692, 0, 'config', 'config_login_attempts', '5', 0),
-(20691, 0, 'config', 'config_customer_price', '0', 0),
-(20690, 0, 'config', 'config_customer_group_display', '[\"1\"]', 1),
-(20689, 0, 'config', 'config_customer_group_id', '1', 0),
-(20688, 0, 'config', 'config_customer_search', '0', 0),
-(20687, 0, 'config', 'config_customer_activity', '0', 0),
-(20686, 0, 'config', 'config_customer_online', '0', 0),
-(20685, 0, 'config', 'config_tax_customer', 'shipping', 0),
-(20684, 0, 'config', 'config_tax_default', 'shipping', 0),
-(20683, 0, 'config', 'config_tax', '0', 0),
-(20682, 0, 'config', 'config_voucher_max', '1000', 0),
-(20681, 0, 'config', 'config_voucher_min', '1', 0),
-(20680, 0, 'config', 'config_review_guest', '1', 0),
-(20679, 0, 'config', 'config_review_status', '1', 0),
-(20678, 0, 'config', 'config_limit_autocomplete', '5', 0),
-(20677, 0, 'config', 'config_limit_admin', '50', 0),
-(20676, 0, 'config', 'config_product_count', '0', 0),
-(20673, 0, 'config', 'config_currency_engine', 'cbr', 0),
-(20674, 0, 'config', 'config_length_class_id', '1', 0),
-(20675, 0, 'config', 'config_weight_class_id', '1', 0),
-(20661, 0, 'config', 'config_image', '', 0),
-(20662, 0, 'config', 'config_open', '10:00 - 18:00', 0),
-(20663, 0, 'config', 'config_comment', '', 0),
-(20664, 0, 'config', 'config_location', '[\"1\",\"2\"]', 1),
-(20665, 0, 'config', 'config_country_id', '176', 0),
-(20666, 0, 'config', 'config_zone_id', '2751', 0),
-(20667, 0, 'config', 'config_city', 'Москва', 0),
-(20668, 0, 'config', 'config_timezone', 'Europe/Moscow', 0),
-(20669, 0, 'config', 'config_language', 'ru-ru', 0),
-(20659, 0, 'config', 'config_fax', '', 0),
-(20660, 0, 'config', 'config_social_media', '[{\"name\":\"telegram\",\"url\":\"https:\\/\\/t.me\\/exopencart\",\"icon\":\"&lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;   &lt;path d=&quot;M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z&quot;\\/&gt; &lt;\\/svg&gt;\",\"contact\":\"1\",\"header\":\"1\"}]', 1),
-(20672, 0, 'config', 'config_currency_auto', '1', 0),
-(20671, 0, 'config', 'config_currency', 'RUB', 0),
-(20670, 0, 'config', 'config_admin_language', 'ru-ru', 0),
-(20755, 0, 'config', 'config_email', 'info@exopencart.ru', 0),
-(20658, 0, 'config', 'config_telephone', '+7 999 420 69 69', 0),
-(20656, 0, 'config', 'config_geocode', 'https://yandex.ru/map-widget/v1/?um=constructor%3Acf0da8fa05f10eb5764f1e0487b4b2a963a2a02ad1c06290acc58a05f78e5230&amp;amp;source=constructor', 0),
-(20655, 0, 'config', 'config_address', 'Здесь адрес, ул. дом, что-то еще', 0),
-(20654, 0, 'config', 'config_owner', 'Название организации', 0),
-(20653, 0, 'config', 'config_name', 'exopencart', 0),
-(20652, 0, 'config', 'config_layout_id', '4', 0),
-(20651, 0, 'config', 'config_theme', 'default', 0),
-(20650, 0, 'config', 'config_meta_keyword', '', 0),
-(20649, 0, 'config', 'config_meta_description', 'Бесплатный интернет-магазин - exopencart.ru', 0),
-(20648, 0, 'config', 'config_heading_seo_phrase', '{\"1\":\"\",\"2\":\"\"}', 1),
-(20647, 0, 'config', 'config_title_seo_phrase', '{\"1\":\"\",\"2\":\"\"}', 1),
+(20804, 0, 'config', 'config_customer_group_display', '[\"1\"]', 1),
+(20803, 0, 'config', 'config_customer_group_id', '1', 0),
+(20802, 0, 'config', 'config_customer_search', '0', 0),
+(20801, 0, 'config', 'config_customer_activity', '0', 0),
+(20800, 0, 'config', 'config_customer_online', '0', 0),
+(20799, 0, 'config', 'config_tax_customer', 'shipping', 0),
+(20798, 0, 'config', 'config_tax_default', 'shipping', 0),
+(20797, 0, 'config', 'config_tax', '0', 0),
+(20796, 0, 'config', 'config_voucher_max', '1000', 0),
+(20795, 0, 'config', 'config_voucher_min', '1', 0),
+(20794, 0, 'config', 'config_review_guest', '1', 0),
+(20793, 0, 'config', 'config_review_status', '1', 0),
+(20792, 0, 'config', 'config_limit_autocomplete', '5', 0),
+(20791, 0, 'config', 'config_limit_admin', '50', 0),
+(20790, 0, 'config', 'config_product_count', '0', 0),
+(20789, 0, 'config', 'config_weight_class_id', '1', 0),
+(20788, 0, 'config', 'config_length_class_id', '1', 0),
+(20787, 0, 'config', 'config_currency_engine', 'cbr', 0),
+(20786, 0, 'config', 'config_currency_auto', '1', 0),
+(20785, 0, 'config', 'config_currency', 'RUB', 0),
+(20784, 0, 'config', 'config_admin_language', 'en-gb', 0),
+(20783, 0, 'config', 'config_language', 'ru-ru', 0),
+(20782, 0, 'config', 'config_timezone', 'Europe/Moscow', 0),
+(20781, 0, 'config', 'config_city', 'Москва', 0),
+(20780, 0, 'config', 'config_zone_id', '2751', 0),
+(20779, 0, 'config', 'config_country_id', '176', 0),
+(20778, 0, 'config', 'config_location', '[\"1\",\"2\"]', 1),
+(20777, 0, 'config', 'config_comment', '', 0),
+(20776, 0, 'config', 'config_open', '10:00 - 18:00', 0),
+(20775, 0, 'config', 'config_image', '', 0),
+(20774, 0, 'config', 'config_social_media', '[{\"name\":\"telegram\",\"url\":\"https:\\/\\/t.me\\/exopencart\",\"icon\":\"&lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;   &lt;path d=&quot;M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z&quot;\\/&gt; &lt;\\/svg&gt;\",\"contact\":\"1\",\"header\":\"1\"}]', 1),
+(20773, 0, 'config', 'config_fax', '', 0),
+(20772, 0, 'config', 'config_telephone', '+7 999 420 69 69', 0),
+(20771, 0, 'config', 'config_email', 'info@exopencart.ru', 0),
+(20770, 0, 'config', 'config_geocode', 'https://yandex.ru/map-widget/v1/?um=constructor%3Acf0da8fa05f10eb5764f1e0487b4b2a963a2a02ad1c06290acc58a05f78e5230&amp;amp;source=constructor', 0),
+(20769, 0, 'config', 'config_address', 'Здесь адрес, ул. дом, что-то еще', 0),
+(20768, 0, 'config', 'config_owner', 'Название организации', 0),
+(20767, 0, 'config', 'config_name', 'exopencart', 0),
+(20766, 0, 'config', 'config_layout_id', '4', 0),
+(20765, 0, 'config', 'config_theme', 'default', 0),
+(20764, 0, 'config', 'config_meta_keyword', '', 0),
+(20763, 0, 'config', 'config_meta_description', 'Бесплатный интернет-магазин - exopencart.ru', 0),
+(20762, 0, 'config', 'config_heading_seo_phrase', '{\"1\":\"\",\"2\":\"\"}', 1),
+(20761, 0, 'config', 'config_title_seo_phrase', '{\"1\":\"\",\"2\":\"\"}', 1),
 (20645, 0, 'module_exbot', 'module_exbot_settings', '{\"bot_token\":\"\",\"token\":\"\",\"users\":[\"\"]}', 1),
-(20646, 0, 'config', 'config_meta_title', 'Бесплатный интернет-магазин', 0),
-(20644, 0, 'module_exbot', 'module_exbot_status', '0', 0);
+(20760, 0, 'config', 'config_meta_title', 'Бесплатный интернет-магазин', 0),
+(20644, 0, 'module_exbot', 'module_exbot_status', '0', 0),
+(20853, 0, 'config', 'config_error_display', '1', 0),
+(20854, 0, 'config', 'config_error_log', '1', 0),
+(20855, 0, 'config', 'config_error_filename', 'error.log', 0),
+(20856, 0, 'config', 'config_seo_pro', '1', 0),
+(20857, 0, 'config', 'config_seo_url_include_path', '1', 0),
+(20858, 0, 'config', 'config_seo_url_cache', '0', 0),
+(20859, 0, 'config', 'config_seopro_addslash', '0', 0),
+(20860, 0, 'config', 'config_seopro_lowercase', '1', 0),
+(20861, 0, 'config', 'config_page_postfix', '', 0),
+(20862, 0, 'config', 'config_valide_param_flag', '0', 0),
+(20863, 0, 'config', 'config_valide_params', 'block\r\nfrommarket\r\ngclid\r\nfbclid\r\nkeyword\r\nlist_type\r\nopenstat\r\nopenstat_service\r\nopenstat_campaign\r\nopenstat_ad\r\nopenstat_source\r\nposition\r\nsource\r\ntracking\r\ntype\r\nyclid\r\nymclid\r\nuri\r\nurltype\r\nutm_source\r\nutm_medium\r\nutm_campaign\r\nutm_term\r\nutm_content', 0),
+(20864, 0, 'config', 'config_canonical_method', '1', 0),
+(20865, 0, 'config', 'config_canonical_self', '1', 0),
+(20866, 0, 'config', 'config_add_prevnext', '0', 0),
+(20867, 0, 'config', 'config_noindex_status', '1', 0),
+(20868, 0, 'config', 'config_noindex_disallow_params', 'page', 0);
 
 -- --------------------------------------------------------
 
@@ -6697,7 +6819,7 @@ CREATE TABLE `oc_user` (
 --
 
 INSERT INTO `oc_user` (`user_id`, `user_group_id`, `username`, `password`, `salt`, `firstname`, `lastname`, `email`, `image`, `code`, `ip`, `status`, `date_added`) VALUES
-(1, 1, 'admin', '743840d3aae60e1b4087aa419cb15c1a3ada9c62', 'dQNKRIHWW', 'John', 'Doe', 'info@exopencart.ru', '', '', '172.16.238.1', 1, '2025-05-21 14:06:12');
+(1, 1, 'admin', '9d0ac4def995d9fd7c0139318749ea199326f50c', 'k39rhgJZf', 'John', 'Doe', 'info@exopencart.ru', '', '', '172.16.238.1', 1, '2025-05-27 19:00:49');
 
 -- --------------------------------------------------------
 
@@ -11347,6 +11469,31 @@ ALTER TABLE `oc_coupon_product`
   ADD PRIMARY KEY (`coupon_product_id`);
 
 --
+-- Indexes for table `oc_csvprice_pro`
+--
+ALTER TABLE `oc_csvprice_pro`
+  ADD PRIMARY KEY (`setting_id`);
+
+--
+-- Indexes for table `oc_csvprice_pro_crontab`
+--
+ALTER TABLE `oc_csvprice_pro_crontab`
+  ADD PRIMARY KEY (`job_id`);
+
+--
+-- Indexes for table `oc_csvprice_pro_images`
+--
+ALTER TABLE `oc_csvprice_pro_images`
+  ADD PRIMARY KEY (`catalog_id`,`image_key`),
+  ADD KEY `image_key` (`image_key`);
+
+--
+-- Indexes for table `oc_csvprice_pro_profiles`
+--
+ALTER TABLE `oc_csvprice_pro_profiles`
+  ADD PRIMARY KEY (`profile_id`);
+
+--
 -- Indexes for table `oc_currency`
 --
 ALTER TABLE `oc_currency`
@@ -12117,7 +12264,7 @@ ALTER TABLE `oc_api_ip`
 -- AUTO_INCREMENT for table `oc_api_session`
 --
 ALTER TABLE `oc_api_session`
-  MODIFY `api_session_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=581;
+  MODIFY `api_session_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=579;
 
 --
 -- AUTO_INCREMENT for table `oc_article`
@@ -12165,7 +12312,7 @@ ALTER TABLE `oc_blog_category`
 -- AUTO_INCREMENT for table `oc_cart`
 --
 ALTER TABLE `oc_cart`
-  MODIFY `cart_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `cart_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `oc_category`
@@ -12196,6 +12343,24 @@ ALTER TABLE `oc_coupon_history`
 --
 ALTER TABLE `oc_coupon_product`
   MODIFY `coupon_product_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `oc_csvprice_pro`
+--
+ALTER TABLE `oc_csvprice_pro`
+  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `oc_csvprice_pro_crontab`
+--
+ALTER TABLE `oc_csvprice_pro_crontab`
+  MODIFY `job_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `oc_csvprice_pro_profiles`
+--
+ALTER TABLE `oc_csvprice_pro_profiles`
+  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `oc_currency`
@@ -12405,7 +12570,7 @@ ALTER TABLE `oc_modification_backup`
 -- AUTO_INCREMENT for table `oc_module`
 --
 ALTER TABLE `oc_module`
-  MODIFY `module_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `module_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `oc_option`
@@ -12573,13 +12738,13 @@ ALTER TABLE `oc_review_article`
 -- AUTO_INCREMENT for table `oc_seo_url`
 --
 ALTER TABLE `oc_seo_url`
-  MODIFY `seo_url_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1189;
+  MODIFY `seo_url_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1185;
 
 --
 -- AUTO_INCREMENT for table `oc_setting`
 --
 ALTER TABLE `oc_setting`
-  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20888;
+  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20883;
 
 --
 -- AUTO_INCREMENT for table `oc_statistics`
