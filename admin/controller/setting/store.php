@@ -426,6 +426,14 @@ class ControllerSettingStore extends Controller {
       $data['config_fax'] = '';
     }
 
+    if (isset($this->request->post['config_social_media'])) {
+      $data['config_social_media'] = $this->request->post['config_social_media'];
+    } elseif (isset($store_info['config_social_media'])) {
+      $data['config_social_media'] = $store_info['config_social_media'];
+    } else {
+      $data['config_social_media'] = $this->config->get('config_social_media');
+    }
+
     if (isset($this->request->post['config_image'])) {
       $data['config_image'] = $this->request->post['config_image'];
     } elseif (isset($store_info['config_image'])) {

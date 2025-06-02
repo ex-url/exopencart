@@ -192,6 +192,60 @@
                 </div>
               </div>
               <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-social-media">{{ entry_social_media }}</label>
+                <div class="col-sm-10" id="social-medias">
+                  {% if config_social_media %}
+                  {% set row = 0 %}
+                  {% for item in config_social_media %}
+                  <div class="row" id="media-row-{{ row }}">
+                    <div class="col-sm-3">
+                      <input type="text" name="config_social_media[{{ row }}][name]" value="{{ item.name }}" placeholder="{{ entry_social_media_name }}" class="form-control" />
+                    </div>
+                    <div class="col-sm-3">
+                      <input type="text" name="config_social_media[{{ row }}][url]" value="{{ item.url }}" placeholder="{{ entry_social_media_url }}" class="form-control" />
+                    </div>
+                    <div class="col-sm-3">
+                      <input type="text" name="config_social_media[{{ row }}][icon]" value="{{ item.icon }}" placeholder="{{ entry_social_media_icon }}" class="form-control" />
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="">
+                        <label style="margin-bottom: 0">
+                          {% if item.contact %}
+                          <input type="checkbox" name="config_social_media[{{ row }}][contact]" checked value="1">
+                          {% else %}
+                          <input type="checkbox" name="config_social_media[{{ row }}][contact]" value="1">
+                          {% endif %}
+                          {{ entry_social_media_contact }}
+                        </label>
+                      </div>
+                      <div class="">
+                        <label style="margin-bottom: 0">
+                          {% if item.header %}
+                          <input type="checkbox" name="config_social_media[{{ row }}][header]" checked value="1">
+                          {% else %}
+                          <input type="checkbox" name="config_social_media[{{ row }}][header]" value="1">
+                          {% endif %}
+                          {{ entry_social_media_header }}
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-sm-1 text-right">
+                      <button type="button" class="btn btn-danger" onclick="$(this).parents('.row').remove()"><i class="fa fa-trash"></i></button>
+                    </div>
+                  </div>
+                  {% set row = row + 1 %}
+                  {% endfor %}
+                  {% else %}
+                  <div class="row">
+                    <input type="hidden" name="config_social_media[]" value="">
+                  </div>
+                  {% endif %}
+                </div>
+                <div class="col-sm-12 text-right">
+                  <button type="button" class="btn btn-primary" onclick="addSocialContact()"><i class="fa fa-plus"></i></button>
+                </div>
+              </div>
+              <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-image">{{ entry_image }}</label>
                 <div class="col-sm-10"><a href="" id="thumb-image" data-toggle="image" class="img-thumbnail"><img src="{{ thumb }}" alt="" title="" data-placeholder="{{ placeholder }}" /></a>
                   <input type="hidden" name="config_image" value="{{ config_image }}" id="input-image" />
@@ -663,6 +717,51 @@ $('select[name=\'config_country_id\']').on('change', function() {
 		}
 	});
 });
+
+let row = $('#social-medias input[type="hidden"]').length ? 0 : $('#social-medias > .row').length;
+
+  function addSocialContact(){
+
+    if($('#social-medias input[type="hidden"]').length) {
+      $('#social-medias input[type="hidden"]').remove();
+      $('#social-medias .row').remove();
+    }
+
+    let html = '<div class="row" id="media-row-' + row + '">';
+
+    html += '<div class="col-sm-3">';
+      html += '<input type="text" name="config_social_media[' + row + '][name]" value="" placeholder="{{ entry_social_media_name }}" class="form-control" />';
+    html += '</div>';
+    html += '<div class="col-sm-3">';
+      html += '<input type="text" name="config_social_media[' + row + '][url]" value="" placeholder="{{ entry_social_media_url }}" class="form-control" />';
+    html += '</div>';
+    html += '<div class="col-sm-3">';
+      html += '<input type="text" name="config_social_media[' + row + '][icon]" value="" placeholder="{{ entry_social_media_icon }}" class="form-control" />';
+    html += '</div>';
+    html += '<div class="col-sm-2">';
+      html += '<div class="">';
+        html += '<label style="margin-bottom: 0">';
+          html += '<input type="checkbox" name="config_social_media[' + row + '][contact]" checked value="1">';
+          html += ' {{ entry_social_media_contact }}';
+        html += '</label>';
+      html += '</div>';
+      html += '<div class="">';
+        html += '<label style="margin-bottom: 0">';
+          html += '<input type="checkbox" name="config_social_media[' + row + '][header]" checked value="1">';
+          html += ' {{ entry_social_media_header }}';
+        html += '</label>';
+      html += '</div>';
+    html += '</div>';
+    html += '<div class="col-sm-1 text-right">';
+      html += '<button type="button" class="btn btn-danger" onclick="$(\'#media-row-' + row  + '\').remove();"><i class="fa fa-trash"></i></button>';
+    html += '</div>';
+    html += '</div>'
+
+    $('#social-medias').append(html);
+
+    row++;
+
+  }
 
 $('select[name=\'config_country_id\']').trigger('change');
 //--></script></div>

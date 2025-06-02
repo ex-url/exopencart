@@ -118,32 +118,43 @@ class ControllerCommonHeader extends Controller {
   }
 
   private function getCompressedStyles() {
-    $template_folder = $this->config->get('theme_default_directory');
     $styles = $this->document->getStyles();
-    $hash = md5(implode((array_keys($styles))));
+    $template_folder = $this->config->get('theme_default_directory');
 
-    if (!is_dir(DIR_APPLICATION . 'compressed')) {
-      mkdir(DIR_APPLICATION . 'compressed', 0755);
-    }
+    if ($this->config->get('developer_css')) {
+      $token = $this->config->get('styles_token');
 
-    if (is_file(DIR_APPLICATION . 'compressed/styles.' . $hash . '.css')) {
-      return array(
-        'compressed' => array(
-          'href'  => 'catalog/compressed/styles.' . $hash . '.css',
+      if (!$token) {
+        $token = bin2hex(random_bytes(8));
+        $this->db->query("REPLACE INTO " . DB_PREFIX . "setting SET store_id = 0, `code` = 'developer', `key` = 'styles_token', `value` = '" . $this->db->escape($token) . "'");
+        $this->config->set('styles_token', $token);
+      }
+
+      $paths = array_keys($styles);
+      $hash = md5(implode($paths) . $token);
+
+      if (!is_dir(DIR_APPLICATION . 'compressed')) {
+        mkdir(DIR_APPLICATION . 'compressed', 0755, true);
+      }
+
+      if (is_file(DIR_APPLICATION . 'compressed/styles.' . $hash . '.css')) {
+        return [
+          'compressed' => [
+            'href'  => 'catalog/compressed/styles.' . $hash . '.css',
+            'rel'   => 'stylesheet',
+            'media' => 'screen'
+          ]
+        ];
+      }
+
+      $minifier = new MatthiasMullie\Minify\CSS();
+      $ordered = [
+        [
+          'href'  => 'catalog/view/theme/' . $template_folder . '/css/ui.min.css',
           'rel'   => 'stylesheet',
           'media' => 'screen'
-        )
-      );
-    } else {
-      $minifier = new MatthiasMullie\Minify\CSS();
-
-      // bulma should be the first because of the charset and easy way to overwrite its styles
-      $ordered = [];
-      $ordered[] = array(
-        'href' => 'catalog/view/theme/' . $template_folder . '/css/ui.min.css',
-        'rel' => 'stylesheet',
-        'media' => 'screen'
-      );
+        ]
+      ];
 
       foreach ($styles as $style) {
         if ($style['href'] !== 'catalog/view/theme/' . $template_folder . '/css/ui.min.css') {
@@ -152,52 +163,75 @@ class ControllerCommonHeader extends Controller {
       }
 
       foreach ($ordered as $style) {
-        $minifier->add(DIR_ROOT . $style['href']);
+        if (file_exists(DIR_ROOT . $style['href'])) {
+          $minifier->add(DIR_ROOT . $style['href']);
+        }
       }
 
       $minifier->minify(DIR_APPLICATION . 'compressed/styles.' . $hash . '.css');
 
-      return array(
-        'compressed' => array(
+      return [
+        'compressed' => [
           'href'  => 'catalog/compressed/styles.' . $hash . '.css',
           'rel'   => 'stylesheet',
           'media' => 'screen'
-        )
-      );
+        ]
+      ];
     }
+
+    return $styles;
   }
 
   private function getCompressedScripts() {
     $scripts = $this->document->getScripts();
-    $hash = md5(implode((array_keys($scripts))));
+    $template_folder = $this->config->get('theme_default_directory');
 
-    if (!is_dir(DIR_APPLICATION . 'compressed')) {
-      mkdir(DIR_APPLICATION . 'compressed', 0755);
-    }
+    if ($this->config->get('developer_js')) {
+      $token = $this->config->get('scripts_token');
 
-    if (is_file(DIR_APPLICATION . 'compressed/scripts.' . $hash . '.js')) {
-      return array(
-        'compressed' => 'catalog/compressed/scripts.' . $hash . '.js'
-      );
-    } else {
+      if (!$token) {
+        $token = bin2hex(random_bytes(8));
+        $this->db->query("REPLACE INTO " . DB_PREFIX . "setting SET store_id = 0, `code` = 'developer', `key` = 'scripts_token', `value` = '" . $this->db->escape($token) . "'");
+        $this->config->set('scripts_token', $token);
+      }
+
+      $paths = array_keys($scripts);
+      $hash = md5(implode($paths) . $token);
+
+      if (!is_dir(DIR_APPLICATION . 'compressed')) {
+        mkdir(DIR_APPLICATION . 'compressed', 0755, true);
+      }
+
+      if (is_file(DIR_APPLICATION . 'compressed/scripts.' . $hash . '.js')) {
+        return [
+          'compressed' => 'catalog/compressed/scripts.' . $hash . '.js'
+        ];
+      }
+
       $minifier = new MatthiasMullie\Minify\JS();
-
-      $ordered = [];
-      $ordered[] = 'catalog/view/theme/default/js/jquery.min.js';
+      $ordered = [
+        'catalog/view/theme/' . $template_folder . '/js/jquery.min.js'
+      ];
 
       foreach ($scripts as $script) {
-        $ordered[] = $script;
+        if ($script !== 'catalog/view/theme/' . $template_folder . '/js/jquery.min.js') {
+          $ordered[] = $script;
+        }
       }
 
       foreach ($ordered as $script) {
-        $minifier->add(DIR_ROOT . $script);
+        if (file_exists(DIR_ROOT . $script)) {
+          $minifier->add(DIR_ROOT . $script);
+        }
       }
 
       $minifier->minify(DIR_APPLICATION . 'compressed/scripts.' . $hash . '.js');
 
-      return array(
+      return [
         'compressed' => 'catalog/compressed/scripts.' . $hash . '.js'
-      );
+      ];
     }
+
+    return $scripts;
   }
 }

@@ -1,6 +1,6 @@
 <?php
 class ModelToolImage extends Model {
-  public function resize($filename, $width, $height) {
+  public function resize($filename, $width, $height, $mode = 'default') {
     if (!is_file(DIR_IMAGE . $filename) || substr(str_replace('\\', '/', realpath(DIR_IMAGE . $filename)), 0, strlen(DIR_IMAGE)) != str_replace('\\', '/', DIR_IMAGE)) {
       return;
     }
@@ -31,7 +31,7 @@ class ModelToolImage extends Model {
 
       if ($width_orig != $width || $height_orig != $height) {
         $image = new Image(DIR_IMAGE . $image_old);
-        $image->resize($width, $height);
+        $image->resize($width, $height, $mode);
         $image->save(DIR_IMAGE . $image_new);
       } else {
         copy(DIR_IMAGE . $image_old, DIR_IMAGE . $image_new);

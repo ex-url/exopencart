@@ -40,6 +40,22 @@ class ControllerCommonDeveloper extends Controller {
     } else {
       $this->load->model('setting/setting');
 
+      if (isset($this->request->post['developer_css']) && $this->request->post['developer_css'] == 1) {
+        if (!$this->config->get('styles_token')) {
+          $this->request->post['styles_token'] = bin2hex(random_bytes(8));
+        }
+      } else {
+        $this->request->post['styles_token'] = '';
+      }
+
+      if (isset($this->request->post['developer_js']) && $this->request->post['developer_js'] == 1) {
+        if (!$this->config->get('scripts_token')) {
+          $this->request->post['scripts_token'] = bin2hex(random_bytes(8));
+        }
+      } else {
+        $this->request->post['scripts_token'] = '';
+      }
+
       $this->model_setting_setting->editSetting('developer', $this->request->post, 0);
 
       $json['success'] = $this->language->get('text_success');
@@ -122,13 +138,16 @@ class ControllerCommonDeveloper extends Controller {
     if (!$this->user->hasPermission('modify', 'common/developer')) {
       $json['error'] = $this->language->get('error_permission');
     } else {
-      $styles = scandir(DIR_CATALOG . 'compressed');
 
-      foreach ($styles as $file) {
-        if (strpos($file, 'styles') !== false) {
-          if ($file !== "." && $file !== "..") {
-            $path = realpath(DIR_CATALOG . 'compressed' . DIRECTORY_SEPARATOR . $file);
-            unlink($path);
+      if (is_dir(DIR_CATALOG . 'compressed')) {
+        $styles = scandir(DIR_CATALOG . 'compressed');
+
+        foreach ($styles as $file) {
+          if (strpos($file, 'styles') !== false) {
+            if ($file !== "." && $file !== "..") {
+              $path = realpath(DIR_CATALOG . 'compressed' . DIRECTORY_SEPARATOR . $file);
+              unlink($path);
+            }
           }
         }
       }
