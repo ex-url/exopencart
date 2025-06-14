@@ -468,7 +468,7 @@ class ControllerBlogArticle extends Controller {
         'text'       => $result['text'],
         'reply'       => $result['reply'],
         'reviews'    => sprintf($this->language->get('text_reviews'), (int)$review_total),
-        'date_published' => date($this->language->get('date_format_short'), strtotime($result['date_published']))
+        'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added']))
       );
     }
 
