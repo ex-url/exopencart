@@ -62,19 +62,6 @@ class ControllerBlogCategory extends Controller {
       'href' => $this->url->link('common/home')
     );
 
-    $configblog_name = $this->config->get('configblog_name')[$this->config->get('config_language_id')];
-
-    if (!empty($configblog_name)) {
-      $name = $configblog_name;
-    } else {
-      $name = $this->language->get('heading_title');
-    }
-
-    $data['breadcrumbs'][] = array(
-      'text' => $name,
-      'href' => $this->url->link('blog/latest')
-    );
-
     if (isset($this->request->get['blog_category_id'])) {
       $url = '';
 

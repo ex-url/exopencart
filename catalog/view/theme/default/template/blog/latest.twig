@@ -38,14 +38,14 @@
         <div class="columns is-mobile is-multiline mt-5 blog-cards">
           {% for article in articles %}
           <div class="{{ class }}">
-            <div class="box blog-card">
-              <div class="blog-image">
+            <div class="blog-card card">
+              <div class="card-image">
                 <a href="{{ article['href'] }}" class="has-text-centered image">
                   <img src="{{ article['thumb'] }}" width="{{ image_width }}" height="{{ image_height }}" loading="lazy" alt="{{ article['name'] }}" title="{{ article['name'] }}" />
                 </a>
               </div>
-              <div class="info">
-                <div class="title is-5 my-5"><a href="{{ article['href'] }}">{{ article['name'] }}</a></div>
+              <div class="card-content">
+                <div class="title is-5 mb-5"><a href="{{ article['href'] }}">{{ article['name'] }}</a></div>
                 <div class="is-flex is-justify-content-space-between is-align-items-center mb-5">
                   <span class="icon-text">
                     <span class="icon has-text-primary">
@@ -67,8 +67,7 @@
                   </span>
                 </div>
                 <div class="announcement">
-                  <p class="text">{{ article['description'] }}</p>
-                  <a href="{{ article.href }}">{{ button_more }}</a>
+                  <p class="text">{{ article['description'] }} <a href="{{ article.href }}">{{ button_more }}</a></p>                  
                 </div>
               </div>
             </div>

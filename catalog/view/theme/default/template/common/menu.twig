@@ -174,7 +174,7 @@
         });
       } else {
         $('#catalog-modal').addClass('is-active');
-        history.pushState(null, null, '#catalog-modal');
+        history.pushState(null, null, window.location.pathname + '#catalog-modal');
       }
     });
   {% endif %}

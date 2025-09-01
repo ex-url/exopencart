@@ -16,13 +16,6 @@ class ControllerBlogArticle extends Controller {
       'separator' => false
     );
 
-    $configblog_name = $this->config->get('configblog_name')[$this->config->get('config_language_id')];
-
-    $data['breadcrumbs'][] = array(
-      'text' => $configblog_name ? $configblog_name : $this->language->get('text_blog'),
-      'href' => $this->url->link('blog/latest')
-    );
-
     $this->load->model('blog/category');
 
     if (isset($this->request->get['blog_category_id'])) {

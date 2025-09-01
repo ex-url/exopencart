@@ -62,7 +62,7 @@
         });
       } else {
         $('#stores-modal').addClass('is-active');
-        history.pushState(null, null, '#search-modal');
+        history.pushState(null, null, window.location.pathname + '#stores-modal');
       }
     });
 

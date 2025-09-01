@@ -46,6 +46,8 @@ $pagination-current-background-color: $primary;
 $tabs-toggle-link-active-background-color: $primary;
 $tabs-toggle-link-active-border-color: $primary;
 
+$card-radius: 1.25rem;
+
 // Import only what you need from Bulma
 @import "scss/utilities/_all";
 @import "scss/base/_all";

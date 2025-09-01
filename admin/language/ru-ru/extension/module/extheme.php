@@ -1,6 +1,6 @@
 <?php
 // Heading
-$_['heading_title']    = '<b><span class="text-primary">ex</span>theme</b>';
+$_['heading_title']    = 'Bulma SASS <span class="label label-primary">ex</span>';
 $_['title']    = 'extheme';
 
 // Text

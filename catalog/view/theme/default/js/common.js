@@ -369,7 +369,7 @@ $(document).ready(function () {
       });
     } else {
       $('#login-modal').addClass('is-active');
-      history.pushState(null, null, '#login-modal');
+      history.pushState(null, null, window.location.pathname + '#login-modal');
     }
     const trigger = $(this);
 
@@ -482,20 +482,20 @@ $(document).ready(function () {
     // close modals on popstate
     let $opened = $('.modal.is-active');
 
-    if($opened.length) {
+    if ($opened.length) {
       let id = $opened.attr('id');
       let hash = '#' + id;
 
-      if(window.location.hash !== hash) {
+      if (window.location.hash !== hash) {
         $opened.addClass('is-animated');
-        $opened.find('.modal-background').one('animationend', ()=> {
+        $opened.find('.modal-background').one('animationend', () => {
           $opened.removeClass('is-animated is-active')
         });
       }
     }
   });
 
-  if (window.location.hash.includes('-modal')) {    
+  if (window.location.hash.includes('-modal')) {
     $(window.location.hash).addClass('is-active');
   }
 

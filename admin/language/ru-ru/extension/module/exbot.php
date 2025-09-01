@@ -3,7 +3,7 @@
 // *	@license	GNU General Public License version 3; see LICENSE.txt
 
 // Heading
-$_['heading_title']    = 'exbot';
+$_['heading_title']    = 'Telegram-бот <span class="label label-primary">ex</span>';
 
 // Text
 $_['text_module']      = 'Модули';
