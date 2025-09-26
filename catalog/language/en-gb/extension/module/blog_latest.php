@@ -4,8 +4,8 @@
 
 // Heading
 $_['heading_title'] = 'Last Articles';
-$_['text_views'] 	= 'Reviews';
-$_['text_all_news'] 	= 'All news';
+$_['text_views']   = 'Reviews';
+$_['text_all_news']   = 'See all news';
 $_['button_more']   = 'more';
 
 // Text

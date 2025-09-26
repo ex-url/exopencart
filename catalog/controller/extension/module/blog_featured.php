@@ -15,6 +15,8 @@ class ControllerExtensionModuleBlogFeatured extends Controller {
     $data['image_width'] = $setting['width'];
     $data['image_height'] = $setting['height'];
 
+    $data['blog_latest'] = $this->url->link('blog/latest');
+
     $data['articles'] = array();
 
     if (!$setting['limit']) {

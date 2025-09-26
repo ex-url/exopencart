@@ -1,9 +1,9 @@
-<div class="py-6 blog-featured-module">
+<div class="blog-featured-module py-6">
   <div class="container">
     {% if articles %}
     <div class="columns is-mobile is-multiline blog-cards">
       <div class="column is-12">
-        <div class="title is-1 mb-5 has-text-left-desktop has-text-centered-tablet has-text-centered-mobile">
+        <div class="title is-1 mb-5 has-text-centered">
           {{ heading_title }}
         </div>
       </div>
@@ -50,6 +50,9 @@
         </div>
       </div>
       {% endfor %}
+      <div class="column is-12 has-text-centered mt-5">
+        <a class="button is-primary is-medium is-outlined" href="{{ blog_latest }}">{{ text_all_news }}</a>
+      </div>
     </div>
     {% endif %}
   </div>

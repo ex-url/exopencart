@@ -4,8 +4,9 @@
 
 // Heading 
 $_['heading_title'] = 'Рекомендуем';
-$_['text_views'] 	= 'Просмотров:';
+$_['text_views']   = 'Просмотров:';
+$_['text_all_news']   = 'Все новости';
 $_['button_more']   = 'подробнее';
 
 // Text
-$_['text_reviews']  = 'На основании %s отзывов.'; 
+$_['text_reviews']  = 'На основании %s отзывов.';

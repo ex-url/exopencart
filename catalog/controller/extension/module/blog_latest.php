@@ -16,7 +16,6 @@ class ControllerExtensionModuleBlogLatest extends Controller {
     $data['image_height'] = $setting['height'];
 
     $data['blog_latest'] = $this->url->link('blog/latest');
-    $data['text_all_news'] = $this->language->get('text_all_news');
 
     $data['articles'] = array();
 

@@ -1,4 +1,4 @@
-<div class="py-6 has-background-light blog-latest-module">
+<div class="blog-latest-module has-background-light py-6">
   <div class="container">
     {% if articles %}
     <div class="columns is-mobile is-multiline blog-cards">
@@ -50,8 +50,8 @@
         </div>
       </div>
       {% endfor %}
-      <div class="column is-12">
-        <a class="button is-primary is-outlined" href="{{ blog_latest }}">{{ text_all_news }}</a>
+      <div class="column is-12 has-text-centered mt-5">
+        <a class="button is-primary is-medium is-outlined" href="{{ blog_latest }}">{{ text_all_news }}</a>
       </div>
     </div>
     {% endif %}

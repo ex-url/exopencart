@@ -4,8 +4,9 @@
 
 // Heading 
 $_['heading_title'] = 'Featured';
-$_['text_views'] 	= 'Reviews:';
+$_['text_views']   = 'Reviews:';
 $_['button_more']   = 'more';
+$_['text_all_news']   = 'See all news';
 
 // Text
-$_['text_reviews']  = 'Based on %s reviews.'; 
+$_['text_reviews']  = 'Based on %s reviews.';
