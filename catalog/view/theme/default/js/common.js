@@ -406,7 +406,7 @@ $(document).ready(function () {
 
   // Product List
   $('#list-view').click(function () {
-    $('.product-cards').attr('class', 'columns is-mobile is-multiline mt-5 product-cards list');
+    $('.product-cards').attr('class', 'columns is-mobile is-multiline mt-3 product-cards list');
 
     let columns = $('#column-right, #column-left').length;
 
@@ -423,7 +423,7 @@ $(document).ready(function () {
 
   // Product Grid
   $('#grid-view').click(function () {
-    $('.product-cards').attr('class', 'columns is-mobile is-multiline mt-5 product-cards grid');
+    $('.product-cards').attr('class', 'columns is-mobile is-multiline mt-3 product-cards grid');
 
     let columns = $('#column-right, #column-left').length;
 

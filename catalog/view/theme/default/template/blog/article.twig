@@ -33,7 +33,7 @@
           <div id="article-images" class="swiper mb-5">            
             <div class="swiper-wrapper">
             {% for image in images %}
-              <a href="{{ image.popup }}" data-fancybox="article" class="swiper-slide">
+              <a href="{{ image.popup }}" data-fancybox="article"  data-caption="{{ image.title }}" class="swiper-slide">
                 <img src="{{ image.thumb }}" width="{{ image_width }}" height="{{ image_heigth }}" title="{{ image.title ? image.title : heading_title }}" alt="{{  image.title ? image.title : heading_title  }}" />
               </a>
             {% endfor %}
@@ -46,17 +46,17 @@
           </div>
           {% if download_status and downloads %}
           <hr>
-          <div class="downloads">
+          <div class="downloads columns is-mobile is-multiline mb-0">
             {% for download in downloads %}
-            <a href="{{ download.href }}" class="tag is-primary is-light is-medium" rel="nofollow">
-              <span class="icon-text">
-                <span class="icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
-                    <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-                    <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+            <a href="{{ download.href }}" class="column is-4-desktop is-6-tablet is-12-mobile" rel="nofollow">
+              <span class="box is-flex is-align-items-center">
+                <span class="icon is-large has-text-primary mr-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-file-earmark-arrow-down" viewBox="0 0 16 16">
+                    <path d="M8.5 6.5a.5.5 0 0 0-1 0v3.793L6.354 9.146a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
+                    <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
                   </svg>
                 </span>
-                <span>{{ download.name }} | {{ download.size }}</span>
+                <span>{{ download.name }}</span>
               </span>
             </a>
             {% endfor %}
@@ -152,39 +152,39 @@
               {% set class = 'column is-3-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile' %}
               {% endif %}
               {% for article in articles %}
-              <div class="{{ class }}">
-                <div class="blog-card card">
-              <div class="card-image">
-                <a href="{{ article['href'] }}" class="has-text-centered image">
-                  <img src="{{ article['thumb'] }}" width="{{ image_width }}" height="{{ image_height }}" loading="lazy" alt="{{ article['name'] }}" title="{{ article['name'] }}" />
-                </a>
-              </div>
-              <div class="card-content">
-                <div class="title is-5 mb-5"><a href="{{ article['href'] }}">{{ article['name'] }}</a></div>
-                <div class="is-flex is-justify-content-space-between is-align-items-center mb-5">
-                  <span class="icon-text">
-                    <span class="icon has-text-primary">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"/>
-                        <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4zM11 7.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
-                      </svg>
-                    </span>
-                    <span class="has-text-grey">{{ article.date_published }}</span>
+            <div class="{{ class }}">
+              <div class="blog-card card">
+            <div class="card-image">
+              <a href="{{ article['href'] }}" class="has-text-centered image">
+                <img src="{{ article['thumb'] }}" width="{{ image_width }}" height="{{ image_height }}" loading="lazy" alt="{{ article['name'] }}" title="{{ article['name'] }}" />
+              </a>
+            </div>
+            <div class="card-content">
+              <div class="title is-5 mb-5"><a href="{{ article['href'] }}">{{ article['name'] }}</a></div>
+              <div class="is-flex is-justify-content-space-between is-align-items-center mb-5">
+                <span class="icon-text">
+                  <span class="icon has-text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
+                      <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"/>
+                      <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4zM11 7.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
+                    </svg>
                   </span>
-                  <span class="icon-text ml-2">
-                    <span class="icon has-text-primary">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-                        <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
-                        <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
-                      </svg>
-                    </span>
-                    <span class="has-text-grey">{{ article.viewed }}</span>
+                  <span class="has-text-grey">{{ article.date_published }}</span>
+                </span>
+                <span class="icon-text ml-2">
+                  <span class="icon has-text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                      <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                      <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                    </svg>
                   </span>
-                </div>
-                <div class="announcement">
-                  <p class="text">{{ article['description'] }} <a href="{{ article.href }}">{{ button_more }}</a></p>                  
-                </div>
+                  <span class="has-text-grey">{{ article.viewed }}</span>
+                </span>
               </div>
+              <div class="announcement">
+                <p class="text">{{ article['description'] }} <a href="{{ article.href }}">{{ button_more }}</a></p>                  
+              </div>
+            </div>
             </div>
               </div>
               {% endfor %}
@@ -288,7 +288,8 @@ $('#button-comment').on('click', function() {
 
 $(document).ready(function() {
   const swiper = new Swiper('#article-images', {
-    slidesPerView: 2,
+    slidesPerView: 3,
+    spaceBetween: 15,
     loop: true,
     pagination: {
       el: '#article-images .swiper-pagination',
@@ -300,7 +301,18 @@ $(document).ready(function() {
     speed: 750
   });
 
-  Fancybox.bind("[data-fancybox]");
+  Fancybox.bind("#article-images [data-fancybox]", {
+    Thumbs : {
+      type: "classic"
+    },
+    Toolbar: {
+      display: {
+        left: ["infobar"],
+        middle: [],
+        right: ["close"],
+      },
+    },
+  });
 });
 </script>
 {{ footer }}
