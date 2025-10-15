@@ -139,18 +139,21 @@ class ControllerCommonDeveloper extends Controller {
       $json['error'] = $this->language->get('error_permission');
     } else {
 
-      if (is_dir(DIR_CATALOG . 'compressed')) {
-        $styles = scandir(DIR_CATALOG . 'compressed');
+      if (is_dir(dirname(DIR_APPLICATION) . '/assets')) {
+
+        $styles = scandir(dirname(DIR_APPLICATION) . '/assets');
 
         foreach ($styles as $file) {
           if (strpos($file, 'styles') !== false) {
             if ($file !== "." && $file !== "..") {
-              $path = realpath(DIR_CATALOG . 'compressed' . DIRECTORY_SEPARATOR . $file);
+              $path = realpath(dirname(DIR_APPLICATION) . '/assets' . DIRECTORY_SEPARATOR . $file);
               unlink($path);
             }
           }
         }
       }
+
+      $this->db->query("DELETE FROM " . DB_PREFIX . "setting WHERE `code` = 'developer' AND `key` = 'styles_token'");
 
       $json['success'] = sprintf($this->language->get('text_cache'), $this->language->get('text_css'));
     }
@@ -167,16 +170,21 @@ class ControllerCommonDeveloper extends Controller {
     if (!$this->user->hasPermission('modify', 'common/developer')) {
       $json['error'] = $this->language->get('error_permission');
     } else {
-      $scripts = scandir(DIR_CATALOG . 'compressed');
 
-      foreach ($scripts as $file) {
-        if (strpos($file, 'scripts') !== false) {
-          if ($file !== "." && $file !== "..") {
-            $path = realpath(DIR_CATALOG . 'compressed' . DIRECTORY_SEPARATOR . $file);
-            unlink($path);
+      if (is_dir(dirname(DIR_APPLICATION) . '/assets')) {
+        $scripts = scandir(dirname(DIR_APPLICATION) . '/assets');
+
+        foreach ($scripts as $file) {
+          if (strpos($file, 'scripts') !== false) {
+            if ($file !== "." && $file !== "..") {
+              $path = realpath(dirname(DIR_APPLICATION) . '/assets' . DIRECTORY_SEPARATOR . $file);
+              unlink($path);
+            }
           }
         }
       }
+
+      $this->db->query("DELETE FROM " . DB_PREFIX . "setting WHERE `code` = 'developer' AND `key` = 'scripts_token'");
 
       $json['success'] = sprintf($this->language->get('text_cache'), $this->language->get('text_js'));
     }

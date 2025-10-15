@@ -5,7 +5,7 @@
 /php.ini
 
 #compressed
-/catalog/compressed/
+/assets/
 # Image Cache Files
 /image/cache/*
 !/image/cache/index.html

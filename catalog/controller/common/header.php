@@ -133,14 +133,14 @@ class ControllerCommonHeader extends Controller {
       $paths = array_keys($styles);
       $hash = md5(implode($paths) . $token);
 
-      if (!is_dir(DIR_APPLICATION . 'compressed')) {
-        mkdir(DIR_APPLICATION . 'compressed', 0755, true);
+      if (!is_dir(DIR_ROOT . 'assets')) {
+        mkdir(DIR_ROOT . 'assets', 0755, true);
       }
 
-      if (is_file(DIR_APPLICATION . 'compressed/styles.' . $hash . '.css')) {
+      if (is_file(DIR_ROOT . 'assets/styles.' . $hash . '.css')) {
         return [
           'compressed' => [
-            'href'  => 'catalog/compressed/styles.' . $hash . '.css',
+            'href'  => 'assets/styles.' . $hash . '.css',
             'rel'   => 'stylesheet',
             'media' => 'screen'
           ]
@@ -168,11 +168,11 @@ class ControllerCommonHeader extends Controller {
         }
       }
 
-      $minifier->minify(DIR_APPLICATION . 'compressed/styles.' . $hash . '.css');
+      $minifier->minify(DIR_ROOT . 'assets/styles.' . $hash . '.css');
 
       return [
         'compressed' => [
-          'href'  => 'catalog/compressed/styles.' . $hash . '.css',
+          'href'  => 'assets/styles.' . $hash . '.css',
           'rel'   => 'stylesheet',
           'media' => 'screen'
         ]
@@ -198,13 +198,13 @@ class ControllerCommonHeader extends Controller {
       $paths = array_keys($scripts);
       $hash = md5(implode($paths) . $token);
 
-      if (!is_dir(DIR_APPLICATION . 'compressed')) {
-        mkdir(DIR_APPLICATION . 'compressed', 0755, true);
+      if (!is_dir(DIR_ROOT . 'assets')) {
+        mkdir(DIR_ROOT . 'assets', 0755, true);
       }
 
-      if (is_file(DIR_APPLICATION . 'compressed/scripts.' . $hash . '.js')) {
+      if (is_file(DIR_ROOT . 'assets/scripts.' . $hash . '.js')) {
         return [
-          'compressed' => 'catalog/compressed/scripts.' . $hash . '.js'
+          'compressed' => 'assets/scripts.' . $hash . '.js'
         ];
       }
 
@@ -225,10 +225,10 @@ class ControllerCommonHeader extends Controller {
         }
       }
 
-      $minifier->minify(DIR_APPLICATION . 'compressed/scripts.' . $hash . '.js');
+      $minifier->minify(DIR_ROOT . 'assets/scripts.' . $hash . '.js');
 
       return [
-        'compressed' => 'catalog/compressed/scripts.' . $hash . '.js'
+        'compressed' => 'assets/scripts.' . $hash . '.js'
       ];
     }
 
