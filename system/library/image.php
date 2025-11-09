@@ -215,7 +215,7 @@ class Image {
       if ($this->mime == 'image/png' || $this->mime == 'image/webp') {
         imagealphablending($this->image, false);
         imagesavealpha($this->image, true);
-        $background = imagecolorallocatealpha($this->image, 255, 255, 127);
+        $background = imagecolorallocatealpha($this->image, 255, 255, 255, 127);
         imagecolortransparent($this->image, $background);
       } else {
         $background = imagecolorallocate($this->image, 255, 255, 255);
@@ -237,13 +237,7 @@ class Image {
     $scale_w = $width / $this->width;
     $scale_h = $height / $this->height;
 
-    if ($mode == 'w') {
-      $scale = $scale_w;
-    } elseif ($mode == 'h') {
-      $scale = $scale_h;
-    } else {
-      $scale = min($scale_w, $scale_h);
-    }
+    $scale = min($scale_w, $scale_h);
 
     if ($scale == 1 && $scale_h == $scale_w && ($this->mime != 'image/png' && $this->mime != 'image/webp')) {
       return;
