@@ -139,6 +139,10 @@
 {% for script in scripts %}
 <script src="{{ script }}" type="text/javascript"></script>
 {% endfor %}
+<script>
+  let text_files_type_error = '{{ text_files_type_error }}';
+  let text_files_size_error = '{{ text_files_size_error }}';
+</script>
 <!--
 exopencart is open source software which is based on opencart.com project. The OpenCart itself is open source software too, so you are free to remove the powered by information if you want, but its generally accepted practise to make a small donation.
 Please donate via PayPal to donate@opencart.com and don't forget about exopencart too. You could find it on exopencart.ru and exopencart.com
