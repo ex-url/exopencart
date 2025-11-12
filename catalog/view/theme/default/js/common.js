@@ -279,8 +279,6 @@ function validateEmailUniqueness($input) {
 
 $(document).ready(function () {
 
-  !window.allowed ? getAllowedTypes() : '';
-
   updateCartBadge();
   updateCompareBadge();
   updateWishlistBadge();
@@ -672,192 +670,99 @@ $(document).ready(function () {
   }
 })(window.jQuery);
 
-function ajaxFormHandler(config = {}) {
+function previewManager(config = {}) {
 
-  if (typeof config.form != 'string' || typeof config.submit != 'string') {
-    throw new Error('Send at least two params to the function: css selectors for form and submit element!');
-    return;
-  };
+  if (!config.container) {
+    throw new Error('Container selector is required for previewManager');
+  }
 
-  const $form = $(config.form);
-  const $submit = $(config.submit);
-  const $reset = config.response ? $(config.response) : null;
-  const $response = config.response ? $(config.response) : null;
-  const $modal = config.modal ? $(config.modal) : null;
+  if (!config.maxSize) {
+    throw new Error('Max size is required for previewManager');
+  }
 
-  const $files = config.files ? $(config.files) : null;
-  const $previews = config.previews ? $(config.previews) : null;
+  if (!config.allowedMimes) {
+    throw new Error('Allowed MIME types are required for previewManager');
+  }
 
-  const size = config.size ? config.size : 5 * 1024 * 1024;
-
+  const $container = $(config.container);
   let queue = {};
 
-  if ($files) {
+  function createPreviewElement(file, id) {
 
-    $files.on('change', function () {
-      let files = this.files;
-
-      let allowed = window.allowed ? window.allowed : [];
-
-      $files.parents('.files-input').find('.control').remove();
-
-      for (let i = 0; i < files.length; i++) {
-        let file = files[i];
-
-        if (!allowed.mimes.includes(file.type)) {
-          $files.parents('.files-input').append('<div class="control"><p class="help is-danger">' + text_files_type_error + allowed.types.join(', ') + '</p></div>');
-          continue;
-        }
-
-        if (file.size > config.size) {
-          $files.parents('.files-input').append('<div class="control"><p class="help is-danger">' + text_files_size_error + (config.size / 1000000).toFixed() + 'Mb' + '</p></div>');
-          continue;
-        }
-
-        createPreview(files[i]);
-      }
-
-      this.value = '';
-    });
-
-    $('body').on('click', '.preview-container .delete', function (e) {
-
-      let item = $(this).parents('.is-flex');
-
-      id = item.data('id');
-
-      delete queue[id]
-
-      item.remove();
-
-    });
-
-    if ($reset) {
-      $reset.on('click', function () {
-        resetPreview()
-      });
+    if ($container.prev().hasClass('help is-danger')) {
+      $container.prev().remove();
     }
 
-    function createPreview(file) {
+    const item = $(document.createElement('div')).addClass('is-flex is-align-items-center is-justify-content-space-between mb-2');
+    const name = $(document.createElement('p')).addClass('has-text-grey');
+    name.html('<span class="text">' + file.name + '</span><span class="ml-3 tag is-info is-light">' + formatBytes(file.size) + '</span>');
+    const remove = $(document.createElement('span')).addClass('delete');
 
-      $previews.addClass('mt-5');
+    item.attr('id', id);
+    item.append(name);
+    item.append(remove);
 
-      let reader = new FileReader();
+    return item;
+  }
+
+  function validateFile(file) {
+
+    if (config.allowedMimes.length && !config.allowedMimes.includes(file.type)) {
+      const error = text_files_type_error + config.allowedMimes.join(', ');
+      $container.before('<div class="help is-danger">' + error + '</div>');
+      return false;
+    }
+    if (file.size > config.maxSize) {
+      const error = text_files_size_error + formatBytes(config.maxSize);
+      $container.before('<div class="help is-danger">' + error + '</div>');
+      return false;
+    }
+    return true;
+  }
+
+  const manager = {
+    addFile: function (file) {
+      if (!validateFile(file)) return;
+
+      $container.addClass('mt-5');
+
+      const reader = new FileReader();
+      const id = 'file' + Math.floor(Math.random() * 1000000);
 
       reader.addEventListener('load', function (e) {
-
-        let item = $(document.createElement('div')).addClass('is-flex is-align-items-center mb-2');
-        let name = $(document.createElement('p')).addClass('has-text-grey ml-3');
-        name.html('<span class="text">' + file.name + '</span><span class="ml-3 tag is-info is-light">' + formatBytes(file.size) + '</span>');
-        let remove = $(document.createElement('span')).addClass('delete');
-
-        let id = 'file' + Math.floor(Math.random() * 1000000);
-
-        item.data('id', id);
-        item.append(name);
-        item.prepend(remove);
-
-        $previews.append(item);
+        const item = createPreviewElement(file, id);
+        $container.append(item);
         queue[id] = file;
-
       });
 
       reader.readAsDataURL(file);
-    };
+    },
+
+    removeFile: function (id) {
+      delete queue[id];
+      $container.find('#' + id).remove();
+      if (Object.keys(queue).length === 0) {
+        $container.removeClass('mt-5').empty();
+      }
+    },
+
+    getQueue: function () {
+      return { ...queue };
+    },
+
+    reset: function () {
+      queue = {};
+      $container.removeClass('mt-5').empty();
+    }
   };
 
-  function resetPreview() {
-    queue = {};
-    $previews.empty();
-    $previews.removeClass('mt-5');
-  }
-
-  $form.on('submit', function () {
-
-    config.prepareCallback ? config.prepareCallback($form) : '';
-
-    let formData = new FormData(this);
-
-    if (queue) {
-      for (let id in queue) {
-        formData.append('files[]', queue[id]);
-      }
-    };
-
-    $.ajax({
-      url: $form.data('handler'),
-      dataType: 'json',
-      cache: false,
-      async: true,
-      contentType: false,
-      processData: false,
-      data: formData,
-      type: 'post',
-      beforeSend: function () {
-        $submit.addClass('is-loading');
-      },
-      complete: function () {
-        $submit.removeClass('is-loading');
-      },
-      success: function (json) {
-
-        $submit.removeClass('is-loading');
-        $form.find('.help.is-danger').remove();
-
-        if ($('.google-captcha').length) {
-          $('.google-captcha').find('.help.is-danger').remove();
-        }
-
-        if (json['error']) {
-
-          $form.find('input, textarea').each(function (i, el) {
-            if (json['error'][$(el).attr('name')]) {
-              $(el).parents('.field').append('<p class="help is-danger">' + json['error'][$(el).attr('name')] + '</p>');
-            }
-          });
-
-          if (json['error']['type']) {
-            $form.find('.file').after('<p class="help is-danger">' + json['error']['type'] + '</p>');
-          }
-
-          if (json['error']['size']) {
-            $form.find('.file').after('<p class="help is-danger">' + json['error']['size'] + '</p>');
-          }
-
-          if ($('.google-captcha').length && json['error']['captcha']) {
-            $form.find('.google-captcha').append('<p class="help is-danger">' + json['error']['captcha'] + '</p>');
-          }
-
-          return;
-        }
-
-
-        if (json['success']) {
-
-          config.successCallback ? config.successCallback() : '';
-
-          if ($files) {
-            resetPreview();
-          }
-
-          $form.trigger('reset');
-
-          notification({
-            type: 'success',
-            text: json['success'],
-          });
-
-          if ($form.parents('.modal')) {
-            $form.parents('.modal').toggleClass('is-active');
-          }
-        }
-
-      },
-    });
-    return false;
+  $container.on('click', '.delete', function (e) {
+    const id = $(this).parents('.is-flex').attr('id');
+    manager.removeFile(id);
   });
 
-};
+  return manager;
+}
 
 function getURLVar(key) {
   var value = [];
@@ -881,21 +786,6 @@ function getURLVar(key) {
       return '';
     }
   }
-}
-
-function getAllowedTypes() {
-  $.ajax({
-    url: '/index.php?route=common/allowed',
-    dataType: 'json',
-    success: function (json) {
-      if (json['types'] && json['mimes']) {
-        window.allowed = json;
-      }
-    },
-    error: function (error) {
-      throw new Error(error)
-    }
-  })
 }
 
 function formatBytes(bytes, decimals = 2) {
