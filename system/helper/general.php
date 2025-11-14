@@ -15,7 +15,7 @@ function token($length = 32) {
 }
 
 // Generate Bulma column classes based on number of items per row for different breakpoints
-function getBulmaColumnClasses($desktop, $tablet, $mobile) {
+function getBulmaColumnClasses($fullhd, $widescreen, $desktop, $tablet, $mobile) {
   $process_value = function ($value) {
     $value = is_numeric($value) ? (float)$value : 1;
     $value = max(1, min(12, $value));
@@ -37,11 +37,16 @@ function getBulmaColumnClasses($desktop, $tablet, $mobile) {
     return "is-{$width}-{$breakpoint}";
   };
 
+  $fullhd_width = $process_value($fullhd);
+  $widescreen_width = $process_value($widescreen);
   $desktop_width = $process_value($desktop);
   $tablet_width = $process_value($tablet);
   $mobile_width = $process_value($mobile);
 
   $classes = [];
+
+  if ($fullhd_width) $classes[] = $build_class($fullhd_width, 'fullhd');
+  if ($widescreen_width) $classes[] = $build_class($widescreen_width, 'widescreen');
   if ($desktop_width) $classes[] = $build_class($desktop_width, 'desktop');
   if ($tablet_width) $classes[] = $build_class($tablet_width, 'tablet');
   if ($mobile_width) $classes[] = $build_class($mobile_width, 'mobile');
