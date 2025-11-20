@@ -9,104 +9,104 @@ $column-gap: 0.75rem !default;
   flex-shrink: 1;
   padding: $column-gap;
 
-  .columns.is-mobile > &.is-narrow {
+  .columns.is-mobile>&.is-narrow {
     flex: none;
     width: unset;
   }
 
-  .columns.is-mobile > &.is-full {
+  .columns.is-mobile>&.is-full {
     flex: none;
     width: 100%;
   }
 
-  .columns.is-mobile > &.is-three-quarters {
+  .columns.is-mobile>&.is-three-quarters {
     flex: none;
     width: 75%;
   }
 
-  .columns.is-mobile > &.is-two-thirds {
+  .columns.is-mobile>&.is-two-thirds {
     flex: none;
     width: 66.6666%;
   }
 
-  .columns.is-mobile > &.is-half {
+  .columns.is-mobile>&.is-half {
     flex: none;
     width: 50%;
   }
 
-  .columns.is-mobile > &.is-one-third {
+  .columns.is-mobile>&.is-one-third {
     flex: none;
     width: 33.3333%;
   }
 
-  .columns.is-mobile > &.is-one-quarter {
+  .columns.is-mobile>&.is-one-quarter {
     flex: none;
     width: 25%;
   }
 
-  .columns.is-mobile > &.is-one-fifth {
+  .columns.is-mobile>&.is-one-fifth {
     flex: none;
     width: 20%;
   }
 
-  .columns.is-mobile > &.is-two-fifths {
+  .columns.is-mobile>&.is-two-fifths {
     flex: none;
     width: 40%;
   }
 
-  .columns.is-mobile > &.is-three-fifths {
+  .columns.is-mobile>&.is-three-fifths {
     flex: none;
     width: 60%;
   }
 
-  .columns.is-mobile > &.is-four-fifths {
+  .columns.is-mobile>&.is-four-fifths {
     flex: none;
     width: 80%;
   }
 
-  .columns.is-mobile > &.is-offset-three-quarters {
+  .columns.is-mobile>&.is-offset-three-quarters {
     @include ltr-property("margin", 75%, false);
   }
 
-  .columns.is-mobile > &.is-offset-two-thirds {
+  .columns.is-mobile>&.is-offset-two-thirds {
     @include ltr-property("margin", 66.6666%, false);
   }
 
-  .columns.is-mobile > &.is-offset-half {
+  .columns.is-mobile>&.is-offset-half {
     @include ltr-property("margin", 50%, false);
   }
 
-  .columns.is-mobile > &.is-offset-one-third {
+  .columns.is-mobile>&.is-offset-one-third {
     @include ltr-property("margin", 33.3333%, false);
   }
 
-  .columns.is-mobile > &.is-offset-one-quarter {
+  .columns.is-mobile>&.is-offset-one-quarter {
     @include ltr-property("margin", 25%, false);
   }
 
-  .columns.is-mobile > &.is-offset-one-fifth {
+  .columns.is-mobile>&.is-offset-one-fifth {
     @include ltr-property("margin", 20%, false);
   }
 
-  .columns.is-mobile > &.is-offset-two-fifths {
+  .columns.is-mobile>&.is-offset-two-fifths {
     @include ltr-property("margin", 40%, false);
   }
 
-  .columns.is-mobile > &.is-offset-three-fifths {
+  .columns.is-mobile>&.is-offset-three-fifths {
     @include ltr-property("margin", 60%, false);
   }
 
-  .columns.is-mobile > &.is-offset-four-fifths {
+  .columns.is-mobile>&.is-offset-four-fifths {
     @include ltr-property("margin", 80%, false);
   }
 
   @for $i from 0 through 12 {
-    .columns.is-mobile > &.is-#{$i} {
+    .columns.is-mobile>&.is-#{$i} {
       flex: none;
       width: percentage(divide($i, 12));
     }
 
-    .columns.is-mobile > &.is-offset-#{$i} {
+    .columns.is-mobile>&.is-offset-#{$i} {
       @include ltr-property("margin", percentage(divide($i, 12)), false);
     }
   }
@@ -217,6 +217,7 @@ $column-gap: 0.75rem !default;
 
 
   @include tablet {
+
     &.is-narrow,
     &.is-narrow-tablet {
       flex: none;
@@ -329,6 +330,7 @@ $column-gap: 0.75rem !default;
     }
 
     @for $i from 0 through 12 {
+
       &.is-#{$i},
       &.is-#{$i}-tablet {
         flex: none;
@@ -788,7 +790,7 @@ $column-gap: 0.75rem !default;
 
     margin-top: 0;
 
-    & > .column {
+    &>.column {
       margin: 0;
       padding: 0 !important;
     }
@@ -823,6 +825,7 @@ $column-gap: 0.75rem !default;
 
 
   @include desktop {
+
     // Modifiers
     &.is-desktop {
       display: flex;
@@ -837,9 +840,8 @@ $column-gap: 0.75rem !default;
     @include ltr-property("margin", calc(-1 * var(--columnGap)), false);
     @include ltr-property("margin", calc(-1 * var(--columnGap)));
 
-    > .column {
-      padding-left: var(--columnGap);
-      padding-right: var(--columnGap);
+    >.column {
+      padding: var(--columnGap);
     }
 
     @for $i from 0 through 8 {
