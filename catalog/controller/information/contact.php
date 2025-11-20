@@ -74,9 +74,11 @@ class ControllerInformationContact extends Controller {
     $data['geocode'] = $this->config->get('config_geocode');
     $data['geocode_hl'] = $this->config->get('config_language');
     $data['telephone'] = $this->config->get('config_telephone');
+    $data['telephone_link'] = normalizePhone($this->config->get('config_telephone'));
     $data['email_address'] = $this->config->get('config_email');
     $data['social_media'] = $this->config->get('config_social_media');
     $data['fax'] = $this->config->get('config_fax');
+    $data['fax_link'] = normalizePhone($this->config->get('config_fax'));
     $data['open'] = nl2br($this->config->get('config_open'));
     $data['comment'] = $this->config->get('config_comment');
 
@@ -89,7 +91,7 @@ class ControllerInformationContact extends Controller {
 
       if ($location_info) {
         if ($location_info['image']) {
-          $image = $this->model_tool_image->resize($location_info['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_location_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_location_height'));
+          $image = $this->model_tool_image->resize($location_info['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_location_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_location_height'), 'crop');
         } else {
           $image = false;
         }
@@ -100,7 +102,9 @@ class ControllerInformationContact extends Controller {
           'address'     => nl2br($location_info['address']),
           'geocode'     => $location_info['geocode'],
           'telephone'   => $location_info['telephone'],
+          'telephone_link'   => normalizePhone($location_info['telephone']),
           'fax'         => $location_info['fax'],
+          'fax_link'         => normalizePhone($location_info['fax']),
           'image'       => $image,
           'open'        => nl2br($location_info['open']),
           'comment'     => $location_info['comment']

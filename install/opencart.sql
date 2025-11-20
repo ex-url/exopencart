@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Jun 02, 2025 at 01:38 PM
+-- Generation Time: Nov 20, 2025 at 06:10 AM
 -- Server version: 5.7.41-log
 -- PHP Version: 7.4.33
 
@@ -63,7 +63,8 @@ CREATE TABLE `oc_api` (
 
 INSERT INTO `oc_api` (`api_id`, `username`, `key`, `status`, `date_added`, `date_modified`) VALUES
 (5, 'Default', 'isXV1YRxnkq5FoGST0yQVCDOzYEjVpjmwVIdH5L82OOisI3uyVGBUAqEHEDX73z0S44GwRHG2crKxU5khOGvyos93uj1pLxTwcz45PmdaOD2SRosgQj4MumdVIdk4esviUVpntIOrOwngTDV96lNPT4HV4TrQWQ742Zf3AWfKGK26inEoVpY41YwzDrsjowHlc42jTUF0G3mOw8dPsmCo6nSbYNXbDJy16i5FX58XgyAUKgeuEITN0A8DuMwKH20', 1, '2025-05-09 14:00:52', '2025-05-21 14:13:17'),
-(6, 'Default', 'aHsnRA4TSgQqcfTJybD1nmDu0Ig1n8pYgwoTbvyMDFpzxUOtiLCo1IarjFxuKgy3VTf7aBnlUs2C9cXebdwUdb7bBuYLQpYt5xLvDGHBPmAPtwmk6kf7BpeJvCFzKVCDrxjW0ezF2U3IBvU1QvlLvVha71Wm9gIPJ06M1k48ah4icUdj2kwu3OBrwbBgmHJpQxWA1Ampp1EAI1aIWLLh9oizmCoXml1AN8g6hGDBM95rLMrGzcq6BY9dLTVW5w72', 1, '2025-05-27 19:00:49', '2025-05-27 19:00:49');
+(6, 'Default', 'aHsnRA4TSgQqcfTJybD1nmDu0Ig1n8pYgwoTbvyMDFpzxUOtiLCo1IarjFxuKgy3VTf7aBnlUs2C9cXebdwUdb7bBuYLQpYt5xLvDGHBPmAPtwmk6kf7BpeJvCFzKVCDrxjW0ezF2U3IBvU1QvlLvVha71Wm9gIPJ06M1k48ah4icUdj2kwu3OBrwbBgmHJpQxWA1Ampp1EAI1aIWLLh9oizmCoXml1AN8g6hGDBM95rLMrGzcq6BY9dLTVW5w72', 1, '2025-05-27 19:00:49', '2025-05-27 19:00:49'),
+(7, 'Default', 'OMn4BBgUPFdTDPUUaeTF9gfRyv9ALwTPeLuFLZe2yeTcZSPnYyWxr6WkMBnXdhsbRA8A481vlJtR5BnfGyPKb3YzlkKq1gJsPzjQkdtpRkLYgDXfZ14aK7Zi9c9XB2HiA4dAsxXsMdvWmEBNv6nHneTf1MHdCrRohmbM2MBDMKhvsHKSUS6xrVGcTFHYFF5TB0g1cq1iA5bAYYpIlVYfJLJRFy1yW8PpL0m1xRyyk4HeU4QnFBvzJYPkQT0n0Rrx', 1, '2025-06-03 07:45:39', '2025-06-03 07:45:39');
 
 -- --------------------------------------------------------
 
@@ -120,7 +121,10 @@ INSERT INTO `oc_api_session` (`api_session_id`, `api_id`, `session_id`, `ip`, `d
 (576, 5, '8b48d88f1f196ec3a83af10d74', '172.16.238.1', '2025-05-21 14:13:23', '2025-05-21 14:13:23'),
 (575, 5, '60ee53cecc4a653974ba11bb89', '172.16.238.1', '2025-05-21 14:13:19', '2025-05-21 11:13:22'),
 (574, 5, 'b6e8e85dd49178ac6f8eb2c5bc', '172.16.238.1', '2025-05-21 14:12:55', '2025-05-21 14:12:55'),
-(578, 6, '4f6de5e580490c9151c75ac0b8', '172.16.238.1', '2025-05-31 16:04:24', '2025-05-31 16:04:24');
+(578, 6, '4f6de5e580490c9151c75ac0b8', '172.16.238.1', '2025-05-31 16:04:24', '2025-05-31 16:04:24'),
+(579, 7, '29ce8b4663e2af0afd1e33c612', '172.16.238.1', '2025-09-01 19:48:48', '2025-09-01 19:48:48'),
+(580, 7, 'ac6ebd80755282a9b4cb05bb68', '172.16.238.1', '2025-09-01 19:49:14', '2025-09-01 19:49:14'),
+(581, 7, '93c11b34f9c37f81d24ac4b541', '172.16.238.1', '2025-09-26 20:40:58', '2025-09-26 20:40:58');
 
 -- --------------------------------------------------------
 
@@ -146,9 +150,9 @@ CREATE TABLE `oc_article` (
 --
 
 INSERT INTO `oc_article` (`article_id`, `image`, `sort_order`, `article_review`, `status`, `noindex`, `viewed`, `date_published`, `date_added`, `date_modified`) VALUES
-(127, 'catalog/demo/news/news2.jpg', 1, 0, 1, 1, 96, '2023-04-14 00:00:00', '2025-04-23 06:25:05', '2025-04-23 11:03:34'),
-(128, 'catalog/demo/news/news3.jpg', 1, 0, 1, 1, 77, '2025-04-23 06:25:05', '2025-04-23 06:25:05', '2025-04-23 06:25:05'),
-(126, 'catalog/demo/news/news1.jpg', 1, 0, 1, 1, 51, '2025-04-21 00:00:00', '2025-04-23 06:25:05', '2025-04-23 10:30:56');
+(127, 'catalog/demo/news/news2.jpg', 1, 0, 1, 1, 102, '2023-04-14 00:00:00', '2025-04-23 06:25:05', '2025-04-23 11:03:34'),
+(128, 'catalog/demo/news/news3.jpg', 1, 0, 1, 1, 110, '2025-04-23 06:25:05', '2025-04-23 06:25:05', '2025-09-27 13:32:17'),
+(126, 'catalog/demo/news/news1.jpg', 1, 0, 1, 1, 55, '2025-04-21 00:00:00', '2025-04-23 06:25:05', '2025-06-12 21:55:46');
 
 -- --------------------------------------------------------
 
@@ -173,11 +177,11 @@ CREATE TABLE `oc_article_description` (
 --
 
 INSERT INTO `oc_article_description` (`article_id`, `language_id`, `name`, `description`, `meta_description`, `meta_keyword`, `meta_title`, `meta_h1`, `tag`) VALUES
-(128, 1, 'Сухое изложение фактов', 'В попытках придумать контент для демонстранционных новостей всякое приходит в голову. Можете считать это фактом номер раз. Второй факт, вы только ознакомились с первым фактом. И не поспоришь ведь. Если с первым фактом хоть чуть-чуть можно, то второй - железобетонный, даже не пытайтесь. Хотите узнать третий? Третий факт так и останется неизвестным и это тоже факт. Уже четвертый, следите за руками и держитесь крепче!', '', '', '', '', ''),
 (128, 2, 'Dry Fact Sheet', '&lt;p&gt;In trying to come up with content for demo news, everything comes to mind. You can consider this fact number one. The second fact, you just got acquainted with the first fact. And you can\'t argue. If the first fact is at least a little bit possible, then the second is reinforced concrete, don\'t even try. Do you want to know the third one? The third fact will remain unknown and this is also a fact. Already the fourth, watch your hands and hold on tight!&lt;/p&gt;&lt;p&gt;The sentences here may not be correct from the point of view of a native speaker, but this is normal, Google translator is not very good yet.&lt;br&gt;&lt;/p&gt;', '', '', '', '', ''),
-(126, 2, 'Store owner on exopencart talks about his pleasant experience', '&lt;p&gt;&lt;b&gt;exopencart: &lt;/b&gt;Vasily, please tell us about your experience with the exopencart platform?&lt;/p&gt;&lt;p&gt;&lt;b&gt;Vasily:&lt;/b&gt; Of course, with pleasure. The experience is extremely positive! It all started with a simple request &quot;free online store&quot;, I saw a link to exopencart.ru. At first I didn’t believe it, but my soul wanted freebies so much that I decided and watched the video “How to make a free online store”. Everything turned out to be very simple, literally in two hours I bought myself a domain, hosting, set up a platform and already added products, and at the same time I dreamed about the life of the owner of a successful online store. I received my first order the next day. Something like this.&lt;/p&gt;&lt;p&gt;&lt;b&gt;exopencart:&lt;/b&gt; It\'s always great to hear success stories from our platform users. What do you wish for those who doubt?&lt;/p&gt;&lt;p&gt;&lt;b&gt;Vasily:&lt;/b&gt; Do not hesitate to find out, you have to try!&lt;/p&gt;&lt;p&gt;&lt;b&gt;exopencart: &lt;/b&gt;My life motto!&lt;/p&gt;', '', '', '', '', ''),
-(127, 2, 'How to grab luck by the tail and not lose touch with reality', '&lt;p&gt;The question is relevant. First, let\'s define the terminology. It is better to see once than to hear a hundred times. For example, you want to create an online store and are looking for a platform for it. Luck is when you find exopencart.ru. Okay, luckily we figured it out. What\'s with reality? It\'s a little more complicated here, refresh your knowledge in the general theory of relativity, quantum mechanics, and then come and discuss this burning issue.&lt;br&gt;&lt;/p&gt;', '', '', '', '', ''),
+(128, 1, 'Сухое изложение фактов', 'В попытках придумать контент для демонстранционных новостей всякое приходит в голову. Можете считать это фактом номер раз. Второй факт, вы только ознакомились с первым фактом. И не поспоришь ведь. Если с первым фактом хоть чуть-чуть можно, то второй - железобетонный, даже не пытайтесь. Хотите узнать третий? Третий факт так и останется неизвестным и это тоже факт. Уже четвертый, следите за руками и держитесь крепче!', '', '', '', '', ''),
 (126, 1, 'Владелец магазина на exopencart рассказывает о своем приятном опыте', '&lt;p&gt;&lt;b&gt;exopencart: &lt;/b&gt;Василий, расскажите пожалуйста о вашем опыте использования платформы exopencart?&lt;/p&gt;&lt;p&gt;&lt;b&gt;Василий: &lt;/b&gt;Конечно, с удовольствием. Опыт исключительно положительный! Всё началось с простого запроса &quot;бесплатный интернет магазин&quot;, увидел ссылку на exopencart.ru. Сначала не поверил, но душа так хотела халявы, что решился и посмотрел видео &quot;Как сделать бесплатный интернет-магазин&quot;. Оказалось всё очень просто, буквально за два часа купил себе домен, хостинг, поставил платформу и уже добавлял товары, а параллельно мечтал о жизни владельца успешного интернет-магазина. На следующий день уже получил первый заказ. Как-то так.&lt;/p&gt;&lt;p&gt;&lt;b&gt;exopencart: &lt;/b&gt;Всегда приятно слышать истории успеха пользователей нашей платформы. Что пожелаете тем, кто сомневается?&lt;/p&gt;&lt;p&gt;&lt;b&gt;Василий:&lt;/b&gt; Не соменевайтесь, чтобы узнать, надо попробовать!&lt;/p&gt;&lt;p&gt;&lt;b&gt;exopencart: &lt;/b&gt;Мой девиз по жизни!&lt;/p&gt;', '', '', '', '', ''),
+(127, 2, 'How to grab luck by the tail and not lose touch with reality', '&lt;p&gt;The question is relevant. First, let\'s define the terminology. It is better to see once than to hear a hundred times. For example, you want to create an online store and are looking for a platform for it. Luck is when you find exopencart.ru. Okay, luckily we figured it out. What\'s with reality? It\'s a little more complicated here, refresh your knowledge in the general theory of relativity, quantum mechanics, and then come and discuss this burning issue.&lt;br&gt;&lt;/p&gt;', '', '', '', '', ''),
+(126, 2, 'Store owner on exopencart talks about his pleasant experience', '&lt;p&gt;&lt;b&gt;exopencart: &lt;/b&gt;Vasily, please tell us about your experience with the exopencart platform?&lt;/p&gt;&lt;p&gt;&lt;b&gt;Vasily:&lt;/b&gt; Of course, with pleasure. The experience is extremely positive! It all started with a simple request &quot;free online store&quot;, I saw a link to exopencart.ru. At first I didn’t believe it, but my soul wanted freebies so much that I decided and watched the video “How to make a free online store”. Everything turned out to be very simple, literally in two hours I bought myself a domain, hosting, set up a platform and already added products, and at the same time I dreamed about the life of the owner of a successful online store. I received my first order the next day. Something like this.&lt;/p&gt;&lt;p&gt;&lt;b&gt;exopencart:&lt;/b&gt; It\'s always great to hear success stories from our platform users. What do you wish for those who doubt?&lt;/p&gt;&lt;p&gt;&lt;b&gt;Vasily:&lt;/b&gt; Do not hesitate to find out, you have to try!&lt;/p&gt;&lt;p&gt;&lt;b&gt;exopencart: &lt;/b&gt;My life motto!&lt;/p&gt;', '', '', '', '', ''),
 (127, 1, 'Как схватить удачу за хвост и не потерять связь с реальностью', '&lt;p&gt;Вопрос актуальный. Для начала давайте определимся с терминологией. Лучше один раз увидеть, чем сто раз услышасть. Например, вы хотите создать интернет-магазин и ищите для него платформу. Удача - это когда вы нашли exopencart.ru. Окей, с удачей разобрались. Что с реальностью? Тут немножно сложнее, освежите ваши знания в общей теории относительности, квантовой механике, а потом приходите, обсудим этот животрепещущий вопрос.&lt;/p&gt;', '', '', '', '', '');
 
 -- --------------------------------------------------------
@@ -199,11 +203,12 @@ CREATE TABLE `oc_article_image` (
 --
 
 INSERT INTO `oc_article_image` (`article_image_id`, `article_id`, `image`, `title`, `sort_order`) VALUES
-(3984, 128, 'catalog/demo/computers.jpg', '', 0),
-(3985, 128, 'catalog/demo/gaming_computer.jpg', '', 0),
-(3986, 128, 'catalog/demo/gaming_laptops.jpg', '', 0),
-(3992, 126, 'catalog/logo.png', 'ex', 2),
-(3991, 126, 'catalog/profile-pic.png', 'avatar', 1);
+(4001, 128, 'catalog/demo/gaming_computer.jpg', 'Дефолтный шаблон теперь нормально свёрстан и приятно выяглядит', 2),
+(4000, 128, 'catalog/demo/computers.jpg', 'Bulma UI вместо Boostrap', 1),
+(3999, 126, 'catalog/logo.png', 'ex', 2),
+(3998, 126, 'catalog/profile-pic.png', 'avatar', 1),
+(4002, 128, 'catalog/demo/gaming_laptops.jpg', 'Блог облагорожен и теперь им можно пользоваться', 3),
+(4003, 128, 'catalog/demo/news/news1.jpg', 'Теперь вы можете добавлять кастомные заголовки к модулям', 4);
 
 -- --------------------------------------------------------
 
@@ -248,9 +253,7 @@ INSERT INTO `oc_article_related_product` (`article_id`, `product_id`) VALUES
 (43, 123),
 (45, 123),
 (127, 326),
-(127, 328),
-(128, 326),
-(128, 327);
+(127, 328);
 
 -- --------------------------------------------------------
 
@@ -1862,8 +1865,8 @@ CREATE TABLE `oc_currency` (
 --
 
 INSERT INTO `oc_currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbol_right`, `decimal_place`, `value`, `status`, `date_modified`) VALUES
-(1, 'Рубль', 'RUB', '', ' ₽', '0', 1.00000000, 1, '2025-06-02 15:34:07'),
-(2, 'US Dollar', 'USD', '$', '', '2', 0.01271988, 1, '2025-06-02 15:34:07');
+(1, 'Рубль', 'RUB', '', ' ₽', '0', 1.00000000, 1, '2025-10-19 18:26:33'),
+(2, 'US Dollar', 'USD', '$', '', '2', 0.01234821, 1, '2025-10-19 18:26:33');
 
 -- --------------------------------------------------------
 
@@ -2217,7 +2220,7 @@ CREATE TABLE `oc_download` (
 --
 
 INSERT INTO `oc_download` (`download_id`, `filename`, `mask`, `date_added`) VALUES
-(4, 'newsfile.pdf.lEfR1RrMPtbR0NIHbq81CTns71sSxC3I', 'Название файла для новости.pdf', '2024-01-29 17:09:27');
+(4, 'newsfile.pdf.UB6W9Sh1NZUBXG2J89iOfcLSfs0zfPoX', 'newsfile.pdf', '2024-01-29 17:09:27');
 
 -- --------------------------------------------------------
 
@@ -2373,7 +2376,6 @@ INSERT INTO `oc_extension` (`extension_id`, `type`, `code`) VALUES
 (48, 'currency', 'cbr'),
 (49, 'currency', 'ecb'),
 (50, 'currency', 'nbu'),
-(51, 'dashboard', 'domovoy'),
 (98, 'module', 'anycategories'),
 (54, 'shipping', 'free'),
 (55, 'shipping', 'pickup'),
@@ -2899,19 +2901,19 @@ INSERT INTO `oc_layout_module` (`layout_module_id`, `layout_id`, `code`, `positi
 (2, 4, '0', 'content_top', 0),
 (3, 4, '0', 'content_top', 1),
 (20, 5, '0', 'column_left', 2),
-(293, 1, 'html.41', 'content_top', 10),
-(292, 1, 'blog_featured.33', 'content_top', 9),
-(290, 1, 'bestseller.39', 'content_top', 7),
+(303, 1, 'blog_latest.32', 'content_top', 9),
+(302, 1, 'blog_featured.33', 'content_top', 8),
 (248, 6, 'account', 'column_right', 0),
-(291, 1, 'blog_latest.32', 'content_top', 8),
+(301, 1, 'bestseller.39', 'content_top', 7),
 (281, 3, 'blog_featured.33', 'content_bottom', 0),
-(289, 1, 'featured.28', 'content_top', 6),
-(288, 1, 'special.38', 'content_top', 5),
+(300, 1, 'featured.28', 'content_top', 6),
+(299, 1, 'special.38', 'content_top', 5),
 (280, 3, 'filter', 'column_left', 0),
-(286, 1, 'carousel.29', 'content_top', 3),
-(287, 1, 'latest.37', 'content_top', 4),
-(285, 1, 'anycategories.42', 'content_top', 2),
-(284, 1, 'slideshow.27', 'content_top', 1);
+(298, 1, 'latest.37', 'content_top', 4),
+(297, 1, 'carousel.29', 'content_top', 3),
+(296, 1, 'anycategories.42', 'content_top', 2),
+(295, 1, 'slideshow.27', 'content_top', 1),
+(304, 1, 'html.41', 'content_top', 10);
 
 -- --------------------------------------------------------
 
@@ -2948,7 +2950,7 @@ INSERT INTO `oc_layout_route` (`layout_route_id`, `layout_id`, `store_id`, `rout
 (227, 16, 0, 'blog/article'),
 (79, 17, 0, 'product/manufacturer/info'),
 (97, 18, 0, 'product/product'),
-(220, 1, 0, 'common/home'),
+(228, 1, 0, 'common/home'),
 (171, 19, 0, 'product/special');
 
 -- --------------------------------------------------------
@@ -3008,7 +3010,7 @@ CREATE TABLE `oc_location` (
   `address` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `telephone` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
   `fax` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `geocode` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `geocode` varchar(512) COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `open` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `comment` text COLLATE utf8mb4_unicode_ci NOT NULL
@@ -3190,13 +3192,13 @@ INSERT INTO `oc_module` (`module_id`, `name`, `code`, `setting`) VALUES
 (28, 'На главной ', 'featured', '{\"name\":\"\\u041d\\u0430 \\u0433\\u043b\\u0430\\u0432\\u043d\\u043e\\u0439 \",\"text\":{\"1\":{\"heading\":\"\\u0421\\u043c\\u0435\\u043b\\u043e \\u0440\\u0435\\u043a\\u043e\\u043c\\u0435\\u043d\\u0434\\u0443\\u0435\\u043c\"},\"2\":{\"heading\":\"We recommend \"}},\"product_name\":\"\",\"product\":[\"40\",\"43\",\"42\",\"30\"],\"limit\":\"4\",\"width\":\"240\",\"height\":\"240\",\"status\":\"1\"}'),
 (27, 'Слайдер на главной', 'slideshow', '{\"apply\":\"1\",\"name\":\"\\u0421\\u043b\\u0430\\u0439\\u0434\\u0435\\u0440 \\u043d\\u0430 \\u0433\\u043b\\u0430\\u0432\\u043d\\u043e\\u0439\",\"banner_id\":\"7\",\"width\":\"1344\",\"height\":\"756\",\"status\":\"1\"}'),
 (32, 'Свежие новости', 'blog_latest', '{\"name\":\"\\u0421\\u0432\\u0435\\u0436\\u0438\\u0435 \\u043d\\u043e\\u0432\\u043e\\u0441\\u0442\\u0438\",\"text\":{\"1\":{\"heading\":\"\\u0421\\u0432\\u0435\\u0436\\u0438\\u0435 \\u043d\\u043e\\u0432\\u043e\\u0441\\u0442\\u0438\"},\"2\":{\"heading\":\"Fresh news\"}},\"limit\":\"3\",\"width\":\"450\",\"height\":\"300\",\"status\":\"1\"}'),
-(33, 'Рекомендуемые статьи', 'blog_featured', '{\"name\":\"\\u0420\\u0435\\u043a\\u043e\\u043c\\u0435\\u043d\\u0434\\u0443\\u0435\\u043c\\u044b\\u0435 \\u0441\\u0442\\u0430\\u0442\\u044c\\u0438\",\"text\":{\"1\":{\"heading\":\"\\u0418\\u043d\\u0442\\u0435\\u0440\\u0435\\u0441\\u043d\\u043e \\u043f\\u043e\\u0447\\u0438\\u0442\\u0430\\u0442\\u044c\"},\"2\":{\"heading\":\"Interesting to read\"}},\"article_name\":\"\",\"limit\":\"4\",\"width\":\"400\",\"height\":\"280\",\"status\":\"1\"}'),
+(33, 'Рекомендуемые статьи', 'blog_featured', '{\"apply\":\"1\",\"name\":\"\\u0420\\u0435\\u043a\\u043e\\u043c\\u0435\\u043d\\u0434\\u0443\\u0435\\u043c\\u044b\\u0435 \\u0441\\u0442\\u0430\\u0442\\u044c\\u0438\",\"text\":{\"1\":{\"heading\":\"\\u0418\\u043d\\u0442\\u0435\\u0440\\u0435\\u0441\\u043d\\u043e \\u043f\\u043e\\u0447\\u0438\\u0442\\u0430\\u0442\\u044c\"},\"2\":{\"heading\":\"Interesting to read\"}},\"article_name\":\"\",\"article\":[\"126\",\"127\",\"128\"],\"limit\":\"4\",\"width\":\"450\",\"height\":\"300\",\"status\":\"1\"}'),
 (42, 'Каталог на главной', 'anycategories', '{\"apply\":\"1\",\"name\":\"\\u041a\\u0430\\u0442\\u0430\\u043b\\u043e\\u0433 \\u043d\\u0430 \\u0433\\u043b\\u0430\\u0432\\u043d\\u043e\\u0439\",\"text\":{\"1\":{\"heading\":\"\\u041a\\u0430\\u0442\\u0430\\u043b\\u043e\\u0433\"},\"2\":{\"heading\":\"Catalog\"}},\"category_name\":\"\",\"category\":[\"1\",\"7\",\"13\",\"19\",\"30\",\"36\",\"42\",\"25\"],\"limit\":\"8\",\"width\":\"120\",\"height\":\"120\",\"status\":\"1\"}'),
 (37, 'Новинки', 'latest', '{\"name\":\"\\u041d\\u043e\\u0432\\u0438\\u043d\\u043a\\u0438\",\"text\":{\"1\":{\"heading\":\"\\u041d\\u043e\\u0432\\u044b\\u0435 \\u043f\\u043e\\u0441\\u0442\\u0443\\u043f\\u043b\\u0435\\u043d\\u0438\\u044f\"},\"2\":{\"heading\":\"New products\"}},\"limit\":\"8\",\"width\":\"240\",\"height\":\"240\",\"status\":\"1\"}'),
 (38, 'Акции', 'special', '{\"apply\":\"1\",\"name\":\"\\u0410\\u043a\\u0446\\u0438\\u0438\",\"text\":{\"1\":{\"heading\":\"\\u041b\\u0443\\u0447\\u0448\\u0438\\u0435 \\u043f\\u0440\\u0435\\u0434\\u043b\\u043e\\u0436\\u0435\\u043d\\u0438\\u044f\"},\"2\":{\"heading\":\"Best offers\"}},\"limit\":\"8\",\"width\":\"240\",\"height\":\"240\",\"status\":\"1\"}'),
 (39, 'Хиты продаж', 'bestseller', '{\"name\":\"\\u0425\\u0438\\u0442\\u044b \\u043f\\u0440\\u043e\\u0434\\u0430\\u0436\",\"text\":{\"1\":{\"heading\":\"\\u041a\\u0430\\u043a \\u0433\\u043e\\u0440\\u044f\\u0447\\u0438\\u0435 \\u043f\\u0438\\u0440\\u043e\\u0436\\u043a\\u0438\"},\"2\":{\"heading\":\"Lika a hot cakes\"}},\"limit\":\"8\",\"width\":\"240\",\"height\":\"240\",\"status\":\"1\"}'),
 (40, 'Баннеры', 'slideshow', '{\"name\":\"\\u0411\\u0430\\u043d\\u043d\\u0435\\u0440\\u044b\",\"banner_id\":\"6\",\"width\":\"400\",\"height\":\"600\",\"status\":\"1\"}'),
-(41, 'Бесплатный интернет-магазин', 'html', '{\"name\":\"\\u0411\\u0435\\u0441\\u043f\\u043b\\u0430\\u0442\\u043d\\u044b\\u0439 \\u0438\\u043d\\u0442\\u0435\\u0440\\u043d\\u0435\\u0442-\\u043c\\u0430\\u0433\\u0430\\u0437\\u0438\\u043d\",\"module_description\":{\"1\":{\"title\":\"\",\"description\":\"&lt;div class=&quot;py-6 home-about&quot;&gt;\\r\\n  &lt;div class=&quot;container&quot;&gt;    \\r\\n    &lt;div class=&quot;columns is-mobile is-multiline&quot;&gt;\\r\\n      &lt;div class=&quot;column is-12&quot;&gt;\\r\\n      \\t&lt;div class=&quot;title is-2&quot;&gt;\\u041d\\u0435\\u043c\\u043d\\u043e\\u0433\\u043e \\u043c\\u0430\\u0440\\u043a\\u0435\\u0442\\u0438\\u043d\\u0433\\u0430&lt;\\/div&gt;\\r\\n      &lt;\\/div&gt;\\r\\n      &lt;div class=&quot;column is-4-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile&quot;&gt;\\r\\n        &lt;div class=&quot;box&quot;&gt;\\r\\n          &lt;div class=&quot;block is-flex is-align-items-center&quot;&gt;\\r\\n            &lt;span class=&quot;icon is-large has-text-primary&quot;&gt;\\r\\n              &lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;\\r\\n                &lt;path d=&quot;M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z&quot;&gt;&lt;\\/path&gt;\\r\\n                &lt;path d=&quot;M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z&quot;&gt;&lt;\\/path&gt;\\r\\n              &lt;\\/svg&gt;\\r\\n            &lt;\\/span&gt;\\r\\n            &lt;span class=&quot;title is-5 pl-3&quot;&gt;\\r\\n              \\u0418\\u043d\\u0442\\u0435\\u0440\\u043d\\u0435\\u0442-\\u043c\\u0430\\u0433\\u0430\\u0437\\u0438\\u043d \\u0431\\u0435\\u0441\\u043f\\u043b\\u0430\\u0442\\u043d\\u043e\\r\\n            &lt;\\/span&gt;\\r\\n          &lt;\\/div&gt;\\r\\n          &lt;div class=&quot;content&quot;&gt;\\r\\n            \\u041f\\u043b\\u0430\\u0442\\u0444\\u043e\\u0440\\u043c\\u0430 \\u0438\\u043c\\u0435\\u0435\\u0442 \\u043e\\u0442\\u043a\\u0440\\u044b\\u0442\\u044b\\u0439 \\u0438\\u0441\\u0445\\u043e\\u0434\\u043d\\u044b\\u0439 \\u043a\\u043e\\u0434, \\u043f\\u043e\\u043b\\u043d\\u043e\\u0441\\u0442\\u044c\\u044e \\u0431\\u0435\\u0441\\u043f\\u043b\\u0430\\u0442\\u043d\\u0430, \\u0440\\u0430\\u0434\\u0443\\u0435\\u0442 \\u043b\\u0435\\u0433\\u043a\\u0438\\u043c, \\u043b\\u0430\\u043a\\u043e\\u043d\\u0438\\u0447\\u043d\\u044b\\u043c \\u0434\\u0438\\u0437\\u0430\\u0439\\u043d\\u043e\\u043c \\u0438 \\u0434\\u0435\\u0439\\u0441\\u0442\\u0432\\u0438\\u0442\\u0435\\u043b\\u044c\\u043d\\u043e \\u043d\\u0443\\u0436\\u043d\\u044b\\u043c \\u0431\\u0430\\u0437\\u043e\\u0432\\u044b\\u043c \\u0444\\u0443\\u043d\\u043a\\u0446\\u0438\\u043e\\u043d\\u0430\\u043b\\u043e\\u043c\\r\\n          &lt;\\/div&gt;\\r\\n        &lt;\\/div&gt;\\r\\n      &lt;\\/div&gt;\\r\\n      &lt;div class=&quot;column is-4-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile&quot;&gt;\\r\\n        &lt;div class=&quot;box&quot;&gt;\\r\\n          &lt;div class=&quot;block is-flex is-align-items-center&quot;&gt;\\r\\n            &lt;span class=&quot;icon is-large has-text-primary&quot;&gt;\\r\\n              &lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;\\r\\n                &lt;path d=&quot;M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z&quot;&gt;&lt;\\/path&gt;\\r\\n                &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z&quot;&gt;&lt;\\/path&gt;\\r\\n              &lt;\\/svg&gt;\\r\\n            &lt;\\/span&gt;\\r\\n            &lt;span class=&quot;title is-5 pl-3&quot;&gt;\\r\\n              \\u0423\\u0434\\u043e\\u0431\\u043d\\u0430\\u044f \\u043f\\u0430\\u043d\\u0435\\u043b\\u044c \\u0443\\u043f\\u0440\\u0430\\u0432\\u043b\\u0435\\u043d\\u0438\\u044f\\r\\n            &lt;\\/span&gt;\\r\\n          &lt;\\/div&gt;\\r\\n          &lt;div class=&quot;content&quot;&gt;\\r\\n            \\u041b\\u0435\\u0433\\u043a\\u043e \\u0434\\u043e\\u0431\\u0430\\u0432\\u043b\\u044f\\u0439\\u0442\\u0435, \\u0440\\u0435\\u0434\\u0430\\u043a\\u0442\\u0438\\u0440\\u0443\\u0439\\u0442\\u0435, \\u0443\\u0434\\u0430\\u043b\\u044f\\u0439\\u0442\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u044b, \\u043f\\u0440\\u043e\\u0438\\u0437\\u0432\\u043e\\u0434\\u0438\\u0442\\u0435\\u043b\\u0435\\u0439, \\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u0438, \\u0441\\u0442\\u0430\\u0442\\u044c\\u0438, \\u0445\\u0430\\u0440\\u0430\\u043a\\u0442\\u0435\\u0440\\u0438\\u0441\\u0442\\u0438\\u043a\\u0438, \\u043e\\u043f\\u0446\\u0438\\u0438, \\u0444\\u0430\\u0439\\u043b\\u044b, \\u0441\\u043a\\u0438\\u0434\\u043a\\u0438, \\u0430\\u043a\\u0446\\u0438\\u0438, \\u0437\\u0430\\u043a\\u0430\\u0437\\u044b \\u0438 \\u043c\\u043d\\u043e\\u0433\\u043e \\u0447\\u0435\\u0433\\u043e \\u0435\\u0449\\u0451\\r\\n          &lt;\\/div&gt;\\r\\n        &lt;\\/div&gt;\\r\\n      &lt;\\/div&gt;\\r\\n      &lt;div class=&quot;column is-4-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile&quot;&gt;\\r\\n        &lt;div class=&quot;box&quot;&gt;\\r\\n          &lt;div class=&quot;block is-flex is-align-items-center&quot;&gt;\\r\\n            &lt;span class=&quot;icon is-large has-text-primary&quot;&gt;\\r\\n              &lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;\\r\\n                &lt;path d=&quot;M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z&quot;&gt;&lt;\\/path&gt;\\r\\n                &lt;path d=&quot;M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z&quot;&gt;&lt;\\/path&gt;\\r\\n              &lt;\\/svg&gt;\\r\\n            &lt;\\/span&gt;\\r\\n            &lt;span class=&quot;title is-5 pl-3&quot;&gt;\\r\\n              \\u0412\\u0441\\u0442\\u0440\\u043e\\u0435\\u043d\\u043d\\u044b\\u0439 \\u0444\\u0443\\u043d\\u043a\\u0446\\u0438\\u043e\\u043d\\u0430\\u043b \\u0431\\u043b\\u043e\\u0433\\u0430\\r\\n            &lt;\\/span&gt;\\r\\n          &lt;\\/div&gt;\\r\\n          &lt;div class=&quot;content&quot;&gt;\\r\\n            \\u041f\\u0438\\u0448\\u0438\\u0442\\u0435 \\u0441\\u0442\\u0430\\u0442\\u044c\\u0438, \\u043f\\u0440\\u0438\\u043a\\u0440\\u0435\\u043f\\u043b\\u044f\\u0439\\u0442\\u0435 \\u0438\\u0445 \\u043a \\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f\\u043c, \\u0430 \\u043a \\u0441\\u0430\\u043c\\u0438\\u043c \\u0441\\u0442\\u0430\\u0442\\u044c\\u044f\\u043c \\u043f\\u0440\\u0438\\u043a\\u0440\\u0435\\u043f\\u043b\\u044f\\u0439\\u0442\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u044b \\u043a\\u043e\\u0442\\u043e\\u0440\\u044b\\u0435 \\u0432\\u044b \\u043e\\u043f\\u0438\\u0441\\u044b\\u0432\\u0430\\u043b\\u0438 \\u0432 \\u044d\\u0442\\u0438\\u0445 \\u0441\\u0442\\u0430\\u0442\\u044c\\u044f\\u0445. \\u041d\\u0435 \\u0431\\u043e\\u0439\\u0442\\u0435\\u0441\\u044c \\u043f\\u0440\\u0438\\u0441\\u0442\\u0443\\u043f\\u043e\\u0432 \\u0433\\u0440\\u0430\\u0444\\u043e\\u043c\\u0430\\u043d\\u0441\\u0442\\u0432\\u0430\\r\\n          &lt;\\/div&gt;\\r\\n        &lt;\\/div&gt;\\r\\n      &lt;\\/div&gt;\\r\\n      &lt;div class=&quot;column is-4-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile&quot;&gt;\\r\\n        &lt;div class=&quot;box&quot;&gt;\\r\\n          &lt;div class=&quot;block is-flex is-align-items-center&quot;&gt;\\r\\n            &lt;span class=&quot;icon is-large has-text-primary&quot;&gt;\\r\\n              &lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;\\r\\n                &lt;path d=&quot;M14 3a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12zM2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2z&quot;&gt;&lt;\\/path&gt;\\r\\n                &lt;path d=&quot;M2 5.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z&quot;&gt;&lt;\\/path&gt;\\r\\n              &lt;\\/svg&gt;\\r\\n            &lt;\\/span&gt;\\r\\n            &lt;span class=&quot;title is-5 pl-3&quot;&gt;\\r\\n              \\u041e\\u043d\\u043b\\u0430\\u0439\\u043d-\\u043e\\u043f\\u043b\\u0430\\u0442\\u0430 \\u0438 \\u0434\\u043e\\u0441\\u0442\\u0430\\u0432\\u043a\\u0430\\r\\n            &lt;\\/span&gt;\\r\\n          &lt;\\/div&gt;\\r\\n          &lt;div class=&quot;content&quot;&gt;\\r\\n            \\u041f\\u043b\\u0430\\u0442\\u0444\\u043e\\u0440\\u043c\\u0430 \\u043f\\u043e\\u0437\\u0432\\u043e\\u043b\\u044f\\u0435\\u0442 \\u0434\\u043e\\u0431\\u0430\\u0432\\u0438\\u0442\\u044c \\u043d\\u0430 \\u0441\\u0430\\u0439\\u0442 \\u043f\\u043e\\u043f\\u0443\\u043b\\u044f\\u0440\\u043d\\u044b\\u0435 \\u0441\\u0438\\u0441\\u0442\\u0435\\u043c\\u044b \\u043e\\u043d\\u043b\\u0430\\u0439\\u043d-\\u043e\\u043f\\u043b\\u0430\\u0442\\u044b (\\u0421\\u0411\\u0415\\u0420, \\u0422\\u0438\\u043d\\u044c\\u043a\\u043e\\u0444\\u0444, \\u042e\\u043a\\u0430\\u0441\\u0441\\u0430 \\u0438 \\u0434\\u0440.) \\u0438 \\u0434\\u043e\\u0441\\u0442\\u0430\\u0432\\u043a\\u0438 (\\u041f\\u043e\\u0447\\u0442\\u0430 \\u0420\\u043e\\u0441\\u0441\\u0438\\u0438, \\u0421\\u0414\\u042d\\u041a, \\u0411\\u043e\\u043a\\u0441\\u0431\\u0435\\u0440\\u0440\\u0438, \\u041f\\u042d\\u041a, \\u0411\\u0430\\u0439\\u043a\\u0430\\u043b-\\u0421\\u0435\\u0440\\u0432\\u0438\\u0441 \\u0438 \\u0434\\u0440.)\\r\\n          &lt;\\/div&gt;\\r\\n        &lt;\\/div&gt;\\r\\n      &lt;\\/div&gt;\\r\\n      &lt;div class=&quot;column is-4-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile&quot;&gt;\\r\\n        &lt;div class=&quot;box&quot;&gt;\\r\\n          &lt;div class=&quot;block is-flex is-align-items-center&quot;&gt;\\r\\n            &lt;span class=&quot;icon is-large has-text-primary&quot;&gt;\\r\\n              &lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;\\r\\n                &lt;path d=&quot;M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z&quot;&gt;&lt;\\/path&gt;\\r\\n                &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z&quot;&gt;&lt;\\/path&gt;\\r\\n              &lt;\\/svg&gt;\\r\\n            &lt;\\/span&gt;\\r\\n            &lt;span class=&quot;title is-5 pl-3&quot;&gt;\\r\\n              \\u0414\\u0432\\u0443\\u0441\\u0442\\u043e\\u0440\\u043e\\u043d\\u043d\\u0438\\u0439 \\u043e\\u0431\\u043c\\u0435\\u043d \\u0434\\u0430\\u043d\\u043d\\u044b\\u043c\\u0438\\r\\n            &lt;\\/span&gt;\\r\\n          &lt;\\/div&gt;\\r\\n          &lt;div class=&quot;content&quot;&gt;\\r\\n            \\u0410\\u0432\\u0442\\u043e\\u043c\\u0430\\u0442\\u0438\\u0447\\u0435\\u0441\\u043a\\u0438 \\u043f\\u0443\\u0431\\u043b\\u0438\\u043a\\u0443\\u0439\\u0442\\u0435 \\u0432\\u0430\\u0448 \\u0430\\u0441\\u0441\\u043e\\u0440\\u0442\\u0438\\u043c\\u0435\\u043d\\u0442 \\u0438\\u0437 1\\u0421, \\u041c\\u043e\\u0439\\u0421\\u043a\\u043b\\u0430\\u0434 \\u0438\\u043b\\u0438 \\u0438\\u043d\\u043e\\u0439 \\u0441\\u0438\\u0441\\u0442\\u0435\\u043c\\u044b \\u0443\\u0447\\u0435\\u0442\\u0430 \\u0432 \\u043c\\u0430\\u0433\\u0430\\u0437\\u0438\\u043d. \\u0421\\u043e\\u043a\\u0440\\u0430\\u0442\\u0438\\u0442\\u0435 \\u0432\\u0430\\u0448\\u0438 \\u0440\\u0430\\u0441\\u0445\\u043e\\u0434\\u044b \\u043d\\u0430 \\u043f\\u043e\\u0434\\u0434\\u0435\\u0440\\u0436\\u0430\\u043d\\u0438\\u0435 \\u0430\\u043a\\u0442\\u0443\\u0430\\u043b\\u044c\\u043d\\u043e\\u0433\\u043e \\u043a\\u0430\\u0442\\u0430\\u043b\\u043e\\u0433\\u0430 \\u043d\\u0430 \\u0441\\u0430\\u0439\\u0442\\u0435\\r\\n          &lt;\\/div&gt;\\r\\n        &lt;\\/div&gt;\\r\\n      &lt;\\/div&gt;\\r\\n      &lt;div class=&quot;column is-4-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile&quot;&gt;\\r\\n        &lt;div class=&quot;box&quot;&gt;\\r\\n          &lt;div class=&quot;block is-flex is-align-items-center&quot;&gt;\\r\\n            &lt;span class=&quot;icon is-large has-text-primary&quot;&gt;\\r\\n              &lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;\\r\\n                &lt;path d=&quot;M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z&quot;&gt;&lt;\\/path&gt;\\r\\n                &lt;path d=&quot;M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z&quot;&gt;&lt;\\/path&gt;\\r\\n              &lt;\\/svg&gt;\\r\\n            &lt;\\/span&gt;\\r\\n            &lt;span class=&quot;title is-5 pl-3&quot;&gt;\\r\\n              \\u0423\\u0434\\u043e\\u0431\\u043d\\u044b\\u0439 \\u0438 \\u043b\\u0430\\u043a\\u043e\\u043d\\u0438\\u0447\\u043d\\u044b\\u0439 \\u0434\\u0438\\u0437\\u0430\\u0439\\u043d\\r\\n            &lt;\\/span&gt;\\r\\n          &lt;\\/div&gt;\\r\\n          &lt;div class=&quot;content&quot;&gt;\\r\\n            \\u041c\\u0438\\u043d\\u0438\\u043c\\u0430\\u043b\\u0438\\u0441\\u0442\\u0438\\u0447\\u043d\\u044b\\u0439, \\u043f\\u043e\\u043d\\u044f\\u0442\\u043d\\u044b\\u0439, \\u0445\\u043e\\u0440\\u043e\\u0448\\u043e \\u0441\\u0442\\u0440\\u0443\\u043a\\u0442\\u0443\\u0440\\u0438\\u0440\\u043e\\u0432\\u0430\\u043d\\u043d\\u044b\\u0439 \\u0438\\u043d\\u0442\\u0435\\u0440\\u0444\\u0435\\u0439\\u0441 \\u043f\\u043e\\u0437\\u0432\\u043e\\u043b\\u044f\\u0435\\u0442 \\u0441\\u043e\\u0441\\u0440\\u0435\\u0434\\u043e\\u0442\\u043e\\u0447\\u0438\\u0442\\u044c \\u0432\\u043d\\u0438\\u043c\\u0430\\u043d\\u0438\\u0435 \\u043f\\u043e\\u0441\\u0435\\u0442\\u0438\\u0442\\u0435\\u043b\\u044f \\u043d\\u0430 \\u0432\\u0430\\u0448\\u0435\\u043c \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0435, \\u0430 \\u043d\\u0435 \\u043d\\u0430 \\u043f\\u043e\\u043b\\u0435\\u0442\\u0435 \\u0434\\u0438\\u0437\\u0430\\u0439\\u043d\\u0435\\u0440\\u0441\\u043a\\u043e\\u0439 \\u043c\\u044b\\u0441\\u043b\\u0438\\r\\n          &lt;\\/div&gt;\\r\\n        &lt;\\/div&gt;\\r\\n      &lt;\\/div&gt;\\r\\n    &lt;\\/div&gt;\\r\\n  &lt;\\/div&gt;\\r\\n&lt;\\/div&gt;\"},\"2\":{\"title\":\"\",\"description\":\"&lt;div class=&quot;py-6 home-about&quot;&gt;\\r\\n  &lt;div class=&quot;container&quot;&gt;\\r\\n    &lt;div class=&quot;title is-2&quot;&gt;A bit of marketing&lt;\\/div&gt;\\r\\n    &lt;div class=&quot;columns is-mobile is-multiline&quot;&gt;\\r\\n      &lt;div class=&quot;column is-4-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile&quot;&gt;\\r\\n        &lt;div class=&quot;box&quot;&gt;\\r\\n          &lt;div class=&quot;block is-flex is-align-items-center&quot;&gt;\\r\\n            &lt;span class=&quot;icon is-large has-text-primary&quot;&gt;\\r\\n              &lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;\\r\\n                &lt;path d=&quot;M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z&quot;&gt;&lt;\\/path&gt;\\r\\n                &lt;path d=&quot;M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z&quot;&gt;&lt;\\/path&gt;\\r\\n              &lt;\\/svg&gt;\\r\\n            &lt;\\/span&gt;\\r\\n            &lt;span class=&quot;title is-5 pl-3&quot;&gt;\\r\\n              Online store for free\\r\\n            &lt;\\/span&gt;\\r\\n          &lt;\\/div&gt;\\r\\n          &lt;div class=&quot;content&quot;&gt;\\r\\n            The platform is open source, completely free, pleases with a light, concise design and really necessary basic functionality\\r\\n          &lt;\\/div&gt;\\r\\n        &lt;\\/div&gt;\\r\\n      &lt;\\/div&gt;\\r\\n      &lt;div class=&quot;column is-4-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile&quot;&gt;\\r\\n        &lt;div class=&quot;box&quot;&gt;\\r\\n          &lt;div class=&quot;block is-flex is-align-items-center&quot;&gt;\\r\\n            &lt;span class=&quot;icon is-large has-text-primary&quot;&gt;\\r\\n              &lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;\\r\\n                &lt;path d=&quot;M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z&quot;&gt;&lt;\\/path&gt;\\r\\n                &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z&quot;&gt;&lt;\\/path&gt;\\r\\n              &lt;\\/svg&gt;\\r\\n            &lt;\\/span&gt;\\r\\n            &lt;span class=&quot;title is-5 pl-3&quot;&gt;\\r\\n              Convenient control panel\\r\\n            &lt;\\/span&gt;\\r\\n          &lt;\\/div&gt;\\r\\n          &lt;div class=&quot;content&quot;&gt;\\r\\n            Easily add, edit, delete manufacturers, categories, products, articles, features, options, files, discounts, promotions, orders and much more\\r\\n          &lt;\\/div&gt;\\r\\n        &lt;\\/div&gt;\\r\\n      &lt;\\/div&gt;\\r\\n      &lt;div class=&quot;column is-4-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile&quot;&gt;\\r\\n        &lt;div class=&quot;box&quot;&gt;\\r\\n          &lt;div class=&quot;block is-flex is-align-items-center&quot;&gt;\\r\\n            &lt;span class=&quot;icon is-large has-text-primary&quot;&gt;\\r\\n              &lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;\\r\\n                &lt;path d=&quot;M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z&quot;&gt;&lt;\\/path&gt;\\r\\n                &lt;path d=&quot;M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z&quot;&gt;&lt;\\/path&gt;\\r\\n              &lt;\\/svg&gt;\\r\\n            &lt;\\/span&gt;\\r\\n            &lt;span class=&quot;title is-5 pl-3&quot;&gt;\\r\\n              Built-in blog functionality\\r\\n            &lt;\\/span&gt;\\r\\n          &lt;\\/div&gt;\\r\\n          &lt;div class=&quot;content&quot;&gt;\\r\\n            Write articles, attach them to categories, and attach products that you described in these articles to the articles themselves. Do not be afraid of bouts of graphomania\\r\\n          &lt;\\/div&gt;\\r\\n        &lt;\\/div&gt;\\r\\n      &lt;\\/div&gt;\\r\\n      &lt;div class=&quot;column is-4-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile&quot;&gt;\\r\\n        &lt;div class=&quot;box&quot;&gt;\\r\\n          &lt;div class=&quot;block is-flex is-align-items-center&quot;&gt;\\r\\n            &lt;span class=&quot;icon is-large has-text-primary&quot;&gt;\\r\\n              &lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;\\r\\n                &lt;path d=&quot;M14 3a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12zM2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2z&quot;&gt;&lt;\\/path&gt;\\r\\n                &lt;path d=&quot;M2 5.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z&quot;&gt;&lt;\\/path&gt;\\r\\n              &lt;\\/svg&gt;\\r\\n            &lt;\\/span&gt;\\r\\n            &lt;span class=&quot;title is-5 pl-3&quot;&gt;\\r\\n              Online payment and delivery\\r\\n            &lt;\\/span&gt;\\r\\n          &lt;\\/div&gt;\\r\\n          &lt;div class=&quot;content&quot;&gt;\\r\\n            The platform allows you to add popular online payment systems (SBER, Tinkoff, Youkassa, etc.) and delivery systems (Russian Post, SDEK, Boxberry, PEK, Baikal-Service, etc.) to the site.\\r\\n          &lt;\\/div&gt;\\r\\n        &lt;\\/div&gt;\\r\\n      &lt;\\/div&gt;\\r\\n      &lt;div class=&quot;column is-4-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile&quot;&gt;\\r\\n        &lt;div class=&quot;box&quot;&gt;\\r\\n          &lt;div class=&quot;block is-flex is-align-items-center&quot;&gt;\\r\\n            &lt;span class=&quot;icon is-large has-text-primary&quot;&gt;\\r\\n              &lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;\\r\\n                &lt;path d=&quot;M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z&quot;&gt;&lt;\\/path&gt;\\r\\n                &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z&quot;&gt;&lt;\\/path&gt;\\r\\n              &lt;\\/svg&gt;\\r\\n            &lt;\\/span&gt;\\r\\n            &lt;span class=&quot;title is-5 pl-3&quot;&gt;\\r\\n              Reversible data exchange\\r\\n            &lt;\\/span&gt;\\r\\n          &lt;\\/div&gt;\\r\\n          &lt;div class=&quot;content&quot;&gt;\\r\\n            Automatically publish your assortment from 1C, MoySklad or other accounting system to the store. Reduce your costs of maintaining an up-to-date catalog on the site\\r\\n          &lt;\\/div&gt;\\r\\n        &lt;\\/div&gt;\\r\\n      &lt;\\/div&gt;\\r\\n      &lt;div class=&quot;column is-4-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile&quot;&gt;\\r\\n        &lt;div class=&quot;box&quot;&gt;\\r\\n          &lt;div class=&quot;block is-flex is-align-items-center&quot;&gt;\\r\\n            &lt;span class=&quot;icon is-large has-text-primary&quot;&gt;\\r\\n              &lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;\\r\\n                &lt;path d=&quot;M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z&quot;&gt;&lt;\\/path&gt;\\r\\n                &lt;path d=&quot;M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z&quot;&gt;&lt;\\/path&gt;\\r\\n              &lt;\\/svg&gt;\\r\\n            &lt;\\/span&gt;\\r\\n            &lt;span class=&quot;title is-5 pl-3&quot;&gt;\\r\\n              Convenient and concise design\\r\\n            &lt;\\/span&gt;\\r\\n          &lt;\\/div&gt;\\r\\n          &lt;div class=&quot;content&quot;&gt;\\r\\n            A minimalistic, clear, well-structured interface allows the visitor to focus on your product, and not on the flight of design ideas\\r\\n          &lt;\\/div&gt;\\r\\n        &lt;\\/div&gt;\\r\\n      &lt;\\/div&gt;\\r\\n    &lt;\\/div&gt;\\r\\n  &lt;\\/div&gt;\\r\\n&lt;\\/div&gt;\"}},\"status\":\"1\"}');
+(41, 'Бесплатный интернет-магазин', 'html', '{\"apply\":\"1\",\"name\":\"\\u0411\\u0435\\u0441\\u043f\\u043b\\u0430\\u0442\\u043d\\u044b\\u0439 \\u0438\\u043d\\u0442\\u0435\\u0440\\u043d\\u0435\\u0442-\\u043c\\u0430\\u0433\\u0430\\u0437\\u0438\\u043d\",\"module_description\":{\"1\":{\"description\":\"&lt;div class=&quot;py-6 home-about&quot;&gt;\\r\\n  &lt;div class=&quot;container&quot;&gt;    \\r\\n    &lt;div class=&quot;columns is-mobile is-multiline&quot;&gt;\\r\\n      &lt;div class=&quot;column is-12&quot;&gt;\\r\\n      \\t&lt;div class=&quot;title is-2 has-text-centered&quot;&gt;\\u041d\\u0435\\u043c\\u043d\\u043e\\u0433\\u043e \\u043c\\u0430\\u0440\\u043a\\u0435\\u0442\\u0438\\u043d\\u0433\\u0430&lt;\\/div&gt;\\r\\n      &lt;\\/div&gt;\\r\\n      &lt;div class=&quot;column is-4-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile&quot;&gt;\\r\\n        &lt;div class=&quot;box&quot;&gt;\\r\\n          &lt;div class=&quot;block is-flex is-align-items-center&quot;&gt;\\r\\n            &lt;span class=&quot;icon is-large has-text-primary&quot;&gt;\\r\\n              &lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;\\r\\n                &lt;path d=&quot;M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z&quot;&gt;&lt;\\/path&gt;\\r\\n                &lt;path d=&quot;M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z&quot;&gt;&lt;\\/path&gt;\\r\\n              &lt;\\/svg&gt;\\r\\n            &lt;\\/span&gt;\\r\\n            &lt;span class=&quot;title is-5 pl-3&quot;&gt;\\r\\n              \\u0418\\u043d\\u0442\\u0435\\u0440\\u043d\\u0435\\u0442-\\u043c\\u0430\\u0433\\u0430\\u0437\\u0438\\u043d \\u0431\\u0435\\u0441\\u043f\\u043b\\u0430\\u0442\\u043d\\u043e\\r\\n            &lt;\\/span&gt;\\r\\n          &lt;\\/div&gt;\\r\\n          &lt;div class=&quot;content&quot;&gt;\\r\\n            \\u041f\\u043b\\u0430\\u0442\\u0444\\u043e\\u0440\\u043c\\u0430 \\u0438\\u043c\\u0435\\u0435\\u0442 \\u043e\\u0442\\u043a\\u0440\\u044b\\u0442\\u044b\\u0439 \\u0438\\u0441\\u0445\\u043e\\u0434\\u043d\\u044b\\u0439 \\u043a\\u043e\\u0434, \\u043f\\u043e\\u043b\\u043d\\u043e\\u0441\\u0442\\u044c\\u044e \\u0431\\u0435\\u0441\\u043f\\u043b\\u0430\\u0442\\u043d\\u0430, \\u0440\\u0430\\u0434\\u0443\\u0435\\u0442 \\u043b\\u0435\\u0433\\u043a\\u0438\\u043c, \\u043b\\u0430\\u043a\\u043e\\u043d\\u0438\\u0447\\u043d\\u044b\\u043c \\u0434\\u0438\\u0437\\u0430\\u0439\\u043d\\u043e\\u043c \\u0438 \\u0434\\u0435\\u0439\\u0441\\u0442\\u0432\\u0438\\u0442\\u0435\\u043b\\u044c\\u043d\\u043e \\u043d\\u0443\\u0436\\u043d\\u044b\\u043c \\u0431\\u0430\\u0437\\u043e\\u0432\\u044b\\u043c \\u0444\\u0443\\u043d\\u043a\\u0446\\u0438\\u043e\\u043d\\u0430\\u043b\\u043e\\u043c\\r\\n          &lt;\\/div&gt;\\r\\n        &lt;\\/div&gt;\\r\\n      &lt;\\/div&gt;\\r\\n      &lt;div class=&quot;column is-4-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile&quot;&gt;\\r\\n        &lt;div class=&quot;box&quot;&gt;\\r\\n          &lt;div class=&quot;block is-flex is-align-items-center&quot;&gt;\\r\\n            &lt;span class=&quot;icon is-large has-text-primary&quot;&gt;\\r\\n              &lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;\\r\\n                &lt;path d=&quot;M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z&quot;&gt;&lt;\\/path&gt;\\r\\n                &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z&quot;&gt;&lt;\\/path&gt;\\r\\n              &lt;\\/svg&gt;\\r\\n            &lt;\\/span&gt;\\r\\n            &lt;span class=&quot;title is-5 pl-3&quot;&gt;\\r\\n              \\u0423\\u0434\\u043e\\u0431\\u043d\\u0430\\u044f \\u043f\\u0430\\u043d\\u0435\\u043b\\u044c \\u0443\\u043f\\u0440\\u0430\\u0432\\u043b\\u0435\\u043d\\u0438\\u044f\\r\\n            &lt;\\/span&gt;\\r\\n          &lt;\\/div&gt;\\r\\n          &lt;div class=&quot;content&quot;&gt;\\r\\n            \\u041b\\u0435\\u0433\\u043a\\u043e \\u0434\\u043e\\u0431\\u0430\\u0432\\u043b\\u044f\\u0439\\u0442\\u0435, \\u0440\\u0435\\u0434\\u0430\\u043a\\u0442\\u0438\\u0440\\u0443\\u0439\\u0442\\u0435, \\u0443\\u0434\\u0430\\u043b\\u044f\\u0439\\u0442\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u044b, \\u043f\\u0440\\u043e\\u0438\\u0437\\u0432\\u043e\\u0434\\u0438\\u0442\\u0435\\u043b\\u0435\\u0439, \\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u0438, \\u0441\\u0442\\u0430\\u0442\\u044c\\u0438, \\u0445\\u0430\\u0440\\u0430\\u043a\\u0442\\u0435\\u0440\\u0438\\u0441\\u0442\\u0438\\u043a\\u0438, \\u043e\\u043f\\u0446\\u0438\\u0438, \\u0444\\u0430\\u0439\\u043b\\u044b, \\u0441\\u043a\\u0438\\u0434\\u043a\\u0438, \\u0430\\u043a\\u0446\\u0438\\u0438, \\u0437\\u0430\\u043a\\u0430\\u0437\\u044b \\u0438 \\u043c\\u043d\\u043e\\u0433\\u043e \\u0447\\u0435\\u0433\\u043e \\u0435\\u0449\\u0451\\r\\n          &lt;\\/div&gt;\\r\\n        &lt;\\/div&gt;\\r\\n      &lt;\\/div&gt;\\r\\n      &lt;div class=&quot;column is-4-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile&quot;&gt;\\r\\n        &lt;div class=&quot;box&quot;&gt;\\r\\n          &lt;div class=&quot;block is-flex is-align-items-center&quot;&gt;\\r\\n            &lt;span class=&quot;icon is-large has-text-primary&quot;&gt;\\r\\n              &lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;\\r\\n                &lt;path d=&quot;M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z&quot;&gt;&lt;\\/path&gt;\\r\\n                &lt;path d=&quot;M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z&quot;&gt;&lt;\\/path&gt;\\r\\n              &lt;\\/svg&gt;\\r\\n            &lt;\\/span&gt;\\r\\n            &lt;span class=&quot;title is-5 pl-3&quot;&gt;\\r\\n              \\u0412\\u0441\\u0442\\u0440\\u043e\\u0435\\u043d\\u043d\\u044b\\u0439 \\u0444\\u0443\\u043d\\u043a\\u0446\\u0438\\u043e\\u043d\\u0430\\u043b \\u0431\\u043b\\u043e\\u0433\\u0430\\r\\n            &lt;\\/span&gt;\\r\\n          &lt;\\/div&gt;\\r\\n          &lt;div class=&quot;content&quot;&gt;\\r\\n            \\u041f\\u0438\\u0448\\u0438\\u0442\\u0435 \\u0441\\u0442\\u0430\\u0442\\u044c\\u0438, \\u043f\\u0440\\u0438\\u043a\\u0440\\u0435\\u043f\\u043b\\u044f\\u0439\\u0442\\u0435 \\u0438\\u0445 \\u043a \\u043a\\u0430\\u0442\\u0435\\u0433\\u043e\\u0440\\u0438\\u044f\\u043c, \\u0430 \\u043a \\u0441\\u0430\\u043c\\u0438\\u043c \\u0441\\u0442\\u0430\\u0442\\u044c\\u044f\\u043c \\u043f\\u0440\\u0438\\u043a\\u0440\\u0435\\u043f\\u043b\\u044f\\u0439\\u0442\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u044b \\u043a\\u043e\\u0442\\u043e\\u0440\\u044b\\u0435 \\u0432\\u044b \\u043e\\u043f\\u0438\\u0441\\u044b\\u0432\\u0430\\u043b\\u0438 \\u0432 \\u044d\\u0442\\u0438\\u0445 \\u0441\\u0442\\u0430\\u0442\\u044c\\u044f\\u0445. \\u041d\\u0435 \\u0431\\u043e\\u0439\\u0442\\u0435\\u0441\\u044c \\u043f\\u0440\\u0438\\u0441\\u0442\\u0443\\u043f\\u043e\\u0432 \\u0433\\u0440\\u0430\\u0444\\u043e\\u043c\\u0430\\u043d\\u0441\\u0442\\u0432\\u0430\\r\\n          &lt;\\/div&gt;\\r\\n        &lt;\\/div&gt;\\r\\n      &lt;\\/div&gt;\\r\\n      &lt;div class=&quot;column is-4-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile&quot;&gt;\\r\\n        &lt;div class=&quot;box&quot;&gt;\\r\\n          &lt;div class=&quot;block is-flex is-align-items-center&quot;&gt;\\r\\n            &lt;span class=&quot;icon is-large has-text-primary&quot;&gt;\\r\\n              &lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;\\r\\n                &lt;path d=&quot;M14 3a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12zM2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2z&quot;&gt;&lt;\\/path&gt;\\r\\n                &lt;path d=&quot;M2 5.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z&quot;&gt;&lt;\\/path&gt;\\r\\n              &lt;\\/svg&gt;\\r\\n            &lt;\\/span&gt;\\r\\n            &lt;span class=&quot;title is-5 pl-3&quot;&gt;\\r\\n              \\u041e\\u043d\\u043b\\u0430\\u0439\\u043d-\\u043e\\u043f\\u043b\\u0430\\u0442\\u0430 \\u0438 \\u0434\\u043e\\u0441\\u0442\\u0430\\u0432\\u043a\\u0430\\r\\n            &lt;\\/span&gt;\\r\\n          &lt;\\/div&gt;\\r\\n          &lt;div class=&quot;content&quot;&gt;\\r\\n            \\u041f\\u043b\\u0430\\u0442\\u0444\\u043e\\u0440\\u043c\\u0430 \\u043f\\u043e\\u0437\\u0432\\u043e\\u043b\\u044f\\u0435\\u0442 \\u0434\\u043e\\u0431\\u0430\\u0432\\u0438\\u0442\\u044c \\u043d\\u0430 \\u0441\\u0430\\u0439\\u0442 \\u043f\\u043e\\u043f\\u0443\\u043b\\u044f\\u0440\\u043d\\u044b\\u0435 \\u0441\\u0438\\u0441\\u0442\\u0435\\u043c\\u044b \\u043e\\u043d\\u043b\\u0430\\u0439\\u043d-\\u043e\\u043f\\u043b\\u0430\\u0442\\u044b (\\u0421\\u0411\\u0415\\u0420, \\u0422\\u0438\\u043d\\u044c\\u043a\\u043e\\u0444\\u0444, \\u042e\\u043a\\u0430\\u0441\\u0441\\u0430 \\u0438 \\u0434\\u0440.) \\u0438 \\u0434\\u043e\\u0441\\u0442\\u0430\\u0432\\u043a\\u0438 (\\u041f\\u043e\\u0447\\u0442\\u0430 \\u0420\\u043e\\u0441\\u0441\\u0438\\u0438, \\u0421\\u0414\\u042d\\u041a, \\u0411\\u043e\\u043a\\u0441\\u0431\\u0435\\u0440\\u0440\\u0438, \\u041f\\u042d\\u041a, \\u0411\\u0430\\u0439\\u043a\\u0430\\u043b-\\u0421\\u0435\\u0440\\u0432\\u0438\\u0441 \\u0438 \\u0434\\u0440.)\\r\\n          &lt;\\/div&gt;\\r\\n        &lt;\\/div&gt;\\r\\n      &lt;\\/div&gt;\\r\\n      &lt;div class=&quot;column is-4-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile&quot;&gt;\\r\\n        &lt;div class=&quot;box&quot;&gt;\\r\\n          &lt;div class=&quot;block is-flex is-align-items-center&quot;&gt;\\r\\n            &lt;span class=&quot;icon is-large has-text-primary&quot;&gt;\\r\\n              &lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;\\r\\n                &lt;path d=&quot;M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z&quot;&gt;&lt;\\/path&gt;\\r\\n                &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z&quot;&gt;&lt;\\/path&gt;\\r\\n              &lt;\\/svg&gt;\\r\\n            &lt;\\/span&gt;\\r\\n            &lt;span class=&quot;title is-5 pl-3&quot;&gt;\\r\\n              \\u0414\\u0432\\u0443\\u0441\\u0442\\u043e\\u0440\\u043e\\u043d\\u043d\\u0438\\u0439 \\u043e\\u0431\\u043c\\u0435\\u043d \\u0434\\u0430\\u043d\\u043d\\u044b\\u043c\\u0438\\r\\n            &lt;\\/span&gt;\\r\\n          &lt;\\/div&gt;\\r\\n          &lt;div class=&quot;content&quot;&gt;\\r\\n            \\u0410\\u0432\\u0442\\u043e\\u043c\\u0430\\u0442\\u0438\\u0447\\u0435\\u0441\\u043a\\u0438 \\u043f\\u0443\\u0431\\u043b\\u0438\\u043a\\u0443\\u0439\\u0442\\u0435 \\u0432\\u0430\\u0448 \\u0430\\u0441\\u0441\\u043e\\u0440\\u0442\\u0438\\u043c\\u0435\\u043d\\u0442 \\u0438\\u0437 1\\u0421, \\u041c\\u043e\\u0439\\u0421\\u043a\\u043b\\u0430\\u0434 \\u0438\\u043b\\u0438 \\u0438\\u043d\\u043e\\u0439 \\u0441\\u0438\\u0441\\u0442\\u0435\\u043c\\u044b \\u0443\\u0447\\u0435\\u0442\\u0430 \\u0432 \\u043c\\u0430\\u0433\\u0430\\u0437\\u0438\\u043d. \\u0421\\u043e\\u043a\\u0440\\u0430\\u0442\\u0438\\u0442\\u0435 \\u0432\\u0430\\u0448\\u0438 \\u0440\\u0430\\u0441\\u0445\\u043e\\u0434\\u044b \\u043d\\u0430 \\u043f\\u043e\\u0434\\u0434\\u0435\\u0440\\u0436\\u0430\\u043d\\u0438\\u0435 \\u0430\\u043a\\u0442\\u0443\\u0430\\u043b\\u044c\\u043d\\u043e\\u0433\\u043e \\u043a\\u0430\\u0442\\u0430\\u043b\\u043e\\u0433\\u0430 \\u043d\\u0430 \\u0441\\u0430\\u0439\\u0442\\u0435\\r\\n          &lt;\\/div&gt;\\r\\n        &lt;\\/div&gt;\\r\\n      &lt;\\/div&gt;\\r\\n      &lt;div class=&quot;column is-4-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile&quot;&gt;\\r\\n        &lt;div class=&quot;box&quot;&gt;\\r\\n          &lt;div class=&quot;block is-flex is-align-items-center&quot;&gt;\\r\\n            &lt;span class=&quot;icon is-large has-text-primary&quot;&gt;\\r\\n              &lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;\\r\\n                &lt;path d=&quot;M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z&quot;&gt;&lt;\\/path&gt;\\r\\n                &lt;path d=&quot;M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z&quot;&gt;&lt;\\/path&gt;\\r\\n              &lt;\\/svg&gt;\\r\\n            &lt;\\/span&gt;\\r\\n            &lt;span class=&quot;title is-5 pl-3&quot;&gt;\\r\\n              \\u0423\\u0434\\u043e\\u0431\\u043d\\u044b\\u0439 \\u0438 \\u043b\\u0430\\u043a\\u043e\\u043d\\u0438\\u0447\\u043d\\u044b\\u0439 \\u0434\\u0438\\u0437\\u0430\\u0439\\u043d\\r\\n            &lt;\\/span&gt;\\r\\n          &lt;\\/div&gt;\\r\\n          &lt;div class=&quot;content&quot;&gt;\\r\\n            \\u041c\\u0438\\u043d\\u0438\\u043c\\u0430\\u043b\\u0438\\u0441\\u0442\\u0438\\u0447\\u043d\\u044b\\u0439, \\u043f\\u043e\\u043d\\u044f\\u0442\\u043d\\u044b\\u0439, \\u0445\\u043e\\u0440\\u043e\\u0448\\u043e \\u0441\\u0442\\u0440\\u0443\\u043a\\u0442\\u0443\\u0440\\u0438\\u0440\\u043e\\u0432\\u0430\\u043d\\u043d\\u044b\\u0439 \\u0438\\u043d\\u0442\\u0435\\u0440\\u0444\\u0435\\u0439\\u0441 \\u043f\\u043e\\u0437\\u0432\\u043e\\u043b\\u044f\\u0435\\u0442 \\u0441\\u043e\\u0441\\u0440\\u0435\\u0434\\u043e\\u0442\\u043e\\u0447\\u0438\\u0442\\u044c \\u0432\\u043d\\u0438\\u043c\\u0430\\u043d\\u0438\\u0435 \\u043f\\u043e\\u0441\\u0435\\u0442\\u0438\\u0442\\u0435\\u043b\\u044f \\u043d\\u0430 \\u0432\\u0430\\u0448\\u0435\\u043c \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0435, \\u0430 \\u043d\\u0435 \\u043d\\u0430 \\u043f\\u043e\\u043b\\u0435\\u0442\\u0435 \\u0434\\u0438\\u0437\\u0430\\u0439\\u043d\\u0435\\u0440\\u0441\\u043a\\u043e\\u0439 \\u043c\\u044b\\u0441\\u043b\\u0438\\r\\n          &lt;\\/div&gt;\\r\\n        &lt;\\/div&gt;\\r\\n      &lt;\\/div&gt;\\r\\n    &lt;\\/div&gt;\\r\\n  &lt;\\/div&gt;\\r\\n&lt;\\/div&gt;\"},\"2\":{\"description\":\"&lt;div class=&quot;py-6 home-about&quot;&gt;\\r\\n  &lt;div class=&quot;container&quot;&gt;\\r\\n    &lt;div class=&quot;title is-2&quot;&gt;A bit of marketing&lt;\\/div&gt;\\r\\n    &lt;div class=&quot;columns is-mobile is-multiline&quot;&gt;\\r\\n      &lt;div class=&quot;column is-4-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile&quot;&gt;\\r\\n        &lt;div class=&quot;box&quot;&gt;\\r\\n          &lt;div class=&quot;block is-flex is-align-items-center&quot;&gt;\\r\\n            &lt;span class=&quot;icon is-large has-text-primary&quot;&gt;\\r\\n              &lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;\\r\\n                &lt;path d=&quot;M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z&quot;&gt;&lt;\\/path&gt;\\r\\n                &lt;path d=&quot;M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z&quot;&gt;&lt;\\/path&gt;\\r\\n              &lt;\\/svg&gt;\\r\\n            &lt;\\/span&gt;\\r\\n            &lt;span class=&quot;title is-5 pl-3&quot;&gt;\\r\\n              Online store for free\\r\\n            &lt;\\/span&gt;\\r\\n          &lt;\\/div&gt;\\r\\n          &lt;div class=&quot;content&quot;&gt;\\r\\n            The platform is open source, completely free, pleases with a light, concise design and really necessary basic functionality\\r\\n          &lt;\\/div&gt;\\r\\n        &lt;\\/div&gt;\\r\\n      &lt;\\/div&gt;\\r\\n      &lt;div class=&quot;column is-4-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile&quot;&gt;\\r\\n        &lt;div class=&quot;box&quot;&gt;\\r\\n          &lt;div class=&quot;block is-flex is-align-items-center&quot;&gt;\\r\\n            &lt;span class=&quot;icon is-large has-text-primary&quot;&gt;\\r\\n              &lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;\\r\\n                &lt;path d=&quot;M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z&quot;&gt;&lt;\\/path&gt;\\r\\n                &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z&quot;&gt;&lt;\\/path&gt;\\r\\n              &lt;\\/svg&gt;\\r\\n            &lt;\\/span&gt;\\r\\n            &lt;span class=&quot;title is-5 pl-3&quot;&gt;\\r\\n              Convenient control panel\\r\\n            &lt;\\/span&gt;\\r\\n          &lt;\\/div&gt;\\r\\n          &lt;div class=&quot;content&quot;&gt;\\r\\n            Easily add, edit, delete manufacturers, categories, products, articles, features, options, files, discounts, promotions, orders and much more\\r\\n          &lt;\\/div&gt;\\r\\n        &lt;\\/div&gt;\\r\\n      &lt;\\/div&gt;\\r\\n      &lt;div class=&quot;column is-4-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile&quot;&gt;\\r\\n        &lt;div class=&quot;box&quot;&gt;\\r\\n          &lt;div class=&quot;block is-flex is-align-items-center&quot;&gt;\\r\\n            &lt;span class=&quot;icon is-large has-text-primary&quot;&gt;\\r\\n              &lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;\\r\\n                &lt;path d=&quot;M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z&quot;&gt;&lt;\\/path&gt;\\r\\n                &lt;path d=&quot;M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z&quot;&gt;&lt;\\/path&gt;\\r\\n              &lt;\\/svg&gt;\\r\\n            &lt;\\/span&gt;\\r\\n            &lt;span class=&quot;title is-5 pl-3&quot;&gt;\\r\\n              Built-in blog functionality\\r\\n            &lt;\\/span&gt;\\r\\n          &lt;\\/div&gt;\\r\\n          &lt;div class=&quot;content&quot;&gt;\\r\\n            Write articles, attach them to categories, and attach products that you described in these articles to the articles themselves. Do not be afraid of bouts of graphomania\\r\\n          &lt;\\/div&gt;\\r\\n        &lt;\\/div&gt;\\r\\n      &lt;\\/div&gt;\\r\\n      &lt;div class=&quot;column is-4-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile&quot;&gt;\\r\\n        &lt;div class=&quot;box&quot;&gt;\\r\\n          &lt;div class=&quot;block is-flex is-align-items-center&quot;&gt;\\r\\n            &lt;span class=&quot;icon is-large has-text-primary&quot;&gt;\\r\\n              &lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;\\r\\n                &lt;path d=&quot;M14 3a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12zM2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2z&quot;&gt;&lt;\\/path&gt;\\r\\n                &lt;path d=&quot;M2 5.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z&quot;&gt;&lt;\\/path&gt;\\r\\n              &lt;\\/svg&gt;\\r\\n            &lt;\\/span&gt;\\r\\n            &lt;span class=&quot;title is-5 pl-3&quot;&gt;\\r\\n              Online payment and delivery\\r\\n            &lt;\\/span&gt;\\r\\n          &lt;\\/div&gt;\\r\\n          &lt;div class=&quot;content&quot;&gt;\\r\\n            The platform allows you to add popular online payment systems (SBER, Tinkoff, Youkassa, etc.) and delivery systems (Russian Post, SDEK, Boxberry, PEK, Baikal-Service, etc.) to the site.\\r\\n          &lt;\\/div&gt;\\r\\n        &lt;\\/div&gt;\\r\\n      &lt;\\/div&gt;\\r\\n      &lt;div class=&quot;column is-4-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile&quot;&gt;\\r\\n        &lt;div class=&quot;box&quot;&gt;\\r\\n          &lt;div class=&quot;block is-flex is-align-items-center&quot;&gt;\\r\\n            &lt;span class=&quot;icon is-large has-text-primary&quot;&gt;\\r\\n              &lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;\\r\\n                &lt;path d=&quot;M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z&quot;&gt;&lt;\\/path&gt;\\r\\n                &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z&quot;&gt;&lt;\\/path&gt;\\r\\n              &lt;\\/svg&gt;\\r\\n            &lt;\\/span&gt;\\r\\n            &lt;span class=&quot;title is-5 pl-3&quot;&gt;\\r\\n              Reversible data exchange\\r\\n            &lt;\\/span&gt;\\r\\n          &lt;\\/div&gt;\\r\\n          &lt;div class=&quot;content&quot;&gt;\\r\\n            Automatically publish your assortment from 1C, MoySklad or other accounting system to the store. Reduce your costs of maintaining an up-to-date catalog on the site\\r\\n          &lt;\\/div&gt;\\r\\n        &lt;\\/div&gt;\\r\\n      &lt;\\/div&gt;\\r\\n      &lt;div class=&quot;column is-4-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile&quot;&gt;\\r\\n        &lt;div class=&quot;box&quot;&gt;\\r\\n          &lt;div class=&quot;block is-flex is-align-items-center&quot;&gt;\\r\\n            &lt;span class=&quot;icon is-large has-text-primary&quot;&gt;\\r\\n              &lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;\\r\\n                &lt;path d=&quot;M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z&quot;&gt;&lt;\\/path&gt;\\r\\n                &lt;path d=&quot;M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z&quot;&gt;&lt;\\/path&gt;\\r\\n              &lt;\\/svg&gt;\\r\\n            &lt;\\/span&gt;\\r\\n            &lt;span class=&quot;title is-5 pl-3&quot;&gt;\\r\\n              Convenient and concise design\\r\\n            &lt;\\/span&gt;\\r\\n          &lt;\\/div&gt;\\r\\n          &lt;div class=&quot;content&quot;&gt;\\r\\n            A minimalistic, clear, well-structured interface allows the visitor to focus on your product, and not on the flight of design ideas\\r\\n          &lt;\\/div&gt;\\r\\n        &lt;\\/div&gt;\\r\\n      &lt;\\/div&gt;\\r\\n    &lt;\\/div&gt;\\r\\n  &lt;\\/div&gt;\\r\\n&lt;\\/div&gt;\"}},\"status\":\"1\"}');
 
 -- --------------------------------------------------------
 
@@ -3667,11 +3669,11 @@ CREATE TABLE `oc_product` (
 INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `isbn`, `mpn`, `location`, `quantity`, `stock_status_id`, `image`, `manufacturer_id`, `shipping`, `price`, `points`, `tax_class_id`, `date_available`, `weight`, `weight_class_id`, `length`, `width`, `height`, `length_class_id`, `subtract`, `minimum`, `sort_order`, `redirect`, `status`, `viewed`, `date_added`, `date_modified`, `noindex`) VALUES
 (1, '42069', '', '', '', '', '', '', '', 0, 5, 'catalog/demo/products/42069_0.jpg', 2, 1, '154990.0000', 0, 9, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-21 07:20:28', 1),
 (2, '42070', '', '', '', '', '', '', '', 1, 5, 'catalog/demo/products/42070_0.jpg', 2, 1, '147940.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(3, '42071', '', '', '', '', '', '', '', 2, 5, 'catalog/demo/products/42071_0.jpg', 1, 1, '142490.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(3, '42071', '', '', '', '', '', '', '', 2, 5, 'catalog/demo/products/42071_0.jpg', 1, 1, '142490.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 1, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (4, '42072', '', '', '', '', '', '', '', 3, 5, 'catalog/demo/products/42072_0.jpg', 2, 1, '139990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (5, '42073', '', '', '', '', '', '', '', 4, 5, 'catalog/demo/products/42073_0.jpg', 2, 1, '139990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(6, '42074', '', '', '', '', '', '', '', 5, 5, 'catalog/demo/products/42074_0.jpg', 1, 1, '134990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(7, '42075', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/42075_0.jpg', 1, 1, '129990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 1, '2022-11-11 12:51:32', '2024-01-29 17:07:02', 1),
+(6, '42074', '', '', '', '', '', '', '', 5, 5, 'catalog/demo/products/42074_0.jpg', 1, 1, '134990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 1, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(7, '42075', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/42075_0.jpg', 1, 1, '129990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 4, '2022-11-11 12:51:32', '2024-01-29 17:07:02', 1),
 (8, '42076', '', '', '', '', '', '', '', 7, 5, 'catalog/demo/products/42076_0.jpg', 2, 1, '128370.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (9, '42077', '', '', '', '', '', '', '', 8, 5, 'catalog/demo/products/42077_0.jpg', 2, 1, '124999.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (10, '42078', '', '', '', '', '', '', '', 9, 5, 'catalog/demo/products/42078_0.jpg', 2, 1, '124990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
@@ -3702,21 +3704,21 @@ INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `is
 (35, '42187', '', '', '', '', '', '', '', 5, 5, 'catalog/demo/products/42187_0.jpg', 4, 1, '29990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (36, '42188', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/42188_0.jpg', 0, 1, '28390.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (37, '42189', '', '', '', '', '', '', '', 7, 5, 'catalog/demo/products/42189_0.jpg', 0, 1, '27570.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(38, '42190', '', '', '', '', '', '', '', 8, 5, 'catalog/demo/products/42190_0.jpg', 0, 1, '26490.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(38, '42190', '', '', '', '', '', '', '', 8, 5, 'catalog/demo/products/42190_0.jpg', 0, 1, '26490.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 1, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (39, '42191', '', '', '', '', '', '', '', 9, 5, 'catalog/demo/products/42191_0.jpg', 0, 1, '25190.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (40, '42192', '', '', '', '', '', '', '', 10, 5, 'catalog/demo/products/42192_0.jpg', 0, 1, '23990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (41, '42231', '', '', '', '', '', '', '', 11, 5, 'catalog/demo/products/42231_0.jpg', 0, 1, '13990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 1, '2022-11-11 12:51:32', '2024-06-10 11:16:06', 1),
 (42, '42232', '', '', '', '', '', '', '', 12, 5, 'catalog/demo/products/42232_0.jpg', 0, 1, '6590.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (43, '42233', '', '', '', '', '', '', '', 13, 5, 'catalog/demo/products/42233_0.jpg', 0, 1, '5990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (44, '42234', '', '', '', '', '', '', '', 14, 5, 'catalog/demo/products/42234_0.jpg', 0, 1, '5890.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(45, '42235', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/42235_0.jpg', 0, 1, '5230.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 4, '2022-11-11 12:51:32', '2025-02-26 21:51:59', 1),
+(45, '42235', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/42235_0.jpg', 0, 1, '5230.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 29, '2022-11-11 12:51:32', '2025-02-26 21:51:59', 1),
 (46, '42236', '', '', '', '', '', '', '', 16, 5, 'catalog/demo/products/42236_0.jpg', 0, 1, '4990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (47, '42237', '', '', '', '', '', '', '', 17, 5, 'catalog/demo/products/42237_0.jpg', 0, 1, '4990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (48, '42238', '', '', '', '', '', '', '', 18, 5, 'catalog/demo/products/42238_0.jpg', 1, 1, '4990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (49, '42239', '', '', '', '', '', '', '', 19, 5, 'catalog/demo/products/42239_0.jpg', 2, 1, '4890.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (50, '42240', '', '', '', '', '', '', '', 20, 5, 'catalog/demo/products/42240_0.jpg', 2, 1, '4890.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (51, '42279', '', '', '', '', '', '', '', 21, 5, 'catalog/demo/products/42279_0.jpg', 5, 1, '402990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(52, '42280', '', '', '', '', '', '', '', 22, 5, 'catalog/demo/products/42280_0.jpg', 1, 1, '334990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(52, '42280', '', '', '', '', '', '', '', 22, 5, 'catalog/demo/products/42280_0.jpg', 1, 1, '334990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 2, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (53, '42281', '', '', '', '', '', '', '', 23, 5, 'catalog/demo/products/42281_0.jpg', 5, 1, '329990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (54, '42282', '', '', '', '', '', '', '', 24, 5, 'catalog/demo/products/42282_0.jpg', 5, 1, '321990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (55, '42283', '', '', '', '', '', '', '', 25, 5, 'catalog/demo/products/42283_0.jpg', 1, 1, '299990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
@@ -3727,7 +3729,7 @@ INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `is
 (60, '42289', '', '', '', '', '', '', '', 0, 5, 'catalog/demo/products/42289_0.jpg', 1, 1, '234990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (61, '42327', '', '', '', '', '', '', '', 1, 5, 'catalog/demo/products/42327_0.jpg', 0, 1, '151990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (62, '42328', '', '', '', '', '', '', '', 2, 5, 'catalog/demo/products/42328_0.jpg', 0, 1, '104990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(63, '42329', '', '', '', '', '', '', '', 3, 5, 'catalog/demo/products/42329_0.jpg', 0, 1, '99680.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 1, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(63, '42329', '', '', '', '', '', '', '', 3, 5, 'catalog/demo/products/42329_0.jpg', 0, 1, '99680.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 2, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (64, '42330', '', '', '', '', '', '', '', 4, 5, 'catalog/demo/products/42330_0.jpg', 0, 1, '93990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (65, '42333', '', '', '', '', '', '', '', 5, 5, 'catalog/demo/products/42333_0.jpg', 0, 1, '79990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (66, '42335', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/42335_0.jpg', 0, 1, '73990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
@@ -3735,11 +3737,11 @@ INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `is
 (68, '42339', '', '', '', '', '', '', '', 8, 5, 'catalog/demo/products/42339_0.jpg', 0, 1, '71060.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (69, '42340', '', '', '', '', '', '', '', 9, 5, 'catalog/demo/products/42340_0.jpg', 0, 1, '69990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (70, '42342', '', '', '', '', '', '', '', 10, 5, 'catalog/demo/products/42342_0.jpg', 0, 1, '67990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(71, '42375', '', '', '', '', '', '', '', 11, 5, 'catalog/demo/products/42375_0.jpg', 0, 1, '409030.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(71, '42375', '', '', '', '', '', '', '', 11, 5, 'catalog/demo/products/42375_0.jpg', 0, 1, '409030.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 2, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (72, '42376', '', '', '', '', '', '', '', 12, 5, 'catalog/demo/products/42376_0.jpg', 0, 1, '137790.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (73, '42377', '', '', '', '', '', '', '', 13, 5, 'catalog/demo/products/42377_0.jpg', 0, 1, '119120.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (74, '42378', '', '', '', '', '', '', '', 14, 5, 'catalog/demo/products/42378_0.jpg', 0, 1, '113030.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(75, '42379', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/42379_0.jpg', 0, 1, '92040.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(75, '42379', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/42379_0.jpg', 0, 1, '92040.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 1, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (76, '42380', '', '', '', '', '', '', '', 16, 5, 'catalog/demo/products/42380_0.jpg', 4, 1, '89690.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (77, '42381', '', '', '', '', '', '', '', 17, 5, 'catalog/demo/products/42381_0.jpg', 4, 1, '86800.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (78, '42382', '', '', '', '', '', '', '', 18, 5, 'catalog/demo/products/42382_0.jpg', 0, 1, '85030.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
@@ -3757,7 +3759,7 @@ INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `is
 (90, '42432', '', '', '', '', '', '', '', 30, 5, 'catalog/demo/products/42432_0.jpg', 0, 1, '92990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (91, '42471', '', '', '', '', '', '', '', 31, 5, 'catalog/demo/products/42471_0.jpg', 0, 1, '17789.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (92, '42472', '', '', '', '', '', '', '', 32, 5, 'catalog/demo/products/42472_0.jpg', 0, 1, '15299.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(93, '42473', '', '', '', '', '', '', '', 33, 5, 'catalog/demo/products/42473_0.jpg', 0, 1, '15199.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(93, '42473', '', '', '', '', '', '', '', 33, 5, 'catalog/demo/products/42473_0.jpg', 0, 1, '15199.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 3, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (94, '42474', '', '', '', '', '', '', '', 0, 5, 'catalog/demo/products/42474_0.jpg', 0, 1, '0.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (95, '42475', '', '', '', '', '', '', '', 1, 5, 'catalog/demo/products/42475_0.jpg', 0, 1, '11885.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (96, '42476', '', '', '', '', '', '', '', 2, 5, 'catalog/demo/products/42476_0.jpg', 0, 1, '11649.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
@@ -6172,12 +6174,12 @@ INSERT INTO `oc_seo_url` (`seo_url_id`, `store_id`, `language_id`, `query`, `key
 (914, 0, 2, 'common/home', 'en'),
 (917, 0, 1, 'blog_category_id=73', 'documentatsiya'),
 (918, 0, 2, 'blog_category_id=73', 'dosc'),
-(1149, 0, 2, 'article_id=126', 'store-owner-on-exopencart-talks-about-his-pleasant-experience'),
-(1148, 0, 1, 'article_id=126', 'Владелец магазина на exopencart рассказывает о своем приятном опыте'),
+(1190, 0, 2, 'article_id=126', 'store-owner-on-exopencart-talks-about-his-pleasant-experience'),
+(1189, 0, 1, 'article_id=126', 'Владелец магазина на exopencart рассказывает о своем приятном опыте'),
 (1153, 0, 2, 'article_id=127', 'how-to-grab-luck-by-the-tail-and-not-lose-touch-with-reality'),
 (1152, 0, 1, 'article_id=127', 'kak-skhvatit-udachu-za-hvost-i-ne-poteryat-svyaz-s-realnostyu'),
-(1115, 0, 2, 'article_id=128', 'dry-fact-sheet'),
-(1114, 0, 1, 'article_id=128', 'suhoe-izlozhenie-faktov'),
+(1194, 0, 2, 'article_id=128', 'dry-fact-sheet'),
+(1193, 0, 1, 'article_id=128', 'suhoe-izlozhenie-faktov'),
 (1046, 0, 1, 'manufacturer_id=1', 'apple'),
 (937, 0, 1, 'product/manufacturer', 'brendy'),
 (938, 0, 2, 'product/manufacturer', 'brands'),
@@ -6195,7 +6197,9 @@ INSERT INTO `oc_seo_url` (`seo_url_id`, `store_id`, `language_id`, `query`, `key
 (1121, 0, 2, 'product/special', 'sale'),
 (1154, 0, 1, 'information/contact', 'contacts'),
 (1155, 0, 2, 'information/contact', 'contacts'),
-(1156, 0, 1, 'blog/latest', 'blog');
+(1156, 0, 1, 'blog/latest', 'blog'),
+(1191, 0, 1, 'checkout/cart', 'cart'),
+(1192, 0, 2, 'checkout/cart', 'cart');
 
 -- --------------------------------------------------------
 
@@ -6214,7 +6218,7 @@ CREATE TABLE `oc_session` (
 --
 
 INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES
-('e8104bdd069bdd9ef8300090b8', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"user_id\":\"1\",\"user_token\":\"ITfCh0L49xgukPheCx944DY95PLFvdhC\"}', '2025-06-02 17:02:20');
+('5f8fd8d51458a0299a27617bb8', '{\"user_id\":\"1\",\"user_token\":\"Ua9wwMnVXJg1QbRWOahAMNbAekZmXi3n\",\"language\":\"ru-ru\",\"currency\":\"RUB\",\"file_manager_directory\":\"\\/shared\\/httpd\\/exopencart\\/htdocs\\/image\\/catalog\"}', '2025-11-20 09:33:28');
 
 -- --------------------------------------------------------
 
@@ -6245,8 +6249,6 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (16990, 0, 'configblog', 'configblog_review_mail', '1', 0),
 (10423, 0, 'currency_cbr', 'currency_cbr_status', '1', 0),
 (16991, 0, 'configblog', 'configblog_image_category_width', '50', 0),
-(20973, 0, 'config', 'config_file_max_size', '10000000', 0),
-(20974, 0, 'config', 'config_file_ext_allowed', 'zip\r\ntxt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc', 0),
 (16043, 0, 'module_privacy', 'module_privacy_status', '1', 0),
 (16989, 0, 'configblog', 'configblog_review_guest', '1', 0),
 (16988, 0, 'configblog', 'configblog_review_status', '1', 0),
@@ -6283,30 +6285,26 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (125, 0, 'total_voucher', 'total_voucher_status', '1', 0),
 (126, 0, 'module_category', 'module_category_status', '1', 0),
 (13845, 0, 'module_account', 'module_account_status', '1', 0),
-(19050, 0, 'theme_default', 'theme_default_image_cart_height', '120', 0),
-(19051, 0, 'theme_default', 'theme_default_image_location_width', '320', 0),
-(19052, 0, 'theme_default', 'theme_default_image_location_height', '240', 0),
-(19049, 0, 'theme_default', 'theme_default_image_cart_width', '120', 0),
-(19048, 0, 'theme_default', 'theme_default_image_wishlist_height', '240', 0),
-(19047, 0, 'theme_default', 'theme_default_image_wishlist_width', '240', 0),
-(19046, 0, 'theme_default', 'theme_default_image_compare_height', '432', 0),
-(19045, 0, 'theme_default', 'theme_default_image_compare_width', '432', 0),
-(19044, 0, 'theme_default', 'theme_default_image_related_height', '200', 0),
-(19043, 0, 'theme_default', 'theme_default_image_related_width', '200', 0),
-(19042, 0, 'theme_default', 'theme_default_image_additional_height', '74', 0),
-(19039, 0, 'theme_default', 'theme_default_image_product_width', '240', 0),
-(19040, 0, 'theme_default', 'theme_default_image_product_height', '240', 0),
-(19041, 0, 'theme_default', 'theme_default_image_additional_width', '74', 0),
-(19038, 0, 'theme_default', 'theme_default_image_popup_height', '1000', 0),
-(19037, 0, 'theme_default', 'theme_default_image_popup_width', '1000', 0),
-(19036, 0, 'theme_default', 'theme_default_image_thumb_height', '720', 0),
-(19031, 0, 'theme_default', 'theme_default_image_category_width', '80', 0),
+(21499, 0, 'theme_default', 'theme_default_image_location_width', '480', 0),
+(21500, 0, 'theme_default', 'theme_default_image_location_height', '480', 0),
+(21498, 0, 'theme_default', 'theme_default_image_cart_height', '120', 0),
+(21497, 0, 'theme_default', 'theme_default_image_cart_width', '120', 0),
+(21496, 0, 'theme_default', 'theme_default_image_wishlist_height', '240', 0),
+(21495, 0, 'theme_default', 'theme_default_image_wishlist_width', '240', 0),
+(21494, 0, 'theme_default', 'theme_default_image_compare_height', '432', 0),
+(21493, 0, 'theme_default', 'theme_default_image_compare_width', '432', 0),
+(21492, 0, 'theme_default', 'theme_default_image_related_height', '200', 0),
+(21491, 0, 'theme_default', 'theme_default_image_related_width', '200', 0),
+(21490, 0, 'theme_default', 'theme_default_image_additional_height', '74', 0),
+(21489, 0, 'theme_default', 'theme_default_image_additional_width', '74', 0),
+(21488, 0, 'theme_default', 'theme_default_image_product_height', '240', 0),
+(21487, 0, 'theme_default', 'theme_default_image_product_width', '240', 0),
+(21486, 0, 'theme_default', 'theme_default_image_popup_height', '1000', 0),
 (9657, 0, 'dashboard_activity', 'dashboard_activity_sort_order', '7', 0),
 (9656, 0, 'dashboard_activity', 'dashboard_activity_status', '1', 0),
 (156, 0, 'dashboard_sale', 'dashboard_sale_status', '1', 0),
 (157, 0, 'dashboard_sale', 'dashboard_sale_width', '3', 0),
-(158, 0, 'dashboard_chart', 'dashboard_chart_status', '1', 0),
-(159, 0, 'dashboard_chart', 'dashboard_chart_width', '6', 0),
+(21254, 0, 'dashboard_chart', 'dashboard_chart_status', '1', 0),
 (160, 0, 'dashboard_customer', 'dashboard_customer_status', '1', 0),
 (161, 0, 'dashboard_customer', 'dashboard_customer_width', '3', 0),
 (9651, 0, 'dashboard_map', 'dashboard_map_sort_order', '5', 0),
@@ -6320,7 +6318,7 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (170, 0, 'dashboard_customer', 'dashboard_customer_sort_order', '3', 0),
 (171, 0, 'dashboard_online', 'dashboard_online_sort_order', '4', 0),
 (9649, 0, 'dashboard_map', 'dashboard_map_width', '6', 0),
-(173, 0, 'dashboard_chart', 'dashboard_chart_sort_order', '6', 0),
+(21253, 0, 'dashboard_chart', 'dashboard_chart_width', '6', 0),
 (9654, 0, 'dashboard_recent', 'dashboard_recent_sort_order', '5', 0),
 (9653, 0, 'dashboard_recent', 'dashboard_recent_status', '1', 0),
 (9655, 0, 'dashboard_activity', 'dashboard_activity_width', '6', 0),
@@ -6357,24 +6355,21 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (10428, 0, 'currency_ecb', 'currency_ecb_status', '1', 0),
 (231, 0, 'module_blog_category', 'module_blog_category_status', '1', 0),
 (232, 0, 'domovoy', 'domovoy_folders_logs', '{\"size\":368743,\"unit\":{\"size\":360.1000000000000227373675443232059478759765625,\"unit\":\"\\u041a\\u0431\\u0430\\u0439\\u0442\"},\"files\":5,\"date\":\"2022-12-16 13:06:53\"}', 1),
-(11170, 0, 'dashboard_domovoy', 'dashboard_domovoy_warning_funtions', 'diskfreespace\r\ndisk_total_space\r\ndisk_total_space\r\nfileperms\r\nfopen\r\nphpversion\r\nopendir\r\nposix_getpwuid\r\nposix_uname', 0),
-(11169, 0, 'dashboard_domovoy', 'dashboard_domovoy_danger_funtions', 'exec\r\npassthru\r\nini_get\r\nini_get_all\r\nparse_ini_file\r\nphp_uname\r\nsystem\r\nshell_exec\r\nshow_source\r\npcntl_exec\r\npcntl_exec\r\nexpect_popen\r\nproc_open\r\npopen', 0),
-(11168, 0, 'dashboard_domovoy', 'dashboard_domovoy_free_space_status', '0', 0),
-(11167, 0, 'dashboard_domovoy', 'dashboard_domovoy_disk_free_space', '500', 0),
-(11166, 0, 'dashboard_domovoy', 'dashboard_domovoy_cron', '{\"logs\":{\"status\":\"1\",\"size\":\"100\",\"time\":\"30\"},\"cache\":{\"status\":\"0\",\"size\":\"100\",\"time\":\"30\"},\"imagescache\":{\"status\":\"0\",\"size\":\"100\",\"time\":\"30\"}}', 1),
-(11165, 0, 'dashboard_domovoy', 'dashboard_domovoy_sort_order', '10', 0),
-(11164, 0, 'dashboard_domovoy', 'dashboard_domovoy_status', '0', 0),
-(11163, 0, 'dashboard_domovoy', 'dashboard_domovoy_width', '6', 0),
-(20968, 0, 'config', 'config_compression', '9', 0),
-(20969, 0, 'config', 'config_secure', '1', 0),
-(20970, 0, 'config', 'config_password', '1', 0),
-(20971, 0, 'config', 'config_shared', '0', 0),
-(20972, 0, 'config', 'config_encryption', '5Z2O7K8T1So08hvRc3oXZ2eUwm0Bb2mDZAOyFgGd6k822nfVvKGPWIyIo9sbiCbI8yXmCeOKcHc6L9fAvjxZqsgiDDQgo1luHef1Q75SZEiywBmlJbDj1gsD6dRQHmoqbKIbvtkAiUD9HjrpRwILIaFaW47NUkUNAfILwQHcV02h7GoUi9Q59gy6e0jJO9mJ0LQu9KaLhBsKHNp9GXau28q2fDeliZ3haHMXtvpj4sS6j3soLIHmKyRINQ93Xs8aSHq9MRKljfA0TZq12ZpVNZvHuMWVNE20rTGFoVQvfc8uqluGhiKBslA9yX5v9oSgIQvGd5mImgF3zkZnyIm68JTsU04bPc9QRo24LCNGYARQ40JLWVNdPxJgGB4S8iuWDWLdTZrD1DGjPpCyAHAdEi28kEkePWzDlO3idDyoflDnasCIrksLBvRAcUe6R6Eg84K2pBHUI9zLy5X5m37os407sCpC73hTdRN3GpwOR0aeUHkZj06O7HbiTtBgFnUJEqV2MercqkNogIOUjYRzpENB607zSDRmESYDhE5bdWGOHynrXD84IccXl6dWSPyDaePJyvvrVGdBSzcKHWPKROLlwZDLxd2yZpZUrfM7BVQlL3jHdpxe9IlRMUnTqcYMByQHZbdJLE7R5PPIGApoxxyO4M1PaI2c355QAq0Y5OQT3aWo8GHa1GOQTrnu6HWeZAHPmpZWwuM24AjpBNbHE0GW3DgfNW5qJkbBcaFETRCkimKi6EXXvPs5wVMKWedZswiyRdBKixpjuzkl3LHSXvita8CntiIJkBr6495Erk3GbE4VtogQhdMgbcH3PcdFm2KzZIvLMvAQrpauFVODpcIcgQLCuU1nhgSVfepdb5Sd66OsLcpYkbXKMAQIPUmLp2jrqwqsqpV2mEviWAiwlV8iQ4u8nl2ISVipRSi9D3tvqa3RKDkSiSptKUBfHFwNiDrtphXVYnmmFqDSNdnJtZfPkjxTPatpOa1V2mcjt10TUcskDhV9YRFHbepUIpzf', 0),
-(21131, 0, 'developer', 'developer_webp', '0', 0),
-(19035, 0, 'theme_default', 'theme_default_image_thumb_width', '720', 0),
-(19034, 0, 'theme_default', 'theme_default_image_manufacturer_height', '80', 0),
-(19033, 0, 'theme_default', 'theme_default_image_manufacturer_width', '80', 0),
-(19032, 0, 'theme_default', 'theme_default_image_category_height', '80', 0),
+(21483, 0, 'theme_default', 'theme_default_image_thumb_width', '720', 0),
+(21484, 0, 'theme_default', 'theme_default_image_thumb_height', '720', 0),
+(21485, 0, 'theme_default', 'theme_default_image_popup_width', '1000', 0),
+(21448, 0, 'developer', 'developer_webp', '0', 0),
+(21255, 0, 'dashboard_chart', 'dashboard_chart_sort_order', '6', 0),
+(21226, 0, 'config', 'config_compression', '9', 0),
+(21227, 0, 'config', 'config_secure', '1', 0),
+(21228, 0, 'config', 'config_password', '1', 0),
+(21229, 0, 'config', 'config_shared', '0', 0),
+(21230, 0, 'config', 'config_encryption', '2yXC9VurV2t0qgoXHOWZDM6AZErXCq94wjU1Df280pqRhZEmhpohqSDGvOtQHEJ3uTpupevta8cAbCQdVhSfDnwQ346kCLZcaH4dUX2pdrZeXAoAHgYoCXOQOrgu9Vmo8UqlP9uzZGjetnDIvFesua3nsMQroYmmCcqOH303F7ScG1LGnYdmPrAIvQUJHISvzOD5qURkbHTYC2wEScJuzcz8IqYowrzozC06XluggpxURnbTrUZD39OsBsfpbeEuXyp8N5sjt9vehDji6HOgNTW5m8JhBKV5KlOFQkIHWEvU6PoOpW9cA9TdNvxV5rNUECFdN3uRsbdAtq0Q1Y57vYk12sGYFxXOM99Uc6CAwtIfESKcAeWRND8dIblWhI0EGJ7epqxkmvnmc1Pc1cR6eQFsYqcEDh9bvhmi3Pp8gjHL7HYQFZgz8oia0g3EfwlJaxSHvtwsYbDsImUCRR3Jw5uD5VfWmkdE1FCNhtEB1lwfDG0Huz82Woyyj1DfYWupqCA1YuqRD42Oqrk23kQ3NdFkRs1choHGnpLfdF9WQqtLJ16wWtjV8vDVU9yk9F9emHcc8pSjPwInDti8GpM6sNxxn8tqQQx9Y1cptX1ycqEMXzVg5uEY8Wufb9WYW4SnPyi23ziTHbN0sfZqSCZydv01uzou8pOWF8cRTHPzHhuVb8Rykhjjmeru833AJJDgZQYdF0W6R186wA8tYGUChQSf07YtAIGNK16xE7taK8jQcL08pn98sYJED566xPRuaIT71eGAJesE1oTrzma9xbRu6nGfQKkYf0NPUcnxONXXhq9U8gEUT9UIKcttkJm8bq1PHUYIkadi4B8MJ6UCigQ7WZJ2jfQTjIEtLYrK9f9hcOFpZT6iOapB0X5Wv5PAL3hswjfHt3d5egWgxrFj7tY3HuWsOL1iTPrA7eiCxpVvG92M6t9gJG7SyRxtizmENdOi0Xo3A9YVKz9r2WZYYEwkOJFgWsZRCYgNVgPXHZXSCQoU9HgOuXgk9LjmvYzF', 0),
+(21447, 0, 'developer', 'developer_js', '0', 0),
+(21482, 0, 'theme_default', 'theme_default_image_manufacturer_height', '80', 0),
+(21481, 0, 'theme_default', 'theme_default_image_manufacturer_width', '80', 0),
+(21480, 0, 'theme_default', 'theme_default_image_category_height', '80', 0),
+(21479, 0, 'theme_default', 'theme_default_image_category_width', '80', 0),
 (1635, 0, 'shipping_pickup', 'shipping_pickup_geo_zone_id', '0', 0),
 (1636, 0, 'shipping_pickup', 'shipping_pickup_status', '1', 0),
 (1637, 0, 'shipping_pickup', 'shipping_pickup_sort_order', '1', 0),
@@ -6396,24 +6391,21 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (8133, 0, 'csvprice_pro', 'csvprice_pro_save_image_table', '1', 0),
 (8132, 0, 'csvprice_pro', 'csvprice_pro_image_download_mod', '1', 0),
 (8131, 0, 'csvprice_pro', 'csvprice_pro_each_iteration_timeout', '180', 0),
-(20950, 0, 'config', 'config_captcha', '', 0),
-(20951, 0, 'config', 'config_captcha_page', '[\"register\",\"guest\",\"review\",\"return\",\"contact\"]', 1),
-(20952, 0, 'config', 'config_logo', 'catalog/logo.png', 0),
-(20953, 0, 'config', 'config_logo_width', '175', 0),
-(20954, 0, 'config', 'config_logo_height', '35', 0),
-(20955, 0, 'config', 'config_icon', 'catalog/favicon.png', 0),
-(20956, 0, 'config', 'config_mail_engine', 'mail', 0),
-(20957, 0, 'config', 'config_mail_parameter', '', 0),
-(20958, 0, 'config', 'config_mail_smtp_hostname', '', 0),
-(20959, 0, 'config', 'config_mail_smtp_username', '', 0),
-(20960, 0, 'config', 'config_mail_smtp_password', '', 0),
-(20961, 0, 'config', 'config_mail_smtp_port', '25', 0),
-(20962, 0, 'config', 'config_mail_smtp_timeout', '5', 0),
-(20963, 0, 'config', 'config_mail_alert', '[\"order\"]', 1),
-(20964, 0, 'config', 'config_mail_alert_email', '', 0),
-(20965, 0, 'config', 'config_maintenance', '0', 0),
-(20966, 0, 'config', 'config_seo_url', '1', 0),
-(20967, 0, 'config', 'config_robots', 'abot\r\ndbot\r\nebot\r\nhbot\r\nkbot\r\nlbot\r\nmbot\r\nnbot\r\nobot\r\npbot\r\nrbot\r\nsbot\r\ntbot\r\nvbot\r\nybot\r\nzbot\r\nbot.\r\nbot/\r\n_bot\r\n.bot\r\n/bot\r\n-bot\r\n:bot\r\n(bot\r\ncrawl\r\nslurp\r\nspider\r\nseek\r\naccoona\r\nacoon\r\nadressendeutschland\r\nah-ha.com\r\nahoy\r\naltavista\r\nananzi\r\nanthill\r\nappie\r\narachnophilia\r\narale\r\naraneo\r\naranha\r\narchitext\r\naretha\r\narks\r\nasterias\r\natlocal\r\natn\r\natomz\r\naugurfind\r\nbackrub\r\nbannana_bot\r\nbaypup\r\nbdfetch\r\nbig brother\r\nbiglotron\r\nbjaaland\r\nblackwidow\r\nblaiz\r\nblog\r\nblo.\r\nbloodhound\r\nboitho\r\nbooch\r\nbradley\r\nbutterfly\r\ncalif\r\ncassandra\r\nccubee\r\ncfetch\r\ncharlotte\r\nchurl\r\ncienciaficcion\r\ncmc\r\ncollective\r\ncomagent\r\ncombine\r\ncomputingsite\r\ncsci\r\ncurl\r\ncusco\r\ndaumoa\r\ndeepindex\r\ndelorie\r\ndepspid\r\ndeweb\r\ndie blinde kuh\r\ndigger\r\nditto\r\ndmoz\r\ndocomo\r\ndownload express\r\ndtaagent\r\ndwcp\r\nebiness\r\nebingbong\r\ne-collector\r\nejupiter\r\nemacs-w3 search engine\r\nesther\r\nevliya celebi\r\nezresult\r\nfalcon\r\nfelix ide\r\nferret\r\nfetchrover\r\nfido\r\nfindlinks\r\nfireball\r\nfish search\r\nfouineur\r\nfunnelweb\r\ngazz\r\ngcreep\r\ngenieknows\r\ngetterroboplus\r\ngeturl\r\nglx\r\ngoforit\r\ngolem\r\ngrabber\r\ngrapnel\r\ngralon\r\ngriffon\r\ngromit\r\ngrub\r\ngulliver\r\nhamahakki\r\nharvest\r\nhavindex\r\nhelix\r\nheritrix\r\nhku www octopus\r\nhomerweb\r\nhtdig\r\nhtml index\r\nhtml_analyzer\r\nhtmlgobble\r\nhubater\r\nhyper-decontextualizer\r\nia_archiver\r\nibm_planetwide\r\nichiro\r\niconsurf\r\niltrovatore\r\nimage.kapsi.net\r\nimagelock\r\nincywincy\r\nindexer\r\ninfobee\r\ninformant\r\ningrid\r\ninktomisearch.com\r\ninspector web\r\nintelliagent\r\ninternet shinchakubin\r\nip3000\r\niron33\r\nisraeli-search\r\nivia\r\njack\r\njakarta\r\njavabee\r\njetbot\r\njumpstation\r\nkatipo\r\nkdd-explorer\r\nkilroy\r\nknowledge\r\nkototoi\r\nkretrieve\r\nlabelgrabber\r\nlachesis\r\nlarbin\r\nlegs\r\nlibwww\r\nlinkalarm\r\nlink validator\r\nlinkscan\r\nlockon\r\nlwp\r\nlycos\r\nmagpie\r\nmantraagent\r\nmapoftheinternet\r\nmarvin/\r\nmattie\r\nmediafox\r\nmediapartners\r\nmercator\r\nmerzscope\r\nmicrosoft url control\r\nminirank\r\nmiva\r\nmj12\r\nmnogosearch\r\nmoget\r\nmonster\r\nmoose\r\nmotor\r\nmultitext\r\nmuncher\r\nmuscatferret\r\nmwd.search\r\nmyweb\r\nnajdi\r\nnameprotect\r\nnationaldirectory\r\nnazilla\r\nncsa beta\r\nnec-meshexplorer\r\nnederland.zoek\r\nnetcarta webmap engine\r\nnetmechanic\r\nnetresearchserver\r\nnetscoop\r\nnewscan-online\r\nnhse\r\nnokia6682/\r\nnomad\r\nnoyona\r\nnutch\r\nnzexplorer\r\nobjectssearch\r\noccam\r\nomni\r\nopen text\r\nopenfind\r\nopenintelligencedata\r\norb search\r\nosis-project\r\npack rat\r\npageboy\r\npagebull\r\npage_verifier\r\npanscient\r\nparasite\r\npartnersite\r\npatric\r\npear.\r\npegasus\r\nperegrinator\r\npgp key agent\r\nphantom\r\nphpdig\r\npicosearch\r\npiltdownman\r\npimptrain\r\npinpoint\r\npioneer\r\npiranha\r\nplumtreewebaccessor\r\npogodak\r\npoirot\r\npompos\r\npoppelsdorf\r\npoppi\r\npopular iconoclast\r\npsycheclone\r\npublisher\r\npython\r\nrambler\r\nraven search\r\nroach\r\nroad runner\r\nroadhouse\r\nrobbie\r\nrobofox\r\nrobozilla\r\nrules\r\nsalty\r\nsbider\r\nscooter\r\nscoutjet\r\nscrubby\r\nsearch.\r\nsearchprocess\r\nsemanticdiscovery\r\nsenrigan\r\nsg-scout\r\nshai\'hulud\r\nshark\r\nshopwiki\r\nsidewinder\r\nsift\r\nsilk\r\nsimmany\r\nsite searcher\r\nsite valet\r\nsitetech-rover\r\nskymob.com\r\nsleek\r\nsmartwit\r\nsna-\r\nsnappy\r\nsnooper\r\nsohu\r\nspeedfind\r\nsphere\r\nsphider\r\nspinner\r\nspyder\r\nsteeler/\r\nsuke\r\nsuntek\r\nsupersnooper\r\nsurfnomore\r\nsven\r\nsygol\r\nszukacz\r\ntach black widow\r\ntarantula\r\ntempleton\r\n/teoma\r\nt-h-u-n-d-e-r-s-t-o-n-e\r\ntheophrastus\r\ntitan\r\ntitin\r\ntkwww\r\ntoutatis\r\nt-rex\r\ntutorgig\r\ntwiceler\r\ntwisted\r\nucsd\r\nudmsearch\r\nurl check\r\nupdated\r\nvagabondo\r\nvalkyrie\r\nverticrawl\r\nvictoria\r\nvision-search\r\nvolcano\r\nvoyager/\r\nvoyager-hc\r\nw3c_validator\r\nw3m2\r\nw3mir\r\nwalker\r\nwallpaper\r\nwanderer\r\nwauuu\r\nwavefire\r\nweb core\r\nweb hopper\r\nweb wombat\r\nwebbandit\r\nwebcatcher\r\nwebcopy\r\nwebfoot\r\nweblayers\r\nweblinker\r\nweblog monitor\r\nwebmirror\r\nwebmonkey\r\nwebquest\r\nwebreaper\r\nwebsitepulse\r\nwebsnarf\r\nwebstolperer\r\nwebvac\r\nwebwalk\r\nwebwatch\r\nwebwombat\r\nwebzinger\r\nwhizbang\r\nwhowhere\r\nwild ferret\r\nworldlight\r\nwwwc\r\nwwwster\r\nxenu\r\nxget\r\nxift\r\nxirq\r\nyandex\r\nyanga\r\nyeti\r\nyodao\r\nzao\r\nzippp\r\nzyborg', 0),
+(21211, 0, 'config', 'config_logo_width', '175', 0),
+(21212, 0, 'config', 'config_logo_height', '35', 0),
+(21213, 0, 'config', 'config_icon', 'catalog/favicon.png', 0),
+(21214, 0, 'config', 'config_mail_engine', 'mail', 0),
+(21215, 0, 'config', 'config_mail_parameter', '', 0),
+(21216, 0, 'config', 'config_mail_smtp_hostname', '', 0),
+(21217, 0, 'config', 'config_mail_smtp_username', '', 0),
+(21218, 0, 'config', 'config_mail_smtp_password', '', 0),
+(21219, 0, 'config', 'config_mail_smtp_port', '25', 0),
+(21220, 0, 'config', 'config_mail_smtp_timeout', '5', 0),
+(21221, 0, 'config', 'config_mail_alert', '[\"order\"]', 1),
+(21222, 0, 'config', 'config_mail_alert_email', '', 0),
+(21223, 0, 'config', 'config_maintenance', '0', 0),
+(21224, 0, 'config', 'config_seo_url', '1', 0),
+(21225, 0, 'config', 'config_robots', 'abot\r\ndbot\r\nebot\r\nhbot\r\nkbot\r\nlbot\r\nmbot\r\nnbot\r\nobot\r\npbot\r\nrbot\r\nsbot\r\ntbot\r\nvbot\r\nybot\r\nzbot\r\nbot.\r\nbot/\r\n_bot\r\n.bot\r\n/bot\r\n-bot\r\n:bot\r\n(bot\r\ncrawl\r\nslurp\r\nspider\r\nseek\r\naccoona\r\nacoon\r\nadressendeutschland\r\nah-ha.com\r\nahoy\r\naltavista\r\nananzi\r\nanthill\r\nappie\r\narachnophilia\r\narale\r\naraneo\r\naranha\r\narchitext\r\naretha\r\narks\r\nasterias\r\natlocal\r\natn\r\natomz\r\naugurfind\r\nbackrub\r\nbannana_bot\r\nbaypup\r\nbdfetch\r\nbig brother\r\nbiglotron\r\nbjaaland\r\nblackwidow\r\nblaiz\r\nblog\r\nblo.\r\nbloodhound\r\nboitho\r\nbooch\r\nbradley\r\nbutterfly\r\ncalif\r\ncassandra\r\nccubee\r\ncfetch\r\ncharlotte\r\nchurl\r\ncienciaficcion\r\ncmc\r\ncollective\r\ncomagent\r\ncombine\r\ncomputingsite\r\ncsci\r\ncurl\r\ncusco\r\ndaumoa\r\ndeepindex\r\ndelorie\r\ndepspid\r\ndeweb\r\ndie blinde kuh\r\ndigger\r\nditto\r\ndmoz\r\ndocomo\r\ndownload express\r\ndtaagent\r\ndwcp\r\nebiness\r\nebingbong\r\ne-collector\r\nejupiter\r\nemacs-w3 search engine\r\nesther\r\nevliya celebi\r\nezresult\r\nfalcon\r\nfelix ide\r\nferret\r\nfetchrover\r\nfido\r\nfindlinks\r\nfireball\r\nfish search\r\nfouineur\r\nfunnelweb\r\ngazz\r\ngcreep\r\ngenieknows\r\ngetterroboplus\r\ngeturl\r\nglx\r\ngoforit\r\ngolem\r\ngrabber\r\ngrapnel\r\ngralon\r\ngriffon\r\ngromit\r\ngrub\r\ngulliver\r\nhamahakki\r\nharvest\r\nhavindex\r\nhelix\r\nheritrix\r\nhku www octopus\r\nhomerweb\r\nhtdig\r\nhtml index\r\nhtml_analyzer\r\nhtmlgobble\r\nhubater\r\nhyper-decontextualizer\r\nia_archiver\r\nibm_planetwide\r\nichiro\r\niconsurf\r\niltrovatore\r\nimage.kapsi.net\r\nimagelock\r\nincywincy\r\nindexer\r\ninfobee\r\ninformant\r\ningrid\r\ninktomisearch.com\r\ninspector web\r\nintelliagent\r\ninternet shinchakubin\r\nip3000\r\niron33\r\nisraeli-search\r\nivia\r\njack\r\njakarta\r\njavabee\r\njetbot\r\njumpstation\r\nkatipo\r\nkdd-explorer\r\nkilroy\r\nknowledge\r\nkototoi\r\nkretrieve\r\nlabelgrabber\r\nlachesis\r\nlarbin\r\nlegs\r\nlibwww\r\nlinkalarm\r\nlink validator\r\nlinkscan\r\nlockon\r\nlwp\r\nlycos\r\nmagpie\r\nmantraagent\r\nmapoftheinternet\r\nmarvin/\r\nmattie\r\nmediafox\r\nmediapartners\r\nmercator\r\nmerzscope\r\nmicrosoft url control\r\nminirank\r\nmiva\r\nmj12\r\nmnogosearch\r\nmoget\r\nmonster\r\nmoose\r\nmotor\r\nmultitext\r\nmuncher\r\nmuscatferret\r\nmwd.search\r\nmyweb\r\nnajdi\r\nnameprotect\r\nnationaldirectory\r\nnazilla\r\nncsa beta\r\nnec-meshexplorer\r\nnederland.zoek\r\nnetcarta webmap engine\r\nnetmechanic\r\nnetresearchserver\r\nnetscoop\r\nnewscan-online\r\nnhse\r\nnokia6682/\r\nnomad\r\nnoyona\r\nnutch\r\nnzexplorer\r\nobjectssearch\r\noccam\r\nomni\r\nopen text\r\nopenfind\r\nopenintelligencedata\r\norb search\r\nosis-project\r\npack rat\r\npageboy\r\npagebull\r\npage_verifier\r\npanscient\r\nparasite\r\npartnersite\r\npatric\r\npear.\r\npegasus\r\nperegrinator\r\npgp key agent\r\nphantom\r\nphpdig\r\npicosearch\r\npiltdownman\r\npimptrain\r\npinpoint\r\npioneer\r\npiranha\r\nplumtreewebaccessor\r\npogodak\r\npoirot\r\npompos\r\npoppelsdorf\r\npoppi\r\npopular iconoclast\r\npsycheclone\r\npublisher\r\npython\r\nrambler\r\nraven search\r\nroach\r\nroad runner\r\nroadhouse\r\nrobbie\r\nrobofox\r\nrobozilla\r\nrules\r\nsalty\r\nsbider\r\nscooter\r\nscoutjet\r\nscrubby\r\nsearch.\r\nsearchprocess\r\nsemanticdiscovery\r\nsenrigan\r\nsg-scout\r\nshai\'hulud\r\nshark\r\nshopwiki\r\nsidewinder\r\nsift\r\nsilk\r\nsimmany\r\nsite searcher\r\nsite valet\r\nsitetech-rover\r\nskymob.com\r\nsleek\r\nsmartwit\r\nsna-\r\nsnappy\r\nsnooper\r\nsohu\r\nspeedfind\r\nsphere\r\nsphider\r\nspinner\r\nspyder\r\nsteeler/\r\nsuke\r\nsuntek\r\nsupersnooper\r\nsurfnomore\r\nsven\r\nsygol\r\nszukacz\r\ntach black widow\r\ntarantula\r\ntempleton\r\n/teoma\r\nt-h-u-n-d-e-r-s-t-o-n-e\r\ntheophrastus\r\ntitan\r\ntitin\r\ntkwww\r\ntoutatis\r\nt-rex\r\ntutorgig\r\ntwiceler\r\ntwisted\r\nucsd\r\nudmsearch\r\nurl check\r\nupdated\r\nvagabondo\r\nvalkyrie\r\nverticrawl\r\nvictoria\r\nvision-search\r\nvolcano\r\nvoyager/\r\nvoyager-hc\r\nw3c_validator\r\nw3m2\r\nw3mir\r\nwalker\r\nwallpaper\r\nwanderer\r\nwauuu\r\nwavefire\r\nweb core\r\nweb hopper\r\nweb wombat\r\nwebbandit\r\nwebcatcher\r\nwebcopy\r\nwebfoot\r\nweblayers\r\nweblinker\r\nweblog monitor\r\nwebmirror\r\nwebmonkey\r\nwebquest\r\nwebreaper\r\nwebsitepulse\r\nwebsnarf\r\nwebstolperer\r\nwebvac\r\nwebwalk\r\nwebwatch\r\nwebwombat\r\nwebzinger\r\nwhizbang\r\nwhowhere\r\nwild ferret\r\nworldlight\r\nwwwc\r\nwwwster\r\nxenu\r\nxget\r\nxift\r\nxirq\r\nyandex\r\nyanga\r\nyeti\r\nyodao\r\nzao\r\nzippp\r\nzyborg', 0),
 (9460, 0, 'module_filter', 'module_filter_status', '1', 0),
 (16979, 0, 'configblog', 'configblog_html_h1', '{\"1\":\"\\u041b\\u0443\\u0447\\u0448\\u0438\\u0439 \\u0431\\u043b\\u043e\\u0433\",\"2\":\"The best blog\"}', 1),
 (16978, 0, 'configblog', 'configblog_name', '{\"1\":\"\\u0411\\u043b\\u043e\\u0433\",\"2\":\"Blog\"}', 1),
@@ -6421,111 +6413,115 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (9741, 0, 'fraudlabspro', 'fraud_fraudlabspro_approve_status_id', '2', 0),
 (9742, 0, 'fraudlabspro', 'fraud_fraudlabspro_reject_status_id', '8', 0),
 (9795, 0, 'module_information', 'module_information_status', '1', 0),
-(19730, 0, 'module_store', 'module_store_status', '0', 0),
-(19729, 0, 'module_store', 'module_store_admin', '0', 0),
+(21259, 0, 'module_store', 'module_store_status', '0', 0),
+(21258, 0, 'module_store', 'module_store_admin', '0', 0),
 (9739, 0, 'fraudlabspro', 'fraud_fraudlabspro_order_status_id', '17', 0),
 (9738, 0, 'fraudlabspro', 'fraud_fraudlabspro_score', '80', 0),
 (9737, 0, 'feed_google_base', 'feed_google_base_status', '0', 0),
-(20949, 0, 'config', 'config_return_status_id', '1', 0),
 (20881, 0, 'menu_default', 'menu_default_status', '1', 0),
 (20882, 0, 'menu_default', 'menu_default_settings', '{\"cache\":\"0\",\"show_catalog\":\"1\",\"button\":{\"1\":\"\",\"2\":\"\"},\"show_images\":\"0\",\"width\":\"60\",\"height\":\"60\",\"show_special\":\"1\",\"show_brands\":\"1\",\"show_blog\":\"1\",\"show_contacts\":\"1\"}', 1),
-(20948, 0, 'config', 'config_return_id', '9', 0),
-(20947, 0, 'config', 'config_affiliate_id', '10', 0),
-(20946, 0, 'config', 'config_affiliate_commission', '5', 0),
-(20945, 0, 'config', 'config_affiliate_auto', '0', 0),
-(20944, 0, 'config', 'config_affiliate_approval', '0', 0),
-(20943, 0, 'config', 'config_affiliate_group_id', '1', 0),
-(20942, 0, 'config', 'config_stock_checkout', '1', 0),
-(20941, 0, 'config', 'config_stock_warning', '0', 0),
-(20940, 0, 'config', 'config_stock_display', '0', 0),
-(20939, 0, 'config', 'config_api_id', '6', 0),
-(20938, 0, 'config', 'config_fraud_status_id', '16', 0),
-(19030, 0, 'theme_default', 'theme_default_product_description_length', '160', 0),
-(19029, 0, 'theme_default', 'theme_default_product_limit', '12', 0),
-(19028, 0, 'theme_default', 'theme_default_status', '1', 0),
-(20937, 0, 'config', 'config_complete_status', '[\"5\",\"3\"]', 1),
-(20936, 0, 'config', 'config_processing_status', '[\"5\",\"1\",\"2\",\"12\",\"3\"]', 1),
-(20935, 0, 'config', 'config_order_status_id', '1', 0),
-(20934, 0, 'config', 'config_checkout_id', '9', 0),
-(20933, 0, 'config', 'config_checkout_guest', '1', 0),
-(20932, 0, 'config', 'config_cart_weight', '1', 0),
-(20931, 0, 'config', 'config_invoice_prefix', 'INV-2025-00', 0),
-(20930, 0, 'config', 'config_account_id', '9', 0),
-(20929, 0, 'config', 'config_login_attempts', '5', 0),
+(21210, 0, 'config', 'config_logo', 'catalog/logo.png', 0),
+(21209, 0, 'config', 'config_captcha_page', '[\"register\",\"guest\",\"review\",\"return\",\"contact\"]', 1),
+(21208, 0, 'config', 'config_captcha', '', 0),
+(21207, 0, 'config', 'config_return_status_id', '1', 0),
+(21206, 0, 'config', 'config_return_id', '9', 0),
+(21205, 0, 'config', 'config_affiliate_id', '10', 0),
+(21204, 0, 'config', 'config_affiliate_commission', '5', 0),
+(21478, 0, 'theme_default', 'theme_default_product_description_length', '160', 0),
+(21477, 0, 'theme_default', 'theme_default_product_limit', '12', 0),
+(21476, 0, 'theme_default', 'theme_default_status', '1', 0),
+(21203, 0, 'config', 'config_affiliate_auto', '0', 0),
+(21202, 0, 'config', 'config_affiliate_approval', '0', 0),
+(21201, 0, 'config', 'config_affiliate_group_id', '1', 0),
+(21200, 0, 'config', 'config_stock_checkout', '1', 0),
+(21199, 0, 'config', 'config_stock_warning', '0', 0),
+(21198, 0, 'config', 'config_stock_display', '0', 0),
+(21197, 0, 'config', 'config_api_id', '7', 0),
 (16041, 0, 'module_privacy', 'module_privacy_content', '{\"1\":{\"button\":\"\\u0417\\u0430\\u043c\\u0435\\u0447\\u0430\\u0442\\u0435\\u043b\\u044c\\u043d\\u043e\",\"text\":\"\\u041f\\u0440\\u043e\\u0434\\u043e\\u043b\\u0436\\u0430\\u044f \\u0438\\u0441\\u043f\\u043e\\u043b\\u044c\\u0437\\u043e\\u0432\\u0430\\u043d\\u0438\\u0435 \\u044d\\u0442\\u043e\\u0433\\u043e \\u0441\\u0430\\u0439\\u0442\\u0430 \\u0432\\u044b \\u043f\\u043e\\u0434\\u0442\\u0432\\u0435\\u0440\\u0436\\u0434\\u0430\\u0435\\u0442\\u0435, \\u0447\\u0442\\u043e \\u043e\\u0437\\u043d\\u0430\\u043a\\u043e\\u043c\\u0438\\u043b\\u0438\\u0441\\u044c \\u0438 \\u043f\\u0440\\u0438\\u043d\\u0438\\u043c\\u0430\\u0435\\u0442\\u0435 \\u0443\\u0441\\u043b\\u043e\\u0432\\u0438\\u044f \\u0441\\u0442\\u0430\\u0442\\u044c\\u0438\"},\"2\":{\"button\":\"I agree\",\"text\":\"By continuing to use this site you confirm that you have read and accept the terms of the article\"}}', 1),
 (16042, 0, 'module_privacy', 'module_privacy_information', '9', 0),
-(19027, 0, 'theme_default', 'theme_default_directory', 'default', 0),
-(19756, 0, 'module_extheme', 'module_extheme_changed', '1', 0),
-(19755, 0, 'module_extheme', 'module_extheme_directory', 'default', 0),
-(20928, 0, 'config', 'config_customer_price', '0', 0),
-(20927, 0, 'config', 'config_customer_group_display', '[\"1\"]', 1),
-(20926, 0, 'config', 'config_customer_group_id', '1', 0),
-(20925, 0, 'config', 'config_customer_search', '0', 0),
-(20924, 0, 'config', 'config_customer_activity', '0', 0),
-(20923, 0, 'config', 'config_customer_online', '0', 0),
-(20922, 0, 'config', 'config_tax_customer', 'shipping', 0),
-(20921, 0, 'config', 'config_tax_default', 'shipping', 0),
-(20920, 0, 'config', 'config_tax', '0', 0),
-(20919, 0, 'config', 'config_voucher_max', '1000', 0),
-(20918, 0, 'config', 'config_voucher_min', '1', 0),
-(20917, 0, 'config', 'config_review_guest', '1', 0),
-(20916, 0, 'config', 'config_review_status', '1', 0),
-(20915, 0, 'config', 'config_limit_autocomplete', '5', 0),
-(20914, 0, 'config', 'config_limit_admin', '50', 0),
-(20913, 0, 'config', 'config_product_count', '0', 0),
-(20912, 0, 'config', 'config_weight_class_id', '1', 0),
-(20911, 0, 'config', 'config_length_class_id', '1', 0),
-(20910, 0, 'config', 'config_currency_engine', 'cbr', 0),
-(20909, 0, 'config', 'config_currency_auto', '1', 0),
-(20908, 0, 'config', 'config_currency', 'RUB', 0),
-(20907, 0, 'config', 'config_admin_language', 'ru-ru', 0),
-(20898, 0, 'config', 'config_image', '', 0),
-(20899, 0, 'config', 'config_open', '10:00 - 18:00', 0),
-(20900, 0, 'config', 'config_comment', '', 0),
-(20901, 0, 'config', 'config_location', '[\"1\",\"2\"]', 1),
-(20902, 0, 'config', 'config_country_id', '176', 0),
-(20903, 0, 'config', 'config_zone_id', '2751', 0),
-(20904, 0, 'config', 'config_city', 'Москва', 0),
-(20905, 0, 'config', 'config_timezone', 'Europe/Moscow', 0),
-(20906, 0, 'config', 'config_language', 'ru-ru', 0),
-(20897, 0, 'config', 'config_social_media', '[{\"name\":\"telegram\",\"url\":\"https:\\/\\/t.me\\/exopencart\",\"icon\":\"&lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;   &lt;path d=&quot;M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z&quot;\\/&gt; &lt;\\/svg&gt;\",\"contact\":\"1\",\"header\":\"1\"}]', 1),
-(20895, 0, 'config', 'config_telephone', '+7 999 420 69 69', 0),
-(20896, 0, 'config', 'config_fax', '', 0),
-(20894, 0, 'config', 'config_email', 'info@exopencart.ru', 0),
+(21475, 0, 'theme_default', 'theme_default_directory', 'default', 0),
+(21136, 0, 'module_extheme', 'module_extheme_changed', '1', 0),
+(21135, 0, 'module_extheme', 'module_extheme_directory', 'default', 0),
+(21196, 0, 'config', 'config_fraud_status_id', '16', 0),
+(21195, 0, 'config', 'config_complete_status', '[\"3\",\"5\"]', 1),
+(21194, 0, 'config', 'config_processing_status', '[\"2\",\"3\",\"1\",\"12\",\"5\"]', 1),
+(21193, 0, 'config', 'config_order_status_id', '1', 0),
+(21192, 0, 'config', 'config_checkout_id', '9', 0),
+(21191, 0, 'config', 'config_checkout_guest', '1', 0),
+(21190, 0, 'config', 'config_cart_weight', '1', 0),
+(21189, 0, 'config', 'config_invoice_prefix', 'INV-2025-00', 0),
+(21188, 0, 'config', 'config_account_id', '9', 0),
+(21187, 0, 'config', 'config_login_attempts', '5', 0),
+(21186, 0, 'config', 'config_customer_price', '0', 0),
+(21185, 0, 'config', 'config_customer_group_display', '[\"1\"]', 1),
+(21184, 0, 'config', 'config_customer_group_id', '1', 0),
+(21183, 0, 'config', 'config_customer_search', '0', 0),
+(21182, 0, 'config', 'config_customer_activity', '0', 0),
+(21181, 0, 'config', 'config_customer_online', '0', 0),
+(21180, 0, 'config', 'config_tax_customer', 'shipping', 0),
+(21179, 0, 'config', 'config_tax_default', 'shipping', 0),
+(21178, 0, 'config', 'config_tax', '0', 0),
+(21177, 0, 'config', 'config_voucher_max', '1000', 0),
+(21176, 0, 'config', 'config_voucher_min', '1', 0),
+(21158, 0, 'config', 'config_comment', '', 0),
+(21159, 0, 'config', 'config_location', '[\"1\",\"2\"]', 1),
+(21160, 0, 'config', 'config_country_id', '176', 0),
+(21161, 0, 'config', 'config_zone_id', '2751', 0),
+(21162, 0, 'config', 'config_city', 'Москва', 0),
+(21163, 0, 'config', 'config_timezone', 'Europe/Moscow', 0),
+(21164, 0, 'config', 'config_language', 'ru-ru', 0),
+(21165, 0, 'config', 'config_admin_language', 'ru-ru', 0),
+(21166, 0, 'config', 'config_currency', 'RUB', 0),
+(21167, 0, 'config', 'config_currency_auto', '1', 0),
+(21168, 0, 'config', 'config_currency_engine', 'cbr', 0),
+(21169, 0, 'config', 'config_length_class_id', '1', 0),
+(21170, 0, 'config', 'config_weight_class_id', '1', 0),
+(21171, 0, 'config', 'config_product_count', '0', 0),
+(21172, 0, 'config', 'config_limit_admin', '50', 0),
+(21173, 0, 'config', 'config_limit_autocomplete', '5', 0),
+(21174, 0, 'config', 'config_review_status', '1', 0),
+(21175, 0, 'config', 'config_review_guest', '1', 0),
+(21157, 0, 'config', 'config_open', '10:00 - 18:00', 0),
+(21156, 0, 'config', 'config_image', '', 0),
 (20645, 0, 'module_exbot', 'module_exbot_settings', '{\"bot_token\":\"\",\"token\":\"\",\"users\":[\"\"]}', 1),
 (20644, 0, 'module_exbot', 'module_exbot_status', '0', 0),
-(20893, 0, 'config', 'config_geocode', 'https://yandex.ru/map-widget/v1/?um=constructor%3Acf0da8fa05f10eb5764f1e0487b4b2a963a2a02ad1c06290acc58a05f78e5230&amp;amp;source=constructor', 0),
-(20892, 0, 'config', 'config_address', 'Здесь адрес, ул. дом, что-то еще', 0),
-(20891, 0, 'config', 'config_owner', 'Название организации', 0),
-(20890, 0, 'config', 'config_name', 'exopencart', 0),
-(20889, 0, 'config', 'config_layout_id', '4', 0),
-(20885, 0, 'config', 'config_heading_seo_phrase', '{\"1\":\"\",\"2\":\"\"}', 1),
-(20886, 0, 'config', 'config_meta_description', 'Бесплатный интернет-магазин - exopencart.ru', 0),
-(20887, 0, 'config', 'config_meta_keyword', '', 0),
-(20888, 0, 'config', 'config_theme', 'default', 0),
-(20884, 0, 'config', 'config_title_seo_phrase', '{\"1\":\"\",\"2\":\"\"}', 1),
-(20883, 0, 'config', 'config_meta_title', 'Бесплатный интернет-магазин', 0),
-(20975, 0, 'config', 'config_file_mime_allowed', 'text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/tiff\r\nimage/svg+xml\r\napplication/zip\r\n&quot;application/zip&quot;\r\napplication/x-zip\r\n&quot;application/x-zip&quot;\r\napplication/x-zip-compressed\r\n&quot;application/x-zip-compressed&quot;\r\napplication/rar\r\n&quot;application/rar&quot;\r\napplication/x-rar\r\n&quot;application/x-rar&quot;\r\napplication/x-rar-compressed\r\n&quot;application/x-rar-compressed&quot;\r\napplication/octet-stream\r\n&quot;application/octet-stream&quot;\r\naudio/mpeg\r\nvideo/quicktime\r\napplication/pdf', 0),
-(20976, 0, 'config', 'config_error_display', '1', 0),
-(20977, 0, 'config', 'config_error_log', '1', 0),
-(20978, 0, 'config', 'config_error_filename', 'error.log', 0),
-(20979, 0, 'config', 'config_seo_pro', '1', 0),
-(20980, 0, 'config', 'config_seo_url_include_path', '1', 0),
-(20981, 0, 'config', 'config_seo_url_cache', '0', 0),
-(20982, 0, 'config', 'config_seopro_addslash', '0', 0),
-(20983, 0, 'config', 'config_seopro_lowercase', '1', 0),
-(20984, 0, 'config', 'config_page_postfix', '', 0),
-(20985, 0, 'config', 'config_valide_param_flag', '0', 0),
-(20986, 0, 'config', 'config_valide_params', 'block\r\nfrommarket\r\ngclid\r\nfbclid\r\nkeyword\r\nlist_type\r\nopenstat\r\nopenstat_service\r\nopenstat_campaign\r\nopenstat_ad\r\nopenstat_source\r\nposition\r\nsource\r\ntracking\r\ntype\r\nyclid\r\nymclid\r\nuri\r\nurltype\r\nutm_source\r\nutm_medium\r\nutm_campaign\r\nutm_term\r\nutm_content', 0),
-(20987, 0, 'config', 'config_canonical_method', '1', 0),
-(20988, 0, 'config', 'config_canonical_self', '1', 0),
-(20989, 0, 'config', 'config_add_prevnext', '0', 0),
-(20990, 0, 'config', 'config_noindex_status', '1', 0),
-(20991, 0, 'config', 'config_noindex_disallow_params', 'page', 0),
-(21130, 0, 'developer', 'developer_js', '0', 0),
-(21127, 0, 'developer', 'developer_theme', '0', 0),
-(21128, 0, 'developer', 'developer_sass', '0', 0),
-(21129, 0, 'developer', 'developer_css', '0', 0);
+(21152, 0, 'config', 'config_email', 'info@exopencart.ru', 0),
+(21153, 0, 'config', 'config_telephone', '+7 999 420 69 69', 0),
+(21154, 0, 'config', 'config_fax', '+7 8452 93 23 93', 0),
+(21155, 0, 'config', 'config_social_media', '[{\"name\":\"telegram\",\"url\":\"https:\\/\\/t.me\\/exopencart\",\"icon\":\"&lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;   &lt;path d=&quot;M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z&quot;\\/&gt; &lt;\\/svg&gt;\",\"contact\":\"1\",\"header\":\"1\"}]', 1),
+(21151, 0, 'config', 'config_geocode', 'https://yandex.ru/map-widget/v1/?um=constructor%3Acf0da8fa05f10eb5764f1e0487b4b2a963a2a02ad1c06290acc58a05f78e5230&amp;amp;source=constructor', 0),
+(21150, 0, 'config', 'config_address', 'Здесь адрес, ул. дом, что-то еще', 0),
+(21149, 0, 'config', 'config_owner', 'Название организации', 0),
+(21148, 0, 'config', 'config_name', 'exopencart', 0),
+(21147, 0, 'config', 'config_layout_id', '4', 0),
+(21143, 0, 'config', 'config_heading_seo_phrase', '{\"1\":\"\",\"2\":\"\"}', 1),
+(21144, 0, 'config', 'config_meta_description', 'Бесплатный интернет-магазин - exopencart.ru', 0),
+(21145, 0, 'config', 'config_meta_keyword', '', 0),
+(21146, 0, 'config', 'config_theme', 'default', 0),
+(21142, 0, 'config', 'config_title_seo_phrase', '{\"1\":\"\",\"2\":\"\"}', 1),
+(21141, 0, 'config', 'config_meta_title', 'Бесплатный интернет-магазин', 0),
+(21446, 0, 'developer', 'developer_css', '0', 0),
+(21445, 0, 'developer', 'developer_sass', '0', 0),
+(21444, 0, 'developer', 'developer_theme', '0', 0),
+(21231, 0, 'config', 'config_file_max_size', '10000000', 0),
+(21232, 0, 'config', 'config_file_ext_allowed', 'zip\r\ntxt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc', 0),
+(21233, 0, 'config', 'config_file_mime_allowed', 'text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/tiff\r\nimage/svg+xml\r\napplication/zip\r\n&quot;application/zip&quot;\r\napplication/x-zip\r\n&quot;application/x-zip&quot;\r\napplication/x-zip-compressed\r\n&quot;application/x-zip-compressed&quot;\r\napplication/rar\r\n&quot;application/rar&quot;\r\napplication/x-rar\r\n&quot;application/x-rar&quot;\r\napplication/x-rar-compressed\r\n&quot;application/x-rar-compressed&quot;\r\napplication/octet-stream\r\n&quot;application/octet-stream&quot;\r\naudio/mpeg\r\nvideo/quicktime\r\napplication/pdf', 0),
+(21234, 0, 'config', 'config_error_display', '1', 0),
+(21235, 0, 'config', 'config_error_log', '1', 0),
+(21236, 0, 'config', 'config_error_filename', 'error.log', 0),
+(21237, 0, 'config', 'config_seo_pro', '1', 0),
+(21238, 0, 'config', 'config_seo_url_include_path', '1', 0),
+(21239, 0, 'config', 'config_seo_url_cache', '0', 0),
+(21240, 0, 'config', 'config_seopro_addslash', '0', 0),
+(21241, 0, 'config', 'config_seopro_lowercase', '1', 0),
+(21242, 0, 'config', 'config_page_postfix', '', 0),
+(21243, 0, 'config', 'config_valide_param_flag', '0', 0),
+(21244, 0, 'config', 'config_valide_params', 'block\r\nfrommarket\r\ngclid\r\nfbclid\r\nkeyword\r\nlist_type\r\nopenstat\r\nopenstat_service\r\nopenstat_campaign\r\nopenstat_ad\r\nopenstat_source\r\nposition\r\nsource\r\ntracking\r\ntype\r\nyclid\r\nymclid\r\nuri\r\nurltype\r\nutm_source\r\nutm_medium\r\nutm_campaign\r\nutm_term\r\nutm_content', 0),
+(21245, 0, 'config', 'config_canonical_method', '1', 0),
+(21246, 0, 'config', 'config_canonical_self', '1', 0),
+(21247, 0, 'config', 'config_add_prevnext', '0', 0),
+(21248, 0, 'config', 'config_noindex_status', '1', 0),
+(21249, 0, 'config', 'config_noindex_disallow_params', 'page', 0);
 
 -- --------------------------------------------------------
 
@@ -6750,14 +6746,6 @@ CREATE TABLE `oc_upload` (
   `date_added` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `oc_upload`
---
-
-INSERT INTO `oc_upload` (`upload_id`, `name`, `filename`, `code`, `date_added`) VALUES
-(24, 'Счёт 35 от 19.10.2022.pdf', 'Счёт 35 от 19.10.2022.pdf.ypWptNRNmpqwH257c9NRasxg78WdJUsY', 'd1ef16eebf141572a46be9b124ca72a6892336e9', '2022-10-25 15:29:31'),
-(25, 'Счёт 36 от 27.10.2022.pdf', 'Счёт 36 от 27.10.2022.pdf.H9Yf5Aerosr9OQ2af4yCJtfwXWs2X89C', '531eee9318781211216229dbb52185d177456971', '2022-10-27 13:05:30');
-
 -- --------------------------------------------------------
 
 --
@@ -6785,7 +6773,7 @@ CREATE TABLE `oc_user` (
 --
 
 INSERT INTO `oc_user` (`user_id`, `user_group_id`, `username`, `password`, `salt`, `firstname`, `lastname`, `email`, `image`, `code`, `ip`, `status`, `date_added`) VALUES
-(1, 1, 'admin', '9d0ac4def995d9fd7c0139318749ea199326f50c', 'k39rhgJZf', 'John', 'Doe', 'info@exopencart.ru', '', '', '172.16.238.1', 1, '2025-05-27 19:00:49');
+(1, 1, 'admin', '29581f81162b3801194eb19fd2d40aee21dc8c81', 'C2YPIx5dd', 'John', 'Doe', 'info@exopencart.ru', '', '', '172.16.238.1', 1, '2025-06-03 07:45:39');
 
 -- --------------------------------------------------------
 
@@ -12218,7 +12206,7 @@ ALTER TABLE `oc_address`
 -- AUTO_INCREMENT for table `oc_api`
 --
 ALTER TABLE `oc_api`
-  MODIFY `api_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `api_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `oc_api_ip`
@@ -12230,7 +12218,7 @@ ALTER TABLE `oc_api_ip`
 -- AUTO_INCREMENT for table `oc_api_session`
 --
 ALTER TABLE `oc_api_session`
-  MODIFY `api_session_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=579;
+  MODIFY `api_session_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=582;
 
 --
 -- AUTO_INCREMENT for table `oc_article`
@@ -12242,7 +12230,7 @@ ALTER TABLE `oc_article`
 -- AUTO_INCREMENT for table `oc_article_image`
 --
 ALTER TABLE `oc_article_image`
-  MODIFY `article_image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3993;
+  MODIFY `article_image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4004;
 
 --
 -- AUTO_INCREMENT for table `oc_attribute`
@@ -12458,7 +12446,7 @@ ALTER TABLE `oc_geo_zone`
 -- AUTO_INCREMENT for table `oc_googleshopping_product`
 --
 ALTER TABLE `oc_googleshopping_product`
-  MODIFY `product_advertise_google_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `product_advertise_google_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `oc_google_base_category`
@@ -12488,13 +12476,13 @@ ALTER TABLE `oc_layout`
 -- AUTO_INCREMENT for table `oc_layout_module`
 --
 ALTER TABLE `oc_layout_module`
-  MODIFY `layout_module_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=295;
+  MODIFY `layout_module_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=305;
 
 --
 -- AUTO_INCREMENT for table `oc_layout_route`
 --
 ALTER TABLE `oc_layout_route`
-  MODIFY `layout_route_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=228;
+  MODIFY `layout_route_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=229;
 
 --
 -- AUTO_INCREMENT for table `oc_length_class`
@@ -12536,7 +12524,7 @@ ALTER TABLE `oc_modification_backup`
 -- AUTO_INCREMENT for table `oc_module`
 --
 ALTER TABLE `oc_module`
-  MODIFY `module_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `module_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `oc_option`
@@ -12614,7 +12602,7 @@ ALTER TABLE `oc_order_voucher`
 -- AUTO_INCREMENT for table `oc_product`
 --
 ALTER TABLE `oc_product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=399;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=400;
 
 --
 -- AUTO_INCREMENT for table `oc_product_discount`
@@ -12704,13 +12692,13 @@ ALTER TABLE `oc_review_article`
 -- AUTO_INCREMENT for table `oc_seo_url`
 --
 ALTER TABLE `oc_seo_url`
-  MODIFY `seo_url_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1185;
+  MODIFY `seo_url_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1195;
 
 --
 -- AUTO_INCREMENT for table `oc_setting`
 --
 ALTER TABLE `oc_setting`
-  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21132;
+  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21501;
 
 --
 -- AUTO_INCREMENT for table `oc_statistics`

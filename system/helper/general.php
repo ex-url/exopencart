@@ -54,6 +54,11 @@ function getBulmaColumnClasses($fullhd, $widescreen, $desktop, $tablet, $mobile)
   return implode(' ', $classes);
 }
 
+//normolize phone number by removing all characters except digits and plus sign
+function normalizePhone($string) {
+  return preg_replace('/[^\d+]/', '', $string);
+}
+
 /**
  * Backwards support for timing safe hash string comparisons
  * 
