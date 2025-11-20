@@ -18,6 +18,8 @@ class ControllerSettingStore extends Controller {
     $this->load->language('setting/store');
 
     $this->document->setTitle($this->language->get('heading_title'));
+    $this->document->addScript('view/javascript/jquery/Sortable.js');
+    $this->document->addScript('view/javascript/jquery/jquery-sortable.js');
 
     $this->load->model('setting/store');
 
@@ -45,6 +47,8 @@ class ControllerSettingStore extends Controller {
     $this->load->language('setting/store');
 
     $this->document->setTitle($this->language->get('heading_title'));
+    $this->document->addScript('view/javascript/jquery/Sortable.js');
+    $this->document->addScript('view/javascript/jquery/jquery-sortable.js');
 
     $this->load->model('setting/store');
 
@@ -431,7 +435,7 @@ class ControllerSettingStore extends Controller {
     } elseif (isset($store_info['config_social_media'])) {
       $data['config_social_media'] = $store_info['config_social_media'];
     } else {
-      $data['config_social_media'] = $this->config->get('config_social_media');
+      $data['config_social_media'] = [];
     }
 
     if (isset($this->request->post['config_image'])) {

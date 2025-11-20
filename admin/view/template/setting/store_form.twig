@@ -230,6 +230,7 @@
                       </div>
                     </div>
                     <div class="col-sm-1 text-right">
+                      <button type="button" class="handle btn btn-info"><i class="fa fa-sort"></i></button>
                       <button type="button" class="btn btn-danger" onclick="$(this).parents('.row').remove()"><i class="fa fa-trash"></i></button>
                     </div>
                   </div>
@@ -720,6 +721,12 @@ $('select[name=\'config_country_id\']').on('change', function() {
 
 let row = $('#social-medias input[type="hidden"]').length ? 0 : $('#social-medias > .row').length;
 
+  $('#social-medias').sortable({
+    items: '.row',
+    handle: '.handle',
+    animation: 350
+  });
+
   function addSocialContact(){
 
     if($('#social-medias input[type="hidden"]').length) {
@@ -753,6 +760,7 @@ let row = $('#social-medias input[type="hidden"]').length ? 0 : $('#social-media
       html += '</div>';
     html += '</div>';
     html += '<div class="col-sm-1 text-right">';
+      html += '<button type="button" class="handle btn btn-info"><i class="fa fa-sort"></i></button>';
       html += '<button type="button" class="btn btn-danger" onclick="$(\'#media-row-' + row  + '\').remove();"><i class="fa fa-trash"></i></button>';
     html += '</div>';
     html += '</div>'

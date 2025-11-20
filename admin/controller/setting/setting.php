@@ -9,6 +9,9 @@ class ControllerSettingSetting extends Controller {
 
     $this->load->language('setting/setting');
 
+    $this->document->addScript('view/javascript/jquery/Sortable.js');
+    $this->document->addScript('view/javascript/jquery/jquery-sortable.js');
+
     $this->document->setTitle($this->language->get('heading_title'));
 
     $this->load->model('setting/setting');
