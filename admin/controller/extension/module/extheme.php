@@ -51,21 +51,23 @@ class ControllerExtensionModuleExtheme extends Controller {
 
     $data['directories'] = array();
 
-		$directories = glob(DIR_CATALOG . 'view/theme/*', GLOB_ONLYDIR);
+    $directories = glob(DIR_CATALOG . 'view/theme/*', GLOB_ONLYDIR);
 
-		foreach ($directories as $directory) {
-			$data['directories'][] = basename($directory);
-		}
+    foreach ($directories as $directory) {
+      $data['directories'][] = basename($directory);
+    }
 
     if (isset($this->request->post['module_extheme_scss'])) {
       $data['module_extheme_scss'] = $this->request->post['module_extheme_scss'];
     } else {
       if ($this->config->get('module_extheme_changed')) {
-        $data['module_extheme_scss'] = file_get_contents(HTTP_CATALOG . 'catalog/view/theme/' . $this->config->get('theme_default_directory') . '/bulma/dynamic.scss') ;
+        $data['module_extheme_scss'] = file_get_contents(HTTP_CATALOG . 'catalog/view/theme/' . $this->config->get('theme_default_directory') . '/bulma/dynamic.scss');
       } else {
-        $data['module_extheme_scss'] = file_get_contents(HTTP_CATALOG . 'catalog/view/theme/' . $this->config->get('theme_default_directory') . '/bulma/default.scss') ;
+        $data['module_extheme_scss'] = file_get_contents(HTTP_CATALOG . 'catalog/view/theme/' . $this->config->get('theme_default_directory') . '/bulma/default.scss');
       }
     }
+
+    $data['current_template_directory'] = $this->config->get('theme_default_directory');
 
     $data['user_token'] = $this->session->data['user_token'];
 
@@ -90,7 +92,7 @@ class ControllerExtensionModuleExtheme extends Controller {
     $template_folder = $this->request->post['module_extheme_directory'];
     $reset = (int)$this->request->post['reset'] == 1 ? true : false;
 
-    if(!$reset && $this->request->post['module_extheme_scss']) {
+    if (!$reset && $this->request->post['module_extheme_scss']) {
       file_put_contents(DIR_CATALOG . 'view/theme/default/bulma/dynamic.scss', html_entity_decode($this->request->post['module_extheme_scss']));
     }
 
@@ -122,7 +124,7 @@ class ControllerExtensionModuleExtheme extends Controller {
 
     $this->load->model('setting/setting');
 
-    if($reset) {
+    if ($reset) {
       $this->request->post['module_extheme_changed'] = 0;
     } else {
       $this->request->post['module_extheme_changed'] = 1;
