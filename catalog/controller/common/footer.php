@@ -29,9 +29,9 @@ class ControllerCommonFooter extends Controller {
     $data['wishlist'] = $this->url->link('account/wishlist', '', true);
     $data['newsletter'] = $this->url->link('account/newsletter', '', true);
     $data['telephone'] = $this->config->get('config_telephone');
-    $data['tel_link'] = preg_replace('/[^+\d]/', '', $this->config->get('config_telephone'));
+    $data['tel_link'] = normalizePhone($this->config->get('config_telephone'));
     $data['fax'] = $this->config->get('config_fax');
-    $data['fax_link'] = preg_replace('/[^+\d]/', '', $this->config->get('config_fax'));
+    $data['fax_link'] = normalizePhone($this->config->get('config_fax'));
     $data['email'] = $this->config->get('config_email');
     $data['social_media'] = $this->config->get('config_social_media');
 

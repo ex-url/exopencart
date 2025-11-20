@@ -30,6 +30,18 @@ class ControllerCommonHeader extends Controller {
     }
 
     $template_folder = $this->config->get('theme_default_directory');
+
+    $data['fonts_css'] = 'catalog/view/theme/' . $template_folder . '/css/fonts.css';
+
+    $fonts_path = DIR_APPLICATION . 'view/theme/' . $template_folder . '/fonts/';
+
+    $font_files = glob($fonts_path . '*.woff2');
+
+    foreach ($font_files as $font_file) {
+      $relative_path = str_replace(DIR_APPLICATION, 'catalog/', $font_file);
+      $this->document->addLink($server . $relative_path, 'preload', 'font', 'font/woff2', 'anonymous');
+    }
+
     $this->document->addScript('catalog/view/theme/' . $template_folder . '/js/common.js');
     $this->document->addStyle('catalog/view/theme/' . $template_folder . '/css/ui.min.css');
     $this->document->addStyle('catalog/view/theme/' . $template_folder . '/css/main.css');
@@ -98,7 +110,7 @@ class ControllerCommonHeader extends Controller {
     $data['checkout'] = $this->url->link('checkout/checkout', '', true);
     $data['contact'] = $this->url->link('information/contact');
     $data['telephone'] = $this->config->get('config_telephone');
-    $data['tel_link'] = preg_replace('/[^+\d]/', '', $this->config->get('config_telephone'));
+    $data['tel_link'] = normalizePhone($this->config->get('config_telephone'));
     $data['email'] = $this->config->get('config_email');
     $data['social_media'] = $this->config->get('config_social_media');
 

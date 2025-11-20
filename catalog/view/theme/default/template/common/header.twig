@@ -29,12 +29,11 @@
   <meta property="og:image" content="{{ logo }}" />
   {% endif %}
   <meta property="og:site_name" content="{{ name }}" />
+  <link href="{{ fonts_css }}" as="style" rel="preload" />
+  <link href="{{ fonts_css }}" type="text/css" rel="stylesheet" />
   {% for link in links %}
-  <link href="{{ link.href }}" rel="{{ link.rel }}" />
+  <link href="{{ link.href }}" rel="{{ link.rel }}"{% if link.as %} as="{{ link.as }}"{% endif %}{% if link.type %} type="{{ link.type }}"{% endif %}{% if link.crossorigin %} crossorigin="{{ link.crossorigin }}"{% endif %}/>
   {% endfor %}
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
   {% for style in styles %}
   <link href="{{ style.href }}" type="text/css" rel="{{ style.rel }}" media="{{ style.media }}" />
   {% endfor %}

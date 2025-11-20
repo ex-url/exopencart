@@ -94,11 +94,23 @@ class Document {
    * @param	string	$href
    * @param	string	$rel
    */
-  public function addLink($href, $rel) {
-    $this->links[$href] = array(
+  public function addLink($href, $rel, $as = null, $type = null, $crossorigin = null) {
+    $link = array(
       'href' => $href,
       'rel'  => $rel
     );
+
+    if ($as) {
+      $link['as'] = $as;
+    }
+    if ($type) {
+      $link['type'] = $type;
+    }
+    if ($crossorigin) {
+      $link['crossorigin'] = $crossorigin;
+    }
+
+    $this->links[$href] = $link;
   }
 
   /**
