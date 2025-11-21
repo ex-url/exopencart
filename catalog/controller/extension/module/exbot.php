@@ -6,6 +6,8 @@ class ControllerExtensionModuleExbot extends Controller {
   private $client;
 
   public function webhook() {
+    $this->load->language('extension/module/exbot');
+
     $settings = $this->config->get('module_exbot_settings');
     $webhook_token = isset($settings['token']) ? $settings['token'] : '';
 
@@ -19,6 +21,7 @@ class ControllerExtensionModuleExbot extends Controller {
 
     $this->client = new Client($settings['bot_token']);
 
+    // command handlers
     $this->client->command('start', function ($message) {
       $this->handleStart($message);
     });
@@ -27,6 +30,7 @@ class ControllerExtensionModuleExbot extends Controller {
       $this->handlePing($message);
     });
 
+    // text messages handler
     $this->client->on(function ($update) {
       $message = $update->getMessage();
       $this->handleTextMessage($message);
@@ -35,11 +39,22 @@ class ControllerExtensionModuleExbot extends Controller {
       return $message && $message->getText() && $message->getText()[0] !== '/';
     });
 
+    // callback query handler
+    $this->client->on(function ($update) {
+      $callbackQuery = $update->getCallbackQuery();
+      $this->handleCallbackQuery($callbackQuery);
+    }, function ($update) {
+      return $update->getCallbackQuery() !== null;
+    });
+
+    // you can add more handlers here
+
+    // run the client
     try {
       $this->client->run();
       $this->response->setOutput('OK');
     } catch (\TelegramBot\Api\Exception $e) {
-      $this->log->write('Ошибка обработки вебхука: ' . $e->getMessage());
+      $this->log->write('Webhook handle error: ' . $e->getMessage());
       $this->response->setOutput('Error');
     }
   }
@@ -50,9 +65,19 @@ class ControllerExtensionModuleExbot extends Controller {
     $chat_id = $message->getChat()->getId();
 
     if (in_array($chat_id, array_column($users, 'id'))) {
-      $this->exbot->sendMessage($chat_id, 'Работаем 😉');
+      $text = $this->language->get('text_ready');
+
+      $keyboard = new \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup(
+        [
+          [
+            ['text' => $this->language->get('text_go'), 'callback_data' => 'confirm'],
+          ]
+        ]
+      );
+
+      $this->exbot->sendMessage($chat_id, $text, 'HTML', false, null, $keyboard);
     } else {
-      $this->exbot->sendMessage($chat_id, 'Ваш ID отсутствует в списке получателей уведомлений. Обратитесь к администратору сервиса. Кстати, ваш ID - <code>' . $chat_id . '</code>', 'HTML');
+      $this->exbot->sendMessage($chat_id, sprintf($this->language->get('text_no_id'), $chat_id), 'HTML');
     }
   }
 
@@ -63,6 +88,19 @@ class ControllerExtensionModuleExbot extends Controller {
 
   private function handleTextMessage($message) {
     $chat_id = $message->getChat()->getId();
-    $this->exbot->sendMessage($chat_id, 'Ой, это я не могу комментировать');;
+    $this->exbot->sendMessage($chat_id, $this->language->get('text_no_comment'));
+  }
+
+  private function handleCallbackQuery($callbackQuery) {
+    $chat_id = $callbackQuery->getMessage()->getChat()->getId();
+    $data = $callbackQuery->getData();
+
+    if ($data === 'confirm') {
+      $this->exbot->sendMessage($chat_id, $this->language->get('text_confirmed'));
+    } else {
+      $this->exbot->sendMessage($chat_id, $this->language->get('text_unknown_action'));
+    }
+
+    $this->client->answerCallbackQuery($callbackQuery->getId(), $this->language->get('text_callback_processed'));
   }
 }

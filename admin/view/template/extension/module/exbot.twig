@@ -89,34 +89,10 @@
                   {% if module_exbot_settings.users %}
                   {% set row = 0 %}
                   {% for user in module_exbot_settings.users %}
-                  <div class="row" id="media-row-{{ row }}">
+                  <div class="row" id="media-row-{{ row }}"  style="margin-bottom: 8px;">
                     <div class="col-sm-3">
                       <input type="text" name="module_exbot_settings[users][{{ row }}][id]" value="{{ user.id }}"
                         placeholder="{{ entry_user_id }}" class="form-control" />
-                    </div>
-                    <div class="col-sm-2">
-                      <div class="">
-                        <label style="margin-bottom: 0">
-                          {% if user.client %}
-                          <input type="checkbox" name="module_exbot_settings[users][{{ row }}][client]" checked
-                            value="1">
-                          {% else %}
-                          <input type="checkbox" name="module_exbot_settings[users][{{ row }}][client]" value="1">
-                          {% endif %}
-                          {{ entry_client_group }}
-                        </label>
-                      </div>
-                      <div class="">
-                        <label style="margin-bottom: 0">
-                          {% if user.employ %}
-                          <input type="checkbox" name="module_exbot_settings[users][{{ row }}][employ]" checked
-                            value="1">
-                          {% else %}
-                          <input type="checkbox" name="module_exbot_settings[users][{{ row }}][employ]" value="1">
-                          {% endif %}
-                          {{ entry_employ_group }}
-                        </label>
-                      </div>
                     </div>
                     <div class="col-sm-1 text-right">
                       <button type="button" class="btn btn-danger" onclick="$(this).parents('.row').remove()"><i
@@ -196,35 +172,20 @@
       $('#users .row').remove();
     }
 
-    let html = '<div class="row" id="user-row-' + row + '">';
+    let html = '';
 
-    html += '<div class="col-sm-3">';
-    html += '<input type="text" name="module_exbot_settings[users][' + row + '][name]" value="" placeholder="{{ entry_user_id }}" class="form-control" />';
-    html += '</div>';
-    html += '<div class="col-sm-2">';
-    html += '<div class="">';
-    html += '<label style="margin-bottom: 0">';
-    html += '<input type="checkbox" name="module_exbot_settings[users][' + row + '][client]" checked value="1">';
-    html += ' {{ entry_client_group }}';
-    html += '</label>';
-    html += '</div>';
-    html += '<div class="">';
-    html += '<label style="margin-bottom: 0">';
-    html += '<input type="checkbox" name="module_exbot_settings[users][' + row + '][employ]" checked value="1">';
-    html += ' {{ entry_employ_group }}';
-    html += '</label>';
-    html += '</div>';
-    html += '</div>';
-    html += '<div class="col-sm-1 text-right">';
-    html += '<button type="button" class="btn btn-danger" onclick="$(\'#user-row-' + row + '\').remove();"><i class="fa fa-trash"></i></button>';
-    html += '</div>';
+    html += '<div class="row" id="user-row-' + row + '" style="margin-bottom: 8px;">';
+      html += '<div class="col-sm-3">';
+        html += '<input type="text" name="module_exbot_settings[users][' + row + '][id]" value="" placeholder="{{ entry_user_id }}" class="form-control" />';
+      html += '</div>';
+      html += '<div class="col-sm-1 text-right">';
+        html += '<button type="button" class="btn btn-danger" onclick="$(\'#user-row-' + row + '\').remove();"><i class="fa fa-trash"></i></button>';
+      html += '</div>';
     html += '</div>'
 
     $('#users').append(html);
 
     row++;
-
-    $('')
 
   }
 
