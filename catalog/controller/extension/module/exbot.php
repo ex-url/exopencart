@@ -6,13 +6,11 @@ class ControllerExtensionModuleExbot extends Controller {
   private $client;
 
   public function webhook() {
-    $this->load->language('extension/module/exbot');
 
-    $settings = $this->config->get('module_exbot_settings');
     $webhook_token = isset($settings['token']) ? $settings['token'] : '';
 
     // Check if module is enabled
-    if (!isset($settings['status']) || !$settings['status']) {
+    if (!$this->config->get('module_exbot_status')) {
       $this->log->write('Webhook called but module is disabled.');
       $this->response->setOutput('Module disabled');
       return;
@@ -24,6 +22,9 @@ class ControllerExtensionModuleExbot extends Controller {
       return;
     }
 
+    $settings = $this->config->get('module_exbot_settings');
+
+    $this->load->language('extension/module/exbot');
     $this->load->library('exbot');
 
     $this->client = new Client($settings['bot_token']);
