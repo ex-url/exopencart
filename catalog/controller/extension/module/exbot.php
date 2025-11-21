@@ -11,6 +11,13 @@ class ControllerExtensionModuleExbot extends Controller {
     $settings = $this->config->get('module_exbot_settings');
     $webhook_token = isset($settings['token']) ? $settings['token'] : '';
 
+    // Check if module is enabled
+    if (!isset($settings['status']) || !$settings['status']) {
+      $this->log->write('Webhook called but module is disabled.');
+      $this->response->setOutput('Module disabled');
+      return;
+    }
+
     if (!isset($this->request->get['token']) || $this->request->get['token'] !== $webhook_token) {
       $this->response->addHeader('HTTP/1.1 403 Forbidden');
       $this->response->setOutput('Invalid token');
