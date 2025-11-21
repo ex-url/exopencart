@@ -7,6 +7,7 @@ class ControllerExtensionModuleExbot extends Controller {
 
   public function webhook() {
 
+    $settings = $this->config->get('module_exbot_settings');
     $webhook_token = isset($settings['token']) ? $settings['token'] : '';
 
     // Check if module is enabled
@@ -17,12 +18,11 @@ class ControllerExtensionModuleExbot extends Controller {
     }
 
     if (!isset($this->request->get['token']) || $this->request->get['token'] !== $webhook_token) {
+      $this->log->write('webhook token error');
       $this->response->addHeader('HTTP/1.1 403 Forbidden');
       $this->response->setOutput('Invalid token');
       return;
     }
-
-    $settings = $this->config->get('module_exbot_settings');
 
     $this->load->language('extension/module/exbot');
     $this->load->library('exbot');
