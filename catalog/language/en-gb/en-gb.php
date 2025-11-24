@@ -22,7 +22,8 @@ $_['text_no_results']       = 'No results!';
 $_['text_tax']              = 'Ex Tax:';
 $_['text_instock']          = 'In Stock';
 $_['text_files_type_error']  = 'Wrong file type! Allowed: ';
-$_['text_files_size_error']  = 'Max file size is  ';
+$_['text_files_size_error']  = 'Max file size is: ';
+$_['text_files_limit_error']  = 'Maximum files allowed: ';
 
 // Buttons
 $_['button_address_add']    = 'Add Address';

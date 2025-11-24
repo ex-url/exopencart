@@ -687,11 +687,7 @@ function previewManager(config = {}) {
   const $container = $(config.container);
   let queue = {};
 
-  function createPreviewElement(file, id) {
-
-    if ($container.prev().hasClass('help is-danger')) {
-      $container.prev().remove();
-    }
+  function createPreviewElement(file, id, dataURL) {
 
     const item = $(document.createElement('div')).addClass('is-flex is-align-items-center is-justify-content-space-between mb-2');
     const name = $(document.createElement('p')).addClass('has-text-grey');
@@ -699,6 +695,17 @@ function previewManager(config = {}) {
     const remove = $(document.createElement('span')).addClass('delete');
 
     item.attr('id', id);
+
+    if (file.type.startsWith('image/') && dataURL) {
+      const img = $(document.createElement('img')).attr('src', dataURL).addClass('mr-3').css({
+        'width': '48px',
+        'height': '48px',
+        'object-fit': 'cover',
+        'border-radius': '0.25rem'
+      });
+      name.prepend(img);
+    }
+
     item.append(name);
     item.append(remove);
 
@@ -707,13 +714,22 @@ function previewManager(config = {}) {
 
   function validateFile(file) {
 
+    if (config.maxFiles && Object.keys(queue).length >= config.maxFiles) {
+      const error = text_files_limit_error + config.maxFiles;
+      $container.prev('.help.is-danger').remove();
+      $container.before('<div class="help is-danger">' + error + '</div>');
+      return false;
+    }
+
     if (config.allowedMimes.length && !config.allowedMimes.includes(file.type)) {
       const error = text_files_type_error + config.allowedMimes.join(', ');
+      $container.prev('.help.is-danger').remove();
       $container.before('<div class="help is-danger">' + error + '</div>');
       return false;
     }
     if (file.size > config.maxSize) {
       const error = text_files_size_error + formatBytes(config.maxSize);
+      $container.prev('.help.is-danger').remove();
       $container.before('<div class="help is-danger">' + error + '</div>');
       return false;
     }
@@ -722,6 +738,9 @@ function previewManager(config = {}) {
 
   const manager = {
     addFile: function (file) {
+
+      $container.prev('.help.is-danger').remove();
+
       if (!validateFile(file)) return;
 
       $container.addClass('mt-5');
@@ -729,10 +748,11 @@ function previewManager(config = {}) {
       const reader = new FileReader();
       const id = 'file' + Math.floor(Math.random() * 1000000);
 
+      queue[id] = file;
+
       reader.addEventListener('load', function (e) {
-        const item = createPreviewElement(file, id);
+        const item = createPreviewElement(file, id, e.target.result);
         $container.append(item);
-        queue[id] = file;
       });
 
       reader.readAsDataURL(file);
@@ -753,6 +773,7 @@ function previewManager(config = {}) {
     reset: function () {
       queue = {};
       $container.removeClass('mt-5').empty();
+      $container.prev('.help.is-danger').remove();
     }
   };
 

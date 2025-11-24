@@ -8,6 +8,7 @@ $_['text_list']         = 'Review List';
 $_['text_add']          = 'Add Review';
 $_['text_edit']         = 'Edit Review';
 $_['text_filter']       = 'Filter';
+$_['text_confirm_delete']  = 'Are you sure you want to delete this image?';
 
 // Column
 $_['column_product']    = 'Product';
@@ -21,6 +22,7 @@ $_['column_action']     = 'Action';
 $_['entry_product']     = 'Product';
 $_['entry_author']      = 'Author';
 $_['entry_rating']      = 'Rating';
+$_['entry_images']      = 'Images';
 $_['entry_status']      = 'Status';
 $_['entry_text']        = 'Text';
 $_['entry_reply']        = 'Reply';
@@ -35,3 +37,4 @@ $_['error_product']     = 'Product required!';
 $_['error_author']      = 'Author must be between 3 and 64 characters!';
 $_['error_text']        = 'Review Text must be at least 1 character!';
 $_['error_rating']      = 'Review rating required!';
+$_['error_review_image_delete']      = 'Review image delete error!';

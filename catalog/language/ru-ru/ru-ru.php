@@ -25,6 +25,7 @@ $_['text_tax']              = 'Без НДС:';
 $_['text_instock']          = 'В наличии';
 $_['text_files_type_error']  = 'Недопустимый тип файла! Доступны: ';
 $_['text_files_size_error']  = 'Максимальный размер файла ';
+$_['text_files_limit_error']  = 'Максимальное количество файлов: ';
 
 // Buttons
 $_['button_address_add']    = 'Добавить адрес';

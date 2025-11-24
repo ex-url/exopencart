@@ -425,16 +425,6 @@
                 <hr>
                 <h2 class="title is-4">{{ text_write }}</h2>
                 {% if review_guest %}
-                <div class="field" style="max-width: 400px">
-                  <label class="label" for="input-name">{{ entry_name }}</label>
-                  <input type="text" name="name" value="{{ customer_name }}" placeholder="{{ entry_name }}"
-                    id="input-name" class="input" />
-                </div>
-                <div class="field">
-                  <label class="label" for="input-review">{{ entry_review }}</label>
-                  <textarea name="text" rows="5" id="input-review" placeholder="{{ entry_review }}"
-                    class="textarea"></textarea>
-                </div>
                 <div class="field">
                   <label class="label">{{ entry_rating }}</label>
                   <div class="control is-flex is-align-items-center score">
@@ -501,6 +491,37 @@
                     <input type="hidden" name="rating" value="">
                   </div>
                 </div>
+                <div class="field" style="max-width: 400px">
+                  <label class="label" for="input-name">{{ entry_name }}</label>
+                  <input type="text" name="name" value="{{ customer_name }}" placeholder="{{ entry_name }}"
+                    id="input-name" class="input" />
+                </div>
+                <div class="field">
+                  <label class="label" for="input-review">{{ entry_review }}</label>
+                  <textarea name="text" rows="5" id="input-review" placeholder="{{ entry_review }}"
+                    class="textarea"></textarea>
+                </div>                
+                {% if review_images %}
+                <div class="field files-input">
+                  <div class="file">
+                    <label class="file-label">
+                      <input class="file-input" type="file" id="form-review-add-images" multiple accept="{{ accept_types }}">
+                      <span class="file-cta">
+                        <span class="icon file-icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/>
+                            <path d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-1.998 2M14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1M2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1z"/>
+                          </svg>
+                        </span>
+                        <span class="file-label">
+                          {{ entry_images }}
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  <div class="preview-container"></div>
+                </div>                  
+                {% endif %}
                 {{ captcha }}
                 <div class="buttons">
                   <button type="button" id="button-review" class="button is-primary is-outlined">{{ button_send
@@ -633,7 +654,6 @@
       $(this).siblings().removeClass('is-active');
       $(this).addClass('is-active');
 
-      //let offset = $(window).width() > 768 ? 120 : 60;
       let section = $($(this).data('target'))[0];
     
       if (section) {
@@ -758,7 +778,7 @@
 
     $('#review').fadeIn(100, function () {
       let top = $('#review').offset().top;
-      let offset = $(window).width() > 768 ? 130 : 65;
+      let offset = $(window).width() > 768 ? 120 : 60;
 
       $('html, body').stop().animate({ scrollTop: top - offset }, 300);
     });
@@ -766,50 +786,114 @@
 
   $('#review').load('index.php?route=product/product/review&product_id={{ product_id }}');
 
+  {% if review_images %}
+
+  const reviewImagesManager = previewManager({
+    container: '#form-review .preview-container',
+    maxSize: {{ file_max_size }},
+    allowedMimes: {{ allowed_image_mimes }},
+    maxFiles: {{ review_images_limit|default(5) }}
+  });
+
+  $('#form-review-add-images').on('change', function () {
+
+    for (let file of this.files) {
+      reviewImagesManager.addFile(file);
+    }
+
+    this.value = '';
+  });
+
+  {% endif %}
+
   $('#button-review').on('click', function () {
+    let $button = $(this);
+    let $form = $('#form-review');
+
+    const formData = new FormData($form[0]);
+    
+    {% if review_images %}
+
+    const images = reviewImagesManager.getQueue();
+
+    for (let id in images) {
+      formData.append('images[]', images[id]);
+    }
+
+    {% endif %}
+
     $.ajax({
       url: 'index.php?route=product/product/write&product_id={{ product_id }}',
-      type: 'post',
+      data: formData,
       dataType: 'json',
-      data: $("#form-review").serialize(),
+      cache: false,
+      contentType: false,
+      processData: false,
+      type: 'post',
       beforeSend: function () {
-        $('#button-review').addClass('is-loading');
+        $button.addClass('is-loading');
       },
       complete: function () {
-        $('#button-review').removeClass('is-loading');
+        $button.removeClass('is-loading');
       },
       success: function (json) {
 
-        $('#button-review').removeClass('is-loading');
+        $button.removeClass('is-loading');
 
-        $("#form-review").find('.help.is-danger').remove();
-        $("#form-review").find('.input.is-danger, .textarea.is-danger').removeClass('is-danger');
+        $form.find('.help.is-danger').remove();
+        $form.find('.input.is-danger, .textarea.is-danger').removeClass('is-danger');
 
         if (json['error']) {
           for (let key in json['error']) {
             if (json['error'][key]) {
-              $("#form-review").find('input[name="' + key + '"], textarea[name="' + key + '"]').parents('.field').append('<p class="help is-danger">' + json['error'][key] + '</p>');
-              $("#form-review").find('input[name="' + key + '"], textarea[name="' + key + '"]').addClass('is-danger');
+              $form.find('input[name="' + key + '"], textarea[name="' + key + '"]').parents('.field').append('<p class="help is-danger">' + json['error'][key] + '</p>');
+              $form.find('input[name="' + key + '"], textarea[name="' + key + '"]').addClass('is-danger');
             }
 
             if ($('.google-captcha').length && key == 'captcha') {
-              $("#form-review").find('.google-captcha').append('<p class="help is-danger">' + json['error'][key] + '</p>');
+              $form.find('.google-captcha').append('<p class="help is-danger">' + json['error'][key] + '</p>');
             }
           }
 
-          if ($('#form-review .input.is-danger, #form-review .textarea.is-danger, #form-review .field help.is-danger').length) {
-            $('html, body').stop().animate({ scrollTop: $('#form-review .input.is-danger, #form-review .textarea.is-danger, #form-review .field help.is-danger').first().offset().top - 120 });
+          if ($form.find('.help.is-danger').length) {
+            console.log('scroll');
+            
+            let offset = $(window).width() > 768 ? 180 : 90;
+            $('html, body').stop().animate({ scrollTop: $form.find('.help.is-danger').first().offset().top - offset });
           }
+
+          {% if review_images %}
+
+          if (json['error']['type']) {
+            $form.find('.file').after('<p class="help is-danger">' + json['error']['type'] + '</p>');
+          }
+
+          if (json['error']['size']) {
+            $form.find('.file').after('<p class="help is-danger">' + json['error']['size'] + '</p>');
+          }
+          
+          if (json['error']['limit']) {
+            $form.find('.file').after('<p class="help is-danger">' + json['error']['limit'] + '</p>');
+          }
+
+          {% endif %}
         }
 
         if (json['success']) {
+          
           notification({
             type: 'success',
             text: json['success']
           });
 
-          $('#form-review').trigger('reset');
-          $('#form-review .score .tag.is-active').removeClass('is-active');
+          $form.trigger('reset');
+          $form.find('.score .tag.is-active').removeClass('is-active');
+
+          $form.trigger('reset');
+
+          {% if review_images %}
+          reviewImagesManager.reset();
+          {% endif %}
         }
       }
     });

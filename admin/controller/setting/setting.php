@@ -490,6 +490,18 @@ class ControllerSettingSetting extends Controller {
       $data['config_review_guest'] = $this->config->get('config_review_guest');
     }
 
+    if (isset($this->request->post['config_review_images'])) {
+      $data['config_review_images'] = $this->request->post['config_review_images'];
+    } else {
+      $data['config_review_images'] = $this->config->get('config_review_images');
+    }
+
+    if (isset($this->request->post['config_review_images_limit'])) {
+      $data['config_review_images_limit'] = $this->request->post['config_review_images_limit'];
+    } else {
+      $data['config_review_images_limit'] = $this->config->get('config_review_images_limit');
+    }
+
     if (isset($this->request->post['config_voucher_min'])) {
       $data['config_voucher_min'] = $this->request->post['config_voucher_min'];
     } else {

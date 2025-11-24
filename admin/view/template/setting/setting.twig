@@ -55,11 +55,11 @@
                 <label class="col-sm-2 control-label" for="input-meta-title">{{ entry_title_seo_phrase }}</label>
                 <div class="col-sm-10">
                   {% for language in languages %}
-                  <div class="input-group">
+                  <div class="input-group" style="margin-bottom: 10px;">
                     <div class="input-group-addon">
                       <img src="language/{{ language.code }}/{{ language.code }}.png" title="{{ language.name }}" />
                     </div>
-                    <input type="text" name="config_title_seo_phrase[{{ language.language_id }}]" value="{{ config_title_seo_phrase[language.language_id] }}" placeholder="{{ entry_heading }}" id="input-heading{{ language.language_id}}" class="form-control" />
+                    <input type="text" name="config_title_seo_phrase[{{ language.language_id }}]" value="{{ config_title_seo_phrase[language.language_id] }}" placeholder="{{ entry_heading }}" id="input-titile-{{ language.language_id}}" class="form-control" />
                   </div>
                   {% endfor %}
                 </div>
@@ -68,11 +68,11 @@
                 <label class="col-sm-2 control-label" for="input-meta-title">{{ entry_heading_seo_phrase }}</label>
                 <div class="col-sm-10">
                   {% for language in languages %}
-                  <div class="input-group">
+                  <div class="input-group" style="margin-bottom: 10px;">
                     <div class="input-group-addon">
                       <img src="language/{{ language.code }}/{{ language.code }}.png" title="{{ language.name }}" />
                     </div>
-                    <input type="text" name="config_heading_seo_phrase[{{ language.language_id }}]" value="{{ config_heading_seo_phrase[language.language_id] }}" placeholder="{{ entry_heading }}" id="input-heading{{ language.language_id}}" class="form-control" />
+                    <input type="text" name="config_heading_seo_phrase[{{ language.language_id }}]" value="{{ config_heading_seo_phrase[language.language_id] }}" placeholder="{{ entry_heading }}" id="input-heading-{{ language.language_id}}" class="form-control" />
                   </div>
                   {% endfor %}
                 </div>
@@ -527,6 +527,30 @@
                       {{ text_no }}
                       {% endif %} </label>
                   </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">{{ entry_review_images }}</label>
+                  <div class="col-sm-10">
+                    <label class="radio-inline"> {% if config_review_images %}
+                      <input type="radio" name="config_review_images" value="1" checked="checked" />
+                      {{ text_yes }}
+                      {% else %}
+                      <input type="radio" name="config_review_images" value="1" />
+                      {{ text_yes }}
+                      {% endif %} </label>
+                    <label class="radio-inline"> {% if not config_review_images %}
+                      <input type="radio" name="config_review_images" value="0" checked="checked" />
+                      {{ text_no }}
+                      {% else %}
+                      <input type="radio" name="config_review_images" value="0" />
+                      {{ text_no }}
+                      {% endif %} </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="input-review-images-limit">{{ entry_review_images_limit }}</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="config_review_images_limit" value="{{ config_review_images_limit }}" placeholder="{{ entry_review_images_limit }}" id="input-review-images-limit" class="form-control" />
                 </div>
               </fieldset>
               <fieldset>
@@ -1700,9 +1724,9 @@
             </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-2 control-label" for="input-valide-params"><span data-toggle="tooltip" title="{{ help_valide_params }}">{{ entry_noindex_disallow_params }}</span></label>
+              <label class="col-sm-2 control-label" for="input-disallow-params"><span data-toggle="tooltip" title="{{ help_valide_params }}">{{ entry_noindex_disallow_params }}</span></label>
               <div class="col-sm-10">
-                <textarea name="config_noindex_disallow_params" rows="10" placeholder="{{ entry_noindex_disallow_params }}" id="input-valide-params" class="form-control">{{ config_noindex_disallow_params }}</textarea>
+                <textarea name="config_noindex_disallow_params" rows="10" placeholder="{{ entry_noindex_disallow_params }}" id="input-disallow-params" class="form-control">{{ config_noindex_disallow_params }}</textarea>
               </div>
             </div>
 		  </fieldset>

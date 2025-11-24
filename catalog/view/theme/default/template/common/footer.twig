@@ -102,7 +102,7 @@
       <div class="mt-5 is-flex is-justify-content-center is-align-items-center">
         {% for item in social_media %}
         {% if item.header %}
-        <a href="{{ item.url }}" target="_blank" class="{{ item.name }}">
+        <a href="{{ item.url }}" target="_blank" class="{{ item.name }} px-2">
           <span class="icon is-medium">{{ item.icon|html_entity_decode }}</span>
         </a>
         {% endif %}
@@ -142,6 +142,7 @@
 <script>
   let text_files_type_error = '{{ text_files_type_error }}';
   let text_files_size_error = '{{ text_files_size_error }}';
+  let text_files_limit_error = '{{ text_files_limit_error }}';
 </script>
 <!--
 exopencart is open source software which is based on opencart.com project. The OpenCart itself is open source software too, so you are free to remove the powered by information if you want, but its generally accepted practise to make a small donation.

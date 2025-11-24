@@ -18,6 +18,17 @@
       {% endfor %}
     </div>
     <p class="has-text-grey">{{ review.text }}</p>
+    {% if review.images %}
+      <div class="columns is-mobile is-multiline is-variable is-1 mt-3 mb-0">
+        {% for image in review.images %}
+          <div class="column is-2-desktop is-2-tablet is-3-mobile">
+            <a href="{{ image.popup }}" class="box p-0 is-clipped" data-fancybox="reviews" data-caption="{{ review.text }}">
+              <img src="{{ image.thumb }}" alt="review image" />
+            </a>
+          </div>          
+        {% endfor %}
+      </div>
+    {% endif %}
     {% if review.reply %}
     <div class="mt-2">
       <p>
@@ -40,3 +51,20 @@
 {% else %}
 <p>{{ text_no_reviews }}</p>
 {% endif %}
+
+<script>
+  $(document).ready(function() {
+    Fancybox.bind("[data-fancybox=\"reviews\"]", {
+      Thumbs : {
+        type: "classic"
+      },
+      Toolbar: {
+        display: {
+          left: ["infobar"],
+          middle: [],
+          right: ["close"],
+        },
+      },
+    });
+  });
+</script>

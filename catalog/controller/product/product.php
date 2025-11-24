@@ -382,6 +382,15 @@ class ControllerProductProduct extends Controller {
       }
 
       $data['review_status'] = $this->config->get('config_review_status');
+      $data['review_images'] = $review_images =  $this->config->get('config_review_images');
+
+      if ($review_images) {
+        $data['review_images_limit'] = $this->config->get('config_review_images_limit');
+        $data['file_max_size'] = 10000000; //10MB
+        $mimes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+        $data['allowed_image_mimes'] = json_encode($mimes);
+        $data['accept_types'] = implode(',', $mimes);
+      }
 
       if ($this->config->get('config_review_guest') || $this->customer->isLogged()) {
         $data['review_guest'] = true;
@@ -565,6 +574,7 @@ class ControllerProductProduct extends Controller {
     $this->load->language('product/product');
 
     $this->load->model('catalog/review');
+    $this->load->model('tool/image');
 
     if (isset($this->request->get['page'])) {
       $page = (int)$this->request->get['page'];
@@ -580,11 +590,27 @@ class ControllerProductProduct extends Controller {
     $results = $this->model_catalog_review->getReviewsByProductId($this->request->get['product_id'], ($page - 1) * 5, 5);
 
     foreach ($results as $result) {
+
+      $review_images = json_decode($result['images'], true);
+      $images = array();
+
+      if (is_array($review_images)) {
+        foreach ($review_images as $image) {
+          $images[] = array(
+            'thumb' => $this->model_tool_image->resize($image['filename'], 100, 100, 'crop'),
+            'popup' => $this->model_tool_image->resize($image['filename'], 1200, 1200, 'scale'),
+            'size' => $image['size'],
+            'mime' => $image['mime']
+          );
+        }
+      }
+
       $data['reviews'][] = array(
         'author'     => $result['author'],
         'text'       => nl2br($result['text']),
         'reply'       => nl2br($result['reply']),
         'rating'     => (int)$result['rating'],
+        'images'     => $images,
         'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added']))
       );
     }
@@ -629,7 +655,58 @@ class ControllerProductProduct extends Controller {
         }
       }
 
+      $images = array();
+
+      if ($this->config->get('config_review_images') && isset($_FILES['images']) && is_array($_FILES['images']['name'])) {
+        $file_max_size = $this->config->get('config_file_max_size') ?: 10000000; // 10MB по умолчанию
+        $allowed_mimes = json_decode($this->config->get('config_allowed_image_mimes') ?: '["image/jpeg","image/png","image/gif","image/webp"]', true);
+        $max_files = $this->config->get('config_review_images_limit') ?: 5;
+
+        $review_images_dir = DIR_IMAGE . 'catalog/reviews/';
+
+        if (!is_dir($review_images_dir)) {
+          mkdir($review_images_dir, 0755, true);
+        }
+
+        if (count($_FILES['images']['name']) > $max_files) {
+          $json['error']['limit'] = sprintf($this->language->get('error_review_images_limit'), $max_files);
+        } else {
+          foreach ($_FILES['images']['name'] as $key => $name) {
+            if ($_FILES['images']['error'][$key] !== UPLOAD_ERR_OK) {
+              $json['error']['upload'] = $this->language->get('error_upload');
+              break;
+            }
+
+            if ($_FILES['images']['size'][$key] > $file_max_size) {
+              $json['error']['size'] = sprintf($this->language->get('error_file_size'), $file_max_size);
+              break;
+            }
+
+            if (!in_array($_FILES['images']['type'][$key], $allowed_mimes)) {
+              $json['error']['type'] = $this->language->get('error_file_type');
+              break;
+            }
+
+            $filename = 'catalog/reviews/' . uniqid() . '.' . pathinfo($name, PATHINFO_EXTENSION);
+            $filepath = DIR_IMAGE . $filename;
+
+            if (move_uploaded_file($_FILES['images']['tmp_name'][$key], $filepath)) {
+              $images[] = array(
+                'filename' => $filename,
+                'size' => $_FILES['images']['size'][$key],
+                'mime' => $_FILES['images']['type'][$key]
+              );
+            } else {
+              $json['error']['upload'] = $this->language->get('error_upload');
+              break;
+            }
+          }
+        }
+      }
+
       if (!isset($json['error'])) {
+        $this->request->post['images'] = json_encode($images);
+
         $this->load->model('catalog/review');
 
         $this->model_catalog_review->addReview($this->request->get['product_id'], $this->request->post);

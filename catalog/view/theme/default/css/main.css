@@ -715,6 +715,7 @@ footer .scroll-top-trigger.shown {
     top: 0;
     background: rgb(0 0 0 / 70%) !important;
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
 
   #menu .navbar {
