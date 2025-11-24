@@ -472,6 +472,88 @@ class ControllerSettingSetting extends Controller {
       $data['config_limit_autocomplete'] = 5;
     }
 
+    $data['sorts'] = array(
+      array(
+        'text'  => $this->language->get('text_sort_default'),
+        'value' => 'p.sort_order'
+      ),
+      array(
+        'text'  => $this->language->get('text_sort_name'),
+        'value' => 'pd.name'
+      ),
+      array(
+        'text'  => $this->language->get('text_sort_price'),
+        'value' => 'p.price'
+      ),
+      array(
+        'text'  => $this->language->get('text_sort_rating'),
+        'value' => 'rating'
+      ),
+      array(
+        'text'  => $this->language->get('text_sort_model'),
+        'value' => 'p.model'
+      ),
+    );
+
+    $data['orders'] = array(
+      array(
+        'text'  => $this->language->get('text_order_asc'),
+        'value' => 'ASC'
+      ),
+      array(
+        'text'  => $this->language->get('text_order_desc'),
+        'value' => 'DESC'
+      )
+    );
+
+    if (isset($this->request->post['config_category_sort_param'])) {
+      $data['config_category_sort_param'] = $this->request->post['config_category_sort_param'];
+    } else {
+      $data['config_category_sort_param'] = $this->config->get('config_category_sort_param');
+    }
+
+    if (isset($this->request->post['config_category_sort_order'])) {
+      $data['config_category_sort_order'] = $this->request->post['config_category_sort_order'];
+    } else {
+      $data['config_category_sort_order'] = $this->config->get('config_category_sort_order');
+    }
+
+    if (isset($this->request->post['config_manufacturer_sort_param'])) {
+      $data['config_manufacturer_sort_param'] = $this->request->post['config_manufacturer_sort_param'];
+    } else {
+      $data['config_manufacturer_sort_param'] = $this->config->get('config_manufacturer_sort_param');
+    }
+
+    if (isset($this->request->post['config_manufacturer_sort_order'])) {
+      $data['config_manufacturer_sort_order'] = $this->request->post['config_manufacturer_sort_order'];
+    } else {
+      $data['config_manufacturer_sort_order'] = $this->config->get('config_manufacturer_sort_order');
+    }
+
+    if (isset($this->request->post['config_search_sort_param'])) {
+      $data['config_search_sort_param'] = $this->request->post['config_search_sort_param'];
+    } else {
+      $data['config_search_sort_param'] = $this->config->get('config_search_sort_param');
+    }
+
+    if (isset($this->request->post['config_search_sort_order'])) {
+      $data['config_search_sort_order'] = $this->request->post['config_search_sort_order'];
+    } else {
+      $data['config_search_sort_order'] = $this->config->get('config_search_sort_order');
+    }
+
+    if (isset($this->request->post['config_special_sort_param'])) {
+      $data['config_special_sort_param'] = $this->request->post['config_special_sort_param'];
+    } else {
+      $data['config_special_sort_param'] = $this->config->get('config_special_sort_param');
+    }
+
+    if (isset($this->request->post['config_special_sort_order'])) {
+      $data['config_special_sort_order'] = $this->request->post['config_special_sort_order'];
+    } else {
+      $data['config_special_sort_order'] = $this->config->get('config_special_sort_order');
+    }
+
     if (isset($this->request->post['config_product_count'])) {
       $data['config_product_count'] = $this->request->post['config_product_count'];
     } else {

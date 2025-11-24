@@ -478,14 +478,127 @@
                     <div class="text-danger">{{ error_limit_admin }}</div>
                     {% endif %}
                   </div>
-                </div>
+                </div>                
                 <div class="form-group required">
                   <label class="col-sm-2 control-label" for="input-autocomplete-limit"><span data-toggle="tooltip" title="{{ help_limit_autocomplete }}">{{ entry_limit_autocomplete }}</span></label>
                   <div class="col-sm-10">
                     <input type="text" name="config_limit_autocomplete" value="{{ config_limit_autocomplete }}" placeholder="{{ entry_limit_autocomplete }}" id="input-autocomplete-limit" class="form-control" />
                     {% if error_limit_autocomplete %}
                     <div class="text-danger">{{ error_limit_autocomplete }}</div>
-                    {% endif %} </div>
+                    {% endif %}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="input-category-sort-param">{{ entry_category_sort_param }}</label>
+                  <div class="col-sm-10">
+                    <select name="config_category_sort_param" id="input-category-sort-param" class="form-control">
+                      {% for sort in sorts %}
+                      {% if config_category_sort_param == sort.value %}
+                      <option value="{{ sort.value }}" selected="selected">{{ sort.text }}</option>
+                      {% else %}
+                      <option value="{{ sort.value }}">{{ sort.text }}</option>
+                      {% endif %}
+                      {% endfor %}                      
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="input-category-sort-order">{{ entry_category_sort_order }}</label>
+                  <div class="col-sm-10">
+                    <select name="config_category_sort_order" id="input-category-sort-order" class="form-control">
+                      {% for order in orders %}
+                      {% if config_category_sort_order == order.value %}
+                      <option value="{{ order.value }}" selected="selected">{{ order.text }}</option>
+                      {% else %}
+                      <option value="{{ order.value }}">{{ order.text }}</option>
+                      {% endif %}
+                      {% endfor %}                      
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="input-manufacturer-sort-param">{{ entry_manufacturer_sort_param }}</label>
+                  <div class="col-sm-10">
+                    <select name="config_manufacturer_sort_param" id="input-manufacturer-sort-param" class="form-control">
+                      {% for sort in sorts %}
+                      {% if config_manufacturer_sort_param == sort.value %}
+                      <option value="{{ sort.value }}" selected="selected">{{ sort.text }}</option>
+                      {% else %}
+                      <option value="{{ sort.value }}">{{ sort.text }}</option>
+                      {% endif %}
+                      {% endfor %}                      
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="input-manufacturer-sort-order">{{ entry_manufacturer_sort_order }}</label>
+                  <div class="col-sm-10">
+                    <select name="config_manufacturer_sort_order" id="input-manufacturer-sort-order" class="form-control">
+                      {% for order in orders %}
+                      {% if config_manufacturer_sort_order == order.value %}
+                      <option value="{{ order.value }}" selected="selected">{{ order.text }}</option>
+                      {% else %}
+                      <option value="{{ order.value }}">{{ order.text }}</option>
+                      {% endif %}
+                      {% endfor %}                      
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="input-search-sort-param">{{ entry_search_sort_param }}</label>
+                  <div class="col-sm-10">
+                    <select name="config_search_sort_param" id="input-search-sort-param" class="form-control">
+                      {% for sort in sorts %}
+                      {% if config_search_sort_param == sort.value %}
+                      <option value="{{ sort.value }}" selected="selected">{{ sort.text }}</option>
+                      {% else %}
+                      <option value="{{ sort.value }}">{{ sort.text }}</option>
+                      {% endif %}
+                      {% endfor %}                      
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="input-search-sort-order">{{ entry_search_sort_order }}</label>
+                  <div class="col-sm-10">
+                    <select name="config_search_sort_order" id="input-search-sort-order" class="form-control">
+                      {% for order in orders %}
+                      {% if config_search_sort_order == order.value %}
+                      <option value="{{ order.value }}" selected="selected">{{ order.text }}</option>
+                      {% else %}
+                      <option value="{{ order.value }}">{{ order.text }}</option>
+                      {% endif %}
+                      {% endfor %}                      
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="input-special-sort-param">{{ entry_special_sort_param }}</label>
+                  <div class="col-sm-10">
+                    <select name="config_special_sort_param" id="input-special-sort-param" class="form-control">
+                      {% for sort in sorts %}
+                      {% if config_special_sort_param == sort.value %}
+                      <option value="{{ sort.value }}" selected="selected">{{ sort.text }}</option>
+                      {% else %}
+                      <option value="{{ sort.value }}">{{ sort.text }}</option>
+                      {% endif %}
+                      {% endfor %}                      
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="input-special-sort-order">{{ entry_special_sort_order }}</label>
+                  <div class="col-sm-10">
+                    <select name="config_special_sort_order" id="input-special-sort-order" class="form-control">
+                      {% for order in orders %}
+                      {% if config_special_sort_order == order.value %}
+                      <option value="{{ order.value }}" selected="selected">{{ order.text }}</option>
+                      {% else %}
+                      <option value="{{ order.value }}">{{ order.text }}</option>
+                      {% endif %}
+                      {% endfor %}                      
+                    </select>
+                  </div>
                 </div>
               </fieldset>
               <fieldset>
