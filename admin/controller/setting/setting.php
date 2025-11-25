@@ -920,6 +920,30 @@ class ControllerSettingSetting extends Controller {
       $data['icon'] = $this->model_tool_image->resize('no_image.png', 100, 100);
     }
 
+    if (isset($this->request->post['config_category_image_mode'])) {
+      $data['config_category_image_mode'] = $this->request->post['config_category_image_mode'];
+    } else {
+      $data['config_category_image_mode'] = $this->config->get('config_category_image_mode');
+    }
+
+    if (isset($this->request->post['config_product_list_image_mode'])) {
+      $data['config_product_list_image_mode'] = $this->request->post['config_product_list_image_mode'];
+    } else {
+      $data['config_product_list_image_mode'] = $this->config->get('config_product_list_image_mode');
+    }
+
+    if (isset($this->request->post['config_product_thumb_image_mode'])) {
+      $data['config_product_thumb_image_mode'] = $this->request->post['config_product_thumb_image_mode'];
+    } else {
+      $data['config_product_thumb_image_mode'] = $this->config->get('config_product_thumb_image_mode');
+    }
+
+    if (isset($this->request->post['config_product_popup_image_mode'])) {
+      $data['config_product_popup_image_mode'] = $this->request->post['config_product_popup_image_mode'];
+    } else {
+      $data['config_product_popup_image_mode'] = $this->config->get('config_product_popup_image_mode');
+    }
+
     if (isset($this->request->post['config_mail_engine'])) {
       $data['config_mail_engine'] = $this->request->post['config_mail_engine'];
     } else {

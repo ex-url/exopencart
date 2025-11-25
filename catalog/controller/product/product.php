@@ -283,13 +283,17 @@ class ControllerProductProduct extends Controller {
       $this->load->model('tool/image');
 
       if ($product_info['image']) {
-        $data['popup'] = $this->model_tool_image->resize($product_info['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_popup_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_popup_height'), 'scale');
+        if ($this->config->get('config_product_popup_image_mode') === 'original') {
+          $data['popup'] = '/image/' . $product_info['image'];
+        } else {
+          $data['popup'] = $this->model_tool_image->resize($product_info['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_popup_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_popup_height'), $this->config->get('config_product_popup_image_mode'));
+        }
       } else {
         $data['popup'] = '';
       }
 
       if ($product_info['image']) {
-        $data['thumb'] = $this->model_tool_image->resize($product_info['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_thumb_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_thumb_height'));
+        $data['thumb'] = $this->model_tool_image->resize($product_info['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_thumb_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_thumb_height'), $this->config->get('config_product_thumb_image_mode'));
       } else {
         $data['thumb'] = '';
       }
@@ -300,8 +304,8 @@ class ControllerProductProduct extends Controller {
 
       foreach ($results as $result) {
         $data['images'][] = array(
-          'popup' => $this->model_tool_image->resize($result['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_popup_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_popup_height'), 'scale'),
-          'thumb' => $this->model_tool_image->resize($result['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_thumb_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_thumb_height')),
+          'popup' => $this->model_tool_image->resize($result['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_popup_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_popup_height'), $this->config->get('config_product_popup_image_mode')),
+          'thumb' => $this->model_tool_image->resize($result['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_thumb_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_thumb_height'), $this->config->get('config_product_thumb_image_mode')),
           'title' => $result['title']
         );
       }
@@ -424,9 +428,9 @@ class ControllerProductProduct extends Controller {
 
       foreach ($results as $result) {
         if ($result['image']) {
-          $image = $this->model_tool_image->resize($result['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_related_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_related_height'));
+          $image = $this->model_tool_image->resize($result['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_related_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_related_height'), $this->config->get('config_product_thumb_image_mode'));
         } else {
-          $image = $this->model_tool_image->resize('placeholder.png', $this->config->get('theme_' . $this->config->get('config_theme') . '_image_related_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_related_height'));
+          $image = $this->model_tool_image->resize('placeholder.png', $this->config->get('theme_' . $this->config->get('config_theme') . '_image_related_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_related_height'), $this->config->get('config_product_thumb_image_mode'));
         }
 
         if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
