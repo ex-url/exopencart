@@ -520,6 +520,14 @@ input[type="search"]::-webkit-search-results-decoration {
   color: #0088cc;
 }
 
+.whatsapp svg {
+  color: #25d366;
+}
+
+.xcom svg {
+  color: black;
+}
+
 .vk svg {
   color: #0077FF;
 }

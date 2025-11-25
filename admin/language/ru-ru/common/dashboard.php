@@ -3,7 +3,7 @@
 // *	@license	GNU General Public License version 3; see LICENSE.txt
 
 // Heading
-$_['heading_title']                = 'Текущий расклад';
+$_['heading_title']                = 'Панель управления';
 
 // Text
 $_['text_order_total']             = 'Заказов';

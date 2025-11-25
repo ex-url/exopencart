@@ -92,6 +92,7 @@ $_['entry_search_sort_param']        = 'Search sort parameter';
 $_['entry_earch_sort_order']         = 'Search sort order';
 $_['entry_special_sort_param']       = 'Special sort parameter';
 $_['entry_special_sort_order']       = 'Special sort order';
+$_['entry_out_of_stock_to_end']   = 'Out of stock to end';
 $_['entry_review']                   = 'Allow Reviews';
 $_['entry_review_guest']             = 'Allow Guest Reviews';
 $_['entry_review_images']            = 'Allow Review Images Upload';

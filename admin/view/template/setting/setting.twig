@@ -431,19 +431,13 @@
                 <label class="col-sm-2 control-label" for="input-weight-class">{{ entry_weight_class }}</label>
                 <div class="col-sm-10">
                   <select name="config_weight_class_id" id="input-weight-class" class="form-control">
-
                     {% for weight_class in weight_classes %}
                     {% if weight_class.weight_class_id == config_weight_class_id %}
-
                     <option value="{{ weight_class.weight_class_id }}" selected="selected">{{ weight_class.title }}</option>
-
                     {% else %}
-
                     <option value="{{ weight_class.weight_class_id }}">{{ weight_class.title }}</option>
-
                     {% endif %}
                     {% endfor %}
-
                   </select>
                 </div>
               </div>
@@ -598,6 +592,26 @@
                       {% endif %}
                       {% endfor %}                      
                     </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">{{ entry_out_of_stock_to_end }}</label>
+                  <div class="col-sm-10">
+                    <label class="radio-inline">
+                      {% if config_out_of_stock_to_end %}
+                      <input type="radio" name="config_out_of_stock_to_end" value="1" checked="checked" />
+                      {{ text_yes }}
+                      {% else %}
+                      <input type="radio" name="config_out_of_stock_to_end" value="1" />
+                      {{ text_yes }}
+                      {% endif %} </label>
+                    <label class="radio-inline"> {% if not config_out_of_stock_to_end %}
+                      <input type="radio" name="config_out_of_stock_to_end" value="0" checked="checked" />
+                      {{ text_no }}
+                      {% else %}
+                      <input type="radio" name="config_out_of_stock_to_end" value="0" />
+                      {{ text_no }}
+                      {% endif %} </label>
                   </div>
                 </div>
               </fieldset>

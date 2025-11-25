@@ -554,6 +554,12 @@ class ControllerSettingSetting extends Controller {
       $data['config_special_sort_order'] = $this->config->get('config_special_sort_order');
     }
 
+    if (isset($this->request->post['config_out_of_stock_to_end'])) {
+      $data['config_out_of_stock_to_end'] = $this->request->post['config_out_of_stock_to_end'];
+    } else {
+      $data['config_out_of_stock_to_end'] = $this->config->get('config_out_of_stock_to_end');
+    }
+
     if (isset($this->request->post['config_product_count'])) {
       $data['config_product_count'] = $this->request->post['config_product_count'];
     } else {
