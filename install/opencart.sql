@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Nov 24, 2025 at 09:11 AM
+-- Generation Time: Nov 25, 2025 at 03:55 PM
 -- Server version: 5.7.41-log
 -- PHP Version: 7.4.33
 
@@ -152,7 +152,7 @@ CREATE TABLE `oc_article` (
 INSERT INTO `oc_article` (`article_id`, `image`, `sort_order`, `article_review`, `status`, `noindex`, `viewed`, `date_published`, `date_added`, `date_modified`) VALUES
 (127, 'catalog/demo/news/news2.jpg', 1, 0, 1, 1, 102, '2023-04-14 00:00:00', '2025-04-23 06:25:05', '2025-04-23 11:03:34'),
 (128, 'catalog/demo/news/news3.jpg', 1, 0, 1, 1, 110, '2025-04-23 06:25:05', '2025-04-23 06:25:05', '2025-11-21 15:02:19'),
-(126, 'catalog/demo/news/news1.jpg', 1, 0, 1, 1, 56, '2025-04-21 00:00:00', '2025-04-23 06:25:05', '2025-06-12 21:55:46');
+(126, 'catalog/demo/news/news1.jpg', 1, 0, 1, 1, 57, '2025-04-21 00:00:00', '2025-04-23 06:25:05', '2025-06-12 21:55:46');
 
 -- --------------------------------------------------------
 
@@ -991,12 +991,7 @@ CREATE TABLE `oc_cart` (
 --
 
 INSERT INTO `oc_cart` (`cart_id`, `api_id`, `customer_id`, `session_id`, `product_id`, `recurring_id`, `option`, `quantity`, `date_added`) VALUES
-(13, 0, 72, '36632082ea075dc263453311eb', 306, 0, '[]', 1, '2024-03-24 12:19:47'),
-(17, 0, 73, '36632082ea075dc263453311eb', 18, 0, '[]', 1, '2024-03-24 12:35:58'),
-(20, 0, 74, 'bf0ad422abf8d4b1995832f4e8', 3, 0, '[]', 1, '2024-03-24 12:52:07'),
-(24, 0, 76, 'bf0ad422abf8d4b1995832f4e8', 264, 0, '[]', 1, '2024-03-24 13:01:39'),
-(26, 0, 77, 'bf0ad422abf8d4b1995832f4e8', 93, 0, '[]', 1, '2024-03-24 13:05:58'),
-(29, 0, 79, '9144ae31897901fb9e0b42ffe8', 323, 0, '[]', 2, '2024-04-05 20:56:21');
+(43, 0, 0, '3cfa5f0e0dd7f37fce67b8facd', 45, 0, '{\"1\":\"1\",\"4\":[\"10\",\"11\"]}', 4, '2025-11-25 18:51:18');
 
 -- --------------------------------------------------------
 
@@ -1865,8 +1860,8 @@ CREATE TABLE `oc_currency` (
 --
 
 INSERT INTO `oc_currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbol_right`, `decimal_place`, `value`, `status`, `date_modified`) VALUES
-(1, 'Рубль', 'RUB', '', ' ₽', '0', 1.00000000, 1, '2025-11-24 12:07:26'),
-(2, 'US Dollar', 'USD', '$', '', '2', 0.01265429, 1, '2025-11-24 12:07:26');
+(1, 'Рубль', 'RUB', '', ' ₽', '0', 1.00000000, 1, '2025-11-24 16:48:04'),
+(2, 'US Dollar', 'USD', '$', '', '2', 0.01265429, 1, '2025-11-24 16:48:04');
 
 -- --------------------------------------------------------
 
@@ -3216,7 +3211,9 @@ CREATE TABLE `oc_option` (
 --
 
 INSERT INTO `oc_option` (`option_id`, `type`, `sort_order`) VALUES
-(14, 'radio', 1);
+(14, 'radio', 1),
+(15, 'checkbox', 2),
+(16, 'select', 3);
 
 -- --------------------------------------------------------
 
@@ -3235,8 +3232,12 @@ CREATE TABLE `oc_option_description` (
 --
 
 INSERT INTO `oc_option_description` (`option_id`, `language_id`, `name`) VALUES
-(14, 1, 'Цвет'),
-(14, 2, 'Color');
+(14, 2, 'Test radio'),
+(14, 1, 'Тестовая радиокнопка'),
+(15, 1, 'Тестовый чекбокс'),
+(15, 2, 'Test checkbox'),
+(16, 1, 'Тестовый список'),
+(16, 2, 'Test select');
 
 -- --------------------------------------------------------
 
@@ -3258,7 +3259,22 @@ CREATE TABLE `oc_option_value` (
 INSERT INTO `oc_option_value` (`option_value_id`, `option_id`, `image`, `sort_order`) VALUES
 (51, 14, '', 3),
 (50, 14, '', 2),
-(49, 14, '', 1);
+(49, 14, '', 1),
+(56, 15, '', 5),
+(55, 15, '', 4),
+(54, 15, '', 3),
+(53, 15, '', 2),
+(52, 15, '', 1),
+(57, 14, '', 4),
+(58, 14, '', 5),
+(59, 14, '', 6),
+(60, 15, '', 6),
+(64, 16, '', 4),
+(63, 16, '', 3),
+(62, 16, '', 2),
+(61, 16, '', 1),
+(65, 16, '', 5),
+(66, 16, '', 6);
 
 -- --------------------------------------------------------
 
@@ -3278,12 +3294,42 @@ CREATE TABLE `oc_option_value_description` (
 --
 
 INSERT INTO `oc_option_value_description` (`option_value_id`, `language_id`, `option_id`, `name`) VALUES
-(50, 2, 14, 'Red'),
-(50, 1, 14, 'Красный'),
-(49, 2, 14, 'White'),
-(49, 1, 14, 'Белый'),
-(51, 1, 14, 'Синий'),
-(51, 2, 14, 'Blue');
+(51, 1, 14, 'Радиокнопка минус'),
+(50, 2, 14, 'Plus radio'),
+(50, 1, 14, 'Радиокнопка плюс'),
+(49, 2, 14, 'Default radio'),
+(49, 1, 14, 'Радиокнопка по-умолчанию'),
+(56, 1, 15, 'Чекбокс разделить'),
+(55, 2, 15, 'Multiply checkbox'),
+(54, 2, 15, 'Minus checkbox'),
+(55, 1, 15, 'Чекбокс умножить'),
+(54, 1, 15, 'Чекбокс минус'),
+(53, 2, 15, 'Plus checkbox'),
+(53, 1, 15, 'Чекбокс плюс'),
+(52, 2, 15, 'Default checkbox'),
+(52, 1, 15, 'Чекбокс по-умолчанию'),
+(51, 2, 14, 'Minus radio'),
+(57, 1, 14, 'Радиокнопка умножить'),
+(57, 2, 14, 'Multiply checkbox'),
+(58, 1, 14, 'Радиокнопка разделить'),
+(58, 2, 14, 'Divide radio'),
+(59, 1, 14, 'Радиокнопка равно'),
+(59, 2, 14, 'Equal radio'),
+(56, 2, 15, 'Divide checkbox'),
+(60, 1, 15, 'Чекбокс равно'),
+(60, 2, 15, 'Equal checkbox'),
+(63, 2, 16, 'Minus select'),
+(64, 1, 16, 'Список умножить'),
+(63, 1, 16, 'Список минус'),
+(62, 2, 16, 'Plus select'),
+(62, 1, 16, 'Список плюс'),
+(61, 2, 16, 'Default select'),
+(61, 1, 16, 'Список по-умолчанию'),
+(64, 2, 16, 'Multiply select'),
+(65, 1, 16, 'Список разделить'),
+(65, 2, 16, 'Divide select'),
+(66, 1, 16, 'Список равно'),
+(66, 2, 16, 'Equal select');
 
 -- --------------------------------------------------------
 
@@ -3672,7 +3718,7 @@ INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `is
 (4, '42072', '', '', '', '', '', '', '', 3, 5, 'catalog/demo/products/42072_0.jpg', 2, 1, '139990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (5, '42073', '', '', '', '', '', '', '', 4, 5, 'catalog/demo/products/42073_0.jpg', 2, 1, '139990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (6, '42074', '', '', '', '', '', '', '', 5, 5, 'catalog/demo/products/42074_0.jpg', 1, 1, '134990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 1, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(7, '42075', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/42075_0.jpg', 1, 1, '129990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 51, '2022-11-11 12:51:32', '2024-01-29 17:07:02', 1),
+(7, '42075', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/42075_0.jpg', 1, 1, '129990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 67, '2022-11-11 12:51:32', '2024-01-29 17:07:02', 1),
 (8, '42076', '', '', '', '', '', '', '', 7, 5, 'catalog/demo/products/42076_0.jpg', 2, 1, '128370.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (9, '42077', '', '', '', '', '', '', '', 8, 5, 'catalog/demo/products/42077_0.jpg', 2, 1, '124999.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (10, '42078', '', '', '', '', '', '', '', 9, 5, 'catalog/demo/products/42078_0.jpg', 2, 1, '124990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
@@ -3710,7 +3756,7 @@ INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `is
 (42, '42232', '', '', '', '', '', '', '', 12, 5, 'catalog/demo/products/42232_0.jpg', 0, 1, '6590.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (43, '42233', '', '', '', '', '', '', '', 13, 5, 'catalog/demo/products/42233_0.jpg', 0, 1, '5990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (44, '42234', '', '', '', '', '', '', '', 14, 5, 'catalog/demo/products/42234_0.jpg', 0, 1, '5890.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(45, '42235', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/42235_0.jpg', 0, 1, '5230.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 147, '2022-11-11 12:51:32', '2025-02-26 21:51:59', 1),
+(45, '42235', '', '', '', '', '', '', '', 15, 5, 'catalog/demo/products/42235_0.jpg', 0, 1, '5230.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 256, '2022-11-11 12:51:32', '2025-11-25 18:50:04', 1),
 (46, '42236', '', '', '', '', '', '', '', 16, 5, 'catalog/demo/products/42236_0.jpg', 0, 1, '4990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (47, '42237', '', '', '', '', '', '', '', 17, 5, 'catalog/demo/products/42237_0.jpg', 0, 1, '4990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (48, '42238', '', '', '', '', '', '', '', 18, 5, 'catalog/demo/products/42238_0.jpg', 1, 1, '4990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
@@ -3728,7 +3774,7 @@ INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `is
 (60, '42289', '', '', '', '', '', '', '', 0, 5, 'catalog/demo/products/42289_0.jpg', 1, 1, '234990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (61, '42327', '', '', '', '', '', '', '', 1, 5, 'catalog/demo/products/42327_0.jpg', 0, 1, '151990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (62, '42328', '', '', '', '', '', '', '', 2, 5, 'catalog/demo/products/42328_0.jpg', 0, 1, '104990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(63, '42329', '', '', '', '', '', '', '', 3, 5, 'catalog/demo/products/42329_0.jpg', 0, 1, '99680.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 2, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(63, '42329', '', '', '', '', '', '', '', 3, 5, 'catalog/demo/products/42329_0.jpg', 0, 1, '99680.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 6, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (64, '42330', '', '', '', '', '', '', '', 4, 5, 'catalog/demo/products/42330_0.jpg', 0, 1, '93990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (65, '42333', '', '', '', '', '', '', '', 5, 5, 'catalog/demo/products/42333_0.jpg', 0, 1, '79990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (66, '42335', '', '', '', '', '', '', '', 6, 5, 'catalog/demo/products/42335_0.jpg', 0, 1, '73990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
@@ -3996,7 +4042,6 @@ INSERT INTO `oc_product_attribute` (`product_id`, `attribute_id`, `language_id`,
 (44, 23, 1, '3A,'),
 (44, 21, 1, 'черный;'),
 (44, 22, 1, 'data-кабель в комплекте;'),
-(45, 23, 2, ''),
 (46, 24, 1, '2xUSB-A + 2xUSB-C;'),
 (46, 20, 1, 'от бытовой сети;'),
 (46, 23, 1, '1.5A, 3A, 5A, 2.5A,'),
@@ -4350,8 +4395,7 @@ INSERT INTO `oc_product_attribute` (`product_id`, `attribute_id`, `language_id`,
 (1, 7, 1, '130.1 х 155.1 х 6.3 мм;'),
 (1, 7, 2, '130.1 х 155.1 х 6.3 мм;'),
 (7, 3, 1, 'оперативная 4ГБ, встроенная 512ГБ,'),
-(45, 21, 2, ''),
-(45, 23, 1, '3.25A,'),
+(45, 23, 2, ''),
 (7, 2, 2, ''),
 (7, 2, 1, 'A13 Bionic, 2650МГц, 6;'),
 (7, 1, 2, ''),
@@ -4359,6 +4403,8 @@ INSERT INTO `oc_product_attribute` (`product_id`, `attribute_id`, `language_id`,
 (41, 20, 2, ''),
 (41, 20, 1, 'от порта USB;'),
 (41, 22, 2, ''),
+(45, 23, 1, '3.25A,'),
+(45, 21, 2, ''),
 (45, 21, 1, 'черный;');
 
 -- --------------------------------------------------------
@@ -4526,7 +4572,6 @@ INSERT INTO `oc_product_description` (`product_id`, `language_id`, `name`, `desc
 (42, 2, 'Wireless charger Canyon WS-404, black', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
 (43, 2, 'AC charger SATECHI Compact Charger, gray', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
 (44, 2, 'Wireless charger Prestigio ReVolt A7 3 in 1, black', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
-(45, 2, 'Wireless Charger/Device Xiaomi 50W Wireless Charging Stand 3.25A (PD) universal black/gold', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
 (46, 2, 'Mains charger Canyon H-100, white', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
 (47, 2, 'Wireless charger Prestigio Revolt A9 3 in 1, gray', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
 (48, 2, 'Apple MagSafe MHXH3ZE/A Wireless Charger, White', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
@@ -4584,7 +4629,8 @@ INSERT INTO `oc_product_description` (`product_id`, `language_id`, `name`, `desc
 (100, 2, 'Bluetooth speakers Sven MS-2250, 2.1, black', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', ''),
 (7, 1, 'Смартфон Apple iPhone 11 Pro 512Gb,  MWCE2RU/A,  серебристый', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
 (41, 1, 'Беспроводное зарядное устройство Apple MagSafe Duo,  белый', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', ''),
-(45, 1, 'Беспроводное зар./устр. Xiaomi 50W Wireless Charging Stand 3.25A (PD) универсальное черный/золотисты', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', 'хороший продукт, куплю ещё', '', '', '', '');
+(45, 1, 'Беспроводное зар./устр. Xiaomi 50W Wireless Charging Stand 3.25A (PD) универсальное черный/золотисты', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', 'хороший продукт, куплю ещё', '', '', '', ''),
+(45, 2, 'Wireless Charger/Device Xiaomi 50W Wireless Charging Stand 3.25A (PD) universal black/gold', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -4602,6 +4648,13 @@ CREATE TABLE `oc_product_discount` (
   `date_start` date NOT NULL DEFAULT '0000-00-00',
   `date_end` date NOT NULL DEFAULT '0000-00-00'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `oc_product_discount`
+--
+
+INSERT INTO `oc_product_discount` (`product_discount_id`, `product_id`, `customer_group_id`, `quantity`, `priority`, `price`, `date_start`, `date_end`) VALUES
+(1, 45, 1, 3, 1, '4000.0000', '0000-00-00', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -4851,9 +4904,9 @@ INSERT INTO `oc_product_image` (`product_image_id`, `product_id`, `image`, `titl
 (211, 44, 'catalog/demo/products/42234_2.jpg', '', 2),
 (212, 44, 'catalog/demo/products/42234_3.jpg', '', 3),
 (213, 44, 'catalog/demo/products/42234_4.jpg', '', 4),
-(1649, 45, 'catalog/demo/products/42235_3.jpg', '', 3),
-(1648, 45, 'catalog/demo/products/42235_2.jpg', '', 2),
-(1647, 45, 'catalog/demo/products/42235_1.jpg', '', 1),
+(1743, 45, 'catalog/demo/products/42235_3.jpg', '', 3),
+(1742, 45, 'catalog/demo/products/42235_2.jpg', '', 2),
+(1741, 45, 'catalog/demo/products/42235_1.jpg', '', 1),
 (217, 46, 'catalog/demo/products/42236_1.jpg', '', 1),
 (218, 46, 'catalog/demo/products/42236_2.jpg', '', 2),
 (219, 46, 'catalog/demo/products/42236_3.jpg', '', 3),
@@ -5111,8 +5164,9 @@ CREATE TABLE `oc_product_option` (
 --
 
 INSERT INTO `oc_product_option` (`product_option_id`, `product_id`, `option_id`, `value`, `required`) VALUES
-(1, 45, 14, '', 1),
-(3, 7, 14, '', 1);
+(4, 45, 15, '', 0),
+(3, 7, 14, '', 1),
+(1, 45, 14, '', 1);
 
 -- --------------------------------------------------------
 
@@ -5126,6 +5180,7 @@ CREATE TABLE `oc_product_option_value` (
   `product_id` int(11) NOT NULL,
   `option_id` int(11) NOT NULL,
   `option_value_id` int(11) NOT NULL,
+  `is_default` tinyint(4) NOT NULL DEFAULT '0',
   `quantity` int(3) NOT NULL,
   `subtract` tinyint(1) NOT NULL,
   `price` decimal(15,4) NOT NULL,
@@ -5140,13 +5195,22 @@ CREATE TABLE `oc_product_option_value` (
 -- Dumping data for table `oc_product_option_value`
 --
 
-INSERT INTO `oc_product_option_value` (`product_option_value_id`, `product_option_id`, `product_id`, `option_id`, `option_value_id`, `quantity`, `subtract`, `price`, `price_prefix`, `points`, `points_prefix`, `weight`, `weight_prefix`) VALUES
-(3, 1, 45, 14, 51, 10, 1, '1800.0000', '+', 0, '+', '0.00000000', '+'),
-(2, 1, 45, 14, 50, 10, 1, '500.0000', '+', 0, '+', '0.00000000', '+'),
-(1, 1, 45, 14, 49, 10, 1, '0.0000', '+', 0, '+', '0.00000000', '+'),
-(9, 3, 7, 14, 51, 10, 1, '5000.0000', '+', 0, '+', '0.00000000', '+'),
-(8, 3, 7, 14, 50, 10, 1, '2000.0000', '+', 0, '+', '0.00000000', '+'),
-(7, 3, 7, 14, 49, 10, 1, '0.0000', '+', 0, '+', '0.00000000', '+');
+INSERT INTO `oc_product_option_value` (`product_option_value_id`, `product_option_id`, `product_id`, `option_id`, `option_value_id`, `is_default`, `quantity`, `subtract`, `price`, `price_prefix`, `points`, `points_prefix`, `weight`, `weight_prefix`) VALUES
+(18, 4, 45, 15, 60, 0, 1, 1, '7777.0000', '=', 0, '+', '0.00000000', '+'),
+(17, 4, 45, 15, 56, 0, 1, 1, '2.0000', '/', 0, '+', '0.00000000', '+'),
+(16, 4, 45, 15, 55, 0, 1, 1, '2.0000', '*', 0, '+', '0.00000000', '+'),
+(9, 3, 7, 14, 51, 0, 10, 1, '5000.0000', '+', 0, '+', '0.00000000', '+'),
+(8, 3, 7, 14, 50, 0, 10, 1, '2000.0000', '+', 0, '+', '0.00000000', '+'),
+(7, 3, 7, 14, 49, 0, 10, 1, '0.0000', '+', 0, '+', '0.00000000', '+'),
+(15, 4, 45, 15, 54, 0, 1, 1, '300.0000', '-', 0, '+', '0.00000000', '+'),
+(11, 4, 45, 15, 53, 0, 1, 0, '500.0000', '+', 0, '+', '0.00000000', '+'),
+(10, 4, 45, 15, 52, 1, 1, 0, '0.0000', '+', 0, '+', '0.00000000', '+'),
+(14, 1, 45, 14, 59, 0, 10, 1, '9999.0000', '=', 0, '+', '0.00000000', '+'),
+(13, 1, 45, 14, 58, 0, 10, 1, '3.0000', '/', 0, '+', '0.00000000', '+'),
+(12, 1, 45, 14, 57, 0, 10, 1, '3.0000', '*', 0, '+', '0.00000000', '+'),
+(3, 1, 45, 14, 51, 0, 10, 1, '200.0000', '-', 0, '+', '0.00000000', '+'),
+(2, 1, 45, 14, 50, 0, 10, 1, '100.0000', '+', 0, '+', '0.00000000', '+'),
+(1, 1, 45, 14, 49, 1, 10, 1, '0.0000', '+', 0, '+', '0.00000000', '+');
 
 -- --------------------------------------------------------
 
@@ -5257,8 +5321,7 @@ INSERT INTO `oc_product_special` (`product_special_id`, `product_id`, `customer_
 (7, 6, 1, 1, '104990.0000', '0000-00-00', '0000-00-00'),
 (9, 8, 1, 1, '98370.0000', '0000-00-00', '0000-00-00'),
 (10, 9, 1, 1, '94999.0000', '0000-00-00', '0000-00-00'),
-(11, 10, 1, 1, '94990.0000', '0000-00-00', '0000-00-00'),
-(29, 45, 1, 0, '4500.0000', '0000-00-00', '0000-00-00');
+(11, 10, 1, 1, '94990.0000', '0000-00-00', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -6003,7 +6066,7 @@ INSERT INTO `oc_seo_url` (`seo_url_id`, `store_id`, `language_id`, `query`, `key
 (144, 0, 2, 'product_id=42', 'wireless-charger-canyon-ws-404-black'),
 (145, 0, 2, 'product_id=43', 'ac-charger-satechi-compact-charger-gray'),
 (146, 0, 2, 'product_id=44', 'wireless-charger-prestigio-revolt-a7-3-in-1-black'),
-(1145, 0, 2, 'product_id=45', 'wireless-charger-device-xiaomi-50w-wireless-charging-stand-3-25a-pd-universal-black-gold'),
+(1248, 0, 2, 'product_id=45', 'wireless-charger-device-xiaomi-50w-wireless-charging-stand-3-25a-pd-universal-black-gold'),
 (148, 0, 2, 'product_id=46', 'mains-charger-canyon-h-100-white'),
 (149, 0, 2, 'product_id=47', 'wireless-charger-prestigio-revolt-a9-3-in-1-gray'),
 (150, 0, 2, 'product_id=48', 'apple-magsafe-mhxh3ze-a-wireless-charger-white'),
@@ -6116,7 +6179,7 @@ INSERT INTO `oc_seo_url` (`seo_url_id`, `store_id`, `language_id`, `query`, `key
 (557, 0, 1, 'product_id=42', 'besprovodnoe-zaryadnoe-ustrojstvo-canyon-ws-404-chernyj'),
 (558, 0, 1, 'product_id=43', 'setevoe-zaryadnoe-ustrojstvo-satechi-compact-charger-seryj'),
 (559, 0, 1, 'product_id=44', 'besprovodnoe-zaryadnoe-ustrojstvo-prestigio-revolt-a7-3-v-1-chernyj'),
-(1144, 0, 1, 'product_id=45', 'besprovodnoe-zar-ustr-xiaomi-50w-wireless-charging-stand-3-25a-pd-universalnoe-chernyj-zolotisty'),
+(1247, 0, 1, 'product_id=45', 'besprovodnoe-zar-ustr-xiaomi-50w-wireless-charging-stand-3-25a-pd-universalnoe-chernyj-zolotisty'),
 (561, 0, 1, 'product_id=46', 'setevoe-zaryadnoe-ustrojstvo-canyon-h-100-belyj'),
 (562, 0, 1, 'product_id=47', 'besprovodnoe-zaryadnoe-ustrojstvo-prestigio-revolt-a9-3-v-1-seryj'),
 (563, 0, 1, 'product_id=48', 'besprovodnoe-zaryadnoe-ustrojstvo-apple-magsafe-mhxh3ze-a-belyj'),
@@ -6220,8 +6283,7 @@ CREATE TABLE `oc_session` (
 --
 
 INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES
-('2ad70e6b41b0fd71314c4cc93b', '{\"user_id\":\"1\",\"user_token\":\"gYFaaC7SLSSbrmjpmM7mCTIUsyHFaNeq\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2025-11-24 11:34:12'),
-('d61d263fb72428e56a8b6a3365', '{\"user_id\":\"1\",\"user_token\":\"mk9dyCEjV3dLRxs6tPYhGbNLp51BJJOV\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2025-11-24 12:33:00');
+('3cfa5f0e0dd7f37fce67b8facd', '{\"user_id\":\"1\",\"user_token\":\"EyOS7L66eCsUeO6Y6M7O5aBL6qEZdSlf\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2025-11-25 19:15:29');
 
 -- --------------------------------------------------------
 
@@ -6365,7 +6427,11 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (21873, 0, 'theme_default', 'theme_default_image_manufacturer_width', '80', 0),
 (21897, 0, 'developer', 'developer_webp', '0', 0),
 (21255, 0, 'dashboard_chart', 'dashboard_chart_sort_order', '6', 0),
-(23886, 0, 'config', 'config_noindex_disallow_params', 'page', 0),
+(28821, 0, 'config', 'config_noindex_disallow_params', 'page', 0),
+(28820, 0, 'config', 'config_noindex_status', '1', 0),
+(28819, 0, 'config', 'config_add_prevnext', '0', 0),
+(28818, 0, 'config', 'config_canonical_self', '1', 0),
+(28817, 0, 'config', 'config_canonical_method', '1', 0),
 (21896, 0, 'developer', 'developer_js', '0', 0),
 (21872, 0, 'theme_default', 'theme_default_image_category_height', '80', 0),
 (21871, 0, 'theme_default', 'theme_default_image_category_width', '80', 0),
@@ -6390,24 +6456,17 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (8133, 0, 'csvprice_pro', 'csvprice_pro_save_image_table', '1', 0),
 (8132, 0, 'csvprice_pro', 'csvprice_pro_image_download_mod', '1', 0),
 (8131, 0, 'csvprice_pro', 'csvprice_pro_each_iteration_timeout', '180', 0),
-(23885, 0, 'config', 'config_noindex_status', '1', 0),
-(23884, 0, 'config', 'config_add_prevnext', '0', 0),
-(23883, 0, 'config', 'config_canonical_self', '1', 0),
-(23877, 0, 'config', 'config_seopro_addslash', '0', 0),
-(23882, 0, 'config', 'config_canonical_method', '1', 0),
-(23881, 0, 'config', 'config_valide_params', 'block\r\nfrommarket\r\ngclid\r\nfbclid\r\nkeyword\r\nlist_type\r\nopenstat\r\nopenstat_service\r\nopenstat_campaign\r\nopenstat_ad\r\nopenstat_source\r\nposition\r\nsource\r\ntracking\r\ntype\r\nyclid\r\nymclid\r\nuri\r\nurltype\r\nutm_source\r\nutm_medium\r\nutm_campaign\r\nutm_term\r\nutm_content', 0),
-(23880, 0, 'config', 'config_valide_param_flag', '0', 0),
-(23879, 0, 'config', 'config_page_postfix', '', 0),
-(23878, 0, 'config', 'config_seopro_lowercase', '1', 0),
-(23876, 0, 'config', 'config_seo_url_cache', '0', 0),
-(23875, 0, 'config', 'config_seo_url_include_path', '1', 0),
-(23874, 0, 'config', 'config_seo_pro', '1', 0),
-(23873, 0, 'config', 'config_error_filename', 'error.log', 0),
-(23871, 0, 'config', 'config_error_display', '1', 0),
-(23872, 0, 'config', 'config_error_log', '1', 0),
-(23868, 0, 'config', 'config_file_max_size', '10000000', 0),
-(23869, 0, 'config', 'config_file_ext_allowed', 'zip\r\ntxt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc', 0),
-(23870, 0, 'config', 'config_file_mime_allowed', 'text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/tiff\r\nimage/svg+xml\r\napplication/zip\r\n&quot;application/zip&quot;\r\napplication/x-zip\r\n&quot;application/x-zip&quot;\r\napplication/x-zip-compressed\r\n&quot;application/x-zip-compressed&quot;\r\napplication/rar\r\n&quot;application/rar&quot;\r\napplication/x-rar\r\n&quot;application/x-rar&quot;\r\napplication/x-rar-compressed\r\n&quot;application/x-rar-compressed&quot;\r\napplication/octet-stream\r\n&quot;application/octet-stream&quot;\r\naudio/mpeg\r\nvideo/quicktime\r\napplication/pdf', 0),
+(28814, 0, 'config', 'config_page_postfix', '', 0),
+(28815, 0, 'config', 'config_valide_param_flag', '0', 0),
+(28816, 0, 'config', 'config_valide_params', 'block\r\nfrommarket\r\ngclid\r\nfbclid\r\nkeyword\r\nlist_type\r\nopenstat\r\nopenstat_service\r\nopenstat_campaign\r\nopenstat_ad\r\nopenstat_source\r\nposition\r\nsource\r\ntracking\r\ntype\r\nyclid\r\nymclid\r\nuri\r\nurltype\r\nutm_source\r\nutm_medium\r\nutm_campaign\r\nutm_term\r\nutm_content', 0),
+(28813, 0, 'config', 'config_seopro_lowercase', '1', 0),
+(28812, 0, 'config', 'config_seopro_addslash', '0', 0),
+(28811, 0, 'config', 'config_seo_url_cache', '0', 0),
+(28810, 0, 'config', 'config_seo_url_include_path', '1', 0),
+(28809, 0, 'config', 'config_seo_pro', '1', 0),
+(28803, 0, 'config', 'config_file_max_size', '10000000', 0),
+(28804, 0, 'config', 'config_file_ext_allowed', 'zip\r\ntxt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc', 0),
+(28805, 0, 'config', 'config_file_mime_allowed', 'text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/tiff\r\nimage/svg+xml\r\napplication/zip\r\n&quot;application/zip&quot;\r\napplication/x-zip\r\n&quot;application/x-zip&quot;\r\napplication/x-zip-compressed\r\n&quot;application/x-zip-compressed&quot;\r\napplication/rar\r\n&quot;application/rar&quot;\r\napplication/x-rar\r\n&quot;application/x-rar&quot;\r\napplication/x-rar-compressed\r\n&quot;application/x-rar-compressed&quot;\r\napplication/octet-stream\r\n&quot;application/octet-stream&quot;\r\naudio/mpeg\r\nvideo/quicktime\r\napplication/pdf', 0),
 (9460, 0, 'module_filter', 'module_filter_status', '1', 0),
 (16979, 0, 'configblog', 'configblog_html_h1', '{\"1\":\"\\u041b\\u0443\\u0447\\u0448\\u0438\\u0439 \\u0431\\u043b\\u043e\\u0433\",\"2\":\"The best blog\"}', 1),
 (16978, 0, 'configblog', 'configblog_name', '{\"1\":\"\\u0411\\u043b\\u043e\\u0433\",\"2\":\"Blog\"}', 1),
@@ -6422,12 +6481,9 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (9737, 0, 'feed_google_base', 'feed_google_base_status', '0', 0),
 (20881, 0, 'menu_default', 'menu_default_status', '1', 0),
 (20882, 0, 'menu_default', 'menu_default_settings', '{\"cache\":\"0\",\"show_catalog\":\"1\",\"button\":{\"1\":\"\",\"2\":\"\"},\"show_images\":\"0\",\"width\":\"60\",\"height\":\"60\",\"show_special\":\"1\",\"show_brands\":\"1\",\"show_blog\":\"1\",\"show_contacts\":\"1\"}', 1),
-(23851, 0, 'config', 'config_mail_engine', 'mail', 0),
-(23852, 0, 'config', 'config_mail_parameter', '', 0),
-(23853, 0, 'config', 'config_mail_smtp_hostname', '', 0),
-(23854, 0, 'config', 'config_mail_smtp_username', '', 0),
-(23855, 0, 'config', 'config_mail_smtp_password', '', 0),
-(23856, 0, 'config', 'config_mail_smtp_port', '25', 0),
+(28806, 0, 'config', 'config_error_display', '1', 0),
+(28807, 0, 'config', 'config_error_log', '1', 0),
+(28808, 0, 'config', 'config_error_filename', 'error.log', 0),
 (21868, 0, 'theme_default', 'theme_default_status', '1', 0),
 (21869, 0, 'theme_default', 'theme_default_product_limit', '12', 0),
 (21870, 0, 'theme_default', 'theme_default_product_description_length', '160', 0),
@@ -6436,95 +6492,115 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (21867, 0, 'theme_default', 'theme_default_directory', 'default', 0),
 (23112, 0, 'module_extheme', 'module_extheme_changed', '1', 0),
 (23111, 0, 'module_extheme', 'module_extheme_directory', 'default', 0),
-(23863, 0, 'config', 'config_compression', '9', 0),
-(23864, 0, 'config', 'config_secure', '1', 0),
-(23865, 0, 'config', 'config_password', '1', 0),
-(23866, 0, 'config', 'config_shared', '0', 0),
-(23867, 0, 'config', 'config_encryption', '2yXC9VurV2t0qgoXHOWZDM6AZErXCq94wjU1Df280pqRhZEmhpohqSDGvOtQHEJ3uTpupevta8cAbCQdVhSfDnwQ346kCLZcaH4dUX2pdrZeXAoAHgYoCXOQOrgu9Vmo8UqlP9uzZGjetnDIvFesua3nsMQroYmmCcqOH303F7ScG1LGnYdmPrAIvQUJHISvzOD5qURkbHTYC2wEScJuzcz8IqYowrzozC06XluggpxURnbTrUZD39OsBsfpbeEuXyp8N5sjt9vehDji6HOgNTW5m8JhBKV5KlOFQkIHWEvU6PoOpW9cA9TdNvxV5rNUECFdN3uRsbdAtq0Q1Y57vYk12sGYFxXOM99Uc6CAwtIfESKcAeWRND8dIblWhI0EGJ7epqxkmvnmc1Pc1cR6eQFsYqcEDh9bvhmi3Pp8gjHL7HYQFZgz8oia0g3EfwlJaxSHvtwsYbDsImUCRR3Jw5uD5VfWmkdE1FCNhtEB1lwfDG0Huz82Woyyj1DfYWupqCA1YuqRD42Oqrk23kQ3NdFkRs1choHGnpLfdF9WQqtLJ16wWtjV8vDVU9yk9F9emHcc8pSjPwInDti8GpM6sNxxn8tqQQx9Y1cptX1ycqEMXzVg5uEY8Wufb9WYW4SnPyi23ziTHbN0sfZqSCZydv01uzou8pOWF8cRTHPzHhuVb8Rykhjjmeru833AJJDgZQYdF0W6R186wA8tYGUChQSf07YtAIGNK16xE7taK8jQcL08pn98sYJED566xPRuaIT71eGAJesE1oTrzma9xbRu6nGfQKkYf0NPUcnxONXXhq9U8gEUT9UIKcttkJm8bq1PHUYIkadi4B8MJ6UCigQ7WZJ2jfQTjIEtLYrK9f9hcOFpZT6iOapB0X5Wv5PAL3hswjfHt3d5egWgxrFj7tY3HuWsOL1iTPrA7eiCxpVvG92M6t9gJG7SyRxtizmENdOi0Xo3A9YVKz9r2WZYYEwkOJFgWsZRCYgNVgPXHZXSCQoU9HgOuXgk9LjmvYzF', 0),
-(23861, 0, 'config', 'config_seo_url', '1', 0),
-(23862, 0, 'config', 'config_robots', 'abot\r\ndbot\r\nebot\r\nhbot\r\nkbot\r\nlbot\r\nmbot\r\nnbot\r\nobot\r\npbot\r\nrbot\r\nsbot\r\ntbot\r\nvbot\r\nybot\r\nzbot\r\nbot.\r\nbot/\r\n_bot\r\n.bot\r\n/bot\r\n-bot\r\n:bot\r\n(bot\r\ncrawl\r\nslurp\r\nspider\r\nseek\r\naccoona\r\nacoon\r\nadressendeutschland\r\nah-ha.com\r\nahoy\r\naltavista\r\nananzi\r\nanthill\r\nappie\r\narachnophilia\r\narale\r\naraneo\r\naranha\r\narchitext\r\naretha\r\narks\r\nasterias\r\natlocal\r\natn\r\natomz\r\naugurfind\r\nbackrub\r\nbannana_bot\r\nbaypup\r\nbdfetch\r\nbig brother\r\nbiglotron\r\nbjaaland\r\nblackwidow\r\nblaiz\r\nblog\r\nblo.\r\nbloodhound\r\nboitho\r\nbooch\r\nbradley\r\nbutterfly\r\ncalif\r\ncassandra\r\nccubee\r\ncfetch\r\ncharlotte\r\nchurl\r\ncienciaficcion\r\ncmc\r\ncollective\r\ncomagent\r\ncombine\r\ncomputingsite\r\ncsci\r\ncurl\r\ncusco\r\ndaumoa\r\ndeepindex\r\ndelorie\r\ndepspid\r\ndeweb\r\ndie blinde kuh\r\ndigger\r\nditto\r\ndmoz\r\ndocomo\r\ndownload express\r\ndtaagent\r\ndwcp\r\nebiness\r\nebingbong\r\ne-collector\r\nejupiter\r\nemacs-w3 search engine\r\nesther\r\nevliya celebi\r\nezresult\r\nfalcon\r\nfelix ide\r\nferret\r\nfetchrover\r\nfido\r\nfindlinks\r\nfireball\r\nfish search\r\nfouineur\r\nfunnelweb\r\ngazz\r\ngcreep\r\ngenieknows\r\ngetterroboplus\r\ngeturl\r\nglx\r\ngoforit\r\ngolem\r\ngrabber\r\ngrapnel\r\ngralon\r\ngriffon\r\ngromit\r\ngrub\r\ngulliver\r\nhamahakki\r\nharvest\r\nhavindex\r\nhelix\r\nheritrix\r\nhku www octopus\r\nhomerweb\r\nhtdig\r\nhtml index\r\nhtml_analyzer\r\nhtmlgobble\r\nhubater\r\nhyper-decontextualizer\r\nia_archiver\r\nibm_planetwide\r\nichiro\r\niconsurf\r\niltrovatore\r\nimage.kapsi.net\r\nimagelock\r\nincywincy\r\nindexer\r\ninfobee\r\ninformant\r\ningrid\r\ninktomisearch.com\r\ninspector web\r\nintelliagent\r\ninternet shinchakubin\r\nip3000\r\niron33\r\nisraeli-search\r\nivia\r\njack\r\njakarta\r\njavabee\r\njetbot\r\njumpstation\r\nkatipo\r\nkdd-explorer\r\nkilroy\r\nknowledge\r\nkototoi\r\nkretrieve\r\nlabelgrabber\r\nlachesis\r\nlarbin\r\nlegs\r\nlibwww\r\nlinkalarm\r\nlink validator\r\nlinkscan\r\nlockon\r\nlwp\r\nlycos\r\nmagpie\r\nmantraagent\r\nmapoftheinternet\r\nmarvin/\r\nmattie\r\nmediafox\r\nmediapartners\r\nmercator\r\nmerzscope\r\nmicrosoft url control\r\nminirank\r\nmiva\r\nmj12\r\nmnogosearch\r\nmoget\r\nmonster\r\nmoose\r\nmotor\r\nmultitext\r\nmuncher\r\nmuscatferret\r\nmwd.search\r\nmyweb\r\nnajdi\r\nnameprotect\r\nnationaldirectory\r\nnazilla\r\nncsa beta\r\nnec-meshexplorer\r\nnederland.zoek\r\nnetcarta webmap engine\r\nnetmechanic\r\nnetresearchserver\r\nnetscoop\r\nnewscan-online\r\nnhse\r\nnokia6682/\r\nnomad\r\nnoyona\r\nnutch\r\nnzexplorer\r\nobjectssearch\r\noccam\r\nomni\r\nopen text\r\nopenfind\r\nopenintelligencedata\r\norb search\r\nosis-project\r\npack rat\r\npageboy\r\npagebull\r\npage_verifier\r\npanscient\r\nparasite\r\npartnersite\r\npatric\r\npear.\r\npegasus\r\nperegrinator\r\npgp key agent\r\nphantom\r\nphpdig\r\npicosearch\r\npiltdownman\r\npimptrain\r\npinpoint\r\npioneer\r\npiranha\r\nplumtreewebaccessor\r\npogodak\r\npoirot\r\npompos\r\npoppelsdorf\r\npoppi\r\npopular iconoclast\r\npsycheclone\r\npublisher\r\npython\r\nrambler\r\nraven search\r\nroach\r\nroad runner\r\nroadhouse\r\nrobbie\r\nrobofox\r\nrobozilla\r\nrules\r\nsalty\r\nsbider\r\nscooter\r\nscoutjet\r\nscrubby\r\nsearch.\r\nsearchprocess\r\nsemanticdiscovery\r\nsenrigan\r\nsg-scout\r\nshai\'hulud\r\nshark\r\nshopwiki\r\nsidewinder\r\nsift\r\nsilk\r\nsimmany\r\nsite searcher\r\nsite valet\r\nsitetech-rover\r\nskymob.com\r\nsleek\r\nsmartwit\r\nsna-\r\nsnappy\r\nsnooper\r\nsohu\r\nspeedfind\r\nsphere\r\nsphider\r\nspinner\r\nspyder\r\nsteeler/\r\nsuke\r\nsuntek\r\nsupersnooper\r\nsurfnomore\r\nsven\r\nsygol\r\nszukacz\r\ntach black widow\r\ntarantula\r\ntempleton\r\n/teoma\r\nt-h-u-n-d-e-r-s-t-o-n-e\r\ntheophrastus\r\ntitan\r\ntitin\r\ntkwww\r\ntoutatis\r\nt-rex\r\ntutorgig\r\ntwiceler\r\ntwisted\r\nucsd\r\nudmsearch\r\nurl check\r\nupdated\r\nvagabondo\r\nvalkyrie\r\nverticrawl\r\nvictoria\r\nvision-search\r\nvolcano\r\nvoyager/\r\nvoyager-hc\r\nw3c_validator\r\nw3m2\r\nw3mir\r\nwalker\r\nwallpaper\r\nwanderer\r\nwauuu\r\nwavefire\r\nweb core\r\nweb hopper\r\nweb wombat\r\nwebbandit\r\nwebcatcher\r\nwebcopy\r\nwebfoot\r\nweblayers\r\nweblinker\r\nweblog monitor\r\nwebmirror\r\nwebmonkey\r\nwebquest\r\nwebreaper\r\nwebsitepulse\r\nwebsnarf\r\nwebstolperer\r\nwebvac\r\nwebwalk\r\nwebwatch\r\nwebwombat\r\nwebzinger\r\nwhizbang\r\nwhowhere\r\nwild ferret\r\nworldlight\r\nwwwc\r\nwwwster\r\nxenu\r\nxget\r\nxift\r\nxirq\r\nyandex\r\nyanga\r\nyeti\r\nyodao\r\nzao\r\nzippp\r\nzyborg', 0),
-(23860, 0, 'config', 'config_maintenance', '0', 0),
-(23859, 0, 'config', 'config_mail_alert_email', '', 0),
-(23858, 0, 'config', 'config_mail_alert', '[\"order\"]', 1),
+(28793, 0, 'config', 'config_mail_alert', '[\"order\"]', 1),
+(28794, 0, 'config', 'config_mail_alert_email', '', 0),
+(28795, 0, 'config', 'config_maintenance', '0', 0),
+(28796, 0, 'config', 'config_seo_url', '1', 0),
+(28797, 0, 'config', 'config_robots', 'abot\r\ndbot\r\nebot\r\nhbot\r\nkbot\r\nlbot\r\nmbot\r\nnbot\r\nobot\r\npbot\r\nrbot\r\nsbot\r\ntbot\r\nvbot\r\nybot\r\nzbot\r\nbot.\r\nbot/\r\n_bot\r\n.bot\r\n/bot\r\n-bot\r\n:bot\r\n(bot\r\ncrawl\r\nslurp\r\nspider\r\nseek\r\naccoona\r\nacoon\r\nadressendeutschland\r\nah-ha.com\r\nahoy\r\naltavista\r\nananzi\r\nanthill\r\nappie\r\narachnophilia\r\narale\r\naraneo\r\naranha\r\narchitext\r\naretha\r\narks\r\nasterias\r\natlocal\r\natn\r\natomz\r\naugurfind\r\nbackrub\r\nbannana_bot\r\nbaypup\r\nbdfetch\r\nbig brother\r\nbiglotron\r\nbjaaland\r\nblackwidow\r\nblaiz\r\nblog\r\nblo.\r\nbloodhound\r\nboitho\r\nbooch\r\nbradley\r\nbutterfly\r\ncalif\r\ncassandra\r\nccubee\r\ncfetch\r\ncharlotte\r\nchurl\r\ncienciaficcion\r\ncmc\r\ncollective\r\ncomagent\r\ncombine\r\ncomputingsite\r\ncsci\r\ncurl\r\ncusco\r\ndaumoa\r\ndeepindex\r\ndelorie\r\ndepspid\r\ndeweb\r\ndie blinde kuh\r\ndigger\r\nditto\r\ndmoz\r\ndocomo\r\ndownload express\r\ndtaagent\r\ndwcp\r\nebiness\r\nebingbong\r\ne-collector\r\nejupiter\r\nemacs-w3 search engine\r\nesther\r\nevliya celebi\r\nezresult\r\nfalcon\r\nfelix ide\r\nferret\r\nfetchrover\r\nfido\r\nfindlinks\r\nfireball\r\nfish search\r\nfouineur\r\nfunnelweb\r\ngazz\r\ngcreep\r\ngenieknows\r\ngetterroboplus\r\ngeturl\r\nglx\r\ngoforit\r\ngolem\r\ngrabber\r\ngrapnel\r\ngralon\r\ngriffon\r\ngromit\r\ngrub\r\ngulliver\r\nhamahakki\r\nharvest\r\nhavindex\r\nhelix\r\nheritrix\r\nhku www octopus\r\nhomerweb\r\nhtdig\r\nhtml index\r\nhtml_analyzer\r\nhtmlgobble\r\nhubater\r\nhyper-decontextualizer\r\nia_archiver\r\nibm_planetwide\r\nichiro\r\niconsurf\r\niltrovatore\r\nimage.kapsi.net\r\nimagelock\r\nincywincy\r\nindexer\r\ninfobee\r\ninformant\r\ningrid\r\ninktomisearch.com\r\ninspector web\r\nintelliagent\r\ninternet shinchakubin\r\nip3000\r\niron33\r\nisraeli-search\r\nivia\r\njack\r\njakarta\r\njavabee\r\njetbot\r\njumpstation\r\nkatipo\r\nkdd-explorer\r\nkilroy\r\nknowledge\r\nkototoi\r\nkretrieve\r\nlabelgrabber\r\nlachesis\r\nlarbin\r\nlegs\r\nlibwww\r\nlinkalarm\r\nlink validator\r\nlinkscan\r\nlockon\r\nlwp\r\nlycos\r\nmagpie\r\nmantraagent\r\nmapoftheinternet\r\nmarvin/\r\nmattie\r\nmediafox\r\nmediapartners\r\nmercator\r\nmerzscope\r\nmicrosoft url control\r\nminirank\r\nmiva\r\nmj12\r\nmnogosearch\r\nmoget\r\nmonster\r\nmoose\r\nmotor\r\nmultitext\r\nmuncher\r\nmuscatferret\r\nmwd.search\r\nmyweb\r\nnajdi\r\nnameprotect\r\nnationaldirectory\r\nnazilla\r\nncsa beta\r\nnec-meshexplorer\r\nnederland.zoek\r\nnetcarta webmap engine\r\nnetmechanic\r\nnetresearchserver\r\nnetscoop\r\nnewscan-online\r\nnhse\r\nnokia6682/\r\nnomad\r\nnoyona\r\nnutch\r\nnzexplorer\r\nobjectssearch\r\noccam\r\nomni\r\nopen text\r\nopenfind\r\nopenintelligencedata\r\norb search\r\nosis-project\r\npack rat\r\npageboy\r\npagebull\r\npage_verifier\r\npanscient\r\nparasite\r\npartnersite\r\npatric\r\npear.\r\npegasus\r\nperegrinator\r\npgp key agent\r\nphantom\r\nphpdig\r\npicosearch\r\npiltdownman\r\npimptrain\r\npinpoint\r\npioneer\r\npiranha\r\nplumtreewebaccessor\r\npogodak\r\npoirot\r\npompos\r\npoppelsdorf\r\npoppi\r\npopular iconoclast\r\npsycheclone\r\npublisher\r\npython\r\nrambler\r\nraven search\r\nroach\r\nroad runner\r\nroadhouse\r\nrobbie\r\nrobofox\r\nrobozilla\r\nrules\r\nsalty\r\nsbider\r\nscooter\r\nscoutjet\r\nscrubby\r\nsearch.\r\nsearchprocess\r\nsemanticdiscovery\r\nsenrigan\r\nsg-scout\r\nshai\'hulud\r\nshark\r\nshopwiki\r\nsidewinder\r\nsift\r\nsilk\r\nsimmany\r\nsite searcher\r\nsite valet\r\nsitetech-rover\r\nskymob.com\r\nsleek\r\nsmartwit\r\nsna-\r\nsnappy\r\nsnooper\r\nsohu\r\nspeedfind\r\nsphere\r\nsphider\r\nspinner\r\nspyder\r\nsteeler/\r\nsuke\r\nsuntek\r\nsupersnooper\r\nsurfnomore\r\nsven\r\nsygol\r\nszukacz\r\ntach black widow\r\ntarantula\r\ntempleton\r\n/teoma\r\nt-h-u-n-d-e-r-s-t-o-n-e\r\ntheophrastus\r\ntitan\r\ntitin\r\ntkwww\r\ntoutatis\r\nt-rex\r\ntutorgig\r\ntwiceler\r\ntwisted\r\nucsd\r\nudmsearch\r\nurl check\r\nupdated\r\nvagabondo\r\nvalkyrie\r\nverticrawl\r\nvictoria\r\nvision-search\r\nvolcano\r\nvoyager/\r\nvoyager-hc\r\nw3c_validator\r\nw3m2\r\nw3mir\r\nwalker\r\nwallpaper\r\nwanderer\r\nwauuu\r\nwavefire\r\nweb core\r\nweb hopper\r\nweb wombat\r\nwebbandit\r\nwebcatcher\r\nwebcopy\r\nwebfoot\r\nweblayers\r\nweblinker\r\nweblog monitor\r\nwebmirror\r\nwebmonkey\r\nwebquest\r\nwebreaper\r\nwebsitepulse\r\nwebsnarf\r\nwebstolperer\r\nwebvac\r\nwebwalk\r\nwebwatch\r\nwebwombat\r\nwebzinger\r\nwhizbang\r\nwhowhere\r\nwild ferret\r\nworldlight\r\nwwwc\r\nwwwster\r\nxenu\r\nxget\r\nxift\r\nxirq\r\nyandex\r\nyanga\r\nyeti\r\nyodao\r\nzao\r\nzippp\r\nzyborg', 0),
+(28798, 0, 'config', 'config_compression', '9', 0),
+(28799, 0, 'config', 'config_secure', '1', 0),
+(28800, 0, 'config', 'config_password', '1', 0),
+(28801, 0, 'config', 'config_shared', '0', 0),
+(28802, 0, 'config', 'config_encryption', '2yXC9VurV2t0qgoXHOWZDM6AZErXCq94wjU1Df280pqRhZEmhpohqSDGvOtQHEJ3uTpupevta8cAbCQdVhSfDnwQ346kCLZcaH4dUX2pdrZeXAoAHgYoCXOQOrgu9Vmo8UqlP9uzZGjetnDIvFesua3nsMQroYmmCcqOH303F7ScG1LGnYdmPrAIvQUJHISvzOD5qURkbHTYC2wEScJuzcz8IqYowrzozC06XluggpxURnbTrUZD39OsBsfpbeEuXyp8N5sjt9vehDji6HOgNTW5m8JhBKV5KlOFQkIHWEvU6PoOpW9cA9TdNvxV5rNUECFdN3uRsbdAtq0Q1Y57vYk12sGYFxXOM99Uc6CAwtIfESKcAeWRND8dIblWhI0EGJ7epqxkmvnmc1Pc1cR6eQFsYqcEDh9bvhmi3Pp8gjHL7HYQFZgz8oia0g3EfwlJaxSHvtwsYbDsImUCRR3Jw5uD5VfWmkdE1FCNhtEB1lwfDG0Huz82Woyyj1DfYWupqCA1YuqRD42Oqrk23kQ3NdFkRs1choHGnpLfdF9WQqtLJ16wWtjV8vDVU9yk9F9emHcc8pSjPwInDti8GpM6sNxxn8tqQQx9Y1cptX1ycqEMXzVg5uEY8Wufb9WYW4SnPyi23ziTHbN0sfZqSCZydv01uzou8pOWF8cRTHPzHhuVb8Rykhjjmeru833AJJDgZQYdF0W6R186wA8tYGUChQSf07YtAIGNK16xE7taK8jQcL08pn98sYJED566xPRuaIT71eGAJesE1oTrzma9xbRu6nGfQKkYf0NPUcnxONXXhq9U8gEUT9UIKcttkJm8bq1PHUYIkadi4B8MJ6UCigQ7WZJ2jfQTjIEtLYrK9f9hcOFpZT6iOapB0X5Wv5PAL3hswjfHt3d5egWgxrFj7tY3HuWsOL1iTPrA7eiCxpVvG92M6t9gJG7SyRxtizmENdOi0Xo3A9YVKz9r2WZYYEwkOJFgWsZRCYgNVgPXHZXSCQoU9HgOuXgk9LjmvYzF', 0),
+(28792, 0, 'config', 'config_mail_smtp_timeout', '5', 0),
+(28791, 0, 'config', 'config_mail_smtp_port', '25', 0),
+(28790, 0, 'config', 'config_mail_smtp_password', '', 0),
+(28789, 0, 'config', 'config_mail_smtp_username', '', 0),
+(28788, 0, 'config', 'config_mail_smtp_hostname', '', 0),
+(28787, 0, 'config', 'config_mail_parameter', '', 0),
+(28786, 0, 'config', 'config_mail_engine', 'mail', 0),
+(28785, 0, 'config', 'config_product_popup_image_mode', 'scale', 0),
+(28784, 0, 'config', 'config_product_thumb_image_mode', 'default', 0),
+(28783, 0, 'config', 'config_product_list_image_mode', 'default', 0),
+(28782, 0, 'config', 'config_category_image_mode', 'default', 0),
+(28781, 0, 'config', 'config_icon', 'catalog/favicon.png', 0),
+(28779, 0, 'config', 'config_logo_width', '175', 0),
+(28780, 0, 'config', 'config_logo_height', '35', 0),
+(28778, 0, 'config', 'config_logo', 'catalog/logo.png', 0),
+(28777, 0, 'config', 'config_captcha_page', '[\"register\",\"guest\",\"review\",\"return\",\"contact\"]', 1),
+(28776, 0, 'config', 'config_captcha', '', 0),
+(28775, 0, 'config', 'config_return_status_id', '1', 0),
+(28774, 0, 'config', 'config_return_id', '9', 0),
+(28773, 0, 'config', 'config_affiliate_id', '10', 0),
+(28772, 0, 'config', 'config_affiliate_commission', '5', 0),
+(28771, 0, 'config', 'config_affiliate_auto', '0', 0),
+(28770, 0, 'config', 'config_affiliate_approval', '0', 0),
+(28769, 0, 'config', 'config_affiliate_group_id', '1', 0),
+(28768, 0, 'config', 'config_stock_checkout', '1', 0),
+(28767, 0, 'config', 'config_stock_warning', '0', 0),
+(28766, 0, 'config', 'config_stock_display', '0', 0),
+(28764, 0, 'config', 'config_fraud_status_id', '16', 0),
+(28765, 0, 'config', 'config_api_id', '7', 0),
+(28763, 0, 'config', 'config_complete_status', '[\"3\",\"5\"]', 1),
 (21895, 0, 'developer', 'developer_css', '0', 0),
 (21894, 0, 'developer', 'developer_sass', '0', 0),
 (21893, 0, 'developer', 'developer_theme', '0', 0),
-(23857, 0, 'config', 'config_mail_smtp_timeout', '5', 0),
-(23850, 0, 'config', 'config_icon', 'catalog/favicon.png', 0),
-(23849, 0, 'config', 'config_logo_height', '35', 0),
-(23848, 0, 'config', 'config_logo_width', '175', 0),
-(23847, 0, 'config', 'config_logo', 'catalog/logo.png', 0),
-(23846, 0, 'config', 'config_captcha_page', '[\"register\",\"guest\",\"review\",\"return\",\"contact\"]', 1),
-(23845, 0, 'config', 'config_captcha', '', 0),
-(23844, 0, 'config', 'config_return_status_id', '1', 0),
-(23843, 0, 'config', 'config_return_id', '9', 0),
-(23842, 0, 'config', 'config_affiliate_id', '10', 0),
-(23841, 0, 'config', 'config_affiliate_commission', '5', 0),
-(23840, 0, 'config', 'config_affiliate_auto', '0', 0),
-(23839, 0, 'config', 'config_affiliate_approval', '0', 0),
-(23838, 0, 'config', 'config_affiliate_group_id', '1', 0),
-(23837, 0, 'config', 'config_stock_checkout', '1', 0),
-(23836, 0, 'config', 'config_stock_warning', '0', 0),
-(23835, 0, 'config', 'config_stock_display', '0', 0),
-(23831, 0, 'config', 'config_processing_status', '[\"2\",\"3\",\"1\",\"12\",\"5\"]', 1),
-(23832, 0, 'config', 'config_complete_status', '[\"3\",\"5\"]', 1),
-(23833, 0, 'config', 'config_fraud_status_id', '16', 0),
-(23834, 0, 'config', 'config_api_id', '7', 0),
-(23830, 0, 'config', 'config_order_status_id', '1', 0),
-(23829, 0, 'config', 'config_checkout_id', '9', 0),
-(23828, 0, 'config', 'config_checkout_guest', '1', 0),
-(23827, 0, 'config', 'config_cart_weight', '1', 0),
-(23826, 0, 'config', 'config_invoice_prefix', 'INV-2025-00', 0),
-(23825, 0, 'config', 'config_account_id', '9', 0),
-(23824, 0, 'config', 'config_login_attempts', '5', 0),
-(23823, 0, 'config', 'config_customer_price', '0', 0),
-(23822, 0, 'config', 'config_customer_group_display', '[\"1\"]', 1),
-(23821, 0, 'config', 'config_customer_group_id', '1', 0),
-(23820, 0, 'config', 'config_customer_search', '0', 0),
-(23819, 0, 'config', 'config_customer_activity', '0', 0),
-(23818, 0, 'config', 'config_customer_online', '0', 0),
-(23817, 0, 'config', 'config_tax_customer', 'shipping', 0),
-(23815, 0, 'config', 'config_tax', '0', 0),
-(23816, 0, 'config', 'config_tax_default', 'shipping', 0),
-(23814, 0, 'config', 'config_voucher_max', '1000', 0),
-(23813, 0, 'config', 'config_voucher_min', '1', 0),
-(23812, 0, 'config', 'config_review_images_limit', '5', 0),
-(23811, 0, 'config', 'config_review_images', '0', 0),
-(23810, 0, 'config', 'config_review_guest', '1', 0),
-(23809, 0, 'config', 'config_review_status', '1', 0),
-(23808, 0, 'config', 'config_limit_autocomplete', '5', 0),
-(23807, 0, 'config', 'config_limit_admin', '50', 0),
-(23806, 0, 'config', 'config_product_count', '0', 0),
-(23805, 0, 'config', 'config_weight_class_id', '1', 0),
-(23804, 0, 'config', 'config_length_class_id', '1', 0),
-(23803, 0, 'config', 'config_currency_engine', 'cbr', 0),
-(23802, 0, 'config', 'config_currency_auto', '1', 0),
-(23801, 0, 'config', 'config_currency', 'RUB', 0),
-(23799, 0, 'config', 'config_language', 'ru-ru', 0),
-(23800, 0, 'config', 'config_admin_language', 'ru-ru', 0),
-(23798, 0, 'config', 'config_timezone', 'Europe/Moscow', 0),
-(23797, 0, 'config', 'config_city', 'Москва', 0),
-(23796, 0, 'config', 'config_zone_id', '2751', 0),
-(23795, 0, 'config', 'config_country_id', '176', 0),
-(23794, 0, 'config', 'config_location', '[\"1\",\"2\"]', 1),
-(23793, 0, 'config', 'config_comment', '', 0),
-(23791, 0, 'config', 'config_image', '', 0),
-(23792, 0, 'config', 'config_open', '10:00 - 18:00', 0),
-(23790, 0, 'config', 'config_social_media', '[{\"name\":\"whatsapp\",\"url\":\"https:\\/\\/wa.me\\/79994206969\",\"icon\":\"&lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;   &lt;path d=&quot;M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z&quot;\\/&gt; &lt;\\/svg&gt;\",\"contact\":\"1\",\"header\":\"1\"},{\"name\":\"telegram\",\"url\":\"https:\\/\\/t.me\\/exopencart\",\"icon\":\"&lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;   &lt;path d=&quot;M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z&quot;\\/&gt; &lt;\\/svg&gt;\",\"contact\":\"1\",\"header\":\"1\"}]', 1),
-(23789, 0, 'config', 'config_fax', '+7 8452 93 23 93', 0),
-(23787, 0, 'config', 'config_email', 'info@exopencart.ru', 0),
-(23788, 0, 'config', 'config_telephone', '+7 999 420 69 69', 0),
-(23784, 0, 'config', 'config_owner', 'Название организации', 0),
-(23785, 0, 'config', 'config_address', 'Здесь адрес, ул. дом, что-то еще', 0),
-(23786, 0, 'config', 'config_geocode', 'https://yandex.ru/map-widget/v1/?um=constructor%3Acf0da8fa05f10eb5764f1e0487b4b2a963a2a02ad1c06290acc58a05f78e5230&amp;amp;source=constructor', 0),
-(23783, 0, 'config', 'config_name', 'exopencart', 0),
-(23782, 0, 'config', 'config_layout_id', '4', 0),
-(23781, 0, 'config', 'config_theme', 'default', 0),
-(23779, 0, 'config', 'config_meta_description', 'Бесплатный интернет-магазин - exopencart.ru', 0),
-(23780, 0, 'config', 'config_meta_keyword', '', 0),
-(23778, 0, 'config', 'config_heading_seo_phrase', '{\"1\":\"\",\"2\":\"\"}', 1),
-(23777, 0, 'config', 'config_title_seo_phrase', '{\"1\":\"\",\"2\":\"\"}', 1),
-(23776, 0, 'config', 'config_meta_title', 'Бесплатный интернет-магазин', 0),
+(28762, 0, 'config', 'config_processing_status', '[\"2\",\"3\",\"1\",\"12\",\"5\"]', 1),
+(28761, 0, 'config', 'config_order_status_id', '1', 0),
+(28760, 0, 'config', 'config_checkout_id', '9', 0),
+(28759, 0, 'config', 'config_checkout_guest', '1', 0),
+(28758, 0, 'config', 'config_cart_weight', '1', 0),
+(28757, 0, 'config', 'config_invoice_prefix', 'INV-2025-00', 0),
+(28756, 0, 'config', 'config_account_id', '9', 0),
+(28755, 0, 'config', 'config_login_attempts', '5', 0),
+(28754, 0, 'config', 'config_customer_price', '0', 0),
+(28753, 0, 'config', 'config_customer_group_display', '[\"1\"]', 1),
+(28752, 0, 'config', 'config_customer_group_id', '1', 0),
+(28751, 0, 'config', 'config_customer_search', '0', 0),
+(28750, 0, 'config', 'config_customer_activity', '0', 0),
+(28748, 0, 'config', 'config_tax_customer', 'shipping', 0),
+(28749, 0, 'config', 'config_customer_online', '0', 0),
+(28747, 0, 'config', 'config_tax_default', 'shipping', 0),
+(28745, 0, 'config', 'config_voucher_max', '1000', 0),
+(28746, 0, 'config', 'config_tax', '0', 0),
+(28744, 0, 'config', 'config_voucher_min', '1', 0),
+(28743, 0, 'config', 'config_review_images_limit', '5', 0),
+(28742, 0, 'config', 'config_review_images', '0', 0),
+(28741, 0, 'config', 'config_review_guest', '1', 0),
+(28740, 0, 'config', 'config_review_status', '1', 0),
+(28739, 0, 'config', 'config_show_options_price', '1', 0),
+(28738, 0, 'config', 'config_out_of_stock_to_end', '0', 0),
+(28734, 0, 'config', 'config_search_sort_param', 'p.sort_order', 0),
+(28735, 0, 'config', 'config_search_sort_order', 'ASC', 0),
+(28736, 0, 'config', 'config_special_sort_param', 'p.sort_order', 0),
+(28737, 0, 'config', 'config_special_sort_order', 'ASC', 0),
+(28732, 0, 'config', 'config_manufacturer_sort_param', 'p.sort_order', 0),
+(28733, 0, 'config', 'config_manufacturer_sort_order', 'ASC', 0),
+(28729, 0, 'config', 'config_limit_autocomplete', '5', 0),
+(28730, 0, 'config', 'config_category_sort_param', 'p.sort_order', 0),
+(28731, 0, 'config', 'config_category_sort_order', 'ASC', 0),
+(28728, 0, 'config', 'config_limit_admin', '50', 0),
+(28727, 0, 'config', 'config_product_count', '0', 0),
+(28726, 0, 'config', 'config_weight_class_id', '1', 0),
+(28725, 0, 'config', 'config_length_class_id', '1', 0),
+(28724, 0, 'config', 'config_currency_engine', 'cbr', 0),
+(28723, 0, 'config', 'config_currency_auto', '1', 0),
+(28722, 0, 'config', 'config_currency', 'RUB', 0),
+(28721, 0, 'config', 'config_admin_language', 'ru-ru', 0),
+(28720, 0, 'config', 'config_language', 'ru-ru', 0),
+(28719, 0, 'config', 'config_timezone', 'Europe/Moscow', 0),
+(28718, 0, 'config', 'config_city', 'Москва', 0),
+(28717, 0, 'config', 'config_zone_id', '2751', 0),
+(28716, 0, 'config', 'config_country_id', '176', 0),
+(28715, 0, 'config', 'config_location', '[\"1\",\"2\"]', 1),
+(28711, 0, 'config', 'config_social_media', '[{\"name\":\"whatsapp\",\"url\":\"https:\\/\\/wa.me\\/79994206969\",\"icon\":\"&lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;   &lt;path d=&quot;M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232&quot;&gt;&lt;\\/path&gt; &lt;\\/svg&gt;\",\"contact\":\"1\",\"header\":\"1\"},{\"name\":\"telegram\",\"url\":\"https:\\/\\/t.me\\/exopencart\",\"icon\":\"&lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;   &lt;path d=&quot;M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z&quot;\\/&gt; &lt;\\/svg&gt;\",\"contact\":\"1\",\"header\":\"1\"},{\"name\":\"xcom\",\"url\":\"https:\\/\\/x.com\\/exopencart\",\"icon\":\"&lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;   &lt;path d=&quot;M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z&quot;\\/&gt; &lt;\\/svg&gt;\",\"contact\":\"1\",\"header\":\"1\"}]', 1),
+(28714, 0, 'config', 'config_comment', '', 0),
+(28712, 0, 'config', 'config_image', '', 0),
+(28713, 0, 'config', 'config_open', '10:00 - 18:00', 0),
+(28710, 0, 'config', 'config_fax', '+7 8452 93 23 93', 0),
+(28709, 0, 'config', 'config_telephone', '+7 999 420 69 69', 0),
+(28708, 0, 'config', 'config_email', 'info@exopencart.ru', 0),
+(28707, 0, 'config', 'config_geocode', 'https://yandex.ru/map-widget/v1/?um=constructor%3Acf0da8fa05f10eb5764f1e0487b4b2a963a2a02ad1c06290acc58a05f78e5230&amp;amp;source=constructor', 0),
+(28706, 0, 'config', 'config_address', 'Здесь адрес, ул. дом, что-то еще', 0),
+(28705, 0, 'config', 'config_owner', 'Название организации', 0),
+(28704, 0, 'config', 'config_name', 'exopencart', 0),
+(28703, 0, 'config', 'config_layout_id', '4', 0),
+(28702, 0, 'config', 'config_theme', 'default', 0),
+(28700, 0, 'config', 'config_meta_description', 'Бесплатный интернет-магазин - exopencart.ru', 0),
+(28701, 0, 'config', 'config_meta_keyword', '', 0),
+(28699, 0, 'config', 'config_heading_seo_phrase', '{\"1\":\"\",\"2\":\"\"}', 1),
+(28697, 0, 'config', 'config_meta_title', 'Бесплатный интернет-магазин', 0),
+(28698, 0, 'config', 'config_title_seo_phrase', '{\"1\":\"\",\"2\":\"\"}', 1),
 (23107, 0, 'module_exbot', 'module_exbot_status', '0', 0),
 (23108, 0, 'module_exbot', 'module_exbot_settings', '{\"bot_token\":\"\",\"token\":\"\"}', 1);
 
@@ -12271,7 +12347,7 @@ ALTER TABLE `oc_blog_category`
 -- AUTO_INCREMENT for table `oc_cart`
 --
 ALTER TABLE `oc_cart`
-  MODIFY `cart_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `cart_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `oc_category`
@@ -12535,13 +12611,13 @@ ALTER TABLE `oc_module`
 -- AUTO_INCREMENT for table `oc_option`
 --
 ALTER TABLE `oc_option`
-  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `oc_option_value`
 --
 ALTER TABLE `oc_option_value`
-  MODIFY `option_value_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `option_value_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `oc_order`
@@ -12613,25 +12689,25 @@ ALTER TABLE `oc_product`
 -- AUTO_INCREMENT for table `oc_product_discount`
 --
 ALTER TABLE `oc_product_discount`
-  MODIFY `product_discount_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_discount_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `oc_product_image`
 --
 ALTER TABLE `oc_product_image`
-  MODIFY `product_image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1666;
+  MODIFY `product_image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1744;
 
 --
 -- AUTO_INCREMENT for table `oc_product_option`
 --
 ALTER TABLE `oc_product_option`
-  MODIFY `product_option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `product_option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `oc_product_option_value`
 --
 ALTER TABLE `oc_product_option_value`
-  MODIFY `product_option_value_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `product_option_value_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `oc_product_reward`
@@ -12643,7 +12719,7 @@ ALTER TABLE `oc_product_reward`
 -- AUTO_INCREMENT for table `oc_product_special`
 --
 ALTER TABLE `oc_product_special`
-  MODIFY `product_special_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `product_special_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `oc_recurring`
@@ -12697,13 +12773,13 @@ ALTER TABLE `oc_review_article`
 -- AUTO_INCREMENT for table `oc_seo_url`
 --
 ALTER TABLE `oc_seo_url`
-  MODIFY `seo_url_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1197;
+  MODIFY `seo_url_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1249;
 
 --
 -- AUTO_INCREMENT for table `oc_setting`
 --
 ALTER TABLE `oc_setting`
-  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23887;
+  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28822;
 
 --
 -- AUTO_INCREMENT for table `oc_statistics`
