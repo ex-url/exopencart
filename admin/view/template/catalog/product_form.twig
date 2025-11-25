@@ -626,152 +626,92 @@
                                 </tr>
                               </thead>
                               <tbody>
-
                                 {% for product_option_value in product_option.product_option_value %}
                                   <tr id="option-value-row{{ option_value_row }}">
                                     <td class="text-left"><select name="product_option[{{ option_row }}][product_option_value][{{ option_value_row }}][option_value_id]" class="form-control">
-
-
                                         {% if option_values[product_option.option_id] %}
-
                                           {% for option_value in option_values[product_option.option_id] %}
-
                                             {% if option_value.option_value_id == product_option_value.option_value_id %}
-
-
                                               <option value="{{ option_value.option_value_id }}" selected="selected">{{ option_value.name }}</option>
-
-
                                             {% else %}
-
-
                                               <option value="{{ option_value.option_value_id }}">{{ option_value.name }}</option>
-
-
                                             {% endif %}
                                           {% endfor %}
                                         {% endif %}
-
-
-                                      </select> <input type="hidden" name="product_option[{{ option_row }}][product_option_value][{{ option_value_row }}][product_option_value_id]" value="{{ product_option_value.product_option_value_id }}"/></td>
+                                      </select>
+                                      <label>
+                                        <input type="checkbox" name="product_option[{{ option_row }}][product_option_value][{{ option_value_row }}][is_default]" {{ product_option_value.is_default ? 'checked' : '' }} value="1"/> {{ text_default }}
+                                      </label>
+                                      <input type="hidden" name="product_option[{{ option_row }}][product_option_value][{{ option_value_row }}][product_option_value_id]" value="{{ product_option_value.product_option_value_id }}"/></td>
                                     <td class="text-right"><input type="text" name="product_option[{{ option_row }}][product_option_value][{{ option_value_row }}][quantity]" value="{{ product_option_value.quantity }}" placeholder="{{ entry_quantity }}" class="form-control"/></td>
-                                    <td class="text-left"><select name="product_option[{{ option_row }}][product_option_value][{{ option_value_row }}][subtract]" class="form-control">
-
-
+                                    <td class="text-left">
+                                      <select name="product_option[{{ option_row }}][product_option_value][{{ option_value_row }}][subtract]" class="form-control">
                                         {% if product_option_value.subtract %}
-
-
                                           <option value="1" selected="selected">{{ text_yes }}</option>
                                           <option value="0">{{ text_no }}</option>
-
-
                                         {% else %}
-
-
                                           <option value="1">{{ text_yes }}</option>
                                           <option value="0" selected="selected">{{ text_no }}</option>
-
-
                                         {% endif %}
-
-
-                                      </select></td>
-                                    <td class="text-right"><select name="product_option[{{ option_row }}][product_option_value][{{ option_value_row }}][price_prefix]" class="form-control">
-
-
+                                      </select>
+                                    </td>
+                                    <td class="text-right">
+                                      <select name="product_option[{{ option_row }}][product_option_value][{{ option_value_row }}][price_prefix]" class="form-control">
                                         {% if product_option_value.price_prefix == '+' %}
-
-
                                           <option value="+" selected="selected">+</option>
-
-
                                         {% else %}
-
-
                                           <option value="+">+</option>
-
-
                                         {% endif %}
                                         {% if product_option_value.price_prefix == '-' %}
-
-
                                           <option value="-" selected="selected">-</option>
-
-
                                         {% else %}
-
-
                                           <option value="-">-</option>
-
-
                                         {% endif %}
-
-
-                                      </select> <input type="text" name="product_option[{{ option_row }}][product_option_value][{{ option_value_row }}][price]" value="{{ product_option_value.price }}" placeholder="{{ entry_price }}" class="form-control"/></td>
-                                    <td class="text-right"><select name="product_option[{{ option_row }}][product_option_value][{{ option_value_row }}][points_prefix]" class="form-control">
-
-
-                                        {% if product_option_value.points_prefix == '+' %}
-
-
-                                          <option value="+" selected="selected">+</option>
-
-
+                                        {% if product_option_value.price_prefix == '*' %}
+                                          <option value="*" selected="selected">*</option>
                                         {% else %}
-
-
+                                          <option value="*">*</option>
+                                        {% endif %}
+                                        {% if product_option_value.price_prefix == '/' %}
+                                          <option value="/" selected="selected">/</option>
+                                        {% else %}
+                                          <option value="/">/</option>
+                                        {% endif %}
+                                        {% if product_option_value.price_prefix == '=' %}
+                                          <option value="=" selected="selected">=</option>
+                                        {% else %}
+                                          <option value="=">=</option>
+                                        {% endif %}
+                                      </select> 
+                                      <input type="text" name="product_option[{{ option_row }}][product_option_value][{{ option_value_row }}][price]" value="{{ product_option_value.price }}" placeholder="{{ entry_price }}" class="form-control"/></td>
+                                    <td class="text-right">
+                                      <select name="product_option[{{ option_row }}][product_option_value][{{ option_value_row }}][points_prefix]" class="form-control">
+                                        {% if product_option_value.points_prefix == '+' %}
+                                          <option value="+" selected="selected">+</option>
+                                        {% else %}
                                           <option value="+">+</option>
-
-
                                         {% endif %}
                                         {% if product_option_value.points_prefix == '-' %}
-
-
                                           <option value="-" selected="selected">-</option>
-
-
                                         {% else %}
-
-
                                           <option value="-">-</option>
-
-
                                         {% endif %}
-
-
-                                      </select> <input type="text" name="product_option[{{ option_row }}][product_option_value][{{ option_value_row }}][points]" value="{{ product_option_value.points }}" placeholder="{{ entry_points }}" class="form-control"/></td>
-                                    <td class="text-right"><select name="product_option[{{ option_row }}][product_option_value][{{ option_value_row }}][weight_prefix]" class="form-control">
-
-
+                                      </select>
+                                      <input type="text" name="product_option[{{ option_row }}][product_option_value][{{ option_value_row }}][points]" value="{{ product_option_value.points }}" placeholder="{{ entry_points }}" class="form-control"/></td>
+                                    <td class="text-right">
+                                      <select name="product_option[{{ option_row }}][product_option_value][{{ option_value_row }}][weight_prefix]" class="form-control">
                                         {% if product_option_value.weight_prefix == '+' %}
-
-
                                           <option value="+" selected="selected">+</option>
-
-
                                         {% else %}
-
-
                                           <option value="+">+</option>
-
-
                                         {% endif %}
                                         {% if product_option_value.weight_prefix == '-' %}
-
-
                                           <option value="-" selected="selected">-</option>
-
-
                                         {% else %}
-
-
                                           <option value="-">-</option>
-
-
                                         {% endif %}
-
-
-                                      </select> <input type="text" name="product_option[{{ option_row }}][product_option_value][{{ option_value_row }}][weight]" value="{{ product_option_value.weight }}" placeholder="{{ entry_weight }}" class="form-control"/></td>
+                                      </select> 
+                                      <input type="text" name="product_option[{{ option_row }}][product_option_value][{{ option_value_row }}][weight]" value="{{ product_option_value.weight }}" placeholder="{{ entry_weight }}" class="form-control"/></td>
                                     <td class="text-right"><button type="button" onclick="$(this).tooltip('destroy');$('#option-value-row{{ option_value_row }}').remove();" data-toggle="tooltip" title="{{ button_remove }}" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
                                   </tr>
                                   {% set option_value_row = option_value_row + 1 %}
@@ -1556,7 +1496,8 @@ $('#article-related').delegate('.fa-minus-circle', 'click', function() {
 	  html = '<tr id="option-value-row' + option_value_row + '">';
 	  html += '  <td class="text-left"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][option_value_id]" class="form-control">';
 	  html += $('#option-values' + option_row).html();
-	  html += '  </select><input type="hidden" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][product_option_value_id]" value="" /></td>';
+	  html += '  </select><input type="hidden" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][product_option_value_id]" value="" />';
+    html += '  <label><input type="checkbox" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][is_default]" value="1"/> {{ text_default }}</label></td>'
 	  html += '  <td class="text-right"><input type="text" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][quantity]" value="" placeholder="{{ entry_quantity }}" class="form-control" /></td>';
 	  html += '  <td class="text-left"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][subtract]" class="form-control">';
 	  html += '    <option value="1">{{ text_yes }}</option>';
@@ -1565,6 +1506,9 @@ $('#article-related').delegate('.fa-minus-circle', 'click', function() {
 	  html += '  <td class="text-right"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][price_prefix]" class="form-control">';
 	  html += '    <option value="+">+</option>';
 	  html += '    <option value="-">-</option>';
+    html += '    <option value="*">*</option>';
+    html += '    <option value="/">/</option>';
+    html += '    <option value="=">=</option>';
 	  html += '  </select>';
 	  html += '  <input type="text" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][price]" value="" placeholder="{{ entry_price }}" class="form-control" /></td>';
 	  html += '  <td class="text-right"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][points_prefix]" class="form-control">';

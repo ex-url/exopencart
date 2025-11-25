@@ -560,6 +560,12 @@ class ControllerSettingSetting extends Controller {
       $data['config_out_of_stock_to_end'] = $this->config->get('config_out_of_stock_to_end');
     }
 
+    if (isset($this->request->post['config_show_options_price'])) {
+      $data['config_show_options_price'] = $this->request->post['config_show_options_price'];
+    } else {
+      $data['config_show_options_price'] = $this->config->get('config_show_options_price');
+    }
+
     if (isset($this->request->post['config_product_count'])) {
       $data['config_product_count'] = $this->request->post['config_product_count'];
     } else {

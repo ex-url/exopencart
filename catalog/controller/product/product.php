@@ -315,6 +315,7 @@ class ControllerProductProduct extends Controller {
 
       if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
         $data['price'] = $this->currency->format($this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+        $data['price_numeric'] = $this->currency->format($this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency'], '', false);
       } else {
         $data['price'] = false;
       }
@@ -322,6 +323,7 @@ class ControllerProductProduct extends Controller {
       if (!is_null($product_info['special']) && (float)$product_info['special'] >= 0) {
         $data['special'] = $this->currency->format($this->tax->calculate($product_info['special'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
         $tax_price = (float)$product_info['special'];
+        $data['price_numeric'] = $this->currency->format($this->tax->calculate($product_info['special'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency'], '', false);
       } else {
         $data['special'] = false;
         $tax_price = (float)$product_info['price'];
@@ -344,6 +346,7 @@ class ControllerProductProduct extends Controller {
         );
       }
 
+      $data['show_options_price'] = $this->config->get('config_show_options_price');
       $data['options'] = array();
 
       foreach ($this->model_catalog_product->getProductOptions($this->request->get['product_id']) as $option) {
@@ -360,9 +363,11 @@ class ControllerProductProduct extends Controller {
             $product_option_value_data[] = array(
               'product_option_value_id' => $option_value['product_option_value_id'],
               'option_value_id'         => $option_value['option_value_id'],
+              'is_default'              => $option_value['is_default'],
               'name'                    => $option_value['name'],
               'image'                   => $this->model_tool_image->resize($option_value['image'], 50, 50),
               'price'                   => $price,
+              'price_numeric'           => $this->currency->format($this->tax->calculate($option_value['price'], $product_info['tax_class_id'], $this->config->get('config_tax') ? 'P' : false), $this->session->data['currency'], '', false),
               'price_prefix'            => $option_value['price_prefix']
             );
           }
@@ -499,6 +504,13 @@ class ControllerProductProduct extends Controller {
       $data['content_bottom'] = $this->load->controller('common/content_bottom');
       $data['footer'] = $this->load->controller('common/footer');
       $data['header'] = $this->load->controller('common/header');
+      $data['language_code'] = $this->language->get('code');
+      $data['currency_code'] = $this->session->data['currency'];
+
+      $this->load->model('localisation/currency');
+      $currency = $this->model_localisation_currency->getCurrencyByCode($this->session->data['currency']);
+
+      $this->log->write($currency);
 
       $this->response->setOutput($this->load->view('product/product', $data));
     } else {

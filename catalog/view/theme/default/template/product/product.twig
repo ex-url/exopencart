@@ -34,12 +34,12 @@
               <a>{{ tab_general }}</a>
             </li>
             {% if attribute_groups %}
-            <li class="has-background-white" data-target="#attributes">
+            <li class="has-background-white" data-target="#product-attributes">
               <a>{{ tab_attribute }}</a>
             </li>
             {% endif %}
             {% if review_status %}
-            <li class="has-background-white" data-target="#reviews">
+            <li class="has-background-white" data-target="#product-reviews">
               <a>{{ tab_review }}</a>
             </li>
             {% endif %}
@@ -53,7 +53,7 @@
           {% else %}
           {% set class = 'column is-6-desktop is-12-tablet is-12-mobile' %}
           {% endif %}
-          <div class="product-images {{ class }}">
+          <div class="{{ class }}">
             <div id="product-images" class="swiper box p-0 is-clipped  ">
               <div class="swiper-wrapper">
                 {% if thumb %}
@@ -89,7 +89,7 @@
           {% set class = 'column is-6-desktop is-12-tablet is-12-mobile' %}
           {% endif %}
           <div id="product" class="product-info {{ class }}">
-            <div class="product-main" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+            <div id="product-main" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
               <div class="is-flex is-justify-content-space-between is-align-items-center">
                 {% if price %}
                 <div class="price is-relative">
@@ -106,7 +106,7 @@
                 {% endif %}
                 {% if rating %}
                 <span
-                  class="tag is-medium is-light is-clickable" data-target="#reviews">
+                  class="tag is-medium is-light is-clickable" data-target="#product-reviews">
                   <span class="icon-text">
                     <span class="icon has-text-warning">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -175,7 +175,7 @@
               </ul>
             </div>
             {% if options %}
-            <div class="product-options mt-5">
+            <div id="product-options" class="mt-5">
               <div class="title is-4">{{ text_option }}</div>
               {% for option in options %}
               {% if option.type == 'select' %}
@@ -187,8 +187,8 @@
                       id="input-option{{ option.product_option_id }}">
                       <option value="">{{ text_select }}</option>
                       {% for option_value in option.product_option_value %}
-                      <option value="{{ option_value.product_option_value_id }}">{{ option_value.name }}
-                        {% if option_value.price %}
+                      <option value="{{ option_value.product_option_value_id }}" data-price="{{ option_value.price_numeric }}" data-prefix="{{ option_value.price_prefix }}" {{ option_value.is_default ? 'selected' : '' }}>{{ option_value.name }}
+                        {% if show_options_price and option_value.price %}
                         ({{ option_value.price_prefix }}{{ option_value.price }})
                         {% endif %}
                       </option>
@@ -205,14 +205,14 @@
                   {% for option_value in option.product_option_value %}
                   <div>
                     <label class="radio">
-                      <input type="radio" name="option[{{ option.product_option_id }}]"
+                      <input type="radio" name="option[{{ option.product_option_id }}]" data-price="{{ option_value.price_numeric }}" data-prefix="{{ option_value.price_prefix }}" {{ option_value.is_default ? 'checked' : '' }}
                         value="{{ option_value.product_option_value_id }}" />
                       {% if option_value.image %}
                       <img src="{{ option_value.image }}"
                         alt="{{ option_value.name }} {% if option_value.price %} {{ option_value.price_prefix }} {{ option_value.price }} {% endif %}" />{%
                       endif %}
                       {{ option_value.name }}
-                      {% if option_value.price %}
+                      {% if show_options_price and option_value.price %}
                       <span class="tag">{{ option_value.price_prefix }}{{ option_value.price }}</span>
                       {% endif %}
                     </label>
@@ -228,13 +228,13 @@
                   {% for option_value in option.product_option_value %}
                   <div>
                     <label class="checkbox">
-                      <input type="checkbox" name="option[{{ option.product_option_id }}][]"
+                      <input type="checkbox" name="option[{{ option.product_option_id }}][]" data-price="{{ option_value.price_numeric }}" data-prefix="{{ option_value.price_prefix }}" {{ option_value.is_default ? 'checked' : '' }}
                         value="{{ option_value.product_option_value_id }}" />
                       {% if option_value.image %} <img src="{{ option_value.image }}"
                         alt="{{ option_value.name }} {% if option_value.price %} {{ option_value.price_prefix }} {{ option_value.price }} {% endif %}"
                         class="img-thumbnail" /> {% endif %}
                       {{ option_value.name }}
-                      {% if option_value.price %}
+                      {% if show_options_price and option_value.price %}
                       <span class="tag">{{ option_value.price_prefix }}{{ option_value.price }}</span>
                       {% endif %}
                     </label>
@@ -314,7 +314,7 @@
             </div>
             <hr>
             {% endif %}
-            <div class="product-actions mt-5 is-flex is-align-items-center is-justify-content-space-between">
+            <div id="product-actions" class="mt-5 is-flex is-align-items-center is-justify-content-space-between">
               <div class="field has-addons mb-0 quantity-counter">
                 <p class="control">
                   <a class="button minus">
@@ -375,7 +375,7 @@
             <hr class="mb-0">
 
             {% if attribute_groups %}
-            <div id="attributes" class="my-5">
+            <div id="product-attributes" class="my-5">
               <div class="title is-4">
                 {{ tab_attribute }}
               </div>
@@ -397,11 +397,11 @@
               <hr>
             </div>
             {% endif %}
-            <div itemprop="description" class="product-description">
+            <div id="product-description" itemprop="description" >
               {{ description }}
             </div>
             {% if tags %}
-            <div class="product-tags mt-5">
+            <div id="product-tags" class="mt-5">
               <div class="title is-5 mb-2">
                 {{ text_tags }}
               </div>
@@ -416,14 +416,14 @@
             {% endif %}
             {% if review_status %}
             <hr>
-            <div id="reviews" class="mb-5">
-              <form id="form-review">
-                <div class="title is-4">
-                  {{ tab_review }}
-                </div>
-                <div id="review"></div>
-                <hr>
-                <h2 class="title is-4">{{ text_write }}</h2>
+            <div id="product-reviews" class="mb-5">
+              <div class="title is-4">
+                {{ tab_review }}
+              </div>
+              <div id="reviews"></div>
+              <hr>
+              <form id="form-review">                                
+                <div class="title is-4">{{ text_write }}</div>
                 {% if review_guest %}
                 <div class="field">
                   <label class="label">{{ entry_rating }}</label>
@@ -664,6 +664,51 @@
       }
     }
   });
+  
+  {% if price %}
+  
+  $('#product-options input[type="radio"], #product-options input[type="checkbox"], #product-options select').on('change', function () {
+    let basePrice = {{ price_numeric }};
+    let currentPrice = basePrice;
+
+    $('#product-options input[type="radio"]:checked, #product-options input[type="checkbox"]:checked, #product-options select').each(function () {
+      let price = parseFloat($(this).find('option:selected').data('price') || $(this).data('price') || 0);
+      let prefix = $(this).find('option:selected').data('prefix') || $(this).data('prefix') || '+';  // По умолчанию +
+
+      switch (prefix) {
+        case '+':
+          currentPrice += price;
+          break;
+        case '-':
+          currentPrice -= price;
+          break;
+        case '*':
+          currentPrice *= price;
+          break;
+        case '/':
+          currentPrice = price !== 0 ? currentPrice / price : currentPrice;
+          break;
+        case '=':
+          currentPrice = price;
+          break;
+        default:
+          currentPrice += price;
+      }
+    });
+
+    let formatter = new Intl.NumberFormat('{{ language_code }}',
+      { style: 'currency', 
+        currency: '{{ currency_code }}',
+        currencyDisplay: 'narrowSymbol',
+        maximumFractionDigits: (basePrice.toString().split('.')[1] || '').length
+      });
+    let formattedPrice = formatter.format(currentPrice);
+    $('.actual-price').text(formattedPrice);
+  });
+  // trigger change to set initial price by default options
+  $('#product-options input[type="radio"], #product-options input[type="checkbox"], #product-options select').trigger('change');
+  
+  {% endif %}
 
   $('#button-cart').on('click', function () {
     $.ajax({
@@ -769,22 +814,22 @@
     }, 500);
   });
 
-  $('#review').delegate('.pagination a', 'click', function (e) {
+  $('#reviews').delegate('.pagination a', 'click', function (e) {
     e.preventDefault();
 
-    $('#review').fadeOut(100);
+    $('#reviews').fadeOut(100);
 
-    $('#review').load(this.href);
+    $('#reviews').load(this.href);
 
-    $('#review').fadeIn(100, function () {
-      let top = $('#review').offset().top;
+    $('#reviews').fadeIn(100, function () {
+      let top = $('#reviews').offset().top;
       let offset = $(window).width() > 768 ? 120 : 60;
 
       $('html, body').stop().animate({ scrollTop: top - offset }, 300);
     });
   });
 
-  $('#review').load('index.php?route=product/product/review&product_id={{ product_id }}');
+  $('#reviews').load('index.php?route=product/product/review&product_id={{ product_id }}');
 
   {% if review_images %}
 
