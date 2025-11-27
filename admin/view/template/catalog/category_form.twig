@@ -82,6 +82,33 @@
                       <textarea name="category_description[{{ language.language_id }}][description]" placeholder="{{ entry_description }}" id="input-description{{ language.language_id }}" data-toggle="summernote" data-lang="{{ summernote }}" class="form-control">{{ category_description[language.language_id] ? category_description[language.language_id].description }}</textarea>
                     </div>
                   </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label" for="input-stickers">{{ entry_stickers }}</label>
+                    <div class="col-sm-10" id="stickers">
+                      {% if category_description[language.language_id] and category_description[language.language_id].stickers %}
+                      {% for key, sticker in category_description[language.language_id].stickers %}
+                      <div id="sticker-{{ language.language_id }}-{{ key }}" class="row" style="margin-bottom: 10px;">
+                        <div class="col-sm-5">
+                          <input type="text" name="category_description[{{ language.language_id }}][stickers][{{ key }}][content]" value="{{ sticker.content }}" placeholder="{{ entry_sticker_content }}" class="form-control">
+                          <small class="text-info">{{ help_sticker_content }}</small>
+                        </div>
+                        <div class="col-sm-5">
+                          <input type="text" name="category_description[{{ language.language_id }}][stickers][{{ key }}][class]" value="{{ sticker.class }}" placeholder="{{ entry_sticker_class }}" class="form-control">
+                          <small class="text-info">{{ help_sticker_class }}</small>
+                        </div>
+                        <div class="col-sm-2 text-right">
+                          <button type="button" class="btn btn-danger" onclick="removeSticker('#sticker-{{ language.language_id }}-{{ key }}')">
+                            <i class="fa fa-trash"></i>
+                          </button>
+                        </div>
+                      </div>
+                      {% endfor %}
+                    {% endif %}
+                    </div>
+                    <div class="col-sm-12 text-right">
+                      <button onclick="addSticker({{ language.language_id }})" type="button" class="btn btn-primary"><i class="fa fa-plus-circle"></i> {{ button_add }}</button>
+                    </div>
+                  </div>
                 </div>
                 {% endfor %}
               </div>
@@ -238,7 +265,7 @@
                     {% endfor %}</div>
                 </div>
                </div>
-			   <div class="form-group">
+			        <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-article-related"><span data-toggle="tooltip" title="{{ help_related }}">{{ entry_related_article }}</span></label>
                 <div class="col-sm-10">
                   <input type="text" name="article_related_input" value="" placeholder="{{ entry_related_article }}" id="input-article-related" class="form-control" />
@@ -246,7 +273,8 @@
                     <div id="article-related{{ article_related.article_id }}"><i class="fa fa-minus-circle"></i> {{ article_related.name }}
                       <input type="hidden" name="article_related[]" value="{{ article_related.article_id }}" />
                     </div>
-                    {% endfor %}</div>
+                    {% endfor %}
+                  </div>
                 </div>
                </div>
             </div>
@@ -296,122 +324,143 @@
   <script type="text/javascript" src="view/javascript/summernote/summernote-image-attributes.js"></script>
   <script type="text/javascript" src="view/javascript/summernote/opencart.js"></script>
 
-  <script type="text/javascript"><!--
-$('input[name=\'path\']').autocomplete({
-	'source': function(request, response) {
-		$.ajax({
-			url: 'index.php?route=catalog/category/autocomplete&user_token={{ user_token }}&filter_name=' +  encodeURIComponent(request),
-			dataType: 'json',
-			success: function(json) {
-				json.unshift({
-					category_id: 0,
-					name: '{{ text_none }}'
-				});
+  <script type="text/javascript">
+    $('input[name=\'path\']').autocomplete({
+      'source': function(request, response) {
+        $.ajax({
+          url: 'index.php?route=catalog/category/autocomplete&user_token={{ user_token }}&filter_name=' +  encodeURIComponent(request),
+          dataType: 'json',
+          success: function(json) {
+            json.unshift({
+              category_id: 0,
+              name: '{{ text_none }}'
+            });
 
-				response($.map(json, function(item) {
-					return {
-						label: item['name'],
-						value: item['category_id']
-					}
-				}));
-			}
-		});
-	},
-	'select': function(item) {
-		$('input[name=\'path\']').val(item['label']);
-		$('input[name=\'parent_id\']').val(item['value']);
-	}
-});
-//--></script>
-  <script type="text/javascript"><!--
-$('input[name=\'filter\']').autocomplete({
-	'source': function(request, response) {
-		$.ajax({
-			url: 'index.php?route=catalog/filter/autocomplete&user_token={{ user_token }}&filter_name=' +  encodeURIComponent(request),
-			dataType: 'json',
-			success: function(json) {
-				response($.map(json, function(item) {
-					return {
-						label: item['name'],
-						value: item['filter_id']
-					}
-				}));
-			}
-		});
-	},
-	'select': function(item) {
-		$('input[name=\'filter\']').val('');
+            response($.map(json, function(item) {
+              return {
+                label: item['name'],
+                value: item['category_id']
+              }
+            }));
+          }
+        });
+      },
+      'select': function(item) {
+        $('input[name=\'path\']').val(item['label']);
+        $('input[name=\'parent_id\']').val(item['value']);
+      }
+    });
 
-		$('#category-filter' + item['value']).remove();
+    $('input[name=\'filter\']').autocomplete({
+      'source': function(request, response) {
+        $.ajax({
+          url: 'index.php?route=catalog/filter/autocomplete&user_token={{ user_token }}&filter_name=' +  encodeURIComponent(request),
+          dataType: 'json',
+          success: function(json) {
+            response($.map(json, function(item) {
+              return {
+                label: item['name'],
+                value: item['filter_id']
+              }
+            }));
+          }
+        });
+      },
+      'select': function(item) {
+        $('input[name=\'filter\']').val('');
 
-		$('#category-filter').append('<div id="category-filter' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="category_filter[]" value="' + item['value'] + '" /></div>');
-	}
-});
+        $('#category-filter' + item['value']).remove();
 
-$('#category-filter').delegate('.fa-minus-circle', 'click', function() {
-	$(this).parent().remove();
-});
-//--></script>
-  <script type="text/javascript"><!--
-$('#language a:first').tab('show');
-//--></script>
-<script type="text/javascript"><!--
-$('input[name=\'product_related_input\']').autocomplete({
-	source: function(request, response) {
-		$.ajax({
-			url: 'index.php?route=catalog/product/autocomplete&user_token={{ user_token }}&filter_name=' +  encodeURIComponent(request),
-			dataType: 'json',
-			success: function(json) {
-				response($.map(json, function(item) {
-					return {
-						label: item['name'],
-						value: item['product_id']
-					}
-				}));
-			}
-		});
-	},
-	select: function(item) {
-		$('input[name=\'product\']').val('');
+        $('#category-filter').append('<div id="category-filter' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="category_filter[]" value="' + item['value'] + '" /></div>');
+      }
+    });
 
-		$('#product-related' + item['value']).remove();
+    $('#category-filter').delegate('.fa-minus-circle', 'click', function() {
+      $(this).parent().remove();
+    });
 
-		$('#product-related').append('<div id="product-related' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="product_related[]" value="' + item['value'] + '" /></div>');
-	}
-});
+    $('#language a:first').tab('show');
 
-$('#product-related').delegate('.fa-minus-circle', 'click', function() {
-	$(this).parent().remove();
-});
-//--></script>
-<script type="text/javascript"><!--
-$('input[name=\'article_related_input\']').autocomplete({
-	source: function(request, response) {
-		$.ajax({
-			url: 'index.php?route=blog/article/autocomplete&user_token={{ user_token }}&filter_name=' +  encodeURIComponent(request),
-			dataType: 'json',
-			success: function(json) {
-				response($.map(json, function(item) {
-					return {
-						label: item['name'],
-						value: item['article_id']
-					}
-				}));
-			}
-		});
-	},
-	select: function(item) {
-		$('input[name=\'product\']').val('');
+    $('input[name=\'product_related_input\']').autocomplete({
+      source: function(request, response) {
+        $.ajax({
+          url: 'index.php?route=catalog/product/autocomplete&user_token={{ user_token }}&filter_name=' +  encodeURIComponent(request),
+          dataType: 'json',
+          success: function(json) {
+            response($.map(json, function(item) {
+              return {
+                label: item['name'],
+                value: item['product_id']
+              }
+            }));
+          }
+        });
+      },
+      select: function(item) {
+        $('input[name=\'product\']').val('');
 
-		$('#article-related' + item['value']).remove();
+        $('#product-related' + item['value']).remove();
 
-		$('#article-related').append('<div id="article-related' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="article_related[]" value="' + item['value'] + '" /></div>');
-	}
-});
+        $('#product-related').append('<div id="product-related' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="product_related[]" value="' + item['value'] + '" /></div>');
+      }
+    });
 
-$('#article-related').delegate('.fa-minus-circle', 'click', function() {
-	$(this).parent().remove();
-});
-//--></script>
+    $('#product-related').delegate('.fa-minus-circle', 'click', function() {
+      $(this).parent().remove();
+    });
+
+    $('input[name=\'article_related_input\']').autocomplete({
+      source: function(request, response) {
+        $.ajax({
+          url: 'index.php?route=blog/article/autocomplete&user_token={{ user_token }}&filter_name=' +  encodeURIComponent(request),
+          dataType: 'json',
+          success: function(json) {
+            response($.map(json, function(item) {
+              return {
+                label: item['name'],
+                value: item['article_id']
+              }
+            }));
+          }
+        });
+      },
+      select: function(item) {
+        $('input[name=\'product\']').val('');
+
+        $('#article-related' + item['value']).remove();
+
+        $('#article-related').append('<div id="article-related' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="article_related[]" value="' + item['value'] + '" /></div>');
+      }
+    });
+
+    $('#article-related').delegate('.fa-minus-circle', 'click', function() {
+      $(this).parent().remove();
+    });
+
+    function addSticker(language_id) {
+      let row = $('#language' + language_id + ' #stickers').children().length;
+      let html = '';
+      html += '<div id="sticker-' + language_id + '-' + row + '" class="row" style="margin-bottom: 10px;">';
+      html += '<div class="col-sm-5">';
+      html += '<input type="text" name="category_description[' + language_id + '][stickers][' + row + '][content]" placeholder="{{ entry_sticker_content }}" class="form-control">';
+      html += '<small class="text-info">{{ help_sticker_content }}</small>';
+      html += '</div>';
+      html += '<div class="col-sm-5">';
+      html += '<input type="text" name="category_description[' + language_id + '][stickers][' + row + '][class]" value="tag is-warning" placeholder="{{ entry_sticker_class }}" class="form-control">';
+      html += '<small class="text-info">{{ help_sticker_class }}</small>';
+      html += '</div>';
+      html += '<div class="col-sm-2 text-right">';
+      html += '<button type="button" class="btn btn-danger" onclick="removeSticker(\'#sticker-' + language_id + '-' + row + '\')">';
+      html += '<i class="fa fa-trash"></i>';
+      html += '</button>';
+      html += '</div>';
+      html += '</div>';
+      $('#language' + language_id + ' #stickers').append(html);
+    }
+
+    function removeSticker(selector) {
+      $(selector).remove();
+    }
+  </script>
 </div>
 {{ footer }}

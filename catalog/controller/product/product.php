@@ -313,6 +313,8 @@ class ControllerProductProduct extends Controller {
       $data['image_width'] = $this->config->get('theme_' . $this->config->get('config_theme') . '_image_thumb_width');
       $data['image_heigth'] = $this->config->get('theme_' . $this->config->get('config_theme') . '_image_thumb_height');
 
+      $data['stickers'] = $product_info['stickers'];
+
       if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
         $data['price'] = $this->currency->format($this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
         $data['price_numeric'] = $this->currency->format($this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency'], '', false);
@@ -471,6 +473,7 @@ class ControllerProductProduct extends Controller {
           'description' => utf8_substr(trim(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8'))), 0, $this->config->get('theme_' . $this->config->get('config_theme') . '_product_description_length')) . '..',
           'price'       => $price,
           'special'     => $special,
+          'stickers'    => $result['stickers'],
           'stock_status' => $result['stock_status'],
           'stock'       => $result['quantity'] <= 0 ? $result['stock_status'] : $this->language->get('text_instock'),
           'quantity'    => $result['quantity'],
@@ -506,11 +509,6 @@ class ControllerProductProduct extends Controller {
       $data['header'] = $this->load->controller('common/header');
       $data['language_code'] = $this->language->get('code');
       $data['currency_code'] = $this->session->data['currency'];
-
-      $this->load->model('localisation/currency');
-      $currency = $this->model_localisation_currency->getCurrencyByCode($this->session->data['currency']);
-
-      $this->log->write($currency);
 
       $this->response->setOutput($this->load->view('product/product', $data));
     } else {

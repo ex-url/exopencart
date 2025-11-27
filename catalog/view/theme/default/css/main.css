@@ -18,6 +18,11 @@ iframe {
   vertical-align: middle;
 }
 
+a,
+button {
+  transition: all 0.3s ease;
+}
+
 #logo {
   line-height: 0;
 }
@@ -153,6 +158,12 @@ iframe {
   top: 0;
 }
 
+.product-card .stickers {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
 .product-card .product-name {
   height: 2.75rem;
   overflow: hidden;
@@ -227,6 +238,13 @@ iframe {
 #product-images {
   position: sticky;
   top: 120px;
+  z-index: 1;
+}
+
+#product-images .stickers {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
   z-index: 1;
 }
 
@@ -608,6 +626,12 @@ footer .scroll-top-trigger.shown {
   z-index: 9;
   width: 100%;
   box-shadow: 0 0 15px 0 rgb(0 0 0 / 50%);
+}
+
+.anycategories .stickers {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
 }
 
 @keyframes rotating {

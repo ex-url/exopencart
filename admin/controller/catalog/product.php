@@ -424,6 +424,12 @@ class ControllerCatalogProduct extends Controller {
       $filter_status = '';
     }
 
+    $this->load->model('catalog/category');
+    $this->load->model('catalog/manufacturer');
+
+    $data['categories'] = $this->model_catalog_category->getAllCategories();
+    $data['manufacturers'] = $this->model_catalog_manufacturer->getManufacturers();
+
     $filter_sub_category = null;
     if (isset($this->request->get['filter_category'])) {
       $filter_category = $this->request->get['filter_category'];
@@ -442,9 +448,6 @@ class ControllerCatalogProduct extends Controller {
     $filter_category_name = null;
     if (isset($filter_category)) {
       if ($filter_category > 0) {
-        $this->load->model('catalog/category');
-
-
 
         $category = $this->model_catalog_category->getCategory($filter_category);
         if ($category) {
@@ -848,6 +851,9 @@ class ControllerCatalogProduct extends Controller {
 
     $data['sort'] = $sort;
     $data['order'] = $order;
+
+    $this->load->model('localisation/language');
+    $data['languages'] = $this->model_localisation_language->getLanguages();
 
     $data['header'] = $this->load->controller('common/header');
     $data['column_left'] = $this->load->controller('common/column_left');
@@ -1633,6 +1639,76 @@ class ControllerCatalogProduct extends Controller {
     $data['footer'] = $this->load->controller('common/footer');
 
     $this->response->setOutput($this->load->view('catalog/product_form', $data));
+  }
+
+  public function stickers() {
+    $this->load->language('catalog/product');
+    $this->load->model('catalog/product');
+
+    $json = array();
+
+    $mode = $this->request->post['mode'];
+    $category_id = $this->request->post['category_id'] ? $this->request->post['category_id'] : null;
+    $manufacturer_id = $this->request->post['manufacturer_id'] ? $this->request->post['manufacturer_id'] : null;
+    $quantity_min = $this->request->post['quantity_min'] ? $this->request->post['quantity_min'] : null;
+    $quantity_max = $this->request->post['quantity_max'] ? $this->request->post['quantity_max'] : null;
+    $price_min = $this->request->post['price_min'] ? $this->request->post['price_min'] : null;
+    $price_max = $this->request->post['price_max'] ? $this->request->post['price_max'] : null;
+    $date_from = $this->request->post['date_from'] ? $this->request->post['date_from'] : null;
+    $date_to = $this->request->post['date_to'] ? $this->request->post['date_to'] : null;
+    $sales_min = $this->request->post['sales_min'] ? $this->request->post['sales_min'] : null;
+    $name = $this->request->post['name'] ? $this->request->post['name'] : '';
+    $stickers = isset($this->request->post['stickers']) ? $this->request->post['stickers'] : [];
+
+    $filter_data = array(
+      'filter_category'     => $category_id,
+      'filter_manufacturer_id' => $manufacturer_id,
+      'filter_quantity_min'    => $quantity_min,
+      'filter_quantity_max'    => $quantity_max,
+      'filter_price_min'       => $price_min,
+      'filter_price_max'       => $price_max,
+      'filter_date_from'       => $date_from,
+      'filter_date_to'         => $date_to,
+      'filter_sales_min'       => $sales_min,
+      'filter_name'            => $name
+    );
+
+    if (!$this->user->hasPermission('modify', 'catalog/product')) {
+      $json['error'] = $this->language->get('error_permission');
+    }
+
+    $product_ids = $this->model_catalog_product->getProductsIds($filter_data);
+
+    if (empty($stickers) && $mode == 'add') {
+      $json['error'] = $this->language->get('error_stickers_empty');
+    }
+
+    if (empty($product_ids)) {
+      $json['error'] = $this->language->get('error_products_not_found');
+    }
+
+    if (!$json) {
+      if ($mode == 'add') {
+        $count = 0;
+        foreach ($product_ids as $product_id) {
+          $this->model_catalog_product->addProductStickers($product_id, $stickers);
+          $count++;
+        }
+        $json['success'] = $this->language->get('text_stickers_added') . $count;
+      } elseif ($mode == 'remove') {
+        $count = 0;
+        foreach ($product_ids as $product_id) {
+          $this->model_catalog_product->removeProductStickers($product_id);
+          $count++;
+        }
+        $json['success'] = $this->language->get('text_stickers_removed') . $count;
+      } else {
+        $json['error'] = $this->language->get('error_invalid_mode');
+      }
+    }
+
+    $this->response->addHeader('Content-Type: application/json');
+    $this->response->setOutput(json_encode($json));
   }
 
   protected function validateForm() {

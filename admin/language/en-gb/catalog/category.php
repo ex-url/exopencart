@@ -22,11 +22,14 @@ $_['column_action']          = 'Action';
 
 // Entry
 $_['entry_name']             = 'Category Name';
-$_['entry_meta_h1']       	 = 'Meta Tag H1';
+$_['entry_meta_h1']          = 'Meta Tag H1';
 $_['entry_description']      = 'Description';
-$_['entry_meta_title'] 	     = 'Meta Tag Title';
+$_['entry_meta_title']        = 'Meta Tag Title';
 $_['entry_meta_keyword']     = 'Meta Tag Keywords';
 $_['entry_meta_description'] = 'Meta Tag Description';
+$_['entry_stickers']         = 'Stickers';
+$_['entry_sticker_content']  = 'Sticker Content';
+$_['entry_sticker_class']    = 'Sticker HTML Class';
 $_['entry_store']            = 'Stores';
 $_['entry_keyword']          = 'Keyword';
 $_['entry_parent']           = 'Parent';
@@ -44,6 +47,8 @@ $_['entry_related_article']  = 'Featured Articles:';
 
 // Help
 $_['help_filter']            = '(Autocomplete)';
+$_['help_sticker_content']   = 'Sticker content, can contain HTML tags';
+$_['help_sticker_class']     = 'HTML class of the sticker, for example, tag is-warning';
 $_['help_top']               = 'Display in the top menu bar. Only works for the top parent categories.';
 $_['help_column']            = 'Number of columns to use for the bottom 3 categories. Only works for the top parent categories.';
 $_['help_related']           = '(Autocomplete)';

@@ -78,6 +78,13 @@
                 {% endif %}
               </div>
               <div class="swiper-pagination"></div>
+              {% if stickers %}
+              <span class="stickers is-block mb-0">
+              {% for sticker in stickers %}
+                <span class="{{ sticker.class }}">{{ sticker.content|html_entity_decode }}</span>
+              {% endfor %}
+              </span>
+              {% endif %}
             </div>
             <div class="sticky-crutch"></div>
           </div>
@@ -553,8 +560,16 @@
                     <a href="{{ product.href }}" class="is-flex is-justify-content-center">
                       <img src="{{ product.thumb }}" width="{{ image_width }}" height="{{ image_height }}"
                         loading="lazy" alt="{{ product.name }}" title="{{ product.name }}" />
-                      <span class="tag {{ product.quantity ? 'is-success' : 'is-danger' }} is-light stock">{{
-                        product.stock }}</span>
+                      <span class="tag {{ product.quantity ? 'is-success' : 'is-danger' }} is-light stock">{{ product.stock }}</span>
+                      {% if product.stickers %}
+                      <span class="stickers is-block mb-0">
+                      {% for sticker in product.stickers %}
+                        <span class="is-block mb-1">
+                          <span class="{{ sticker.class }}">{{ sticker.content|html_entity_decode }}</span>
+                        </span>                    
+                      {% endfor %}
+                      </span>
+                      {% endif %}
                     </a>
                   </div>
                   <div class="caption">

@@ -6,11 +6,20 @@
       </div>
       {% for category in categories %}
       <div class="column is-3-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile">
-        <a class="box has-text-centered" href="{{ category.href }}">
+        <a class="box is-relative has-text-centered" href="{{ category.href }}">
           <span class="image is-flex is-justify-content-center">
             <img loading="lazy" height="{{ image_height }}" width="{{ image_width }}" src="{{ category.thumb }}" alt="{{ category.name }}" title="{{ category.name }}" />
           </span>
           <span class="is-size-5-desktop is-size-5-tablet is-size-6-mobile is-block mt-5 has-text-link">{{ category.name }}</span>
+          {% if category.stickers %}
+          <div class="stickers has-text-left">
+            {% for sticker in category.stickers %}
+            <div class="mb-2">
+              <span class="{{ sticker.class }}">{{ sticker.content|html_entity_decode }}</span>
+            </div>            
+            {% endfor %}
+          </div>
+          {% endif %}
         </a>
       </div>
       {% endfor %}

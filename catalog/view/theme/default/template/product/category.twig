@@ -28,6 +28,13 @@
       {% endif %}
       <div id="content" class="{{ class }}">
         <h1 class="title is-1">{{ heading_title }}</h1>
+        {% if stickers %}
+        <div class="category-stickers mb-4">
+          {% for sticker in stickers %}
+          <span class="{{ sticker.class }}">{{ sticker.content|html_entity_decode }}</span>
+          {% endfor %}
+        </div>          
+        {% endif %}
         {% if description %}
         <div class="content">{{ description }}</div>
         {% endif %}
@@ -149,9 +156,18 @@
           <div class="{{ class }}">
             <div class="product-card box">
               <div class="image">
-                <a href="{{ product.href }}" class="is-flex is-justify-content-center">
+                <a href="{{ product.href }}" class="is-flex is-justify-content-center" aria-label="{{ product.name }}">
                   <img src="{{ product.thumb }}" loading="lazy" alt="{{ product.name }}" title="{{ product.name }}" />
                   <span class="tag {{ product.quantity ? 'is-success' : 'is-danger' }} is-light stock">{{ product.stock }}</span>
+                  {% if product.stickers %}
+                  <span class="stickers is-block mb-0">
+                  {% for sticker in product.stickers %}
+                    <span class="is-block mb-1">
+                      <span class="{{ sticker.class }}">{{ sticker.content|html_entity_decode }}</span>
+                    </span>                    
+                  {% endfor %}
+                  </span>
+                  {% endif %}
                 </a>
               </div>
               <div class="caption">

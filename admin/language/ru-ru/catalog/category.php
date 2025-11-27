@@ -12,7 +12,7 @@ $_['text_add']               = 'Добавить';
 $_['text_edit']              = 'Редактирование';
 $_['text_default']           = 'По умолчанию';
 $_['text_category_total']    = 'Всего категорий: ';
-$_['text_keyword']      	 = 'Должен быть уникальным на всю систему, без пробелов и спецсимволов.';
+$_['text_keyword']         = 'Должен быть уникальным на всю систему, без пробелов и спецсимволов.';
 
 // Column
 $_['column_name']            = 'Название категории';
@@ -24,10 +24,13 @@ $_['column_action']          = 'Действие';
 $_['entry_name']             = 'Название категории';
 $_['entry_description']      = 'Описание';
 $_['entry_description_bottom']  = 'Описание Низ:';
-$_['entry_meta_title'] 	     = 'Мета-тег Title';
-$_['entry_meta_h1'] 	     = 'HTML-тег H1';
-$_['entry_meta_keyword'] 	 = 'Мета-тег Keywords';
+$_['entry_meta_title']        = 'Мета-тег Title';
+$_['entry_meta_h1']        = 'HTML-тег H1';
+$_['entry_meta_keyword']    = 'Мета-тег Keywords';
 $_['entry_meta_description'] = 'Мета-тег Description';
+$_['entry_stickers']         = 'Стикеры';
+$_['entry_sticker_content']  = 'Контент стикера';
+$_['entry_sticker_class']    = 'HTML-класс стикера';
 $_['entry_keyword']          = 'SEO URL';
 $_['entry_parent']           = 'Родительская категория';
 $_['entry_filter']           = 'Фильтры';
@@ -45,6 +48,8 @@ $_['entry_related_article']  = 'Рекомендуемые статьи:';
 
 // Help
 $_['help_filter']            = '(Автозаполнение)';
+$_['help_sticker_content']   = 'Контент стикера, может содержать HTML теги';
+$_['help_sticker_class']     = 'HTML-класс стикера, например, tag is-warning';
 $_['help_keyword']           = 'Должно быть уникальным на всю систему, без пробелов и спецсимволов';
 $_['help_top']               = 'Показывать в главном меню (только для главных родительских категорий).';
 $_['help_column']            = 'Количество столбцов в выпадающем меню категории (только для главных родительских категорий)';

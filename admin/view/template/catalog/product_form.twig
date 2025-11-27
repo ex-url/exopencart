@@ -46,7 +46,8 @@
                   <li><a href="#language{{ language.language_id }}" data-toggle="tab"><img src="language/{{ language.code }}/{{ language.code }}.png" title="{{ language.name }}"/> {{ language.name }}</a></li>
                 {% endfor %}
               </ul>
-              <div class="tab-content">{% for language in languages %}
+              <div class="tab-content">
+                {% for language in languages %}
                 <div class="tab-pane" id="language{{ language.language_id }}">
                   <div class="form-group required">
                     <label class="col-sm-2 control-label" for="input-name{{ language.language_id }}">{{ entry_name }}</label>
@@ -56,17 +57,17 @@
                       <div class="text-danger">{{ error_name[language.language_id] }}</div>
                       {% endif %} </div>
                   </div>
-				  <div class="form-group">
+				          <div class="form-group">
                     <label class="col-sm-2 control-label" for="input-meta-h1{{ language.language_id }}">{{ entry_meta_h1 }}</label>
                     <div class="col-sm-10">
                       <input type="text" name="product_description[{{ language.language_id }}][meta_h1]" value="{{ product_description[language.language_id] ? product_description[language.language_id].meta_h1 }}" placeholder="{{ entry_meta_h1 }}" id="input-meta-h1{{ language.language_id }}" class="form-control" />
-					</div>
-				  </div>
+                    </div>
+                  </div>
                   <div class="form-group">
                     <label class="col-sm-2 control-label" for="input-meta-title{{ language.language_id }}">{{ entry_meta_title }}</label>
                     <div class="col-sm-10">
                       <input type="text" name="product_description[{{ language.language_id }}][meta_title]" value="{{ product_description[language.language_id] ? product_description[language.language_id].meta_title }}" placeholder="{{ entry_meta_title }}" id="input-meta-title{{ language.language_id }}" class="form-control" />
-					</div>
+					        </div>
                   </div>
                   <div class="form-group">
                     <label class="col-sm-2 control-label" for="input-meta-description{{ language.language_id }}">{{ entry_meta_description }}</label>
@@ -80,7 +81,7 @@
                       <textarea name="product_description[{{ language.language_id }}][meta_keyword]" rows="5" placeholder="{{ entry_meta_keyword }}" id="input-meta-keyword{{ language.language_id }}" class="form-control">{{ product_description[language.language_id] ? product_description[language.language_id].meta_keyword }}</textarea>
                     </div>
                   </div>
-				  <div class="form-group">
+				          <div class="form-group">
                     <label class="col-sm-2 control-label" for="input-description{{ language.language_id }}">{{ entry_description }}</label>
                     <div class="col-sm-10">
                       <textarea name="product_description[{{ language.language_id }}][description]" placeholder="{{ entry_description }}" id="input-description{{ language.language_id }}" data-toggle="summernote" data-lang="{{ summernote }}" class="form-control">{{ product_description[language.language_id] ? product_description[language.language_id].description }}</textarea>
@@ -92,8 +93,36 @@
                       <input type="text" name="product_description[{{ language.language_id }}][tag]" value="{{ product_description[language.language_id] ? product_description[language.language_id].tag }}" placeholder="{{ entry_tag }}" id="input-tag{{ language.language_id }}" class="form-control" />
                     </div>
                   </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label" for="input-stickers">{{ entry_stickers }}</label>
+                    <div class="col-sm-10" id="stickers">
+                      {% if product_description[language.language_id] and product_description[language.language_id].stickers %}
+                      {% for key, sticker in product_description[language.language_id].stickers %}
+                      <div id="sticker-{{ language.language_id }}-{{ key }}" class="row" style="margin-bottom: 10px;">
+                        <div class="col-sm-5">
+                          <input type="text" name="product_description[{{ language.language_id }}][stickers][{{ key }}][content]" value="{{ sticker.content }}" placeholder="{{ entry_sticker_content }}" class="form-control">
+                          <small class="text-info">{{ help_sticker_content }}</small>
+                        </div>
+                        <div class="col-sm-5">
+                          <input type="text" name="product_description[{{ language.language_id }}][stickers][{{ key }}][class]" value="{{ sticker.class }}" placeholder="{{ entry_sticker_class }}" class="form-control">
+                          <small class="text-info">{{ help_sticker_class }}</small>
+                        </div>
+                        <div class="col-sm-2 text-right">
+                          <button type="button" class="btn btn-danger" onclick="removeSticker('#sticker-{{ language.language_id }}-{{ key }}')">
+                            <i class="fa fa-trash"></i>
+                          </button>
+                        </div>
+                      </div>
+                      {% endfor %}
+                    {% endif %}
+                    </div>
+                    <div class="col-sm-12 text-right">
+                      <button onclick="addSticker({{ language.language_id }})" type="button" class="btn btn-primary"><i class="fa fa-plus-circle"></i> {{ button_add }}</button>
+                    </div>
+                  </div>
                 </div>
-                {% endfor %}</div>
+                {% endfor %}
+              </div>
             </div>
             <div class="tab-pane" id="tab-data">
               <div class="form-group required">
@@ -1116,14 +1145,15 @@
   </div>
   <link href="view/javascript/codemirror/lib/codemirror.css" rel="stylesheet"/>
   <link href="view/javascript/codemirror/theme/monokai.css" rel="stylesheet"/>
-  <script type="text/javascript" src="view/javascript/codemirror/lib/codemirror.js"></script>
-  <script type="text/javascript" src="view/javascript/codemirror/lib/xml.js"></script>
-  <script type="text/javascript" src="view/javascript/codemirror/lib/formatting.js"></script>
-  <script type="text/javascript" src="view/javascript/summernote/summernote.js"></script>
+  <script src="view/javascript/codemirror/lib/codemirror.js"></script>
+  <script src="view/javascript/codemirror/lib/xml.js"></script>
+  <script src="view/javascript/codemirror/lib/formatting.js"></script>
+  <script src="view/javascript/summernote/summernote.js"></script>
   <link href="view/javascript/summernote/summernote.css" rel="stylesheet"/>
-  <script type="text/javascript" src="view/javascript/summernote/summernote-image-attributes.js"></script>
-  <script type="text/javascript" src="view/javascript/summernote/opencart.js"></script>
-  <script type="text/javascript"><!--
+  <script src="view/javascript/summernote/summernote-image-attributes.js"></script>
+  <script src="view/javascript/summernote/opencart.js"></script>
+  
+  <script type="text/javascript">
   // Manufacturer
   $('input[name=\'manufacturer\']').autocomplete({
 	  'source': function(request, response) {
@@ -1295,8 +1325,8 @@ $('input[name=\'product_related_article_input\']').autocomplete({
 $('#article-related').delegate('.fa-minus-circle', 'click', function() {
 	$(this).parent().remove();
 });
-//--></script>
-  <script type="text/javascript"><!--
+
+
   var attribute_row = {{ attribute_row }};
 
   function addAttribute() {
@@ -1344,8 +1374,7 @@ $('#article-related').delegate('.fa-minus-circle', 'click', function() {
   $('#attribute tbody tr').each(function(index, element) {
 	  attributeautocomplete(index);
   });
-  //--></script>
-  <script type="text/javascript"><!--
+
   var option_row = {{ option_row }};
 
   $('input[name=\'option\']').autocomplete({
@@ -1488,8 +1517,7 @@ $('#article-related').delegate('.fa-minus-circle', 'click', function() {
 		  option_row++;
 	  }
   });
-  //--></script>
-  <script type="text/javascript"><!--
+
   var option_value_row = {{ option_value_row }};
 
   function addOptionValue(option_row) {
@@ -1530,8 +1558,6 @@ $('#article-related').delegate('.fa-minus-circle', 'click', function() {
 	  option_value_row++;
   }
 
-  //--></script>
-  <script type="text/javascript"><!--
   var discount_row = {{ discount_row }};
 
   function addDiscount() {
@@ -1558,8 +1584,6 @@ $('#article-related').delegate('.fa-minus-circle', 'click', function() {
 	  discount_row++;
   }
 
-  //--></script>
-  <script type="text/javascript"><!--
   var special_row = {{ special_row }};
 
   function addSpecial() {
@@ -1586,8 +1610,6 @@ $('#article-related').delegate('.fa-minus-circle', 'click', function() {
 	  special_row++;
   }
 
-  //--></script>
-  <script type="text/javascript"><!--
   var image_row = {{ image_row }};
 
   function addImage() {
@@ -1603,8 +1625,6 @@ $('#article-related').delegate('.fa-minus-circle', 'click', function() {
 	  image_row++;
   }
 
-  //--></script>
-  <script type="text/javascript"><!--
   var recurring_row = {{ recurring_row }};
 
   function addRecurring() {
@@ -1633,8 +1653,6 @@ $('#article-related').delegate('.fa-minus-circle', 'click', function() {
 	  recurring_row++;
   }
 
-  //--></script>
-  <script type="text/javascript"><!--
   $('.date').datetimepicker({
 	  language: '{{ datepicker }}',
 	  pickTime: false
@@ -1650,10 +1668,34 @@ $('#article-related').delegate('.fa-minus-circle', 'click', function() {
 	  pickDate: true,
 	  pickTime: true
   });
-  //--></script>
-  <script type="text/javascript"><!--
+
   $('#language a:first').tab('show');
   $('#option a:first').tab('show');
-  //--></script>
+
+  function addSticker(language_id) {
+    let row = $('#language' + language_id + ' #stickers').children().length;
+    let html = '';
+    html += '<div id="sticker-' + language_id + '-' + row + '" class="row" style="margin-bottom: 10px;">';
+    html += '<div class="col-sm-5">';
+    html += '<input type="text" name="product_description[' + language_id + '][stickers][' + row + '][content]" placeholder="{{ entry_sticker_content }}" class="form-control">';
+    html += '<small class="text-info">{{ help_sticker_content }}</small>';
+    html += '</div>';
+    html += '<div class="col-sm-5">';
+    html += '<input type="text" name="product_description[' + language_id + '][stickers][' + row + '][class]" value="tag is-warning" placeholder="{{ entry_sticker_class }}" class="form-control">';
+    html += '<small class="text-info">{{ help_sticker_class }}</small>';
+    html += '</div>';
+    html += '<div class="col-sm-2 text-right">';
+    html += '<button type="button" class="btn btn-danger" onclick="removeSticker(\'#sticker-' + language_id + '-' + row + '\')">';
+    html += '<i class="fa fa-trash"></i>';
+    html += '</button>';
+    html += '</div>';
+    html += '</div>';
+    $('#language' + language_id + ' #stickers').append(html);
+  }
+
+  function removeSticker(selector) {
+    $(selector).remove();
+  }
+  </script>
 </div>
 {{ footer }}

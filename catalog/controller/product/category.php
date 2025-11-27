@@ -156,6 +156,7 @@ class ControllerProductCategory extends Controller {
       }
 
       $data['description'] = html_entity_decode($category_info['description'], ENT_QUOTES, 'UTF-8');
+      $data['stickers'] = json_decode($category_info['stickers'], true) ?? [];
       $data['compare'] = $this->url->link('product/compare');
 
       $url = '';
@@ -247,6 +248,7 @@ class ControllerProductCategory extends Controller {
           'description' => utf8_substr(trim(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8'))), 0, $this->config->get('theme_' . $this->config->get('config_theme') . '_product_description_length')) . '..',
           'price'       => $price,
           'special'     => $special,
+          'stickers'    => $result['stickers'],
           'stock_status' => $result['stock_status'],
           'stock'       => $result['quantity'] <= 0 ? $result['stock_status'] : $this->language->get('text_instock'),
           'quantity'    => $result['quantity'],

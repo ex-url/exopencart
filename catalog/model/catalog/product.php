@@ -20,6 +20,7 @@ class ModelCatalogProduct extends Model {
         'meta_h1'         => $query->row['meta_h1'],
         'meta_description' => $query->row['meta_description'],
         'meta_keyword'     => $query->row['meta_keyword'],
+        'stickers'         => json_decode($query->row['stickers'], true) ?? [],
         'tag'              => $query->row['tag'],
         'model'            => $query->row['model'],
         'sku'              => $query->row['sku'],

@@ -36,7 +36,8 @@ class ControllerExtensionModuleAnycategories extends Controller {
             'product_id'  => $category_info['category_id'],
             'thumb'       => $image,
             'name'        => $category_info['name'],
-            'description' => utf8_substr(strip_tags(html_entity_decode($category_info['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('theme_' . $this->config->get('config_theme') . '_category_description_length')) . '..',
+            'description' => utf8_substr(strip_tags(html_entity_decode($category_info['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('theme_' . $this->config->get('config_theme') . '_category_description_length')) . '...',
+            'stickers'    => json_decode($category_info['stickers'], true) ?? [],
             'href'        => $this->url->link('product/category', 'path=' . $category_info['category_id'])
           );
         }
