@@ -20,6 +20,9 @@
               {% endfor %}
               </span>
               {% endif %}
+              {% if product.discount %}
+              <span class="discount tag is-danger">-{{ product.discount }}%</span>
+              {% endif %}
             </a>
           </div>
           <div class="caption">

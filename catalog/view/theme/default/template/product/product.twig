@@ -85,6 +85,11 @@
               {% endfor %}
               </span>
               {% endif %}
+              {% if discount %}
+              <span class="discount tag is-danger">
+              -{{ discount }}%
+              </span>
+              {% endif %}
             </div>
             <div class="sticky-crutch"></div>
           </div>
@@ -569,6 +574,9 @@
                         </span>                    
                       {% endfor %}
                       </span>
+                      {% endif %}
+                      {% if product.discount %}
+                      <span class="discount tag is-danger">-{{ product.discount }}%</span>
                       {% endif %}
                     </a>
                   </div>

@@ -426,9 +426,11 @@ class ControllerCatalogProduct extends Controller {
 
     $this->load->model('catalog/category');
     $this->load->model('catalog/manufacturer');
+    $this->load->model('customer/customer_group');
 
     $data['categories'] = $this->model_catalog_category->getAllCategories();
     $data['manufacturers'] = $this->model_catalog_manufacturer->getManufacturers();
+    $data['customer_groups'] = $this->model_customer_customer_group->getCustomerGroups();
 
     $filter_sub_category = null;
     if (isset($this->request->get['filter_category'])) {
@@ -1702,6 +1704,76 @@ class ControllerCatalogProduct extends Controller {
           $count++;
         }
         $json['success'] = $this->language->get('text_stickers_removed') . $count;
+      } else {
+        $json['error'] = $this->language->get('error_invalid_mode');
+      }
+    }
+
+    $this->response->addHeader('Content-Type: application/json');
+    $this->response->setOutput(json_encode($json));
+  }
+
+  public function specials() {
+    $this->load->language('catalog/product');
+    $this->load->model('catalog/product');
+
+    $json = array();
+
+    $mode = $this->request->post['mode'];
+    $category_id = $this->request->post['category_id'] ? $this->request->post['category_id'] : null;
+    $manufacturer_id = $this->request->post['manufacturer_id'] ? $this->request->post['manufacturer_id'] : null;
+    $quantity_min = $this->request->post['quantity_min'] ? $this->request->post['quantity_min'] : null;
+    $quantity_max = $this->request->post['quantity_max'] ? $this->request->post['quantity_max'] : null;
+    $price_min = $this->request->post['price_min'] ? $this->request->post['price_min'] : null;
+    $price_max = $this->request->post['price_max'] ? $this->request->post['price_max'] : null;
+    $date_from = $this->request->post['date_from'] ? $this->request->post['date_from'] : null;
+    $date_to = $this->request->post['date_to'] ? $this->request->post['date_to'] : null;
+    $sales_min = $this->request->post['sales_min'] ? $this->request->post['sales_min'] : null;
+    $name = $this->request->post['name'] ? $this->request->post['name'] : '';
+    $specials = isset($this->request->post['specials']) ? $this->request->post['specials'] : [];
+
+    $filter_data = array(
+      'filter_category'     => $category_id,
+      'filter_manufacturer_id' => $manufacturer_id,
+      'filter_quantity_min'    => $quantity_min,
+      'filter_quantity_max'    => $quantity_max,
+      'filter_price_min'       => $price_min,
+      'filter_price_max'       => $price_max,
+      'filter_date_from'       => $date_from,
+      'filter_date_to'         => $date_to,
+      'filter_sales_min'       => $sales_min,
+      'filter_name'            => $name
+    );
+
+    if (!$this->user->hasPermission('modify', 'catalog/product')) {
+      $json['error'] = $this->language->get('error_permission');
+    }
+
+    $products = $this->model_catalog_product->getProductsPrice($filter_data);
+
+    if (empty($specials) && $mode == 'add') {
+      $json['error'] = $this->language->get('error_specials_empty');
+    }
+
+    if (empty($products)) {
+      $json['error'] = $this->language->get('error_products_not_found');
+    }
+
+    if (!$json) {
+      if ($mode == 'add') {
+        $count = 0;
+        foreach ($products as $product_id => $price) {
+          $this->model_catalog_product->addProductSpecials($product_id, $price, $specials);
+          $count++;
+        }
+        $json['success'] = $this->language->get('text_specials_added') . $count;
+      } elseif ($mode == 'remove') {
+        $count = 0;
+        foreach ($products as $product_id => $price) {
+          $this->model_catalog_product->removeProductSpecials($product_id);
+          $count++;
+        }
+        $json['success'] = $this->language->get('text_specials_removed') . $count;
       } else {
         $json['error'] = $this->language->get('error_invalid_mode');
       }

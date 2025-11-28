@@ -325,6 +325,7 @@ class ControllerProductProduct extends Controller {
       if (!is_null($product_info['special']) && (float)$product_info['special'] >= 0) {
         $data['special'] = $this->currency->format($this->tax->calculate($product_info['special'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
         $tax_price = (float)$product_info['special'];
+        $data['discount'] = round(100 - ($product_info['special'] / $product_info['price'] * 100));
         $data['price_numeric'] = $this->currency->format($this->tax->calculate($product_info['special'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency'], '', false);
       } else {
         $data['special'] = false;
@@ -473,6 +474,7 @@ class ControllerProductProduct extends Controller {
           'description' => utf8_substr(trim(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8'))), 0, $this->config->get('theme_' . $this->config->get('config_theme') . '_product_description_length')) . '..',
           'price'       => $price,
           'special'     => $special,
+          'discount'    => $special ? round((($result['price'] - $result['special']) / $result['price']) * 100) : null,
           'stickers'    => $result['stickers'],
           'stock_status' => $result['stock_status'],
           'stock'       => $result['quantity'] <= 0 ? $result['stock_status'] : $this->language->get('text_instock'),

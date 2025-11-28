@@ -152,9 +152,15 @@ button {
   z-index: 2;
 }
 
-.product-card .image a .stock {
+.product-card .stock {
   position: absolute;
   left: 0;
+  top: 0;
+}
+
+.product-card .discount {
+  position: absolute;
+  right: 0;
   top: 0;
 }
 
@@ -245,6 +251,13 @@ button {
   position: absolute;
   top: 1rem;
   left: 1rem;
+  z-index: 1;
+}
+
+#product-images .discount {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
   z-index: 1;
 }
 

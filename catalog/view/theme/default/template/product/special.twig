@@ -157,11 +157,14 @@
                   {% if product.stickers %}
                   <span class="stickers is-block mb-0">
                   {% for sticker in product.stickers %}
-                    <span class="is-block mb-1">
-                      <span class="{{ sticker.class }}">{{ sticker.content|html_entity_decode }}</span>
-                    </span>                    
+                  <span class="is-block mb-1">
+                    <span class="{{ sticker.class }}">{{ sticker.content|html_entity_decode }}</span>
+                  </span>                    
                   {% endfor %}
                   </span>
+                  {% endif %}
+                  {% if product.discount %}
+                  <span class="discount tag is-danger">-{{ product.discount }}%</span>
                   {% endif %}
                 </a>
               </div>

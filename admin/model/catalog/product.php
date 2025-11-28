@@ -607,6 +607,76 @@ class ModelCatalogProduct extends Model {
     return array_column($query->rows, 'product_id');
   }
 
+  public function getProductsPrice($data = array()) {
+    $sql = "SELECT p.product_id, p.price FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id)";
+
+    $sql .= " LEFT JOIN (SELECT product_id, SUM(quantity) as total_sales FROM " . DB_PREFIX . "order_product GROUP BY product_id) op ON (p.product_id = op.product_id)";
+
+    if (isset($data['filter_category']) && !is_null($data['filter_category'])) {
+      $sql .= " LEFT JOIN " . DB_PREFIX . "product_to_category p2c ON (p.product_id = p2c.product_id)";
+    }
+
+    $sql .= " WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.status = 1";
+
+    if (!empty($data['filter_name'])) {
+      $sql .= " AND pd.name LIKE '%" . $this->db->escape($data['filter_name']) . "%'";
+    }
+
+    if (isset($data['filter_category']) && !is_null($data['filter_category'])) {
+      if ((int)$data['filter_category'] > 0) {
+        $sql .= " AND p2c.category_id = '" . (int)$data['filter_category'] . "'";
+      } else {
+        $sql .= " AND p2c.category_id IS NULL";
+      }
+    }
+
+    if (isset($data['filter_manufacturer_id']) && !is_null($data['filter_manufacturer_id'])) {
+      $sql .= " AND p.manufacturer_id = '" . (int)$data['filter_manufacturer_id'] . "'";
+    }
+
+    if (isset($data['filter_price_min']) && !is_null($data['filter_price_min'])) {
+      $sql .= " AND p.price >= '" . (float)$data['filter_price_min'] . "'";
+    }
+
+    if (isset($data['filter_price_max']) && !is_null($data['filter_price_max'])) {
+      $sql .= " AND p.price <= '" . (float)$data['filter_price_max'] . "'";
+    }
+
+    if (isset($data['filter_quantity_min']) && !is_null($data['filter_quantity_min'])) {
+      $sql .= " AND p.quantity >= '" . (int)$data['filter_quantity_min'] . "'";
+    }
+
+    if (isset($data['filter_quantity_max']) && !is_null($data['filter_quantity_max'])) {
+      $sql .= " AND p.quantity <= '" . (int)$data['filter_quantity_max'] . "'";
+    }
+
+    if (isset($data['filter_sales_min']) && !is_null($data['filter_sales_min'])) {
+      $sql .= " AND COALESCE(op.total_sales, 0) >= '" . (int)$data['filter_sales_min'] . "'";
+    }
+
+    if (isset($data['filter_sales_max']) && !is_null($data['filter_sales_max'])) {
+      $sql .= " AND COALESCE(op.total_sales, 0) <= '" . (int)$data['filter_sales_max'] . "'";
+    }
+
+    if (isset($data['filter_date_from']) && !is_null($data['filter_date_from'])) {
+      $sql .= " AND p.date_added >= '" . $this->db->escape($data['filter_date_from']) . "'";
+    }
+
+    if (isset($data['filter_date_to']) && !is_null($data['filter_date_to'])) {
+      $sql .= " AND p.date_added <= '" . $this->db->escape($data['filter_date_to']) . "'";
+    }
+
+    $query = $this->db->query($sql);
+
+    $product_data = array();
+
+    foreach ($query->rows as $result) {
+      $product_data[$result['product_id']] = $result['price'];
+    }
+
+    return $product_data;
+  }
+
   public function addProductStickers($product_id, $data) {
     foreach ($data as $language_id => $stickers) {
       $this->db->query("UPDATE " . DB_PREFIX . "product_description SET stickers = '" . $this->db->escape(json_encode($stickers)) . "' WHERE product_id = '" . (int)$product_id . "' AND language_id = '" . (int)$language_id . "'");
@@ -615,6 +685,21 @@ class ModelCatalogProduct extends Model {
 
   public function removeProductStickers($product_id) {
     $this->db->query("UPDATE " . DB_PREFIX . "product_description SET stickers = '[]' WHERE product_id = '" . (int)$product_id . "'");
+  }
+
+  public function addProductSpecials($product_id, $price, $specials) {
+    $this->db->query("DELETE FROM " . DB_PREFIX . "product_special WHERE product_id = '" . (int)$product_id . "'");
+
+    foreach ($specials as $special) {
+      $discount = !empty($special['discount']) ? (100 - (float)$special['discount']) / 100 : 1;
+      $special_price = (float)($price * $discount);
+
+      $this->db->query("INSERT INTO " . DB_PREFIX . "product_special SET product_id = '" . (int)$product_id . "', customer_group_id = '" . (int)$special['customer_group_id'] . "', priority = '" . (int)$special['priority'] . "', price = '" . (float)$special_price . "', date_start = '" . $this->db->escape($special['date_start']) . "', date_end = '" . $this->db->escape($special['date_end']) . "'");
+    }
+  }
+
+  public function removeProductSpecials($product_id) {
+    $this->db->query("DELETE FROM " . DB_PREFIX . "product_special WHERE product_id = '" . (int)$product_id . "'");
   }
 
   public function getProductsByCategoryId($category_id) {

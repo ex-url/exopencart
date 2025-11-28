@@ -10,7 +10,7 @@
         <button type="submit" form="form-product" formaction="{{ disabled }}" data-toggle="tooltip" title="{{ button_disable }}" class="btn btn-default"><i class="fa fa-pause"></i></button>
         <button type="button" form="form-product" formaction="{{ delete }}" data-toggle="tooltip" title="{{ button_delete }}" class="btn btn-danger" onclick="confirm('{{ text_confirm }}') ? $('#form-product').submit() : false;"><i class="fa fa-trash-o"></i></button>
         <button id="stickers-manager-trigger" type="button" data-toggle="tooltip" title="{{ text_modal_stickers_title }}" class="btn btn-success"><i class="fa fa-tags"></i></button>
-        <button type="button" data-toggle="tooltip" title="{{ button_remove_stickers }}" class="btn btn-danger" data-toggle="modal" data-target="#remove-stickers-modal"><i class="fa fa-tags"></i></button>
+        <button id="special-manager-trigger" type="button" data-toggle="tooltip" title="{{ text_modal_special_title }}" class="btn btn-danger"><i class="fa fa-percent"></i></button>
       </div>
       <h1>{{ heading_title }}</h1>
       <ul class="breadcrumb">
@@ -327,7 +327,7 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="input-group date">
-                        <input type="text" name="date_from" value="{{ date_available }}" placeholder="{{ entry_min }}" data-date-format="YYYY-MM-DD" id="input-date-available" class="form-control"/>
+                        <input type="text" name="date_from" value="" placeholder="{{ entry_min }}" data-date-format="YYYY-MM-DD" id="input-date-available" class="form-control"/>
                         <span class="input-group-btn">
                           <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>
                         </span>
@@ -335,7 +335,7 @@
                     </div>
                     <div class="col-sm-6">
                       <div class="input-group date">
-                        <input type="text" name="date_to" value="{{ date_available }}" placeholder="{{ entry_max }}" data-date-format="YYYY-MM-DD" id="input-date-available" class="form-control"/>
+                        <input type="text" name="date_to" value="" placeholder="{{ entry_max }}" data-date-format="YYYY-MM-DD" id="input-date-available" class="form-control"/>
                         <span class="input-group-btn">
                           <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>
                         </span>
@@ -372,17 +372,147 @@
           </div>
         </div>
       </div>
+
+      <div class="modal fade" id="special-manager-modal" tabindex="-1" role="dialog" aria-labelledby="Specials modal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <div class="modal-title h4">{{ text_modal_special_title }}</div>
+            </div>
+            <div class="modal-body">
+              <div class="alert alert-info">
+                {{ text_special_manager_info }}
+              </div>
+              <form id="special-manager-form">
+                <div class="form-group">
+                  <label>{{ entry_mode }}</label>
+                  <div>
+                    <label class="radio-inline">
+                      <input type="radio" name="mode" value="add" checked /> {{ entry_add }}
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="mode" value="remove" /> {{ entry_remove }}
+                    </label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="input-category">{{ entry_category }}</label>
+                      <select name="category_id" id="input-category" class="form-control">
+                        <option value="">{{ text_all_categories }}</option>
+                        {% for category in categories %}
+                        <option value="{{ category.category_id }}">{{ category.name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="input-manufacturer">{{ entry_manufacturer }}</label>
+                      <select name="manufacturer_id" id="input-manufacturer" class="form-control">
+                        <option value="">{{ text_all_manufacturers }}</option>
+                        {% for manufacturer in manufacturers %}
+                        <option value="{{ manufacturer.manufacturer_id }}">{{ manufacturer.name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                </div>                
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>{{ entry_quantity }}</label>
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <input type="number" name="quantity_min" placeholder="{{ entry_min }}" class="form-control" />
+                        </div>
+                        <div class="col-sm-6">
+                          <input type="number" name="quantity_max" placeholder="{{ entry_max }}" class="form-control" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>{{ entry_price }}</label>
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <input type="number" step="0.01" name="price_min" placeholder="{{ entry_min }}" class="form-control" />
+                        </div>
+                        <div class="col-sm-6">
+                          <input type="number" step="0.01" name="price_max" placeholder="{{ entry_max }}" class="form-control" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>{{ entry_date_added }}</label>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="input-group date">
+                        <input type="text" name="date_from" value="" placeholder="{{ entry_min }}" data-date-format="YYYY-MM-DD" id="input-date-available" class="form-control"/>
+                        <span class="input-group-btn">
+                          <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="input-group date">
+                        <input type="text" name="date_to" value="" placeholder="{{ entry_max }}" data-date-format="YYYY-MM-DD" id="input-date-available" class="form-control"/>
+                        <span class="input-group-btn">
+                          <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="input-sales">{{ entry_sales }}</label>
+                      <input type="number" name="sales_min" placeholder="{{ entry_min }}" id="input-sales" class="form-control" />
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="input-name">{{ entry_name }}</label>
+                      <input type="text" name="name" placeholder="{{ entry_name }}" id="input-name" class="form-control" />
+                    </div>
+                  </div>
+                </div>                
+                <div class="special form-group">
+                  <label for="input-special-content">{{ entry_add_special }}</label>
+                  <div id="specials"></div>
+                  <div class="text-right">
+                    <button type="button" class="btn btn-primary" onclick="addSpecial()"><i class="fa fa-plus"></i></button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" onclick="$('#special-manager-form').submit();">{{ button_apply }}</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <script>
 
         $('#stickers-manager-trigger').on('click', function() {
           $('#stickers-manager-modal').modal('show');
         });
+        
+        $('#special-manager-trigger').on('click', function() {
+          $('#special-manager-modal').modal('show');
+        });
 
-        $('input[name="mode"]').on('change', function() {
+        $('#stickers-manager-form input[name="mode"]').on('change', function() {
           if ($(this).val() == 'add') {
-            $('.stickers').show();
+            $('#stickers-manager-form .stickers').show();
           } else {
-            $('.stickers').hide();
+            $('#stickers-manager-form .stickers').hide();
           }
         });
 
@@ -464,6 +594,115 @@
         }
 
         function removeSticker(selector) {
+          $(selector).remove();
+        }
+
+        $('#special-manager-form input[name="mode"]').on('change', function() {
+          if ($(this).val() == 'add') {
+            $('#special-manager-form .special').show();
+          } else {
+            $('#special-manager-form .special').hide();
+          }
+        });
+
+        $('#special-manager-form').on('submit', function(e) {
+          e.stopPropagation();
+          e.preventDefault();
+
+          const $button = $('#special-manager-modal .modal-footer button.btn-primary');
+          const $form = $(this);
+
+          const data = $form.serialize();
+
+          $.ajax({
+            url: 'index.php?route=catalog/product/specials&user_token={{ user_token }}',
+            type: 'post',
+            data: data,
+            dataType: 'json',
+            beforeSend: function() {
+              $button.button('loading');
+            },
+            complete: function() {
+              $button.button('reset');
+            },
+            success: function(json) {
+              
+              if (json['error']) {
+                $('#special-manager-form').append('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
+
+                setTimeout(function() {
+                  $('#special-manager-form .alert-danger').remove();
+                }, 3000);
+              }
+
+              if (json['success']) {
+                $('#special-manager-form').append('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
+
+                setTimeout(function() {
+                  $('#special-manager-form .alert-success').remove();
+                }, 3000);
+              }
+              
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+              alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+          });
+        });
+
+        function addSpecial() {
+          
+          let row = $('#specials .special').children().length;
+
+          let html = '';
+
+          html += '<div id="special-' + row + '" class="special" style="margin-bottom: 10px;">'
+            html += '<div class="row">';
+              html += '<div class="col-sm-6">';
+                html += '<select name="specials[' + row + '][customer_group_id]" class="form-control">';
+                  {% for customer_group in customer_groups %}
+                  html += '<option value="{{ customer_group.customer_group_id }}">{{ customer_group.name|escape('js') }}</option>';
+                  {% endfor %}
+                html += '</select>';
+              html += '</div>';
+              html += '<div class="col-sm-3">';
+                html += '<input type="text" name="specials[' + row + '][priority]" value="" placeholder="{{ entry_priority }}" class="form-control" style="margin-bottom: 5px;">';
+              html += '</div>';
+              html += '<div class="col-sm-3">';
+                html += '<input type="text" name="specials[' + row + '][discount]" value="" placeholder="{{ entry_discount }}" class="form-control" style="margin-bottom: 5px;">';
+              html += '</div>';
+              html += '<div class="col-sm-5">';
+                html += '<div class="input-group date">';
+                  html += '<input type="text" name="specials[' + row + '][date_start]" value="" placeholder="{{ entry_date_start }}" data-date-format="YYYY-MM-DD" id="input-date-available" class="form-control"/>';
+                  html += '<span class="input-group-btn">';
+                    html += '<button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>';
+                  html += '</span>';
+                html += '</div>';
+              html += '</div>';
+              html += '<div class="col-sm-5">';
+                html += '<div class="input-group date">';
+                  html += '<input type="text" name="specials[' + row + '][date_end]" value="" placeholder="{{ entry_date_end }}" data-date-format="YYYY-MM-DD" id="input-date-available" class="form-control"/>';
+                  html += '<span class="input-group-btn">';
+                    html += '<button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>';
+                  html += '</span>';
+                html += '</div>';
+              html += '</div>';
+              html += '<div class="col-sm-2 text-right">';
+                html += '<button type="button" class="btn btn-danger" onclick="removeSpecial(\'#special-' + row + '\')">';
+                  html += '<i class="fa fa-trash"></i>';
+                html += '</button>';
+              html += '</div>';
+            html += '</div>';
+          html += '</div>';
+
+          $('#specials').append(html);
+
+          $('.date').datetimepicker({
+            pickTime: false
+          });
+        }
+
+        function removeSpecial(selector) {
           $(selector).remove();
         }
 
