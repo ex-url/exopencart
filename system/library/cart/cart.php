@@ -394,6 +394,10 @@ class Cart {
       $product_total += $product['quantity'];
     }
 
+    if (isset($this->session->data['vouchers'])) {
+      $product_total += count($this->session->data['vouchers']);
+    }
+
     return $product_total;
   }
 

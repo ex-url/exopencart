@@ -20,7 +20,7 @@ $_['entry_from_name']  = 'Ваше имя';
 $_['entry_from_email'] = 'Ваш E-Mail';
 $_['entry_theme']      = 'Тема подарочного сертификата';
 $_['entry_message']    = 'Сообщение';
-$_['entry_amount']     = 'Итого';
+$_['entry_amount']     = 'Сумма';
 
 // Help
 $_['help_message']     = 'Не обязательно';

@@ -378,7 +378,11 @@ class ControllerCheckoutCart extends Controller {
     // Update
     if (!empty($this->request->post['quantity']) && !empty($this->request->post['key'])) {
 
-      $this->cart->update($this->request->post['key'], $this->request->post['quantity']);
+      //$this->cart->update($this->request->post['key'], $this->request->post['quantity']);
+
+      foreach ($this->request->post['quantity'] as $key => $value) {
+        $this->cart->update($key, $value);
+      }
 
       $this->session->data['success'] = $this->language->get('text_remove');
 
