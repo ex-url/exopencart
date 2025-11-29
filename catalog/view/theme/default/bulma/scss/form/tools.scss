@@ -61,6 +61,7 @@ $label-colors: $form-colors !default;
       }
 
       &:not(:first-child):not(:last-child) {
+
         .button,
         .input,
         .select select {
@@ -69,6 +70,7 @@ $label-colors: $form-colors !default;
       }
 
       &:first-child:not(:only-child) {
+
         .button,
         .input,
         .select select {
@@ -86,6 +88,7 @@ $label-colors: $form-colors !default;
       }
 
       &:last-child:not(:only-child) {
+
         .button,
         .input,
         .select select {
@@ -106,19 +109,20 @@ $label-colors: $form-colors !default;
       .input,
       .select select {
         &:not([disabled]) {
+
           &:hover,
           &.is-hovered {
-            z-index: 2;
+            z-index: 1;
           }
 
           &:focus,
           &.is-focused,
           &:active,
           &.is-active {
-            z-index: 3;
+            z-index: 1;
 
             &:hover {
-              z-index: 4;
+              z-index: 1;
             }
           }
         }
@@ -150,7 +154,7 @@ $label-colors: $form-colors !default;
     display: flex;
     justify-content: flex-start;
 
-    & > .control {
+    &>.control {
       flex-shrink: 0;
 
       &:not(:last-child) {
@@ -176,7 +180,8 @@ $label-colors: $form-colors !default;
     &.is-grouped-multiline {
       flex-wrap: wrap;
 
-      & > .control {
+      &>.control {
+
         &:last-child,
         &:not(:last-child) {
           margin-bottom: 0.75rem;
@@ -255,7 +260,7 @@ $label-colors: $form-colors !default;
       margin-bottom: 0;
     }
 
-    & > .field {
+    &>.field {
       flex-shrink: 1;
 
       &:not(.is-narrow) {
@@ -279,23 +284,24 @@ $label-colors: $form-colors !default;
   // Modifiers
   &.has-icons-left,
   &.has-icons-right {
+
     .input,
     .select {
       &:focus {
-        & ~ .icon {
+        &~.icon {
           color: $input-icon-active-color;
         }
       }
 
-      &.is-small ~ .icon {
+      &.is-small~.icon {
         font-size: $size-small;
       }
 
-      &.is-medium ~ .icon {
+      &.is-medium~.icon {
         font-size: $size-medium;
       }
 
-      &.is-large ~ .icon {
+      &.is-large~.icon {
         font-size: $size-large;
       }
     }
@@ -312,6 +318,7 @@ $label-colors: $form-colors !default;
   }
 
   &.has-icons-left {
+
     .input,
     .select select {
       padding-left: $input-height;
@@ -323,6 +330,7 @@ $label-colors: $form-colors !default;
   }
 
   &.has-icons-right {
+
     .input,
     .select select {
       padding-right: $input-height;

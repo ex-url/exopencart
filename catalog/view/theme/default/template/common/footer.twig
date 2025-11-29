@@ -10,7 +10,7 @@
   <div class="container">
     <div class="columns is-mobile is-multiline">
       {% if informations %}
-      <div class="column is-3-widescreen is-3-desktop is-6-tablet is-12-mobile">
+      <div class="column is-4-widescreen is-4-desktop is-6-tablet is-12-mobile">
         <h5 class="title is-5">{{ text_information }}</h5>
         <ul class="list-unstyled">
           {% for information in informations %}
@@ -19,7 +19,7 @@
         </ul>
       </div>
       {% endif %}
-      <div class="column is-3-widescreen is-3-desktop is-6-tablet is-12-mobile">
+      <div class="column is-4-widescreen is-4-desktop is-6-tablet is-12-mobile">
         <h5 class="title is-5">{{ text_service }}</h5>
         <ul class="list-unstyled">
           <li><a href="{{ contact }}">{{ text_contact }}</a></li>
@@ -27,36 +27,23 @@
           <li><a href="{{ sitemap }}">{{ text_sitemap }}</a></li>
         </ul>
       </div>
-      <div class="column is-3-widescreen is-3-desktop is-6-tablet is-12-mobile">
+      <div class="column is-4-widescreen is-4-desktop is-6-tablet is-12-mobile">
         <h5 class="title is-5">{{ text_extra }}</h5>
         <ul class="list-unstyled">
-          <li><a href="{{ manufacturer }}">{{ text_manufacturer }}</a></li>
           <li><a href="{{ voucher }}">{{ text_voucher }}</a></li>
           <li><a href="{{ affiliate }}">{{ text_affiliate }}</a></li>
           <li><a href="{{ special }}">{{ text_special }}</a></li>
         </ul>
       </div>
-      <div class="column is-3-widescreen is-3-desktop is-6-tablet is-12-mobile">
-        <h5 class="title is-5">{{ text_account }}</h5>
-        <ul class="list-unstyled">
-          <li><a href="{{ account }}">{{ text_account }}</a></li>
-          <li><a href="{{ order }}">{{ text_order }}</a></li>
-          <li><a href="{{ wishlist }}">{{ text_wishlist }}</a></li>
-          <li><a href="{{ newsletter }}">{{ text_newsletter }}</a></li>
-        </ul>
-      </div>
     </div>
     <hr>
     <div class="columns is-multiline">
-      <div class="column is-6-desktop is-6-tablet is-12-mobile">
-        {{ powered }}
-      </div>
-      <div class="column is-6-desktop is-6-tablet is-12-mobile has-text-right">
-        {{ based }}
-      </div>
-      <div class="column is-12">
+      <div class="column is-6-desktop is-6-tablet is-12-mobile has-text-left-desktop has-text-left-tablet has-text-centered-mobile">
         {{ copyright }}
       </div>
+      <div class="column is-6-desktop is-6-tablet is-12-mobile has-text-right-desktop has-text-right-tablet has-text-centered-mobile">
+        {{ powered }}
+      </div>      
     </div>
   </div>
   <div class="mobile-contacts">

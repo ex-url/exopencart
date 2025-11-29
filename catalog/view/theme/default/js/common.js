@@ -1,30 +1,3 @@
-const spinner = {
-
-  add: function (parent, position = 'is-absolute', size = 100, opacity = 1) {
-    const markup = `<div class="loading"><div class="spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>`;
-
-    if (!$(parent).find('.loading').length) {
-      $(parent).append(markup);
-    }
-
-    $(parent).find('.loading').addClass(position);
-
-    if (size != 100) {
-      $(parent).find('.spinner').attr('style', 'transform: scale(' + size + '%)');
-    }
-
-    if (opacity != 1) {
-      $(parent).find('.loading').attr('style', 'opacity:' + opacity);
-    }
-
-  },
-
-  remove: function (parent) {
-    $(parent).find('.loading').remove();
-  }
-
-};
-
 const cart = {
   add: function (product_id, quantity, $trigger) {
     $.ajax({
@@ -78,6 +51,7 @@ const cart = {
         }
       },
       error: function (xhr, ajaxOptions, thrownError) {
+        spinner.remove('.cart-products .panel');
         alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
       }
     });
@@ -178,47 +152,62 @@ const wishlist = {
   }
 }
 
+const spinner = {
+
+  add: function (parent, position = 'is-absolute', size = 100, opacity = 1) {
+    const markup = `<div class="loading"><div class="spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>`;
+
+    if (!$(parent).find('.loading').length) {
+      $(parent).append(markup);
+    }
+
+    $(parent).find('.loading').addClass(position);
+
+    if (size != 100) {
+      $(parent).find('.spinner').attr('style', 'transform: scale(' + size + '%)');
+    }
+
+    if (opacity != 1) {
+      $(parent).find('.loading').attr('style', 'opacity:' + opacity);
+    }
+
+  },
+
+  remove: function (parent) {
+    $(parent).find('.loading').remove();
+  }
+
+};
+
 function notification(params = {}) {
 
   if (!$('#notifications').length) {
     $('body').append('<div id="notifications"></div>');
-  };
-
-  let type = params.type ? params.type : '';
-  let text = params.text ? params.text : '';
-  let htmlClass = '';
-  let id = Date.now();
-
-  switch (type) {
-    case 'primary':
-      htmlClass = 'notification is-primary is-clickable';
-      break;
-    case 'link':
-      htmlClass = 'notification is-link is-clickable';
-      break;
-    case 'info':
-      htmlClass = 'notification is-info is-clickable';
-      break;
-    case 'success':
-      htmlClass = 'notification is-success is-clickable';
-      break;
-    case 'warning':
-      htmlClass = 'notification is-warning is-clickable';
-      break;
-    case 'danger':
-      htmlClass = 'notification is-danger is-clickable';
-      break;
-    default:
-      htmlClass = 'notification is-clickable';
   }
 
-  $('#notifications').append('<div class="' + htmlClass + '" data-id="' + id + '">' + text + '<button class="delete"></button></div>').hide().fadeIn(200);
+  const type = params.type || '';
+  const text = params.text || '';
+  const duration = params.duration || 5000;
+  const types = ['primary', 'link', 'info', 'success', 'warning', 'danger'];
+  const htmlClass = types.includes(type) ? `notification mb-3 is-${type} is-clickable` : 'notification mb-3 is-clickable';
+  const id = 'id-' + Math.random().toString(36).substr(2, 9);
+
+  const $notification = $('<div>')
+    .addClass(htmlClass)
+    .attr('data-id', id)
+    .text(text);
+
+  $notification.append($('<button>').addClass('delete'));
+  $notification.hide();
+
+  $('#notifications').append($notification);
+  $notification.slideDown(200);
 
   setTimeout(function () {
-    $('#notifications .notification[data-id="' + id + '"]').fadeOut(200, function () {
+    $('#notifications .notification[data-id="' + id + '"]').slideUp(200, function () {
       $(this).remove();
     })
-  }, 5000)
+  }, duration)
 }
 
 function updateCartBadge(value) {
@@ -293,32 +282,14 @@ $(document).ready(function () {
     compare.add($(this).data('product_id'), $(this));
   });
 
-  // add product to wishlist
-  $('body').on('click', '.add-to-wishlist', function () {
-    wishlist.add($(this).data('product_id'), $(this));
-  });
-
-  // update cart
-  $('body').on('change', '.input-quantity', function (e) {
-    e.preventDefault();
-    setTimeout(() => {
-      cart.update($(this).data('key'), $(this).val());
-    }, 10);
-
-  });
-
-  $('body').on('keydown', '.input-quantity', function (e) {
-    if (e.keyCode == 13) {
-      e.preventDefault();
-      setTimeout(() => {
-        cart.update($(this).data('key'), $(this).val());
-      }, 10);
-    }
-  });
-
   // delete product from cart
   $('body').on('click', '.cart-delete-product', function () {
     cart.remove($(this).data('key'), $(this));
+  });
+
+  // add product to wishlist
+  $('body').on('click', '.add-to-wishlist', function () {
+    wishlist.add($(this).data('product_id'), $(this));
   });
 
   //counters
@@ -326,7 +297,8 @@ $(document).ready(function () {
     if ($(this).attr('class').includes('minus')) {
       let input = $(this).parents('.field').find('input');
       let actual = +input.val();
-      if (actual > 1) {
+      let minimum = +input.data('minimum') || 1;
+      if (actual > minimum) {
         input.val(actual - 1);
         input.change();
       }
@@ -336,20 +308,6 @@ $(document).ready(function () {
       let actual = +input.val();
       input.val(actual + 1);
       input.change();
-    }
-  });
-
-  // mobile menu trigger
-  $('body').on('click', '.mobile-menu-trigger', function (e) {
-    e.stopPropagation();
-    $('#menu').toggleClass('shown');
-    $('.mobile-menu-trigger').toggleClass('shown');
-  });
-
-  $('body').on('click', '#menu .modal-background, #menu.shown', function (e) {
-    if (!$(e.target).closest('.mobile-menu-trigger').length) {
-      $('#menu').removeClass('shown');
-      $('.mobile-menu-trigger').removeClass('shown');
     }
   });
 
@@ -382,14 +340,6 @@ $(document).ready(function () {
 
   $('body').on('click', '#notifications .notification', function () {
     $(this).fadeOut(200);
-  });
-
-  // score
-  $('body').on('click', '.score .tag', function () {
-    $(this).siblings().removeClass('is-active');
-    $(this).addClass('is-active');
-
-    $(this).parent().find('input[name="rating"]').val($(this).data('score'));
   });
 
   // Currency
@@ -542,133 +492,6 @@ $(document).ready(function () {
   });
 
 });
-
-// Autocomplete */
-(function ($) {
-  $.fn.autocomplete = function (option) {
-    return this.each(function () {
-      this.timer = null;
-      this.items = new Array();
-
-      $.extend(this, option);
-
-      $(this).attr('autocomplete', 'off');
-
-      // Focus
-      $(this).on('focus', function () {
-        this.request();
-      });
-
-      // Blur
-      $(this).on('blur', function () {
-        setTimeout(function (object) {
-          object.hide();
-        }, 200, this);
-      });
-
-      // Keydown
-      $(this).on('keydown', function (event) {
-        switch (event.keyCode) {
-          case 27: // escape
-            this.hide();
-            break;
-          default:
-            this.request();
-            break;
-        }
-      });
-
-      // Click
-      this.click = function (event) {
-        event.preventDefault();
-
-        value = $(event.target).parent().attr('data-value');
-
-        if (value && this.items[value]) {
-          this.select(this.items[value]);
-        }
-      }
-
-      // Show
-      this.show = function () {
-        var pos = $(this).position();
-
-        $(this).siblings('ul.dropdown-menu').css({
-          top: pos.top + $(this).outerHeight(),
-          left: pos.left
-        });
-
-        $(this).siblings('ul.dropdown-menu').show();
-      }
-
-      // Hide
-      this.hide = function () {
-        $(this).siblings('ul.dropdown-menu').hide();
-      }
-
-      // Request
-      this.request = function () {
-        clearTimeout(this.timer);
-
-        this.timer = setTimeout(function (object) {
-          object.source($(object).val(), $.proxy(object.response, object));
-        }, 200, this);
-      }
-
-      // Response
-      this.response = function (json) {
-        html = '';
-
-        if (json.length) {
-          for (i = 0; i < json.length; i++) {
-            this.items[json[i]['value']] = json[i];
-          }
-
-          for (i = 0; i < json.length; i++) {
-            if (!json[i]['category']) {
-              html += '<li data-value="' + json[i]['value'] + '"><a href="#">' + json[i]['label'] + '</a></li>';
-            }
-          }
-
-          // Get all the ones with a categories
-          var category = new Array();
-
-          for (i = 0; i < json.length; i++) {
-            if (json[i]['category']) {
-              if (!category[json[i]['category']]) {
-                category[json[i]['category']] = new Array();
-                category[json[i]['category']]['name'] = json[i]['category'];
-                category[json[i]['category']]['item'] = new Array();
-              }
-
-              category[json[i]['category']]['item'].push(json[i]);
-            }
-          }
-
-          for (i in category) {
-            html += '<li class="dropdown-header">' + category[i]['name'] + '</li>';
-
-            for (j = 0; j < category[i]['item'].length; j++) {
-              html += '<li data-value="' + category[i]['item'][j]['value'] + '"><a href="#">&nbsp;&nbsp;&nbsp;' + category[i]['item'][j]['label'] + '</a></li>';
-            }
-          }
-        }
-
-        if (html) {
-          this.show();
-        } else {
-          this.hide();
-        }
-
-        $(this).siblings('ul.dropdown-menu').html(html);
-      }
-
-      $(this).after('<ul class="dropdown-menu"></ul>');
-      $(this).siblings('ul.dropdown-menu').delegate('a', 'click', $.proxy(this.click, this));
-
-    });
-  }
-})(window.jQuery);
 
 function previewManager(config = {}) {
 

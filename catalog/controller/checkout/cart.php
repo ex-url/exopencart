@@ -375,16 +375,9 @@ class ControllerCheckoutCart extends Controller {
 
     $json = array();
 
-    // Update
     if (!empty($this->request->post['quantity']) && !empty($this->request->post['key'])) {
 
-      //$this->cart->update($this->request->post['key'], $this->request->post['quantity']);
-
-      foreach ($this->request->post['quantity'] as $key => $value) {
-        $this->cart->update($key, $value);
-      }
-
-      $this->session->data['success'] = $this->language->get('text_remove');
+      $this->cart->update($this->request->post['key'], $this->request->post['quantity']);
 
       unset($this->session->data['shipping_method']);
       unset($this->session->data['shipping_methods']);
@@ -405,7 +398,6 @@ class ControllerCheckoutCart extends Controller {
 
     $json = array();
 
-    // Remove
     if (isset($this->request->post['key'])) {
       $this->cart->remove($this->request->post['key']);
 

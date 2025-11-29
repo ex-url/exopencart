@@ -326,21 +326,6 @@ button {
   z-index: 0;
 }
 
-.field.has-addons .control .button:not([disabled]):focus,
-.field.has-addons .control .button:not([disabled]).is-focused,
-.field.has-addons .control .button:not([disabled]):active,
-.field.has-addons .control .button:not([disabled]).is-active,
-.field.has-addons .control .input:not([disabled]):focus,
-.field.has-addons .control .input:not([disabled]).is-focused,
-.field.has-addons .control .input:not([disabled]):active,
-.field.has-addons .control .input:not([disabled]).is-active,
-.field.has-addons .control .select select:not([disabled]):focus,
-.field.has-addons .control .select select:not([disabled]).is-focused,
-.field.has-addons .control .select select:not([disabled]):active,
-.field.has-addons .control .select select:not([disabled]).is-active {
-  z-index: 1;
-}
-
 .score .tag {
   transition: all 0.2s ease;
 }
@@ -776,7 +761,7 @@ footer .scroll-top-trigger.shown {
     flex-direction: column-reverse;
     position: fixed;
     width: calc(100% - 2rem);
-    bottom: -20rem;
+    bottom: -22rem;
     margin: 1rem;
     overflow: hidden;
     border-radius: 1.5rem;
@@ -808,21 +793,18 @@ footer .scroll-top-trigger.shown {
 
   .icons-menu {
     position: fixed;
-    bottom: 0;
+    bottom: 1rem;
     z-index: 3;
     background: content-box;
-    left: 0;
-    width: 100%;
+    left: 1rem;
+    width: calc(100% - 2rem);
     justify-content: center !important;
     box-shadow: 0 0 5px 0 rgb(0 0 0 / 15%);
+    border-radius: 5rem;
   }
 
   .slideshow0 {
     padding-top: 0;
-  }
-
-  .slideshow-item img {
-    border-radius: 0;
   }
 
   #product-images {

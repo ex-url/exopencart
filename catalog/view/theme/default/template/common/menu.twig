@@ -40,7 +40,7 @@
           {% endif %}
         </div>
         <div class="navbar-end">
-          <div class="is-flex is-align-items-center is-justify-content-flex-end has-background-white icons-menu">
+          <div class="icons-menu is-flex is-align-items-center is-justify-content-flex-end has-background-white">
             <span class="mobile-menu-trigger is-hidden-desktop has-text-primary">
               <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
@@ -178,5 +178,18 @@
       }
     });
   {% endif %}
+
+  $('body').on('click', '.mobile-menu-trigger', function (e) {
+    e.stopPropagation();
+    $('#menu').toggleClass('shown');
+    $('.mobile-menu-trigger').toggleClass('shown');
+  });
+
+  $('body').on('click', '#menu .modal-background, #menu.shown', function (e) {
+    if (!$(e.target).closest('.mobile-menu-trigger').length) {
+      $('#menu').removeClass('shown');
+      $('.mobile-menu-trigger').removeClass('shown');
+    }
+  });
   </script>
 </section>

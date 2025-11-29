@@ -231,4 +231,17 @@
   </div>
   {{ content_bottom }}
 </main>
+<script>
+  $('#cart-page').on('change', '.input-quantity', function (e) {
+    e.preventDefault();
+    cart.update($(this).data('key'), $(this).val());
+  });
+
+  $('#cart-page').on('keydown', '.input-quantity', function (e) {
+    if (e.keyCode == 13) {
+      e.preventDefault();
+      cart.update($(this).data('key'), $(this).val());
+    }
+  });
+</script>
 {{ footer }}
