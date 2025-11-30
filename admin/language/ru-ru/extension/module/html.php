@@ -14,6 +14,8 @@ $_['text_edit']         = 'Редактирование';
 $_['entry_name']        = 'Название модуля';
 $_['entry_title']       = 'Заголовок';
 $_['entry_description'] = 'Описание';
+$_['entry_include_swiper'] = 'Подключить Swiper';
+$_['entry_include_fancybox'] = 'Подключить Fancybox';
 $_['entry_status']      = 'Статус';
 
 // Error

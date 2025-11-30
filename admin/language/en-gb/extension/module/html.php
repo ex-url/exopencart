@@ -11,6 +11,8 @@ $_['text_edit']         = 'Edit HTML Content Module';
 $_['entry_name']        = 'Module Name';
 $_['entry_title']       = 'Heading Title';
 $_['entry_description'] = 'Description';
+$_['entry_include_swiper'] = 'Include Swiper';
+$_['entry_include_fancybox'] = 'Include Fancybox';
 $_['entry_status']      = 'Status';
 
 // Error

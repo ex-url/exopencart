@@ -101,6 +101,22 @@ class ControllerExtensionModuleHTML extends Controller {
 
     $data['languages'] = $this->model_localisation_language->getLanguages();
 
+    if (isset($this->request->post['include_swiper'])) {
+      $data['include_swiper'] = $this->request->post['include_swiper'];
+    } elseif (!empty($module_info)) {
+      $data['include_swiper'] = $module_info['include_swiper'];
+    } else {
+      $data['include_swiper'] = 0;
+    }
+
+    if (isset($this->request->post['include_fancybox'])) {
+      $data['include_fancybox'] = $this->request->post['include_fancybox'];
+    } elseif (!empty($module_info)) {
+      $data['include_fancybox'] = $module_info['include_fancybox'];
+    } else {
+      $data['include_fancybox'] = 0;
+    }
+
     if (isset($this->request->post['status'])) {
       $data['status'] = $this->request->post['status'];
     } elseif (!empty($module_info)) {
