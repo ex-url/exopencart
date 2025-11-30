@@ -282,14 +282,27 @@ button {
   position: fixed;
   z-index: 999;
   right: 0.75rem;
-  max-width: calc(100% - 1.5rem);
+  width: calc(100% - 1.5rem);
+  max-width: 400px;
   height: 0;
   overflow: visible;
   top: 0.75rem;
 }
 
 #notifications .notification {
-  max-width: 400px;
+  overflow: hidden;
+  background: rgb(0 0 0 / 50%);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  border: 1px solid rgb(255 255 255 / 20%);
+}
+
+#notifications .notification .flavour {
+  position: absolute;
+  width: 0.5rem;
+  height: 100%;
+  left: 0;
+  top: 0;
 }
 
 .select:not(.is-multiple):not(.is-loading)::after {
@@ -761,7 +774,7 @@ footer .scroll-top-trigger.shown {
     flex-direction: column-reverse;
     position: fixed;
     width: calc(100% - 2rem);
-    bottom: -22rem;
+    bottom: -20rem;
     margin: 1rem;
     overflow: hidden;
     border-radius: 1.5rem;

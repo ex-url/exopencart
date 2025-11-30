@@ -38,35 +38,46 @@
           {% endif %}
           {% for product in products %}
           <div class="{{ class }}">
-            <div class="box product-card">
+            <div class="product-card box">
               <div class="image">
-                <a href="{{ product.href }}" class="is-flex is-justify-content-center">
+                <a href="{{ product.href }}" class="is-flex is-justify-content-center" aria-label="{{ product.name }}">
                   <img src="{{ product.thumb }}" loading="lazy" alt="{{ product.name }}" title="{{ product.name }}" />
-                  <span class="tag {{ product.quantity ? 'is-success' : 'is-danger' }} is-light stock">{{ product.stock }}</span>
+                  <span class="stock tag {{ product.quantity ? 'is-success' : 'is-danger' }} is-light">{{ product.stock }}</span>
+                  {% if product.stickers %}
+                  <span class="stickers is-block mb-0">
+                  {% for sticker in product.stickers %}
+                  <span class="is-block mb-1">
+                    <span class="{{ sticker.class }}">{{ sticker.content|html_entity_decode }}</span>
+                  </span>                    
+                  {% endfor %}
+                  </span>
+                  {% endif %}
+                  {% if product.discount %}
+                  <span class="discount tag is-danger">-{{ product.discount }}%</span>
+                  {% endif %}
                 </a>
               </div>
-              <div class="info">
-                <a class="is-block title is-5 my-3 has-text-link" href="{{ product.href }}">{{ product.name }}</a>
-                <p>{{ product.description }}</p>
+              <div class="caption">
+                <a class="product-name is-block is-size-6 my-3" href="{{ product.href }}">{{ product.name }}</a>
                 <div class="is-flex is-justify-content-space-between is-align-items-center">
                   {% if product.price %}
-                  <div class="is-block my-3 price">
+                  <div class="price is-block my-3">
                     {% if not product.special %}
                     <span class="actual-price">{{ product.price }}</span>
                     {% else %}
                     <span class="actual-price">{{ product.special }}</span>
-                    <span class="has-text-grey old-price">{{ product.price }}</span>
+                    <span class="old-price has-text-grey">{{ product.price }}</span>
                     {% endif %}
                     {% if product.tax %}
-                    <span class="has-text-grey is-size-7 price-tax">{{ text_tax }} {{ product.tax }}</span>
+                    <span class="price-tax has-text-grey is-size-7">{{ text_tax }} {{ product.tax }}</span>
                     {% endif %}
                   </div>
                   {% endif %}
                   {% if product.rating %}
-                  <span class="tag {{ product.rating >= 4 ? 'is-success' : '' }}{{ product.rating >= 3 and product.rating < 4 ? 'is-warning' : '' }}{{ product.rating < 3 ? 'is-danger' : '' }}">
+                  <span class="tag is-light">
                     <span class="icon-text">
-                      <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                      <span class="icon has-text-warning">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
                           <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
                         </svg>
                       </span>
@@ -75,27 +86,29 @@
                   </span>
                   {% endif %}
                 </div>
-                <div class="buttons">
-                  <button type="button" class="button is-primary is-outlined add-to-cart" data-product_id="{{ product.product_id }}" data-minimum="{{ product.minimum }}">
+                <div class="actions is-flex is-justify-content-space-between">
+                  <button type="button" class="add-to-cart button is-primary is-light" data-product_id="{{ product.product_id }}" data-minimum="{{ product.minimum }}">
                     {{ button_cart }}
                   </button>
-                  <button type="button" class="button is-primary is-outlined add-to-compare" title="{{ button_compare }}" data-product_id="{{ product.product_id }}">
-                    <span class="icon">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5v12h-2V2h2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z"/>
-                      </svg>
-                    </span>
-                  </button>
-                  <a href="{{ product.remove }}" class="button is-danger is-outlined">
-                    <span class="icon">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
-                      </svg>
-                    </span>
-                  </a>
+                  <div>                    
+                    <button type="button" class="add-to-compare button is-primary is-light" title="{{ button_compare }}" data-product_id="{{ product.product_id }}">
+                      <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                          <path d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5v12h-2V2h2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z"/>
+                        </svg>
+                      </span>
+                    </button>
+                    <a href="{{ product.remove }}" class="button is-danger is-light">
+                      <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
+                          <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+                        </svg>
+                      </span>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
+            </div>            
           </div>
           {% endfor %}
         </div>

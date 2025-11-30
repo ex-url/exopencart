@@ -25,6 +25,7 @@ const cart = {
           notification({
             type: 'success',
             text: json['success'],
+            duration: 5000
           });
 
         }
@@ -189,14 +190,15 @@ function notification(params = {}) {
   const text = params.text || '';
   const duration = params.duration || 5000;
   const types = ['primary', 'link', 'info', 'success', 'warning', 'danger'];
-  const htmlClass = types.includes(type) ? `notification mb-3 is-${type} is-clickable` : 'notification mb-3 is-clickable';
+  const flavour = types.includes(type) ? `has-background-${type}` : '';
   const id = 'id-' + Math.random().toString(36).substr(2, 9);
 
   const $notification = $('<div>')
-    .addClass(htmlClass)
+    .addClass('notification mb-3 is-clickable')
     .attr('data-id', id)
-    .text(text);
+    .html(text);
 
+  $notification.append($('<div>').addClass('flavour ' + flavour));
   $notification.append($('<button>').addClass('delete'));
   $notification.hide();
 
@@ -339,7 +341,7 @@ $(document).ready(function () {
   });
 
   $('body').on('click', '#notifications .notification', function () {
-    $(this).fadeOut(200);
+    $(this).slideUp(200);
   });
 
   // Currency

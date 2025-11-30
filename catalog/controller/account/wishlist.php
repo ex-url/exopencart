@@ -3,165 +3,161 @@
 // *	@license	GNU General Public License version 3; see LICENSE.txt
 
 class ControllerAccountWishList extends Controller {
-	public function index() {
-		if (!$this->customer->isLogged()) {
-			$this->session->data['redirect'] = $this->url->link('account/wishlist', '', true);
+  public function index() {
+    $this->load->language('account/wishlist');
 
-			$this->response->redirect($this->url->link('account/login', '', true));
-		}
+    $this->load->model('account/wishlist');
 
-		$this->load->language('account/wishlist');
+    $this->load->model('catalog/product');
 
-		$this->load->model('account/wishlist');
+    $this->load->model('tool/image');
 
-		$this->load->model('catalog/product');
+    if (isset($this->request->get['remove'])) {
+      // Remove Wishlist
+      $this->model_account_wishlist->deleteWishlist($this->request->get['remove']);
 
-		$this->load->model('tool/image');
+      $this->session->data['success'] = $this->language->get('text_remove');
 
-		if (isset($this->request->get['remove'])) {
-			// Remove Wishlist
-			$this->model_account_wishlist->deleteWishlist($this->request->get['remove']);
+      $this->response->redirect($this->url->link('account/wishlist'));
+    }
 
-			$this->session->data['success'] = $this->language->get('text_remove');
+    $this->document->setTitle($this->language->get('heading_title'));
+    $this->document->setRobots('noindex,follow');
 
-			$this->response->redirect($this->url->link('account/wishlist'));
-		}
+    $data['breadcrumbs'] = array();
 
-		$this->document->setTitle($this->language->get('heading_title'));
-		$this->document->setRobots('noindex,follow');
+    $data['breadcrumbs'][] = array(
+      'text' => $this->language->get('text_home'),
+      'href' => $this->url->link('common/home')
+    );
 
-		$data['breadcrumbs'] = array();
+    $data['breadcrumbs'][] = array(
+      'text' => $this->language->get('text_account'),
+      'href' => $this->url->link('account/account', '', true)
+    );
 
-		$data['breadcrumbs'][] = array(
-			'text' => $this->language->get('text_home'),
-			'href' => $this->url->link('common/home')
-		);
+    $data['breadcrumbs'][] = array(
+      'text' => $this->language->get('heading_title'),
+      'href' => $this->url->link('account/wishlist')
+    );
 
-		$data['breadcrumbs'][] = array(
-			'text' => $this->language->get('text_account'),
-			'href' => $this->url->link('account/account', '', true)
-		);
+    if (isset($this->session->data['success'])) {
+      $data['success'] = $this->session->data['success'];
 
-		$data['breadcrumbs'][] = array(
-			'text' => $this->language->get('heading_title'),
-			'href' => $this->url->link('account/wishlist')
-		);
+      unset($this->session->data['success']);
+    } else {
+      $data['success'] = '';
+    }
 
-		if (isset($this->session->data['success'])) {
-			$data['success'] = $this->session->data['success'];
+    $data['products'] = array();
 
-			unset($this->session->data['success']);
-		} else {
-			$data['success'] = '';
-		}
+    $results = $this->model_account_wishlist->getWishlist();
 
-		$data['products'] = array();
+    foreach ($results as $result) {
+      $product_info = $this->model_catalog_product->getProduct($result['product_id']);
 
-		$results = $this->model_account_wishlist->getWishlist();
+      if ($product_info) {
+        if ($product_info['image']) {
+          $image = $this->model_tool_image->resize($product_info['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_wishlist_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_wishlist_height'));
+        } else {
+          $image = false;
+        }
 
-		foreach ($results as $result) {
-			$product_info = $this->model_catalog_product->getProduct($result['product_id']);
+        if ($product_info['quantity'] <= 0) {
+          $stock = $product_info['stock_status'];
+        } elseif ($this->config->get('config_stock_display')) {
+          $stock = $product_info['quantity'];
+        } else {
+          $stock = $this->language->get('text_instock');
+        }
 
-			if ($product_info) {
-				if ($product_info['image']) {
-					$image = $this->model_tool_image->resize($product_info['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_wishlist_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_wishlist_height'));
-				} else {
-					$image = false;
-				}
+        if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
+          $price = $this->currency->format($this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+        } else {
+          $price = false;
+        }
 
-				if ($product_info['quantity'] <= 0) {
-					$stock = $product_info['stock_status'];
-				} elseif ($this->config->get('config_stock_display')) {
-					$stock = $product_info['quantity'];
-				} else {
-					$stock = $this->language->get('text_instock');
-				}
+        if ((float)$product_info['special']) {
+          $special = $this->currency->format($this->tax->calculate($product_info['special'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+        } else {
+          $special = false;
+        }
 
-				if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
-					$price = $this->currency->format($this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
-				} else {
-					$price = false;
-				}
+        $data['products'][] = array(
+          'product_id' => $product_info['product_id'],
+          'thumb'      => $image,
+          'name'       => $product_info['name'],
+          'model'      => $product_info['model'],
+          'stock'      => $stock,
+          'price'      => $price,
+          'special'    => $special,
+          'discount'    => $special ? round((($product_info['price'] - $product_info['special']) / $product_info['price']) * 100) : null,
+          'stickers'    => $product_info['stickers'],
+          'stock_status' => $product_info['stock_status'],
+          'stock'       => $product_info['quantity'] <= 0 ? $product_info['stock_status'] : $this->language->get('text_instock'),
+          'quantity'    => $product_info['quantity'],
+          'minimum'     => $product_info['minimum'] > 0 ? $product_info['minimum'] : 1,
+          'href'       => $this->url->link('product/product', 'product_id=' . $product_info['product_id']),
+          'remove'     => $this->url->link('account/wishlist', 'remove=' . $product_info['product_id'])
+        );
+      } else {
+        $this->model_account_wishlist->deleteWishlist($result['product_id']);
+      }
+    }
 
-				if ((float)$product_info['special']) {
-					$special = $this->currency->format($this->tax->calculate($product_info['special'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
-				} else {
-					$special = false;
-				}
+    $data['continue'] = $this->url->link('account/account', '', true);
 
-				$data['products'][] = array(
-					'product_id' => $product_info['product_id'],
-					'thumb'      => $image,
-					'name'       => $product_info['name'],
-					'model'      => $product_info['model'],
-					'stock'      => $stock,
-					'price'      => $price,
-					'special'    => $special,
-					'stock_status'=> $product_info['stock_status'],
-					'stock'       => $product_info['quantity'] <= 0 ? $product_info['stock_status'] : $this->language->get('text_instock'),
-					'quantity'    => $product_info['quantity'],
-					'minimum'     => $product_info['minimum'] > 0 ? $product_info['minimum'] : 1,
-					'href'       => $this->url->link('product/product', 'product_id=' . $product_info['product_id']),
-					'remove'     => $this->url->link('account/wishlist', 'remove=' . $product_info['product_id'])
-				);
-			} else {
-				$this->model_account_wishlist->deleteWishlist($result['product_id']);
-			}
-		}
+    $data['column_left'] = $this->load->controller('common/column_left');
+    $data['column_right'] = $this->load->controller('common/column_right');
+    $data['content_top'] = $this->load->controller('common/content_top');
+    $data['content_bottom'] = $this->load->controller('common/content_bottom');
+    $data['footer'] = $this->load->controller('common/footer');
+    $data['header'] = $this->load->controller('common/header');
 
-		$data['continue'] = $this->url->link('account/account', '', true);
+    $this->response->setOutput($this->load->view('account/wishlist', $data));
+  }
 
-		$data['column_left'] = $this->load->controller('common/column_left');
-		$data['column_right'] = $this->load->controller('common/column_right');
-		$data['content_top'] = $this->load->controller('common/content_top');
-		$data['content_bottom'] = $this->load->controller('common/content_bottom');
-		$data['footer'] = $this->load->controller('common/footer');
-		$data['header'] = $this->load->controller('common/header');
+  public function add() {
+    $this->load->language('account/wishlist');
 
-		$this->response->setOutput($this->load->view('account/wishlist', $data));
-	}
+    $json = array();
 
-	public function add() {
-		$this->load->language('account/wishlist');
+    if (isset($this->request->post['product_id'])) {
+      $product_id = $this->request->post['product_id'];
+    } else {
+      $product_id = 0;
+    }
 
-		$json = array();
+    $this->load->model('catalog/product');
 
-		if (isset($this->request->post['product_id'])) {
-			$product_id = $this->request->post['product_id'];
-		} else {
-			$product_id = 0;
-		}
+    $product_info = $this->model_catalog_product->getProduct($product_id);
 
-		$this->load->model('catalog/product');
+    if ($product_info) {
+      if ($this->customer->isLogged()) {
+        // Edit customers cart
+        $this->load->model('account/wishlist');
 
-		$product_info = $this->model_catalog_product->getProduct($product_id);
+        $this->model_account_wishlist->addWishlist($this->request->post['product_id']);
 
-		if ($product_info) {
-			if ($this->customer->isLogged()) {
-				// Edit customers cart
-				$this->load->model('account/wishlist');
+        $json['success'] = sprintf($this->language->get('text_success'), $product_info['name']);
 
-				$this->model_account_wishlist->addWishlist($this->request->post['product_id']);
+        $json['total'] = $this->model_account_wishlist->getTotalWishlist();
+      } else {
+        if (!isset($this->session->data['wishlist'])) {
+          $this->session->data['wishlist'] = array();
+        }
 
-				$json['success'] = sprintf($this->language->get('text_success'), $this->url->link('product/product', 'product_id=' . (int)$this->request->post['product_id']), $product_info['name'], $this->url->link('account/wishlist'));
+        $this->session->data['wishlist'][] = $this->request->post['product_id'];
 
-				$json['total'] = $this->model_account_wishlist->getTotalWishlist();
-			} else {
-				if (!isset($this->session->data['wishlist'])) {
-					$this->session->data['wishlist'] = array();
-				}
+        $this->session->data['wishlist'] = array_unique($this->session->data['wishlist']);
 
-				$this->session->data['wishlist'][] = $this->request->post['product_id'];
+        $json['success'] = sprintf($this->language->get('text_login'), $product_info['name']);
 
-				$this->session->data['wishlist'] = array_unique($this->session->data['wishlist']);
+        $json['total'] = isset($this->session->data['wishlist']) ? count($this->session->data['wishlist']) : 0;
+      }
+    }
 
-				$json['success'] = sprintf($this->language->get('text_login'), $this->url->link('account/login', '', true), $this->url->link('account/register', '', true), $this->url->link('product/product', 'product_id=' . (int)$this->request->post['product_id']), $product_info['name'], $this->url->link('account/wishlist'));
-
-				$json['total'] = isset($this->session->data['wishlist']) ? count($this->session->data['wishlist']) : 0;
-			}
-		}
-
-		$this->response->addHeader('Content-Type: application/json');
-		$this->response->setOutput(json_encode($json));
-	}
+    $this->response->addHeader('Content-Type: application/json');
+    $this->response->setOutput(json_encode($json));
+  }
 }
