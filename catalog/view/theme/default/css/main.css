@@ -23,8 +23,27 @@ button {
   transition: all 0.3s ease;
 }
 
+.button.is-small:not(.is-rounded) {
+  border-radius: 12px;
+}
+
 #logo {
   line-height: 0;
+}
+
+#theme-toggle svg {
+  transition: all 0.3s ease;
+  position: absolute;
+}
+
+.light .sun,
+.dark .moon {
+  transform: scale(0);
+}
+
+.light .moon,
+.dark .sun {
+  transform: scale(1);
 }
 
 #menu {
@@ -154,20 +173,20 @@ button {
 
 .product-card .stock {
   position: absolute;
-  left: 0;
-  top: 0;
+  left: -0.25rem;
+  top: -0.25rem;
 }
 
 .product-card .discount {
   position: absolute;
-  right: 0;
-  top: 0;
+  right: -0.25rem;
+  top: -0.25rem;
 }
 
 .product-card .stickers {
   position: absolute;
-  left: 0;
-  bottom: 0;
+  left: -0.25rem;
+  bottom: -0.25rem;
 }
 
 .product-card .product-name {
@@ -345,8 +364,8 @@ button {
 
 .score .tag:hover,
 .score .tag.is-active {
-  background: #fc0;
-  color: #000;
+  background: #fc0 !important;
+  color: #000 !important;
 }
 
 svg {
@@ -774,7 +793,7 @@ footer .scroll-top-trigger.shown {
     flex-direction: column-reverse;
     position: fixed;
     width: calc(100% - 2rem);
-    bottom: -20rem;
+    bottom: -22rem;
     margin: 1rem;
     overflow: hidden;
     border-radius: 1.5rem;
@@ -785,7 +804,7 @@ footer .scroll-top-trigger.shown {
   }
 
   #menu.shown .navbar-start {
-    transform: translateY(-24rem);
+    transform: translateY(-26rem);
   }
 
   #menu .navbar-link:not(.is-arrowless) {
@@ -808,12 +827,13 @@ footer .scroll-top-trigger.shown {
     position: fixed;
     bottom: 1rem;
     z-index: 3;
-    background: content-box;
     left: 1rem;
     width: calc(100% - 2rem);
     justify-content: center !important;
     box-shadow: 0 0 5px 0 rgb(0 0 0 / 15%);
     border-radius: 5rem;
+    background: rgb(255 255 255 / 80%) !important;
+    backdrop-filter: blur(12px);
   }
 
   .slideshow0 {
@@ -850,11 +870,11 @@ footer .scroll-top-trigger.shown {
   }
 
   .mobile-contacts {
-    bottom: 5rem;
+    bottom: 6rem;
   }
 
   footer .scroll-top-trigger.shown {
-    transform: translateY(-8rem);
+    transform: translateY(-9rem);
   }
 
   .mobile-contacts.shown {

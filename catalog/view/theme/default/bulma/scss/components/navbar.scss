@@ -72,13 +72,15 @@ $navbar-colors: $colors !default;
       color: $color-invert;
 
       .navbar-brand {
-        & > .navbar-item,
+
+        &>.navbar-item,
         .navbar-link {
           color: $color-invert;
         }
 
-        & > a.navbar-item,
+        &>a.navbar-item,
         .navbar-link {
+
           &:focus,
           &:hover,
           &.is-active {
@@ -99,15 +101,18 @@ $navbar-colors: $colors !default;
       }
 
       @include from($navbar-breakpoint) {
+
         .navbar-start,
         .navbar-end {
-          & > .navbar-item,
+
+          &>.navbar-item,
           .navbar-link {
             color: $color-invert;
           }
 
-          & > a.navbar-item,
+          &>a.navbar-item,
           .navbar-link {
+
             &:focus,
             &:hover,
             &.is-active {
@@ -142,7 +147,7 @@ $navbar-colors: $colors !default;
     }
   }
 
-  & > .container {
+  &>.container {
     align-items: stretch;
     display: flex;
     min-height: $navbar-height;
@@ -192,6 +197,7 @@ body {
 
 .navbar-brand {
   a.navbar-item {
+
     &:focus,
     &:hover {
       background-color: transparent;
@@ -326,7 +332,7 @@ a.navbar-item,
 }
 
 @include until($navbar-breakpoint) {
-  .navbar > .container {
+  .navbar>.container {
     display: block;
   }
 
@@ -356,6 +362,7 @@ a.navbar-item,
 
   // Fixed navbar
   .navbar {
+
     &.is-fixed-bottom-touch,
     &.is-fixed-top-touch {
       @include navbar-fixed;
@@ -398,6 +405,7 @@ a.navbar-item,
 
 
 @include from($navbar-breakpoint) {
+
   .navbar,
   .navbar-menu,
   .navbar-start,
@@ -424,8 +432,10 @@ a.navbar-item,
     }
 
     &.is-transparent {
+
       a.navbar-item,
       .navbar-link {
+
         &:focus,
         &:hover,
         &.is-active {
@@ -434,6 +444,7 @@ a.navbar-item,
       }
 
       .navbar-item.has-dropdown {
+
         &.is-active,
         &.is-hoverable:focus,
         &.is-hoverable:focus-within,
@@ -446,6 +457,7 @@ a.navbar-item,
 
       .navbar-dropdown {
         a.navbar-item {
+
           &:focus,
           &:hover {
             background-color: $navbar-dropdown-item-hover-background-color;
@@ -503,6 +515,7 @@ a.navbar-item,
           opacity: 1;
           pointer-events: auto;
           transform: translateY(0);
+          overflow: hidden;
         }
       }
     }
@@ -585,8 +598,8 @@ a.navbar-item,
     display: block;
   }
 
-  .navbar > .container,
-  .container > .navbar {
+  .navbar>.container,
+  .container>.navbar {
     .navbar-brand {
       @include ltr-property("margin", -0.75rem, false);
     }
@@ -598,6 +611,7 @@ a.navbar-item,
 
   // Fixed navbar
   .navbar {
+
     &.is-fixed-bottom-desktop,
     &.is-fixed-top-desktop {
       @include navbar-fixed;
@@ -648,6 +662,7 @@ a.navbar-item,
   }
 
   .navbar-item.has-dropdown {
+
     &:focus,
     &:hover,
     &.is-active {

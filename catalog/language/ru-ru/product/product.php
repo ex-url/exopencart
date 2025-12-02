@@ -48,7 +48,7 @@ $_['entry_bad']                = 'Плохо';
 // Tabs
 $_['tab_general']              = 'Основное';
 $_['tab_attribute']            = 'Характеристики';
-$_['tab_review']               = 'Отзывы&nbsp;<span class="tag">%s</span>';
+$_['tab_review']               = 'Отзывы&nbsp;<span class="tag is-light">%s</span>';
 
 // Error
 $_['error_name']               = 'Имя должно содержать от 1 до 32 символов!';

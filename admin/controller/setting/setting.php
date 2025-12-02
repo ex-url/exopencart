@@ -214,6 +214,18 @@ class ControllerSettingSetting extends Controller {
       $data['config_theme'] = $this->config->get('config_theme');
     }
 
+    if (isset($this->request->post['config_default_mode'])) {
+      $data['config_default_mode'] = $this->request->post['config_default_mode'];
+    } else {
+      $data['config_default_mode'] = $this->config->get('config_default_mode');
+    }
+
+    if (isset($this->request->post['config_toggle_mode'])) {
+      $data['config_toggle_mode'] = $this->request->post['config_toggle_mode'];
+    } else {
+      $data['config_toggle_mode'] = $this->config->get('config_toggle_mode');
+    }
+
     if ($this->request->server['HTTPS']) {
       $data['store_url'] = HTTPS_CATALOG;
     } else {

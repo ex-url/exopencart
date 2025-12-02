@@ -336,6 +336,22 @@ class ControllerSettingStore extends Controller {
       $data['config_theme'] = '';
     }
 
+    if (isset($this->request->post['config_default_mode'])) {
+      $data['config_default_mode'] = $this->request->post['config_default_mode'];
+    } elseif (isset($store_info['config_default_mode'])) {
+      $data['config_default_mode'] = $store_info['config_default_mode'];
+    } else {
+      $data['config_default_mode'] = 'light';
+    }
+
+    if (isset($this->request->post['config_toggle_mode'])) {
+      $data['config_toggle_mode'] = $this->request->post['config_toggle_mode'];
+    } elseif (isset($store_info['config_toggle_mode'])) {
+      $data['config_toggle_mode'] = $store_info['config_toggle_mode'];
+    } else {
+      $data['config_toggle_mode'] = 0;
+    }
+
     $data['themes'] = array();
 
     // Create a new language container so we don't pollute the current one

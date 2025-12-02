@@ -1,4 +1,7 @@
 <?php
+// *	@source		See SOURCE.txt for source and other copyright.
+// *	@license	GNU General Public License version 3; see LICENSE.txt
+
 // Heading
 $_['heading_title']                = 'Stores';
 
@@ -15,6 +18,8 @@ $_['text_checkout']                = 'Checkout';
 $_['text_stock']                   = 'Stock';
 $_['text_shipping']                = 'Shipping Address';
 $_['text_payment']                 = 'Payment Address';
+$_['text_light']                   = 'Light';
+$_['text_dark']                    = 'Dark';
 
 // Column
 $_['column_name']                  = 'Store Name';
@@ -24,14 +29,9 @@ $_['column_action']                = 'Action';
 // Entry
 $_['entry_url']                    = 'Store URL';
 $_['entry_ssl']                    = 'SSL URL';
-$_['entry_meta_title']             = 'Meta Title';
-$_['entry_title_seo_phrase']         = 'Add phrase to title';
-$_['entry_heading_seo_phrase']       = 'Add phrase to h1';
-$_['entry_meta_description']       = 'Meta Tag Description';
-$_['entry_meta_keyword']           = 'Meta Tag Keywords';
-$_['entry_layout']                 = 'Default Layout';
-$_['entry_theme']                  = 'Theme';
 $_['entry_name']                   = 'Store Name';
+$_['entry_title_seo_phrase']       = 'Add phrase to title';
+$_['entry_heading_seo_phrase']     = 'Add phrase to h1';
 $_['entry_owner']                  = 'Store Owner';
 $_['entry_address']                = 'Address';
 $_['entry_geocode']                = 'Geocode';
@@ -48,11 +48,21 @@ $_['entry_image']                  = 'Image';
 $_['entry_open']                   = 'Opening Times';
 $_['entry_comment']                = 'Comment';
 $_['entry_location']               = 'Store Location';
+$_['entry_meta_title']             = 'Meta Title';
+$_['entry_meta_description']       = 'Meta Tag Description';
+$_['entry_meta_keyword']           = 'Meta Tag Keywords';
+$_['entry_layout']                 = 'Default Layout';
+$_['entry_template']               = 'Template';
+$_['entry_default_mode']           = 'Default theme';
+$_['entry_toggle_mode']            = 'Show theme toggle';
 $_['entry_country']                = 'Country';
 $_['entry_zone']                   = 'Region / State';
 $_['entry_city']                   = 'City';
+$_['entry_timezone']               = 'Timezone';
 $_['entry_language']               = 'Language';
 $_['entry_currency']               = 'Currency';
+$_['entry_product_limit']          = 'Product Limit (Catalog)';
+$_['entry_product_description_length'] = 'Description Length (Catalog)';
 $_['entry_tax']                    = 'Display Prices With Tax';
 $_['entry_tax_default']            = 'Use Store Tax Address';
 $_['entry_tax_customer']           = 'Use Customer Tax Address';
@@ -71,9 +81,23 @@ $_['entry_logo_size']                = 'Logo size, px';
 $_['entry_logo_width']               = 'Width, px';
 $_['entry_logo_height']              = 'Height, px';
 $_['entry_icon']                   = 'Icon';
+$_['entry_image_category']         = 'Category Image Size';
+$_['entry_image_thumb']            = 'Product Thumb Image Size';
+$_['entry_image_popup']            = 'Product Popup Image Size';
+$_['entry_image_product']          = 'Product List Image Size';
+$_['entry_image_additional']       = 'Additional Product Image Size';
+$_['entry_image_related']          = 'Related Product Image Size';
+$_['entry_image_compare']          = 'Compare Image Size';
+$_['entry_image_wishlist']         = 'Wishlist Image Size';
+$_['entry_image_cart']             = 'Cart Image Size';
+$_['entry_image_location']         = 'Store Location Image Size';
+$_['entry_width']                  = 'Width';
+$_['entry_height']                 = 'Height';
 $_['entry_secure']                 = 'Use SSL';
 
 // Help
+$_['help_default_mode']            = 'Selected color scheme will be displayed by default';
+$_['help_toggle_mode']             = 'Users will be able to switch theme themselves';
 $_['help_url']                     = 'Include the full URL to your store. Make sure to add \'/\' at the end. Example: http://www.yourdomain.com/path/<br /><br />Don\'t use directories to create a new store. You should always point another domain or sub domain to your hosting.';
 $_['help_ssl']                     = 'SSL URL to your store. Make sure to add \'/\' at the end. Example: http://www.yourdomain.com/path/<br /><br />Don\'t use directories to create a new store. You should always point another domain or sub domain to your hosting.';
 $_['help_geocode']                 = 'Please enter your store location geocode manually.';
@@ -81,6 +105,8 @@ $_['help_open']                    = 'Fill in your stores opening times.';
 $_['help_comment']                 = 'This field is for any special notes you would like to tell the customer i.e. Store does not accept cheques.';
 $_['help_location']                = 'The different store locations you have that you want displayed on the contact us form.';
 $_['help_currency']                = 'Change the default currency. Clear your browser cache to see the change and reset your existing cookie.';
+$_['help_product_limit']           = 'Determines how many catalog items are shown per page (products, categories, etc.)';
+$_['help_product_description_length'] = 'Number of characters for short description (categories, specials, etc.)';
 $_['help_tax_default']             = 'Use the store address to calculate taxes if customer is not logged in. You can choose to use the store address for the customer\'s shipping or payment address.';
 $_['help_tax_customer']            = 'Use the customers default address when they login to calculate taxes. You can choose to use the default address for the customer\'s shipping or payment address.';
 $_['help_customer_group']          = 'Default customer group.';
@@ -99,13 +125,24 @@ $_['help_secure']                  = 'To use SSL check with your host if a SSL c
 // Error
 $_['error_warning']                = 'Warning: Please check the form carefully for errors!';
 $_['error_permission']             = 'Warning: You do not have permission to modify stores!';
-$_['error_url']                    = 'Store URL required!';
-$_['error_meta_title']             = 'Title must be between 3 and 32 characters!';
 $_['error_name']                   = 'Store Name must be between 3 and 32 characters!';
 $_['error_owner']                  = 'Store Owner must be between 3 and 64 characters!';
 $_['error_address']                = 'Store Address must be between 10 and 256 characters!';
 $_['error_email']                  = 'E-Mail Address does not appear to be valid!';
 $_['error_telephone']              = 'Telephone must be between 3 and 32 characters!';
+$_['error_url']                    = 'Store URL required!';
+$_['error_meta_title']             = 'Title must be between 3 and 32 characters!';
+$_['error_limit']                  = 'Limit required!';
 $_['error_customer_group_display'] = 'You must include the default customer group if you are going to use this feature!';
+$_['error_image_thumb']            = 'Product Thumb Image Size dimensions required!';
+$_['error_image_popup']            = 'Product Popup Image Size dimensions required!';
+$_['error_image_product']          = 'Product List Size dimensions required!';
+$_['error_image_category']         = 'Category List Size dimensions required!';
+$_['error_image_additional']       = 'Additional Product Image Size dimensions required!';
+$_['error_image_related']          = 'Related Product Image Size dimensions required!';
+$_['error_image_compare']          = 'Compare Image Size dimensions required!';
+$_['error_image_wishlist']         = 'Wishlist Image Size dimensions required!';
+$_['error_image_cart']             = 'Cart Image Size dimensions required!';
+$_['error_image_location']         = 'Store Location Image Size dimensions required!';
 $_['error_default']                = 'Warning: You can not delete your default store!';
 $_['error_store']                  = 'Warning: This Store cannot be deleted as it is currently assigned to %s orders!';

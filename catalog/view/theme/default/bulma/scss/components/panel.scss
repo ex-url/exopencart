@@ -34,6 +34,7 @@ $panel-colors: $colors !default;
   border-radius: $panel-radius;
   box-shadow: $panel-shadow;
   font-size: $size-normal;
+  overflow: hidden;
 
   &:not(:last-child) {
     margin-bottom: $panel-margin;
@@ -118,7 +119,7 @@ $panel-colors: $colors !default;
     @include ltr-property("margin", 0.75em);
   }
 
-  & > .control {
+  &>.control {
     flex-grow: 1;
     flex-shrink: 1;
     width: 100%;

@@ -192,7 +192,7 @@
               {% for option in options %}
               {% if option.type == 'select' %}
               <div class="field{% if option.required %} required {% endif %}">
-                <label class="label" for="input-option{{ option.product_option_id }}">{{ option.name }}</label>
+                <label class="label is-size-5" for="input-option{{ option.product_option_id }}">{{ option.name }}</label>
                 <div class="control">
                   <div class="select">
                     <select name="option[{{ option.product_option_id }}]"
@@ -212,7 +212,7 @@
               {% endif %}
               {% if option.type == 'radio' %}
               <div class="field{% if option.required %} required {% endif %}">
-                <label class="label">{{ option.name }}</label>
+                <label class="label is-size-5">{{ option.name }}</label>
                 <div class="control" id="input-option{{ option.product_option_id }}">
                   {% for option_value in option.product_option_value %}
                   <div>
@@ -225,7 +225,7 @@
                       endif %}
                       {{ option_value.name }}
                       {% if show_options_price and option_value.price %}
-                      <span class="tag">{{ option_value.price_prefix }}{{ option_value.price }}</span>
+                      <span class="tag is-light">{{ option_value.price_prefix }}{{ option_value.price }}</span>
                       {% endif %}
                     </label>
                   </div>
@@ -235,7 +235,7 @@
               {% endif %}
               {% if option.type == 'checkbox' %}
               <div class="field{% if option.required %} required {% endif %}">
-                <label class="label">{{ option.name }}</label>
+                <label class="label is-size-5">{{ option.name }}</label>
                 <div class="control" id="input-option{{ option.product_option_id }}">
                   {% for option_value in option.product_option_value %}
                   <div>
@@ -247,7 +247,7 @@
                         class="img-thumbnail" /> {% endif %}
                       {{ option_value.name }}
                       {% if show_options_price and option_value.price %}
-                      <span class="tag">{{ option_value.price_prefix }}{{ option_value.price }}</span>
+                      <span class="tag is-light">{{ option_value.price_prefix }}{{ option_value.price }}</span>
                       {% endif %}
                     </label>
                   </div>
@@ -257,21 +257,21 @@
               {% endif %}
               {% if option.type == 'text' %}
               <div class="field{% if option.required %} required {% endif %}">
-                <label class="label" for="input-option{{ option.product_option_id }}">{{ option.name }}</label>
+                <label class="label is-size-5" for="input-option{{ option.product_option_id }}">{{ option.name }}</label>
                 <input type="text" name="option[{{ option.product_option_id }}]" value="{{ option.value }}"
                   placeholder="{{ option.name }}" id="input-option{{ option.product_option_id }}" class="input" />
               </div>
               {% endif %}
               {% if option.type == 'textarea' %}
               <div class="field{% if option.required %} required {% endif %}">
-                <label class="label" for="input-option{{ option.product_option_id }}">{{ option.name }}</label>
+                <label class="label is-size-5" for="input-option{{ option.product_option_id }}">{{ option.name }}</label>
                 <textarea name="option[{{ option.product_option_id }}]" rows="5" placeholder="{{ option.name }}"
                   id="input-option{{ option.product_option_id }}" class="textarea">{{ option.value }}</textarea>
               </div>
               {% endif %}
               {% if option.type == 'file' %}
               <div class="field{% if option.required %} required {% endif %}">
-                <label class="label">{{ option.name }}</label>
+                <label class="label is-size-5">{{ option.name }}</label>
                 <button type="button" id="button-upload{{ option.product_option_id }}"
                   class="button is-primary is-outlined">{{ button_upload }}</button>
                 <input type="hidden" name="option[{{ option.product_option_id }}]" value=""
@@ -280,7 +280,7 @@
               {% endif %}
               {% if option.type == 'date' %}
               <div class="field{% if option.required %} required {% endif %}">
-                <label class="label" for="input-option{{ option.product_option_id }}">{{ option.name }}</label>
+                <label class="label is-size-5" for="input-option{{ option.product_option_id }}">{{ option.name }}</label>
                 <div class="control">
                   <input type="date" name="option[{{ option.product_option_id }}]" value="{{ option.value }}"
                     id="input-option{{ option.product_option_id }}" class="input" />
@@ -289,7 +289,7 @@
               {% endif %}
               {% if option.type == 'datetime' %}
               <div class="field{% if option.required %} required {% endif %}">
-                <label class="label" for="input-option{{ option.product_option_id }}">{{ option.name }}</label>
+                <label class="label is-size-5" for="input-option{{ option.product_option_id }}">{{ option.name }}</label>
                 <div class="control">
                   <input type="datetime-local" name="option[{{ option.product_option_id }}]" value="{{ option.value }}"
                     id="input-option{{ option.product_option_id }}" class="input" />
@@ -298,7 +298,7 @@
               {% endif %}
               {% if option.type == 'time' %}
               <div class="field{% if option.required %} required {% endif %}">
-                <label class="label" for="input-option{{ option.product_option_id }}">{{ option.name }}</label>
+                <label class="label is-size-5" for="input-option{{ option.product_option_id }}">{{ option.name }}</label>
                 <div class="control">
                   <input type="time" name="option[{{ option.product_option_id }}]" value="{{ option.value }}"
                     id="input-option{{ option.product_option_id }}" class="input" />
@@ -311,7 +311,7 @@
             {% if recurrings %}
             <hr>
             <div class="field required product-recurring">
-              <label class="label">{{ text_payment_recurring }}</label>
+              <label class="label is-size-5">{{ text_payment_recurring }}</label>
               <div class="control">
                 <div class="select is-fullwidth">
                   <select name="recurring_id">
@@ -440,7 +440,7 @@
                 <div class="field">
                   <label class="label">{{ entry_rating }}</label>
                   <div class="control is-flex is-align-items-center score">
-                    <span class="tag is-clickable mr-1" data-score="1">
+                    <span class="tag is-light is-clickable mr-1" data-score="1">
                       <span class="icon-text">
                         <span class="icon">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -452,7 +452,7 @@
                         <span>1</span>
                       </span>
                     </span>
-                    <span class="tag is-clickable mr-1" data-score="2">
+                    <span class="tag is-light is-clickable mr-1" data-score="2">
                       <span class="icon-text">
                         <span class="icon">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -464,7 +464,7 @@
                         <span>2</span>
                       </span>
                     </span>
-                    <span class="tag is-clickable mr-1" data-score="3">
+                    <span class="tag is-light is-clickable mr-1" data-score="3">
                       <span class="icon-text">
                         <span class="icon">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -476,7 +476,7 @@
                         <span>3</span>
                       </span>
                     </span>
-                    <span class="tag is-clickable mr-1" data-score="4">
+                    <span class="tag is-light is-clickable mr-1" data-score="4">
                       <span class="icon-text">
                         <span class="icon">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -488,7 +488,7 @@
                         <span>4</span>
                       </span>
                     </span>
-                    <span class="tag is-clickable" data-score="5">
+                    <span class="tag is-light is-clickable" data-score="5">
                       <span class="icon-text">
                         <span class="icon">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"

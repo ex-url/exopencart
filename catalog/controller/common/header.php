@@ -46,6 +46,23 @@ class ControllerCommonHeader extends Controller {
     $this->document->addStyle('catalog/view/theme/' . $template_folder . '/css/ui.min.css');
     $this->document->addStyle('catalog/view/theme/' . $template_folder . '/css/main.css');
 
+    $theme = 'light';
+
+    if (isset($this->request->cookie['theme'])) {
+      $theme = in_array($this->request->cookie['theme'], ['light', 'dark'])
+        ? $this->request->cookie['theme']
+        : $this->config->get('config_default_mode');
+    } else {
+      $theme = $this->config->get('config_default_mode');
+    }
+
+    $data['theme'] = $theme;
+    $data['show_theme_toggle'] = $this->config->get('config_toggle_mode');
+
+    if ($this->config->get('config_toggle_mode') || $theme == 'dark') {
+      $this->document->addStyle('catalog/view/theme/' . $template_folder . '/css/dark.css');
+    }
+
     $data['title'] = $this->document->getTitle();
 
     $data['base'] = $server;
@@ -55,7 +72,7 @@ class ControllerCommonHeader extends Controller {
     $data['robots'] = $this->document->getRobots();
     $data['styles'] = !$this->config->get('developer_css') ? $this->document->getStyles() : $this->getCompressedStyles();
     $data['scripts'] = !$this->config->get('developer_js') ? $this->document->getScripts('header') : $this->getCompressedScripts();
-    $data['comporess_js'] = !$this->config->get('developer_js');
+    $data['compress_js'] = $this->config->get('developer_js');
     $data['lang'] = $this->language->get('code');
     $data['direction'] = $this->language->get('direction');
     $data['name'] = $this->config->get('config_name');

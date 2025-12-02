@@ -44,7 +44,7 @@ $_['entry_bad']                = 'Bad';
 // Tabs
 $_['tab_general']              = 'General';
 $_['tab_attribute']            = 'Specification';
-$_['tab_review']               = 'Reviews&nbsp;<span class="tag">%s</span>';
+$_['tab_review']               = 'Reviews&nbsp;<span class="tag is-light">%s</span>';
 
 // Error
 $_['error_name']               = 'Warning: Review Name must be between 1 and 32 characters!';
