@@ -1120,6 +1120,42 @@ class ControllerSettingSetting extends Controller {
       $data['config_file_mime_allowed'] = $this->config->get('config_file_mime_allowed');
     }
 
+    if (isset($this->request->post['config_cache_product'])) {
+      $data['config_cache_product'] = $this->request->post['config_cache_product'];
+    } else {
+      $data['config_cache_product'] = $this->config->get('config_cache_product');
+    }
+
+    if (isset($this->request->post['config_cache_product_attribute'])) {
+      $data['config_cache_product_attribute'] = $this->request->post['config_cache_product_attribute'];
+    } else {
+      $data['config_cache_product_attribute'] = $this->config->get('config_cache_product_attribute');
+    }
+
+    if (isset($this->request->post['config_cache_product_option'])) {
+      $data['config_cache_product_option'] = $this->request->post['config_cache_product_option'];
+    } else {
+      $data['config_cache_product_option'] = $this->config->get('config_cache_product_option');
+    }
+
+    if (isset($this->request->post['config_cache_warmer'])) {
+      $data['config_cache_warmer'] = $this->request->post['config_cache_warmer'];
+    } else {
+      $data['config_cache_warmer'] = $this->config->get('config_cache_warmer');
+    }
+
+    if (isset($this->request->post['config_cache_warmer_key'])) {
+      $data['config_cache_warmer_key'] = $this->request->post['config_cache_warmer_key'];
+    } else {
+      $data['config_cache_warmer_key'] = $this->config->get('config_cache_warmer_key');
+    }
+
+    if ($data['config_cache_warmer_key']) {
+      $data['cache_warmer_url'] = HTTPS_CATALOG . 'index.php?route=api/cache/warmer&key=' . $data['config_cache_warmer_key'];
+    } else {
+      $data['cache_warmer_url'] = '';
+    }
+
     if (isset($this->request->post['config_maintenance'])) {
       $data['config_maintenance'] = $this->request->post['config_maintenance'];
     } else {

@@ -150,8 +150,7 @@ class ModelCatalogProduct extends Model {
       }
     }
 
-
-    $this->cache->delete('product');
+    $this->cache->delete('product.' . $product_id);
 
     if ($this->config->get('config_seo_pro')) {
       $this->cache->delete('seopro');
@@ -336,7 +335,7 @@ class ModelCatalogProduct extends Model {
       }
     }
 
-    $this->cache->delete('product');
+    $this->cache->delete('product.' . $product_id);
 
     if ($this->config->get('config_seo_pro')) {
       $this->cache->delete('seopro');

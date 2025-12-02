@@ -1585,6 +1585,88 @@
                 </div>
               </fieldset>
               <fieldset>
+                <legend>{{ text_cache }}</legend>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">{{ entry_cache_product }}</label>
+                  <div class="col-sm-10">
+                    <label class="radio-inline">
+                      <input type="radio" name="config_cache_product" value="1" {{ config_cache_product ? 'checked' : '' }}>
+                      {{ text_yes }}
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="config_cache_product" value="0" {{ not config_cache_product ? 'checked' : '' }}>
+                      {{ text_no }}
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">{{ entry_cache_product_attribute }}</label>
+                  <div class="col-sm-10">
+                    <label class="radio-inline">
+                      <input type="radio" name="config_cache_product_attribute" value="1" {{ config_cache_product_attribute ? 'checked' : '' }}>
+                      {{ text_yes }}
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="config_cache_product_attribute" value="0" {{ not config_cache_product_attribute ? 'checked' : '' }}>
+                      {{ text_no }}
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">{{ entry_cache_product_option }}</label>
+                  <div class="col-sm-10">
+                    <label class="radio-inline">
+                      <input type="radio" name="config_cache_product_option" value="1" {{ config_cache_product_option ? 'checked' : '' }}>
+                      {{ text_yes }}
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="config_cache_product_option" value="0" {{ not config_cache_product_option ? 'checked' : '' }}>
+                      {{ text_no }}
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">{{ entry_cache_warmer }}</label>
+                  <div class="col-sm-10">
+                    <label class="radio-inline">
+                      <input type="radio" name="config_cache_warmer" value="1" {{ config_cache_warmer ? 'checked' : '' }}>
+                      {{ text_yes }}
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="config_cache_warmer" value="0" {{ not config_cache_warmer ? 'checked' : '' }}>
+                      {{ text_no }}
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">{{ entry_cache_warmer_key }}</label>
+                  <div class="col-sm-10">
+                    <div class="input-group">
+                      <input type="text" name="config_cache_warmer_key" value="{{ config_cache_warmer_key }}" id="input-cache-warmer-key" class="form-control" placeholder="{{ entry_cache_warmer_key_placeholder }}" readonly>
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-primary" id="generate-cache-key">
+                          <i class="fa fa-refresh"></i> {{ button_generate_key }}
+                        </button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                {% if config_cache_warmer_key %}
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">{{ entry_cache_warmer_url }}</label>
+                  <div class="col-sm-10">
+                    <div class="well well-sm">
+                      <code id="cache-warmer-url">{{ cache_warmer_url }}</code>
+                      <button type="button" class="btn btn-xs btn-default pull-right" onclick="copyToClipboard('#cache-warmer-url')">
+                        <i class="fa fa-copy"></i>
+                      </button>
+                    </div>
+                    <p class="help-block">{{ help_cache_warmer }}</p>
+                  </div>
+                </div>
+                {% endif %}
+              </fieldset>
+              <fieldset>
                 <legend>{{ text_security }}</legend>
                 <div class="form-group">
                   <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="{{ help_secure }}">{{ entry_secure }}</span></label>
@@ -2079,5 +2161,36 @@ $('select[name=\'config_country_id\']').on('change', function() {
 });
 
 $('select[name=\'config_country_id\']').trigger('change');
+//--></script>
+  <script type="text/javascript"><!--
+$('#generate-cache-key').on('click', function() {
+  var key = generateRandomKey(32);
+  $('#input-cache-warmer-key').val(key);
+});
+
+function generateRandomKey(length) {
+  var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  var result = '';
+  for (var i = 0; i < length; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return result;
+}
+
+function copyToClipboard(element) {
+  var text = $(element).text();
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(function() {
+      alert('{{ text_copy_success }}');
+    });
+  } else {
+    var temp = $('<input>');
+    $('body').append(temp);
+    temp.val(text).select();
+    document.execCommand('copy');
+    temp.remove();
+    alert('{{ text_copy_success }}');
+  }
+}
 //--></script></div>
 {{ footer }}
