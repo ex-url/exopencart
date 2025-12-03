@@ -78,3 +78,25 @@ RewriteRule ^([^?]*) index.php?_route_=$1 [L,QSA]
 
 # 7. disable open_basedir limitations
 # php_admin_value open_basedir none
+
+# 8. Increase session lifetime to prevent users from being logged out too quickly
+#
+# IMPORTANT: Choose the method based on your server configuration:
+#
+# For PHP-FPM servers (modern hosting, Devilbox, most cloud hosting):
+#   - Use .user.ini file in project root (see .user.ini file)
+#   - DO NOT uncomment lines below (will cause 500 Internal Server Error)
+#   - Check: phpinfo() → "Server API" = "FPM-FCGI" or "CGI/FastCGI"
+#
+# For mod_php servers (older shared hosting, some traditional servers):
+#   - UNCOMMENT lines below to activate session settings
+#   - .user.ini will be ignored automatically (if exists)
+#   - Check: phpinfo() → "Server API" = "Apache 2.0 Handler"
+#
+# Adjust the values as needed for your project:
+# 2592000 = 30 days, 604800 = 7 days, 1209600 = 14 days
+#
+# php_value session.gc_maxlifetime 2592000
+# php_value session.cookie_lifetime 2592000
+# php_value session.gc_probability 1
+# php_value session.gc_divisor 100
