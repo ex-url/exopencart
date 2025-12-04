@@ -385,7 +385,6 @@
             <p class="help is-danger">{{ text_minimum }}</p>
             {% endif %}
             <hr class="mb-0">
-
             {% if attribute_groups %}
             <div id="product-attributes" class="my-5">
               <div class="title is-4">
@@ -569,7 +568,7 @@
                       {% if product.stickers %}
                       <span class="stickers is-block mb-0">
                       {% for sticker in product.stickers %}
-                        <span class="is-block mb-1">
+                        <span class="is-block">
                           <span class="{{ sticker.class }}">{{ sticker.content|html_entity_decode }}</span>
                         </span>                    
                       {% endfor %}

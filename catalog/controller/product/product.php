@@ -248,7 +248,7 @@ class ControllerProductProduct extends Controller {
       $this->document->addStyle('catalog/view/theme/' . $template_folder . '/css/fancybox.min.css');
       $this->document->addScript('catalog/view/theme/' . $template_folder . '/js/fancybox.min.js');
 
-      $data['text_minimum'] = sprintf($this->language->get('text_minimum'), $product_info['minimum']);
+      $data['text_minimum'] = sprintf($this->language->get('text_minimum'), rtrim(rtrim(number_format((float)$product_info['minimum'], 4, '.', ''), '0'), '.'));
       $data['text_login'] = sprintf($this->language->get('text_login'), $this->url->link('account/login', '', true), $this->url->link('account/register', '', true));
 
       $this->load->model('catalog/review');
@@ -389,7 +389,7 @@ class ControllerProductProduct extends Controller {
       }
 
       if ($product_info['minimum']) {
-        $data['minimum'] = $product_info['minimum'];
+        $data['minimum'] = rtrim(rtrim(number_format((float)$product_info['minimum'], 4, '.', ''), '0'), '.');
       } else {
         $data['minimum'] = 1;
       }
@@ -482,7 +482,7 @@ class ControllerProductProduct extends Controller {
           'quantity'    => $result['quantity'],
           'quantity_unit'    => $result['quantity_unit'],
           'tax'         => $tax,
-          'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
+          'minimum'     => $result['minimum'] > 0 ? rtrim(rtrim(number_format((float)$result['minimum'], 4, '.', ''), '0'), '.') : 1,
           'rating'      => $rating,
           'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'])
         );

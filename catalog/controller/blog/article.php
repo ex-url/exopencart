@@ -275,7 +275,7 @@ class ControllerBlogArticle extends Controller {
           'quantity'    => $result['quantity'],
           'quantity_unit'    => $result['quantity_unit'],
           'tax'         => $tax,
-          'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
+          'minimum'     => $result['minimum'] > 0 ? rtrim(rtrim(number_format((float)$result['minimum'], 4, '.', ''), '0'), '.') : 1,
           'rating'      => $rating,
           'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'])
         );
