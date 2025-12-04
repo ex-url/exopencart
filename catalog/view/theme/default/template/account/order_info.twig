@@ -75,7 +75,7 @@
             </div>
             <div class="column is-2-desktop is-4-tablet is-6-mobile has-text-right">
               <p class="is-size-7 has-text-grey">{{ column_price }}</p>
-              <p>{{ product.price }}</p>
+              <p>{{ product.price }}{% if product.quantity_unit %}<small class="has-text-grey"> / {{ product.quantity_unit }}</small>{% endif %}</p>
             </div>
             <div class="column is-2-desktop is-4-tablet is-6-mobile">
               <p class="is-size-7 has-text-grey">{{ column_total }}</p>

@@ -106,9 +106,9 @@
                 {% if price %}
                 <div class="price is-relative">
                   {% if not special %}
-                  <span class="is-size-2 has-text-weight-bold actual-price" itemprop="price">{{ price }}</span>
+                  <span class="is-size-2 has-text-weight-bold actual-price" itemprop="price">{{ price }}{% if quantity_unit %}<small class="has-text-grey"> / {{ quantity_unit }}</small>{% endif %}</span>
                   {% else %}
-                  <span class="is-size-2 has-text-weight-bold actual-price" itemprop="price">{{ special }}</span>
+                  <span class="is-size-2 has-text-weight-bold actual-price" itemprop="price">{{ special }}{% if quantity_unit %}<small class="has-text-grey"> / {{ quantity_unit }}</small>{% endif %}</span>
                   <span class="has-text-grey is-size-4 old-price">{{ price }}</span>
                   {% endif %}
                   {% if tax %}
@@ -586,9 +586,9 @@
                       {% if product.price %}
                       <div class="price is-block my-3">
                         {% if not product.special %}
-                        <span class="actual-price">{{ product.price }}</span>
+                        <span class="actual-price">{{ product.price }}{% if product.quantity_unit %}<small class="has-text-grey"> / {{ product.quantity_unit }}</small>{% endif %}</span>
                         {% else %}
-                        <span class="actual-price">{{ product.special }}</span>
+                        <span class="actual-price">{{ product.special }}{% if product.quantity_unit %}<small class="has-text-grey"> / {{ product.quantity_unit }}</small>{% endif %}</span>
                         <span class="old-price has-text-grey">{{ product.price }}</span>
                         {% endif %}
                         {% if product.tax %}
@@ -725,8 +725,10 @@
         currencyDisplay: 'narrowSymbol',
         maximumFractionDigits: (basePrice.toString().split('.')[1] || '').length
       });
+    
     let formattedPrice = formatter.format(currentPrice);
-    $('.actual-price').text(formattedPrice);
+    let unit = '{{ quantity_unit }}' ? '<small class="has-text-grey"> / {{quantity_unit}}</small>' : '';
+    $('#product-main .actual-price').html(formattedPrice + unit);
   });
   // trigger change to set initial price by default options
   $('#product-options input[type="radio"], #product-options input[type="checkbox"], #product-options select').trigger('change');

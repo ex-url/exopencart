@@ -101,9 +101,9 @@
                       {% if product.price %}
                       <div class="price is-block my-3">
                         {% if not product.special %}
-                        <span class="actual-price">{{ product.price }}</span>
+                        <span class="actual-price">{{ product.price }}{% if product.quantity_unit %}<small class="has-text-grey"> / {{ product.quantity_unit }}</small>{% endif %}</span>
                         {% else %}
-                        <span class="actual-price">{{ product.special }}</span>
+                        <span class="actual-price">{{ product.special }}{% if product.quantity_unit %}<small class="has-text-grey"> / {{ product.quantity_unit }}</small>{% endif %}</span>
                         <span class="old-price has-text-grey">{{ product.price }}</span>
                         {% endif %}
                         {% if product.tax %}

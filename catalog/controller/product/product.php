@@ -261,7 +261,8 @@ class ControllerProductProduct extends Controller {
       $data['model'] = $product_info['model'];
       $data['reward'] = $product_info['reward'];
       $data['points'] = $product_info['points'];
-      $data['quantity'] = $product_info['quantity'];
+      $data['quantity'] = rtrim(rtrim(number_format((float)$product_info['quantity'], 4, '.', ''), '0'), '.');
+      $data['quantity_unit'] = $product_info['quantity_unit'];
       $data['description'] = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
 
       $shipping = $product_info['shipping'];
@@ -275,7 +276,7 @@ class ControllerProductProduct extends Controller {
       if ($product_info['quantity'] <= 0) {
         $data['stock'] = $product_info['stock_status'];
       } elseif ($this->config->get('config_stock_display')) {
-        $data['stock'] = $product_info['quantity'];
+        $data['stock'] = $product_info['quantity_unit'] ? rtrim(rtrim(number_format((float)$product_info['quantity'], 4, '.', ''), '0'), '.') . ' ' . $product_info['quantity_unit'] : rtrim(rtrim(number_format((float)$product_info['quantity'], 4, '.', ''), '0'), '.');
       } else {
         $data['stock'] = $this->language->get('text_instock');
       }
@@ -479,6 +480,7 @@ class ControllerProductProduct extends Controller {
           'stock_status' => $result['stock_status'],
           'stock'       => $result['quantity'] <= 0 ? $result['stock_status'] : $this->language->get('text_instock'),
           'quantity'    => $result['quantity'],
+          'quantity_unit'    => $result['quantity_unit'],
           'tax'         => $tax,
           'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
           'rating'      => $rating,

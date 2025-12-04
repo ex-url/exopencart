@@ -165,7 +165,7 @@
                   {% endfor %}</td>
                 <td class="text-left">{{ product.model }}</td>
                 <td class="text-right">{{ product.quantity }}</td>
-                <td class="text-right">{{ product.price }}</td>
+                <td class="text-right">{{ product.price }}{% if product.quantity_unit %}<small class="has-text-grey"> / {{ product.quantity_unit }}</small>{% endif %}</td>
                 <td class="text-right">{{ product.total }}</td>
               </tr>
             {% endfor %}

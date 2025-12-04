@@ -61,6 +61,8 @@ class ControllerCheckoutCart extends Controller {
 
       $products = $this->cart->getProducts();
 
+      $this->log->write($products);
+
       foreach ($products as $product) {
         $product_total = 0;
 
@@ -141,7 +143,7 @@ class ControllerCheckoutCart extends Controller {
           'model'     => $product['model'],
           'option'    => $option_data,
           'recurring' => $recurring,
-          'quantity'  => $product['quantity'],
+          'quantity'  => rtrim(rtrim(number_format((float)$product['quantity'], 4, '.', ''), '0'), '.'),
           'stock'     => $product['stock'] ? true : !(!$this->config->get('config_stock_checkout') || $this->config->get('config_stock_warning')),
           'reward'    => ($product['reward'] ? sprintf($this->language->get('text_points'), $product['reward']) : ''),
           'price'     => $price,
@@ -266,7 +268,8 @@ class ControllerCheckoutCart extends Controller {
 
     if ($product_info) {
       if (isset($this->request->post['quantity'])) {
-        $quantity = (int)$this->request->post['quantity'];
+        $quantity = str_replace(',', '.', $this->request->post['quantity']);
+        $quantity = (float)$quantity;
       } else {
         $quantity = 1;
       }
@@ -377,7 +380,10 @@ class ControllerCheckoutCart extends Controller {
 
     if (!empty($this->request->post['quantity']) && !empty($this->request->post['key'])) {
 
-      $this->cart->update($this->request->post['key'], $this->request->post['quantity']);
+      $quantity = str_replace(',', '.', $this->request->post['quantity']);
+      $quantity = (float)$quantity;
+
+      $this->cart->update($this->request->post['key'], $quantity);
 
       unset($this->session->data['shipping_method']);
       unset($this->session->data['shipping_methods']);

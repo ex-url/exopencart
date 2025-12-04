@@ -240,6 +240,7 @@ class ControllerProductSearch extends Controller {
           'stock_status' => $result['stock_status'],
           'stock'       => $result['quantity'] <= 0 ? $result['stock_status'] : $this->language->get('text_instock'),
           'quantity'    => $result['quantity'],
+          'quantity_unit'    => $result['quantity_unit'],
           'tax'         => $tax,
           'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
           'rating'      => $result['rating'],

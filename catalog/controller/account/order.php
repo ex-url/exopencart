@@ -268,7 +268,7 @@ class ControllerAccountOrder extends Controller {
           );
         }
 
-        $product_info = $this->model_catalog_product->getProduct($product['product_id']);
+        $product_info = $this->model_catalog_product->getProduct($product['product_id'], true);
 
         if ($product_info) {
           $reorder = $this->url->link('account/order/reorder', 'order_id=' . $order_id . '&order_product_id=' . $product['order_product_id'], true);
@@ -280,7 +280,8 @@ class ControllerAccountOrder extends Controller {
           'name'     => $product['name'],
           'model'    => $product['model'],
           'option'   => $option_data,
-          'quantity' => $product['quantity'],
+          'quantity' => rtrim(rtrim(number_format((float)$product['quantity'], 4, '.', ''), '0'), '.'),
+          'quantity_unit' => $product_info['quantity_unit'],
           'price'    => $this->currency->format($product['price'] + ($this->config->get('config_tax') ? $product['tax'] : 0), $order_info['currency_code'], $order_info['currency_value']),
           'total'    => $this->currency->format($product['total'] + ($this->config->get('config_tax') ? ($product['tax'] * $product['quantity']) : 0), $order_info['currency_code'], $order_info['currency_value']),
           'reorder'  => $reorder,

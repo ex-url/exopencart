@@ -96,6 +96,7 @@ class ControllerAccountWishList extends Controller {
           'stock_status' => $product_info['stock_status'],
           'stock'       => $product_info['quantity'] <= 0 ? $product_info['stock_status'] : $this->language->get('text_instock'),
           'quantity'    => $product_info['quantity'],
+          'quantity_unit'  => $product_info['quantity_unit'],
           'minimum'     => $product_info['minimum'] > 0 ? $product_info['minimum'] : 1,
           'href'       => $this->url->link('product/product', 'product_id=' . $product_info['product_id']),
           'remove'     => $this->url->link('account/wishlist', 'remove=' . $product_info['product_id'])

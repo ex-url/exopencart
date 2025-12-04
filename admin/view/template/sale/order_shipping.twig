@@ -96,7 +96,7 @@
             {% endfor %}</td>
           <td>{{ product.weight }}</td>
           <td>{{ product.model }}</td>
-          <td class="text-right">{{ product.quantity }}</td>
+          <td class="text-right">{{ product.quantity }}{% if product.quantity_unit %}<small class="has-text-grey"> {{ product.quantity_unit }}</small>{% endif %}</td>
         </tr>
         {% endfor %}
       </tbody>

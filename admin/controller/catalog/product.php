@@ -663,7 +663,7 @@ class ControllerCatalogProduct extends Controller {
         'model'      => $result['model'],
         'price'      => $this->currency->format($result['price'], $this->config->get('config_currency')),
         'special'    => $special,
-        'quantity'   => $result['quantity'],
+        'quantity'   => rtrim(rtrim(number_format((float)$result['quantity'], 4, '.', ''), '0'), '.'),
         'status'     => $result['status'] ? $this->language->get('text_enabled_short') : $this->language->get('text_disabled_short'),
         'noindex'    => $result['noindex'] ? $this->language->get('text_enabled_short') : $this->language->get('text_disabled_short'),
         'href_shop'  => HTTP_CATALOG . 'index.php?route=product/product&product_id=' . $result['product_id'],
@@ -1160,6 +1160,18 @@ class ControllerCatalogProduct extends Controller {
     } else {
       $data['quantity'] = 1;
     }
+
+    if (isset($this->request->post['quantity_class_id'])) {
+      $data['quantity_class_id'] = $this->request->post['quantity_class_id'];
+    } elseif (!empty($product_info)) {
+      $data['quantity_class_id'] = $product_info['quantity_class_id'];
+    } else {
+      $data['quantity_class_id'] = 0;
+    }
+
+    $this->load->model('localisation/quantity_class');
+    $data['quantity_classes'] = $this->model_localisation_quantity_class->getQuantityClasses();
+
 
     if (isset($this->request->post['minimum'])) {
       $data['minimum'] = $this->request->post['minimum'];
