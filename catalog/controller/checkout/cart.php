@@ -61,8 +61,6 @@ class ControllerCheckoutCart extends Controller {
 
       $products = $this->cart->getProducts();
 
-      $this->log->write($products);
-
       foreach ($products as $product) {
         $product_total = 0;
 
@@ -99,7 +97,7 @@ class ControllerCheckoutCart extends Controller {
 
           $option_data[] = array(
             'name'  => $option['name'],
-            'value' => (utf8_strlen($value) > 20 ? utf8_substr($value, 0, 20) . '..' : $value)
+            'value' => (utf8_strlen($value) > 20 ? utf8_substr($value, 0, 20) . '...' : $value)
           );
         }
 
@@ -144,6 +142,7 @@ class ControllerCheckoutCart extends Controller {
           'option'    => $option_data,
           'recurring' => $recurring,
           'quantity'  => rtrim(rtrim(number_format((float)$product['quantity'], 4, '.', ''), '0'), '.'),
+          'minimum'   => rtrim(rtrim(number_format((float)$product['minimum'], 4, '.', ''), '0'), '.'),
           'stock'     => $product['stock'] ? true : !(!$this->config->get('config_stock_checkout') || $this->config->get('config_stock_warning')),
           'reward'    => ($product['reward'] ? sprintf($this->language->get('text_points'), $product['reward']) : ''),
           'price'     => $price,

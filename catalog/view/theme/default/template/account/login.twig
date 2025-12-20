@@ -33,9 +33,14 @@
         {% if error_warning %}
         <div class="notification is-danger is-light"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}</div>
         {% endif %}
-        <div class="login-form">
-          <div class="title is-4">
-            {{ text_login }}
+        <div class="box mx-auto" style="max-width: 480px;">
+          <div class="title is-4 is-flex is-align-items-center">
+            <span class="icon is-medium has-text-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="32" width="32">
+                <path d="M5 6.25V5c0 -1.725625 0.774375 -3.125 2.5 -3.125s2.5 1.399375 2.5 3.125v1.25M2.1875 11.125v-2.875c0 -0.7000000000000001 0 -1.05 0.13625 -1.316875a1.25 1.25 0 0 1 0.54625 -0.546875c0.2675 -0.135625 0.6174999999999999 -0.135625 1.3175000000000001 -0.135625h6.625c0.7000000000000001 0 1.05 0 1.3175000000000001 0.135625a1.25 1.25 0 0 1 0.54625 0.54625c0.13625 0.2675 0.13625 0.6174999999999999 0.13625 1.3175000000000001v2.875c0 0.7000000000000001 0 1.05 -0.13625 1.3175000000000001a1.25 1.25 0 0 1 -0.54625 0.54625C11.8625 13.125 11.512500000000001 13.125 10.8125 13.125H4.1875c-0.7000000000000001 0 -1.05 0 -1.3175000000000001 -0.13625a1.25 1.25 0 0 1 -0.54625 -0.54625C2.1875 12.175625 2.1875 11.825624999999999 2.1875 11.125" stroke-width="1"></path>
+              </svg>
+            </span>
+            <span class="ml-2">{{ text_login }}</span>            
           </div>
           <form action="{{ action }}" method="post" enctype="multipart/form-data">
             <div class="field">
@@ -51,13 +56,29 @@
             </div>
             <div class="block">
               <input type="hidden" name="redirect" value="{{ redirect }}" />
-              <button type="submit" class="button is-primary is-outlined">{{ button_login }}</button>
+              <button type="submit" class="button is-primary is-light">
+                <span class="icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="20" width="20">
+                    <path d="M8.435 13.125H4.0625c-0.690625 0 -1.25 -0.719375 -1.25 -1.606875V3.48125c0 -0.8868750000000001 0.559375 -1.60625 1.25 -1.60625h4.375" stroke-width="1"></path>
+                    <path d="M8.125 9.6875 5.9375 7.5 8.125 5.3125m4.0625 2.185h-6.25" stroke-width="1"></path>
+                  </svg>
+                </span>
+                <span>{{ button_login }} </span>                               
+              </button>
             </div>
           </form>
           <hr>
-          <div class="block">
-            <p class="mb-2">Нет аккаунта?</p>
-            <a href="{{ register }}" class="button is-primary is-outlined">{{ button_create_account }}</a>
+          <div class="block has-text-centered">
+            <p class="mb-2 is-size-5">{{ text_no_account }}</p>
+            <a href="{{ register }}" class="button is-success is-medium is-fullwidth">
+              <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="24" width="24">
+                  <path d="M5.625 4.6875a1.875 1.875 0 1 0 3.75 0 1.875 1.875 0 1 0 -3.75 0" stroke-width="1"></path>
+                  <path d="M12.1875 12.8125c-0.296875 -5.833125 -9.078125 -5.833125 -9.375 0m3.4375 -1.25h2.5m-1.25 -1.25v2.5" stroke-width="1"></path>
+                </svg>
+              </span>
+              <span>{{ button_create_account }}</span>              
+            </a>
           </div>
         </div>
       </div>

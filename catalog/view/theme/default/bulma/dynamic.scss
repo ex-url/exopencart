@@ -12,6 +12,7 @@ $black: #000000;
 $yellow: #ffc21c;
 
 // set styles for elements and components
+$shadow: 0 1px 3px 0 rgb(0 0 0 / 15%);
 $radius-small: 6px;
 $radius: 12px;
 $radius-large: 18px;
@@ -34,6 +35,7 @@ $desktop: 960px + (2 * $gap);
 $widescreen: 1280px + (2 * $gap);
 $fullhd: 1600px + (2 * $gap);
 
+$box-padding: 1.5rem;
 $box-link-hover-shadow: 0 0.5em 1em -0.125em rgba($primary, 0.1), 0 0 0 1px $primary;
 
 $breadcrumb-item-color: hsl(0, 0%, 86%);

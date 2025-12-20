@@ -28,18 +28,18 @@
       {% endif %}
       <div id="content" class="{{ class }}" itemscope itemtype="https://schema.org/Product">
         <h1 class="title is-3 has-text-weight-normal" id="heading" itemprop="name">{{ heading_title }}</h1>
-        <div class="tabs has-background-white mb-5">
+        <div class="tabs mb-5 has-background-white-bis">
           <ul>
-            <li class="has-background-white is-active" data-target="#heading">
+            <li class="is-active" data-target="#heading">
               <a>{{ tab_general }}</a>
             </li>
             {% if attribute_groups %}
-            <li class="has-background-white" data-target="#product-attributes">
+            <li class="" data-target="#product-attributes">
               <a>{{ tab_attribute }}</a>
             </li>
             {% endif %}
             {% if review_status %}
-            <li class="has-background-white" data-target="#product-reviews">
+            <li class="" data-target="#product-reviews">
               <a>{{ tab_review }}</a>
             </li>
             {% endif %}
@@ -102,13 +102,13 @@
           {% endif %}
           <div id="product" class="product-info {{ class }}">
             <div id="product-main" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-              <div class="is-flex is-justify-content-space-between is-align-items-center">
+              <div class="is-flex is-justify-content-space-between">
                 {% if price %}
-                <div class="price is-relative">
+                <div class="price is-relative is-size-2-desktop is-size-2-tablet is-size-3-mobile mb-5">
                   {% if not special %}
-                  <span class="is-size-2 has-text-weight-bold actual-price" itemprop="price">{{ price }}{% if quantity_unit %}<small class="has-text-grey"> / {{ quantity_unit }}</small>{% endif %}</span>
+                  <span class="has-text-weight-bold actual-price" itemprop="price">{{ price }}{% if quantity_unit %}<small class="has-text-grey"> / {{ quantity_unit }}</small>{% endif %}</span>
                   {% else %}
-                  <span class="is-size-2 has-text-weight-bold actual-price" itemprop="price">{{ special }}{% if quantity_unit %}<small class="has-text-grey"> / {{ quantity_unit }}</small>{% endif %}</span>
+                  <span class="has-text-weight-bold actual-price" itemprop="price">{{ special }}{% if quantity_unit %}<small class="has-text-grey"> / {{ quantity_unit }}</small>{% endif %}</span>
                   <span class="has-text-grey is-size-4 old-price">{{ price }}</span>
                   {% endif %}
                   {% if tax %}
@@ -157,31 +157,30 @@
               <ul class="heading-list">
                 {% if points %}
                 <li class="is-flex is-justify-content-space-between is-align-items-center py-1">
-                  <span class="has-background-white pr-1">{{ text_points }}</span>
-                  <span class="has-background-white has-text-weight-bold pl-1">{{ points }}</span>
+                  <span class="pr-1">{{ text_points }}</span>
+                  <span class="has-text-weight-bold pl-1">{{ points }}</span>
                 </li>
                 {% endif %}
                 <li class="is-flex is-justify-content-space-between is-align-items-center py-1">
-                  <span class="has-background-white pr-1">{{ text_model }}</span>
-                  <span class="has-background-white has-text-weight-bold pl-1">{{ model }}</span>
+                  <span class="pr-1">{{ text_model }}</span>
+                  <span class="has-text-weight-bold pl-1">{{ model }}</span>
                 </li>
                 <li class="is-flex is-justify-content-space-between is-align-items-center py-1">
-                  <span class="has-background-white pr-1">{{ text_stock }}</span>
+                  <span class="pr-1">{{ text_stock }}</span>
                   <span
-                    class="has-background-white has-text-weight-bold pl-1 {{ quantity > 0 ? 'has-text-success' : 'has-text-danger' }}"
+                    class="tag has-text-weight-bold {{ quantity > 0 ? 'is-success' : 'is-danger' }}"
                     itemprop="availability">{{ stock }}</span>
                 </li>
                 {% if manufacturer %}
                 <li class="is-flex is-justify-content-space-between is-align-items-center py-1">
-                  <span class="has-background-white pr-1">{{ text_manufacturer }}</span>
-                  <a class="has-background-white has-text-weight-bold pl-1" href="{{ manufacturers }}">{{ manufacturer
-                    }}</a>
+                  <span class="pr-1">{{ text_manufacturer }}</span>
+                  <a class="has-text-weight-bold pl-1" href="{{ manufacturers }}">{{ manufacturer }}</a>
                 </li>
                 {% endif %}
                 {% if reward %}
                 <li class="is-flex is-justify-content-space-between is-align-items-center py-1">
-                  <span class="has-background-white pr-1">{{ text_reward }}</span>
-                  <span class="has-background-white has-text-weight-bold pl-1">{{ reward }}</span>
+                  <span class="pr-1">{{ text_reward }}</span>
+                  <span class="has-text-weight-bold pl-1">{{ reward }}</span>
                 </li>
                 {% endif %}
               </ul>
@@ -354,7 +353,11 @@
                   </a>
                 </p>
                 <p class="control">
-                  <button id="button-cart" class="button is-primary" name="button">{{ button_cart }}</button>
+                  <button id="button-cart" class="button is-primary" name="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="24" width="24">
+                      <path d="M6.5625 6.25h2.5m-1.25 -1.25v2.5m2.5 5.625a0.9375 0.9375 0 1 0 0 -1.875 0.9375 0.9375 0 0 0 0 1.875m-5 0a0.9375 0.9375 0 1 0 0 -1.875 0.9375 0.9375 0 0 0 0 1.875M2.31875 3.375h9.508750000000001c0.86125 0 1.4831250000000002 0.79375 1.2468750000000002 1.5925l-1.03375 3.5C11.881250000000001 9.004999999999999 11.3725 9.375 10.79375 9.375H5.07c-0.579375 0 -1.08875 -0.370625 -1.2475 -0.9075zm0 0L1.875 1.875" stroke-width="1"></path>
+                    </svg>
+                  </button>
                 </p>
               </div>
               <input type="hidden" name="product_id" value="{{ product_id }}" />
@@ -362,20 +365,16 @@
                 <button type="button" class="add-to-wishlist button is-primary is-light" title="{{ button_wishlist }}"
                   data-product_id="{{ product_id }}">
                   <span class="icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                      viewBox="0 0 16 16">
-                      <path
-                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="24" width="24">
+                      <path d="M4.84375 2.1875C3.2043749999999998 2.1875 1.875 3.5999999999999996 1.875 5.341875 1.875 8.828125 7.5 12.8125 7.5 12.8125s5.625 -3.984375 5.625 -7.470625C13.125 3.1837500000000003 11.795625000000001 2.1875 10.15625 2.1875c-1.1625 0 -2.16875 0.71 -2.65625 1.74375 -0.48750000000000004 -1.03375 -1.4937500000000001 -1.74375 -2.65625 -1.74375" stroke-width="1"></path>
                     </svg>
                   </span>
                 </button>
                 <button type="button" class="add-to-compare button is-primary is-light" title="{{ button_compare }}"
                   data-product_id="{{ product_id }}">
                   <span class="icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                      viewBox="0 0 16 16">
-                      <path
-                        d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5v12h-2V2h2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z" />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="24" width="24">
+                      <path d="M9.375 5.893125V3.125a1.25 1.25 0 0 0 -1.25 -1.25h-1.25a1.25 1.25 0 0 0 -1.25 1.25v5.17875m3.75 -2.410625V13.125m0 -7.231875h2.5a1.25 1.25 0 0 1 1.25 1.25V11.875a1.25 1.25 0 0 1 -1.25 1.25h-2.5m0 0H5.625m0 0v-4.82125M5.625 13.125H3.125a1.25 1.25 0 0 1 -1.25 -1.25v-2.32125a1.25 1.25 0 0 1 1.25 -1.25h2.5" stroke-width="1"></path>
                     </svg>
                   </span>
                 </button>
@@ -398,8 +397,8 @@
                 <ul class="heading-list">
                   {% for attribute in attribute_group.attribute %}
                   <li class="is-flex is-justify-content-space-between is-align-items-center py-1">
-                    <span class="has-background-white pr-1">{{ attribute.name }}</span>
-                    <span class="has-background-white has-text-weight-bold pl-1">{{ attribute.text }}</span>
+                    <span class="pr-1">{{ attribute.name }}</span>
+                    <span class="has-text-weight-bold pl-1">{{ attribute.text }}</span>
                   </li>
                   {% endfor %}
                 </ul>
@@ -535,8 +534,16 @@
                 {% endif %}
                 {{ captcha }}
                 <div class="buttons">
-                  <button type="button" id="button-review" class="button is-primary is-outlined">{{ button_send
-                    }}</button>
+                  <button type="button" id="button-review" class="button is-primary">
+                    <span class="icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="24" width="24">
+                        <path d="M7.5 13.125a5.625 5.625 0 1 0 -5.625 -5.625c0 0.8999999999999999 0.21125000000000002 1.75 0.5874999999999999 2.5043749999999996 0.283125 0.569375 -0.110625 1.3375000000000001 -0.260625 1.8981249999999998a0.73125 0.73125 0 0 0 0.895625 0.895625c0.560625 -0.15 1.3287499999999999 -0.54375 1.8981249999999998 -0.26A5.6025 5.6025 0 0 0 7.5 13.125" stroke-width="1"></path>
+                      </svg>
+                    </span>
+                    <span>
+                      {{ button_send }}
+                    </span>                    
+                  </button>
                 </div>
                 {% else %}
                 {{ text_login }}
@@ -551,39 +558,42 @@
             <h3 class="title is-3">{{ text_related }}</h3>
             <div class="columns is-mobile is-multiline mt-5">
               {% if column_left and column_right %}
-              {% set class = 'column is-6-fullhd is-6-widescreen is-12-desktop is-6-tablet is-12-mobile' %}
+              {% set class = 'column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile' %}
               {% elseif column_left or column_right %}
-              {% set class = 'column is-4-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile' %}
+              {% set class = 'column is-4-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile' %}
               {% else %}
-              {% set class = 'column is-3-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile' %}
+              {% set class = 'column is-3-fullhd is-4-widescreen is-4-desktop is-6-tablet is-12-mobile' %}
               {% endif %}
               {% for product in products %}
               <div class="{{ class }}">
-                <div class="product-card box">
-                  <div class="image">
-                    <a href="{{ product.href }}" class="is-flex is-justify-content-center">
-                      <img src="{{ product.thumb }}" width="{{ image_width }}" height="{{ image_height }}"
-                        loading="lazy" alt="{{ product.name }}" title="{{ product.name }}" />
-                      <span class="tag {{ product.quantity ? 'is-success' : 'is-danger' }} is-light stock">{{ product.stock }}</span>
+                <div class="product-card card is-clipped">
+                  <div class="card-image">
+                    <figure class="image">
+                      <a href="{{ product.href }}" class="is-flex is-justify-content-center" aria-label="{{ product.name }}">
+                        <img src="{{ product.thumb }}" loading="lazy" alt="{{ product.name }}" title="{{ product.name }}" />
+                      </a>
+                      <span class="stock tag {{ product.quantity ? 'is-success' : 'is-danger' }} is-light">{{ product.stock }}</span>
                       {% if product.stickers %}
                       <span class="stickers is-block mb-0">
                       {% for sticker in product.stickers %}
-                        <span class="is-block">
-                          <span class="{{ sticker.class }}">{{ sticker.content|html_entity_decode }}</span>
-                        </span>                    
+                      <span class="is-block">
+                        <span class="{{ sticker.class }}">{{ sticker.content|html_entity_decode }}</span>
+                      </span>                    
                       {% endfor %}
                       </span>
                       {% endif %}
                       {% if product.discount %}
                       <span class="discount tag is-danger">-{{ product.discount }}%</span>
                       {% endif %}
-                    </a>
+                    </figure>
                   </div>
-                  <div class="caption">
-                    <a class="product-name is-block is-size-6 my-3" href="{{ product.href }}">{{ product.name }}</a>
+                  <div class="card-content">
+                    <div class="mb-3">
+                      <a class="product-name is-size-6" href="{{ product.href }}">{{ product.name }}</a>
+                    </div>                  
                     <div class="is-flex is-justify-content-space-between is-align-items-center">
                       {% if product.price %}
-                      <div class="price is-block my-3">
+                      <div class="price">
                         {% if not product.special %}
                         <span class="actual-price">{{ product.price }}{% if product.quantity_unit %}<small class="has-text-grey"> / {{ product.quantity_unit }}</small>{% endif %}</span>
                         {% else %}
@@ -608,33 +618,34 @@
                       </span>
                       {% endif %}
                     </div>
-                    <div class="actions is-flex is-justify-content-space-between">
-                      <button type="button" class="add-to-cart button is-primary is-light"
-                        data-product_id="{{ product.product_id }}" data-minimum="{{ product.minimum }}">
-                        {{ button_cart }}
+                  </div>
+                  <div class="actions columns is-mobile is-variable is-1 p-2 m-0">
+                    <div class="column is-4">
+                      <button type="button" class="add-to-cart button is-primary is-light is-fullwidth" title="{{ button_cart }}" data-product_id="{{ product.product_id }}" data-minimum="{{ product.minimum }}">                   
+                        <span class="icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="24" width="24">
+                            <path d="M6.5625 6.25h2.5m-1.25 -1.25v2.5m2.5 5.625a0.9375 0.9375 0 1 0 0 -1.875 0.9375 0.9375 0 0 0 0 1.875m-5 0a0.9375 0.9375 0 1 0 0 -1.875 0.9375 0.9375 0 0 0 0 1.875M2.31875 3.375h9.508750000000001c0.86125 0 1.4831250000000002 0.79375 1.2468750000000002 1.5925l-1.03375 3.5C11.881250000000001 9.004999999999999 11.3725 9.375 10.79375 9.375H5.07c-0.579375 0 -1.08875 -0.370625 -1.2475 -0.9075zm0 0L1.875 1.875" stroke-width="1"></path>
+                          </svg>  
+                        </span>                         
                       </button>
-                      <div>
-                        <button type="button" class="add-to-wishlist button is-primary is-light"
-                          title="{{ button_wishlist }}" data-product_id="{{ product.product_id }}">
-                          <span class="icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                              viewBox="0 0 16 16">
-                              <path
-                                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                            </svg>
-                          </span>
-                        </button>
-                        <button type="button" class="add-to-compare button is-primary is-light"
-                          title="{{ button_compare }}" data-product_id="{{ product.product_id }}">
-                          <span class="icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                              viewBox="0 0 16 16">
-                              <path
-                                d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5v12h-2V2h2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z" />
-                            </svg>
-                          </span>
-                        </button>
-                      </div>
+                    </div>
+                    <div class="column is-4">
+                      <button type="button" class="add-to-wishlist button is-primary is-light is-fullwidth" title="{{ button_wishlist }}" data-product_id="{{ product.product_id }}">
+                        <span class="icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="24" width="24">
+                            <path d="M4.84375 2.1875C3.2043749999999998 2.1875 1.875 3.5999999999999996 1.875 5.341875 1.875 8.828125 7.5 12.8125 7.5 12.8125s5.625 -3.984375 5.625 -7.470625C13.125 3.1837500000000003 11.795625000000001 2.1875 10.15625 2.1875c-1.1625 0 -2.16875 0.71 -2.65625 1.74375 -0.48750000000000004 -1.03375 -1.4937500000000001 -1.74375 -2.65625 -1.74375" stroke-width="1"></path>
+                          </svg>
+                        </span>
+                      </button>
+                    </div>
+                    <div class="column is-4">
+                      <button type="button" class="add-to-compare button is-primary is-light is-fullwidth" title="{{ button_compare }}" data-product_id="{{ product.product_id }}">
+                        <span class="icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="24" width="24">
+                            <path d="M9.375 5.893125V3.125a1.25 1.25 0 0 0 -1.25 -1.25h-1.25a1.25 1.25 0 0 0 -1.25 1.25v5.17875m3.75 -2.410625V13.125m0 -7.231875h2.5a1.25 1.25 0 0 1 1.25 1.25V11.875a1.25 1.25 0 0 1 -1.25 1.25h-2.5m0 0H5.625m0 0v-4.82125M5.625 13.125H3.125a1.25 1.25 0 0 1 -1.25 -1.25v-2.32125a1.25 1.25 0 0 1 1.25 -1.25h2.5" stroke-width="1"></path>
+                          </svg>
+                        </span>
+                      </button>
                     </div>
                   </div>
                 </div>

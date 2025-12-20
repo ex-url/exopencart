@@ -1,17 +1,5 @@
 <form id="checkout-customer-form" class="checkout-register">
-  <div class="columns is-multiline">
-    {% if text_agree %}
-    <div class="column is-12">
-      <div class="field required">
-        <div class="checkbox">
-          <label class="label">
-            <input type="checkbox" name="agree" {{ agree ? 'checked' : '' }} value="1">
-            <span class="agreed">{{ text_agree }}</span>
-          </label>
-        </div>
-      </div>
-    </div>
-    {% endif %}
+  <div class="columns is-multiline">    
     <div class="column is-12">
       <div class="field {{ customer_groups|length > 1 ? 'required' : 'is-hidden' }}">
         <label class="label">{{ entry_customer_group }}</label>
@@ -244,6 +232,18 @@
     </div>
     {% endif %}
     {% endfor %}
+    {% if text_agree %}
+    <div class="column is-12">
+      <div class="field required">
+        <div class="checkbox">
+          <label class="label">
+            <input type="checkbox" name="agree" {{ agree ? 'checked' : '' }} value="1">
+            <span class="agreed">{{ text_agree }}</span>
+          </label>
+        </div>
+      </div>
+    </div>
+    {% endif %}
     {% if captcha %}
     <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile">
       {{ captcha }}

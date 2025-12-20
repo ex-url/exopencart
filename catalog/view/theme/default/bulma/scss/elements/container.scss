@@ -17,7 +17,7 @@ $container-max-width: $fullhd !default;
   }
 
   @include desktop {
-    max-width: $desktop - $container-offset;
+    max-width: calc(100% - 3rem); //$desktop - $container-offset;
   }
 
 

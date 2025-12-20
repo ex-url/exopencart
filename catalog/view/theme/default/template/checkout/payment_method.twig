@@ -8,12 +8,14 @@
     {% for payment_method in payment_methods %}
     <div class="column is-6-desktop is-12-mobile">
       <div class="field">
-        <label class="radio">
+        <label class="radio-ui is-flex is-align-items-center is-justify-content-space-between px-5 py-4">
           <input type="radio" name="payment_method" value="{{ payment_method.code }}" />
-          {{ payment_method.title }}
-          {% if payment_method.terms %}
-          ({{ payment_method.terms }})
-          {% endif %}
+          <span class="is-block mb-0">
+            <span class="is-block has-text-primary has-text-weight-bold">{{ payment_method.title }}</span>          
+            {% if payment_method.terms %}
+            <span class="is-block is-size-7 has-text-grey">{{ payment_method.terms }}</span>
+            {% endif %}
+          </span>          
         </label>
       </div>
     </div>

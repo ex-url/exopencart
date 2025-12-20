@@ -50,7 +50,7 @@ button {
   position: sticky;
   top: 0;
   z-index: 3;
-  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 7%);
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 15%);
 }
 
 #menu .navbar-start>.navbar-item:first-child {
@@ -171,27 +171,54 @@ button {
   z-index: 2;
 }
 
+#product-main .price {
+  line-height: 1;
+}
+
+.product-card .product-name {
+  color: #333;
+}
+
+.product-card .actions {
+  width: 100%;
+}
+
+.product-card .card-content,
+.blog-card .card-content {
+  flex: 1;
+}
+
 .product-card .stock {
   position: absolute;
-  left: -0.25rem;
-  top: -0.25rem;
+  left: 0.75rem;
+  top: 0.75rem;
+}
+
+.list .product-card .stock {
+  left: 0.75rem;
+  top: 0.75rem;
 }
 
 .product-card .discount {
   position: absolute;
-  right: -0.25rem;
-  top: -0.25rem;
+  right: 0.75rem;
+  top: 0.75rem;
+}
+
+.list .product-card .discount {
+  right: 0.75rem;
+  top: 0.75rem;
 }
 
 .product-card .stickers {
   position: absolute;
-  left: -0.25rem;
-  bottom: -0.25rem;
+  left: 0.75rem;
+  bottom: 0.75rem;
 }
 
-.product-card .product-name {
-  height: 2.75rem;
-  overflow: hidden;
+.list .product-card .stickers {
+  left: 0.75rem;
+  bottom: 0.75rem;
 }
 
 .product-card .price {
@@ -200,7 +227,7 @@ button {
 
 .product-card .old-price {
   position: absolute;
-  top: -1rem;
+  top: 1.75rem;
   display: inline-block;
 }
 
@@ -218,6 +245,7 @@ button {
 .product-card .actual-price {
   font-size: 1.5rem !important;
   display: block;
+  font-weight: bold;
 }
 
 .list .product-card {
@@ -225,15 +253,15 @@ button {
   justify-content: flex-start;
   align-items: stretch;
   flex-wrap: wrap;
+  flex-direction: row;
 }
 
-.list .product-card .image {
-  width: 30% !important;
+.list .product-card .card-image {
+  width: 32% !important;
 }
 
-.list .product-card .caption {
-  width: 70%;
-  padding-left: 20px;
+.product-card .card-image .image {
+  padding: 1rem;
 }
 
 .cart-total .box .is-flex span {
@@ -283,7 +311,7 @@ button {
 .product-info .old-price {
   position: absolute;
   left: 0;
-  top: -1rem;
+  bottom: -1.25rem;
 }
 
 .sticky-crutch {
@@ -346,6 +374,7 @@ button {
 .heading-list li a {
   z-index: 1;
   position: relative;
+  background: #fafafa;
 }
 
 .heading-list li:after {
@@ -393,6 +422,7 @@ input[type="search"]::-webkit-search-results-decoration {
   background: #fff;
   top: 0;
   left: 0;
+  z-index: 9;
 }
 
 .spinner {
@@ -556,10 +586,6 @@ input[type="search"]::-webkit-search-results-decoration {
   border-radius: 8px;
 }
 
-.slideshow0 {
-  padding-top: 1rem;
-}
-
 .slideshow img {
   border-radius: 10px;
 }
@@ -662,6 +688,21 @@ footer .scroll-top-trigger.shown {
   position: absolute;
   top: 1rem;
   left: 1rem;
+}
+
+.radio-ui input[type="radio"] {
+  display: none;
+}
+
+.radio-ui {
+  border-radius: 0.75rem;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: box-shadow 0.2s ease;
+}
+
+.radio-ui:has(input[type="radio"]:checked) {
+  box-shadow: inset 0 0 0 2px #0055d4;
 }
 
 @keyframes rotating {
@@ -834,10 +875,11 @@ footer .scroll-top-trigger.shown {
     border-radius: 5rem;
     background: rgb(255 255 255 / 80%) !important;
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
 
-  .slideshow0 {
-    padding-top: 0;
+  #product-main .price {
+    line-height: 1;
   }
 
   #product-images {
@@ -924,15 +966,47 @@ footer .scroll-top-trigger.shown {
     z-index: 1;
   }
 
+  #list-view svg {
+    transform: rotate(90deg);
+  }
+
   #product-page #content>.tabs {
     top: 0px;
     margin: 0 -0.75rem;
+  }
+
+  .product-card .card-content {
+    padding: 0.75rem;
   }
 }
 
 @media (max-width: 640px) {
   .modal-content {
     max-height: 100%;
+  }
+
+  .product-card .actions button svg {
+    max-width: 1rem;
+  }
+
+  .product-card .old-price {
+    position: absolute;
+    top: 1.25rem;
+    display: inline-block;
+    font-size: 0.75rem;
+  }
+
+  .product-card .actual-price {
+    font-size: 1rem !important;
+  }
+
+  .product-card .product-name {
+    font-size: 0.75rem !important;
+    display: block;
+  }
+
+  .list .product-card .card-image {
+    width: 40% !important;
   }
 
   .title.is-1 {
@@ -954,5 +1028,9 @@ footer .scroll-top-trigger.shown {
   .modal-card {
     max-height: 100%;
     height: 100%;
+  }
+
+  .cart-image {
+    max-width: 30%;
   }
 }

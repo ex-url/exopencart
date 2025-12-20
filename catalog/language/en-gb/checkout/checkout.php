@@ -3,7 +3,7 @@
 // *	@license	GNU General Public License version 3; see LICENSE.txt
 
 // Heading
-$_['heading_title'] 		 = 'Checkout';
+$_['heading_title']      = 'Checkout';
 $_['heading_title_customer'] = 'Your Order #%s Has Been Placed!';
 
 // Text
@@ -31,9 +31,9 @@ $_['text_your_password']             = 'Your Password';
 $_['text_agree']                     = 'I have read and agree to the <a href="%s" class="agree"><b>%s</b></a>';
 $_['text_address_new']               = 'New address';
 $_['text_address_existing']          = 'Existing address';
-$_['text_shipping_method']           = 'Please select the preferred shipping method to use on this order.';
-$_['text_payment_method']            = 'Please select the preferred payment method to use on this order.';
-$_['text_comments']                  = 'Add Comments About Your Order';
+$_['text_shipping_method']           = 'Shipping method';
+$_['text_payment_method']            = 'Payment method';
+$_['text_comments']                  = 'Comment';
 $_['text_recurring_item']            = 'Recurring Item';
 $_['text_payment_recurring']         = 'Payment Profile';
 $_['text_trial_description']         = '%s every %d %s(s) for %d payment(s) then';
@@ -47,9 +47,9 @@ $_['text_year']                      = 'year';
 $_['text_your_order']                = 'Your order';
 $_['text_to_cart']   = 'Back to cart';
 $_['text_checkout_confirm_button']   = 'Checkout';
-$_['text_weight']      					  		= 'Weight';
-$_['text_pickup_point']      					= 'Pickup point';
-$_['text_choose_pickup_point']      	= 'Choose pickup point';
+$_['text_weight']                      = 'Weight';
+$_['text_pickup_point']                = 'Pickup point';
+$_['text_choose_pickup_point']        = 'Choose pickup point';
 
 // Column
 $_['column_name']                    = 'Product Name';
@@ -77,7 +77,8 @@ $_['entry_country']                  = 'Country';
 $_['entry_zone']                     = 'Region / State';
 $_['entry_newsletter']               = 'I wish to subscribe to the %s newsletter.';
 $_['entry_shipping']                 = 'My delivery and billing addresses are the same.';
-$_['entry_create_account'] 	         = 'Create an account';
+$_['entry_create_account']            = 'Create an account';
+$_['entry_billing_for_shipping']     = 'Use as shipping address';
 
 // Error
 $_['error_warning']                  = 'There was a problem while trying to process your order! If the problem persists please try selecting a different payment method or you can contact the store owner by <a href="%s">clicking here</a>.';

@@ -11,9 +11,13 @@
         {% if not shipping_method.error %}
         {% for quote in shipping_method.quote %}
         <div class="field">
-          <label class="radio">
+          <label class="radio-ui is-flex is-align-items-center is-justify-content-space-between p-5">
             <input type="radio" name="shipping_method" value="{{ quote.code }}" />
-            {{ quote.title }} <span class="tag is-light">{{ quote.text }}</span>
+            {% if shipping_method.icon %}
+            <span class="icon has-text-primary">{{ shipping_method.icon|html_entity_decode }}</span>
+            {% endif %}
+            <span class="has-text-weight-bold has-text-primary">{{ quote.title }}</span>
+            <span class="tag is-info is-light has-text-weight-bold">{{ quote.text }}</span>
           </label>
         </div>
         {% endfor %}

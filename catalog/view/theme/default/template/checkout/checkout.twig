@@ -28,14 +28,14 @@
       <div id="content" class="{{ class }}">
         <h1 class="title is-3">{{ heading_title }}</h1>
         <div class="columns is-multiline" id="checkout-layout">
-          <div class="column is-9-fullhd is-9-widescreen is-8-desktop is-12-tablet is-12-mobile">
+          <div class="column is-8-fullhd is-8-widescreen is-8-desktop is-12-tablet is-12-mobile">
             <div id="checkout-customer" class="mb-5">
               <div class="box">
                 <div class="title is-5 mb-3">
                   <div class="is-flex is-justify-content-space-between is-align-items-center">
                     <span>{{ text_customer }}</span>
                     {% if not logged %}
-                    <span class="button is-primary is-outlined login-trigger" data-redirect="/index.php?route=checkout/checkout">{{ text_login }}</span>
+                    <button class="button is-primary is-light login-trigger" data-redirect="/index.php?route=checkout/checkout">{{ text_login }}</button>
                     {% endif %}
                   </div>
                 </div>
@@ -55,7 +55,14 @@
                 {{ register }}
                 {% endif %}
               </div>
+            </div>           
+            {% if payment_address %}
+            <div id="checkout-payment-address">
+              <div class="box mb-5">
+                {{ payment_address }}
+              </div>  
             </div>
+            {% endif %}
             {% if shipping_required %}
             <div id="checkout-shipping" class="mb-5 is-relative">
               <div class="box">
@@ -72,7 +79,7 @@
               </div>
             </div>
           </div>
-          <div class="column is-3-fullhd is-3-widescreen is-4-desktop is-12-tablet is-12-mobile">
+          <div class="column is-4-fullhd is-4-widescreen is-4-desktop is-12-tablet is-12-mobile">
             <div id="checkout-total" class="mb-5">
               {{ total }}
             </div>
@@ -85,7 +92,6 @@
 </div>
 {{ content_bottom }}
 </main>
-
 <script>
 let zone_id = '{{ zone_id }}';
 let text_select = '{{ text_select }}';

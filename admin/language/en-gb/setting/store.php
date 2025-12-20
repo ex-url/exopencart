@@ -70,6 +70,7 @@ $_['entry_customer_group']         = 'Customer Group';
 $_['entry_customer_group_display'] = 'Customer Groups';
 $_['entry_customer_price']         = 'Login Display Prices';
 $_['entry_account']                = 'Account Terms';
+$_['entry_ask_payment_address']    = 'Ask for Payment Address';
 $_['entry_cart_weight']            = 'Display Weight on Cart Page';
 $_['entry_checkout_guest']         = 'Guest Checkout';
 $_['entry_checkout']               = 'Checkout Terms';
@@ -121,6 +122,7 @@ $_['help_stock_checkout']          = 'Allow customers to still checkout if the p
 $_['help_icon']                    = 'The icon should be a PNG that is 16px x 16px.';
 $_['help_logo_size']               = 'Set a size of your logo. By default it has 200х60 px size.';
 $_['help_secure']                  = 'To use SSL check with your host if a SSL certificate is installed.';
+$_['help_ask_payment_address']     = 'Ask for the payment address during checkout.';
 
 // Error
 $_['error_warning']                = 'Warning: Please check the form carefully for errors!';

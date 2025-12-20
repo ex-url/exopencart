@@ -1,17 +1,17 @@
 {% if reviews %}
 {% for review in reviews %}
-<div class="panel">
-  <div class="panel-block is-flex is-justify-content-space-between is-align-items-center">
-    <span>
-      <strong>{{ review.author }}</strong>
+<div class="box">
+  <div class="is-flex is-justify-content-space-between is-align-items-center">
+    <span class="has-text-black has-text-weight-bold">
+      {{ review.author }}
     </span>
-    <span class="text-right is-size-6 has-text-grey">{{ review.date_added }}</span>
+    <span class="text-right has-text-grey">{{ review.date_added }}</span>
   </div>
-  <div class="panel-block is-block">
+  <div class="mt-3">
     <div class="rating-stars">
       {% for i in 1..5 %}
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
-        class="{% if i <= review.rating %}has-text-warning{% else %}has-text-grey-lighter{% endif %}">
+        class="{% if i <= review.rating %}has-text-warning{% else %}has-text-grey{% endif %}">
         <path
           d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
       </svg>
@@ -19,15 +19,15 @@
     </div>
     <p class="has-text-grey">{{ review.text }}</p>
     {% if review.images %}
-      <div class="columns is-mobile is-multiline is-variable is-1 mt-3 mb-0">
-        {% for image in review.images %}
-          <div class="column is-2-desktop is-2-tablet is-3-mobile">
-            <a href="{{ image.popup }}" class="box p-0 is-clipped" data-fancybox="reviews" data-caption="{{ review.text }}">
-              <img src="{{ image.thumb }}" alt="review image" />
-            </a>
-          </div>          
-        {% endfor %}
-      </div>
+    <div class="columns is-mobile is-multiline is-variable is-1 mt-3 mb-0">
+      {% for image in review.images %}
+        <div class="column is-2-desktop is-2-tablet is-3-mobile">
+          <a href="{{ image.popup }}" class="box p-0 is-clipped" data-fancybox="reviews" data-caption="{{ review.text }}">
+            <img src="{{ image.thumb }}" alt="review image" />
+          </a>
+        </div>          
+      {% endfor %}
+    </div>
     {% endif %}
     {% if review.reply %}
     <div class="mt-2">

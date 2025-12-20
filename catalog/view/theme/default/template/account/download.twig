@@ -43,11 +43,10 @@
             <p>{{ download.date_added }}</p>
           </div>
           <div class="column is-2-desktop is-2-tablet is-12-mobile has-text-right">
-            <a href="{{ download.href }}" title="{{ button_download }}" class="button is-primary is-outlined">
+            <a href="{{ download.href }}" title="{{ button_download }}" class="button is-primary is-light">
               <span class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
-                  <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-                  <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="100" width="100">
+                  <path d="M2.5 10.002500000000001V10.625a1.875 1.875 0 0 0 1.875 1.875h6.25a1.875 1.875 0 0 0 1.875 -1.875v-0.625M7.5 2.8125v6.875m2.1875 -2.1875L7.5 9.6875 5.3125 7.5" stroke-width="1"></path>
                 </svg>
               </span>
             </a>
@@ -61,10 +60,10 @@
         </div>
         {% else %}
         <p>{{ text_empty }}</p>
-        {% endif %}
         <div class="buttons my-5">
-          <a href="{{ continue }}" class="button is-primary is-outlined">{{ button_continue }}</a>
+          <a href="{{ continue }}" class="button">{{ button_back }}</a>
         </div>
+        {% endif %}        
         {{ content_bottom }}
       </div>
       {{ column_right }}

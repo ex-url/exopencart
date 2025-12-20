@@ -30,8 +30,15 @@
         {% endif %}
         <h1 class="title is-3">{{ text_address_book }}</h1>
         <div class="buttons is-flex is-justify-content-space-between">
-          <a href="{{ back }}" class="button is-outlined">{{ button_back }}</a>
-          <a href="{{ add }}" class="button is-primary is-light">{{ text_address_add }}</a>
+          <a href="{{ back }}" class="button">{{ button_back }}</a>
+          <a href="{{ add }}" class="button is-primary">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="24" width="24">
+                <path d="M5.9375 8.4375h3.125M7.5 6.875v3.125m-3.666875 3.125C3.096875 13.125 2.5 12.5125 2.5 11.75625v-5.50125c0 -0.415625 0.18437499999999998 -0.809375 0.5 -1.06875l3.666875 -3.0112499999999995a1.30625 1.30625 0 0 1 1.66625 0l3.66625 3.0112499999999995c0.31625000000000003 0.25937499999999997 0.500625 0.653125 0.500625 1.06875v5.50125c0 0.75625 -0.5968749999999999 1.36875 -1.333125 1.36875z" stroke-width="1"></path>
+              </svg>
+            </span>
+            <span>{{ text_address_add }}</span>            
+          </a>
         </div>
         {% if addresses %}
         <div class="content">
@@ -42,18 +49,18 @@
                 {{ result.address }}
               </div>
               <div class="column is-narrow has-text-right">
-                <a href="{{ result.update }}" title="{{ button_edit }}" class="button is-primary is-outlined mr-1">
+                <a href="{{ result.update }}" title="{{ button_edit }}" class="button is-primary is-light mr-1">
                   <span class="icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
-                      <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                      <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="100" width="100">
+                      <path d="M5.958125 6.96875A1.139375 1.139375 0 0 0 5.625 7.773750000000001V9.375h1.6112499999999998c0.301875 0 0.5918749999999999 -0.12 0.8056249999999999 -0.33375l4.75 -4.7525a1.13875 1.13875 0 0 0 0 -1.610625l-0.469375 -0.469375a1.13875 1.13875 0 0 0 -1.6112499999999998 0z" stroke-width="1"></path>
+                      <path d="M13.125 7.5c0 2.6518750000000004 0 3.9775 -0.82375 4.8012500000000005C11.477500000000001 13.125 10.151250000000001 13.125 7.5 13.125c-2.6518750000000004 0 -3.9775 0 -4.8012500000000005 -0.82375C1.875 11.477500000000001 1.875 10.151250000000001 1.875 7.5c0 -2.6518750000000004 0 -3.9775 0.82375 -4.8012500000000005C3.5225 1.875 4.84875 1.875 7.5 1.875" stroke-width="1"></path>
                     </svg>
                   </span>
                 </a>
-                <a href = "{{ result.delete }}" title="{{ button_delete }}" class="button is-danger is-outlined" onclick="return confirm('{{ text_confirm }}')">
+                <a href = "{{ result.delete }}" title="{{ button_delete }}" class="button is-danger is-light" onclick="return confirm('{{ text_confirm }}')">
                   <span class="icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
-                      <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="24" width="24">
+                      <path d="m11.25 5.625 -0.525 5.248749999999999c-0.079375 0.7956249999999999 -0.11875 1.193125 -0.3 1.4937500000000001a1.5625 1.5625 0 0 1 -0.671875 0.608125C9.436250000000001 13.125 9.037500000000001 13.125 8.2375 13.125h-1.4749999999999999c-0.799375 0 -1.19875 0 -1.515625 -0.15a1.5625 1.5625 0 0 1 -0.6725000000000001 -0.608125c-0.18 -0.3 -0.21999999999999997 -0.6975 -0.3 -1.4931249999999998L3.75 5.625m4.6875 4.0625v-3.125m-1.875 3.125v-3.125m-3.75 -2.5h2.8843750000000004m0 0 0.24125000000000002 -1.6700000000000002c0.07 -0.30374999999999996 0.3225 -0.5175 0.6125 -0.5175h1.89875c0.29000000000000004 0 0.541875 0.21375000000000002 0.6125 0.5175l0.24125000000000002 1.6700000000000002m-3.6062499999999997 0h3.6062499999999997m0 0H12.1875" stroke-width="1"></path>
                     </svg>
                   </span>
                 </a>

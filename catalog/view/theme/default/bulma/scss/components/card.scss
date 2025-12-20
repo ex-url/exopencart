@@ -27,6 +27,9 @@ $card-media-margin: $block-spacing !default;
   color: $card-color;
   max-width: 100%;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 %card-item {

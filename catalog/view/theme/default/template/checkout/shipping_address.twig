@@ -49,7 +49,7 @@
     </label>
   </div>
   {% endif %}
-  <div id="new-shipping-address" class="mt-5 {{ addresses ? 'is-hidden' : '' }}">
+  <div id="shipping-new" class="mt-5 {{ addresses ? 'is-hidden' : '' }}">
     <div class="columns is-multiline">
       <div class="column is-12">
         <div class="field">
@@ -238,7 +238,18 @@
   </div>
 </form>
 <script>
-  $('#new-shipping-address select').trigger('change');
+  $('#shipping-new select').trigger('change');
+
+  $('body').on('change', '#checkout-shipping input[name="shipping_address"]', function () {    
+    if ($(this).val() === 'new') {
+      $('#shipping-new').removeClass('is-hidden');
+      $('#shipping-existing').closest('.field').addClass('is-hidden');
+      $('#shipping-address-form input[name="postcode"], #shipping-address-form input[name="address_1"], #shipping-address-form input[name="address_2"], #shipping-address-form input[name="city"]').val('');
+    } else {
+      $('#shipping-new').addClass('is-hidden');
+      $('#shipping-existing').closest('.field').removeClass('is-hidden');
+    }
+  });
 
   $('#new-shipping-address .column.is-6-desktop[data-sort]').detach().each(function() {
     if ($(this).attr('data-sort') >= 0 && $(this).attr('data-sort') <= $('#new-shipping-address .column.is-6-desktop').length) {

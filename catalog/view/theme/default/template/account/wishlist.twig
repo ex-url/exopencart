@@ -30,18 +30,20 @@
         {% if products %}
         <div class="columns is-mobile is-multiline my-5 product-cards">
           {% if column_left and column_right %}
-          {% set class = 'column is-6-desktop is-12-mobile' %}
+          {% set class = 'column is-6-desktop is-6-tablet is-6-mobile' %}
           {% elseif column_left or column_right %}
-          {% set class = 'column is-4-desktop is-12-mobile' %}
+          {% set class = 'column is-4-desktop is-4-tablet is-6-mobile' %}
           {% else %}
-          {% set class = 'column is-3-desktop is-12-mobile' %}
+          {% set class = 'column is-3-desktop is-4-tablet is-6-mobile' %}
           {% endif %}
           {% for product in products %}
           <div class="{{ class }}">
-            <div class="product-card box">
-              <div class="image">
-                <a href="{{ product.href }}" class="is-flex is-justify-content-center" aria-label="{{ product.name }}">
-                  <img src="{{ product.thumb }}" loading="lazy" alt="{{ product.name }}" title="{{ product.name }}" />
+            <div class="product-card card is-clipped">
+              <div class="card-image">
+                <figure class="image">
+                  <a href="{{ product.href }}" class="is-flex is-justify-content-center" aria-label="{{ product.name }}">
+                    <img src="{{ product.thumb }}" loading="lazy" alt="{{ product.name }}" title="{{ product.name }}" />
+                  </a>
                   <span class="stock tag {{ product.quantity ? 'is-success' : 'is-danger' }} is-light">{{ product.stock }}</span>
                   {% if product.stickers %}
                   <span class="stickers is-block mb-0">
@@ -55,13 +57,15 @@
                   {% if product.discount %}
                   <span class="discount tag is-danger">-{{ product.discount }}%</span>
                   {% endif %}
-                </a>
+                </figure>
               </div>
-              <div class="caption">
-                <a class="product-name is-block is-size-6 my-3" href="{{ product.href }}">{{ product.name }}</a>
+              <div class="card-content">
+                <div class="mb-3">
+                  <a class="product-name is-size-6" href="{{ product.href }}">{{ product.name }}</a>
+                </div>                  
                 <div class="is-flex is-justify-content-space-between is-align-items-center">
                   {% if product.price %}
-                  <div class="price is-block my-3">
+                  <div class="price">
                     {% if not product.special %}
                     <span class="actual-price">{{ product.price }}{% if product.quantity_unit %}<small class="has-text-grey"> / {{ product.quantity_unit }}</small>{% endif %}</span>
                     {% else %}
@@ -86,36 +90,44 @@
                   </span>
                   {% endif %}
                 </div>
-                <div class="actions is-flex is-justify-content-space-between">
-                  <button type="button" class="add-to-cart button is-primary is-light" data-product_id="{{ product.product_id }}" data-minimum="{{ product.minimum }}">
-                    {{ button_cart }}
+              </div>
+              <div class="actions columns is-mobile is-variable is-1 p-2 m-0">
+                <div class="column is-4">
+                  <button type="button" class="add-to-cart button is-primary is-light is-fullwidth" title="{{ button_cart }}" data-product_id="{{ product.product_id }}" data-minimum="{{ product.minimum }}">                   
+                    <span class="icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="24" width="24">
+                        <path d="M6.5625 6.25h2.5m-1.25 -1.25v2.5m2.5 5.625a0.9375 0.9375 0 1 0 0 -1.875 0.9375 0.9375 0 0 0 0 1.875m-5 0a0.9375 0.9375 0 1 0 0 -1.875 0.9375 0.9375 0 0 0 0 1.875M2.31875 3.375h9.508750000000001c0.86125 0 1.4831250000000002 0.79375 1.2468750000000002 1.5925l-1.03375 3.5C11.881250000000001 9.004999999999999 11.3725 9.375 10.79375 9.375H5.07c-0.579375 0 -1.08875 -0.370625 -1.2475 -0.9075zm0 0L1.875 1.875" stroke-width="1"></path>
+                      </svg>  
+                    </span>                         
                   </button>
-                  <div>                    
-                    <button type="button" class="add-to-compare button is-primary is-light" title="{{ button_compare }}" data-product_id="{{ product.product_id }}">
-                      <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                          <path d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5v12h-2V2h2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z"/>
-                        </svg>
-                      </span>
-                    </button>
-                    <a href="{{ product.remove }}" class="button is-danger is-light">
-                      <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
-                          <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
-                        </svg>
-                      </span>
-                    </a>
-                  </div>
+                </div>
+                <div class="column is-4">
+                  <a href="{{ product.remove }}" class="button is-danger is-light is-fullwidth">
+                    <span class="icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"  height="24" width="24">
+                        <path d="m11.25 5.625 -0.525 5.248749999999999c-0.079375 0.7956249999999999 -0.11875 1.193125 -0.3 1.4937500000000001a1.5625 1.5625 0 0 1 -0.671875 0.608125C9.436250000000001 13.125 9.037500000000001 13.125 8.2375 13.125h-1.4749999999999999c-0.799375 0 -1.19875 0 -1.515625 -0.15a1.5625 1.5625 0 0 1 -0.6725000000000001 -0.608125c-0.18 -0.3 -0.21999999999999997 -0.6975 -0.3 -1.4931249999999998L3.75 5.625m4.6875 4.0625v-3.125m-1.875 3.125v-3.125m-3.75 -2.5h2.8843750000000004m0 0 0.24125000000000002 -1.6700000000000002c0.07 -0.30374999999999996 0.3225 -0.5175 0.6125 -0.5175h1.89875c0.29000000000000004 0 0.541875 0.21375000000000002 0.6125 0.5175l0.24125000000000002 1.6700000000000002m-3.6062499999999997 0h3.6062499999999997m0 0H12.1875" stroke-width="1"></path>
+                      </svg>
+                    </span>
+                  </a>
+                </div>
+                <div class="column is-4">
+                  <button type="button" class="add-to-compare button is-primary is-light is-fullwidth" title="{{ button_compare }}" data-product_id="{{ product.product_id }}">
+                    <span class="icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="24" width="24">
+                        <path d="M9.375 5.893125V3.125a1.25 1.25 0 0 0 -1.25 -1.25h-1.25a1.25 1.25 0 0 0 -1.25 1.25v5.17875m3.75 -2.410625V13.125m0 -7.231875h2.5a1.25 1.25 0 0 1 1.25 1.25V11.875a1.25 1.25 0 0 1 -1.25 1.25h-2.5m0 0H5.625m0 0v-4.82125M5.625 13.125H3.125a1.25 1.25 0 0 1 -1.25 -1.25v-2.32125a1.25 1.25 0 0 1 1.25 -1.25h2.5" stroke-width="1"></path>
+                      </svg>
+                    </span>
+                  </button>
                 </div>
               </div>
-            </div>            
+            </div>
           </div>
           {% endfor %}
         </div>
         {% else %}
         <p>{{ text_empty }}</p>
-        <div class="block mt-3">
-          <a href="{{ continue }}" class="button is-primary is-outlined">{{ button_continue }}</a>
+        <div class="block my-5">
+          <a href="{{ continue }}" class="button">{{ button_back }}</a>
         </div>
         {% endif %}
       </div>

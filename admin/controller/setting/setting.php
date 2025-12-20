@@ -698,6 +698,12 @@ class ControllerSettingSetting extends Controller {
 
     $data['informations'] = $this->model_catalog_information->getInformations();
 
+    if (isset($this->request->post['config_ask_payment_address'])) {
+      $data['config_ask_payment_address'] = $this->request->post['config_ask_payment_address'];
+    } else {
+      $data['config_ask_payment_address'] = $this->config->get('config_ask_payment_address');
+    }
+
     if (isset($this->request->post['config_cart_weight'])) {
       $data['config_cart_weight'] = $this->request->post['config_cart_weight'];
     } else {

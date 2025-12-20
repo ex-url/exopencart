@@ -11,7 +11,7 @@ $_['text_your_order']          = 'Your order';
 $_['text_points']              = 'Reward Points: %s';
 $_['text_next']                = 'What would you like to do next?';
 $_['text_next_choice']         = 'Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.';
-$_['text_pre_order']           = 'Pre-order';
+$_['text_pre_order']           = 'Out of Stock';
 $_['text_empty']               = 'Your shopping cart is empty!';
 $_['text_day']                 = 'day';
 $_['text_week']                = 'week';
@@ -27,6 +27,9 @@ $_['text_payment_recurring']   = 'Payment Profile';
 $_['text_trial_description']   = '%s every %d %s(s) for %d payment(s) then';
 $_['text_payment_description'] = '%s every %d %s(s) for %d payment(s)';
 $_['text_payment_cancel']      = '%s every %d %s(s) until canceled';
+$_['text_increase']            = 'Increase quantity';
+$_['text_decrease']            = 'Decrease quantity';
+$_['text_delete']              = 'Delete product';
 
 // Column
 $_['column_image']             = 'Image';

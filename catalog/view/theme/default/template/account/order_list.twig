@@ -25,18 +25,18 @@
         <h1 class="title is-3">{{ heading_title }}</h1>
         {% if orders %}
         {% for key, order in orders %}
-        <div class="box mb-3 p-3">
+        <div class="box mb-3 px-4 py-3">
           <div class="columns is-mobile is-multiline is-align-items-center">
-            <div class="column is-1-desktop is-3-tablet is-3-mobile">
+            <div class="column is-2-desktop is-3-tablet is-3-mobile">
               <p class="is-size-7 has-text-grey">{{ column_order_id }}</p>
-              <div class="block">
+              <div class="has-text-weight-bold">
                 {{ order.order_id }}
               </div>
             </div>
-            <div class="column is-4-desktop is-6-tablet is-9-mobile has-text-right">
-              <p class="is-size-7 has-text-grey">{{ column_customer }}</p>
+            <div class="column is-2-desktop is-6-tablet is-9-mobile has-text-right">
+              <p class="is-size-7 has-text-grey">{{ column_date_added }}</p>
               <div class="block">
-                {{ order.name }}
+                <b>{{ order.date_added }}</b>
               </div>
             </div>
             <div class="column is-2-desktop is-3-tablet is-6-mobile">
@@ -47,25 +47,19 @@
             </div>
             <div class="column is-2-desktop is-4-tablet is-6-mobile has-text-right">
               <p class="is-size-7 has-text-grey">{{ column_total }}</p>
-              <div class="block">
+              <div class="has-text-weight-bold">
                 {{ order.total }}
               </div>
             </div>
-            <div class="column is-2-desktop is-4-tablet is-6-mobile">
-              <p class="is-size-7 has-text-grey">{{ column_date_added }}</p>
-              <div class="block">
-                {{ order.date_added }}
-              </div>
-            </div>
-            <div class="column is-1-desktop is-4-tablet is-6-mobile">
+            <div class="column is-4-desktop is-4-tablet is-12-mobile">
               <div class="block has-text-right">
-                <a href="{{ order.view }}" class="button is-primary is-outlined">
+                <a href="{{ order.view }}" class="button is-primary is-light is-fullwidth">
                   <span class="icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
-                      <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
-                      <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"  height="24" width="24">
+                      <path d="M4.6875 10.024375000000001 2.9299999999999997 12.1875 1.875 11.46625m2.8125 -5.048125 -1.7574999999999998 2.1637500000000003L1.875 7.860625M4.6875 2.8125 2.9299999999999997 4.97625 1.875 4.255M6.875 10.9375h6.25M6.875 7.5h6.25M6.875 4.0625h6.25" stroke-width="1"></path>
                     </svg>
                   </span>
+                  <span>{{ text_history }}</span>
                 </a>
               </div>
             </div>
@@ -74,6 +68,9 @@
         {% endfor %}
         {% else %}
         <p>{{ text_empty }}</p>
+        <div class="buttons my-5">
+          <a href="{{ continue }}" class="button">{{ button_back }}</a>
+        </div>
         {% endif %}
       </div>
       {{ column_right }}

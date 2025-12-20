@@ -1,6 +1,6 @@
 {% if languages|length > 1 %}
 <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-language">
-  <div class="select is-small is-link">
+  <div class="select is-small">
     <select name="code">
       {% for language in languages %}
       <option value="{{ language.code }}" {{ language.code == code ? 'selected' : '' }}>{{ language.name }}</option>

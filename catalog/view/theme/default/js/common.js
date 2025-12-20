@@ -1,4 +1,7 @@
 const cart = {
+
+  updating: false,
+
   add: function (product_id, quantity, $trigger) {
     $.ajax({
       url: 'index.php?route=checkout/cart/add',
@@ -35,25 +38,70 @@ const cart = {
       }
     });
   },
-  update: function (key, quantity) {
+  update: function (key, quantity, $input) {
+    if (this.updating) return;
+
+    quantity = parseFloat(quantity);
+
+    if (isNaN(quantity) || quantity < 1) {
+      quantity = 1;
+    }
+
+    if ($input) {
+      const minimum = parseFloat($input.attr('data-minimum')) || 1;
+
+      if (quantity < minimum) {
+        notification({
+          type: 'warning',
+          text: 'Минимальное количество: ' + minimum,
+          duration: 5000
+        });
+
+        $input.val(minimum);
+        quantity = minimum;
+      }
+    }
+
+    this.updating = true;
+
+    const $item = $input ? $input.closest('.cart-item') : null;
+
     $.ajax({
       url: 'index.php?route=checkout/cart/edit',
       type: 'post',
-      data: 'key=' + key + '&quantity=' + (typeof (quantity) != 'undefined' ? quantity : 1),
+      data: 'key=' + key + '&quantity=' + quantity,
       dataType: 'json',
       beforeSend: function () {
-        spinner.add('.cart-products .panel', 'is-absolute', 100, 0.8);
+        if ($item && $item.length) {
+          spinner.add($item, 'is-absolute', 100, 0.8);
+        } else {
+          spinner.add('#cart-form', 'is-absolute', 100, 0.8);
+        }
       },
       success: function (json) {
         updateCartBadge(json['total']);
 
         if ($('#cart-page').length) {
-          $('#cart-content').load('index.php?route=checkout/cart #cart-content');
+          $('#cart-content').load('index.php?route=checkout/cart #cart-content > *');
         }
       },
       error: function (xhr, ajaxOptions, thrownError) {
-        spinner.remove('.cart-products .panel');
-        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+        notification({
+          type: 'danger',
+          text: 'Ошибка обновления корзины',
+          duration: 5000
+        });
+        console.error(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+      },
+      complete: function () {
+        // Удаляем спиннер
+        if ($item && $item.length) {
+          spinner.remove($item);
+        } else {
+          spinner.remove('#cart-form');
+        }
+        // Снимаем флаг блокировки
+        cart.updating = false;
       }
     });
   },
@@ -356,16 +404,16 @@ $(document).ready(function () {
 
   // Product List
   $('#list-view').click(function () {
-    $('.product-cards').attr('class', 'columns is-mobile is-multiline mt-3 product-cards list');
+    $('.product-cards').attr('class', 'product-cards list columns is-mobile is-multiline mt-3 is-variable is-3-desktop is-3-tablet is-2-mobile');
 
     let columns = $('#column-right, #column-left').length;
 
     if (columns == 2) {
       $('.product-cards > div').attr('class', 'column is-12-fullhd is-12-widescreen is-12-desktop is-12-tablet is-12-mobile');
     } else if (columns == 1) {
-      $('.product-cards > div').attr('class', 'column is-6-fullhd is-6-widescreen is-12-desktop is-12-tablet is-12-mobile');
+      $('.product-cards > div').attr('class', 'column is-6-fullhd is-6-widescreen is-6-desktop is-12-tablet is-12-mobile');
     } else {
-      $('.product-cards > div').attr('class', 'column is-6-fullhd is-6-widescreen is-12-desktop is-12-tablet is-12-mobile');
+      $('.product-cards > div').attr('class', 'column is-6-fullhd is-6-widescreen is-6-desktop is-12-tablet is-12-mobile');
     }
 
     localStorage.setItem('display', 'list');
@@ -373,16 +421,16 @@ $(document).ready(function () {
 
   // Product Grid
   $('#grid-view').click(function () {
-    $('.product-cards').attr('class', 'columns is-mobile is-multiline mt-3 product-cards grid');
+    $('.product-cards').attr('class', 'product-cards grid columns is-mobile is-multiline mt-3 is-variable is-3-desktop is-3-tablet is-1-mobile');
 
     let columns = $('#column-right, #column-left').length;
 
     if (columns == 2) {
-      $('.product-cards > div').attr('class', 'column is-6-fullhd is-6-widescreen is-12-desktop is-6-tablet is-12-mobile');
+      $('.product-cards > div').attr('class', 'column is-6-fullhd is-6-widescreen is-12-desktop is-4-tablet is-6-mobile');
     } else if (columns == 1) {
-      $('.product-cards > div').attr('class', 'column is-4-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile');
+      $('.product-cards > div').attr('class', 'column is-4-fullhd is-4-widescreen is-4-desktop is-4-tablet is-6-mobile');
     } else {
-      $('.product-cards > div').attr('class', 'column is-3-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile');
+      $('.product-cards > div').attr('class', 'column is-3-fullhd is-3-widescreen is-4-desktop is-4-tablet is-6-mobile');
     }
 
     localStorage.setItem('display', 'grid');

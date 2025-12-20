@@ -610,6 +610,14 @@ class ControllerSettingStore extends Controller {
 
     $data['informations'] = $this->model_catalog_information->getInformations();
 
+    if (isset($this->request->post['config_ask_payment_address'])) {
+      $data['config_ask_payment_address'] = $this->request->post['config_ask_payment_address'];
+    } elseif (isset($store_info['config_ask_payment_address'])) {
+      $data['config_ask_payment_address'] = $store_info['config_ask_payment_address'];
+    } else {
+      $data['config_ask_payment_address'] = 0;
+    }
+
     if (isset($this->request->post['config_cart_weight'])) {
       $data['config_cart_weight'] = $this->request->post['config_cart_weight'];
     } elseif (isset($store_info['config_cart_weight'])) {

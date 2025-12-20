@@ -31,6 +31,7 @@ $panel-icon-color: $text-light !default;
 $panel-colors: $colors !default;
 
 .panel {
+  background-color: $white;
   border-radius: $panel-radius;
   box-shadow: $panel-shadow;
   font-size: $size-normal;
@@ -154,7 +155,7 @@ label.panel-block {
 }
 
 .panel-icon {
-  @include fa(14px, 1em);
+  @include fa(1.25rem, 1em);
 
   color: $panel-icon-color;
 

@@ -18,7 +18,7 @@ $_['text_shipping_method']  = 'Способ доставки:';
 $_['text_payment_address']  = 'Платёжный адрес';
 $_['text_payment_method']   = 'Способ оплаты:';
 $_['text_comment']          = 'Комментарий к заказу';
-$_['text_history']          = 'История статусов';
+$_['text_history']          = 'История заказа';
 $_['text_success']          = 'Товары из заказа <a href="%s">%s</a> успешно добавлены <a href="%s">в вашу корзину</a>!';
 $_['text_empty']            = 'Вы еще не совершали покупок!';
 $_['text_latest_order']     = 'Недавние заказы';
