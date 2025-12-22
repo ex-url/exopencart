@@ -264,20 +264,6 @@ button {
   padding: 1rem;
 }
 
-.cart-total .box .is-flex span {
-  background: #fff;
-  z-index: 1;
-}
-
-.cart-total .box>.block:after {
-  border-bottom: 1px dotted #ddd;
-  content: "";
-  display: block;
-  width: 100%;
-  position: relative;
-  top: -8px;
-}
-
 .cart-total .box,
 #checkout-total {
   position: sticky;

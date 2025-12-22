@@ -180,19 +180,17 @@
                     </span>
                   </li>
                   {% endfor %}
-                </ul>
-                {% if weight %}
-                <div class="block my-2">
-                  <div class="is-flex is-justify-content-space-between">
+                  {% if weight %}
+                  <li class="is-flex is-justify-content-space-between is-align-items-center py-1">
                     <span class="has-background-white pr-1">
                       {{ text_weight }}
                     </span>
                     <span class="has-background-white has-text-weight-bold pl-1">
                       {{ weight }}
                     </span>
-                  </div>
-                </div>
-                {% endif %}
+                  </li>
+                  {% endif %}
+                </ul>                
                 <div class="block mt-5 mb-0">
                   <a href="{{ checkout }}" class="button is-primary is-medium is-fullwidth">{{ text_goto_checkout }}</a>
                 </div>

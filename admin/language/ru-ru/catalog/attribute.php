@@ -1,7 +1,4 @@
 <?php
-// *	@source		See SOURCE.txt for source and other copyright.
-// *	@license	GNU General Public License version 3; see LICENSE.txt
-
 // Heading
 $_['heading_title']          = 'Характеристики';
 
@@ -19,8 +16,14 @@ $_['column_action']          = 'Действие';
 
 // Entry
 $_['entry_name']            = 'Название характеристики';
+$_['entry_hint']            = 'Подсказка';
+$_['entry_default_values']  = 'Значения по-умолчанию';
 $_['entry_attribute_group'] = 'Группа характеристик';
 $_['entry_sort_order']      = 'Порядок сортировки';
+$_['entry_icon']           = 'Иконка';
+
+$_['help_icon']            = 'SVG или HTML';
+$_['help_default_values']  = 'Перечень значений, разделенных вертикальной чертой |';
 
 // Error
 $_['error_permission']      = 'У вас недостаточно прав для внесения изменений!';

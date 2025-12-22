@@ -431,6 +431,8 @@ class ControllerProductProduct extends Controller {
 
       $data['attribute_groups'] = $this->model_catalog_product->getProductAttributes($this->request->get['product_id']);
 
+      $this->log->write($data['attribute_groups']);
+
       $data['products'] = array();
 
       $results = $this->model_catalog_product->getProductRelated($this->request->get['product_id']);

@@ -17,10 +17,10 @@ class Pagination {
   public $limit = 20;
   public $num_links = 8;
   public $url = '';
-  public $text_first = '<svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.854 3.646a.5.5 0 0 1 0 .708L8.207 8l3.647 3.646a.5.5 0 0 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 0 1 .708 0zM4.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 1 0v-13a.5.5 0 0 0-.5-.5z"/></svg>';
-  public $text_last = '<svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.146 3.646a.5.5 0 0 0 0 .708L7.793 8l-3.647 3.646a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708 0zM11.5 1a.5.5 0 0 1 .5.5v13a.5.5 0 0 1-1 0v-13a.5.5 0 0 1 .5-.5z"/></svg>';
-  public $text_next = '<svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>';
-  public $text_prev = '<svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/></svg>';
+  public $text_first = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="16" width="16"><path d="M2.8125 1.875v11.25m2.95375 -5.1375 5.40625 4.325a0.625 0.625 0 0 0 1.0150000000000001 -0.48750000000000004V3.175a0.625 0.625 0 0 0 -1.015625 -0.48750000000000004l-5.405625 4.325a0.625 0.625 0 0 0 0 0.9750000000000001" stroke-width="1"></path></svg>';
+  public $text_last = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="16" width="16"><path d="M12.1875 1.875v11.25m-2.95375 -5.1375 -5.40625 4.325a0.625 0.625 0 0 1 -1.0150000000000001 -0.48750000000000004V3.175a0.625 0.625 0 0 1 1.015625 -0.48750000000000004l5.405625 4.325a0.625 0.625 0 0 1 0 0.9750000000000001" stroke-width="1"></path></svg>';
+  public $text_next = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="16" width="16"><path d="m5.625 11.25 3.75 -3.75 -3.75 -3.75" stroke-width="1"></path></svg>';
+  public $text_prev = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="16" width="16"><path d="m9.375 3.75 -3.75 3.75 3.75 3.75" stroke-width="1"></path></svg>';
 
   /**
    *

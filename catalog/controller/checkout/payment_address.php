@@ -16,7 +16,7 @@ class ControllerCheckoutPaymentAddress extends Controller {
 
     $data['addresses'] = $this->model_account_address->getAddresses();
 
-    if (isset($this->session->data['payment_address']['firstname']) || isset($this->session->data['guest']['firstname'])) {
+    if ((isset($this->session->data['payment_address']['firstname']) && $this->session->data['payment_address']['firstname'] != '') || isset($this->session->data['guest']['firstname'])) {
       $data['firstname'] = isset($this->session->data['payment_address']['firstname']) ? $this->session->data['payment_address']['firstname'] : $this->session->data['guest']['firstname'];
     } elseif ($this->customer->isLogged()) {
       $data['firstname'] = $this->customer->getFirstName();
@@ -24,7 +24,7 @@ class ControllerCheckoutPaymentAddress extends Controller {
       $data['firstname'] = '';
     }
 
-    if (isset($this->session->data['payment_address']['lastname']) || isset($this->session->data['guest']['lastname'])) {
+    if ((isset($this->session->data['payment_address']['lastname']) && $this->session->data['payment_address']['lastname'] != '') || isset($this->session->data['guest']['lastname'])) {
       $data['lastname'] = isset($this->session->data['payment_address']['lastname']) ? $this->session->data['payment_address']['lastname'] : $this->session->data['guest']['lastname'];
     } elseif ($this->customer->isLogged()) {
       $data['lastname'] = $this->customer->getLastName();

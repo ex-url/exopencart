@@ -16,8 +16,14 @@ $_['column_action']          = 'Action';
 
 // Entry
 $_['entry_name']             = 'Attribute Name';
+$_['entry_hint']             = 'Hint';
+$_['entry_default_values']   = 'Default Values';
 $_['entry_attribute_group']  = 'Attribute Group';
 $_['entry_sort_order']       = 'Sort Order';
+$_['entry_icon']           = 'Icon';
+
+$_['help_icon']           = 'SVG or HTML';
+$_['help_default_values']  = 'List of values separated by a vertical bar |';
 
 // Error
 $_['error_permission']       = 'Warning: You do not have permission to modify attributes!';

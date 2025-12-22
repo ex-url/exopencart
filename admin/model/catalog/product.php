@@ -769,7 +769,9 @@ class ModelCatalogProduct extends Model {
       $product_attribute_description_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_attribute WHERE product_id = '" . (int)$product_id . "' AND attribute_id = '" . (int)$product_attribute['attribute_id'] . "'");
 
       foreach ($product_attribute_description_query->rows as $product_attribute_description) {
-        $product_attribute_description_data[$product_attribute_description['language_id']] = array('text' => $product_attribute_description['text']);
+        $product_attribute_description_data[$product_attribute_description['language_id']] = array(
+          'text' => $product_attribute_description['text']
+        );
       }
 
       $product_attribute_data[] = array(

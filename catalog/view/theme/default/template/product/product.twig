@@ -397,7 +397,20 @@
                 <ul class="heading-list">
                   {% for attribute in attribute_group.attribute %}
                   <li class="is-flex is-justify-content-space-between is-align-items-center py-1">
-                    <span class="pr-1">{{ attribute.name }}</span>
+                    <span class="pr-1 is-flex is-align-items-center">
+                    {% if attribute.icon %}
+                    {{ attribute.icon|html_entity_decode }}
+                    {% endif %}
+                    {{ attribute.name }}
+                    {% if attribute.hint %}
+                      <span class="attribute-hint-trigger icon has-text-info is-clickable ml-1" data-hint="{{ attribute.hint|html_entity_decode }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="20" width="20">
+                          <path d="M7.5 8.435c0 -1.251875 1.25 -0.939375 1.25 -2.1912499999999997 0 -1.6618749999999998 -2.5 -1.6618749999999998 -2.5 0m1.25 3.7543749999999996v-0.3125" stroke-width="1"></path>
+                          <path d="M1.875 7.5a5.625 5.625 0 1 0 11.25 0 5.625 5.625 0 1 0 -11.25 0" stroke-width="1"></path>
+                        </svg>
+                      </span>                    
+                    {% endif %}
+                    </span>
                     <span class="has-text-weight-bold pl-1">{{ attribute.text }}</span>
                   </li>
                   {% endfor %}
@@ -743,6 +756,20 @@
   // trigger change to set initial price by default options
   $('#product-options input[type="radio"], #product-options input[type="checkbox"], #product-options select').trigger('change');
   
+  {% endif %}
+
+  {% if attribute_groups %}
+  if ($('.attribute-hint-trigger').length) {
+    $('.attribute-hint-trigger').on('click', function () {
+      let content = $(this).data('hint');
+
+      notification({
+        type: 'info',
+        text: content,
+        duration: 10000
+      });
+    });
+  }  
   {% endif %}
 
   $('#button-cart').on('click', function () {
