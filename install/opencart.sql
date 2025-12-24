@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Dec 22, 2025 at 01:16 PM
+-- Generation Time: Dec 24, 2025 at 08:25 AM
 -- Server version: 5.7.41-log
 -- PHP Version: 7.4.33
 
@@ -1632,8 +1632,8 @@ CREATE TABLE `oc_currency` (
 --
 
 INSERT INTO `oc_currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbol_right`, `decimal_place`, `value`, `status`, `date_modified`) VALUES
-(1, 'Рубль', 'RUB', '', ' ₽', '0', 1.00000000, 1, '2025-12-22 11:52:46'),
-(2, 'US Dollar', 'USD', '$', '', '2', 0.01238820, 1, '2025-12-22 11:52:46');
+(1, 'Рубль', 'RUB', '', ' ₽', '0', 1.00000000, 1, '2025-12-23 13:39:56'),
+(2, 'US Dollar', 'USD', '$', '', '2', 0.01260802, 1, '2025-12-23 13:39:56');
 
 -- --------------------------------------------------------
 
@@ -1817,8 +1817,9 @@ INSERT INTO `oc_customer_login` (`customer_login_id`, `email`, `ip`, `total`, `d
 (32, 'sokovnin1988@mail.ru', '88.147.179.183', 1, '2023-02-21 15:58:23', '2023-02-21 15:58:23'),
 (33, 'sokovnin1988@mail.ru', '88.147.174.227', 1, '2023-03-18 16:03:03', '2023-03-18 16:03:03'),
 (34, 'jambot@mambetov.ru', '172.16.238.1', 3, '2024-01-22 11:32:52', '2024-03-10 13:43:06'),
-(46, 'tinkov@exopencart.ru', '172.16.238.1', 2, '2025-12-21 20:12:29', '2025-12-22 16:13:57'),
-(42, '', '172.16.238.1', 7, '2025-12-17 20:31:32', '2025-12-17 20:37:57');
+(46, 'tinkov@exopencart.ru', '172.16.238.1', 3, '2025-12-21 20:12:29', '2025-12-22 16:23:45'),
+(42, '', '172.16.238.1', 7, '2025-12-17 20:31:32', '2025-12-17 20:37:57'),
+(47, 'admin', '172.16.238.1', 1, '2025-12-23 15:51:05', '2025-12-23 15:51:05');
 
 -- --------------------------------------------------------
 
@@ -2990,7 +2991,8 @@ CREATE TABLE `oc_option` (
 INSERT INTO `oc_option` (`option_id`, `type`, `sort_order`) VALUES
 (14, 'radio', 1),
 (15, 'checkbox', 2),
-(16, 'select', 3);
+(16, 'select', 3),
+(17, 'radio', 1);
 
 -- --------------------------------------------------------
 
@@ -3009,12 +3011,14 @@ CREATE TABLE `oc_option_description` (
 --
 
 INSERT INTO `oc_option_description` (`option_id`, `language_id`, `name`) VALUES
-(14, 2, 'Test radio'),
-(14, 1, 'Тестовая радиокнопка'),
 (15, 1, 'Тестовый чекбокс'),
 (15, 2, 'Test checkbox'),
 (16, 1, 'Тестовый список'),
-(16, 2, 'Test select');
+(16, 2, 'Test select'),
+(14, 1, 'Тестовая радиокнопка'),
+(17, 1, 'Цвет'),
+(17, 2, 'Color'),
+(14, 2, 'Test radio');
 
 -- --------------------------------------------------------
 
@@ -3034,24 +3038,27 @@ CREATE TABLE `oc_option_value` (
 --
 
 INSERT INTO `oc_option_value` (`option_value_id`, `option_id`, `image`, `sort_order`) VALUES
-(51, 14, '', 3),
-(50, 14, '', 2),
-(49, 14, '', 1),
 (56, 15, '', 5),
 (55, 15, '', 4),
 (54, 15, '', 3),
 (53, 15, '', 2),
 (52, 15, '', 1),
-(57, 14, '', 4),
 (58, 14, '', 5),
-(59, 14, '', 6),
 (60, 15, '', 6),
 (64, 16, '', 4),
 (63, 16, '', 3),
 (62, 16, '', 2),
 (61, 16, '', 1),
 (65, 16, '', 5),
-(66, 16, '', 6);
+(66, 16, '', 6),
+(59, 14, '', 6),
+(57, 14, '', 4),
+(51, 14, '', 3),
+(50, 14, '', 2),
+(49, 14, '', 1),
+(67, 17, 'catalog/demo/options/white.webp', 1),
+(68, 17, 'catalog/demo/options/red.webp', 3),
+(69, 17, 'catalog/demo/options/blue.webp', 2);
 
 -- --------------------------------------------------------
 
@@ -3071,11 +3078,11 @@ CREATE TABLE `oc_option_value_description` (
 --
 
 INSERT INTO `oc_option_value_description` (`option_value_id`, `language_id`, `option_id`, `name`) VALUES
-(51, 1, 14, 'Радиокнопка минус'),
-(50, 2, 14, 'Plus radio'),
-(50, 1, 14, 'Радиокнопка плюс'),
-(49, 2, 14, 'Default radio'),
-(49, 1, 14, 'Радиокнопка по-умолчанию'),
+(57, 1, 14, 'Радиокнопка умножить'),
+(57, 2, 14, 'Multiply checkbox'),
+(58, 1, 14, 'Радиокнопка разделить'),
+(58, 2, 14, 'Divide radio'),
+(59, 1, 14, 'Радиокнопка равно'),
 (56, 1, 15, 'Чекбокс разделить'),
 (55, 2, 15, 'Multiply checkbox'),
 (54, 2, 15, 'Minus checkbox'),
@@ -3086,12 +3093,10 @@ INSERT INTO `oc_option_value_description` (`option_value_id`, `language_id`, `op
 (52, 2, 15, 'Default checkbox'),
 (52, 1, 15, 'Чекбокс по-умолчанию'),
 (51, 2, 14, 'Minus radio'),
-(57, 1, 14, 'Радиокнопка умножить'),
-(57, 2, 14, 'Multiply checkbox'),
-(58, 1, 14, 'Радиокнопка разделить'),
-(58, 2, 14, 'Divide radio'),
-(59, 1, 14, 'Радиокнопка равно'),
-(59, 2, 14, 'Equal radio'),
+(51, 1, 14, 'Радиокнопка минус'),
+(50, 2, 14, 'Plus radio'),
+(49, 2, 14, 'Default radio'),
+(50, 1, 14, 'Радиокнопка плюс'),
 (56, 2, 15, 'Divide checkbox'),
 (60, 1, 15, 'Чекбокс равно'),
 (60, 2, 15, 'Equal checkbox'),
@@ -3106,7 +3111,15 @@ INSERT INTO `oc_option_value_description` (`option_value_id`, `language_id`, `op
 (65, 1, 16, 'Список разделить'),
 (65, 2, 16, 'Divide select'),
 (66, 1, 16, 'Список равно'),
-(66, 2, 16, 'Equal select');
+(66, 2, 16, 'Equal select'),
+(49, 1, 14, 'Радиокнопка по-умолчанию'),
+(68, 1, 17, 'Красный'),
+(67, 2, 17, 'White'),
+(67, 1, 17, 'Белый'),
+(68, 2, 17, 'Red'),
+(69, 1, 17, 'Синий'),
+(69, 2, 17, 'Blue'),
+(59, 2, 14, 'Equal radio');
 
 -- --------------------------------------------------------
 
@@ -3683,11 +3696,11 @@ CREATE TABLE `oc_product` (
 INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `isbn`, `mpn`, `location`, `quantity`, `quantity_class_id`, `stock_status_id`, `image`, `manufacturer_id`, `shipping`, `price`, `points`, `tax_class_id`, `date_available`, `weight`, `weight_class_id`, `length`, `width`, `height`, `length_class_id`, `subtract`, `minimum`, `sort_order`, `redirect`, `status`, `viewed`, `date_added`, `date_modified`, `noindex`) VALUES
 (1, '42069', '', '', '', '', '', '', '', '200.0000', 0, 5, 'catalog/demo/products/42069_0.jpg', 2, 1, '154990.0000', 0, 9, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 34, '2021-11-11 12:51:32', '2025-12-21 12:33:04', 1),
 (2, '42070', '', '', '', '', '', '', '', '1.0000', 0, 5, 'catalog/demo/products/42070_0.jpg', 2, 1, '147940.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2021-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(3, '42071', '', '', '', '', '', '', '', '2.0000', 0, 5, 'catalog/demo/products/42071_0.jpg', 1, 1, '142490.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 19, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(3, '42071', '', '', '', '', '', '', '', '2.0000', 0, 5, 'catalog/demo/products/42071_0.jpg', 1, 1, '142490.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 20, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (4, '42072', '', '', '', '', '', '', '', '3.0000', 0, 5, 'catalog/demo/products/42072_0.jpg', 2, 1, '139990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (5, '42073', '', '', '', '', '', '', '', '4.0000', 0, 5, 'catalog/demo/products/42073_0.jpg', 2, 1, '139990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (6, '42074', '', '', '', '', '', '', '', '5.0000', 0, 5, 'catalog/demo/products/42074_0.jpg', 1, 1, '134990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 1, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(7, '42075', '', '', '', '', '', '', '', '6.0000', 1, 5, 'catalog/demo/products/42075_0.jpg', 1, 1, '129990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 211, '2022-11-11 12:51:32', '2025-12-03 15:08:18', 1),
+(7, '42075', '', '', '', '', '', '', '', '6.0000', 1, 5, 'catalog/demo/products/42075_0.jpg', 1, 1, '129990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 214, '2022-11-11 12:51:32', '2025-12-03 15:08:18', 1),
 (8, '42076', '', '', '', '', '', '', '', '7.0000', 0, 5, 'catalog/demo/products/42076_0.jpg', 2, 1, '128370.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 1, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (9, '42077', '', '', '', '', '', '', '', '8.0000', 0, 5, 'catalog/demo/products/42077_0.jpg', 2, 1, '124999.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (10, '42078', '', '', '', '', '', '', '', '9.0000', 0, 5, 'catalog/demo/products/42078_0.jpg', 2, 1, '124990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
@@ -3701,13 +3714,13 @@ INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `is
 (18, '42124', '', '', '', '', '', '', '', '17.0000', 0, 5, 'catalog/demo/products/42124_0.jpg', 1, 1, '159990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (19, '42125', '', '', '', '', '', '', '', '18.0000', 0, 5, 'catalog/demo/products/42125_0.jpg', 1, 1, '159990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (20, '42126', '', '', '', '', '', '', '', '19.0000', 0, 5, 'catalog/demo/products/42126_0.jpg', 1, 1, '154990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 18, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(21, '42165', '', '', '', '', '', '', '', '20.0000', 0, 5, 'catalog/demo/products/42165_0.jpg', 3, 1, '449990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 1, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(22, '42166', '', '', '', '', '', '', '', '21.0000', 0, 5, 'catalog/demo/products/42166_0.jpg', 3, 1, '259990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 16, '2022-11-11 12:51:32', '2025-11-27 19:02:33', 1),
-(23, '42167', '', '', '', '', '', '', '', '22.0000', 0, 5, 'catalog/demo/products/42167_0.jpg', 0, 1, '118840.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 1, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(24, '42168', '', '', '', '', '', '', '', '23.0000', 0, 5, 'catalog/demo/products/42168_0.jpg', 0, 1, '70380.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(21, '42165', '', '', '', '', '', '', '', '20.0000', 0, 5, 'catalog/demo/products/42165_0.jpg', 3, 1, '449990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 2, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(22, '42166', '', '', '', '', '', '', '', '21.0000', 0, 5, 'catalog/demo/products/42166_0.jpg', 3, 1, '259990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 17, '2022-11-11 12:51:32', '2025-11-27 19:02:33', 1),
+(23, '42167', '', '', '', '', '', '', '', '22.0000', 0, 5, 'catalog/demo/products/42167_0.jpg', 0, 1, '118840.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 4, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(24, '42168', '', '', '', '', '', '', '', '23.0000', 0, 5, 'catalog/demo/products/42168_0.jpg', 0, 1, '70380.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 2, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (25, '42169', '', '', '', '', '', '', '', '24.0000', 0, 5, 'catalog/demo/products/42169_0.jpg', 0, 1, '8290.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 3, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (26, '42170', '', '', '', '', '', '', '', '25.0000', 0, 5, 'catalog/demo/products/42170_0.jpg', 0, 1, '5950.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(27, '42171', '', '', '', '', '', '', '', '26.0000', 0, 5, 'catalog/demo/products/42171_0.jpg', 0, 1, '5660.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(27, '42171', '', '', '', '', '', '', '', '26.0000', 0, 5, 'catalog/demo/products/42171_0.jpg', 0, 1, '5660.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 14, '2022-11-11 12:51:32', '2025-12-24 11:11:33', 1),
 (28, '42172', '', '', '', '', '', '', '', '27.0000', 0, 5, 'catalog/demo/products/42172_0.jpg', 0, 1, '5399.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (29, '42173', '', '', '', '', '', '', '', '28.0000', 0, 5, 'catalog/demo/products/42173_0.jpg', 0, 1, '5290.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (30, '42174', '', '', '', '', '', '', '', '0.0000', 0, 5, 'catalog/demo/products/42174_0.jpg', 0, 1, '4890.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
@@ -3724,11 +3737,11 @@ INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `is
 (41, '42231', '', '', '', '', '', '', '', '11.0000', 0, 5, 'catalog/demo/products/42231_0.jpg', 0, 1, '13990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '2.0000', 100, '', 1, 74, '2022-11-11 12:51:32', '2025-12-20 18:50:00', 1),
 (42, '42232', '', '', '', '', '', '', '', '12.0000', 0, 5, 'catalog/demo/products/42232_0.jpg', 0, 1, '6590.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 1, '2022-11-11 12:51:32', '2025-12-22 16:12:33', 1),
 (43, '42233', '', '', '', '', '', '', '', '13.0000', 0, 5, 'catalog/demo/products/42233_0.jpg', 0, 1, '5990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 5, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(44, '42234', '', '', '', '', '', '', '', '14.0000', 0, 5, 'catalog/demo/products/42234_0.jpg', 0, 1, '5890.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 1, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(45, '42235', '', '', '', '', '', '', '', '15.0000', 0, 5, 'catalog/demo/products/42235_0.jpg', 0, 1, '5230.0000', 0, 9, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 657, '2022-11-11 12:51:32', '2025-12-22 13:48:36', 1),
+(44, '42234', '', '', '', '', '', '', '', '14.0000', 0, 5, 'catalog/demo/products/42234_0.jpg', 0, 1, '5890.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 11, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(45, '42235', '', '', '', '', '', '', '', '15.0000', 0, 5, 'catalog/demo/products/42235_0.jpg', 0, 1, '5230.0000', 0, 9, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 722, '2022-11-11 12:51:32', '2025-12-24 11:10:00', 1),
 (46, '42236', '', '', '', '', '', '', '', '16.0000', 0, 5, 'catalog/demo/products/42236_0.jpg', 0, 1, '4990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (47, '42237', '', '', '', '', '', '', '', '17.0000', 0, 5, 'catalog/demo/products/42237_0.jpg', 0, 1, '4990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(48, '42238', '', '', '', '', '', '', '', '18.0000', 0, 5, 'catalog/demo/products/42238_0.jpg', 1, 1, '4990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 5, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(48, '42238', '', '', '', '', '', '', '', '18.0000', 0, 5, 'catalog/demo/products/42238_0.jpg', 1, 1, '4990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 9, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (49, '42239', '', '', '', '', '', '', '', '19.0000', 0, 5, 'catalog/demo/products/42239_0.jpg', 2, 1, '4890.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (50, '42240', '', '', '', '', '', '', '', '20.0000', 0, 5, 'catalog/demo/products/42240_0.jpg', 2, 1, '4890.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (51, '42279', '', '', '', '', '', '', '', '21.0000', 0, 5, 'catalog/demo/products/42279_0.jpg', 5, 1, '402990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
@@ -3932,7 +3945,6 @@ INSERT INTO `oc_product_attribute` (`product_id`, `attribute_id`, `language_id`,
 (25, 11, 1, '4'),
 (25, 13, 1, '1280 х  720'),
 (26, 11, 1, '4'),
-(27, 11, 1, '4'),
 (27, 12, 1, '2 метр/сек'),
 (28, 11, 1, '4'),
 (28, 13, 1, '640 х  480'),
@@ -4485,7 +4497,6 @@ INSERT INTO `oc_product_attribute` (`product_id`, `attribute_id`, `language_id`,
 (25, 11, 2, '4'),
 (25, 13, 2, '1280 x 720'),
 (26, 11, 2, '4'),
-(27, 11, 2, '4'),
 (27, 12, 2, '2 meters per second'),
 (28, 11, 2, '4'),
 (28, 13, 2, '640 x 480'),
@@ -4901,7 +4912,9 @@ INSERT INTO `oc_product_attribute` (`product_id`, `attribute_id`, `language_id`,
 (36, 18, 2, '35 ohms'),
 (36, 19, 2, 'built-in'),
 (42, 23, 1, '3A,'),
-(42, 23, 2, '3A');
+(42, 23, 2, '3A'),
+(27, 11, 2, '4'),
+(27, 11, 1, '4');
 
 -- --------------------------------------------------------
 
@@ -5049,7 +5062,6 @@ INSERT INTO `oc_product_description` (`product_id`, `language_id`, `name`, `desc
 (24, 2, 'Quadcopter AUTEL EVO Nano+ Standard Package MDA2 with camera, orange', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '', '[]'),
 (25, 2, 'HIPER HQC-0001 Shadow FPV quadcopter with camera, black', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '', '[]'),
 (26, 2, 'Quadcopter Syma X5UW-D with camera, white', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '', '[]'),
-(27, 2, 'Quadcopter FLYBOTIC Bumper Drone without camera, blue', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '', '[]'),
 (28, 2, 'Quadcopter HIPER HQC-0030 Sky Patrol FPV with camera, black', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '', '[]'),
 (29, 2, 'Quadcopter HIPER HQC-0003 Falcon X FPV with camera, black', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '', '[]'),
 (30, 2, 'Quadcopter Syma X5UW with camera, red', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '', '[]'),
@@ -5127,6 +5139,7 @@ INSERT INTO `oc_product_description` (`product_id`, `language_id`, `name`, `desc
 (39, 1, 'Наушники FIIO FD5, 2.5 мм/3.5 мм/4.4 мм, серебристый', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', '', '[]'),
 (63, 1, 'Моноблок Lenovo IdeaCentre А540-ICB, 23.8&quot;, Intel Core i5 9400T, 8ГБ, 1000ГБ SSD,  Intel UHD Graphics 630, Free DOS, черный', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', '', '[{\"content\":\"\\u041d\\u043e\\u0432\\u0438\\u043d\\u043a\\u0430\",\"class\":\"tag is-black\"}]'),
 (22, 1, 'Квадрокоптер DJI AIR 2S Fly More Combo Smart Controller с камерой,  серый', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', '', '[{\"content\":\"\\u0425\\u0438\\u0442\",\"class\":\"tag is-warning\"}]'),
+(27, 2, 'Quadcopter FLYBOTIC Bumper Drone without camera, blue', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '', '[]'),
 (36, 1, 'Наушники Audio-Technica ATH-ANC900BT, 3.5 мм/Bluetooth, черный', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', '', '[{\"content\":\"\\u0412\\u044b\\u0433\\u043e\\u0434\\u043d\\u043e\",\"class\":\"tag is-success\"}]');
 
 -- --------------------------------------------------------
@@ -5310,9 +5323,9 @@ INSERT INTO `oc_product_image` (`product_image_id`, `product_id`, `image`, `titl
 (127, 26, 'catalog/demo/products/42170_3.jpg', '', 3),
 (128, 26, 'catalog/demo/products/42170_4.jpg', '', 4),
 (129, 26, 'catalog/demo/products/42170_5.jpg', '', 5),
-(130, 27, 'catalog/demo/products/42171_1.jpg', '', 1),
-(131, 27, 'catalog/demo/products/42171_2.jpg', '', 2),
-(132, 27, 'catalog/demo/products/42171_3.jpg', '', 3),
+(2026, 27, 'catalog/demo/products/42171_3.jpg', '', 3),
+(2025, 27, 'catalog/demo/products/42171_2.jpg', '', 2),
+(2024, 27, 'catalog/demo/products/42171_1.jpg', '', 1),
 (133, 28, 'catalog/demo/products/42172_1.jpg', '', 1),
 (134, 28, 'catalog/demo/products/42172_2.jpg', '', 2),
 (135, 28, 'catalog/demo/products/42172_3.jpg', '', 3),
@@ -5394,9 +5407,9 @@ INSERT INTO `oc_product_image` (`product_image_id`, `product_id`, `image`, `titl
 (211, 44, 'catalog/demo/products/42234_2.jpg', '', 2),
 (212, 44, 'catalog/demo/products/42234_3.jpg', '', 3),
 (213, 44, 'catalog/demo/products/42234_4.jpg', '', 4),
-(1999, 45, 'catalog/demo/products/42235_3.jpg', '', 3),
-(1998, 45, 'catalog/demo/products/42235_2.jpg', '', 2),
-(1997, 45, 'catalog/demo/products/42235_1.jpg', '', 1),
+(2020, 45, 'catalog/demo/products/42235_3.jpg', '', 3),
+(2019, 45, 'catalog/demo/products/42235_2.jpg', '', 2),
+(2018, 45, 'catalog/demo/products/42235_1.jpg', '', 1),
 (217, 46, 'catalog/demo/products/42236_1.jpg', '', 1),
 (218, 46, 'catalog/demo/products/42236_2.jpg', '', 2),
 (219, 46, 'catalog/demo/products/42236_3.jpg', '', 3),
@@ -5654,9 +5667,9 @@ CREATE TABLE `oc_product_option` (
 --
 
 INSERT INTO `oc_product_option` (`product_option_id`, `product_id`, `option_id`, `value`, `required`) VALUES
-(4, 45, 15, '', 0),
+(8, 27, 17, '', 1),
 (3, 7, 14, '', 1),
-(1, 45, 14, '', 1);
+(7, 45, 17, '', 1);
 
 -- --------------------------------------------------------
 
@@ -5668,6 +5681,7 @@ CREATE TABLE `oc_product_option_value` (
   `product_option_value_id` int(11) NOT NULL,
   `product_option_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
+  `link_product_id` int(11) NOT NULL,
   `option_id` int(11) NOT NULL,
   `option_value_id` int(11) NOT NULL,
   `is_default` tinyint(4) NOT NULL DEFAULT '0',
@@ -5685,22 +5699,16 @@ CREATE TABLE `oc_product_option_value` (
 -- Dumping data for table `oc_product_option_value`
 --
 
-INSERT INTO `oc_product_option_value` (`product_option_value_id`, `product_option_id`, `product_id`, `option_id`, `option_value_id`, `is_default`, `quantity`, `subtract`, `price`, `price_prefix`, `points`, `points_prefix`, `weight`, `weight_prefix`) VALUES
-(18, 4, 45, 15, 60, 0, '1.0000', 1, '7777.0000', '=', 0, '+', '0.00000000', '+'),
-(17, 4, 45, 15, 56, 0, '1.0000', 1, '2.0000', '/', 0, '+', '0.00000000', '+'),
-(16, 4, 45, 15, 55, 0, '1.0000', 1, '2.0000', '*', 0, '+', '0.00000000', '+'),
-(9, 3, 7, 14, 51, 0, '10.0000', 1, '5000.0000', '+', 0, '+', '0.00000000', '+'),
-(8, 3, 7, 14, 50, 0, '10.0000', 1, '2000.0000', '+', 0, '+', '0.00000000', '+'),
-(7, 3, 7, 14, 49, 0, '10.0000', 1, '0.0000', '+', 0, '+', '0.00000000', '+'),
-(15, 4, 45, 15, 54, 0, '1.0000', 1, '300.0000', '-', 0, '+', '0.00000000', '+'),
-(11, 4, 45, 15, 53, 0, '1.0000', 0, '500.0000', '+', 0, '+', '0.00000000', '+'),
-(10, 4, 45, 15, 52, 1, '1.0000', 0, '0.0000', '+', 0, '+', '0.00000000', '+'),
-(14, 1, 45, 14, 59, 0, '10.0000', 1, '9999.0000', '=', 0, '+', '0.00000000', '+'),
-(13, 1, 45, 14, 58, 0, '10.0000', 1, '3.0000', '/', 0, '+', '0.00000000', '+'),
-(12, 1, 45, 14, 57, 0, '10.0000', 1, '3.0000', '*', 0, '+', '0.00000000', '+'),
-(3, 1, 45, 14, 51, 0, '10.0000', 1, '200.0000', '-', 0, '+', '0.00000000', '+'),
-(2, 1, 45, 14, 50, 0, '10.0000', 1, '100.0000', '+', 0, '+', '0.00000000', '+'),
-(1, 1, 45, 14, 49, 1, '10.0000', 1, '0.0000', '+', 0, '+', '0.00000000', '+');
+INSERT INTO `oc_product_option_value` (`product_option_value_id`, `product_option_id`, `product_id`, `link_product_id`, `option_id`, `option_value_id`, `is_default`, `quantity`, `subtract`, `price`, `price_prefix`, `points`, `points_prefix`, `weight`, `weight_prefix`) VALUES
+(9, 3, 7, 0, 14, 51, 0, '10.0000', 1, '5000.0000', '+', 0, '+', '0.00000000', '+'),
+(8, 3, 7, 0, 14, 50, 0, '10.0000', 1, '2000.0000', '+', 0, '+', '0.00000000', '+'),
+(7, 3, 7, 0, 14, 49, 0, '10.0000', 1, '0.0000', '+', 0, '+', '0.00000000', '+'),
+(36, 8, 27, 24, 17, 68, 0, '10.0000', 1, '0.0000', '+', 0, '+', '0.00000000', '+'),
+(35, 8, 27, 0, 17, 69, 1, '10.0000', 1, '0.0000', '+', 0, '+', '0.00000000', '+'),
+(34, 8, 27, 45, 17, 67, 0, '10.0000', 1, '0.0000', '+', 0, '+', '0.00000000', '+'),
+(33, 7, 45, 23, 17, 68, 0, '10.0000', 1, '0.0000', '+', 0, '+', '0.00000000', '+'),
+(32, 7, 45, 27, 17, 69, 0, '10.0000', 1, '0.0000', '+', 0, '+', '0.00000000', '+'),
+(31, 7, 45, 41, 17, 67, 1, '10.0000', 1, '0.0000', '+', 0, '+', '0.00000000', '+');
 
 -- --------------------------------------------------------
 
@@ -5812,7 +5820,7 @@ INSERT INTO `oc_product_special` (`product_special_id`, `product_id`, `customer_
 (9, 8, 1, 1, '98370.0000', '0000-00-00', '0000-00-00'),
 (10, 9, 1, 1, '94999.0000', '0000-00-00', '0000-00-00'),
 (11, 10, 1, 1, '94990.0000', '0000-00-00', '0000-00-00'),
-(117, 45, 1, 1, '4500.0000', '0000-00-00', '0000-00-00'),
+(123, 45, 1, 1, '4500.0000', '0000-00-00', '0000-00-00'),
 (103, 63, 1, 1, '87718.4000', '0000-00-00', '0000-00-00'),
 (72, 21, 1, 1, '395991.2000', '0000-00-00', '0000-00-00'),
 (91, 36, 1, 1, '9900.0000', '0000-00-00', '0000-00-00'),
@@ -6073,7 +6081,8 @@ INSERT INTO `oc_product_to_layout` (`product_id`, `store_id`, `layout_id`) VALUE
 (22, 0, 0),
 (39, 0, 0),
 (92, 0, 0),
-(42, 0, 0);
+(42, 0, 0),
+(27, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -6600,7 +6609,7 @@ INSERT INTO `oc_seo_url` (`seo_url_id`, `store_id`, `language_id`, `query`, `key
 (126, 0, 2, 'product_id=24', 'quadcopter-autel-evo-nano-standard-package-mda2-with-camera-orange'),
 (127, 0, 2, 'product_id=25', 'hiper-hqc-0001-shadow-fpv-quadcopter-with-camera-black'),
 (128, 0, 2, 'product_id=26', 'quadcopter-syma-x5uw-d-with-camera-white'),
-(129, 0, 2, 'product_id=27', 'quadcopter-flybotic-bumper-drone-without-camera-blue'),
+(1410, 0, 2, 'product_id=27', 'quadcopter-flybotic-bumper-drone-without-camera-blue'),
 (130, 0, 2, 'product_id=28', 'quadcopter-hiper-hqc-0030-sky-patrol-fpv-with-camera-black'),
 (131, 0, 2, 'product_id=29', 'quadcopter-hiper-hqc-0003-falcon-x-fpv-with-camera-black'),
 (132, 0, 2, 'product_id=30', 'quadcopter-syma-x5uw-with-camera-red'),
@@ -6618,7 +6627,7 @@ INSERT INTO `oc_seo_url` (`seo_url_id`, `store_id`, `language_id`, `query`, `key
 (1394, 0, 2, 'product_id=42', 'wireless-charger-canyon-ws-404-black'),
 (145, 0, 2, 'product_id=43', 'ac-charger-satechi-compact-charger-gray'),
 (146, 0, 2, 'product_id=44', 'wireless-charger-prestigio-revolt-a7-3-in-1-black'),
-(1392, 0, 2, 'product_id=45', 'wireless-charger-device-xiaomi-50w-wireless-charging-stand-3-25a-pd-universal-black-gold'),
+(1406, 0, 2, 'product_id=45', 'wireless-charger-device-xiaomi-50w-wireless-charging-stand-3-25a-pd-universal-black-gold'),
 (148, 0, 2, 'product_id=46', 'mains-charger-canyon-h-100-white'),
 (149, 0, 2, 'product_id=47', 'wireless-charger-prestigio-revolt-a9-3-in-1-gray'),
 (150, 0, 2, 'product_id=48', 'apple-magsafe-mhxh3ze-a-wireless-charger-white'),
@@ -6712,7 +6721,7 @@ INSERT INTO `oc_seo_url` (`seo_url_id`, `store_id`, `language_id`, `query`, `key
 (539, 0, 1, 'product_id=24', 'kvadrokopter-autel-evo-nano-standard-package-mda2-s-kameroj-oranzhevyj'),
 (540, 0, 1, 'product_id=25', 'kvadrokopter-hiper-hqc-0001-shadow-fpv-s-kameroj-chernyj'),
 (541, 0, 1, 'product_id=26', 'kvadrokopter-syma-x5uw-d-s-kameroj-belyj'),
-(542, 0, 1, 'product_id=27', 'kvadrokopter-flybotic-bamper-dron-bez-kamery-sinij'),
+(1409, 0, 1, 'product_id=27', 'kvadrokopter-flybotic-bamper-dron-bez-kamery-sinij'),
 (543, 0, 1, 'product_id=28', 'kvadrokopter-hiper-hqc-0030-sky-patrol-fpv-s-kameroj-chernyj'),
 (544, 0, 1, 'product_id=29', 'kvadrokopter-hiper-hqc-0003-falcon-x-fpv-s-kameroj-chernyj'),
 (545, 0, 1, 'product_id=30', 'kvadrokopter-syma-x5uw-s-kameroj-krasnyj'),
@@ -6730,7 +6739,7 @@ INSERT INTO `oc_seo_url` (`seo_url_id`, `store_id`, `language_id`, `query`, `key
 (1393, 0, 1, 'product_id=42', 'besprovodnoe-zaryadnoe-ustrojstvo-canyon-ws-404-chernyj'),
 (558, 0, 1, 'product_id=43', 'setevoe-zaryadnoe-ustrojstvo-satechi-compact-charger-seryj'),
 (559, 0, 1, 'product_id=44', 'besprovodnoe-zaryadnoe-ustrojstvo-prestigio-revolt-a7-3-v-1-chernyj'),
-(1391, 0, 1, 'product_id=45', 'besprovodnoe-zar-ustr-xiaomi-50w-wireless-charging-stand-3-25a-pd-universalnoe-chernyj-zolotisty'),
+(1405, 0, 1, 'product_id=45', 'besprovodnoe-zar-ustr-xiaomi-50w-wireless-charging-stand-3-25a-pd-universalnoe-chernyj-zolotisty'),
 (561, 0, 1, 'product_id=46', 'setevoe-zaryadnoe-ustrojstvo-canyon-h-100-belyj'),
 (562, 0, 1, 'product_id=47', 'besprovodnoe-zaryadnoe-ustrojstvo-prestigio-revolt-a9-3-v-1-seryj'),
 (563, 0, 1, 'product_id=48', 'besprovodnoe-zaryadnoe-ustrojstvo-apple-magsafe-mhxh3ze-a-belyj'),
@@ -6907,7 +6916,7 @@ INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES
 ('677f2bf0bf29762c0e604c16ba', '{\"api_id\":\"7\"}', '2026-01-10 14:42:30'),
 ('67883580c124f5ff8e54c075e8', '{\"api_id\":\"7\"}', '2026-01-10 20:48:50'),
 ('6bdfd864f5e44b25df1684602b', '{\"api_id\":\"7\"}', '2026-01-14 15:16:29'),
-('6de15974e9228a7ac02db588ef', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"user_id\":\"1\",\"user_token\":\"zhWEuwZyzWBz63h0sSjN7kW8j9UFJMCl\",\"wishlist\":[],\"account\":\"register\",\"last_order_id\":168,\"shipping_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"\",\"address_2\":\"\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\\u041c\\u043e\\u0441\\u043a\\u043e\\u0432\\u0441\\u043a\\u0430\\u044f \\u043e\\u0431\\u043b\\u0430\\u0441\\u0442\\u044c\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"guest\":{\"customer_group_id\":\"1\",\"email\":\"tinkov@exopencart.ru\"}}', '2026-01-21 16:16:05'),
+('6de15974e9228a7ac02db588ef', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"user_id\":\"1\",\"user_token\":\"z2tTzjfMcpaMkpgRdU5JXL4gtaCPpng9\",\"wishlist\":[],\"account\":\"register\",\"last_order_id\":168,\"shipping_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"\",\"address_2\":\"\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\\u041c\\u043e\\u0441\\u043a\\u043e\\u0432\\u0441\\u043a\\u0430\\u044f \\u043e\\u0431\\u043b\\u0430\\u0441\\u0442\\u044c\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"guest\":{\"customer_group_id\":\"1\",\"email\":\"tinkov@exopencart.ru\"},\"comment\":\"\",\"file_manager_directory\":\"\\/shared\\/httpd\\/exopencart\\/htdocs\\/image\\/catalog\\/demo\\/options\",\"success\":\"\\u041d\\u0430\\u0441\\u0442\\u0440\\u043e\\u0439\\u043a\\u0438 \\u0443\\u0441\\u043f\\u0435\\u0448\\u043d\\u043e \\u0438\\u0437\\u043c\\u0435\\u043d\\u0435\\u043d\\u044b!\"}', '2026-01-23 11:20:32'),
 ('6f2f75b720b7f5ef67a4a036de', '{\"api_id\":\"7\"}', '2026-01-14 15:12:09'),
 ('70ac2a793ccbcf4a0719fb8f7f', '{\"api_id\":\"7\"}', '2026-01-19 21:51:43'),
 ('738a043ced2ef91721af56e30e', '{\"api_id\":\"7\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-01-19 21:44:55'),
@@ -13074,7 +13083,7 @@ ALTER TABLE `oc_blog_category`
 -- AUTO_INCREMENT for table `oc_cart`
 --
 ALTER TABLE `oc_cart`
-  MODIFY `cart_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=234;
+  MODIFY `cart_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `oc_category`
@@ -13170,7 +13179,7 @@ ALTER TABLE `oc_customer_ip`
 -- AUTO_INCREMENT for table `oc_customer_login`
 --
 ALTER TABLE `oc_customer_login`
-  MODIFY `customer_login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `customer_login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `oc_customer_reward`
@@ -13338,13 +13347,13 @@ ALTER TABLE `oc_module`
 -- AUTO_INCREMENT for table `oc_option`
 --
 ALTER TABLE `oc_option`
-  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `oc_option_value`
 --
 ALTER TABLE `oc_option_value`
-  MODIFY `option_value_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `option_value_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT for table `oc_order`
@@ -13422,19 +13431,19 @@ ALTER TABLE `oc_product_discount`
 -- AUTO_INCREMENT for table `oc_product_image`
 --
 ALTER TABLE `oc_product_image`
-  MODIFY `product_image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2003;
+  MODIFY `product_image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2027;
 
 --
 -- AUTO_INCREMENT for table `oc_product_option`
 --
 ALTER TABLE `oc_product_option`
-  MODIFY `product_option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `product_option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `oc_product_option_value`
 --
 ALTER TABLE `oc_product_option_value`
-  MODIFY `product_option_value_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `product_option_value_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `oc_product_reward`
@@ -13446,7 +13455,7 @@ ALTER TABLE `oc_product_reward`
 -- AUTO_INCREMENT for table `oc_product_special`
 --
 ALTER TABLE `oc_product_special`
-  MODIFY `product_special_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
+  MODIFY `product_special_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 
 --
 -- AUTO_INCREMENT for table `oc_quantity_class`
@@ -13506,7 +13515,7 @@ ALTER TABLE `oc_review_article`
 -- AUTO_INCREMENT for table `oc_seo_url`
 --
 ALTER TABLE `oc_seo_url`
-  MODIFY `seo_url_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1395;
+  MODIFY `seo_url_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1411;
 
 --
 -- AUTO_INCREMENT for table `oc_setting`
