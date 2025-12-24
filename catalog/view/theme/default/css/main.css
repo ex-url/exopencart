@@ -685,6 +685,7 @@ footer .scroll-top-trigger.shown {
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transition: box-shadow 0.2s ease;
+  height: 100%;
 }
 
 .radio-ui:has(input[type="radio"]:checked) {

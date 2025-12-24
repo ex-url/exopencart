@@ -97,6 +97,7 @@ $_['entry_attribute']        = 'Характеристики';
 $_['entry_attribute_group']  = 'Группа характеристик';
 $_['entry_text']             = 'Текст';
 $_['entry_option']           = 'Опции';
+$_['entry_option_link_product_id'] = 'Связать с продуктом';
 $_['entry_option_value']     = 'Значение опции';
 $_['entry_required']         = 'Необходимо';
 $_['entry_status']           = 'Статус';

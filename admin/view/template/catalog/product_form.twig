@@ -492,17 +492,21 @@
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-related"><span data-toggle="tooltip" title="{{ help_related }}">{{ entry_related }}</span></label>
+                <label class="col-sm-2 control-label" for="input-related">
+                  <span data-toggle="tooltip" title="{{ help_related }}">{{ entry_related }}</span>
+                </label>
                 <div class="col-sm-10">
                   <input type="text" name="related" value="" placeholder="{{ entry_related }}" id="input-related" class="form-control"/>
-                  <div id="product-related" class="well well-sm" style="height: 150px; overflow: auto;"> {% for product_related in product_relateds %}
-                      <div id="product-related{{ product_related.product_id }}"><i class="fa fa-minus-circle"></i> {{ product_related.name }}
-                        <input type="hidden" name="product_related[]" value="{{ product_related.product_id }}"/>
-                      </div>
-                    {% endfor %}</div>
+                  <div id="product-related" class="well well-sm" style="height: 150px; overflow: auto;">
+                    {% for product_related in product_relateds %}
+                    <div id="product-related{{ product_related.product_id }}"><i class="fa fa-minus-circle"></i> {{ product_related.name }}
+                      <input type="hidden" name="product_related[]" value="{{ product_related.product_id }}"/>
+                    </div>
+                    {% endfor %}
+                  </div>
                 </div>
               </div>
-			  <div class="form-group">
+			        <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-related-article"><span data-toggle="tooltip" title="{{ help_related }}">{{ entry_related_article }}</span></label>
                 <div class="col-sm-10">
                   <input type="text" name="product_related_article_input" value="" placeholder="{{ entry_related_article }}" id="input-related-article" class="form-control" />
@@ -681,7 +685,8 @@
                               <tbody>
                                 {% for product_option_value in product_option.product_option_value %}
                                   <tr id="option-value-row{{ option_value_row }}">
-                                    <td class="text-left"><select name="product_option[{{ option_row }}][product_option_value][{{ option_value_row }}][option_value_id]" class="form-control">
+                                    <td class="text-left">                                      
+                                      <select name="product_option[{{ option_row }}][product_option_value][{{ option_value_row }}][option_value_id]" class="form-control">
                                         {% if option_values[product_option.option_id] %}
                                           {% for option_value in option_values[product_option.option_id] %}
                                             {% if option_value.option_value_id == product_option_value.option_value_id %}
@@ -692,6 +697,8 @@
                                           {% endfor %}
                                         {% endif %}
                                       </select>
+                                      <input type="text" value="{{ product_option_value.link_product_name }}" placeholder="{{ entry_option_link_product_id }}" class="option-product-link form-control"/>
+                                      <input type="hidden" name="product_option[{{ option_row }}][product_option_value][{{ option_value_row }}][link_product_id]" value="{{ product_option_value.link_product_id }}" class="option-product-link-value"/>
                                       <label>
                                         <input type="checkbox" name="product_option[{{ option_row }}][product_option_value][{{ option_value_row }}][is_default]" {{ product_option_value.is_default ? 'checked' : '' }} value="1"/> {{ text_default }}
                                       </label>
@@ -1317,38 +1324,68 @@
 	  }
   });
 
-$('#product-related').delegate('.fa-minus-circle', 'click', function() {
-	$(this).parent().remove();
-});
+  $('#product-related').delegate('.fa-minus-circle', 'click', function() {
+    $(this).parent().remove();
+  });
 
-// Related Article
-$('input[name=\'product_related_article_input\']').autocomplete({
-	'source': function(request, response) {
-		$.ajax({
-			url: 'index.php?route=blog/article/autocomplete&user_token={{ user_token }}&filter_name=' +  encodeURIComponent(request),
-			dataType: 'json',
-			success: function(json) {
-				response($.map(json, function(item) {
-					return {
-						label: item['name'],
-						value: item['article_id']
-					}
-				}));
-			}
-		});
-	},
-	'select': function(item) {
-		$('input[name=\'product_related_article\']').val('');
+  // option Product Link
+  $(document).on('focus', '.option-product-link:not(.autocomplete-initialized)', function() {
+    $(this).addClass('autocomplete-initialized').autocomplete({
+      'source': function(request, response) {
+        $.ajax({
+          url: 'index.php?route=catalog/product/autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
+          dataType: 'json',
+          success: function(json) {
+            response($.map(json, function(item) {
+              return {
+                label: item['name'],
+                value: item['product_id']
+              }
+            }));
+          }
+        });
+      },
+      'select': function(item) {
+        $(this).val(item['label']);
+        $(this).siblings('.option-product-link-value').val(item['value']);
+      }
+    });
+  });
 
-		$('#article-related' + item['value']).remove();
+  $(document).on('blur', '.option-product-link', function() {
+    if($(this).val() == '') {
+      $(this).siblings('.option-product-link-value').val('');
+    }    
+  });
 
-		$('#article-related').append('<div id="article-related' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="product_related_article[]" value="' + item['value'] + '" /></div>');
-	}
-});
+  // Related Article
+  $('input[name=\'product_related_article_input\']').autocomplete({
+    'source': function(request, response) {
+      $.ajax({
+        url: 'index.php?route=blog/article/autocomplete&user_token={{ user_token }}&filter_name=' +  encodeURIComponent(request),
+        dataType: 'json',
+        success: function(json) {
+          response($.map(json, function(item) {
+            return {
+              label: item['name'],
+              value: item['article_id']
+            }
+          }));
+        }
+      });
+    },
+    'select': function(item) {
+      $('input[name=\'product_related_article\']').val('');
 
-$('#article-related').delegate('.fa-minus-circle', 'click', function() {
-	$(this).parent().remove();
-});
+      $('#article-related' + item['value']).remove();
+
+      $('#article-related').append('<div id="article-related' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="product_related_article[]" value="' + item['value'] + '" /></div>');
+    }
+  });
+
+  $('#article-related').delegate('.fa-minus-circle', 'click', function() {
+    $(this).parent().remove();
+  });
 
 
   var attribute_row = {{ attribute_row }};
@@ -1589,9 +1626,13 @@ $('#article-related').delegate('.fa-minus-circle', 'click', function() {
 
   function addOptionValue(option_row) {
 	  html = '<tr id="option-value-row' + option_value_row + '">';
-	  html += '  <td class="text-left"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][option_value_id]" class="form-control">';
-	  html += $('#option-values' + option_row).html();
-	  html += '  </select><input type="hidden" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][product_option_value_id]" value="" />';
+	  html += '  <td class="text-left">';
+	  html += '  <select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][option_value_id]" class="form-control">';
+    html += $('#option-values' + option_row).html();
+	  html += '  </select>';
+    html += '<input type="text" value="{{ product_option_value.link_product_name }}" placeholder="{{ entry_option_link_product_id }}" class="option-product-link form-control"/>';
+    html += '<input type="hidden" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][link_product_id]" value="{{ product_option_value.link_product_id }}" class="option-product-link-value"/>';
+    html += '  <input type="hidden" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][product_option_value_id]" value="" />';  
     html += '  <label><input type="checkbox" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][is_default]" value="1"/> {{ text_default }}</label></td>'
 	  html += '  <td class="text-right"><input type="text" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][quantity]" value="" placeholder="{{ entry_quantity }}" class="form-control" /></td>';
 	  html += '  <td class="text-left"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][subtract]" class="form-control">';

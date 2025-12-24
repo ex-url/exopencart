@@ -367,6 +367,7 @@ class ControllerProductProduct extends Controller {
             $product_option_value_data[] = array(
               'product_option_value_id' => $option_value['product_option_value_id'],
               'option_value_id'         => $option_value['option_value_id'],
+              'product_link'            => $option_value['link_product_id'] ? $this->url->link('product/product', 'product_id=' . $option_value['link_product_id'], true) : '',
               'is_default'              => $option_value['is_default'],
               'name'                    => $option_value['name'],
               'image'                   => $this->model_tool_image->resize($option_value['image'], 50, 50),
@@ -430,8 +431,6 @@ class ControllerProductProduct extends Controller {
       $data['share'] = $this->url->link('product/product', 'product_id=' . (int)$this->request->get['product_id']);
 
       $data['attribute_groups'] = $this->model_catalog_product->getProductAttributes($this->request->get['product_id']);
-
-      $this->log->write($data['attribute_groups']);
 
       $data['products'] = array();
 

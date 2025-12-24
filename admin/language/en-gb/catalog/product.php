@@ -97,6 +97,7 @@ $_['entry_attribute_group']  = 'Attribute Group';
 $_['entry_text']             = 'Text';
 $_['entry_option']           = 'Option';
 $_['entry_option_value']     = 'Option Value';
+$_['entry_option_link_product_id']     = 'Link to Product';
 $_['entry_required']         = 'Required';
 $_['entry_status']           = 'Status';
 $_['entry_sort_order']       = 'Sort Order';

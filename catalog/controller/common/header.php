@@ -128,6 +128,8 @@ class ControllerCommonHeader extends Controller {
     $data['contact'] = $this->url->link('information/contact');
     $data['telephone'] = $this->config->get('config_telephone');
     $data['tel_link'] = normalizePhone($this->config->get('config_telephone'));
+    $data['fax'] = $this->config->get('config_fax');
+    $data['fax_link'] = normalizePhone($this->config->get('config_fax'));
     $data['email'] = $this->config->get('config_email');
     $data['social_media'] = $this->config->get('config_social_media');
 

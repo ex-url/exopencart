@@ -210,26 +210,50 @@
               </div>
               {% endif %}
               {% if option.type == 'radio' %}
-              <div class="field{% if option.required %} required {% endif %}">
-                <label class="label is-size-5">{{ option.name }}</label>
-                <div class="control" id="input-option{{ option.product_option_id }}">
+              <div class="field{% if option.required %} required {% endif %} mb-5">
+                <label class="label is-size-5 mb-5">{{ option.name }}</label>
+                {% if option.product_option_value | filter(v => v.product_link is defined and v.product_link != '') | length > 0 %}
+                <div class="columns is-mobile is-multiline is-variable is-2" id="input-option{{ option.product_option_id }}">
                   {% for option_value in option.product_option_value %}
-                  <div>
-                    <label class="radio">
-                      <input type="radio" name="option[{{ option.product_option_id }}]" data-price="{{ option_value.price_numeric }}" data-prefix="{{ option_value.price_prefix }}" {{ option_value.is_default ? 'checked' : '' }}
-                        value="{{ option_value.product_option_value_id }}" />
+                  <div class="column is-3-desktop is-3-tablet is-4-mobile">
+                    {% if option_value.product_link %}
+                    <a href="{{ option_value.product_link }}" class="radio-ui is-relative is-flex is-align-items-center is-flex-direction-column p-2 has-text-centered">
+                      <input type="radio" name="option[{{ option.product_option_id }}]" data-price="{{ option_value.price_numeric }}" data-prefix="{{ option_value.price_prefix }}" {{ option_value.is_default ? 'checked' : '' }} value="{{ option_value.product_option_value_id }}" />
                       {% if option_value.image %}
-                      <img src="{{ option_value.image }}"
-                        alt="{{ option_value.name }} {% if option_value.price %} {{ option_value.price_prefix }} {{ option_value.price }} {% endif %}" />{%
-                      endif %}
+                      <img class="mb-2" src="{{ option_value.image }}" alt="{{ option_value.name }} {% if option_value.price %} {{ option_value.price_prefix }} {{ option_value.price }} {% endif %}" />
+                      {% endif %}
+                      <span class="is-size-7">{{ option_value.name }}</span>
+                    </a>
+                    {% else %}
+                    <label class="radio-ui is-relative is-flex is-align-items-center is-flex-direction-column p-2 has-text-centered">
+                      <input type="radio" name="option[{{ option.product_option_id }}]" data-price="{{ option_value.price_numeric }}" data-prefix="{{ option_value.price_prefix }}" {{ option_value.is_default ? 'checked' : '' }} value="{{ option_value.product_option_value_id }}" />
+                      {% if option_value.image %}
+                      <img class="mb-2" src="{{ option_value.image }}" alt="{{ option_value.name }} {% if option_value.price %} {{ option_value.price_prefix }} {{ option_value.price }} {% endif %}" />
+                      {% endif %}
+                      <span class="is-size-7">{{ option_value.name }}</span>
+                    </label>
+                    {% endif %}                    
+                  </div>
+                  {% endfor %}
+                </div>
+                {% else %}
+                <div class="columns is-mobile is-multiline is-variable is-2" id="input-option{{ option.product_option_id }}">
+                  {% for option_value in option.product_option_value %}
+                  <div class="column is-3-desktop is-3-tablet is-4-mobile">
+                    <label class="radio-ui is-relative is-flex is-align-items-center is-flex-direction-column p-2 has-text-centered">
+                      <input type="radio" name="option[{{ option.product_option_id }}]" data-price="{{ option_value.price_numeric }}" data-prefix="{{ option_value.price_prefix }}" {{ option_value.is_default ? 'checked' : '' }} value="{{ option_value.product_option_value_id }}" />
+                      {% if option_value.image %}
+                      <img src="{{ option_value.image }}" alt="{{ option_value.name }} {% if option_value.price %} {{ option_value.price_prefix }} {{ option_value.price }} {% endif %}" />
+                      {% endif %}
                       {{ option_value.name }}
                       {% if show_options_price and option_value.price %}
                       <span class="tag is-light">{{ option_value.price_prefix }}{{ option_value.price }}</span>
                       {% endif %}
-                    </label>
+                    </label>                  
                   </div>
                   {% endfor %}
                 </div>
+                {% endif %}                
               </div>
               {% endif %}
               {% if option.type == 'checkbox' %}

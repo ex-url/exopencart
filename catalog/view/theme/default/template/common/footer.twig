@@ -11,7 +11,7 @@
     <div class="columns is-mobile is-multiline">
       {% if informations %}
       <div class="column is-4-widescreen is-4-desktop is-6-tablet is-12-mobile">
-        <h5 class="title is-5">{{ text_information }}</h5>
+        <div class="title is-5">{{ text_information }}</div>
         <ul class="list-unstyled">
           {% for information in informations %}
           <li><a href="{{ information.href }}">{{ information.title }}</a></li>
@@ -20,7 +20,7 @@
       </div>
       {% endif %}
       <div class="column is-4-widescreen is-4-desktop is-6-tablet is-12-mobile">
-        <h5 class="title is-5">{{ text_service }}</h5>
+        <div class="title is-5">{{ text_service }}</div>
         <ul class="list-unstyled">
           <li><a href="{{ contact }}">{{ text_contact }}</a></li>
           <li><a href="{{ return }}">{{ text_return }}</a></li>
@@ -28,7 +28,7 @@
         </ul>
       </div>
       <div class="column is-4-widescreen is-4-desktop is-6-tablet is-12-mobile">
-        <h5 class="title is-5">{{ text_extra }}</h5>
+        <div class="title is-5">{{ text_extra }}</div>
         <ul class="list-unstyled">
           <li><a href="{{ voucher }}">{{ text_voucher }}</a></li>
           <li><a href="{{ affiliate }}">{{ text_affiliate }}</a></li>
