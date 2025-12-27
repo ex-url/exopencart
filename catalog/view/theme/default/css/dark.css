@@ -194,6 +194,11 @@ body.dark {
   color: var(--text-primary);
 }
 
+.dark a.navbar-link:hover {
+  background-color: var(--hover-bg) !important;
+  color: var(--text-primary) !important;
+}
+
 .dark .navbar-dropdown {
   background-color: var(--black-bis);
   border: 1px solid var(--border-light);
@@ -464,6 +469,10 @@ body.dark {
 .dark .input::placeholder,
 .dark .textarea::placeholder {
   color: var(--grey);
+}
+
+.dark .swiper-pagination-bullet {
+  background: var(--primary);
 }
 
 @media (max-width: 1023px) {

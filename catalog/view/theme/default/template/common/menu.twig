@@ -192,9 +192,11 @@
   });
 
   $('body').on('click', '#menu .navbar-link', function (e) {
-    e.preventDefault();
-    console.log($(this).parents('.has-dropdown'));
-    
+    if($(this).parents('.has-dropdown').length) {      
+      e.stopPropagation();
+      e.preventDefault();
+      $(this).parent().find('.navbar-dropdown').slideToggle(256);
+    }    
   });
   </script>
 </section>
