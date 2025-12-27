@@ -23,6 +23,11 @@ button {
   transition: all 0.3s ease;
 }
 
+.anycategories .column>.box,
+.special .column>.box .latest .column>.box .featured .column>.box .bestseller .column>.box {
+  height: 100%;
+}
+
 .button.is-small:not(.is-rounded) {
   border-radius: 12px;
 }
@@ -668,6 +673,11 @@ footer .scroll-top-trigger.shown {
   z-index: 9;
   width: 100%;
   box-shadow: 0 0 15px 0 rgb(0 0 0 / 50%);
+}
+
+#article-images {
+  margin: -0.5rem;
+  padding: 0.5rem;
 }
 
 .anycategories .stickers {

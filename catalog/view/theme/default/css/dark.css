@@ -277,6 +277,10 @@ body.dark {
   color: var(--grey);
 }
 
+.dark .table.is-striped tbody tr:not(.is-selected):nth-child(even) {
+  background-color: var(--black);
+}
+
 .dark .table thead td,
 .dark .table thead th {
   color: var(--grey);
@@ -465,5 +469,10 @@ body.dark {
 @media (max-width: 1023px) {
   .dark .icons-menu {
     background-color: rgb(0 0 0 / 40%) !important;
+    box-shadow: 0 1px 3px 0 rgb(255 255 255 / 25%);
+  }
+
+  .dark #menu .navbar-start {
+    background-color: var(--black-bis) !important;
   }
 }

@@ -13,7 +13,7 @@
         {% endfor %}
       </ul>
     </nav>
-    <div class="columns">
+    <div class="columns is-mobile is-multiline">
     {{ column_left }}
     {% if column_left and column_right %}
     {% set class = 'column is-6-fullhd is-6-widescreen is-6-desktop is-12-tablet is-12-mobile' %}
@@ -28,13 +28,13 @@
         {% endif %}
         <h1 class="title is-3">{{ heading_title }}</h1>
         {% if products %}
-        <div class="columns is-mobile is-multiline my-5 product-cards">
+        <div class="product-cards columns is-mobile is-multiline my-5 is-variable is-2-mobile">
           {% if column_left and column_right %}
-          {% set class = 'column is-6-desktop is-6-tablet is-6-mobile' %}
+           {% set class = 'column is-4-fullhd is-4-widescreen is-4-desktop is-4-tablet is-6-mobile' %}
           {% elseif column_left or column_right %}
-          {% set class = 'column is-4-desktop is-4-tablet is-6-mobile' %}
+          {% set class = 'column is-3-fullhd is-3-widescreen is-4-desktop is-4-tablet is-6-mobile' %}
           {% else %}
-          {% set class = 'column is-3-desktop is-4-tablet is-6-mobile' %}
+          {% set class = 'column is-3-fullhd is-3-widescreen is-3-desktop is-4-tablet is-6-mobile' %}
           {% endif %}
           {% for product in products %}
           <div class="{{ class }}">

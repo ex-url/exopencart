@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Dec 24, 2025 at 08:25 AM
+-- Generation Time: Dec 27, 2025 at 11:20 AM
 -- Server version: 5.7.41-log
 -- PHP Version: 7.4.33
 
@@ -120,6 +120,7 @@ INSERT INTO `oc_api_session` (`api_session_id`, `api_id`, `session_id`, `ip`, `d
 (752, 7, '19b54725174903b3a65332f5fb', '172.16.238.1', '2025-12-20 21:13:54', '2025-12-20 18:13:59'),
 (756, 7, '874203daa51969c6b4bbbd948e', '172.16.238.1', '2025-12-20 21:46:42', '2025-12-20 21:46:42'),
 (757, 7, '4b8501e0d39028bcaa2bc180b0', '172.16.238.1', '2025-12-20 21:46:44', '2025-12-20 21:46:44'),
+(762, 7, 'e1c9b04b08d243e76a8d16597d', '172.16.238.1', '2025-12-27 14:19:48', '2025-12-27 14:19:48'),
 (761, 7, '4a1c6dc428517254648bb3fe91', '172.16.238.1', '2025-12-22 16:13:31', '2025-12-22 16:13:31'),
 (760, 7, '70ac2a793ccbcf4a0719fb8f7f', '172.16.238.1', '2025-12-20 21:51:43', '2025-12-20 21:51:43'),
 (759, 7, '7bbc7c4141cc99e1c81151b033', '172.16.238.1', '2025-12-20 21:49:42', '2025-12-20 21:49:42'),
@@ -153,8 +154,8 @@ CREATE TABLE `oc_article` (
 
 INSERT INTO `oc_article` (`article_id`, `image`, `sort_order`, `article_review`, `status`, `noindex`, `viewed`, `date_published`, `date_added`, `date_modified`) VALUES
 (127, 'catalog/demo/news/news2.jpg', 1, 0, 1, 1, 107, '2023-04-14 00:00:00', '2025-04-23 06:25:05', '2025-04-23 11:03:34'),
-(128, 'catalog/demo/news/news3.jpg', 1, 0, 1, 1, 129, '2025-04-23 06:25:05', '2025-04-23 06:25:05', '2025-11-21 15:02:19'),
-(126, 'catalog/demo/news/news1.jpg', 1, 0, 1, 1, 75, '2025-04-21 00:00:00', '2025-04-23 06:25:05', '2025-11-26 16:05:44');
+(128, 'catalog/demo/news/news3.jpg', 1, 0, 1, 1, 165, '2025-04-16 00:00:00', '2025-04-23 06:25:05', '2025-12-27 13:40:37'),
+(126, 'catalog/demo/news/news1.jpg', 1, 0, 1, 1, 78, '2025-04-21 00:00:00', '2025-04-23 06:25:05', '2025-11-26 16:05:44');
 
 -- --------------------------------------------------------
 
@@ -205,12 +206,12 @@ CREATE TABLE `oc_article_image` (
 --
 
 INSERT INTO `oc_article_image` (`article_image_id`, `article_id`, `image`, `title`, `sort_order`) VALUES
-(4007, 128, 'catalog/demo/news/news1.jpg', 'Теперь вы можете добавлять кастомные заголовки к модулям', 4),
-(4006, 128, 'catalog/demo/gaming_laptops.jpg', 'Блог облагорожен и теперь им можно пользоваться', 3),
+(4013, 128, 'catalog/demo/news/news1.jpg', 'Теперь вы можете добавлять кастомные заголовки к модулям', 4),
 (4009, 126, 'catalog/logo.png', 'ex', 2),
 (4008, 126, 'catalog/profile-pic.png', 'avatar', 1),
-(4004, 128, 'catalog/demo/computers.jpg', 'Bulma UI вместо Boostrap', 1),
-(4005, 128, 'catalog/demo/gaming_computer.jpg', 'Дефолтный шаблон теперь нормально свёрстан и приятно выяглядит', 2);
+(4010, 128, 'catalog/demo/computers.jpg', 'Bulma UI вместо Boostrap', 1),
+(4011, 128, 'catalog/demo/gaming_computer.jpg', 'Дефолтный шаблон теперь нормально свёрстан и приятно выяглядит', 2),
+(4012, 128, 'catalog/demo/gaming_laptops.jpg', 'Блог облагорожен и теперь им можно пользоваться', 3);
 
 -- --------------------------------------------------------
 
@@ -657,7 +658,7 @@ CREATE TABLE `oc_blog_category` (
 --
 
 INSERT INTO `oc_blog_category` (`blog_category_id`, `image`, `parent_id`, `top`, `column`, `sort_order`, `status`, `noindex`, `date_added`, `date_modified`) VALUES
-(72, '', 0, 1, 0, 1, 1, 1, '2022-11-12 15:58:05', '2024-01-30 15:49:47'),
+(72, '', 0, 1, 0, 1, 1, 1, '2022-11-12 15:58:05', '2025-12-26 09:58:45'),
 (73, '', 0, 1, 0, 2, 1, 1, '2022-11-14 14:42:55', '2022-11-14 14:42:55');
 
 -- --------------------------------------------------------
@@ -684,7 +685,7 @@ CREATE TABLE `oc_blog_category_description` (
 INSERT INTO `oc_blog_category_description` (`blog_category_id`, `language_id`, `name`, `description`, `meta_description`, `meta_keyword`, `meta_title`, `meta_h1`) VALUES
 (73, 1, 'Документация', '&lt;p&gt;Если у вас есть потребность в размещении струтурированной документации для вашей продукции, здесь ей самое место&lt;/p&gt;', '', '', '', ''),
 (73, 2, 'Dosc', '&lt;p&gt;If you have a need for structured documentation for your products, this is the place for it.&lt;br&gt;&lt;/p&gt;', '', '', '', ''),
-(72, 1, 'Новости', '', '', '', 'Лучшие новости', 'Лучшие новости'),
+(72, 1, 'Новости', '', '', '', 'Новости', 'Новости'),
 (72, 2, 'News', '', '', '', '', '');
 
 -- --------------------------------------------------------
@@ -763,6 +764,13 @@ CREATE TABLE `oc_cart` (
   `quantity` decimal(12,4) NOT NULL,
   `date_added` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `oc_cart`
+--
+
+INSERT INTO `oc_cart` (`cart_id`, `api_id`, `customer_id`, `session_id`, `product_id`, `recurring_id`, `option`, `quantity`, `date_added`) VALUES
+(6, 0, 0, '6de15974e9228a7ac02db588ef', 30, 0, '[]', '1.0000', '2025-12-27 13:42:40');
 
 -- --------------------------------------------------------
 
@@ -1632,8 +1640,8 @@ CREATE TABLE `oc_currency` (
 --
 
 INSERT INTO `oc_currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbol_right`, `decimal_place`, `value`, `status`, `date_modified`) VALUES
-(1, 'Рубль', 'RUB', '', ' ₽', '0', 1.00000000, 1, '2025-12-23 13:39:56'),
-(2, 'US Dollar', 'USD', '$', '', '2', 0.01260802, 1, '2025-12-23 13:39:56');
+(1, 'Рубль', 'RUB', '', ' ₽', '0', 1.00000000, 1, '2025-12-27 12:37:40'),
+(2, 'US Dollar', 'USD', '$', '', '2', 0.01287129, 1, '2025-12-27 12:37:40');
 
 -- --------------------------------------------------------
 
@@ -1817,9 +1825,8 @@ INSERT INTO `oc_customer_login` (`customer_login_id`, `email`, `ip`, `total`, `d
 (32, 'sokovnin1988@mail.ru', '88.147.179.183', 1, '2023-02-21 15:58:23', '2023-02-21 15:58:23'),
 (33, 'sokovnin1988@mail.ru', '88.147.174.227', 1, '2023-03-18 16:03:03', '2023-03-18 16:03:03'),
 (34, 'jambot@mambetov.ru', '172.16.238.1', 3, '2024-01-22 11:32:52', '2024-03-10 13:43:06'),
-(46, 'tinkov@exopencart.ru', '172.16.238.1', 3, '2025-12-21 20:12:29', '2025-12-22 16:23:45'),
-(42, '', '172.16.238.1', 7, '2025-12-17 20:31:32', '2025-12-17 20:37:57'),
-(47, 'admin', '172.16.238.1', 1, '2025-12-23 15:51:05', '2025-12-23 15:51:05');
+(46, 'tinkov@exopencart.ru', '172.16.238.1', 5, '2025-12-21 20:12:29', '2025-12-27 13:24:39'),
+(42, '', '172.16.238.1', 7, '2025-12-17 20:31:32', '2025-12-17 20:37:57');
 
 -- --------------------------------------------------------
 
@@ -3694,17 +3701,17 @@ CREATE TABLE `oc_product` (
 --
 
 INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `isbn`, `mpn`, `location`, `quantity`, `quantity_class_id`, `stock_status_id`, `image`, `manufacturer_id`, `shipping`, `price`, `points`, `tax_class_id`, `date_available`, `weight`, `weight_class_id`, `length`, `width`, `height`, `length_class_id`, `subtract`, `minimum`, `sort_order`, `redirect`, `status`, `viewed`, `date_added`, `date_modified`, `noindex`) VALUES
-(1, '42069', '', '', '', '', '', '', '', '200.0000', 0, 5, 'catalog/demo/products/42069_0.jpg', 2, 1, '154990.0000', 0, 9, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 34, '2021-11-11 12:51:32', '2025-12-21 12:33:04', 1),
+(1, '42069', '', '', '', '', '', '', '', '200.0000', 0, 5, 'catalog/demo/products/42069_0.jpg', 2, 1, '154990.0000', 0, 9, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 36, '2021-11-11 12:51:32', '2025-12-21 12:33:04', 1),
 (2, '42070', '', '', '', '', '', '', '', '1.0000', 0, 5, 'catalog/demo/products/42070_0.jpg', 2, 1, '147940.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2021-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(3, '42071', '', '', '', '', '', '', '', '2.0000', 0, 5, 'catalog/demo/products/42071_0.jpg', 1, 1, '142490.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 20, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(3, '42071', '', '', '', '', '', '', '', '2.0000', 0, 5, 'catalog/demo/products/42071_0.jpg', 1, 1, '142490.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 22, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (4, '42072', '', '', '', '', '', '', '', '3.0000', 0, 5, 'catalog/demo/products/42072_0.jpg', 2, 1, '139990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (5, '42073', '', '', '', '', '', '', '', '4.0000', 0, 5, 'catalog/demo/products/42073_0.jpg', 2, 1, '139990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (6, '42074', '', '', '', '', '', '', '', '5.0000', 0, 5, 'catalog/demo/products/42074_0.jpg', 1, 1, '134990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 1, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(7, '42075', '', '', '', '', '', '', '', '6.0000', 1, 5, 'catalog/demo/products/42075_0.jpg', 1, 1, '129990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 214, '2022-11-11 12:51:32', '2025-12-03 15:08:18', 1),
+(7, '42075', '', '', '', '', '', '', '', '6.0000', 0, 5, 'catalog/demo/products/42075_0.jpg', 1, 1, '129990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 224, '2022-11-11 12:51:32', '2025-12-26 14:51:40', 1),
 (8, '42076', '', '', '', '', '', '', '', '7.0000', 0, 5, 'catalog/demo/products/42076_0.jpg', 2, 1, '128370.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 1, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (9, '42077', '', '', '', '', '', '', '', '8.0000', 0, 5, 'catalog/demo/products/42077_0.jpg', 2, 1, '124999.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(10, '42078', '', '', '', '', '', '', '', '9.0000', 0, 5, 'catalog/demo/products/42078_0.jpg', 2, 1, '124990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(11, '42117', '', '', '', '', '', '', '', '10.0000', 0, 5, 'catalog/demo/products/42117_0.jpg', 1, 1, '274990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 9, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(10, '42078', '', '', '', '', '', '', '', '9.0000', 0, 5, 'catalog/demo/products/42078_0.jpg', 2, 1, '124990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 1, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(11, '42117', '', '', '', '', '', '', '', '10.0000', 0, 5, 'catalog/demo/products/42117_0.jpg', 1, 1, '274990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 10, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (12, '42118', '', '', '', '', '', '', '', '11.0000', 0, 5, 'catalog/demo/products/42118_0.jpg', 1, 1, '201990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (13, '42119', '', '', '', '', '', '', '', '12.0000', 0, 5, 'catalog/demo/products/42119_0.jpg', 1, 1, '179990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (14, '42120', '', '', '', '', '', '', '', '13.0000', 0, 5, 'catalog/demo/products/42120_0.jpg', 1, 1, '179990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
@@ -3715,15 +3722,15 @@ INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `is
 (19, '42125', '', '', '', '', '', '', '', '18.0000', 0, 5, 'catalog/demo/products/42125_0.jpg', 1, 1, '159990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (20, '42126', '', '', '', '', '', '', '', '19.0000', 0, 5, 'catalog/demo/products/42126_0.jpg', 1, 1, '154990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 18, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (21, '42165', '', '', '', '', '', '', '', '20.0000', 0, 5, 'catalog/demo/products/42165_0.jpg', 3, 1, '449990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 2, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(22, '42166', '', '', '', '', '', '', '', '21.0000', 0, 5, 'catalog/demo/products/42166_0.jpg', 3, 1, '259990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 17, '2022-11-11 12:51:32', '2025-11-27 19:02:33', 1),
+(22, '42166', '', '', '', '', '', '', '', '21.0000', 0, 5, 'catalog/demo/products/42166_0.jpg', 3, 1, '259990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 22, '2022-11-11 12:51:32', '2025-11-27 19:02:33', 1),
 (23, '42167', '', '', '', '', '', '', '', '22.0000', 0, 5, 'catalog/demo/products/42167_0.jpg', 0, 1, '118840.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 4, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(24, '42168', '', '', '', '', '', '', '', '23.0000', 0, 5, 'catalog/demo/products/42168_0.jpg', 0, 1, '70380.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 2, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(24, '42168', '', '', '', '', '', '', '', '23.0000', 0, 5, 'catalog/demo/products/42168_0.jpg', 0, 1, '70380.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 6, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (25, '42169', '', '', '', '', '', '', '', '24.0000', 0, 5, 'catalog/demo/products/42169_0.jpg', 0, 1, '8290.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 3, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (26, '42170', '', '', '', '', '', '', '', '25.0000', 0, 5, 'catalog/demo/products/42170_0.jpg', 0, 1, '5950.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(27, '42171', '', '', '', '', '', '', '', '26.0000', 0, 5, 'catalog/demo/products/42171_0.jpg', 0, 1, '5660.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 14, '2022-11-11 12:51:32', '2025-12-24 11:11:33', 1),
+(27, '42171', '', '', '', '', '', '', '', '26.0000', 0, 5, 'catalog/demo/products/42171_0.jpg', 0, 1, '5660.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 38, '2022-11-11 12:51:32', '2025-12-24 11:11:33', 1),
 (28, '42172', '', '', '', '', '', '', '', '27.0000', 0, 5, 'catalog/demo/products/42172_0.jpg', 0, 1, '5399.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (29, '42173', '', '', '', '', '', '', '', '28.0000', 0, 5, 'catalog/demo/products/42173_0.jpg', 0, 1, '5290.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(30, '42174', '', '', '', '', '', '', '', '0.0000', 0, 5, 'catalog/demo/products/42174_0.jpg', 0, 1, '4890.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(30, '42174', '', '', '', '', '', '', '', '0.0000', 0, 5, 'catalog/demo/products/42174_0.jpg', 0, 1, '4890.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 2, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (31, '42183', '', '', '', '', '', '', '', '1.0000', 0, 5, 'catalog/demo/products/42183_0.jpg', 0, 1, '47590.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (32, '42184', '', '', '', '', '', '', '', '2.0000', 0, 5, 'catalog/demo/products/42184_0.jpg', 0, 1, '37590.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (33, '42185', '', '', '', '', '', '', '', '3.0000', 0, 5, 'catalog/demo/products/42185_0.jpg', 0, 1, '35600.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
@@ -3732,20 +3739,20 @@ INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `is
 (36, '42188', '', '', '', '', '', '', '', '6.0000', 0, 5, 'catalog/demo/products/42188_0.jpg', 0, 1, '28390.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 10, '2022-11-11 12:51:32', '2025-12-03 16:19:56', 1),
 (37, '42189', '', '', '', '', '', '', '', '7.0000', 0, 5, 'catalog/demo/products/42189_0.jpg', 0, 1, '27570.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (38, '42190', '', '', '', '', '', '', '', '8.0000', 0, 5, 'catalog/demo/products/42190_0.jpg', 0, 1, '26490.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 4, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(39, '42191', '', '', '', '', '', '', '', '9.0000', 0, 5, 'catalog/demo/products/42191_0.jpg', 0, 1, '25190.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 4, '2022-11-11 12:51:32', '2025-12-03 16:30:07', 1),
+(39, '42191', '', '', '', '', '', '', '', '9.0000', 0, 5, 'catalog/demo/products/42191_0.jpg', 0, 1, '25190.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 6, '2022-11-11 12:51:32', '2025-12-03 16:30:07', 1),
 (40, '42192', '', '', '', '', '', '', '', '10.0000', 0, 5, 'catalog/demo/products/42192_0.jpg', 0, 1, '23990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 3, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(41, '42231', '', '', '', '', '', '', '', '11.0000', 0, 5, 'catalog/demo/products/42231_0.jpg', 0, 1, '13990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '2.0000', 100, '', 1, 74, '2022-11-11 12:51:32', '2025-12-20 18:50:00', 1),
+(41, '42231', '', '', '', '', '', '', '', '11.0000', 0, 5, 'catalog/demo/products/42231_0.jpg', 0, 1, '13990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '2.0000', 100, '', 1, 81, '2022-11-11 12:51:32', '2025-12-20 18:50:00', 1),
 (42, '42232', '', '', '', '', '', '', '', '12.0000', 0, 5, 'catalog/demo/products/42232_0.jpg', 0, 1, '6590.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 1, '2022-11-11 12:51:32', '2025-12-22 16:12:33', 1),
-(43, '42233', '', '', '', '', '', '', '', '13.0000', 0, 5, 'catalog/demo/products/42233_0.jpg', 0, 1, '5990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 5, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(43, '42233', '', '', '', '', '', '', '', '13.0000', 0, 5, 'catalog/demo/products/42233_0.jpg', 0, 1, '5990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 6, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (44, '42234', '', '', '', '', '', '', '', '14.0000', 0, 5, 'catalog/demo/products/42234_0.jpg', 0, 1, '5890.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 11, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(45, '42235', '', '', '', '', '', '', '', '15.0000', 0, 5, 'catalog/demo/products/42235_0.jpg', 0, 1, '5230.0000', 0, 9, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 722, '2022-11-11 12:51:32', '2025-12-24 11:10:00', 1),
+(45, '42235', '', '', '', '', '', '', '', '15.0000', 0, 5, 'catalog/demo/products/42235_0.jpg', 0, 1, '5230.0000', 0, 9, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 762, '2022-11-11 12:51:32', '2025-12-24 11:10:00', 1),
 (46, '42236', '', '', '', '', '', '', '', '16.0000', 0, 5, 'catalog/demo/products/42236_0.jpg', 0, 1, '4990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (47, '42237', '', '', '', '', '', '', '', '17.0000', 0, 5, 'catalog/demo/products/42237_0.jpg', 0, 1, '4990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (48, '42238', '', '', '', '', '', '', '', '18.0000', 0, 5, 'catalog/demo/products/42238_0.jpg', 1, 1, '4990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 9, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (49, '42239', '', '', '', '', '', '', '', '19.0000', 0, 5, 'catalog/demo/products/42239_0.jpg', 2, 1, '4890.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (50, '42240', '', '', '', '', '', '', '', '20.0000', 0, 5, 'catalog/demo/products/42240_0.jpg', 2, 1, '4890.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (51, '42279', '', '', '', '', '', '', '', '21.0000', 0, 5, 'catalog/demo/products/42279_0.jpg', 5, 1, '402990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(52, '42280', '', '', '', '', '', '', '', '22.0000', 0, 5, 'catalog/demo/products/42280_0.jpg', 1, 1, '334990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 5, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(52, '42280', '', '', '', '', '', '', '', '22.0000', 0, 5, 'catalog/demo/products/42280_0.jpg', 1, 1, '334990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 6, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (53, '42281', '', '', '', '', '', '', '', '23.0000', 0, 5, 'catalog/demo/products/42281_0.jpg', 5, 1, '329990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (54, '42282', '', '', '', '', '', '', '', '24.0000', 0, 5, 'catalog/demo/products/42282_0.jpg', 5, 1, '321990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (55, '42283', '', '', '', '', '', '', '', '25.0000', 0, 5, 'catalog/demo/products/42283_0.jpg', 1, 1, '299990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
@@ -3785,8 +3792,8 @@ INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `is
 (89, '42431', '', '', '', '', '', '', '', '29.0000', 0, 5, 'catalog/demo/products/42431_0.jpg', 0, 1, '94290.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (90, '42432', '', '', '', '', '', '', '', '30.0000', 0, 5, 'catalog/demo/products/42432_0.jpg', 0, 1, '92990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (91, '42471', '', '', '', '', '', '', '', '31.0000', 0, 5, 'catalog/demo/products/42471_0.jpg', 0, 1, '17789.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(92, '42472', '', '', '', '', '', '', '', '32.0000', 1, 5, 'catalog/demo/products/42472_0.jpg', 0, 1, '15299.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 11, '2022-11-11 12:51:33', '2025-12-04 11:22:21', 1),
-(93, '42473', '', '', '', '', '', '', '', '33.0000', 0, 5, 'catalog/demo/products/42473_0.jpg', 0, 1, '15199.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 17, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(92, '42472', '', '', '', '', '', '', '', '32.0000', 1, 5, 'catalog/demo/products/42472_0.jpg', 0, 1, '15299.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 15, '2022-11-11 12:51:33', '2025-12-04 11:22:21', 1),
+(93, '42473', '', '', '', '', '', '', '', '33.0000', 0, 5, 'catalog/demo/products/42473_0.jpg', 0, 1, '15199.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 20, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (94, '42474', '', '', '', '', '', '', '', '0.0000', 0, 5, 'catalog/demo/products/42474_0.jpg', 0, 1, '0.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 1, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (95, '42475', '', '', '', '', '', '', '', '1.0000', 0, 5, 'catalog/demo/products/42475_0.jpg', 0, 1, '11885.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 1, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (96, '42476', '', '', '', '', '', '', '', '2.0000', 0, 5, 'catalog/demo/products/42476_0.jpg', 0, 1, '11649.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
@@ -3850,6 +3857,7 @@ INSERT INTO `oc_product_attribute` (`product_id`, `attribute_id`, `language_id`,
 (6, 5, 1, '3G 4G 5G'),
 (6, 6, 1, 'подэкранный'),
 (6, 7, 1, '74.6 х 163.6 х 8.2 мм'),
+(7, 2, 2, 'A13 Bionic, 2650MHz, 6-core'),
 (8, 1, 1, '7.6\", AMOLED, 2176x1812,'),
 (8, 2, 1, 'Snapdragon 8 Plus Gen 1, 3180МГц, 8'),
 (8, 3, 1, 'оперативная 12ГБ, встроенная 256ГБ,'),
@@ -4357,15 +4365,15 @@ INSERT INTO `oc_product_attribute` (`product_id`, `attribute_id`, `language_id`,
 (4, 3, 2, '12GB RAM, 512GB storage'),
 (1, 6, 1, 'торцевой'),
 (1, 7, 1, '130.1 х 155.1 х 6.3 мм'),
-(7, 2, 1, 'A13 Bionic, 2650МГц, 6'),
+(7, 3, 2, '4GB RAM, 512GB storage'),
 (45, 23, 1, '3.25A'),
 (4, 2, 2, 'Snapdragon 8 Plus Gen 1, 3180MHz, 8-core'),
-(7, 1, 1, '5.8&quot, OLED, 2436x1125, 458PPI'),
+(7, 4, 2, ''),
+(7, 5, 1, '3G 4G'),
 (4, 1, 2, '7.6\", AMOLED, 2176x1812'),
 (41, 21, 1, 'белый'),
 (3, 5, 2, '3G 4G 5G'),
 (3, 7, 2, '71.5 x 146.7 x 7.65 mm'),
-(7, 7, 1, '71.4 х 144 х 8.1 мм'),
 (3, 3, 2, '6GB RAM, 512GB storage'),
 (36, 18, 1, '35Ом'),
 (3, 2, 2, 'Apple A15 Bionic, 6-core'),
@@ -4375,10 +4383,10 @@ INSERT INTO `oc_product_attribute` (`product_id`, `attribute_id`, `language_id`,
 (3, 1, 2, '6.1\", OLED, 2532x1170, 460PPI'),
 (22, 13, 1, '5472 х  3078'),
 (2, 7, 2, '130.1 x 155.1 x 6.3 mm'),
-(7, 5, 1, '3G 4G'),
+(7, 1, 2, '5.8'),
 (2, 6, 2, 'side-mounted'),
 (2, 5, 2, '3G 4G 5G'),
-(7, 4, 1, '3046мAч'),
+(7, 2, 1, 'A13 Bionic, 2650МГц, 6'),
 (36, 14, 1, 'от 50 Гц до 4 кГц'),
 (39, 15, 1, 'вкладыши'),
 (2, 4, 2, '4400mAh'),
@@ -4901,20 +4909,21 @@ INSERT INTO `oc_product_attribute` (`product_id`, `attribute_id`, `language_id`,
 (100, 20, 2, 'from mains'),
 (100, 21, 2, 'black'),
 (1, 3, 2, '12GB RAM, 256GB storage'),
-(7, 3, 2, '4GB RAM, 512GB storage'),
 (1, 6, 2, 'side-mounted'),
 (1, 7, 2, '130.1 x 155.1 x 6.3 mm'),
-(7, 2, 2, 'A13 Bionic, 2650MHz, 6-core'),
 (45, 23, 2, '3.25A'),
-(7, 1, 2, '5.8\", OLED, 2436x1125, 458PPI'),
+(7, 4, 1, '3046мAч'),
 (41, 21, 2, 'white'),
-(7, 7, 2, '71.4 x 144 x 8.1 mm'),
+(7, 1, 1, '5.8&quot;, OLED, 2436x1125, 458PPI'),
 (36, 18, 2, '35 ohms'),
 (36, 19, 2, 'built-in'),
 (42, 23, 1, '3A,'),
 (42, 23, 2, '3A'),
 (27, 11, 2, '4'),
-(27, 11, 1, '4');
+(27, 11, 1, '4'),
+(7, 5, 2, ''),
+(7, 7, 1, '71.4 х 144 х 8.1 мм'),
+(7, 7, 2, '71.4 x 144 x 8.1 mm');
 
 -- --------------------------------------------------------
 
@@ -5042,12 +5051,11 @@ INSERT INTO `oc_product_description` (`product_id`, `language_id`, `name`, `desc
 (4, 2, 'Smartphone Samsung Galaxy Z Fold 4 SM-F936B 512Gb 12Gb black 3G 4G 2Sim 7.6&quot; AMOLED 1812x2176 And12 5', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '', ''),
 (5, 2, 'Smartphone Samsung Galaxy Z Fold 4 SM-F936B 512Gb 12Gb beige 3G 4G 2Sim 7.6&quot; Dynamic AMOLED 2X 1812x', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '', ''),
 (6, 2, 'Smartphone Xiaomi 12 Pro 12/256Gb, purple', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '', ''),
-(7, 2, 'Smartphone Apple iPhone 11 Pro 512Gb, MWCE2RU/A, silver', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '', '[{\"content\":\"Trade In\",\"class\":\"tag is-danger\"}]'),
 (8, 2, 'Smartphone Samsung Galaxy Z Fold 4 12/256Gb, SM-F936B, black', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '', ''),
 (9, 2, 'Smartphone Samsung Galaxy Z Fold 4 12/256Gb, SM-F936B, black', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '', ''),
-(10, 2, 'Smartphone Samsung Galaxy Z Fold 4 SM-F936B 256Gb 12Gb black 3G 4G 2Sim 7.6&quot; AMOLED 1812x2176 And12 5', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '', '');
+(10, 2, 'Smartphone Samsung Galaxy Z Fold 4 SM-F936B 256Gb 12Gb black 3G 4G 2Sim 7.6&quot; AMOLED 1812x2176 And12 5', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '', ''),
+(11, 2, 'Tablet Apple iPad Pro 2021 11&quot; 2Tb Wi-Fi + Cellular MHWE3RU/A, 16GB, 2TB, 4G space gray', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '', '');
 INSERT INTO `oc_product_description` (`product_id`, `language_id`, `name`, `description`, `tag`, `meta_title`, `meta_description`, `meta_keyword`, `meta_h1`, `stickers`) VALUES
-(11, 2, 'Tablet Apple iPad Pro 2021 11&quot; 2Tb Wi-Fi + Cellular MHWE3RU/A, 16GB, 2TB, 4G space gray', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '', ''),
 (12, 2, 'Tablet Apple iPad Pro 2021 12.9&quot; 2Tb Wi-Fi MHNQ3RU/A, 16GB, 2TB silver', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '', ''),
 (13, 2, 'Tablet Apple iPad Pro 2021 12.9&quot; 1Tb Wi-Fi MHNN3RU/A, 16GB, 1TB silver', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '', ''),
 (14, 2, 'Tablet Apple iPad Pro 2021 12.9&quot; 2Tb Wi-Fi MHNP3RU/A, 16GB, 2TB space gray', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '', ''),
@@ -5133,14 +5141,15 @@ INSERT INTO `oc_product_description` (`product_id`, `language_id`, `name`, `desc
 (98, 2, 'Speakers Sven HT-210, 5.1, black', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '', ''),
 (99, 2, 'Speakers Creative GigaWorks T40 series II, 2.0, black', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '', ''),
 (100, 2, 'Bluetooth speakers Sven MS-2250, 2.1, black', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '', ''),
-(7, 1, 'Смартфон Apple iPhone 11 Pro 512Gb,  MWCE2RU/A,  серебристый', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', '', '[{\"content\":\"Trade In\",\"class\":\"tag is-danger\"}]'),
+(7, 2, 'Smartphone Apple iPhone 11 Pro 512Gb, MWCE2RU/A, silver', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '', '[{\"content\":\"Trade In\",\"class\":\"tag is-danger\"}]'),
 (41, 2, 'Apple MagSafe Duo Wireless Charger, White', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '', '[]'),
 (45, 2, 'Wireless Charger/Device Xiaomi 50W Wireless Charging Stand 3.25A (PD) universal black/gold', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '', '[{\"content\":\"&lt;b&gt;Our choice&lt;\\/b&gt;\",\"class\":\"tag is-warning\"},{\"content\":\"Your benefit\",\"class\":\"tag is-success\"}]'),
 (39, 1, 'Наушники FIIO FD5, 2.5 мм/3.5 мм/4.4 мм, серебристый', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', '', '[]'),
 (63, 1, 'Моноблок Lenovo IdeaCentre А540-ICB, 23.8&quot;, Intel Core i5 9400T, 8ГБ, 1000ГБ SSD,  Intel UHD Graphics 630, Free DOS, черный', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', '', '[{\"content\":\"\\u041d\\u043e\\u0432\\u0438\\u043d\\u043a\\u0430\",\"class\":\"tag is-black\"}]'),
 (22, 1, 'Квадрокоптер DJI AIR 2S Fly More Combo Smart Controller с камерой,  серый', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', '', '[{\"content\":\"\\u0425\\u0438\\u0442\",\"class\":\"tag is-warning\"}]'),
 (27, 2, 'Quadcopter FLYBOTIC Bumper Drone without camera, blue', 'This is the description for the item. It can be a couple of sentences about nothing, or it can be meaningful text informing the user about your product or service. It all depends on the approach, the more detailed it is, the more responsibly you need to approach the content on the site, do you want to sell what you sell? It was a rhetorical question, food for thought.', '', '', '', '', '', '[]'),
-(36, 1, 'Наушники Audio-Technica ATH-ANC900BT, 3.5 мм/Bluetooth, черный', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', '', '[{\"content\":\"\\u0412\\u044b\\u0433\\u043e\\u0434\\u043d\\u043e\",\"class\":\"tag is-success\"}]');
+(36, 1, 'Наушники Audio-Technica ATH-ANC900BT, 3.5 мм/Bluetooth, черный', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', '', '[{\"content\":\"\\u0412\\u044b\\u0433\\u043e\\u0434\\u043d\\u043e\",\"class\":\"tag is-success\"}]'),
+(7, 1, 'Смартфон Apple iPhone 11 Pro 512Gb,  MWCE2RU/A,  серебристый', 'Это описание для товара. Может быть парой предложений ни о чем, а может быть содержательным текстом информирующим пользователя о вашем продукте или услуге. Тут все зависит от подхода, чем он обстоятельнее, тем ответственнее нужно подходить к контенту на сайте, вы же хотите продать то что вы продаете? Это был риторический вопрос, пища для размышлений.', '', '', '', '', '', '[{\"content\":\"Trade In\",\"class\":\"tag is-danger\"}]');
 
 -- --------------------------------------------------------
 
@@ -5643,10 +5652,10 @@ INSERT INTO `oc_product_image` (`product_image_id`, `product_id`, `image`, `titl
 (447, 100, 'catalog/demo/products/42480_3.jpg', '', 3),
 (448, 100, 'catalog/demo/products/42480_4.jpg', '', 4),
 (449, 100, 'catalog/demo/products/42480_5.jpg', '', 5),
-(1835, 7, 'catalog/demo/products/42075_4.jpg', 'влагозащита', 4),
-(1834, 7, 'catalog/demo/products/42075_3.jpg', 'аксессуары', 3),
-(1833, 7, 'catalog/demo/products/42075_2.jpg', 'камера', 2),
-(1832, 7, 'catalog/demo/products/42075_1.jpg', '', 1);
+(2030, 7, 'catalog/demo/products/42075_4.jpg', 'влагозащита', 4),
+(2029, 7, 'catalog/demo/products/42075_3.jpg', 'аксессуары', 3),
+(2028, 7, 'catalog/demo/products/42075_2.jpg', 'камера', 2),
+(2027, 7, 'catalog/demo/products/42075_1.jpg', '', 1);
 
 -- --------------------------------------------------------
 
@@ -5700,9 +5709,9 @@ CREATE TABLE `oc_product_option_value` (
 --
 
 INSERT INTO `oc_product_option_value` (`product_option_value_id`, `product_option_id`, `product_id`, `link_product_id`, `option_id`, `option_value_id`, `is_default`, `quantity`, `subtract`, `price`, `price_prefix`, `points`, `points_prefix`, `weight`, `weight_prefix`) VALUES
-(9, 3, 7, 0, 14, 51, 0, '10.0000', 1, '5000.0000', '+', 0, '+', '0.00000000', '+'),
-(8, 3, 7, 0, 14, 50, 0, '10.0000', 1, '2000.0000', '+', 0, '+', '0.00000000', '+'),
 (7, 3, 7, 0, 14, 49, 0, '10.0000', 1, '0.0000', '+', 0, '+', '0.00000000', '+'),
+(8, 3, 7, 0, 14, 50, 0, '10.0000', 1, '2000.0000', '+', 0, '+', '0.00000000', '+'),
+(9, 3, 7, 0, 14, 51, 0, '10.0000', 1, '5000.0000', '+', 0, '+', '0.00000000', '+'),
 (36, 8, 27, 24, 17, 68, 0, '10.0000', 1, '0.0000', '+', 0, '+', '0.00000000', '+'),
 (35, 8, 27, 0, 17, 69, 1, '10.0000', 1, '0.0000', '+', 0, '+', '0.00000000', '+'),
 (34, 8, 27, 45, 17, 67, 0, '10.0000', 1, '0.0000', '+', 0, '+', '0.00000000', '+'),
@@ -5810,7 +5819,7 @@ CREATE TABLE `oc_product_special` (
 --
 
 INSERT INTO `oc_product_special` (`product_special_id`, `product_id`, `customer_group_id`, `priority`, `price`, `date_start`, `date_end`) VALUES
-(89, 7, 1, 1, '99990.0000', '0000-00-00', '0000-00-00'),
+(124, 7, 1, 1, '99990.0000', '0000-00-00', '0000-00-00'),
 (115, 1, 1, 1, '124990.0000', '0000-00-00', '0000-00-00'),
 (3, 2, 1, 1, '117940.0000', '0000-00-00', '0000-00-00'),
 (4, 3, 1, 1, '112490.0000', '0000-00-00', '0000-00-00'),
@@ -5855,8 +5864,8 @@ INSERT INTO `oc_product_to_category` (`product_id`, `category_id`, `main_categor
 (5, 2, 1),
 (6, 1, 0),
 (6, 2, 1),
-(7, 2, 0),
 (7, 1, 1),
+(7, 2, 0),
 (8, 1, 0),
 (8, 2, 1),
 (9, 1, 0),
@@ -6589,7 +6598,7 @@ INSERT INTO `oc_seo_url` (`seo_url_id`, `store_id`, `language_id`, `query`, `key
 (106, 0, 2, 'product_id=4', 'smartphone-samsung-galaxy-z-fold-4-sm-f936b-512gb-12gb-black-3g-4g-2sim-7-6-amoled-1812x2176-and12-5'),
 (107, 0, 2, 'product_id=5', 'smartphone-samsung-galaxy-z-fold-4-sm-f936b-512gb-12gb-beige-3g-4g-2sim-7-6-dynamic-amoled-2x-1812x'),
 (108, 0, 2, 'product_id=6', 'smartphone-xiaomi-12-pro-12-256gb-purple'),
-(1310, 0, 2, 'product_id=7', 'smartphone-apple-iphone-11-pro-512gb-mwce2ru-a-silver'),
+(1414, 0, 2, 'product_id=7', 'smartphone-apple-iphone-11-pro-512gb-mwce2ru-a-silver'),
 (110, 0, 2, 'product_id=8', 'smartphone-samsung-galaxy-z-fold-4-12-256gb-sm-f936b-black'),
 (111, 0, 2, 'product_id=9', 'smartphone-samsung-galaxy-z-fold-4-12-256gb-sm-f936b-black'),
 (112, 0, 2, 'product_id=10', 'smartphone-samsung-galaxy-z-fold-4-sm-f936b-256gb-12gb-black-3g-4g-2sim-7-6-amoled-1812x2176-and12-5'),
@@ -6683,8 +6692,8 @@ INSERT INTO `oc_seo_url` (`seo_url_id`, `store_id`, `language_id`, `query`, `key
 (200, 0, 2, 'product_id=98', 'speakers-sven-ht-210-5-1-black'),
 (201, 0, 2, 'product_id=99', 'speakers-creative-gigaworks-t40-series-ii-2-0-black'),
 (202, 0, 2, 'product_id=100', 'bluetooth-speakers-sven-ms-2250-2-1-black'),
-(1111, 0, 2, 'blog_category_id=72', 'news'),
-(1110, 0, 1, 'blog_category_id=72', 'novosti'),
+(1412, 0, 2, 'blog_category_id=72', 'news'),
+(1411, 0, 1, 'blog_category_id=72', 'novosti'),
 (507, 0, 2, 'information_id=9', 'terms-and-conditions'),
 (506, 0, 1, 'information_id=9', 'pravila-i-usloviya'),
 (1381, 0, 1, 'information_id=10', 'pravila-partnerstva'),
@@ -6701,7 +6710,7 @@ INSERT INTO `oc_seo_url` (`seo_url_id`, `store_id`, `language_id`, `query`, `key
 (519, 0, 1, 'product_id=4', 'smartfon-samsung-galaxy-z-fold-4-sm-f936b-512gb-12gb-chernyj-3g-4g-2sim-7-6-amoled-1812x2176-and12-5'),
 (520, 0, 1, 'product_id=5', 'smartfon-samsung-galaxy-z-fold-4-sm-f936b-512gb-12gb-bezhevyj-3g-4g-2sim-7-6-dynamic-amoled-2x-1812x'),
 (521, 0, 1, 'product_id=6', 'smartfon-xiaomi-12-pro-12-256gb-purpurnyj'),
-(1309, 0, 1, 'product_id=7', 'smartfon-apple-iphone-11-pro-512gb-mwce2ru-a-serebristyj'),
+(1413, 0, 1, 'product_id=7', 'smartfon-apple-iphone-11-pro-512gb-mwce2ru-a-serebristyj'),
 (523, 0, 1, 'product_id=8', 'smartfon-samsung-galaxy-z-fold-4-12-256gb-sm-f936b-chernyj'),
 (524, 0, 1, 'product_id=9', 'smartfon-samsung-galaxy-z-fold-4-12-256gb-sm-f936b-chernyj'),
 (525, 0, 1, 'product_id=10', 'smartfon-samsung-galaxy-z-fold-4-sm-f936b-256gb-12gb-chernyj-3g-4g-2sim-7-6-amoled-1812x2176-and12-5'),
@@ -6803,8 +6812,8 @@ INSERT INTO `oc_seo_url` (`seo_url_id`, `store_id`, `language_id`, `query`, `key
 (1279, 0, 1, 'article_id=126', 'Владелец магазина на exopencart рассказывает о своем приятном опыте'),
 (1153, 0, 2, 'article_id=127', 'how-to-grab-luck-by-the-tail-and-not-lose-touch-with-reality'),
 (1152, 0, 1, 'article_id=127', 'kak-skhvatit-udachu-za-hvost-i-ne-poteryat-svyaz-s-realnostyu'),
-(1196, 0, 2, 'article_id=128', 'dry-fact-sheet'),
-(1195, 0, 1, 'article_id=128', 'suhoe-izlozhenie-faktov'),
+(1416, 0, 2, 'article_id=128', 'dry-fact-sheet'),
+(1415, 0, 1, 'article_id=128', 'suhoe-izlozhenie-faktov'),
 (1046, 0, 1, 'manufacturer_id=1', 'apple'),
 (937, 0, 1, 'product/manufacturer', 'brendy'),
 (938, 0, 2, 'product/manufacturer', 'brands'),
@@ -6823,8 +6832,6 @@ INSERT INTO `oc_seo_url` (`seo_url_id`, `store_id`, `language_id`, `query`, `key
 (1154, 0, 1, 'information/contact', 'contacts'),
 (1155, 0, 2, 'information/contact', 'contacts'),
 (1156, 0, 1, 'blog/latest', 'blog'),
-(1377, 0, 1, 'account/register', 'signup'),
-(1378, 0, 2, 'account/register', 'signup'),
 (1382, 0, 2, 'information_id=10', 'partnership-rules');
 
 -- --------------------------------------------------------
@@ -6916,7 +6923,7 @@ INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES
 ('677f2bf0bf29762c0e604c16ba', '{\"api_id\":\"7\"}', '2026-01-10 14:42:30'),
 ('67883580c124f5ff8e54c075e8', '{\"api_id\":\"7\"}', '2026-01-10 20:48:50'),
 ('6bdfd864f5e44b25df1684602b', '{\"api_id\":\"7\"}', '2026-01-14 15:16:29'),
-('6de15974e9228a7ac02db588ef', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"user_id\":\"1\",\"user_token\":\"z2tTzjfMcpaMkpgRdU5JXL4gtaCPpng9\",\"wishlist\":[],\"account\":\"register\",\"last_order_id\":168,\"shipping_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"\",\"address_2\":\"\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\\u041c\\u043e\\u0441\\u043a\\u043e\\u0432\\u0441\\u043a\\u0430\\u044f \\u043e\\u0431\\u043b\\u0430\\u0441\\u0442\\u044c\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"guest\":{\"customer_group_id\":\"1\",\"email\":\"tinkov@exopencart.ru\"},\"comment\":\"\",\"file_manager_directory\":\"\\/shared\\/httpd\\/exopencart\\/htdocs\\/image\\/catalog\\/demo\\/options\",\"success\":\"\\u041d\\u0430\\u0441\\u0442\\u0440\\u043e\\u0439\\u043a\\u0438 \\u0443\\u0441\\u043f\\u0435\\u0448\\u043d\\u043e \\u0438\\u0437\\u043c\\u0435\\u043d\\u0435\\u043d\\u044b!\"}', '2026-01-23 11:20:32'),
+('6de15974e9228a7ac02db588ef', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"user_id\":\"1\",\"user_token\":\"vjXWXJujoFnU2UBsDd4qn1COUORXgc7A\",\"wishlist\":[],\"account\":\"register\",\"last_order_id\":168,\"shipping_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"\",\"address_2\":\"\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\\u041c\\u043e\\u0441\\u043a\\u043e\\u0432\\u0441\\u043a\\u0430\\u044f \\u043e\\u0431\\u043b\\u0430\\u0441\\u0442\\u044c\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"guest\":{\"customer_group_id\":\"1\",\"email\":\"tinkov@exopencart.ru\"},\"comment\":\"\",\"file_manager_directory\":\"\\/shared\\/httpd\\/exopencart\\/htdocs\\/image\\/catalog\\/demo\\/options\",\"vouchers\":[],\"compare\":[]}', '2026-01-26 14:19:58'),
 ('6f2f75b720b7f5ef67a4a036de', '{\"api_id\":\"7\"}', '2026-01-14 15:12:09'),
 ('70ac2a793ccbcf4a0719fb8f7f', '{\"api_id\":\"7\"}', '2026-01-19 21:51:43'),
 ('738a043ced2ef91721af56e30e', '{\"api_id\":\"7\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-01-19 21:44:55'),
@@ -6997,6 +7004,7 @@ INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES
 ('df8da9ad36d8844f6f1f118889', '{\"api_id\":\"7\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-01-11 08:43:14'),
 ('e01829a93df6854b9354579e81', '{\"api_id\":\"7\"}', '2026-01-11 17:18:37'),
 ('e08bb6211b5016113e220131ee', '{\"api_id\":\"7\"}', '2026-01-03 10:53:54'),
+('e1c9b04b08d243e76a8d16597d', '{\"api_id\":\"7\"}', '2026-01-26 14:19:48'),
 ('e1ef277aebf7a03a6a4354252a', '{\"api_id\":\"7\"}', '2026-01-15 15:42:33'),
 ('e33f5d933497816c4bd545177c', '{\"api_id\":\"7\"}', '2026-01-18 17:05:19'),
 ('eb42903b655126e0d115b37e4c', '{\"api_id\":\"7\"}', '2026-01-03 11:25:44'),
@@ -7033,20 +7041,20 @@ CREATE TABLE `oc_setting` (
 
 INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `serialized`) VALUES
 (8130, 0, 'csvprice_pro', 'csvprice_pro_csv_import_mod', '2', 0),
-(16996, 0, 'configblog', 'configblog_image_related_height', '300', 0),
-(16995, 0, 'configblog', 'configblog_image_related_width', '450', 0),
-(16994, 0, 'configblog', 'configblog_image_article_height', '300', 0),
-(16993, 0, 'configblog', 'configblog_image_article_width', '450', 0),
-(16992, 0, 'configblog', 'configblog_image_category_height', '50', 0),
-(16990, 0, 'configblog', 'configblog_review_mail', '1', 0),
+(36095, 0, 'configblog', 'configblog_image_related_height', '300', 0),
+(36094, 0, 'configblog', 'configblog_image_related_width', '450', 0),
+(36093, 0, 'configblog', 'configblog_image_article_height', '300', 0),
 (10423, 0, 'currency_cbr', 'currency_cbr_status', '1', 0),
-(16991, 0, 'configblog', 'configblog_image_category_width', '50', 0),
+(36089, 0, 'configblog', 'configblog_review_mail', '1', 0),
+(36090, 0, 'configblog', 'configblog_image_category_width', '50', 0),
+(36091, 0, 'configblog', 'configblog_image_category_height', '50', 0),
+(36092, 0, 'configblog', 'configblog_image_article_width', '450', 0),
 (16043, 0, 'module_privacy', 'module_privacy_status', '1', 0),
-(16989, 0, 'configblog', 'configblog_review_guest', '1', 0),
-(16988, 0, 'configblog', 'configblog_review_status', '1', 0),
-(16987, 0, 'configblog', 'configblog_article_download', '1', 0),
-(16986, 0, 'configblog', 'configblog_limit_admin', '20', 0),
-(16985, 0, 'configblog', 'configblog_article_description_length', '200', 0),
+(36088, 0, 'configblog', 'configblog_review_guest', '1', 0),
+(36087, 0, 'configblog', 'configblog_review_status', '1', 0),
+(36086, 0, 'configblog', 'configblog_article_download', '1', 0),
+(36085, 0, 'configblog', 'configblog_limit_admin', '20', 0),
+(36084, 0, 'configblog', 'configblog_article_description_length', '200', 0),
 (35513, 0, 'payment_bank_transfer', 'payment_bank_transfer_order_status_id', '2', 0),
 (35514, 0, 'payment_bank_transfer', 'payment_bank_transfer_geo_zone_id', '0', 0),
 (2178, 0, 'payment_cod', 'payment_cod_sort_order', '1', 0),
@@ -7078,10 +7086,9 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (125, 0, 'total_voucher', 'total_voucher_status', '1', 0),
 (126, 0, 'module_category', 'module_category_status', '1', 0),
 (13845, 0, 'module_account', 'module_account_status', '1', 0),
-(35943, 0, 'config', 'config_noindex_disallow_params', 'page', 0),
-(35942, 0, 'config', 'config_noindex_status', '1', 0),
-(35941, 0, 'config', 'config_add_prevnext', '0', 0),
-(35940, 0, 'config', 'config_canonical_self', '1', 0),
+(36076, 0, 'config', 'config_noindex_disallow_params', 'page', 0),
+(36075, 0, 'config', 'config_noindex_status', '1', 0),
+(36074, 0, 'config', 'config_add_prevnext', '0', 0),
 (35542, 0, 'theme_default', 'theme_default_image_location_height', '480', 0),
 (35541, 0, 'theme_default', 'theme_default_image_location_width', '480', 0),
 (35540, 0, 'theme_default', 'theme_default_image_cart_height', '120', 0),
@@ -7142,8 +7149,9 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (201, 0, 'report_product_purchased', 'report_product_purchased_sort_order', '11', 0),
 (202, 0, 'report_marketing', 'report_marketing_status', '1', 0),
 (203, 0, 'report_marketing', 'report_marketing_sort_order', '12', 0),
-(16980, 0, 'configblog', 'configblog_meta_title', '{\"1\":\"\\u0417\\u0430\\u0433\\u043e\\u043b\\u043e\\u0432\\u043e\\u043a \\u0434\\u043b\\u044f \\u043b\\u0443\\u0447\\u0448\\u0435\\u0433\\u043e \\u0431\\u043b\\u043e\\u0433\\u0430\",\"2\":\"The best blog title\"}', 1),
-(16981, 0, 'configblog', 'configblog_meta_description', '{\"1\":\"\\u041c\\u0435\\u0442\\u0430 \\u043e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435 \\u043b\\u0443\\u0447\\u0448\\u0435\\u0433\\u043e \\u0431\\u043b\\u043e\\u0433\\u0430\",\"2\":\"The best blog meta description\"}', 1),
+(36082, 0, 'configblog', 'configblog_article_count', '1', 0),
+(36083, 0, 'configblog', 'configblog_article_limit', '20', 0),
+(36081, 0, 'configblog', 'configblog_meta_keyword', '{\"1\":\"\\u0440\\u0443\\u0441\\u0441\\u043a\\u0438\\u0439, \\u0431\\u043b\\u043e\\u0433\",\"2\":\"english, blog\"}', 1),
 (10426, 0, 'currency_nbu', 'currency_nbu_status', '1', 0),
 (10428, 0, 'currency_ecb', 'currency_ecb_status', '1', 0),
 (231, 0, 'module_blog_category', 'module_blog_category_status', '1', 0),
@@ -7154,15 +7162,15 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (35528, 0, 'theme_default', 'theme_default_image_popup_height', '1000', 0),
 (35527, 0, 'theme_default', 'theme_default_image_popup_width', '1000', 0),
 (21255, 0, 'dashboard_chart', 'dashboard_chart_sort_order', '6', 0),
-(35939, 0, 'config', 'config_canonical_method', '1', 0),
+(36073, 0, 'config', 'config_canonical_self', '1', 0),
 (35516, 0, 'payment_bank_transfer', 'payment_bank_transfer_sort_order', '2', 0),
-(35937, 0, 'config', 'config_valide_param_flag', '0', 0),
-(35938, 0, 'config', 'config_valide_params', 'block\r\nfrommarket\r\ngclid\r\nfbclid\r\nkeyword\r\nlist_type\r\nopenstat\r\nopenstat_service\r\nopenstat_campaign\r\nopenstat_ad\r\nopenstat_source\r\nposition\r\nsource\r\ntracking\r\ntype\r\nyclid\r\nymclid\r\nuri\r\nurltype\r\nutm_source\r\nutm_medium\r\nutm_campaign\r\nutm_term\r\nutm_content', 0),
+(36072, 0, 'config', 'config_canonical_method', '1', 0),
 (33317, 0, 'developer', 'developer_webp', '0', 0),
 (35515, 0, 'payment_bank_transfer', 'payment_bank_transfer_status', '1', 0),
-(35936, 0, 'config', 'config_page_postfix', '', 0),
-(35935, 0, 'config', 'config_seopro_lowercase', '1', 0),
-(35934, 0, 'config', 'config_seopro_addslash', '0', 0),
+(36071, 0, 'config', 'config_valide_params', 'block\r\nfrommarket\r\ngclid\r\nfbclid\r\nkeyword\r\nlist_type\r\nopenstat\r\nopenstat_service\r\nopenstat_campaign\r\nopenstat_ad\r\nopenstat_source\r\nposition\r\nsource\r\ntracking\r\ntype\r\nyclid\r\nymclid\r\nuri\r\nurltype\r\nutm_source\r\nutm_medium\r\nutm_campaign\r\nutm_term\r\nutm_content', 0),
+(36070, 0, 'config', 'config_valide_param_flag', '0', 0),
+(36069, 0, 'config', 'config_page_postfix', '', 0),
+(36068, 0, 'config', 'config_seopro_lowercase', '1', 0),
 (33316, 0, 'developer', 'developer_js', '0', 0),
 (35526, 0, 'theme_default', 'theme_default_image_thumb_height', '720', 0),
 (35524, 0, 'theme_default', 'theme_default_image_manufacturer_height', '80', 0),
@@ -7170,30 +7178,29 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (1635, 0, 'shipping_pickup', 'shipping_pickup_geo_zone_id', '0', 0),
 (1636, 0, 'shipping_pickup', 'shipping_pickup_status', '1', 0),
 (1637, 0, 'shipping_pickup', 'shipping_pickup_sort_order', '1', 0),
-(35933, 0, 'config', 'config_seo_url_cache', '0', 0),
+(36067, 0, 'config', 'config_seopro_addslash', '0', 0),
 (35521, 0, 'theme_default', 'theme_default_image_category_width', '80', 0),
 (35512, 0, 'payment_bank_transfer', 'payment_bank_transfer_total', '0', 0),
 (35511, 0, 'payment_bank_transfer', 'payment_bank_transfer_bank2', 'Invoice will be send you after our manager approve your order', 0),
 (35510, 0, 'payment_bank_transfer', 'payment_bank_transfer_bank1', 'После подтверждения заказа менеджер выставит вам счет на оплату', 0),
-(16984, 0, 'configblog', 'configblog_article_limit', '20', 0),
-(16982, 0, 'configblog', 'configblog_meta_keyword', '{\"1\":\"\\u0440\\u0443\\u0441\\u0441\\u043a\\u0438\\u0439, \\u0431\\u043b\\u043e\\u0433\",\"2\":\"english, blog\"}', 1),
-(16983, 0, 'configblog', 'configblog_article_count', '1', 0),
+(36080, 0, 'configblog', 'configblog_meta_description', '{\"1\":\"\\u041c\\u0435\\u0442\\u0430 \\u043e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435 \\u0431\\u043b\\u043e\\u0433\\u0430\",\"2\":\"The blog meta description\"}', 1),
 (8135, 0, 'csvprice_pro', 'csvprice_pro_product_log', '0', 0),
 (8134, 0, 'csvprice_pro', 'csvprice_pro_work_directory', '/home/s/soevvl/ex.bidzz.ru/storage/csvprice_pro/', 0),
 (8133, 0, 'csvprice_pro', 'csvprice_pro_save_image_table', '1', 0),
 (8132, 0, 'csvprice_pro', 'csvprice_pro_image_download_mod', '1', 0),
 (8131, 0, 'csvprice_pro', 'csvprice_pro_each_iteration_timeout', '180', 0),
-(35932, 0, 'config', 'config_seo_url_include_path', '1', 0),
-(35931, 0, 'config', 'config_seo_pro', '1', 0),
-(35928, 0, 'config', 'config_error_display', '1', 0),
-(35929, 0, 'config', 'config_error_log', '1', 0),
-(35930, 0, 'config', 'config_error_filename', 'error.log', 0),
-(35925, 0, 'config', 'config_file_max_size', '10000000', 0),
-(35926, 0, 'config', 'config_file_ext_allowed', 'zip\r\ntxt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc', 0),
-(35927, 0, 'config', 'config_file_mime_allowed', 'text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/tiff\r\nimage/svg+xml\r\napplication/zip\r\n&quot;application/zip&quot;\r\napplication/x-zip\r\n&quot;application/x-zip&quot;\r\napplication/x-zip-compressed\r\n&quot;application/x-zip-compressed&quot;\r\napplication/rar\r\n&quot;application/rar&quot;\r\napplication/x-rar\r\n&quot;application/x-rar&quot;\r\napplication/x-rar-compressed\r\n&quot;application/x-rar-compressed&quot;\r\napplication/octet-stream\r\n&quot;application/octet-stream&quot;\r\naudio/mpeg\r\nvideo/quicktime\r\napplication/pdf', 0),
+(36066, 0, 'config', 'config_seo_url_cache', '0', 0),
+(36065, 0, 'config', 'config_seo_url_include_path', '1', 0),
+(36062, 0, 'config', 'config_error_log', '1', 0),
+(36063, 0, 'config', 'config_error_filename', 'error.log', 0),
+(36064, 0, 'config', 'config_seo_pro', '1', 0),
+(36057, 0, 'config', 'config_encryption', '2yXC9VurV2t0qgoXHOWZDM6AZErXCq94wjU1Df280pqRhZEmhpohqSDGvOtQHEJ3uTpupevta8cAbCQdVhSfDnwQ346kCLZcaH4dUX2pdrZeXAoAHgYoCXOQOrgu9Vmo8UqlP9uzZGjetnDIvFesua3nsMQroYmmCcqOH303F7ScG1LGnYdmPrAIvQUJHISvzOD5qURkbHTYC2wEScJuzcz8IqYowrzozC06XluggpxURnbTrUZD39OsBsfpbeEuXyp8N5sjt9vehDji6HOgNTW5m8JhBKV5KlOFQkIHWEvU6PoOpW9cA9TdNvxV5rNUECFdN3uRsbdAtq0Q1Y57vYk12sGYFxXOM99Uc6CAwtIfESKcAeWRND8dIblWhI0EGJ7epqxkmvnmc1Pc1cR6eQFsYqcEDh9bvhmi3Pp8gjHL7HYQFZgz8oia0g3EfwlJaxSHvtwsYbDsImUCRR3Jw5uD5VfWmkdE1FCNhtEB1lwfDG0Huz82Woyyj1DfYWupqCA1YuqRD42Oqrk23kQ3NdFkRs1choHGnpLfdF9WQqtLJ16wWtjV8vDVU9yk9F9emHcc8pSjPwInDti8GpM6sNxxn8tqQQx9Y1cptX1ycqEMXzVg5uEY8Wufb9WYW4SnPyi23ziTHbN0sfZqSCZydv01uzou8pOWF8cRTHPzHhuVb8Rykhjjmeru833AJJDgZQYdF0W6R186wA8tYGUChQSf07YtAIGNK16xE7taK8jQcL08pn98sYJED566xPRuaIT71eGAJesE1oTrzma9xbRu6nGfQKkYf0NPUcnxONXXhq9U8gEUT9UIKcttkJm8bq1PHUYIkadi4B8MJ6UCigQ7WZJ2jfQTjIEtLYrK9f9hcOFpZT6iOapB0X5Wv5PAL3hswjfHt3d5egWgxrFj7tY3HuWsOL1iTPrA7eiCxpVvG92M6t9gJG7SyRxtizmENdOi0Xo3A9YVKz9r2WZYYEwkOJFgWsZRCYgNVgPXHZXSCQoU9HgOuXgk9LjmvYzF', 0),
+(36061, 0, 'config', 'config_error_display', '1', 0),
+(36060, 0, 'config', 'config_file_mime_allowed', 'text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/tiff\r\nimage/svg+xml\r\napplication/zip\r\n&quot;application/zip&quot;\r\napplication/x-zip\r\n&quot;application/x-zip&quot;\r\napplication/x-zip-compressed\r\n&quot;application/x-zip-compressed&quot;\r\napplication/rar\r\n&quot;application/rar&quot;\r\napplication/x-rar\r\n&quot;application/x-rar&quot;\r\napplication/x-rar-compressed\r\n&quot;application/x-rar-compressed&quot;\r\napplication/octet-stream\r\n&quot;application/octet-stream&quot;\r\naudio/mpeg\r\nvideo/quicktime\r\napplication/pdf', 0),
 (9460, 0, 'module_filter', 'module_filter_status', '1', 0),
-(16979, 0, 'configblog', 'configblog_html_h1', '{\"1\":\"\\u041b\\u0443\\u0447\\u0448\\u0438\\u0439 \\u0431\\u043b\\u043e\\u0433\",\"2\":\"The best blog\"}', 1),
-(16978, 0, 'configblog', 'configblog_name', '{\"1\":\"\\u0411\\u043b\\u043e\\u0433\",\"2\":\"Blog\"}', 1),
+(36078, 0, 'configblog', 'configblog_html_h1', '{\"1\":\"\\u0411\\u043b\\u043e\\u0433\",\"2\":\"Blog\"}', 1),
+(36079, 0, 'configblog', 'configblog_meta_title', '{\"1\":\"\\u0417\\u0430\\u0433\\u043e\\u043b\\u043e\\u0432\\u043e\\u043a \\u0434\\u043b\\u044f \\u0431\\u043b\\u043e\\u0433\\u0430\",\"2\":\"Title for the blog\"}', 1),
+(36077, 0, 'configblog', 'configblog_name', '{\"1\":\"\\u0411\\u043b\\u043e\\u0433\",\"2\":\"Blog\"}', 1),
 (9740, 0, 'fraudlabspro', 'fraud_fraudlabspro_review_status_id', '18', 0),
 (9741, 0, 'fraudlabspro', 'fraud_fraudlabspro_approve_status_id', '2', 0),
 (9742, 0, 'fraudlabspro', 'fraud_fraudlabspro_reject_status_id', '8', 0),
@@ -7205,10 +7212,10 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (9737, 0, 'feed_google_base', 'feed_google_base_status', '0', 0),
 (29451, 0, 'menu_default', 'menu_default_status', '1', 0),
 (29452, 0, 'menu_default', 'menu_default_settings', '{\"cache\":\"0\",\"show_catalog\":\"1\",\"button\":{\"1\":\"\",\"2\":\"\"},\"show_images\":\"0\",\"width\":\"60\",\"height\":\"60\",\"show_special\":\"1\",\"show_brands\":\"1\",\"show_blog\":\"1\",\"show_contacts\":\"1\"}', 1),
-(35923, 0, 'config', 'config_shared', '0', 0),
-(35924, 0, 'config', 'config_encryption', '2yXC9VurV2t0qgoXHOWZDM6AZErXCq94wjU1Df280pqRhZEmhpohqSDGvOtQHEJ3uTpupevta8cAbCQdVhSfDnwQ346kCLZcaH4dUX2pdrZeXAoAHgYoCXOQOrgu9Vmo8UqlP9uzZGjetnDIvFesua3nsMQroYmmCcqOH303F7ScG1LGnYdmPrAIvQUJHISvzOD5qURkbHTYC2wEScJuzcz8IqYowrzozC06XluggpxURnbTrUZD39OsBsfpbeEuXyp8N5sjt9vehDji6HOgNTW5m8JhBKV5KlOFQkIHWEvU6PoOpW9cA9TdNvxV5rNUECFdN3uRsbdAtq0Q1Y57vYk12sGYFxXOM99Uc6CAwtIfESKcAeWRND8dIblWhI0EGJ7epqxkmvnmc1Pc1cR6eQFsYqcEDh9bvhmi3Pp8gjHL7HYQFZgz8oia0g3EfwlJaxSHvtwsYbDsImUCRR3Jw5uD5VfWmkdE1FCNhtEB1lwfDG0Huz82Woyyj1DfYWupqCA1YuqRD42Oqrk23kQ3NdFkRs1choHGnpLfdF9WQqtLJ16wWtjV8vDVU9yk9F9emHcc8pSjPwInDti8GpM6sNxxn8tqQQx9Y1cptX1ycqEMXzVg5uEY8Wufb9WYW4SnPyi23ziTHbN0sfZqSCZydv01uzou8pOWF8cRTHPzHhuVb8Rykhjjmeru833AJJDgZQYdF0W6R186wA8tYGUChQSf07YtAIGNK16xE7taK8jQcL08pn98sYJED566xPRuaIT71eGAJesE1oTrzma9xbRu6nGfQKkYf0NPUcnxONXXhq9U8gEUT9UIKcttkJm8bq1PHUYIkadi4B8MJ6UCigQ7WZJ2jfQTjIEtLYrK9f9hcOFpZT6iOapB0X5Wv5PAL3hswjfHt3d5egWgxrFj7tY3HuWsOL1iTPrA7eiCxpVvG92M6t9gJG7SyRxtizmENdOi0Xo3A9YVKz9r2WZYYEwkOJFgWsZRCYgNVgPXHZXSCQoU9HgOuXgk9LjmvYzF', 0),
-(35922, 0, 'config', 'config_password', '1', 0),
-(35921, 0, 'config', 'config_secure', '1', 0),
+(36059, 0, 'config', 'config_file_ext_allowed', 'zip\r\ntxt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc', 0),
+(36058, 0, 'config', 'config_file_max_size', '10000000', 0),
+(36056, 0, 'config', 'config_shared', '0', 0),
+(36055, 0, 'config', 'config_password', '1', 0),
 (35523, 0, 'theme_default', 'theme_default_image_manufacturer_width', '80', 0),
 (35522, 0, 'theme_default', 'theme_default_image_category_height', '80', 0),
 (35520, 0, 'theme_default', 'theme_default_product_description_length', '160', 0),
@@ -7219,119 +7226,120 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (35517, 0, 'theme_default', 'theme_default_directory', 'default', 0),
 (35544, 0, 'module_extheme', 'module_extheme_changed', '1', 0),
 (35543, 0, 'module_extheme', 'module_extheme_directory', 'default', 0),
-(35920, 0, 'config', 'config_cache_warmer_key', '', 0),
-(35919, 0, 'config', 'config_cache_warmer', '0', 0),
-(35916, 0, 'config', 'config_cache_product', '0', 0),
-(35913, 0, 'config', 'config_seo_url', '1', 0),
-(35914, 0, 'config', 'config_robots', 'abot\r\ndbot\r\nebot\r\nhbot\r\nkbot\r\nlbot\r\nmbot\r\nnbot\r\nobot\r\npbot\r\nrbot\r\nsbot\r\ntbot\r\nvbot\r\nybot\r\nzbot\r\nbot.\r\nbot/\r\n_bot\r\n.bot\r\n/bot\r\n-bot\r\n:bot\r\n(bot\r\ncrawl\r\nslurp\r\nspider\r\nseek\r\naccoona\r\nacoon\r\nadressendeutschland\r\nah-ha.com\r\nahoy\r\naltavista\r\nananzi\r\nanthill\r\nappie\r\narachnophilia\r\narale\r\naraneo\r\naranha\r\narchitext\r\naretha\r\narks\r\nasterias\r\natlocal\r\natn\r\natomz\r\naugurfind\r\nbackrub\r\nbannana_bot\r\nbaypup\r\nbdfetch\r\nbig brother\r\nbiglotron\r\nbjaaland\r\nblackwidow\r\nblaiz\r\nblog\r\nblo.\r\nbloodhound\r\nboitho\r\nbooch\r\nbradley\r\nbutterfly\r\ncalif\r\ncassandra\r\nccubee\r\ncfetch\r\ncharlotte\r\nchurl\r\ncienciaficcion\r\ncmc\r\ncollective\r\ncomagent\r\ncombine\r\ncomputingsite\r\ncsci\r\ncurl\r\ncusco\r\ndaumoa\r\ndeepindex\r\ndelorie\r\ndepspid\r\ndeweb\r\ndie blinde kuh\r\ndigger\r\nditto\r\ndmoz\r\ndocomo\r\ndownload express\r\ndtaagent\r\ndwcp\r\nebiness\r\nebingbong\r\ne-collector\r\nejupiter\r\nemacs-w3 search engine\r\nesther\r\nevliya celebi\r\nezresult\r\nfalcon\r\nfelix ide\r\nferret\r\nfetchrover\r\nfido\r\nfindlinks\r\nfireball\r\nfish search\r\nfouineur\r\nfunnelweb\r\ngazz\r\ngcreep\r\ngenieknows\r\ngetterroboplus\r\ngeturl\r\nglx\r\ngoforit\r\ngolem\r\ngrabber\r\ngrapnel\r\ngralon\r\ngriffon\r\ngromit\r\ngrub\r\ngulliver\r\nhamahakki\r\nharvest\r\nhavindex\r\nhelix\r\nheritrix\r\nhku www octopus\r\nhomerweb\r\nhtdig\r\nhtml index\r\nhtml_analyzer\r\nhtmlgobble\r\nhubater\r\nhyper-decontextualizer\r\nia_archiver\r\nibm_planetwide\r\nichiro\r\niconsurf\r\niltrovatore\r\nimage.kapsi.net\r\nimagelock\r\nincywincy\r\nindexer\r\ninfobee\r\ninformant\r\ningrid\r\ninktomisearch.com\r\ninspector web\r\nintelliagent\r\ninternet shinchakubin\r\nip3000\r\niron33\r\nisraeli-search\r\nivia\r\njack\r\njakarta\r\njavabee\r\njetbot\r\njumpstation\r\nkatipo\r\nkdd-explorer\r\nkilroy\r\nknowledge\r\nkototoi\r\nkretrieve\r\nlabelgrabber\r\nlachesis\r\nlarbin\r\nlegs\r\nlibwww\r\nlinkalarm\r\nlink validator\r\nlinkscan\r\nlockon\r\nlwp\r\nlycos\r\nmagpie\r\nmantraagent\r\nmapoftheinternet\r\nmarvin/\r\nmattie\r\nmediafox\r\nmediapartners\r\nmercator\r\nmerzscope\r\nmicrosoft url control\r\nminirank\r\nmiva\r\nmj12\r\nmnogosearch\r\nmoget\r\nmonster\r\nmoose\r\nmotor\r\nmultitext\r\nmuncher\r\nmuscatferret\r\nmwd.search\r\nmyweb\r\nnajdi\r\nnameprotect\r\nnationaldirectory\r\nnazilla\r\nncsa beta\r\nnec-meshexplorer\r\nnederland.zoek\r\nnetcarta webmap engine\r\nnetmechanic\r\nnetresearchserver\r\nnetscoop\r\nnewscan-online\r\nnhse\r\nnokia6682/\r\nnomad\r\nnoyona\r\nnutch\r\nnzexplorer\r\nobjectssearch\r\noccam\r\nomni\r\nopen text\r\nopenfind\r\nopenintelligencedata\r\norb search\r\nosis-project\r\npack rat\r\npageboy\r\npagebull\r\npage_verifier\r\npanscient\r\nparasite\r\npartnersite\r\npatric\r\npear.\r\npegasus\r\nperegrinator\r\npgp key agent\r\nphantom\r\nphpdig\r\npicosearch\r\npiltdownman\r\npimptrain\r\npinpoint\r\npioneer\r\npiranha\r\nplumtreewebaccessor\r\npogodak\r\npoirot\r\npompos\r\npoppelsdorf\r\npoppi\r\npopular iconoclast\r\npsycheclone\r\npublisher\r\npython\r\nrambler\r\nraven search\r\nroach\r\nroad runner\r\nroadhouse\r\nrobbie\r\nrobofox\r\nrobozilla\r\nrules\r\nsalty\r\nsbider\r\nscooter\r\nscoutjet\r\nscrubby\r\nsearch.\r\nsearchprocess\r\nsemanticdiscovery\r\nsenrigan\r\nsg-scout\r\nshai\'hulud\r\nshark\r\nshopwiki\r\nsidewinder\r\nsift\r\nsilk\r\nsimmany\r\nsite searcher\r\nsite valet\r\nsitetech-rover\r\nskymob.com\r\nsleek\r\nsmartwit\r\nsna-\r\nsnappy\r\nsnooper\r\nsohu\r\nspeedfind\r\nsphere\r\nsphider\r\nspinner\r\nspyder\r\nsteeler/\r\nsuke\r\nsuntek\r\nsupersnooper\r\nsurfnomore\r\nsven\r\nsygol\r\nszukacz\r\ntach black widow\r\ntarantula\r\ntempleton\r\n/teoma\r\nt-h-u-n-d-e-r-s-t-o-n-e\r\ntheophrastus\r\ntitan\r\ntitin\r\ntkwww\r\ntoutatis\r\nt-rex\r\ntutorgig\r\ntwiceler\r\ntwisted\r\nucsd\r\nudmsearch\r\nurl check\r\nupdated\r\nvagabondo\r\nvalkyrie\r\nverticrawl\r\nvictoria\r\nvision-search\r\nvolcano\r\nvoyager/\r\nvoyager-hc\r\nw3c_validator\r\nw3m2\r\nw3mir\r\nwalker\r\nwallpaper\r\nwanderer\r\nwauuu\r\nwavefire\r\nweb core\r\nweb hopper\r\nweb wombat\r\nwebbandit\r\nwebcatcher\r\nwebcopy\r\nwebfoot\r\nweblayers\r\nweblinker\r\nweblog monitor\r\nwebmirror\r\nwebmonkey\r\nwebquest\r\nwebreaper\r\nwebsitepulse\r\nwebsnarf\r\nwebstolperer\r\nwebvac\r\nwebwalk\r\nwebwatch\r\nwebwombat\r\nwebzinger\r\nwhizbang\r\nwhowhere\r\nwild ferret\r\nworldlight\r\nwwwc\r\nwwwster\r\nxenu\r\nxget\r\nxift\r\nxirq\r\nyandex\r\nyanga\r\nyeti\r\nyodao\r\nzao\r\nzippp\r\nzyborg', 0),
-(35918, 0, 'config', 'config_cache_product_option', '0', 0),
-(35917, 0, 'config', 'config_cache_product_attribute', '0', 0),
-(35915, 0, 'config', 'config_compression', '9', 0),
-(35912, 0, 'config', 'config_maintenance', '0', 0),
-(35911, 0, 'config', 'config_mail_alert_email', '', 0),
-(35910, 0, 'config', 'config_mail_alert', '[\"order\"]', 1),
-(35909, 0, 'config', 'config_mail_smtp_timeout', '5', 0),
-(35908, 0, 'config', 'config_mail_smtp_port', '25', 0),
-(35907, 0, 'config', 'config_mail_smtp_password', '', 0),
-(35906, 0, 'config', 'config_mail_smtp_username', '', 0),
-(35905, 0, 'config', 'config_mail_smtp_hostname', '', 0),
-(35904, 0, 'config', 'config_mail_parameter', '', 0),
-(35903, 0, 'config', 'config_mail_engine', 'mail', 0),
-(35902, 0, 'config', 'config_product_popup_image_mode', 'scale', 0),
-(35901, 0, 'config', 'config_product_thumb_image_mode', 'default', 0),
-(35900, 0, 'config', 'config_product_list_image_mode', 'default', 0),
-(35899, 0, 'config', 'config_category_image_mode', 'default', 0),
-(35898, 0, 'config', 'config_icon', 'catalog/favicon.png', 0),
-(35897, 0, 'config', 'config_logo_height', '35', 0),
-(35896, 0, 'config', 'config_logo_width', '175', 0),
-(35895, 0, 'config', 'config_logo', 'catalog/logo.png', 0),
-(35894, 0, 'config', 'config_captcha_page', '[\"register\",\"guest\",\"review\",\"return\",\"contact\"]', 1),
-(35893, 0, 'config', 'config_captcha', '', 0),
-(35892, 0, 'config', 'config_return_status_id', '1', 0),
-(35891, 0, 'config', 'config_return_id', '9', 0),
-(35890, 0, 'config', 'config_affiliate_id', '10', 0),
-(35889, 0, 'config', 'config_affiliate_commission', '5', 0),
-(35888, 0, 'config', 'config_affiliate_auto', '0', 0),
-(35887, 0, 'config', 'config_affiliate_approval', '0', 0),
-(35886, 0, 'config', 'config_affiliate_group_id', '1', 0),
-(35885, 0, 'config', 'config_stock_checkout', '0', 0),
-(35884, 0, 'config', 'config_stock_warning', '1', 0),
-(35883, 0, 'config', 'config_stock_display', '0', 0),
-(35882, 0, 'config', 'config_api_id', '7', 0),
-(35881, 0, 'config', 'config_fraud_status_id', '16', 0),
-(35878, 0, 'config', 'config_order_status_id', '1', 0),
-(35879, 0, 'config', 'config_processing_status', '[\"2\",\"3\",\"1\",\"12\",\"5\"]', 1),
-(35880, 0, 'config', 'config_complete_status', '[\"3\",\"15\",\"5\"]', 1),
-(35877, 0, 'config', 'config_checkout_id', '9', 0),
+(36054, 0, 'config', 'config_secure', '1', 0),
+(36053, 0, 'config', 'config_cache_warmer_key', '', 0),
+(36048, 0, 'config', 'config_compression', '9', 0),
+(36049, 0, 'config', 'config_cache_product', '0', 0),
+(36050, 0, 'config', 'config_cache_product_attribute', '0', 0),
+(36051, 0, 'config', 'config_cache_product_option', '0', 0),
+(36052, 0, 'config', 'config_cache_warmer', '0', 0),
+(36047, 0, 'config', 'config_robots', 'abot\r\ndbot\r\nebot\r\nhbot\r\nkbot\r\nlbot\r\nmbot\r\nnbot\r\nobot\r\npbot\r\nrbot\r\nsbot\r\ntbot\r\nvbot\r\nybot\r\nzbot\r\nbot.\r\nbot/\r\n_bot\r\n.bot\r\n/bot\r\n-bot\r\n:bot\r\n(bot\r\ncrawl\r\nslurp\r\nspider\r\nseek\r\naccoona\r\nacoon\r\nadressendeutschland\r\nah-ha.com\r\nahoy\r\naltavista\r\nananzi\r\nanthill\r\nappie\r\narachnophilia\r\narale\r\naraneo\r\naranha\r\narchitext\r\naretha\r\narks\r\nasterias\r\natlocal\r\natn\r\natomz\r\naugurfind\r\nbackrub\r\nbannana_bot\r\nbaypup\r\nbdfetch\r\nbig brother\r\nbiglotron\r\nbjaaland\r\nblackwidow\r\nblaiz\r\nblog\r\nblo.\r\nbloodhound\r\nboitho\r\nbooch\r\nbradley\r\nbutterfly\r\ncalif\r\ncassandra\r\nccubee\r\ncfetch\r\ncharlotte\r\nchurl\r\ncienciaficcion\r\ncmc\r\ncollective\r\ncomagent\r\ncombine\r\ncomputingsite\r\ncsci\r\ncurl\r\ncusco\r\ndaumoa\r\ndeepindex\r\ndelorie\r\ndepspid\r\ndeweb\r\ndie blinde kuh\r\ndigger\r\nditto\r\ndmoz\r\ndocomo\r\ndownload express\r\ndtaagent\r\ndwcp\r\nebiness\r\nebingbong\r\ne-collector\r\nejupiter\r\nemacs-w3 search engine\r\nesther\r\nevliya celebi\r\nezresult\r\nfalcon\r\nfelix ide\r\nferret\r\nfetchrover\r\nfido\r\nfindlinks\r\nfireball\r\nfish search\r\nfouineur\r\nfunnelweb\r\ngazz\r\ngcreep\r\ngenieknows\r\ngetterroboplus\r\ngeturl\r\nglx\r\ngoforit\r\ngolem\r\ngrabber\r\ngrapnel\r\ngralon\r\ngriffon\r\ngromit\r\ngrub\r\ngulliver\r\nhamahakki\r\nharvest\r\nhavindex\r\nhelix\r\nheritrix\r\nhku www octopus\r\nhomerweb\r\nhtdig\r\nhtml index\r\nhtml_analyzer\r\nhtmlgobble\r\nhubater\r\nhyper-decontextualizer\r\nia_archiver\r\nibm_planetwide\r\nichiro\r\niconsurf\r\niltrovatore\r\nimage.kapsi.net\r\nimagelock\r\nincywincy\r\nindexer\r\ninfobee\r\ninformant\r\ningrid\r\ninktomisearch.com\r\ninspector web\r\nintelliagent\r\ninternet shinchakubin\r\nip3000\r\niron33\r\nisraeli-search\r\nivia\r\njack\r\njakarta\r\njavabee\r\njetbot\r\njumpstation\r\nkatipo\r\nkdd-explorer\r\nkilroy\r\nknowledge\r\nkototoi\r\nkretrieve\r\nlabelgrabber\r\nlachesis\r\nlarbin\r\nlegs\r\nlibwww\r\nlinkalarm\r\nlink validator\r\nlinkscan\r\nlockon\r\nlwp\r\nlycos\r\nmagpie\r\nmantraagent\r\nmapoftheinternet\r\nmarvin/\r\nmattie\r\nmediafox\r\nmediapartners\r\nmercator\r\nmerzscope\r\nmicrosoft url control\r\nminirank\r\nmiva\r\nmj12\r\nmnogosearch\r\nmoget\r\nmonster\r\nmoose\r\nmotor\r\nmultitext\r\nmuncher\r\nmuscatferret\r\nmwd.search\r\nmyweb\r\nnajdi\r\nnameprotect\r\nnationaldirectory\r\nnazilla\r\nncsa beta\r\nnec-meshexplorer\r\nnederland.zoek\r\nnetcarta webmap engine\r\nnetmechanic\r\nnetresearchserver\r\nnetscoop\r\nnewscan-online\r\nnhse\r\nnokia6682/\r\nnomad\r\nnoyona\r\nnutch\r\nnzexplorer\r\nobjectssearch\r\noccam\r\nomni\r\nopen text\r\nopenfind\r\nopenintelligencedata\r\norb search\r\nosis-project\r\npack rat\r\npageboy\r\npagebull\r\npage_verifier\r\npanscient\r\nparasite\r\npartnersite\r\npatric\r\npear.\r\npegasus\r\nperegrinator\r\npgp key agent\r\nphantom\r\nphpdig\r\npicosearch\r\npiltdownman\r\npimptrain\r\npinpoint\r\npioneer\r\npiranha\r\nplumtreewebaccessor\r\npogodak\r\npoirot\r\npompos\r\npoppelsdorf\r\npoppi\r\npopular iconoclast\r\npsycheclone\r\npublisher\r\npython\r\nrambler\r\nraven search\r\nroach\r\nroad runner\r\nroadhouse\r\nrobbie\r\nrobofox\r\nrobozilla\r\nrules\r\nsalty\r\nsbider\r\nscooter\r\nscoutjet\r\nscrubby\r\nsearch.\r\nsearchprocess\r\nsemanticdiscovery\r\nsenrigan\r\nsg-scout\r\nshai\'hulud\r\nshark\r\nshopwiki\r\nsidewinder\r\nsift\r\nsilk\r\nsimmany\r\nsite searcher\r\nsite valet\r\nsitetech-rover\r\nskymob.com\r\nsleek\r\nsmartwit\r\nsna-\r\nsnappy\r\nsnooper\r\nsohu\r\nspeedfind\r\nsphere\r\nsphider\r\nspinner\r\nspyder\r\nsteeler/\r\nsuke\r\nsuntek\r\nsupersnooper\r\nsurfnomore\r\nsven\r\nsygol\r\nszukacz\r\ntach black widow\r\ntarantula\r\ntempleton\r\n/teoma\r\nt-h-u-n-d-e-r-s-t-o-n-e\r\ntheophrastus\r\ntitan\r\ntitin\r\ntkwww\r\ntoutatis\r\nt-rex\r\ntutorgig\r\ntwiceler\r\ntwisted\r\nucsd\r\nudmsearch\r\nurl check\r\nupdated\r\nvagabondo\r\nvalkyrie\r\nverticrawl\r\nvictoria\r\nvision-search\r\nvolcano\r\nvoyager/\r\nvoyager-hc\r\nw3c_validator\r\nw3m2\r\nw3mir\r\nwalker\r\nwallpaper\r\nwanderer\r\nwauuu\r\nwavefire\r\nweb core\r\nweb hopper\r\nweb wombat\r\nwebbandit\r\nwebcatcher\r\nwebcopy\r\nwebfoot\r\nweblayers\r\nweblinker\r\nweblog monitor\r\nwebmirror\r\nwebmonkey\r\nwebquest\r\nwebreaper\r\nwebsitepulse\r\nwebsnarf\r\nwebstolperer\r\nwebvac\r\nwebwalk\r\nwebwatch\r\nwebwombat\r\nwebzinger\r\nwhizbang\r\nwhowhere\r\nwild ferret\r\nworldlight\r\nwwwc\r\nwwwster\r\nxenu\r\nxget\r\nxift\r\nxirq\r\nyandex\r\nyanga\r\nyeti\r\nyodao\r\nzao\r\nzippp\r\nzyborg', 0),
+(36046, 0, 'config', 'config_seo_url', '1', 0),
+(36045, 0, 'config', 'config_maintenance', '0', 0),
+(36044, 0, 'config', 'config_mail_alert_email', '', 0),
+(36043, 0, 'config', 'config_mail_alert', '[\"order\"]', 1),
+(36042, 0, 'config', 'config_mail_smtp_timeout', '5', 0),
+(36041, 0, 'config', 'config_mail_smtp_port', '25', 0),
+(36040, 0, 'config', 'config_mail_smtp_password', '', 0),
+(36039, 0, 'config', 'config_mail_smtp_username', '', 0),
+(36038, 0, 'config', 'config_mail_smtp_hostname', '', 0),
+(36037, 0, 'config', 'config_mail_parameter', '', 0),
+(36036, 0, 'config', 'config_mail_engine', 'mail', 0),
+(36035, 0, 'config', 'config_product_popup_image_mode', 'scale', 0),
+(36034, 0, 'config', 'config_product_thumb_image_mode', 'default', 0),
+(36033, 0, 'config', 'config_product_list_image_mode', 'default', 0),
+(36032, 0, 'config', 'config_category_image_mode', 'default', 0),
+(36031, 0, 'config', 'config_icon', 'catalog/favicon.png', 0),
+(36030, 0, 'config', 'config_logo_height', '35', 0),
+(36029, 0, 'config', 'config_logo_width', '175', 0),
+(36027, 0, 'config', 'config_captcha_page', '[\"register\",\"guest\",\"review\",\"return\",\"contact\"]', 1),
+(36028, 0, 'config', 'config_logo', 'catalog/logo.png', 0),
+(36026, 0, 'config', 'config_captcha', '', 0),
+(36025, 0, 'config', 'config_return_status_id', '1', 0),
+(36024, 0, 'config', 'config_return_id', '9', 0),
+(36023, 0, 'config', 'config_affiliate_id', '10', 0),
+(36022, 0, 'config', 'config_affiliate_commission', '5', 0),
+(36021, 0, 'config', 'config_affiliate_auto', '0', 0),
+(36020, 0, 'config', 'config_affiliate_approval', '0', 0),
+(36019, 0, 'config', 'config_affiliate_group_id', '1', 0),
+(36018, 0, 'config', 'config_stock_checkout', '0', 0),
+(36017, 0, 'config', 'config_stock_warning', '1', 0),
+(36016, 0, 'config', 'config_stock_display', '0', 0),
+(36015, 0, 'config', 'config_api_id', '7', 0),
+(36014, 0, 'config', 'config_fraud_status_id', '16', 0),
+(36011, 0, 'config', 'config_order_status_id', '1', 0),
+(36012, 0, 'config', 'config_processing_status', '[\"2\",\"3\",\"1\",\"12\",\"5\"]', 1),
+(36013, 0, 'config', 'config_complete_status', '[\"3\",\"15\",\"5\"]', 1),
+(36010, 0, 'config', 'config_checkout_id', '9', 0),
 (33315, 0, 'developer', 'developer_css', '0', 0),
 (33314, 0, 'developer', 'developer_sass', '0', 0),
 (33313, 0, 'developer', 'developer_theme', '0', 0),
-(35876, 0, 'config', 'config_checkout_guest', '0', 0),
-(35875, 0, 'config', 'config_cart_weight', '1', 0),
-(35874, 0, 'config', 'config_ask_payment_address', '1', 0),
-(35873, 0, 'config', 'config_invoice_prefix', 'INV-2025-00flex-start', 0),
-(35872, 0, 'config', 'config_account_id', '9', 0),
-(35871, 0, 'config', 'config_login_attempts', '5', 0),
-(35870, 0, 'config', 'config_customer_price', '0', 0),
-(35869, 0, 'config', 'config_customer_group_display', '[\"1\"]', 1),
-(35868, 0, 'config', 'config_customer_group_id', '1', 0),
-(35867, 0, 'config', 'config_customer_search', '0', 0),
-(35866, 0, 'config', 'config_customer_activity', '0', 0),
-(35865, 0, 'config', 'config_customer_online', '0', 0),
-(35864, 0, 'config', 'config_tax_customer', 'shipping', 0),
-(35863, 0, 'config', 'config_tax_default', 'shipping', 0),
-(35862, 0, 'config', 'config_tax', '0', 0),
-(35861, 0, 'config', 'config_voucher_max', '1000', 0),
-(35860, 0, 'config', 'config_voucher_min', '1', 0),
-(35859, 0, 'config', 'config_review_images_limit', '5', 0),
-(35858, 0, 'config', 'config_review_images', '0', 0),
-(35857, 0, 'config', 'config_review_guest', '1', 0),
-(35856, 0, 'config', 'config_review_status', '1', 0),
-(35855, 0, 'config', 'config_show_options_price', '1', 0),
-(35854, 0, 'config', 'config_out_of_stock_to_end', '0', 0),
-(35853, 0, 'config', 'config_special_sort_order', 'ASC', 0),
-(35852, 0, 'config', 'config_special_sort_param', 'p.sort_order', 0),
-(35851, 0, 'config', 'config_search_sort_order', 'ASC', 0),
-(35850, 0, 'config', 'config_search_sort_param', 'p.sort_order', 0),
-(35849, 0, 'config', 'config_manufacturer_sort_order', 'ASC', 0),
-(35848, 0, 'config', 'config_manufacturer_sort_param', 'p.sort_order', 0),
-(35847, 0, 'config', 'config_category_sort_order', 'ASC', 0),
-(35846, 0, 'config', 'config_category_sort_param', 'p.sort_order', 0),
-(35845, 0, 'config', 'config_limit_autocomplete', '5', 0),
-(35844, 0, 'config', 'config_limit_admin', '50', 0),
-(35843, 0, 'config', 'config_product_count', '0', 0),
-(35842, 0, 'config', 'config_weight_class_id', '1', 0),
-(35841, 0, 'config', 'config_length_class_id', '1', 0),
-(35840, 0, 'config', 'config_currency_engine', 'cbr', 0),
-(35839, 0, 'config', 'config_currency_auto', '1', 0),
-(35838, 0, 'config', 'config_currency', 'RUB', 0),
-(35837, 0, 'config', 'config_admin_language', 'ru-ru', 0),
-(35836, 0, 'config', 'config_language', 'ru-ru', 0),
-(35835, 0, 'config', 'config_timezone', 'Europe/Moscow', 0),
-(35834, 0, 'config', 'config_city', 'Москва', 0),
-(35833, 0, 'config', 'config_zone_id', '2751', 0),
-(35832, 0, 'config', 'config_country_id', '176', 0),
-(35831, 0, 'config', 'config_location', '[\"1\",\"2\"]', 1),
-(35830, 0, 'config', 'config_comment', '', 0),
-(35829, 0, 'config', 'config_open', '10:00 - 18:00', 0),
-(35828, 0, 'config', 'config_image', '', 0),
-(35827, 0, 'config', 'config_social_media', '[{\"name\":\"whatsapp\",\"url\":\"https:\\/\\/wa.me\\/79994206969\",\"icon\":\"&lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;   &lt;path d=&quot;M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232&quot;&gt;&lt;\\/path&gt; &lt;\\/svg&gt;\",\"contact\":\"1\",\"header\":\"1\"},{\"name\":\"telegram\",\"url\":\"https:\\/\\/t.me\\/exopencart\",\"icon\":\"&lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;   &lt;path d=&quot;M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z&quot;\\/&gt; &lt;\\/svg&gt;\",\"contact\":\"1\",\"header\":\"1\"},{\"name\":\"xcom\",\"url\":\"https:\\/\\/x.com\\/exopencart\",\"icon\":\"&lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;   &lt;path d=&quot;M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z&quot;\\/&gt; &lt;\\/svg&gt;\",\"contact\":\"1\",\"header\":\"1\"}]', 1),
-(35826, 0, 'config', 'config_fax', '+7 495 420 69 69', 0),
-(35825, 0, 'config', 'config_telephone', '+7 999 420 69 69', 0),
-(35820, 0, 'config', 'config_name', 'exopencart', 0),
-(35821, 0, 'config', 'config_owner', 'Название организации', 0),
-(35822, 0, 'config', 'config_address', 'Здесь адрес, ул. дом, что-то еще', 0),
-(35823, 0, 'config', 'config_geocode', 'https://yandex.ru/map-widget/v1/?um=constructor%3Acf0da8fa05f10eb5764f1e0487b4b2a963a2a02ad1c06290acc58a05f78e5230&amp;amp;source=constructor', 0),
-(35824, 0, 'config', 'config_email', 'info@exopencart.ru', 0),
-(35819, 0, 'config', 'config_layout_id', '4', 0),
-(35818, 0, 'config', 'config_toggle_mode', '1', 0),
-(35817, 0, 'config', 'config_default_mode', 'light', 0),
-(35816, 0, 'config', 'config_theme', 'default', 0),
-(35814, 0, 'config', 'config_meta_description', 'Бесплатный интернет-магазин - exopencart.ru', 0),
-(35815, 0, 'config', 'config_meta_keyword', '', 0),
-(35813, 0, 'config', 'config_heading_seo_phrase', '{\"1\":\"\",\"2\":\"\"}', 1),
-(35811, 0, 'config', 'config_meta_title', 'Бесплатный интернет-магазин', 0),
-(35812, 0, 'config', 'config_title_seo_phrase', '{\"1\":\"\",\"2\":\"\"}', 1),
+(36009, 0, 'config', 'config_checkout_guest', '0', 0),
+(36008, 0, 'config', 'config_cart_weight', '1', 0),
+(36007, 0, 'config', 'config_ask_payment_address', '1', 0),
+(36006, 0, 'config', 'config_invoice_prefix', 'INV-2025-00flex-start', 0),
+(36005, 0, 'config', 'config_account_id', '9', 0),
+(36004, 0, 'config', 'config_login_attempts', '5', 0),
+(36003, 0, 'config', 'config_customer_price', '0', 0),
+(36002, 0, 'config', 'config_customer_group_display', '[\"1\"]', 1),
+(36001, 0, 'config', 'config_customer_group_id', '1', 0),
+(36000, 0, 'config', 'config_customer_search', '0', 0),
+(35999, 0, 'config', 'config_customer_activity', '0', 0),
+(35998, 0, 'config', 'config_customer_online', '0', 0),
+(35997, 0, 'config', 'config_tax_customer', 'shipping', 0),
+(35996, 0, 'config', 'config_tax_default', 'shipping', 0),
+(35995, 0, 'config', 'config_tax', '0', 0),
+(35994, 0, 'config', 'config_voucher_max', '1000', 0),
+(35993, 0, 'config', 'config_voucher_min', '1', 0),
+(35992, 0, 'config', 'config_review_images_limit', '5', 0),
+(35991, 0, 'config', 'config_review_images', '0', 0),
+(35990, 0, 'config', 'config_review_guest', '1', 0),
+(35989, 0, 'config', 'config_review_status', '1', 0),
+(35988, 0, 'config', 'config_show_options_price', '1', 0),
+(35987, 0, 'config', 'config_out_of_stock_to_end', '0', 0),
+(35986, 0, 'config', 'config_special_sort_order', 'ASC', 0),
+(35985, 0, 'config', 'config_special_sort_param', 'p.sort_order', 0),
+(35984, 0, 'config', 'config_search_sort_order', 'ASC', 0),
+(35983, 0, 'config', 'config_search_sort_param', 'p.sort_order', 0),
+(35982, 0, 'config', 'config_manufacturer_sort_order', 'ASC', 0),
+(35981, 0, 'config', 'config_manufacturer_sort_param', 'p.sort_order', 0),
+(35980, 0, 'config', 'config_category_sort_order', 'ASC', 0),
+(35979, 0, 'config', 'config_category_sort_param', 'p.sort_order', 0),
+(35978, 0, 'config', 'config_limit_autocomplete', '5', 0),
+(35977, 0, 'config', 'config_limit_admin', '50', 0),
+(35976, 0, 'config', 'config_product_count', '0', 0),
+(35975, 0, 'config', 'config_weight_class_id', '1', 0),
+(35974, 0, 'config', 'config_length_class_id', '1', 0),
+(35973, 0, 'config', 'config_currency_engine', 'cbr', 0),
+(35972, 0, 'config', 'config_currency_auto', '1', 0),
+(35971, 0, 'config', 'config_currency', 'RUB', 0),
+(35970, 0, 'config', 'config_admin_language', 'ru-ru', 0),
+(35969, 0, 'config', 'config_language', 'ru-ru', 0),
+(35968, 0, 'config', 'config_timezone', 'Europe/Moscow', 0),
+(35967, 0, 'config', 'config_city', 'Москва', 0),
+(35966, 0, 'config', 'config_zone_id', '2751', 0),
+(35965, 0, 'config', 'config_country_id', '176', 0),
+(35964, 0, 'config', 'config_location', '[\"1\",\"2\"]', 1),
+(35963, 0, 'config', 'config_comment', '', 0),
+(35962, 0, 'config', 'config_open', '10:00 - 18:00', 0),
+(35960, 0, 'config', 'config_social_media', '[{\"name\":\"whatsapp\",\"url\":\"https:\\/\\/wa.me\\/79994206969\",\"icon\":\"&lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;   &lt;path d=&quot;M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232&quot;&gt;&lt;\\/path&gt; &lt;\\/svg&gt;\",\"contact\":\"1\",\"header\":\"1\"},{\"name\":\"telegram\",\"url\":\"https:\\/\\/t.me\\/exopencart\",\"icon\":\"&lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;   &lt;path d=&quot;M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z&quot;\\/&gt; &lt;\\/svg&gt;\",\"contact\":\"1\",\"header\":\"1\"},{\"name\":\"xcom\",\"url\":\"https:\\/\\/x.com\\/exopencart\",\"icon\":\"&lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;   &lt;path d=&quot;M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z&quot;\\/&gt; &lt;\\/svg&gt;\",\"contact\":\"1\",\"header\":\"1\"}]', 1),
+(35961, 0, 'config', 'config_image', '', 0),
+(35959, 0, 'config', 'config_fax', '', 0),
+(35958, 0, 'config', 'config_telephone', '+7 999 420 69 69', 0),
+(35953, 0, 'config', 'config_name', 'exopencart', 0),
+(35954, 0, 'config', 'config_owner', 'Название организации', 0),
+(35955, 0, 'config', 'config_address', 'Здесь адрес, ул. дом, что-то еще', 0),
+(35956, 0, 'config', 'config_geocode', 'https://yandex.ru/map-widget/v1/?um=constructor%3Acf0da8fa05f10eb5764f1e0487b4b2a963a2a02ad1c06290acc58a05f78e5230&amp;amp;source=constructor', 0),
+(35957, 0, 'config', 'config_email', 'info@exopencart.ru', 0),
+(35952, 0, 'config', 'config_layout_id', '4', 0),
+(35951, 0, 'config', 'config_toggle_mode', '1', 0),
+(35950, 0, 'config', 'config_default_mode', 'light', 0),
+(35949, 0, 'config', 'config_theme', 'default', 0),
+(35948, 0, 'config', 'config_meta_keyword', '', 0),
+(35947, 0, 'config', 'config_meta_description', 'Бесплатный интернет-магазин - exopencart.ru', 0),
+(35946, 0, 'config', 'config_heading_seo_phrase', '{\"1\":\"\",\"2\":\"\"}', 1),
+(35945, 0, 'config', 'config_title_seo_phrase', '{\"1\":\"\",\"2\":\"\"}', 1),
+(35944, 0, 'config', 'config_meta_title', 'Бесплатный интернет-магазин', 0),
 (23107, 0, 'module_exbot', 'module_exbot_status', '0', 0),
 (23108, 0, 'module_exbot', 'module_exbot_settings', '{\"bot_token\":\"\",\"token\":\"\"}', 1);
 
@@ -13035,7 +13043,7 @@ ALTER TABLE `oc_api_ip`
 -- AUTO_INCREMENT for table `oc_api_session`
 --
 ALTER TABLE `oc_api_session`
-  MODIFY `api_session_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=762;
+  MODIFY `api_session_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=763;
 
 --
 -- AUTO_INCREMENT for table `oc_article`
@@ -13047,7 +13055,7 @@ ALTER TABLE `oc_article`
 -- AUTO_INCREMENT for table `oc_article_image`
 --
 ALTER TABLE `oc_article_image`
-  MODIFY `article_image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4010;
+  MODIFY `article_image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4014;
 
 --
 -- AUTO_INCREMENT for table `oc_attribute`
@@ -13431,7 +13439,7 @@ ALTER TABLE `oc_product_discount`
 -- AUTO_INCREMENT for table `oc_product_image`
 --
 ALTER TABLE `oc_product_image`
-  MODIFY `product_image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2027;
+  MODIFY `product_image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2031;
 
 --
 -- AUTO_INCREMENT for table `oc_product_option`
@@ -13455,7 +13463,7 @@ ALTER TABLE `oc_product_reward`
 -- AUTO_INCREMENT for table `oc_product_special`
 --
 ALTER TABLE `oc_product_special`
-  MODIFY `product_special_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+  MODIFY `product_special_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
 
 --
 -- AUTO_INCREMENT for table `oc_quantity_class`
@@ -13515,13 +13523,13 @@ ALTER TABLE `oc_review_article`
 -- AUTO_INCREMENT for table `oc_seo_url`
 --
 ALTER TABLE `oc_seo_url`
-  MODIFY `seo_url_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1411;
+  MODIFY `seo_url_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1417;
 
 --
 -- AUTO_INCREMENT for table `oc_setting`
 --
 ALTER TABLE `oc_setting`
-  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35944;
+  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36096;
 
 --
 -- AUTO_INCREMENT for table `oc_statistics`

@@ -142,8 +142,8 @@
               <td></td>
               {% for product in products %}
               <td>
-                <button type="button" class="button is-primary is-outlined add-to-cart" data-product_id="{{ product.product_id }}" data-minimum="{{ product.minimum }}">{{ button_cart }}</button>
-                <a href="{{ product.remove }}" class="button is-danger is-outlined">{{ button_remove }}</a>
+                <button type="button" class="button is-primary is-light add-to-cart" data-product_id="{{ product.product_id }}" data-minimum="{{ product.minimum }}">{{ button_cart }}</button>
+                <a href="{{ product.remove }}" class="button is-danger is-light">{{ button_remove }}</a>
               </td>
               {% endfor %}
             </tr>
@@ -152,7 +152,7 @@
         {% else %}
         <p>{{ text_empty }}</p>
         <div class="buttons my-3">
-          <a href="{{ continue }}" class="button is-primary is-outlined">{{ button_continue }}</a>
+          <a href="{{ continue }}" class="button is-primary is-light">{{ button_continue }}</a>
         </div>
         {% endif %}
       </div>

@@ -168,7 +168,7 @@
                 <li class="is-flex is-justify-content-space-between is-align-items-center py-1">
                   <span class="pr-1">{{ text_stock }}</span>
                   <span
-                    class="tag has-text-weight-bold {{ quantity > 0 ? 'is-success' : 'is-danger' }}"
+                    class="tag has-text-weight-bold {{ quantity > 0 ? 'is-success' : 'is-danger' }} is-light"
                     itemprop="availability">{{ stock }}</span>
                 </li>
                 {% if manufacturer %}
@@ -239,7 +239,7 @@
                 {% else %}
                 <div class="columns is-mobile is-multiline is-variable is-2" id="input-option{{ option.product_option_id }}">
                   {% for option_value in option.product_option_value %}
-                  <div class="column is-3-desktop is-3-tablet is-4-mobile">
+                  <div class="column is-3-desktop is-3-tablet is-6-mobile">
                     <label class="radio-ui is-relative is-flex is-align-items-center is-flex-direction-column p-2 has-text-centered">
                       <input type="radio" name="option[{{ option.product_option_id }}]" data-price="{{ option_value.price_numeric }}" data-prefix="{{ option_value.price_prefix }}" {{ option_value.is_default ? 'checked' : '' }} value="{{ option_value.product_option_value_id }}" />
                       {% if option_value.image %}
@@ -296,7 +296,7 @@
               <div class="field{% if option.required %} required {% endif %}">
                 <label class="label is-size-5">{{ option.name }}</label>
                 <button type="button" id="button-upload{{ option.product_option_id }}"
-                  class="button is-primary is-outlined">{{ button_upload }}</button>
+                  class="button is-primary is-light">{{ button_upload }}</button>
                 <input type="hidden" name="option[{{ option.product_option_id }}]" value=""
                   id="input-option{{ option.product_option_id }}" />
               </div>
@@ -595,11 +595,11 @@
             <h3 class="title is-3">{{ text_related }}</h3>
             <div class="columns is-mobile is-multiline mt-5">
               {% if column_left and column_right %}
-              {% set class = 'column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile' %}
+              {% set class = 'column is-4-fullhd is-4-widescreen is-4-desktop is-4-tablet is-6-mobile' %}
               {% elseif column_left or column_right %}
-              {% set class = 'column is-4-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile' %}
+              {% set class = 'column is-3-fullhd is-3-widescreen is-4-desktop is-4-tablet is-6-mobile' %}
               {% else %}
-              {% set class = 'column is-3-fullhd is-4-widescreen is-4-desktop is-6-tablet is-12-mobile' %}
+              {% set class = 'column is-3-fullhd is-3-widescreen is-3-desktop is-4-tablet is-6-mobile' %}
               {% endif %}
               {% for product in products %}
               <div class="{{ class }}">

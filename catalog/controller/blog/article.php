@@ -117,24 +117,7 @@ class ControllerBlogArticle extends Controller {
         $data['heading_title'] = $article_info['name'];
       }
 
-      $data['text_select'] = $this->language->get('text_select');
-      $data['text_write'] = $this->language->get('text_write');
-      $data['text_login'] = sprintf($this->language->get('text_login'), $this->url->link('account/login', '', true), $this->url->link('account/register', '', true));
-      $data['text_loading'] = $this->language->get('text_loading');
-      $data['text_note'] = $this->language->get('text_note');
-      $data['text_share'] = $this->language->get('text_share');
-      $data['text_wait'] = $this->language->get('text_wait');
-      $data['button_cart'] = $this->language->get('button_cart');
-      $data['button_wishlist'] = $this->language->get('button_wishlist');
-      $data['button_compare'] = $this->language->get('button_compare');
-      $data['entry_name'] = $this->language->get('entry_name');
-      $data['entry_review'] = $this->language->get('entry_review');
-      $data['entry_rating'] = $this->language->get('entry_rating');
-      $data['entry_good'] = $this->language->get('entry_good');
-      $data['entry_bad'] = $this->language->get('entry_bad');
-      $data['entry_captcha'] = $this->language->get('entry_captcha');
-
-      $data['button_continue'] = $this->language->get('button_continue');
+      $data['date_published'] = date('d.m.Y', strtotime($article_info['date_published']));
 
       $this->load->model('blog/review');
 
