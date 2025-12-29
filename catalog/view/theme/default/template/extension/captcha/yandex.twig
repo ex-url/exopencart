@@ -1,0 +1,11 @@
+<script src="https://captcha-api.yandex.ru/captcha.js" defer></script>
+
+<div class="field required captcha">
+  <legend class="label">{{ text_captcha }}</legend>
+  <div class="col-sm-10">
+    <div id="smart-captcha-container" class="smart-captcha" data-sitekey="{{ site_key }}"></div>
+    {% if error_captcha %}
+    <small class="has-text-danger">{{ error_captcha }}</small>
+    {% endif %}
+  </div>
+</div>

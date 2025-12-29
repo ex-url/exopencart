@@ -49,8 +49,8 @@ async function updateCheckoutCustomer(e) {
       $form.find('.help.is-danger').remove();
       $form.find('.input.is-danger').removeClass('is-danger');
 
-      if ($('.google-captcha').length) {
-        $('.google-captcha').find('.help.is-danger').remove();
+      if ($form.find('.captcha').length) {
+        $form.find('.captcha').find('.help.is-danger').remove();
       }
 
       if (json['error']) {
@@ -66,8 +66,8 @@ async function updateCheckoutCustomer(e) {
             $form.find('input[name="' + key + '"]').addClass('is-danger');
             $form.find('input[id="' + key + '"]').addClass('is-danger');
 
-            if ($('.google-captcha').length && key == 'captcha') {
-              $form.find('.google-captcha').append('<p class="help is-danger">' + json['error'][key] + '</p>');
+            if ($form.find('.captcha').length && key == 'captcha') {
+              $form.find('.captcha').append('<p class="help is-danger">' + json['error'][key] + '</p>');
             }
           }
         }
