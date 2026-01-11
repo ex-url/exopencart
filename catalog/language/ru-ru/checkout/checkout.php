@@ -48,8 +48,8 @@ $_['text_year']                      = 'Год';
 $_['text_your_order']                = 'Ваш заказ';
 $_['text_checkout_confirm_button']   = 'Оформить заказ';
 $_['text_to_cart']                    = 'Вернуться в корзину';
-$_['text_weight']                      = 'Общий вес';
-$_['text_pickup_point']                = 'Выбор ПВЗ';
+$_['text_weight']                     = 'Общий вес';
+$_['text_pickup_point']               = 'Откуда заберёте?';
 $_['text_choose_pickup_point']        = 'Выберите ПВЗ';
 
 // Column

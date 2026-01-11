@@ -101,7 +101,7 @@ async function updateCheckoutCustomer(e) {
 async function updatePaymentAddress(e) {
 
   const $form = $('#payment-address-form');
-  const $input = e && $(e.target).is('input') ? $(e.target) : false;
+  const $input = e && $(e.target).is('input') || e && $(e.target).is('select') ? $(e.target) : false;
 
   const result = await $.ajax({
     type: 'post',
@@ -157,7 +157,7 @@ async function updatePaymentAddress(e) {
 async function updateShippingAddress(e) {
 
   const $form = $('#shipping-address-form');
-  const $input = e && $(e.target).is('input') ? $(e.target) : false;
+  const $input = e && $(e.target).is('input') || e && $(e.target).is('select') ? $(e.target) : false;
 
   const result = await $.ajax({
     type: 'post',

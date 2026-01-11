@@ -9,10 +9,13 @@ $_['text_edit']        = 'Edit Flat Rate Shipping';
 
 // Entry
 $_['entry_cost']       = 'Cost';
+$_['entry_free']       = 'Free from';
 $_['entry_tax_class']  = 'Tax Class';
 $_['entry_geo_zone']   = 'Geo Zone';
 $_['entry_status']     = 'Status';
 $_['entry_sort_order'] = 'Sort Order';
+
+$_['help_shipping_free'] = 'Free shipping from order total';
 
 // Error
 $_['error_permission'] = 'Warning: You do not have permission to modify flat rate shipping!';

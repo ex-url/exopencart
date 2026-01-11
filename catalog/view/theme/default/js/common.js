@@ -421,7 +421,7 @@ $(document).ready(function () {
 
   // Product Grid
   $('#grid-view').click(function () {
-    $('.product-cards').attr('class', 'product-cards grid columns is-mobile is-multiline mt-3 is-variable is-3-desktop is-3-tablet is-1-mobile');
+    $('.product-cards').attr('class', 'product-cards grid columns is-mobile is-multiline mt-3 is-variable is-3-desktop is-3-tablet is-2-mobile');
 
     let columns = $('#column-right, #column-left').length;
 

@@ -24,6 +24,9 @@
       {% endif %}
       <div id="content" class="{{ class }}">
         <h1 class="title is-3">{{ heading_title }}</h1>
+        {% if error_warning %}
+        <div class="notification is-danger is-light has-text-centered">{{ error_warning }}</div>  
+        {% endif %}
         {% if products or vouchers %}
         <div id="cart-content">
           <div class="columns is-mobile is-multiline">

@@ -124,6 +124,11 @@ class ControllerCheckoutShippingAddress extends Controller {
 
     $json = array();
 
+    // Validate cart has products and has stock.
+    if ((!$this->cart->hasProducts() && empty($this->session->data['vouchers'])) || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout'))) {
+      $json['redirect'] = $this->url->link('checkout/cart');
+    }
+
     // user choose pickup method
     if (isset($this->request->post['pickup_point'])) {
       $this->load->model('localisation/location');
@@ -142,12 +147,7 @@ class ControllerCheckoutShippingAddress extends Controller {
         $json['error']['pickup_point'] = $this->language->get('error_pickup_point');
       }
     } else {
-      // user choose delivery method
-
-      // Validate cart has products and has stock.
-      if ((!$this->cart->hasProducts() && empty($this->session->data['vouchers'])) || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout'))) {
-        $json['redirect'] = $this->url->link('checkout/cart');
-      }
+      // user choose shipping method      
 
       // Validate minimum quantity requirements.
       $products = $this->cart->getProducts();

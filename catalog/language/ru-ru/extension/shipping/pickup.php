@@ -4,4 +4,4 @@
 
 // Text
 $_['text_title']       = 'Самовывоз';
-$_['text_description'] = 'Самовывоз из ПВЗ';
+$_['text_description'] = 'Со склада или ПВЗ';

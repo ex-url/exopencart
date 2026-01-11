@@ -475,6 +475,10 @@ body.dark {
   background: var(--primary);
 }
 
+.dark #filter {
+  background-color: var(--black);
+}
+
 @media (max-width: 1023px) {
   .dark .icons-menu {
     background-color: rgb(0 0 0 / 40%) !important;

@@ -26,8 +26,7 @@
       {% else %}
       {% set class = 'column is-12' %}
       {% endif %}
-      <div id="content" class="{{ class }}" itemscope itemtype="https://schema.org/Product">
-        <h1 class="title is-3 has-text-weight-normal" id="heading" itemprop="name">{{ heading_title }}</h1>
+      <div id="content" class="{{ class }}" itemscope itemtype="https://schema.org/Product">        
         <div class="tabs mb-5 has-background-white-bis">
           <ul>
             <li class="is-active" data-target="#heading">
@@ -102,6 +101,7 @@
           {% endif %}
           <div id="product" class="product-info {{ class }}">
             <div id="product-main" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+              <h1 class="title is-3 has-text-weight-normal" id="heading" itemprop="name">{{ heading_title }}</h1>
               <div class="is-flex is-justify-content-space-between">
                 {% if price %}
                 <div class="price is-relative is-size-2-desktop is-size-2-tablet is-size-3-mobile mb-5">
