@@ -6,7 +6,8 @@
 /sitemap.xml
 
 #compressed
-/assets/
+/assets/default/css/
+/assets/default/js/
 # Image Cache Files
 /image/cache/*
 !/image/cache/index.html

@@ -31,15 +31,15 @@ class ControllerCommonHeader extends Controller {
 
     $template_folder = $this->config->get('theme_default_directory');
 
-    $data['fonts_css'] = 'catalog/view/theme/' . $template_folder . '/css/fonts.css';
+    $data['fonts_css'] = 'assets/' . $template_folder . '/fonts/fonts.css';
 
-    $fonts_path = DIR_APPLICATION . 'view/theme/' . $template_folder . '/fonts/';
+    $fonts_path = DIR_ROOT . 'assets/' . $template_folder . '/fonts/';
 
     $font_files = glob($fonts_path . '*.woff2');
 
     foreach ($font_files as $font_file) {
-      $relative_path = str_replace(DIR_APPLICATION, 'catalog/', $font_file);
-      $this->document->addLink($server . $relative_path, 'preload', 'font', 'font/woff2', 'anonymous');
+      $relative_path = str_replace(DIR_ROOT, '', $font_file);
+      $this->document->addLink($relative_path, 'preload', 'font', 'font/woff2', 'anonymous');
     }
 
     $this->document->addScript('catalog/view/theme/' . $template_folder . '/js/common.js');
@@ -156,22 +156,23 @@ class ControllerCommonHeader extends Controller {
       $token = $this->config->get('styles_token');
 
       if (!$token) {
-        $token = bin2hex(random_bytes(8));
+        $token = token(8);
         $this->db->query("REPLACE INTO " . DB_PREFIX . "setting SET store_id = 0, `code` = 'developer', `key` = 'styles_token', `value` = '" . $this->db->escape($token) . "'");
         $this->config->set('styles_token', $token);
       }
 
       $paths = array_keys($styles);
       $hash = md5(implode($paths) . $token);
+      $dir = DIR_ROOT . 'assets/' . $template_folder . '/css/';
 
-      if (!is_dir(DIR_ROOT . 'assets')) {
-        mkdir(DIR_ROOT . 'assets', 0755, true);
+      if (!is_dir($dir)) {
+        mkdir($dir, 0755, true);
       }
 
-      if (is_file(DIR_ROOT . 'assets/styles.' . $hash . '.css')) {
+      if (is_file($dir . 'styles.' . $hash . '.css')) {
         return [
           'compressed' => [
-            'href'  => 'assets/styles.' . $hash . '.css',
+            'href'  => 'assets/' . $template_folder . '/css/styles.' . $hash . '.css',
             'rel'   => 'stylesheet',
             'media' => 'screen'
           ]
@@ -199,11 +200,11 @@ class ControllerCommonHeader extends Controller {
         }
       }
 
-      $minifier->minify(DIR_ROOT . 'assets/styles.' . $hash . '.css');
+      $minifier->minify($dir . 'styles.' . $hash . '.css');
 
       return [
         'compressed' => [
-          'href'  => 'assets/styles.' . $hash . '.css',
+          'href'  => 'assets/' . $template_folder . '/css/styles.' . $hash . '.css',
           'rel'   => 'stylesheet',
           'media' => 'screen'
         ]
@@ -221,21 +222,22 @@ class ControllerCommonHeader extends Controller {
       $token = $this->config->get('scripts_token');
 
       if (!$token) {
-        $token = bin2hex(random_bytes(8));
+        $token = token(8);
         $this->db->query("REPLACE INTO " . DB_PREFIX . "setting SET store_id = 0, `code` = 'developer', `key` = 'scripts_token', `value` = '" . $this->db->escape($token) . "'");
         $this->config->set('scripts_token', $token);
       }
 
       $paths = array_keys($scripts);
       $hash = md5(implode($paths) . $token);
+      $dir = $dir = DIR_ROOT . 'assets/' . $template_folder . '/js/';
 
-      if (!is_dir(DIR_ROOT . 'assets')) {
-        mkdir(DIR_ROOT . 'assets', 0755, true);
+      if (!is_dir($dir)) {
+        mkdir($dir, 0755, true);
       }
 
-      if (is_file(DIR_ROOT . 'assets/scripts.' . $hash . '.js')) {
+      if (is_file($dir . 'scripts.' . $hash . '.js')) {
         return [
-          'compressed' => 'assets/scripts.' . $hash . '.js'
+          'compressed' => 'assets/' . $template_folder . '/js/scripts.' . $hash . '.js'
         ];
       }
 
@@ -256,10 +258,10 @@ class ControllerCommonHeader extends Controller {
         }
       }
 
-      $minifier->minify(DIR_ROOT . 'assets/scripts.' . $hash . '.js');
+      $minifier->minify($dir . 'scripts.' . $hash . '.js');
 
       return [
-        'compressed' => 'assets/scripts.' . $hash . '.js'
+        'compressed' => 'assets/' . $template_folder . '/js/scripts.' . $hash . '.js'
       ];
     }
 

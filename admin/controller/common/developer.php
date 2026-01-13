@@ -42,7 +42,7 @@ class ControllerCommonDeveloper extends Controller {
 
       if (isset($this->request->post['developer_css']) && $this->request->post['developer_css'] == 1) {
         if (!$this->config->get('styles_token')) {
-          $this->request->post['styles_token'] = bin2hex(random_bytes(8));
+          $this->request->post['styles_token'] = token(8);
         }
       } else {
         $this->request->post['styles_token'] = '';
@@ -50,7 +50,7 @@ class ControllerCommonDeveloper extends Controller {
 
       if (isset($this->request->post['developer_js']) && $this->request->post['developer_js'] == 1) {
         if (!$this->config->get('scripts_token')) {
-          $this->request->post['scripts_token'] = bin2hex(random_bytes(8));
+          $this->request->post['scripts_token'] = token(8);
         }
       } else {
         $this->request->post['scripts_token'] = '';
@@ -139,14 +139,16 @@ class ControllerCommonDeveloper extends Controller {
       $json['error'] = $this->language->get('error_permission');
     } else {
 
-      if (is_dir(dirname(DIR_APPLICATION) . '/assets')) {
+      $template_folder = $this->config->get('theme_default_directory');
 
-        $styles = scandir(dirname(DIR_APPLICATION) . '/assets');
+      if (is_dir(dirname(DIR_APPLICATION) . '/assets/' . $template_folder . '/css')) {
+
+        $styles = scandir(dirname(DIR_APPLICATION) . '/assets/' . $template_folder . '/css');
 
         foreach ($styles as $file) {
           if (strpos($file, 'styles') !== false) {
             if ($file !== "." && $file !== "..") {
-              $path = realpath(dirname(DIR_APPLICATION) . '/assets' . DIRECTORY_SEPARATOR . $file);
+              $path = realpath(dirname(DIR_APPLICATION) . '/assets/' . $template_folder . '/css' . DIRECTORY_SEPARATOR . $file);
               unlink($path);
             }
           }
@@ -154,6 +156,7 @@ class ControllerCommonDeveloper extends Controller {
       }
 
       $this->db->query("DELETE FROM " . DB_PREFIX . "setting WHERE `code` = 'developer' AND `key` = 'styles_token'");
+      $this->config->set('styles_token', '');
 
       $json['success'] = sprintf($this->language->get('text_cache'), $this->language->get('text_css'));
     }
@@ -171,13 +174,15 @@ class ControllerCommonDeveloper extends Controller {
       $json['error'] = $this->language->get('error_permission');
     } else {
 
-      if (is_dir(dirname(DIR_APPLICATION) . '/assets')) {
-        $scripts = scandir(dirname(DIR_APPLICATION) . '/assets');
+      $template_folder = $this->config->get('theme_default_directory');
+
+      if (is_dir(dirname(DIR_APPLICATION) . '/assets/' . $template_folder . '/js')) {
+        $scripts = scandir(dirname(DIR_APPLICATION) . '/assets/' . $template_folder . '/js');
 
         foreach ($scripts as $file) {
           if (strpos($file, 'scripts') !== false) {
             if ($file !== "." && $file !== "..") {
-              $path = realpath(dirname(DIR_APPLICATION) . '/assets' . DIRECTORY_SEPARATOR . $file);
+              $path = realpath(dirname(DIR_APPLICATION) . '/assets/' . $template_folder . '/js' . DIRECTORY_SEPARATOR . $file);
               unlink($path);
             }
           }
@@ -185,6 +190,7 @@ class ControllerCommonDeveloper extends Controller {
       }
 
       $this->db->query("DELETE FROM " . DB_PREFIX . "setting WHERE `code` = 'developer' AND `key` = 'scripts_token'");
+      $this->config->set('scripts_token', '');
 
       $json['success'] = sprintf($this->language->get('text_cache'), $this->language->get('text_js'));
     }
