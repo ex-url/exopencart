@@ -336,20 +336,28 @@ class ControllerSettingStore extends Controller {
       $data['config_theme'] = '';
     }
 
-    if (isset($this->request->post['config_default_mode'])) {
-      $data['config_default_mode'] = $this->request->post['config_default_mode'];
-    } elseif (isset($store_info['config_default_mode'])) {
-      $data['config_default_mode'] = $store_info['config_default_mode'];
+    if (isset($this->request->post['config_pwa_mode'])) {
+      $data['config_pwa_mode'] = $this->request->post['config_pwa_mode'];
+    } elseif (isset($store_info['config_pwa_mode'])) {
+      $data['config_pwa_mode'] = $store_info['config_pwa_mode'];
     } else {
-      $data['config_default_mode'] = 'light';
+      $data['config_pwa_mode'] = 0;
     }
 
-    if (isset($this->request->post['config_toggle_mode'])) {
-      $data['config_toggle_mode'] = $this->request->post['config_toggle_mode'];
-    } elseif (isset($store_info['config_toggle_mode'])) {
-      $data['config_toggle_mode'] = $store_info['config_toggle_mode'];
+    if (isset($this->request->post['config_default_theme'])) {
+      $data['config_default_theme'] = $this->request->post['config_default_theme'];
+    } elseif (isset($store_info['config_default_theme'])) {
+      $data['config_default_theme'] = $store_info['config_default_theme'];
     } else {
-      $data['config_toggle_mode'] = 0;
+      $data['config_default_theme'] = 'light';
+    }
+
+    if (isset($this->request->post['config_theme_toggle'])) {
+      $data['config_theme_toggle'] = $this->request->post['config_theme_toggle'];
+    } elseif (isset($store_info['config_theme_toggle'])) {
+      $data['config_theme_toggle'] = $store_info['config_theme_toggle'];
+    } else {
+      $data['config_theme_toggle'] = 0;
     }
 
     $data['themes'] = array();

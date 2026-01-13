@@ -73,8 +73,9 @@ $_['entry_meta_description']         = 'Meta Tag Description';
 $_['entry_meta_keyword']             = 'Meta Tag Keywords';
 $_['entry_layout']                   = 'Default Layout';
 $_['entry_theme']                    = 'Theme';
-$_['entry_default_mode']             = 'Default theme';
-$_['entry_toggle_mode']              = 'Show theme toggle';
+$_['entry_pwa_mode']                 = 'PWA Mode';
+$_['entry_default_theme']            = 'Default theme';
+$_['entry_theme_toggle']             = 'Show theme toggle';
 $_['entry_country']                  = 'Country';
 $_['entry_zone']                     = 'Region / State';
 $_['entry_city']                     = 'City';
@@ -235,8 +236,9 @@ $_['entry_noindex_status']           = 'Using noindex for category, product, man
 $_['entry_noindex_disallow_params']   = 'Not use noindex for page with get params:';
 
 // Help
-$_['help_default_mode']              = 'Selected color scheme will be displayed by default';
-$_['help_toggle_mode']               = 'Users will be able to switch theme themselves';
+$_['help_pwa_mode']                 = 'Enable PWA (Progressive Web App) mode for the store';
+$_['help_default_theme']              = 'Selected color scheme will be displayed by default';
+$_['help_theme_toggle']               = 'Users will be able to switch theme themselves';
 $_['help_geocode']                   = 'Please enter your store location geocode manually.';
 $_['help_open']                      = 'Fill in your store\'s opening times.';
 $_['help_comment']                   = 'This field is for any special notes you would like to tell the customer i.e. Store does not accept cheques.';

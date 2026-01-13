@@ -25,8 +25,7 @@ class ControllerCommonHeader extends Controller {
     }
 
     if (is_file(DIR_IMAGE . $this->config->get('config_icon'))) {
-      $this->model_tool_image->resize($this->config->get('config_icon'), 256, 256);
-      $this->document->addLink($server . 'image/' . $this->config->get('config_icon'), 'icon');
+      $this->document->addLink($this->model_tool_image->resize($this->config->get('config_icon'), 256, 256), 'icon');
     }
 
     $template_folder = $this->config->get('theme_default_directory');
@@ -51,15 +50,15 @@ class ControllerCommonHeader extends Controller {
     if (isset($this->request->cookie['theme'])) {
       $theme = in_array($this->request->cookie['theme'], ['light', 'dark'])
         ? $this->request->cookie['theme']
-        : $this->config->get('config_default_mode');
+        : $this->config->get('config_default_theme');
     } else {
-      $theme = $this->config->get('config_default_mode');
+      $theme = $this->config->get('config_default_theme');
     }
 
     $data['theme'] = $theme;
-    $data['show_theme_toggle'] = $this->config->get('config_toggle_mode');
+    $data['show_theme_toggle'] = $this->config->get('config_theme_toggle');
 
-    if ($this->config->get('config_toggle_mode') || $theme == 'dark') {
+    if ($this->config->get('config_theme_toggle') || $theme == 'dark') {
       $this->document->addStyle('catalog/view/theme/' . $template_folder . '/css/dark.css');
     }
 
@@ -113,6 +112,8 @@ class ControllerCommonHeader extends Controller {
 
     $data['text_logged'] = sprintf($this->language->get('text_logged'), $this->url->link('account/account', '', true), $this->customer->getFirstName(), $this->url->link('account/logout', '', true));
 
+    $data['pwa_mode'] = $this->config->get('config_pwa_mode');
+    $data['manifest_url'] = $this->url->link('common/manifest');
     $data['home'] = $this->url->link('common/home');
     $data['wishlist'] = $this->url->link('account/wishlist', '', true);
     $data['logged'] = $this->customer->isLogged();
@@ -136,14 +137,30 @@ class ControllerCommonHeader extends Controller {
     $data['language'] = $this->load->controller('common/language');
     $data['currency'] = $this->load->controller('common/currency');
     $data['currency'] = $this->load->controller('common/currency');
+
     if ($this->config->get('configblog_blog_menu')) {
       $data['blog_menu'] = $this->load->controller('blog/menu');
     } else {
       $data['blog_menu'] = '';
     }
+
     $data['search'] = $this->load->controller('common/search');
     $data['cart'] = $this->load->controller('common/cart');
     $data['menu'] = $this->load->controller('common/menu');
+
+    if ($this->config->get('config_pwa_mode')) {
+      $sizes = [144, 180, 192, 384, 512];
+
+      foreach ($sizes as $size) {
+        if (is_file(DIR_IMAGE . $this->config->get('config_icon'))) {
+          $data['icons'][] = [
+            'src' => $this->model_tool_image->resize($this->config->get('config_icon'), $size, $size),
+            'type' => $this->config->get('developer_webp') ? 'image/webp' : 'image/png',
+            'sizes' => $size . 'x' . $size
+          ];
+        }
+      }
+    }
 
     return $this->load->view('common/header', $data);
   }

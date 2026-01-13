@@ -214,16 +214,22 @@ class ControllerSettingSetting extends Controller {
       $data['config_theme'] = $this->config->get('config_theme');
     }
 
-    if (isset($this->request->post['config_default_mode'])) {
-      $data['config_default_mode'] = $this->request->post['config_default_mode'];
+    if (isset($this->request->post['config_pwa_mode'])) {
+      $data['config_pwa_mode'] = $this->request->post['config_pwa_mode'];
     } else {
-      $data['config_default_mode'] = $this->config->get('config_default_mode');
+      $data['config_pwa_mode'] = $this->config->get('config_pwa_mode');
     }
 
-    if (isset($this->request->post['config_toggle_mode'])) {
-      $data['config_toggle_mode'] = $this->request->post['config_toggle_mode'];
+    if (isset($this->request->post['config_default_theme'])) {
+      $data['config_default_theme'] = $this->request->post['config_default_theme'];
     } else {
-      $data['config_toggle_mode'] = $this->config->get('config_toggle_mode');
+      $data['config_default_theme'] = $this->config->get('config_default_theme');
+    }
+
+    if (isset($this->request->post['config_theme_toggle'])) {
+      $data['config_theme_toggle'] = $this->request->post['config_theme_toggle'];
+    } else {
+      $data['config_theme_toggle'] = $this->config->get('config_theme_toggle');
     }
 
     if ($this->request->server['HTTPS']) {

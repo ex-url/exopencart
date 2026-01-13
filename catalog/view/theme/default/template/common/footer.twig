@@ -129,6 +129,19 @@
   let text_files_type_error = '{{ text_files_type_error }}';
   let text_files_size_error = '{{ text_files_size_error }}';
   let text_files_limit_error = '{{ text_files_limit_error }}';
+
+  {% if pwa_mode %}
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('{{ sw_url }}', { scope: '/' }).then(function(registration) {
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      }, function(err) {
+        console.log('ServiceWorker registration failed: ', err);
+      });
+    });
+  }
+  {% endif %}
+
 </script>
 <!--
 exopencart is open source software which is based on opencart.com project. The OpenCart itself is open source software too, so you are free to remove the powered by information if you want, but its generally accepted practise to make a small donation.
