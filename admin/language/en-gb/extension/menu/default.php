@@ -16,9 +16,10 @@ $_['entry_image_size']     = 'Image sizes';
 $_['entry_width']     = 'Width';
 $_['entry_height']     = 'Height';
 $_['entry_catalog_button']     = 'Catalog button text';
+$_['entry_show_brands']     = 'Show brands';
+$_['entry_brands_modal']     = 'Brands in modal window';
 $_['entry_show_special']     = 'Show special';
 $_['entry_show_blog']     = 'Show blog';
-$_['entry_show_brands']     = 'Show brands';
 $_['entry_show_contacts']     = 'Show contacts';
 
 // Error

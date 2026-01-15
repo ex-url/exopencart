@@ -121,7 +121,8 @@ button {
   border-radius: 18px;
 }
 
-#catalog-modal .modal-content {
+#catalog-modal .modal-content,
+#brands-modal .modal-content {
   width: 100%;
   max-width: 1344px;
 }
@@ -924,7 +925,9 @@ footer .scroll-top-trigger.shown {
 }
 
 @media (max-width: 768px) {
-  #catalog-modal .modal-content {
+
+  #catalog-modal .modal-content,
+  #brands-modal .modal-content {
     top: 0;
     border-radius: 0;
     height: 100%;
@@ -938,7 +941,8 @@ footer .scroll-top-trigger.shown {
     display: none;
   }
 
-  #catalog-modal .delete {
+  #catalog-modal .delete,
+  #brands-modal .delete {
     top: 0;
     right: initial;
     bottom: 1rem;

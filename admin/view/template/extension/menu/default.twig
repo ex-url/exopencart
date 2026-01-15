@@ -60,7 +60,7 @@
               </label>
             </div>
           </div>
-          <div class="form-group" id="show-catalog">
+          <div class="form-group" data-toggle-group="catalog">
             <label class="col-sm-2 control-label">{{ entry_show_catalog }}</label>
             <div class="col-sm-10">
               <label class="radio-inline">
@@ -75,7 +75,7 @@
               </label>
             </div>
           </div>
-          <div class="form-group catalog-settings {{ menu_default_settings.show_catalog ? '' : 'hidden' }}">
+          <div data-group="catalog" class="form-group {{ menu_default_settings.show_catalog ? '' : 'hidden' }}">
             <label class="col-sm-2 control-label" for="input-heading">{{ entry_catalog_button }}</label>
             <div class="col-sm-10">
               {% for language in languages %}
@@ -91,7 +91,7 @@
               {% endfor %}
             </div>
           </div>
-          <div class="form-group catalog-settings {{ menu_default_settings.show_catalog ? '' : 'hidden' }}">
+          <div data-group="catalog" class="form-group {{ menu_default_settings.show_catalog ? '' : 'hidden' }}">
             <label class="col-sm-2 control-label">{{ entry_show_images }}</label>
             <div class="col-sm-10">
               <label class="radio-inline">
@@ -106,7 +106,7 @@
               </label>
             </div>
           </div>
-          <div class="form-group catalog-settings {{ menu_default_settings.show_catalog ? '' : 'hidden' }}">
+          <div data-group="catalog" class="form-group {{ menu_default_settings.show_catalog ? '' : 'hidden' }}">
             <label class="col-sm-2 control-label">{{ entry_image_size }}</label>
             <div class="col-sm-2">
               <input type="text" name="menu_default_settings[width]"
@@ -117,6 +117,36 @@
               <input type="text" name="menu_default_settings[height]"
                 value="{{ menu_default_settings.height ? menu_default_settings.height : 60 }}"
                 placeholder="{{ entry_height }}" class="form-control" />
+            </div>
+          </div>
+          <div data-toggle-group="brands" class="form-group">
+            <label class="col-sm-2 control-label">{{ entry_show_brands }}</label>
+            <div class="col-sm-10">
+              <label class="radio-inline">
+                <input type="radio" name="menu_default_settings[show_brands]" value="1" {{
+                  menu_default_settings.show_brands ? 'checked="checked"' : '' }} />
+                {{ text_yes }}
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="menu_default_settings[show_brands]" value="0" {{ not
+                  menu_default_settings.show_brands ? 'checked="checked"' : '' }} />
+                {{ text_no }}
+              </label>
+            </div>
+          </div>
+          <div data-group="brands" class="form-group {{ menu_default_settings.show_brands ? '' : 'hidden' }}">
+            <label class="col-sm-2 control-label">{{ entry_brands_modal }}</label>
+            <div class="col-sm-10">
+              <label class="radio-inline">
+                <input type="radio" name="menu_default_settings[brands_modal]" value="1" {{
+                  menu_default_settings.brands_modal ? 'checked="checked"' : '' }} />
+                {{ text_yes }}
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="menu_default_settings[brands_modal]" value="0" {{ not
+                  menu_default_settings.brands_modal ? 'checked="checked"' : '' }} />
+                {{ text_no }}
+              </label>
             </div>
           </div>
           <div class="form-group">
@@ -133,22 +163,7 @@
                 {{ text_no }}
               </label>
             </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label">{{ entry_show_brands }}</label>
-            <div class="col-sm-10">
-              <label class="radio-inline">
-                <input type="radio" name="menu_default_settings[show_brands]" value="1" {{
-                  menu_default_settings.show_brands ? 'checked="checked"' : '' }} />
-                {{ text_yes }}
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="menu_default_settings[show_brands]" value="0" {{ not
-                  menu_default_settings.show_brands ? 'checked="checked"' : '' }} />
-                {{ text_no }}
-              </label>
-            </div>
-          </div>
+          </div>          
           <div class="form-group">
             <label class="col-sm-2 control-label">{{ entry_show_blog }}</label>
             <div class="col-sm-10">
@@ -186,11 +201,12 @@
 </div>
 
 <script>
-  $('#show-catalog input[type="radio"]').on('change', function (e) {
-    if ($(this).val() == 1) {
-      $('.catalog-settings').removeClass('hidden');
-    } else {
-      $('.catalog-settings').addClass('hidden');
+  $('input[type="radio"]').on('change', function() {
+    let $group = $(this).closest('[data-toggle-group]');
+    if ($group.length) {
+      let group = $group.data('toggle-group');
+      let show = $(this).val() === '1';
+      $('[data-group="' + group + '"]').toggleClass('hidden', !show);
     }
   });
 </script>

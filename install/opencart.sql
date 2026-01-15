@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Jan 14, 2026 at 05:20 AM
+-- Generation Time: Jan 15, 2026 at 07:11 AM
 -- Server version: 5.7.41-log
 -- PHP Version: 7.4.33
 
@@ -421,7 +421,7 @@ INSERT INTO `oc_attribute` (`attribute_id`, `attribute_group_id`, `sort_order`, 
 CREATE TABLE `oc_attribute_description` (
   `attribute_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
-  `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(512) COLLATE utf8mb4_unicode_ci NOT NULL,
   `hint` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `default_values` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1636,8 +1636,8 @@ CREATE TABLE `oc_currency` (
 --
 
 INSERT INTO `oc_currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbol_right`, `decimal_place`, `value`, `status`, `date_modified`) VALUES
-(1, 'Рубль', 'RUB', '', ' ₽', '0', 1.00000000, 1, '2026-01-13 12:42:08'),
-(2, 'US Dollar', 'USD', '$', '', '2', 0.01269176, 1, '2026-01-13 12:42:08');
+(1, 'Рубль', 'RUB', '', ' ₽', '0', 1.00000000, 1, '2026-01-15 09:54:36'),
+(2, 'US Dollar', 'USD', '$', '', '2', 0.01272733, 1, '2026-01-15 09:54:36');
 
 -- --------------------------------------------------------
 
@@ -3712,7 +3712,7 @@ INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `is
 (4, '42072', '', '', '', '', '', '', '', '3.0000', 0, 5, 'catalog/demo/products/42072_0.jpg', 2, 1, '139990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (5, '42073', '', '', '', '', '', '', '', '4.0000', 0, 5, 'catalog/demo/products/42073_0.jpg', 2, 1, '139990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (6, '42074', '', '', '', '', '', '', '', '5.0000', 0, 5, 'catalog/demo/products/42074_0.jpg', 1, 1, '134990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 1, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(7, '42075', '', '', '', '', '', '', '', '6.0000', 0, 5, 'catalog/demo/products/42075_0.jpg', 1, 1, '129990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 235, '2022-11-11 12:51:32', '2025-12-26 14:51:40', 1),
+(7, '42075', '', '', '', '', '', '', '', '6.0000', 0, 5, 'catalog/demo/products/42075_0.jpg', 1, 1, '129990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 236, '2022-11-11 12:51:32', '2025-12-26 14:51:40', 1),
 (8, '42076', '', '', '', '', '', '', '', '7.0000', 0, 5, 'catalog/demo/products/42076_0.jpg', 2, 1, '128370.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 1, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (9, '42077', '', '', '', '', '', '', '', '8.0000', 0, 5, 'catalog/demo/products/42077_0.jpg', 2, 1, '124999.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (10, '42078', '', '', '', '', '', '', '', '9.0000', 0, 5, 'catalog/demo/products/42078_0.jpg', 2, 1, '124990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 1, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
@@ -3732,7 +3732,7 @@ INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `is
 (24, '42168', '', '', '', '', '', '', '', '23.0000', 0, 5, 'catalog/demo/products/42168_0.jpg', 0, 1, '70380.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 8, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (25, '42169', '', '', '', '', '', '', '', '24.0000', 0, 5, 'catalog/demo/products/42169_0.jpg', 0, 1, '8290.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 3, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (26, '42170', '', '', '', '', '', '', '', '25.0000', 0, 5, 'catalog/demo/products/42170_0.jpg', 0, 1, '5950.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(27, '42171', '', '', '', '', '', '', '', '26.0000', 0, 5, 'catalog/demo/products/42171_0.jpg', 0, 1, '5660.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 65, '2022-11-11 12:51:32', '2025-12-24 11:11:33', 1),
+(27, '42171', '', '', '', '', '', '', '', '26.0000', 0, 5, 'catalog/demo/products/42171_0.jpg', 0, 1, '5660.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 66, '2022-11-11 12:51:32', '2025-12-24 11:11:33', 1),
 (28, '42172', '', '', '', '', '', '', '', '27.0000', 0, 5, 'catalog/demo/products/42172_0.jpg', 0, 1, '5399.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (29, '42173', '', '', '', '', '', '', '', '28.0000', 0, 5, 'catalog/demo/products/42173_0.jpg', 0, 1, '5290.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (30, '42174', '', '', '', '', '', '', '', '0.0000', 0, 5, 'catalog/demo/products/42174_0.jpg', 0, 1, '4890.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 3, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
@@ -3750,7 +3750,7 @@ INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `is
 (42, '42232', '', '', '', '', '', '', '', '12.0000', 0, 5, 'catalog/demo/products/42232_0.jpg', 0, 1, '6590.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 7, '2022-11-11 12:51:32', '2025-12-22 16:12:33', 1),
 (43, '42233', '', '', '', '', '', '', '', '13.0000', 0, 5, 'catalog/demo/products/42233_0.jpg', 0, 1, '5990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 7, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (44, '42234', '', '', '', '', '', '', '', '14.0000', 0, 5, 'catalog/demo/products/42234_0.jpg', 0, 1, '5890.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 12, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(45, '42235', '', '', '', '', '', '', '', '15.0000', 0, 5, 'catalog/demo/products/42235_0.jpg', 0, 1, '5230.0000', 0, 9, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 817, '2022-11-11 12:51:32', '2025-12-24 11:10:00', 1),
+(45, '42235', '', '', '', '', '', '', '', '15.0000', 0, 5, 'catalog/demo/products/42235_0.jpg', 0, 1, '5230.0000', 0, 9, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 819, '2022-11-11 12:51:32', '2025-12-24 11:10:00', 1),
 (46, '42236', '', '', '', '', '', '', '', '16.0000', 0, 5, 'catalog/demo/products/42236_0.jpg', 0, 1, '4990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (47, '42237', '', '', '', '', '', '', '', '17.0000', 0, 5, 'catalog/demo/products/42237_0.jpg', 0, 1, '4990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (48, '42238', '', '', '', '', '', '', '', '18.0000', 0, 5, 'catalog/demo/products/42238_0.jpg', 1, 1, '4990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 10, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
@@ -3771,7 +3771,7 @@ INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `is
 (63, '42329', '', '', '', '', '', '', '', '3.0000', 0, 5, 'catalog/demo/products/42329_0.jpg', 0, 1, '99680.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 68, '2022-11-11 12:51:33', '2025-12-04 09:08:17', 1),
 (64, '42330', '', '', '', '', '', '', '', '4.0000', 0, 5, 'catalog/demo/products/42330_0.jpg', 0, 1, '93990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (65, '42333', '', '', '', '', '', '', '', '5.0000', 0, 5, 'catalog/demo/products/42333_0.jpg', 0, 1, '79990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(66, '42335', '', '', '', '', '', '', '', '6.0000', 0, 5, 'catalog/demo/products/42335_0.jpg', 0, 1, '73990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 2, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(66, '42335', '', '', '', '', '', '', '', '6.0000', 0, 5, 'catalog/demo/products/42335_0.jpg', 0, 1, '73990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 3, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (67, '42338', '', '', '', '', '', '', '', '7.0000', 0, 5, 'catalog/demo/products/42338_0.jpg', 0, 1, '72990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 1, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (68, '42339', '', '', '', '', '', '', '', '8.0000', 0, 5, 'catalog/demo/products/42339_0.jpg', 0, 1, '71060.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 10, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (69, '42340', '', '', '', '', '', '', '', '9.0000', 0, 5, 'catalog/demo/products/42340_0.jpg', 0, 1, '69990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
@@ -6867,8 +6867,7 @@ INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES
 ('09d6aee32a5caa49ffbab3de5e', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-02-12 11:00:49'),
 ('0a4caf68c1d0a72bf8b56ae22f', '{\"api_id\":\"7\"}', '2026-02-04 12:03:33'),
 ('0aa737687422444c4ab5abaef9', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-02-12 12:56:16'),
-('0b799e34c9d8c9088d09b90ba4', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"user_id\":\"1\",\"user_token\":\"7dGnVNFwIC8L0YnQSSyltraqBxEKzQAI\"}', '2026-02-12 19:28:43'),
-('0be064a3723106622aec50b800', '{\"api_id\":\"7\"}', '2026-01-13 16:44:22'),
+('0b799e34c9d8c9088d09b90ba4', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"user_id\":\"1\",\"user_token\":\"mipzOJkkMwQhIZFDZ7ROVyPSVTjN7lMx\",\"success\":\"\\u0418\\u0437\\u043c\\u0435\\u043d\\u0435\\u043d\\u0438\\u044f \\u0443\\u0441\\u043f\\u0435\\u0448\\u043d\\u043e \\u0441\\u043e\\u0445\\u0440\\u0430\\u043d\\u0435\\u043d\\u044b!\"}', '2026-02-14 10:11:47'),
 ('0dd906e811e9f788566d60bdfc', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"payment_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"\",\"address_2\":\"\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\\u041c\\u043e\\u0441\\u043a\\u043e\\u0432\\u0441\\u043a\\u0430\\u044f \\u043e\\u0431\\u043b\\u0430\\u0441\\u0442\\u044c\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"shipping_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"\\u041c\\u0430\\u0433\\u0430\\u0437\\u0438\\u043d \\u043d\\u0430 \\u0420\\u0430\\u0431\\u043e\\u0447\\u0435\\u0439\",\"address_2\":\"\\u0433. \\u0421\\u0430\\u0440\\u0430\\u0442\\u043e\\u0432 \\u0443\\u043b. \\u0420\\u0430\\u0431\\u043e\\u0447\\u0430\\u044f 55\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"account\":\"guest\",\"last_order_id\":185}', '2026-02-10 12:44:36'),
 ('0ed64a1277bca86188d22a7ea6', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-02-12 11:05:35'),
 ('0f7f5d4e79b07959d88119963c', '{\"api_id\":\"7\"}', '2026-02-10 13:26:06'),
@@ -6906,7 +6905,6 @@ INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES
 ('35403d8c495d5cbbedc9fdde96', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-02-12 11:28:16'),
 ('359c399427d2c272311b22e0cd', '{\"api_id\":\"7\"}', '2026-02-10 12:53:46'),
 ('366103426bd3e58e044ae64875', '{\"api_id\":\"7\"}', '2026-02-10 11:39:41'),
-('375cc80c2bcc859e3cf2feea33', '{\"api_id\":\"7\"}', '2026-01-14 15:12:07'),
 ('37ac1a12bec0336c92c0ca0b47', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"shipping_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"\",\"address_2\":\"\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\\u041c\\u043e\\u0441\\u043a\\u043e\\u0432\\u0441\\u043a\\u0430\\u044f \\u043e\\u0431\\u043b\\u0430\\u0441\\u0442\\u044c\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"guest\":{\"customer_group_id\":\"1\"},\"payment_methods\":{\"cod\":{\"code\":\"cod\",\"title\":\"\\u041e\\u043f\\u043b\\u0430\\u0442\\u0430 \\u043f\\u0440\\u0438 \\u0434\\u043e\\u0441\\u0442\\u0430\\u0432\\u043a\\u0435\",\"terms\":\"\\u041d\\u0430\\u043b\\u0438\\u0447\\u043d\\u044b\\u043c\\u0438 \\u0438\\u043b\\u0438 \\u043a\\u0430\\u0440\\u0442\\u043e\\u0439\",\"sort_order\":\"1\"},\"bank_transfer\":{\"code\":\"bank_transfer\",\"title\":\"\\u041e\\u043f\\u043b\\u0430\\u0442\\u0430 \\u043e\\u043d\\u043b\\u0430\\u0439\\u043d\",\"terms\":\"\\u041a\\u0430\\u0440\\u0442\\u043e\\u0439 \\u0438\\u043b\\u0438 QR-\\u043a\\u043e\\u0434\\u043e\\u043c\",\"sort_order\":\"2\"}},\"shipping_methods\":{\"pickup\":{\"title\":\"\\u0421\\u0430\\u043c\\u043e\\u0432\\u044b\\u0432\\u043e\\u0437\",\"quote\":{\"pickup\":{\"code\":\"pickup.pickup\",\"title\":\"\\u0421\\u0430\\u043c\\u043e\\u0432\\u044b\\u0432\\u043e\\u0437 \\u0438\\u0437 \\u041f\\u0412\\u0417\",\"cost\":0,\"tax_class_id\":0,\"text\":\"0 \\u20bd\"}},\"sort_order\":\"1\",\"error\":false},\"flat\":{\"title\":\"\\u0414\\u043e\\u0441\\u0442\\u0430\\u0432\\u043a\\u0430 \\u0434\\u043e \\u0434\\u0432\\u0435\\u0440\\u0438\",\"quote\":{\"flat\":{\"code\":\"flat.flat\",\"title\":\"\\u0414\\u043e\\u0441\\u0442\\u0430\\u0432\\u043a\\u0430 \\u0434\\u043e \\u0430\\u0434\\u0440\\u0435\\u0441\\u0430\",\"cost\":\"300\",\"tax_class_id\":\"0\",\"text\":\"300 \\u20bd\"}},\"sort_order\":\"3\",\"error\":false}}}', '2026-01-28 15:41:11'),
 ('39778fad319a26fc5bf7f4160d', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"user_id\":\"1\",\"user_token\":\"ljhOO13madBIv3ho8dLwflrFaVWCG5pp\",\"shipping_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"\",\"address_2\":\"\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\\u041c\\u043e\\u0441\\u043a\\u043e\\u0432\\u0441\\u043a\\u0430\\u044f \\u043e\\u0431\\u043b\\u0430\\u0441\\u0442\\u044c\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"guest\":{\"customer_group_id\":\"1\"},\"vouchers\":[]}', '2026-01-28 22:28:44'),
 ('3f0925dba3507bf49b613f8940', '{\"api_id\":\"7\"}', '2026-01-15 15:42:35'),
@@ -6914,7 +6912,6 @@ INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES
 ('419f6e05007da2f61c85e22fc7', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-02-12 12:34:13'),
 ('424a54a4341cc8e930fa287fc3', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-02-12 12:33:14'),
 ('43baf154b3ef62068f3ea99b8f', '{\"api_id\":\"7\"}', '2026-01-15 20:53:25'),
-('44998d7b6e7f29402a48292716', '{\"api_id\":\"7\"}', '2026-01-14 15:17:31'),
 ('45239c77b6f6e9a46070dd6f8d', '{\"api_id\":\"7\"}', '2026-02-09 10:33:41'),
 ('488f202392c73a83a7c97ca952', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"shipping_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"\\u041c\\u0430\\u0433\\u0430\\u0437\\u0438\\u043d \\u043d\\u0430 \\u0420\\u0430\\u0431\\u043e\\u0447\\u0435\\u0439\",\"address_2\":\"\\u0433. \\u0421\\u0430\\u0440\\u0430\\u0442\\u043e\\u0432 \\u0443\\u043b. \\u0420\\u0430\\u0431\\u043e\\u0447\\u0430\\u044f 55\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"account\":\"register\",\"payment_address\":{\"address_id\":\"150\",\"firstname\":\"\\u0410\\u043d\\u0434\\u0440\\u0435\\u0439\",\"lastname\":\"\\u041c\\u0435\\u0440\\u0437\\u043b\\u0438\\u043a\\u0438\\u043d\",\"company\":\"\",\"address_1\":\"\\u0411\\u0430\\u0445\\u043c\\u0435\\u0442\\u044c\\u0435\\u0432\\u0441\\u043a\\u0430\\u044f\",\"address_2\":\"32\",\"postcode\":\"123123\",\"city\":\"\\u041c\\u043e\\u0441\\u043a\\u0432\\u0430\",\"zone_id\":\"2751\",\"zone\":\"\\u041c\\u043e\\u0441\\u043a\\u043e\\u0432\\u0441\\u043a\\u0430\\u044f \\u043e\\u0431\\u043b\\u0430\\u0441\\u0442\\u044c\",\"zone_code\":\"MOS\",\"country_id\":\"176\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"iso_code_2\":\"RU\",\"iso_code_3\":\"RUS\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"custom_field\":null},\"last_order_id\":179}', '2026-02-10 11:43:50'),
 ('491e23c92f33914e7e12e1183e', '{\"api_id\":\"7\"}', '2026-02-10 13:14:59'),
@@ -6924,9 +6921,7 @@ INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES
 ('4a78387154881031e0703ac35a', '{\"api_id\":\"7\"}', '2026-02-10 12:44:41'),
 ('4b8501e0d39028bcaa2bc180b0', '{\"api_id\":\"7\"}', '2026-01-19 21:46:44'),
 ('4c5aaae8426e1b930c7f0e1eec', '{\"api_id\":\"7\"}', '2026-02-10 11:28:43'),
-('4cbd71224e6b46752dea634e6f', '{\"api_id\":\"7\"}', '2026-01-13 16:45:07'),
 ('4d8e710ca2d16f3c161ad7c5a1', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-02-12 14:27:43'),
-('4dcce7a61e3857299fb1137e0f', '{\"api_id\":\"7\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-01-13 16:44:21'),
 ('53561c6efe1ecfe69108ac231f', '{\"api_id\":\"7\"}', '2026-02-10 11:57:04'),
 ('53ba8892ae10e2edee2c18c64b', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-02-12 12:33:54'),
 ('542f1e31eaf9178709199dbd44', '{\"api_id\":\"7\"}', '2026-02-10 13:19:58'),
@@ -6948,9 +6943,7 @@ INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES
 ('6a1f248f6b5be3bd410d307aef', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-02-10 13:26:58'),
 ('6a7f12f123f446ca1b7349a4e7', '{\"api_id\":\"7\"}', '2026-02-10 12:53:45'),
 ('6aed90e1ba499a71f6e78dc039', '{\"api_id\":\"7\"}', '2026-02-10 12:52:14'),
-('6bdfd864f5e44b25df1684602b', '{\"api_id\":\"7\"}', '2026-01-14 15:16:29'),
 ('6de15974e9228a7ac02db588ef', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"user_id\":\"1\",\"wishlist\":[],\"account\":\"register\",\"last_order_id\":177,\"file_manager_directory\":\"\\/shared\\/httpd\\/exopencart\\/htdocs\\/image\\/catalog\\/demo\\/options\",\"compare\":[],\"ycapcha\":true,\"billing_for_shipping\":false,\"shipping_address\":{\"address_id\":\"148\",\"firstname\":\"\\u0412\\u0430\\u0441\\u0438\\u043b\\u0438\\u0439\",\"lastname\":\"\\u0417\\u0430\\u043b\\u0443\\u043f\\u0438\\u043d\",\"company\":\"\",\"address_1\":\"\\u0427\\u043a\\u0430\\u043b\\u043e\\u0432\\u0430\",\"address_2\":\"32\",\"postcode\":\"123123\",\"city\":\"\\u041c\\u043e\\u0441\\u043a\\u0432\\u0430\",\"zone_id\":\"2751\",\"zone\":\"\\u041c\\u043e\\u0441\\u043a\\u043e\\u0432\\u0441\\u043a\\u0430\\u044f \\u043e\\u0431\\u043b\\u0430\\u0441\\u0442\\u044c\",\"zone_code\":\"MOS\",\"country_id\":\"176\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"iso_code_2\":\"RU\",\"iso_code_3\":\"RUS\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"custom_field\":null},\"payment_address\":{\"address_id\":\"148\",\"firstname\":\"\\u0412\\u0430\\u0441\\u0438\\u043b\\u0438\\u0439\",\"lastname\":\"\\u0417\\u0430\\u043b\\u0443\\u043f\\u0438\\u043d\",\"company\":\"\",\"address_1\":\"\\u0427\\u043a\\u0430\\u043b\\u043e\\u0432\\u0430\",\"address_2\":\"32\",\"postcode\":\"123123\",\"city\":\"\\u041c\\u043e\\u0441\\u043a\\u0432\\u0430\",\"zone_id\":\"2751\",\"zone\":\"\\u041c\\u043e\\u0441\\u043a\\u043e\\u0432\\u0441\\u043a\\u0430\\u044f \\u043e\\u0431\\u043b\\u0430\\u0441\\u0442\\u044c\",\"zone_code\":\"MOS\",\"country_id\":\"176\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"iso_code_2\":\"RU\",\"iso_code_3\":\"RUS\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"custom_field\":null},\"guest\":{\"customer_group_id\":\"1\"},\"user_token\":\"oW2vSl2iQQ3JcB91DhyE8X3fV5njZY3R\",\"success\":\"\\u041d\\u0430\\u0441\\u0442\\u0440\\u043e\\u0439\\u043a\\u0438 \\u0443\\u0441\\u043f\\u0435\\u0448\\u043d\\u043e \\u0438\\u0437\\u043c\\u0435\\u043d\\u0435\\u043d\\u044b!\"}', '2026-02-12 11:28:24'),
-('6f2f75b720b7f5ef67a4a036de', '{\"api_id\":\"7\"}', '2026-01-14 15:12:09'),
 ('6f2ff30afaf9635803146d66aa', '{\"api_id\":\"7\"}', '2026-02-09 10:36:06'),
 ('70ac2a793ccbcf4a0719fb8f7f', '{\"api_id\":\"7\"}', '2026-01-19 21:51:43'),
 ('70dc0846884fd06dce807776e8', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-02-12 13:34:35'),
@@ -6970,12 +6963,10 @@ INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES
 ('87978291d21348a0202eb1990a', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"payment_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"\",\"address_2\":\"\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\\u041c\\u043e\\u0441\\u043a\\u043e\\u0432\\u0441\\u043a\\u0430\\u044f \\u043e\\u0431\\u043b\\u0430\\u0441\\u0442\\u044c\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"shipping_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"\\u041c\\u0430\\u0433\\u0430\\u0437\\u0438\\u043d \\u043d\\u0430 \\u0421\\u043e\\u0431\\u043e\\u0440\\u043d\\u043e\\u0439\",\"address_2\":\"\\u0433. \\u0421\\u0430\\u0440\\u0430\\u0442\\u043e\\u0432 \\u0443\\u043b. \\u0421\\u043e\\u0431\\u043e\\u0440\\u043d\\u0430\\u044f 46\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"account\":\"guest\",\"last_order_id\":187}', '2026-02-10 12:52:11'),
 ('87dde2af288c24b341850b40e9', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-02-12 14:32:30'),
 ('8b0bb9d80614928bb60265201a', '{\"api_id\":\"7\"}', '2026-02-09 11:07:50'),
-('8b4cb5704cea632816bf675fad', '{\"api_id\":\"7\"}', '2026-01-14 15:17:32'),
 ('8d4c5055246b3ab1e76b41ff42', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-02-10 12:36:17'),
 ('8e1992a838035ffed309498272', '{\"api_id\":\"7\"}', '2026-02-10 13:26:47'),
 ('8e1c648788c3e13b37e3b30c03', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"payment_address\":{\"address_id\":\"142\",\"firstname\":\"\\u0412\\u0430\\u0441\\u0438\\u043b\\u0438\\u0439\",\"lastname\":\"\\u0417\\u0430\\u043b\\u0443\\u043f\\u0438\\u043d\",\"company\":\"\",\"address_1\":\"\\u0427\\u043a\\u0430\\u043b\\u043e\\u0432\\u0430\",\"address_2\":\"32\",\"postcode\":\"603002\",\"city\":\"\\u041c\\u043e\\u0441\\u043a\\u0432\\u0430\",\"zone_id\":\"2761\",\"zone\":\"\\u041c\\u043e\\u0441\\u043a\\u0432\\u0430\",\"zone_code\":\"MOW\",\"country_id\":\"176\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"iso_code_2\":\"RU\",\"iso_code_3\":\"RUS\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"custom_field\":null},\"shipping_address\":{\"address_id\":\"142\",\"firstname\":\"\\u0412\\u0430\\u0441\\u0438\\u043b\\u0438\\u0439\",\"lastname\":\"\\u0417\\u0430\\u043b\\u0443\\u043f\\u0438\\u043d\",\"company\":\"\",\"address_1\":\"\\u041c\\u0430\\u0433\\u0430\\u0437\\u0438\\u043d \\u043d\\u0430 \\u0420\\u0430\\u0431\\u043e\\u0447\\u0435\\u0439\",\"address_2\":\"\\u0433. \\u0421\\u0430\\u0440\\u0430\\u0442\\u043e\\u0432 \\u0443\\u043b. \\u0420\\u0430\\u0431\\u043e\\u0447\\u0430\\u044f 55\",\"postcode\":\"\",\"city\":\"\",\"zone_id\":\"2761\",\"zone\":\"\",\"zone_code\":\"MOW\",\"country_id\":\"176\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"iso_code_2\":\"RU\",\"iso_code_3\":\"RUS\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"custom_field\":null},\"payment_methods\":{\"cod\":{\"code\":\"cod\",\"title\":\"\\u041e\\u043f\\u043b\\u0430\\u0442\\u0430 \\u043f\\u0440\\u0438 \\u0434\\u043e\\u0441\\u0442\\u0430\\u0432\\u043a\\u0435\",\"terms\":\"\\u041d\\u0430\\u043b\\u0438\\u0447\\u043d\\u044b\\u043c\\u0438 \\u0438\\u043b\\u0438 \\u043a\\u0430\\u0440\\u0442\\u043e\\u0439\",\"sort_order\":\"1\"},\"bank_transfer\":{\"code\":\"bank_transfer\",\"title\":\"\\u041e\\u043f\\u043b\\u0430\\u0442\\u0430 \\u043e\\u043d\\u043b\\u0430\\u0439\\u043d\",\"terms\":\"\\u041a\\u0430\\u0440\\u0442\\u043e\\u0439 \\u0438\\u043b\\u0438 QR-\\u043a\\u043e\\u0434\\u043e\\u043c\",\"sort_order\":\"2\"}},\"shipping_methods\":{\"pickup\":{\"title\":\"\\u0421\\u0430\\u043c\\u043e\\u0432\\u044b\\u0432\\u043e\\u0437\",\"quote\":{\"pickup\":{\"code\":\"pickup.pickup\",\"title\":\"\\u0421\\u0430\\u043c\\u043e\\u0432\\u044b\\u0432\\u043e\\u0437 \\u0438\\u0437 \\u041f\\u0412\\u0417\",\"cost\":0,\"tax_class_id\":0,\"text\":\"0 \\u20bd\"}},\"sort_order\":\"1\",\"error\":false},\"flat\":{\"title\":\"\\u0414\\u043e\\u0441\\u0442\\u0430\\u0432\\u043a\\u0430 \\u0434\\u043e \\u0434\\u0432\\u0435\\u0440\\u0438\",\"quote\":{\"flat\":{\"code\":\"flat.flat\",\"title\":\"\\u0414\\u043e\\u0441\\u0442\\u0430\\u0432\\u043a\\u0430 \\u0434\\u043e \\u0430\\u0434\\u0440\\u0435\\u0441\\u0430\",\"cost\":\"300\",\"tax_class_id\":\"0\",\"text\":\"300 \\u20bd\"}},\"sort_order\":\"3\",\"error\":false}},\"customer_id\":\"95\",\"guest\":{\"customer_group_id\":\"1\"},\"shipping_method\":{\"code\":\"pickup.pickup\",\"title\":\"\\u0421\\u0430\\u043c\\u043e\\u0432\\u044b\\u0432\\u043e\\u0437 \\u0438\\u0437 \\u041f\\u0412\\u0417\",\"cost\":0,\"tax_class_id\":0,\"text\":\"0 \\u20bd\"},\"payment_method\":{\"code\":\"cod\",\"title\":\"\\u041e\\u043f\\u043b\\u0430\\u0442\\u0430 \\u043f\\u0440\\u0438 \\u0434\\u043e\\u0441\\u0442\\u0430\\u0432\\u043a\\u0435\",\"terms\":\"\\u041d\\u0430\\u043b\\u0438\\u0447\\u043d\\u044b\\u043c\\u0438 \\u0438\\u043b\\u0438 \\u043a\\u0430\\u0440\\u0442\\u043e\\u0439\",\"sort_order\":\"1\"},\"comment\":\"\",\"order_id\":162}', '2026-01-19 20:59:51'),
 ('8f8a45e699e81f87d8d8b5cfe9', '{\"api_id\":\"7\"}', '2026-02-10 13:15:05'),
-('9093f5b7989729061baff556c6', '{\"api_id\":\"7\"}', '2026-01-14 15:04:46'),
 ('917807cdd7269d41573942e6ad', '{\"api_id\":\"7\"}', '2026-02-10 12:50:38'),
 ('917eb340ed17a28c32fd859703', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-02-12 13:35:00'),
 ('9229a917617e10f2eede5f862e', '{\"api_id\":\"7\"}', '2026-02-10 11:52:14'),
@@ -6992,7 +6983,6 @@ INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES
 ('9bb5d99fdadf4e8649db3ef0bb', '{\"api_id\":\"7\"}', '2026-02-10 11:59:45'),
 ('9cc2a8114235baab568c18f1fe', '{\"api_id\":\"7\"}', '2026-02-10 12:56:15'),
 ('9e6bfc8221ee62976059afd719', '{\"api_id\":\"7\"}', '2026-01-16 20:20:41'),
-('a17bddd044c3f3f4537d5d83a9', '{\"api_id\":\"7\"}', '2026-01-13 16:43:27'),
 ('a1be69d3742cde6479f6bfefe4', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-02-12 12:32:50'),
 ('a1c05269398823391bcd620900', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-02-12 12:56:13'),
 ('a2a57f483cbabb57d4686e9774', '{\"api_id\":\"7\"}', '2026-02-09 11:41:43'),
@@ -7027,21 +7017,17 @@ INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES
 ('c6885348d86c6e6f5e45514924', '{\"api_id\":\"7\"}', '2026-02-10 12:57:35'),
 ('c89e7861b20bf205ff25b59f1e', '{\"api_id\":\"7\"}', '2026-02-10 12:44:40'),
 ('c9cf61ed279708082052fdd2b1', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-02-12 12:33:57'),
-('cc0dc154fd06aba41fe22c8392', '{\"api_id\":\"7\"}', '2026-02-10 12:57:45');
-INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES
+('cc0dc154fd06aba41fe22c8392', '{\"api_id\":\"7\"}', '2026-02-10 12:57:45'),
 ('cc7fb04a9f0a08490a4e8544e6', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-02-12 19:27:32'),
 ('ccbb438fcbc5e0a1d4128043e1', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-02-12 11:09:11'),
 ('cdff3d7a983ac9a6a1883aa277', '{\"api_id\":\"7\"}', '2026-01-18 15:15:54'),
 ('cf212d99e628388f7bd52c391b', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"last_order_id\":184}', '2026-02-10 12:34:41'),
 ('cf6177756dafef189627c8b4c3', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-02-12 11:07:32'),
 ('d004789dc7ba3f53e3942117bd', '{\"api_id\":\"7\"}', '2026-02-10 12:07:43'),
-('d1a31119db0292a75ad7d8a9eb', '{\"api_id\":\"7\"}', '2026-01-13 16:45:49'),
-('d2484a7795d9a919b60c9ab524', '{\"api_id\":\"7\"}', '2026-02-10 11:57:03'),
+('d2484a7795d9a919b60c9ab524', '{\"api_id\":\"7\"}', '2026-02-10 11:57:03');
+INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES
 ('d38313c145cdb84ca1e89f2569', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"shipping_address\":{\"address_id\":\"154\",\"firstname\":\"\\u0410\\u043d\\u0434\\u0440\\u0435\\u0439\",\"lastname\":\"\\u041c\\u0435\\u0440\\u0437\\u043b\\u0438\\u043a\\u0438\\u043d\",\"company\":\"\",\"address_1\":\"\\u041b\\u0435\\u043d\\u0438\\u043d\\u0430\",\"address_2\":\"124\",\"postcode\":\"345456\",\"city\":\"\\u041a\\u0443\\u0440\\u0441\\u043a\",\"zone_id\":\"2755\",\"zone\":\"\\u041a\\u0443\\u0440\\u0441\\u043a\\u0430\\u044f \\u043e\\u0431\\u043b\\u0430\\u0441\\u0442\\u044c\",\"zone_code\":\"KRS\",\"country_id\":\"176\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"iso_code_2\":\"RU\",\"iso_code_3\":\"RUS\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"custom_field\":null},\"account\":\"register\",\"customer_id\":\"109\",\"payment_address\":{\"address_id\":\"154\",\"firstname\":\"\\u0410\\u043d\\u0434\\u0440\\u0435\\u0439\",\"lastname\":\"\\u041c\\u0435\\u0440\\u0437\\u043b\\u0438\\u043a\\u0438\\u043d\",\"company\":\"\",\"address_1\":\"\\u041b\\u0435\\u043d\\u0438\\u043d\\u0430\",\"address_2\":\"124\",\"postcode\":\"345456\",\"city\":\"\\u041a\\u0443\\u0440\\u0441\\u043a\",\"zone_id\":\"2755\",\"zone\":\"\\u041a\\u0443\\u0440\\u0441\\u043a\\u0430\\u044f \\u043e\\u0431\\u043b\\u0430\\u0441\\u0442\\u044c\",\"zone_code\":\"KRS\",\"country_id\":\"176\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"iso_code_2\":\"RU\",\"iso_code_3\":\"RUS\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"custom_field\":null},\"last_order_id\":182}', '2026-02-10 11:56:57'),
-('d3fe4dc8052f0b17821f154649', '{\"api_id\":\"7\"}', '2026-01-14 15:04:47'),
-('d40e4fff92ff1b433663a984be', '{\"api_id\":\"7\"}', '2026-01-13 16:43:25'),
 ('d46cc4d5a3f2cbf5c1537e1bce', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"shipping_address\":{\"address_id\":\"147\",\"firstname\":\"\\u0410\\u043d\\u0434\\u0440\\u0435\\u0439\",\"lastname\":\"\\u041c\\u0435\\u0440\\u0437\\u043b\\u0438\\u043a\\u0438\\u043d\",\"company\":\"\",\"address_1\":\"\\u0411\\u0430\\u0445\\u043c\\u0435\\u0442\\u044c\\u0435\\u0432\\u0441\\u043a\\u0430\\u044f\",\"address_2\":\"34\\u0432\",\"postcode\":\"603002\",\"city\":\"\\u041c\\u043e\\u0441\\u043a\\u0432\\u0430\",\"zone_id\":\"2751\",\"zone\":\"\\u041c\\u043e\\u0441\\u043a\\u043e\\u0432\\u0441\\u043a\\u0430\\u044f \\u043e\\u0431\\u043b\\u0430\\u0441\\u0442\\u044c\",\"zone_code\":\"MOS\",\"country_id\":\"176\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"iso_code_2\":\"RU\",\"iso_code_3\":\"RUS\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"custom_field\":null},\"account\":\"register\",\"customer_id\":\"102\",\"payment_address\":{\"address_id\":\"147\",\"firstname\":\"\\u0410\\u043d\\u0434\\u0440\\u0435\\u0439\",\"lastname\":\"\\u041c\\u0435\\u0440\\u0437\\u043b\\u0438\\u043a\\u0438\\u043d\",\"company\":\"\",\"address_1\":\"\\u0411\\u0430\\u0445\\u043c\\u0435\\u0442\\u044c\\u0435\\u0432\\u0441\\u043a\\u0430\\u044f\",\"address_2\":\"34\\u0432\",\"postcode\":\"603002\",\"city\":\"\\u041c\\u043e\\u0441\\u043a\\u0432\\u0430\",\"zone_id\":\"2751\",\"zone\":\"\\u041c\\u043e\\u0441\\u043a\\u043e\\u0432\\u0441\\u043a\\u0430\\u044f \\u043e\\u0431\\u043b\\u0430\\u0441\\u0442\\u044c\",\"zone_code\":\"MOS\",\"country_id\":\"176\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"iso_code_2\":\"RU\",\"iso_code_3\":\"RUS\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"custom_field\":null},\"last_order_id\":176}', '2026-02-09 10:50:47'),
-('d645b489244c49a8a15dfecdfc', '{\"api_id\":\"7\"}', '2026-01-13 16:44:16'),
 ('d8ee4927ce3b0573166d1b1ad2', '{\"api_id\":\"7\"}', '2026-02-10 12:46:41'),
 ('d924b25a64efc3297e76ced1e2', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-02-12 12:58:13'),
 ('d9280ae50eb99371ff18f0508b', '{\"api_id\":\"7\"}', '2026-02-11 13:35:27'),
@@ -7228,7 +7214,9 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (35516, 0, 'payment_bank_transfer', 'payment_bank_transfer_sort_order', '2', 0),
 (40133, 0, 'config', 'config_noindex_disallow_params', 'page', 0),
 (35515, 0, 'payment_bank_transfer', 'payment_bank_transfer_status', '1', 0),
+(40171, 0, 'developer', 'styles_token', 'yxAy987A', 0),
 (36381, 0, 'shipping_flat', 'shipping_flat_status', '1', 0),
+(40172, 0, 'developer', 'scripts_token', 'cHqdIOQI', 0),
 (35526, 0, 'theme_default', 'theme_default_image_thumb_height', '720', 0),
 (35524, 0, 'theme_default', 'theme_default_image_manufacturer_height', '80', 0),
 (35525, 0, 'theme_default', 'theme_default_image_thumb_width', '720', 0),
@@ -7279,10 +7267,10 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (21258, 0, 'module_store', 'module_store_admin', '0', 0),
 (9739, 0, 'fraudlabspro', 'fraud_fraudlabspro_order_status_id', '17', 0),
 (9738, 0, 'fraudlabspro', 'fraud_fraudlabspro_score', '80', 0),
-(39999, 0, 'developer', 'developer_webp', '0', 0),
-(39998, 0, 'developer', 'developer_js', '0', 0),
-(29451, 0, 'menu_default', 'menu_default_status', '1', 0),
-(29452, 0, 'menu_default', 'menu_default_settings', '{\"cache\":\"0\",\"show_catalog\":\"1\",\"button\":{\"1\":\"\",\"2\":\"\"},\"show_images\":\"0\",\"width\":\"60\",\"height\":\"60\",\"show_special\":\"1\",\"show_brands\":\"1\",\"show_blog\":\"1\",\"show_contacts\":\"1\"}', 1),
+(40170, 0, 'developer', 'developer_webp', '1', 0),
+(40169, 0, 'developer', 'developer_js', '1', 0),
+(40179, 0, 'menu_default', 'menu_default_status', '1', 0),
+(40180, 0, 'menu_default', 'menu_default_settings', '{\"cache\":\"0\",\"show_catalog\":\"1\",\"button\":{\"1\":\"\",\"2\":\"\"},\"show_images\":\"0\",\"width\":\"60\",\"height\":\"60\",\"show_brands\":\"1\",\"brands_modal\":\"0\",\"show_special\":\"1\",\"show_blog\":\"1\",\"show_contacts\":\"1\"}', 1),
 (35523, 0, 'theme_default', 'theme_default_image_manufacturer_width', '80', 0),
 (35522, 0, 'theme_default', 'theme_default_image_category_height', '80', 0),
 (35520, 0, 'theme_default', 'theme_default_product_description_length', '160', 0),
@@ -7341,9 +7329,9 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (40067, 0, 'config', 'config_checkout_id', '9', 0),
 (40066, 0, 'config', 'config_checkout_guest', '0', 0),
 (40065, 0, 'config', 'config_cart_weight', '1', 0),
-(39997, 0, 'developer', 'developer_css', '0', 0),
-(39996, 0, 'developer', 'developer_sass', '0', 0),
-(39995, 0, 'developer', 'developer_theme', '0', 0),
+(40168, 0, 'developer', 'developer_css', '1', 0),
+(40167, 0, 'developer', 'developer_sass', '0', 0),
+(40166, 0, 'developer', 'developer_theme', '0', 0),
 (40064, 0, 'config', 'config_ask_payment_address', '0', 0),
 (40063, 0, 'config', 'config_invoice_prefix', 'INV-2025-00', 0),
 (40062, 0, 'config', 'config_account_id', '9', 0),
@@ -13148,7 +13136,7 @@ ALTER TABLE `oc_blog_category`
 -- AUTO_INCREMENT for table `oc_cart`
 --
 ALTER TABLE `oc_cart`
-  MODIFY `cart_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `cart_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `oc_category`
@@ -13580,7 +13568,7 @@ ALTER TABLE `oc_seo_url`
 -- AUTO_INCREMENT for table `oc_setting`
 --
 ALTER TABLE `oc_setting`
-  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40134;
+  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40181;
 
 --
 -- AUTO_INCREMENT for table `oc_statistics`

@@ -16,9 +16,10 @@ $_['entry_image_size']     = 'Размеры изображений';
 $_['entry_width']     = 'Ширина';
 $_['entry_height']     = 'Высота';
 $_['entry_catalog_button']     = 'Текст на кнопке каталога';
+$_['entry_show_brands']     = 'Показывать бренды';
+$_['entry_brands_modal']     = 'Бренды в модальном окне';
 $_['entry_show_special']     = 'Показывать акции';
 $_['entry_show_blog']     = 'Показывать блог';
-$_['entry_show_brands']     = 'Показывать бренды';
 $_['entry_show_contacts']     = 'Показывать контакты';
 
 // Error
