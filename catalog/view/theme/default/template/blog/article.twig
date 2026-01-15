@@ -228,8 +228,8 @@
           {% if review_status %}
           <hr>
           <div class="blog-article-comments mb-5">
-            <form id="form-comment">
-              <div id="comments" class="my-5"></div>
+            <div id="comments" class="my-5"></div>
+            <form id="form-comment">             
               <div class="blog-add-comment">
                 <div class="title is-4">{{ text_write }}</div>
                 {% if review_guest %}
@@ -320,6 +320,7 @@ $('#button-comment').on('click', function() {
   });
 });
 
+{% if images %}
 $(document).ready(function() {
   const swiper = new Swiper('#article-images', {
     slidesPerView: 1,
@@ -362,5 +363,7 @@ $(document).ready(function() {
     },
   });
 });
+{% endif %}
+
 </script>
 {{ footer }}
