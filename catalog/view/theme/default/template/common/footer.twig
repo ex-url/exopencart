@@ -118,6 +118,38 @@
   {% if privacy %}
   {{ privacy }}
   {% endif %}
+  {% if pwa_mode and pwa_install %}
+  <div id="pwa-install-modal" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card" id="pwa-install-banner">
+      <div class="modal-card-head">
+        <p class="modal-card-title">{{ text_install_app }}</p>
+      </div>
+      <div class="modal-card-body">
+        <div class="notification is-info is-light has-text-centered">{{ text_install_why }}</div>
+        <div class="buttons">
+          <button id="show-instructions" class="button is-primary is-light is-small is-rounded">{{ text_instructions }}</button>
+        </div>
+        <div class="content" style="display: none;" id="install-instructions">
+          <p>{{ text_install_ios }}</p>
+          <p>{{ text_install_android }}</p>
+          <p>{{ text_install_desktop }}</p>
+        </div>
+      </div>
+      <div class="modal-card-foot">
+        <button class="button is-success" id="pwa-install-button">
+          <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="24" width="24">
+              <path d="m7.47875 6.959999999999999 -0.0025 5M12.390625 10.625c2.809375 -1.975 0.296875 -4.831250000000001 -2.31625 -4.831250000000001C8.309999999999999 -1.0825 -2.040625 4.605 2.5462499999999997 9.78875m6.91875 0.7224999999999999L7.47625 12.5 5.4875 10.51125" stroke-width="1"></path>
+            </svg>
+          </span>
+          <span>{{ text_install_now }}</span>
+        </button>
+        <button class="button" id="pwa-install-later">{{ text_install_later }}</button>
+      </div>
+    </div>
+  </div>
+  {% endif %}
 </footer>
 {% for style in styles %}
 <link href="{{ style.href }}" type="text/css" rel="{{ style.rel }}" media="{{ style.media }}" />
@@ -140,6 +172,71 @@
       });
     });
   }
+
+  {% if pwa_install %}
+
+  $('#show-instructions').on('click', function() {
+    $('#install-instructions').slideToggle();
+  });
+
+  $(document).ready(function() {
+    let deferredPrompt = null;
+    const $modal = $('#pwa-install-modal');
+    const $install = $('#pwa-install-button');
+    const $later = $('#pwa-install-later');
+    
+    const dismissed = localStorage.getItem('pwa-banner-dismissed');
+    const dismissedTime = localStorage.getItem('pwa-banner-dismissed-time');
+    
+    const show = !dismissed || (dismissedTime && Date.now() - parseInt(dismissedTime) > 3 * 24 * 60 * 60 * 1000);
+    
+    if (show && $modal.length) {
+      setTimeout(() => {        
+        if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+          return;
+        }
+        
+        $modal.addClass('is-active');
+      }, 3000);
+    }
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+    });
+
+    if ($install.length) {
+      $install.on('click', async () => {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          
+          const { outcome } = await deferredPrompt.userChoice;
+          
+          if (outcome === 'accepted') {
+            $modal.removeClass('is-active');
+            localStorage.setItem('pwa-banner-dismissed', 'true');
+          }
+          
+          deferredPrompt = null;
+        }
+      });
+    }
+
+    if ($later.length) {
+      $later.on('click', () => {
+        $modal.removeClass('is-active');
+        localStorage.setItem('pwa-banner-dismissed', 'true');
+        localStorage.setItem('pwa-banner-dismissed-time', Date.now().toString());
+      });
+    }
+  });
+  
+  window.addEventListener('appinstalled', () => {
+    $modal.removeClass('is-active');
+    localStorage.setItem('pwa-banner-dismissed', 'true');
+  });  
+  {% endif %}
+
   {% endif %}
 
 </script>

@@ -220,6 +220,12 @@ class ControllerSettingSetting extends Controller {
       $data['config_pwa_mode'] = $this->config->get('config_pwa_mode');
     }
 
+    if (isset($this->request->post['config_pwa_install'])) {
+      $data['config_pwa_install'] = $this->request->post['config_pwa_install'];
+    } else {
+      $data['config_pwa_install'] = $this->config->get('config_pwa_install');
+    }
+
     if (isset($this->request->post['config_default_theme'])) {
       $data['config_default_theme'] = $this->request->post['config_default_theme'];
     } else {

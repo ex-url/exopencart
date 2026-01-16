@@ -16,7 +16,7 @@ class ControllerCommonManifest extends Controller {
     $data['orientation'] = 'portrait-primary';
     $data['scope'] = '/';
     $data['background_color'] = $this->config->get('config_default_theme') == 'light' ? '#ffffff' : '#000000';
-    $data['theme_color'] = $this->config->get('config_default_theme') == 'light' ? '#ffffff' : '#000000';
+    $data['theme_color'] = '#333333';
     $data['icons'] = [];
 
     $icon_sizes = [144, 180, 192, 384, 512];

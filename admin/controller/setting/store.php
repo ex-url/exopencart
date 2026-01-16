@@ -344,6 +344,14 @@ class ControllerSettingStore extends Controller {
       $data['config_pwa_mode'] = 0;
     }
 
+    if (isset($this->request->post['config_pwa_install'])) {
+      $data['config_pwa_install'] = $this->request->post['config_pwa_install'];
+    } elseif (isset($store_info['config_pwa_install'])) {
+      $data['config_pwa_install'] = $store_info['config_pwa_install'];
+    } else {
+      $data['config_pwa_install'] = 0;
+    }
+
     if (isset($this->request->post['config_default_theme'])) {
       $data['config_default_theme'] = $this->request->post['config_default_theme'];
     } elseif (isset($store_info['config_default_theme'])) {

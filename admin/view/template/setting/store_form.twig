@@ -131,6 +131,19 @@
                 </div>
               </div>
               <div class="form-group">
+                <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="{{ help_pwa_install }}">{{ entry_pwa_install }}</span></label>
+                <div class="col-sm-10">
+                  <label class="radio-inline">
+                    <input type="radio" name="config_pwa_install" value="1" {{ config_pwa_install ? 'checked' : '' }}>
+                    {{ text_yes }}
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" name="config_pwa_install" value="0" {{ not config_pwa_install ? 'checked' : '' }}>
+                    {{ text_no }}
+                  </label>
+                </div>
+              </div>
+              <div class="form-group">
                 <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="{{ help_default_theme }}">{{ entry_default_theme }}</span></label>
                 <div class="col-sm-10">
                   <label class="radio-inline">

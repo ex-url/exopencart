@@ -79,8 +79,9 @@ $_['entry_meta_keyword']               = 'Мета-тег Keywords';
 $_['entry_layout']                     = 'Макет по умолчанию';
 $_['entry_theme']                      = 'Шаблон';
 $_['entry_pwa_mode']                   = 'Режим PWA';
-$_['entry_default_theme']               = 'Тема по-умолчанию';
-$_['entry_theme_toggle']                = 'Показывать переключатель';
+$_['entry_pwa_install']                = 'Предлагать установку';
+$_['entry_default_theme']              = 'Тема по-умолчанию';
+$_['entry_theme_toggle']               = 'Показывать переключатель';
 $_['entry_country']                    = 'Страна';
 $_['entry_zone']                       = 'Регион / Область';
 $_['entry_city']                       = 'Город';
@@ -240,6 +241,7 @@ $_['entry_noindex_disallow_params']     = 'Игнорировать noindex дл
 
 // Help
 $_['help_pwa_mode']                    = 'Включить режим PWA (Progressive Web App) для магазина';
+$_['help_pwa_install']                 = 'Предлагать пользователям установку PWA приложения';
 $_['help_default_theme']                = 'Выбранная цветовая схема будет отображаться по-умолчанию';
 $_['help_theme_toggle']                 = 'Пользователи смогут переключать тему оформления самостоятельно';
 $_['help_geocode']                     = 'Пожалуйста, укажите geocode расположение вашего магазина.';

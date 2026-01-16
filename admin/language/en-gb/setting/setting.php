@@ -74,6 +74,7 @@ $_['entry_meta_keyword']             = 'Meta Tag Keywords';
 $_['entry_layout']                   = 'Default Layout';
 $_['entry_theme']                    = 'Theme';
 $_['entry_pwa_mode']                 = 'PWA Mode';
+$_['entry_pwa_install']              = 'Offer installation';
 $_['entry_default_theme']            = 'Default theme';
 $_['entry_theme_toggle']             = 'Show theme toggle';
 $_['entry_country']                  = 'Country';
@@ -237,6 +238,7 @@ $_['entry_noindex_disallow_params']   = 'Not use noindex for page with get param
 
 // Help
 $_['help_pwa_mode']                 = 'Enable PWA (Progressive Web App) mode for the store';
+$_['help_pwa_install']              = 'Offer users the installation of the PWA application';
 $_['help_default_theme']              = 'Selected color scheme will be displayed by default';
 $_['help_theme_toggle']               = 'Users will be able to switch theme themselves';
 $_['help_geocode']                   = 'Please enter your store location geocode manually.';

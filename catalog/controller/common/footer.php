@@ -19,6 +19,7 @@ class ControllerCommonFooter extends Controller {
     $template_folder = $this->config->get('theme_default_directory');
 
     $data['pwa_mode'] = $this->config->get('config_pwa_mode');
+    $data['pwa_install'] = $this->config->get('config_pwa_install');
     $data['sw_url'] = 'catalog/view/theme/' . $template_folder . '/js/sw.js';
     $data['contact'] = $this->url->link('information/contact');
     $data['return'] = $this->url->link('account/return/add', '', true);
