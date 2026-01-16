@@ -1,4 +1,5 @@
 # Extended OpenCart
+This project is a heavily modified fork of ocStore 3.0.3.7 (internal VERSION remains 3.0.3.7 for compatibility)
 
 ## What the hell is this?
 This is ocStore that I kept tweaking and customizing until it turned into something capable of powering not just another boring online store, but pretty much any business website that doesn’t desperately need React / Vue / Next.js slapped on top. The good old web dev days: you know precisely what your code is doing, minus the mysterious bundler sorcery and toolchain voodoo.
