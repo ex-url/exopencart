@@ -137,7 +137,7 @@
         </div>
       </div>
       <div class="modal-card-foot">
-        <button class="button is-success" id="pwa-install-button">
+        <button class="button is-success is-hidden" id="pwa-install-button">
           <span class="icon">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="24" width="24">
               <path d="m7.47875 6.959999999999999 -0.0025 5M12.390625 10.625c2.809375 -1.975 0.296875 -4.831250000000001 -2.31625 -4.831250000000001C8.309999999999999 -1.0825 -2.040625 4.605 2.5462499999999997 9.78875m6.91875 0.7224999999999999L7.47625 12.5 5.4875 10.51125" stroke-width="1"></path>
@@ -173,14 +173,17 @@
     });
   }
 
-  {% if pwa_install %}
+  {% if pwa_install %}  
 
-  $('#show-instructions').on('click', function() {
-    $('#install-instructions').slideToggle();
+  let deferredPrompt = null;
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
   });
 
   $(document).ready(function() {
-    let deferredPrompt = null;
+    
     const $modal = $('#pwa-install-modal');
     const $install = $('#pwa-install-button');
     const $later = $('#pwa-install-later');
@@ -195,15 +198,14 @@
         if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
           return;
         }
+
+        if(deferredPrompt) {
+          $install.removeClass('is-hidden');
+        }
         
         $modal.addClass('is-active');
       }, 30000);
-    }
-
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-    });
+    }    
 
     if ($install.length) {
       $install.on('click', async () => {
@@ -229,6 +231,10 @@
         localStorage.setItem('pwa-banner-dismissed-time', Date.now().toString());
       });
     }
+
+    $('#show-instructions').on('click', function() {
+      $('#install-instructions').slideToggle();
+    });
   });
   
   window.addEventListener('appinstalled', () => {
