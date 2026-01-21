@@ -78,8 +78,6 @@ class ControllerCommonMenu extends Controller {
         }
       }
 
-      $this->log->write($data['brands']);
-
       if ($settings['show_special']) {
         $data['special'] = array(
           'name' => $this->language->get('text_special'),
