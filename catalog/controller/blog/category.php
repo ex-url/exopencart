@@ -77,25 +77,25 @@ class ControllerBlogCategory extends Controller {
         $url .= '&limit=' . $this->request->get['limit'];
       }
 
-      $blog_category_id = '';
-
       $parts = explode('_', (string)$this->request->get['blog_category_id']);
 
       $blog_category_id = (int)array_pop($parts);
 
-      foreach ($parts as $blog_category_id_id) {
-        if (!$blog_category_id) {
-          $blog_category_id = (int)$blog_category_id_id;
+      $path = '';
+
+      foreach ($parts as $path_id) {
+        if (!$path) {
+          $path = (int)$path_id;
         } else {
-          $blog_category_id .= '_' . (int)$blog_category_id_id;
+          $path .= '_' . (int)$path_id;
         }
 
-        $category_info = $this->model_blog_category->getCategory($blog_category_id_id);
+        $category_info = $this->model_blog_category->getCategory($path_id);
 
         if ($category_info) {
           $data['breadcrumbs'][] = array(
             'text' => $category_info['name'],
-            'href' => $this->url->link('blog/category', 'blog_category_id=' . $blog_category_id . $url)
+            'href' => $this->url->link('blog/category', 'blog_category_id=' . $path . $url)
           );
         }
       }
