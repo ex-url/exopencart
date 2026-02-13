@@ -33,6 +33,8 @@ $_['entry_image']            = 'Image';
 $_['entry_additional_image'] = 'Additional images';
 $_['entry_status']           = 'Status';
 $_['entry_noindex']          = 'Index';
+$_['entry_date_published']   = 'Date Published';
+$_['entry_show_date']        = 'Show Date and Views';
 $_['entry_sort_order']       = 'Sort Order';
 $_['entry_category']         = 'Categories';
 $_['entry_main_category']    = 'Main Category';
@@ -50,6 +52,7 @@ $_['help_related']           = '(Autocomplete)';
 $_['help_related_product']   = '(Autocomplete)';
 $_['help_tag']          	 = 'comma separated';
 $_['help_noindex']           = 'indexing in search engines Google, Yandex, Bing and other';
+$_['help_show_date']        = 'Show date and views of the article in the article list and on the article page';
 
 // Error
 $_['error_warning']          = 'Warning: Please check the form carefully for errors!';

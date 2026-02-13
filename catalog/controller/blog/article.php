@@ -117,6 +117,8 @@ class ControllerBlogArticle extends Controller {
         $data['heading_title'] = $article_info['name'];
       }
 
+      $data['show_date'] = $article_info['show_date'];
+      $data['viewed'] = $article_info['viewed'];
       $data['date_published'] = date('d.m.Y', strtotime($article_info['date_published']));
 
       $this->load->model('blog/review');
@@ -201,6 +203,7 @@ class ControllerBlogArticle extends Controller {
           'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('configblog_article_description_length')) . '..',
           'rating'     => $rating,
           'date_published'  => date($this->language->get('date_format_short'), strtotime($result['date_published'])),
+          'show_date'  => $result['show_date'],
           'viewed'      => $result['viewed'],
           'reviews'    => sprintf($this->language->get('text_reviews'), (int)$result['reviews']),
           'href'       => $this->url->link('blog/article', 'article_id=' . $result['article_id']),

@@ -575,6 +575,14 @@ class ControllerBlogArticle extends Controller {
       $data['sort_order'] = 1;
     }
 
+    if (isset($this->request->post['show_date'])) {
+      $data['show_date'] = $this->request->post['show_date'];
+    } elseif (!empty($article_info)) {
+      $data['show_date'] = $article_info['show_date'];
+    } else {
+      $data['show_date'] = 1;
+    }
+
     if (isset($this->request->post['date_published'])) {
       $data['date_published'] = $this->request->post['date_published'];
     } elseif (!empty($article_info)) {

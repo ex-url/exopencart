@@ -33,6 +33,7 @@ class ModelBlogArticle extends Model {
         'article_review'   => $query->row['article_review'],
         'status'           => $query->row['status'],
         'date_published'   => $query->row['date_published'],
+        'show_date'        => $query->row['show_date'],
         'date_modified'    => $query->row['date_modified'],
         'viewed'           => $query->row['viewed']
       );
