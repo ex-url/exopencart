@@ -27,8 +27,8 @@
       {% set class = 'column is-12' %}
       {% endif %}
       <div id="content" class="{{ class }}">
-        <div class="blog-article">
-          <h1 class="title is-1">{{ heading_title }}</h1>
+        <article itemscope itemtype="https://schema.org/Article" class="blog-article">
+          <h1 class="title is-1" itemprop="headline">{{ heading_title }}</h1>
           <hr class="{{ show_date ? 'mb-3' : '' }}">
           {% if show_date %}
           <div class="is-flex is-align-items-center is-justify-content-space-between mb-5">
@@ -38,7 +38,7 @@
                   <path d="M10.3125 3.125V1.875m-5.625 1.25V1.875M2.03125 5h10.9375M6.25 8.75h2.5m-1.25 -1.25v2.5m-5.625 -3.7225c0 -1.3218750000000001 0 -1.983125 0.2725 -2.488125a2.435 2.435 0 0 1 1.0925 -1.031875C3.775 2.5 4.475 2.5 5.875 2.5h3.25c1.4000000000000001 0 2.1 0 2.6350000000000002 0.2575 0.470625 0.22625 0.8525 0.5874999999999999 1.0925 1.03125 0.2725 0.5062500000000001 0.2725 1.1675 0.2725 2.489375v3.07c0 1.3218750000000001 0 1.983125 -0.2725 2.488125a2.435 2.435 0 0 1 -1.0925 1.031875C11.225000000000001 13.125 10.525 13.125 9.125 13.125H5.875c-1.4000000000000001 0 -2.1 0 -2.6350000000000002 -0.2575a2.435 2.435 0 0 1 -1.0925 -1.03125C1.875 11.33 1.875 10.66875 1.875 9.346875z" stroke-width="1"></path>
                 </svg>
               </span>
-              <span>{{ date_published }}</span>
+              <time itemprop="datePublished" datetime="{{ date_published_iso }}">{{ date_published }}</time>
             </span>  
             <span class="icon-text">
               <span class="icon has-text-primary">
@@ -56,14 +56,14 @@
             <div class="swiper-wrapper">
             {% for image in images %}
               <a href="{{ image.popup }}" data-fancybox="article"  data-caption="{{ image.title }}" class="swiper-slide box p-0 is-clipped">
-                <img src="{{ image.thumb }}" width="{{ image_width }}" height="{{ image_heigth }}" title="{{ image.title ? image.title : heading_title }}" alt="{{  image.title ? image.title : heading_title  }}" />
+                <img src="{{ image.thumb }}" width="{{ image_width }}" height="{{ image_height }}" title="{{ image.title ? image.title : heading_title }}" alt="{{  image.title ? image.title : heading_title  }}" />
               </a>
             {% endfor %}
             </div>
             <div class="swiper-pagination"></div>           
           </div>
           {% endif %}
-          <div class="content">
+          <div itemprop="articleBody" class="content">
             {{ description }}
           </div>
           {% if download_status and downloads %}
@@ -255,7 +255,7 @@
                 </div>
                 {{ captcha }}
                 <div class="buttons">
-                  <button type="button" id="button-comment" class="button is-primary is-light">{{ button_send }}</button>
+                  <button type="button" id="button-comment" class="button is-primary">{{ button_send }}</button>
                 </div>
                 {% else %}
                 {{ text_login }}
@@ -264,7 +264,7 @@
             </form>
           </div>
           {% endif %}
-        </div>
+        </article>
       </div>
       {{ column_right }}
     </div>
@@ -337,7 +337,7 @@ $(document).ready(function() {
   const swiper = new Swiper('#article-images', {
     slidesPerView: 1,
     spaceBetween: 14,
-    loop: true,
+    loop: false,
     pagination: {
       el: '#article-images .swiper-pagination',
       clickable: true,

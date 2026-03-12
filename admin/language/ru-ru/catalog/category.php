@@ -13,6 +13,14 @@ $_['text_edit']              = 'Редактирование';
 $_['text_default']           = 'По умолчанию';
 $_['text_category_total']    = 'Всего категорий: ';
 $_['text_keyword']         = 'Должен быть уникальным на всю систему, без пробелов и спецсимволов.';
+$_['text_sort_global']        = 'Из настроек по-умолчанию';
+$_['text_sort_default']        = 'По порядку сортировки';
+$_['text_sort_name']        = 'По имени товара';
+$_['text_sort_price']        = 'По цене';
+$_['text_sort_rating']        = 'По рейтингу';
+$_['text_sort_model']        = 'По артикулу';
+$_['text_order_asc']        = 'По возрастанию';
+$_['text_order_desc']        = 'По убыванию';
 
 // Column
 $_['column_name']            = 'Название категории';
@@ -39,6 +47,8 @@ $_['entry_image']            = 'Изображение';
 $_['entry_top']              = 'Главное меню';
 $_['entry_column']           = 'Столбцы';
 $_['entry_sort_order']       = 'Порядок сортировки';
+$_['entry_sort_param']       = 'Параметр сортировки';
+$_['entry_sort_direction']   = 'Направление сортировки';
 $_['entry_redirect']         = 'Редирект 301';
 $_['entry_status']           = 'Статус';
 $_['entry_noindex']          = 'Индексация';

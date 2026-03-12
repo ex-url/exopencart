@@ -42,9 +42,9 @@ $_['text_sort_default']        = 'By sort order';
 $_['text_sort_name']        = 'By name';
 $_['text_sort_price']        = 'By price';
 $_['text_sort_rating']        = 'By rating';
-$_['text_sort_model']        = 'by model';
-$_['text_order_asc']        = 'ascending';
-$_['text_order_desc']        = 'descending';
+$_['text_sort_model']        = 'By model';
+$_['text_order_asc']        = 'Ascending';
+$_['text_order_desc']        = 'Descending';
 $_['text_light']        = 'Light';
 $_['text_dark']        = 'Dark';
 

@@ -40,6 +40,10 @@ body.dark {
   color: var(--text-secondary) !important;
 }
 
+.dark strong {
+  color: #ffffff;
+}
+
 .dark .has-text-link {
   color: var(--link) !important;
 }

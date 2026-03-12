@@ -120,6 +120,7 @@ class ControllerBlogArticle extends Controller {
       $data['show_date'] = $article_info['show_date'];
       $data['viewed'] = $article_info['viewed'];
       $data['date_published'] = date('d.m.Y', strtotime($article_info['date_published']));
+      $data['date_published_iso'] = date(DATE_ATOM, strtotime($article_info['date_published']));
 
       $this->load->model('blog/review');
 
@@ -162,6 +163,8 @@ class ControllerBlogArticle extends Controller {
       $this->load->model('tool/image');
 
       $data['images'] = array();
+      $data['image_width'] = $this->config->get('configblog_image_article_width');
+      $data['image_height'] = $this->config->get('configblog_image_article_height');
 
       $results = $this->model_blog_article->getArticleImages($this->request->get['article_id']);
 
@@ -175,8 +178,8 @@ class ControllerBlogArticle extends Controller {
 
       foreach ($results as $result) {
         $data['images'][] = array(
-          'popup' => $this->model_tool_image->resize($result['image'], $this->config->get('configblog_image_article_width') * 3, $this->config->get('configblog_image_article_height') * 3),
-          'thumb' => $this->model_tool_image->resize($result['image'], $this->config->get('configblog_image_article_width'), $this->config->get('configblog_image_article_height')),
+          'popup' => $this->model_tool_image->resize($result['image'], $this->config->get('configblog_image_article_width') * 3, $this->config->get('configblog_image_article_height') * 3, 'scale'),
+          'thumb' => $this->model_tool_image->resize($result['image'], $this->config->get('configblog_image_article_width'), $this->config->get('configblog_image_article_height'), 'crop'),
           'title' => $result['title']
         );
       }

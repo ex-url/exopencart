@@ -460,6 +460,22 @@ class ControllerCatalogCategory extends Controller {
 			$data['sort_order'] = 0;
 		}
 
+		if (isset($this->request->post['sort_param'])) {
+			$data['sort_param'] = $this->request->post['sort_param'];
+		} elseif (!empty($category_info)) {
+			$data['sort_param'] = $category_info['sort_param'];
+		} else {
+			$data['sort_param'] = '';
+		}
+
+		if (isset($this->request->post['sort_direction'])) {
+			$data['sort_direction'] = $this->request->post['sort_direction'];
+		} elseif (!empty($category_info)) {
+			$data['sort_direction'] = $category_info['sort_direction'];
+		} else {
+			$data['sort_direction'] = 'ASC';
+		}
+
 		if (isset($this->request->post['redirect'])) {
 			$data['redirect'] = $this->request->post['redirect'];
 		} elseif (!empty($category_info)) {
@@ -547,6 +563,44 @@ class ControllerCatalogCategory extends Controller {
 		}
 
 		$this->load->model('design/layout');
+
+		$data['sorts'] = array(
+			array(
+        'text'  => $this->language->get('text_sort_global'),
+        'value' => ''
+      ),
+      array(
+        'text'  => $this->language->get('text_sort_default'),
+        'value' => 'p.sort_order'
+      ),
+      array(
+        'text'  => $this->language->get('text_sort_name'),
+        'value' => 'pd.name'
+      ),
+      array(
+        'text'  => $this->language->get('text_sort_price'),
+        'value' => 'p.price'
+      ),
+      array(
+        'text'  => $this->language->get('text_sort_rating'),
+        'value' => 'rating'
+      ),
+      array(
+        'text'  => $this->language->get('text_sort_model'),
+        'value' => 'p.model'
+      ),
+    );
+
+    $data['orders'] = array(
+      array(
+        'text'  => $this->language->get('text_order_asc'),
+        'value' => 'ASC'
+      ),
+      array(
+        'text'  => $this->language->get('text_order_desc'),
+        'value' => 'DESC'
+      )
+    );
 
 		$data['layouts'] = $this->model_design_layout->getLayouts();
 

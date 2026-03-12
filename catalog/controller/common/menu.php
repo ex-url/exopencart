@@ -1,6 +1,11 @@
 <?php
 class ControllerCommonMenu extends Controller {
   public function index() {
+
+    if(!$this->config->get('menu_default_status')) {
+      return '';
+    }
+
     $this->load->language('common/menu');
 
     $this->load->model('catalog/category');

@@ -207,9 +207,9 @@ class ControllerBlogCategory extends Controller {
 
       foreach ($results as $result) {
         if ($result['image']) {
-          $image = $this->model_tool_image->resize($result['image'], $image_width, $image_height);
+          $image = $this->model_tool_image->resize($result['image'], $image_width, $image_height, 'crop');
         } else {
-          $image = $this->model_tool_image->resize('placeholder.png', $image_width, $image_height);
+          $image = $this->model_tool_image->resize('placeholder.png', $image_width, $image_height, 'crop');
         }
 
         if ($this->config->get('configblog_review_status')) {
@@ -225,7 +225,7 @@ class ControllerBlogCategory extends Controller {
           'description' => utf8_substr(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8'), 0, $this->config->get('configblog_article_description_length')) . '...',
           'date_published'  => date($this->language->get('date_format_short'), strtotime($result['date_published'])),
           'show_date'  => $result['show_date'],
-          'viewed'      => $result['viewed'],          
+          'viewed'      => $result['viewed'],
           'rating'      => $result['rating'],
           'href'        => $this->url->link('blog/article', 'blog_category_id=' . $this->request->get['blog_category_id'] . '&article_id=' . $result['article_id'] . $url)
         );

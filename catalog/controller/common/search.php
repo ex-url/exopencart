@@ -55,17 +55,8 @@ class ControllerCommonSearch extends Controller {
       $order = 'DESC';
     }
 
-    if (isset($this->request->get['page'])) {
-      $page = (int)$this->request->get['page'];
-    } else {
-      $page = 1;
-    }
-
-    if (isset($this->request->get['limit'])) {
-      $limit = (int)$this->request->get['limit'];
-    } else {
-      $limit = 5;
-    }
+    $page = 1;
+    $limit = 5;
 
     $url = '';
 
@@ -81,8 +72,6 @@ class ControllerCommonSearch extends Controller {
         'start'               => ($page - 1) * $limit,
         'limit'               => $limit
       );
-
-      $product_total = $this->model_catalog_product->getTotalProducts($filter_data);
 
       $results = $this->model_catalog_product->getProducts($filter_data);
 
@@ -123,7 +112,6 @@ class ControllerCommonSearch extends Controller {
           'product_id'  => $result['product_id'],
           'thumb'       => $image,
           'name'        => $result['name'],
-          'description' => utf8_substr(trim(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8'))), 0, $this->config->get('theme_' . $this->config->get('config_theme') . '_product_description_length')) . '..',
           'price'       => $price,
           'special'     => $special,
           'stock_status' => $result['stock_status'],

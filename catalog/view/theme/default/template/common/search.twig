@@ -74,27 +74,31 @@
     let liveSearch = null;
 
     $('.search input[name="search"]').on('input', function () {
-    
-    $input = $(this);
 
-    if($(this).val().length > 2) {
       clearTimeout(liveSearch);
+    
+      $input = $(this);
 
-      liveSearch = setTimeout(function () {
-        $.ajax({
-          url: 'index.php?route=common/search/live&description=true&search=' + $input.val(),
-          dataType: 'html',
-          success: function(html) {
-            $('#search-modal .live-results').remove();
-            $('#search-modal .field.search').after(html);
-          },
-          error: function (e) {
-            console.log(e);
-          }
+      if($(this).val().length > 2) {        
+
+        liveSearch = setTimeout(function () {
+          $.ajax({
+            url: 'index.php?route=common/search/live&description=true&search=' + $input.val(),
+            dataType: 'html',
+            success: function(html) {
+              $('#search-modal .live-results').remove();
+              $('#search-modal .field.search').after(html);
+            },
+            error: function (e) {
+              console.log(e);
+            }
+          });
+        }, 1000);
+      } else {
+        $('#search-modal .live-results').fadeOut(300, function() {
+          $(this).remove();
         });
-      }, 1000);
-    }
+      }
+    });
   });
-
-});
 </script>

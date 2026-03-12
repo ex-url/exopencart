@@ -14,6 +14,8 @@ class ControllerProductCategory extends Controller {
 
     $data['text_empty'] = $this->language->get('text_empty');
 
+    $disallow_params = array();
+
     if ($this->config->get('config_noindex_disallow_params')) {
       $params = explode("\r\n", $this->config->get('config_noindex_disallow_params'));
       if (!empty($params)) {
@@ -28,24 +30,6 @@ class ControllerProductCategory extends Controller {
       }
     } else {
       $filter = '';
-    }
-
-    if (isset($this->request->get['sort'])) {
-      $sort = $this->request->get['sort'];
-      if (!in_array('sort', $disallow_params, true) && $this->config->get('config_noindex_status')) {
-        $this->document->setRobots('noindex,follow');
-      }
-    } else {
-      $sort = $this->config->get('config_category_sort_param');
-    }
-
-    if (isset($this->request->get['order'])) {
-      $order = $this->request->get['order'];
-      if (!in_array('order', $disallow_params, true) && $this->config->get('config_noindex_status')) {
-        $this->document->setRobots('noindex,follow');
-      }
-    } else {
-      $order = $this->config->get('config_category_sort_order');;
     }
 
     if (isset($this->request->get['page'])) {
@@ -115,6 +99,28 @@ class ControllerProductCategory extends Controller {
     }
 
     $category_info = $this->model_catalog_category->getCategory($category_id);
+
+    if (isset($this->request->get['sort'])) {
+      $sort = $this->request->get['sort'];
+      if (!in_array('sort', $disallow_params, true) && $this->config->get('config_noindex_status')) {
+        $this->document->setRobots('noindex,follow');
+      }
+    } elseif($category_info && $category_info['sort_param']) {
+      $sort = $category_info['sort_param'];
+    } else {
+      $sort = $this->config->get('config_category_sort_param');
+    }
+
+    if (isset($this->request->get['order'])) {
+      $order = $this->request->get['order'];
+      if (!in_array('order', $disallow_params, true) && $this->config->get('config_noindex_status')) {
+        $this->document->setRobots('noindex,follow');
+      }
+    } elseif($category_info && $category_info['sort_direction'] && $category_info['sort_direction'] != $this->config->get('config_category_sort_order')) {
+      $order = $category_info['sort_direction'];
+    } else {
+      $order = $this->config->get('config_category_sort_order');
+    }
 
     if ($category_info) {
 

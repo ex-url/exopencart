@@ -13,6 +13,16 @@ $_['text_edit']              = 'Edit Category';
 $_['text_default']           = 'Default';
 $_['text_category_total']    = 'Total Categories: ';
 $_['text_keyword']           = 'Do not use spaces, instead replace spaces with - and make sure the SEO URL is globally unique.';
+$_['text_sort_global']        = 'By default settings';
+$_['text_sort_default']        = 'By sort order';
+$_['text_sort_name']        = 'By name';
+$_['text_sort_price']        = 'By price';
+$_['text_sort_rating']        = 'By rating';
+$_['text_sort_model']        = 'By model';
+$_['text_order_asc']        = 'Ascending';
+$_['text_order_desc']        = 'Descending';
+$_['text_light']        = 'Light';
+$_['text_dark']        = 'Dark';
 
 // Column
 $_['column_name']            = 'Category Name';
@@ -38,6 +48,8 @@ $_['entry_image']            = 'Image';
 $_['entry_top']              = 'Top';
 $_['entry_column']           = 'Columns';
 $_['entry_sort_order']       = 'Sort Order';
+$_['entry_sort_param']       = 'Sort Parameter';
+$_['entry_sort_direction']   = 'Sort Direction';
 $_['entry_redirect']         = 'Redirect 301';
 $_['entry_status']           = 'Status';
 $_['entry_layout']           = 'Layout Override';

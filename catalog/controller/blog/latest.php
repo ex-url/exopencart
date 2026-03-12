@@ -153,9 +153,9 @@ class ControllerBlogLatest extends Controller {
 
     foreach ($results as $result) {
       if ($result['image']) {
-        $image = $this->model_tool_image->resize($result['image'], $image_width, $image_height);
+        $image = $this->model_tool_image->resize($result['image'], $image_width, $image_height, 'crop');
       } else {
-        $image = false;
+      	$image = $this->model_tool_image->resize('placeholder.png', $image_width, $image_height, 'crop');
       }
 
       if ($this->config->get('configblog_review_status')) {

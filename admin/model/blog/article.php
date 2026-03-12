@@ -268,13 +268,14 @@ class ModelBlogArticle extends Model {
       'pd.name',
       'p.status',
       'p.noindex',
-      'p.sort_order'
+      'p.sort_order',
+      'p.date_published'
     );
 
     if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
       $sql .= " ORDER BY " . $data['sort'];
     } else {
-      $sql .= " ORDER BY pd.name";
+      $sql .= " ORDER BY p.date_published";
     }
 
     if (isset($data['order']) && ($data['order'] == 'DESC')) {
