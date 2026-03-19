@@ -51,6 +51,43 @@ function generateSeoUrl(element, language_id) {
   }
 }
 
+function generateRandomKey(length) {
+  var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  var result = '';
+  for (var i = 0; i < length; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return result;
+}
+
+function copyToClipboard(element, event) {
+  const $button = $(event.currentTarget);
+
+  let text = $(element).text();
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(function() {
+      $button.removeClass('btn-primary').addClass('btn-success');
+      $button.html('<i class="fa fa-check"></i>');
+      setTimeout(function() {
+        $button.removeClass('btn-success').addClass('btn-primary');
+        $button.html('<i class="fa fa-copy"></i>');
+      }, 2000);
+    });
+  } else {
+    var temp = $('<input>');
+    $('body').append(temp);
+    temp.val(text).select();
+    document.execCommand('copy');
+    temp.remove();
+    $button.removeClass('btn-primary').addClass('btn-success');
+    $button.html('<i class="fa fa-check"></i>');
+    setTimeout(function() {
+      $button.removeClass('btn-success').addClass('btn-primary');
+      $button.html('<i class="fa fa-copy"></i>');
+    }, 2000);
+  }
+}
+
 $(document).ready(function () {
   //Form Submit for IE Browser
   $('button[type=\'submit\']').on('click', function () {
@@ -63,6 +100,16 @@ $(document).ready(function () {
 
     if (element.hasClass('form-group')) {
       element.addClass('has-error');
+    }
+  });
+
+  // Toggle form groups
+  $('.form-group input[type="radio"]').on('change', function() {
+    let $group = $(this).closest('[data-toggle-group]');
+    if ($group.length) {
+      let group = $group.data('toggle-group');
+      let show = $(this).val() === '1';
+      $('[data-group="' + group + '"]').toggleClass('hidden', !show);
     }
   });
 

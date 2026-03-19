@@ -1694,11 +1694,13 @@
                 <div class="form-group">
                   <label class="col-sm-2 control-label">{{ entry_cache_warmer_url }}</label>
                   <div class="col-sm-10">
-                    <div class="well well-sm">
-                      <code id="cache-warmer-url">{{ cache_warmer_url }}</code>
-                      <button type="button" class="btn btn-xs btn-default pull-right" onclick="copyToClipboard('#cache-warmer-url')">
-                        <i class="fa fa-copy"></i>
-                      </button>
+                    <div class="input-group">
+                      <div class="form-control" id="cache-warmer-url">{{ cache_warmer_url }}</div>
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-primary" onclick="copyToClipboard('#cache-warmer-url', event)">
+                          <i class="fa fa-copy"></i>
+                        </button>
+                      </span>
                     </div>
                     <p class="help-block">{{ help_cache_warmer }}</p>
                   </div>
@@ -2086,7 +2088,7 @@
       </div>
     </div>
   </div>
-  <script><!--
+  <script>
 
   let row = $('#social-medias input[type="hidden"]').length ? 0 : $('#social-medias > .row').length;
 
@@ -2160,8 +2162,7 @@ $('select[name=\'config_theme\']').on('change', function() {
 });
 
 $('select[name=\'config_theme\']').trigger('change');
-//--></script>
-  <script type="text/javascript"><!--
+
 $('select[name=\'config_country_id\']').on('change', function() {
 	$.ajax({
 		url: 'index.php?route=localisation/country/country&user_token={{ user_token }}&country_id=' + this.value,
@@ -2200,36 +2201,11 @@ $('select[name=\'config_country_id\']').on('change', function() {
 });
 
 $('select[name=\'config_country_id\']').trigger('change');
-//--></script>
-  <script type="text/javascript"><!--
+
 $('#generate-cache-key').on('click', function() {
   var key = generateRandomKey(32);
   $('#input-cache-warmer-key').val(key);
 });
-
-function generateRandomKey(length) {
-  var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  var result = '';
-  for (var i = 0; i < length; i++) {
-    result += chars.charAt(Math.floor(Math.random() * chars.length));
-  }
-  return result;
-}
-
-function copyToClipboard(element) {
-  var text = $(element).text();
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(text).then(function() {
-      alert('{{ text_copy_success }}');
-    });
-  } else {
-    var temp = $('<input>');
-    $('body').append(temp);
-    temp.val(text).select();
-    document.execCommand('copy');
-    temp.remove();
-    alert('{{ text_copy_success }}');
-  }
-}
-//--></script></div>
+</script>
+</div>
 {{ footer }}

@@ -199,16 +199,4 @@
     </div>
   </div>
 </div>
-
-<script>
-  $('input[type="radio"]').on('change', function() {
-    let $group = $(this).closest('[data-toggle-group]');
-    if ($group.length) {
-      let group = $group.data('toggle-group');
-      let show = $(this).val() === '1';
-      $('[data-group="' + group + '"]').toggleClass('hidden', !show);
-    }
-  });
-</script>
-
 {{ footer }}

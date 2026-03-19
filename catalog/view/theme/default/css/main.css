@@ -309,12 +309,6 @@ button {
   bottom: -1.25rem;
 }
 
-.sticky-crutch {
-  position: relative;
-  height: 100%;
-  z-index: -1;
-}
-
 .product-card,
 .blog-card {
   height: 100%;

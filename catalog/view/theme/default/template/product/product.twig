@@ -53,7 +53,7 @@
           {% set class = 'column is-6-desktop is-12-tablet is-12-mobile' %}
           {% endif %}
           <div class="{{ class }}">
-            <div id="product-images" class="swiper box p-0 is-clipped  ">
+            <div id="product-images" class="swiper box p-0 is-clipped mb-5" itemscope itemtype="https://schema.org/ImageGallery">
               <div class="swiper-wrapper">
                 {% if thumb %}
                 <div class="swiper-slide">
@@ -90,7 +90,6 @@
               </span>
               {% endif %}
             </div>
-            <div class="sticky-crutch"></div>
           </div>
           {% if column_left and column_right %}
           {% set class = 'column is-12-desktop is-12-tablet is-12-mobile' %}
@@ -444,7 +443,7 @@
               <hr>
             </div>
             {% endif %}
-            <div id="product-description" itemprop="description" >
+            <div id="product-description" itemprop="description" class="content">
               {{ description }}
             </div>
             {% if tags %}
