@@ -484,6 +484,26 @@ class ModelCatalogProduct extends Model {
     return $product_data;
   }
 
+	public function getProductSiblings($product_id, $limit = 12) {
+		$category_query = $this->db->query("SELECT category_id FROM " . DB_PREFIX . "product_to_category WHERE product_id = '" . (int)$product_id . "' AND main_category = 1 LIMIT 1");
+
+		if($category_query->num_rows) {
+			$category_id = $category_query->row['category_id'];
+		} else {
+			return [];
+		}
+
+		$product_data = array();
+
+		$query = $this->db->query("SELECT product_id FROM " . DB_PREFIX . "product_to_category WHERE product_id != '" . (int)$product_id . "' AND category_id = '" . (int)$category_id . "' LIMIT " . (int)$limit);
+
+		foreach ($query->rows as $product) {
+			$product_data[$product['product_id']] = $this->getProduct($product['product_id']);
+		}
+
+		return $product_data;
+	}
+
   public function getProductLayoutId($product_id) {
     $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_to_layout WHERE product_id = '" . (int)$product_id . "' AND store_id = '" . (int)$this->config->get('config_store_id') . "'");
 

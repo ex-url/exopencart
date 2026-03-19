@@ -589,6 +589,12 @@ class ControllerSettingSetting extends Controller {
     } else {
       $data['config_show_options_price'] = $this->config->get('config_show_options_price');
     }
+    
+    if (isset($this->request->post['config_show_product_siblings'])) {
+      $data['config_show_product_siblings'] = $this->request->post['config_show_product_siblings'];
+    } else {
+      $data['config_show_product_siblings'] = $this->config->get('config_show_product_siblings');
+    }
 
     if (isset($this->request->post['config_product_count'])) {
       $data['config_product_count'] = $this->request->post['config_product_count'];

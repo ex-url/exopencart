@@ -103,6 +103,7 @@ $_['entry_special_sort_param']       = 'Special sort parameter';
 $_['entry_special_sort_order']       = 'Special sort order';
 $_['entry_out_of_stock_to_end']   = 'Out of stock to end';
 $_['entry_show_options_price']   = 'Show options price';
+$_['entry_show_product_siblings']   = 'Show similar products';
 $_['entry_review']                   = 'Allow Reviews';
 $_['entry_review_guest']             = 'Allow Guest Reviews';
 $_['entry_review_images']            = 'Allow Review Images Upload';

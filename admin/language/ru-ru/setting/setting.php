@@ -108,6 +108,7 @@ $_['entry_special_sort_param']       = 'Параметр сортировки в
 $_['entry_special_sort_order']       = 'Порядок сортировки в акциях';
 $_['entry_out_of_stock_to_end']   = 'Нет в наличии в конец';
 $_['entry_show_options_price']   = 'Показывать цену опций';
+$_['entry_show_product_siblings']   = 'Показывать похожие товары';
 $_['entry_review']                     = 'Разрешить отзывы';
 $_['entry_review_guest']               = 'Разрешить отзывы гостям';
 $_['entry_review_images']              = 'Разрешить загрузку изображений в отзывах';
