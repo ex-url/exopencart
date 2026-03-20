@@ -21,6 +21,7 @@ $_['text_note']                = '<span class="text-danger">Note:</span> HTML is
 $_['text_success']             = 'Thank you for your review. It has been submitted to the webmaster for approval.';
 $_['text_siblings']            = 'Siblings';
 $_['text_related']             = 'Related Products';
+$_['text_related_articles']    = 'Related Articles';
 $_['text_tags']                = 'Tags:';
 $_['text_error']               = 'Product not found!';
 $_['text_payment_recurring']   = 'Payment Profile';

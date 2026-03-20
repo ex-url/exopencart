@@ -504,6 +504,23 @@ class ModelCatalogProduct extends Model {
 		return $product_data;
 	}
 
+  public function getArticleRelatedByProduct($product_id, $limit = 3) {
+
+    $article_data = array();
+
+    $this->load->model('blog/article');
+
+    $sql = "SELECT * FROM " . DB_PREFIX . "product_related_article pra LEFT JOIN " . DB_PREFIX . "article a ON (pra.article_id = a.article_id) LEFT JOIN " . DB_PREFIX . "article_to_store a2s ON (a.article_id = a2s.article_id) WHERE pra.product_id = '" . (int)$product_id . "' AND a.status = '1' AND a.date_added <= NOW() AND a2s.store_id = '" . (int)$this->config->get('config_store_id') . "' LIMIT " . (int)$limit;
+
+    $query = $this->db->query($sql);
+
+    foreach ($query->rows as $result) {
+      $article_data[$result['article_id']] = $this->model_blog_article->getArticle($result['article_id']);
+    }
+
+    return $article_data;
+  }
+
   public function getProductLayoutId($product_id) {
     $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_to_layout WHERE product_id = '" . (int)$product_id . "' AND store_id = '" . (int)$this->config->get('config_store_id') . "'");
 

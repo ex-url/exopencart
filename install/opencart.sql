@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Mar 19, 2026 at 06:58 PM
+-- Generation Time: Mar 20, 2026 at 08:33 AM
 -- Server version: 5.7.41-log
 -- PHP Version: 7.4.33
 
@@ -151,7 +151,7 @@ CREATE TABLE `oc_article` (
 
 INSERT INTO `oc_article` (`article_id`, `image`, `sort_order`, `article_review`, `status`, `noindex`, `viewed`, `show_date`, `date_published`, `date_added`, `date_modified`) VALUES
 (127, 'catalog/demo/news/id126/127_preview.webp', 1, 0, 1, 1, 139, 1, '2023-04-18 00:00:00', '2025-04-23 06:25:05', '2026-03-07 17:21:31'),
-(128, 'catalog/demo/news/id126/128_preview.webp', 2, 0, 1, 1, 217, 1, '2023-04-19 00:00:00', '2025-04-23 06:25:05', '2026-03-07 17:19:40'),
+(128, 'catalog/demo/news/id126/128_preview.webp', 2, 0, 1, 1, 218, 1, '2023-04-19 00:00:00', '2025-04-23 06:25:05', '2026-03-07 17:19:40'),
 (126, 'catalog/demo/news/id126/126_preview.webp', 1, 0, 1, 1, 146, 1, '2023-04-20 00:00:00', '2025-04-23 06:25:05', '2026-03-07 17:17:41'),
 (129, 'catalog/demo/news/id129/129_preview.webp', 1, 0, 1, 1, 232, 1, '2023-04-19 00:00:00', '2026-02-20 10:47:45', '2026-03-07 17:20:32'),
 (130, 'catalog/demo/news/id130/130_preview.webp', 1, 0, 1, 1, 134, 1, '2023-04-15 00:00:00', '2026-02-26 10:23:31', '2026-03-07 17:26:21'),
@@ -161,7 +161,7 @@ INSERT INTO `oc_article` (`article_id`, `image`, `sort_order`, `article_review`,
 (134, 'catalog/demo/news/id134/134_preview.webp', 1, 0, 1, 1, 243, 1, '2026-02-26 00:00:00', '2026-02-26 11:37:19', '2026-03-07 17:02:22'),
 (135, 'catalog/demo/news/id135/135_preview.webp', 1, 0, 1, 1, 198, 1, '2026-02-26 00:00:00', '2026-02-26 11:56:04', '2026-03-07 17:03:50'),
 (136, 'catalog/demo/news/id136/136_preview.webp', 1, 0, 1, 1, 223, 1, '2026-02-26 00:00:00', '2026-02-26 12:53:31', '2026-03-07 17:14:48'),
-(137, 'catalog/demo/news/id137/137_preview.webp', 1, 0, 1, 1, 275, 1, '2023-04-17 00:00:00', '2026-02-26 13:26:06', '2026-03-07 17:23:56'),
+(137, 'catalog/demo/news/id137/137_preview.webp', 1, 0, 1, 1, 276, 1, '2023-04-17 00:00:00', '2026-02-26 13:26:06', '2026-03-07 17:23:56'),
 (138, 'catalog/demo/news/id138/138_preview.webp', 1, 0, 1, 1, 215, 1, '2023-04-16 00:00:00', '2026-02-26 13:46:29', '2026-03-07 17:24:50'),
 (139, 'catalog/demo/news/id139/139_preview.webp', 1, 0, 1, 1, 298, 1, '2026-02-26 00:00:00', '2026-02-26 14:27:33', '2026-03-07 17:15:38'),
 (140, 'catalog/demo/news/id140/140_preview.webp', 1, 0, 1, 1, 343, 1, '2026-02-27 00:00:00', '2026-02-27 09:02:13', '2026-03-07 16:45:47'),
@@ -1847,8 +1847,8 @@ CREATE TABLE `oc_currency` (
 --
 
 INSERT INTO `oc_currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbol_right`, `decimal_place`, `value`, `status`, `date_modified`) VALUES
-(1, 'Рубль', 'RUB', '', ' ₽', '0', 1.00000000, 1, '2026-03-19 21:43:31'),
-(2, 'US Dollar', 'USD', '$', '', '2', 0.01178718, 1, '2026-03-19 21:43:31');
+(1, 'Рубль', 'RUB', '', ' ₽', '0', 1.00000000, 1, '2026-03-20 10:38:21'),
+(2, 'US Dollar', 'USD', '$', '', '2', 0.01178718, 1, '2026-03-20 10:38:21');
 
 -- --------------------------------------------------------
 
@@ -3959,7 +3959,7 @@ INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `is
 (42, '42232', '', '', '', '', '', '', '', '12.0000', 0, 5, 'catalog/demo/products/42232_0.jpg', 0, 1, '6590.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2025-12-22 16:12:33', 1),
 (43, '42233', '', '', '', '', '', '', '', '13.0000', 1, 5, 'catalog/demo/products/42233_0.jpg', 0, 1, '5990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 3, '2022-11-11 12:51:32', '2026-03-03 13:59:35', 1),
 (44, '42234', '', '', '', '', '', '', '', '14.0000', 0, 5, 'catalog/demo/products/42234_0.jpg', 0, 1, '5890.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(45, '42235', '', '', '', '', '', '', '', '15.0000', 0, 5, 'catalog/demo/products/42235_0.jpg', 0, 1, '5230.0000', 0, 9, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 36, '2022-11-11 12:51:32', '2026-03-19 16:11:45', 1),
+(45, '42235', '', '', '', '', '', '', '', '15.0000', 0, 5, 'catalog/demo/products/42235_0.jpg', 0, 1, '5230.0000', 0, 9, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 47, '2022-11-11 12:51:32', '2026-03-19 16:11:45', 1),
 (46, '42236', '', '', '', '', '', '', '', '16.0000', 0, 5, 'catalog/demo/products/42236_0.jpg', 0, 1, '4990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (47, '42237', '', '', '', '', '', '', '', '17.0000', 0, 5, 'catalog/demo/products/42237_0.jpg', 0, 1, '4990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (48, '42238', '', '', '', '', '', '', '', '18.0000', 0, 5, 'catalog/demo/products/42238_0.jpg', 1, 1, '4990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, '', 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
@@ -7145,7 +7145,6 @@ INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES
 ('19e59326e3d70a711e1bf292aa', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-03-30 10:08:16'),
 ('2059d44a30145b40339d9b834c', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-03-30 10:08:16'),
 ('209a4c4c0d515cb89341a44aeb', '{\"user_id\":\"1\",\"user_token\":\"D28NwU5au6FiT8UqnmzGeKpP8DMPRm5C\",\"language\":\"ru-ru\",\"currency\":\"USD\"}', '2026-03-27 18:18:44'),
-('22eae255726eb64f8c49615470', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-03-20 08:20:42'),
 ('27c6f3ac1597bd40971874e08d', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-03-22 08:22:23'),
 ('2c7545ff3af50d3e88aad9f69d', '{\"user_id\":\"1\",\"user_token\":\"1nLFjVm8kEZR7Alv32HYjjV11Y5FGbY6\",\"file_manager_directory\":\"\\/shared\\/httpd\\/exopencart\\/htdocs\\/image\\/catalog\\/demo\\/news\\/id132\",\"language\":\"ru-ru\",\"currency\":\"USD\"}', '2026-04-02 08:11:09'),
 ('2c93e787866d7c74564c024621', '{\"user_id\":\"1\",\"user_token\":\"7wV9za3Z52dVumhMGt9b52ueCpnU21uf\"}', '2026-04-18 14:40:56'),
@@ -7154,7 +7153,7 @@ INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES
 ('31f904d5ff0ef8aa1d445e27d4', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-03-21 14:11:41'),
 ('3214183d54d07a553a914d95a5', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-04-16 15:44:37'),
 ('368e33331c97e6f74cc88d4f18', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-03-25 21:28:50'),
-('3c9cdc144894a6afbfea4f2740', '{\"user_id\":\"1\",\"user_token\":\"f7z8fv4cHQIuoKPvOCXH3qNhfcss6grB\",\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-04-18 21:57:21'),
+('3c9cdc144894a6afbfea4f2740', '{\"user_id\":\"1\",\"user_token\":\"f7z8fv4cHQIuoKPvOCXH3qNhfcss6grB\",\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-04-19 10:38:14'),
 ('3c9ffefd32c785dd37d0dd2a25', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-03-21 08:20:54'),
 ('3fd4c60f649f4f087791fbfb46', '{\"user_id\":\"1\",\"user_token\":\"mTRvQ5uIfFYHI4Z4lmyJI8ZnFSKyj1dG\",\"language\":\"ru-ru\",\"currency\":\"USD\",\"file_manager_directory\":\"\\/shared\\/httpd\\/exopencart\\/htdocs\\/image\\/catalog\\/demo\\/news\\/id126\"}', '2026-03-21 08:20:57'),
 ('447ab4938971711a521dea35b9', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-04-14 12:09:30'),
@@ -7166,7 +7165,6 @@ INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES
 ('5969e50426e69dcb1878fda91b', '{\"user_id\":\"1\",\"user_token\":\"2ofwM9zx9iIvcUQE3NGPeGmizLE8RhNU\",\"language\":\"en-gb\",\"currency\":\"USD\"}', '2026-04-14 11:30:37'),
 ('5a2a85e0cee52f3daaf0c9bb18', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-03-22 10:45:54'),
 ('5a5664117a93f7aefcb3ec028d', '{\"user_id\":\"1\",\"user_token\":\"V87PRsddptL11Zm2o1CktAOBJlzCljno\",\"language\":\"ru-ru\",\"currency\":\"USD\"}', '2026-03-22 08:22:24'),
-('5ecfa00a63cc6658915ac60797', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-03-19 21:00:04'),
 ('63b971eaaf19899b75b45e261b', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-04-07 11:22:49'),
 ('66010714da312fff4e8cd1e75e', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-03-22 09:11:15'),
 ('66ecdbd927f7c94e83ce08fef0', '{\"user_id\":\"1\",\"user_token\":\"O8vjmSbUYaEAIV0AjRO2qL3SuSo1rrcH\",\"language\":\"ru-ru\",\"currency\":\"USD\"}', '2026-04-06 16:29:10'),
@@ -7194,16 +7192,15 @@ INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES
 ('942f3d0f39093ad7e2a34e708f', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-04-07 11:22:49'),
 ('96d36075f928cf0175ce31b616', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-03-26 11:37:25'),
 ('97fb8e3c8d503a3da800fb665b', '{\"user_id\":\"1\",\"user_token\":\"TuALk2NiCjWpBjBlQuVSkwbBhUKLiaW7\",\"language\":\"ru-ru\",\"currency\":\"RUB\",\"file_manager_directory\":\"\\/shared\\/httpd\\/exopencart\\/htdocs\\/image\\/catalog\\/demo\\/news\\/id145\",\"wishlist\":[]}', '2026-04-04 08:19:17'),
-('9ba36af06afb0ccbc6f4e9cbb0', '{\"user_id\":\"1\",\"user_token\":\"MUpFG4njgrDyFcQtfzmzRykKo2VqHqce\",\"language\":\"ru-ru\",\"currency\":\"RUB\",\"payment_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"\",\"address_2\":\"\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\\u041c\\u043e\\u0441\\u043a\\u043e\\u0432\\u0441\\u043a\\u0430\\u044f \\u043e\\u0431\\u043b\\u0430\\u0441\\u0442\\u044c\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"shipping_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"\",\"address_2\":\"\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\\u041c\\u043e\\u0441\\u043a\\u043e\\u0432\\u0441\\u043a\\u0430\\u044f \\u043e\\u0431\\u043b\\u0430\\u0441\\u0442\\u044c\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"guest\":{\"customer_group_id\":\"1\"},\"payment_methods\":{\"cod\":{\"code\":\"cod\",\"title\":\"\\u041e\\u043f\\u043b\\u0430\\u0442\\u0430 \\u043f\\u0440\\u0438 \\u0434\\u043e\\u0441\\u0442\\u0430\\u0432\\u043a\\u0435\",\"terms\":\"\\u041d\\u0430\\u043b\\u0438\\u0447\\u043d\\u044b\\u043c\\u0438 \\u0438\\u043b\\u0438 \\u043a\\u0430\\u0440\\u0442\\u043e\\u0439\",\"sort_order\":\"1\"},\"bank_transfer\":{\"code\":\"bank_transfer\",\"title\":\"\\u041e\\u043f\\u043b\\u0430\\u0442\\u0430 \\u043e\\u043d\\u043b\\u0430\\u0439\\u043d\",\"terms\":\"\\u041a\\u0430\\u0440\\u0442\\u043e\\u0439 \\u0438\\u043b\\u0438 QR-\\u043a\\u043e\\u0434\\u043e\\u043c\",\"sort_order\":\"2\"}},\"shipping_methods\":{\"pickup\":{\"title\":\"\\u0421\\u0430\\u043c\\u043e\\u0432\\u044b\\u0432\\u043e\\u0437\",\"quote\":{\"pickup\":{\"code\":\"pickup.pickup\",\"title\":\"\\u0421\\u0430\\u043c\\u043e\\u0432\\u044b\\u0432\\u043e\\u0437\",\"description\":\"\\u0421\\u043e \\u0441\\u043a\\u043b\\u0430\\u0434\\u0430 \\u0438\\u043b\\u0438 \\u041f\\u0412\\u0417\",\"cost\":0,\"tax_class_id\":0,\"text\":\"0 \\u20bd\"}},\"sort_order\":\"1\",\"error\":false},\"flat\":{\"title\":\"\\u0414\\u043e\\u0441\\u0442\\u0430\\u0432\\u043a\\u0430 \\u0434\\u043e \\u0430\\u0434\\u0440\\u0435\\u0441\\u0430\",\"quote\":{\"flat\":{\"code\":\"flat.flat\",\"title\":\"\\u0414\\u043e\\u0441\\u0442\\u0430\\u0432\\u043a\\u0430 \\u0434\\u043e \\u0430\\u0434\\u0440\\u0435\\u0441\\u0430\",\"description\":\"\\u0411\\u0435\\u0441\\u043f\\u043b\\u0430\\u0442\\u043d\\u043e \\u043f\\u0440\\u0438 \\u0437\\u0430\\u043a\\u0430\\u0437\\u0435 \\u043e\\u0442 <b>10 000 \\u20bd<\\/b>\",\"cost\":0,\"tax_class_id\":\"0\",\"text\":\"0 \\u20bd\"}},\"sort_order\":\"2\",\"error\":false}}}', '2026-03-20 08:20:46'),
 ('a2daf222a37389a5b1bf021516', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-03-26 16:55:19'),
 ('a52f697745ce8e0561b84c2de5', '{\"user_id\":\"1\",\"user_token\":\"Z54I4C3aCDheUMVM6y1rixO2ceWjGIYz\",\"language\":\"ru-ru\",\"currency\":\"RUB\",\"wishlist\":[]}', '2026-03-30 15:03:57'),
 ('a56ae1ec6c1214d19e42602085', '{\"user_id\":\"1\",\"user_token\":\"VI8KA1606jVNIF0XlJ04GFm4lvh6mfhW\",\"language\":\"ru-ru\",\"currency\":\"USD\"}', '2026-04-17 14:04:53'),
 ('a59f6705d31f15c83cd76a4115', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-03-22 08:22:23'),
 ('ab59d47e1f7154e92c750673b0', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-04-01 21:48:23'),
-('ae06afed3d1fe02e3a807890ca', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-03-19 21:00:04'),
 ('af284608e7c45913bbf05adba9', '{\"user_id\":\"1\",\"user_token\":\"sZukKRVo124jWyR3kz5gMY1EJZUiZD5F\",\"language\":\"ru-ru\",\"currency\":\"USD\"}', '2026-03-28 09:28:33'),
 ('af4922eb139f6cb831e8dad2d6', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-03-26 16:55:19'),
 ('b1ec177c096a46fcf26cb00785', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-04-12 08:38:42'),
+('b6feeea2cc5027f5664227bf1f', '{\"user_id\":\"1\",\"user_token\":\"AccxeIxOd8Mez9Dn3cNGunAJSUgkzxHY\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-04-19 11:33:09'),
 ('b8a7088496400e40b31d1ad80f', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-03-22 20:26:37'),
 ('bcf515c7e34211cec24c09a687', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-03-25 20:16:15'),
 ('bd186891bd7243f8e20a20f0f7', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-03-28 10:41:08'),
@@ -7216,7 +7213,6 @@ INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES
 ('d1f888f343218c3e350466fc65', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-04-07 21:42:03'),
 ('d2ccf16483f4b11a2a08dbee01', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-03-27 18:18:40'),
 ('d6ef1ae8ba3350e1f73cec63d3', '{\"user_id\":\"1\",\"user_token\":\"vrgJ92CNL3fzDip99pOXmYM1tZyMC4Jk\",\"language\":\"ru-ru\",\"currency\":\"USD\"}', '2026-04-11 10:23:23'),
-('d88abafe52c66e46443f8651b5', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-03-20 08:20:42'),
 ('da68eb03198284cd7952bbdb36', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-04-01 08:30:19'),
 ('dec168e404f253b9db3dcd7435', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-03-21 12:53:42'),
 ('decfe559a921a6d9dd4055dda7', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-03-23 12:38:15'),

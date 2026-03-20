@@ -792,6 +792,59 @@
             </div>
           </div>
           {% endif %}
+          {% if articles %}
+          <div class="blog-related-articles column is-12 my-5">
+            <hr>
+            <h3 class="title is-3">{{ text_related_articles }}</h3>
+            <div class="columns is-multiline">
+              {% if column_left and column_right %}
+              {% set class = 'column is-6-fullhd is-6-widescreen is-12-desktop is-6-tablet is-12-mobile' %}
+              {% elseif column_left or column_right %}
+              {% set class = 'column is-4-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile' %}
+              {% else %}
+              {% set class = 'column is-4-fullhd is-4-widescreen is-6-desktop is-6-tablet is-12-mobile' %}
+              {% endif %}
+              {% for article in articles %}
+            <div class="{{ class }}">
+              <div class="blog-card card">
+            <div class="card-image">
+              <a href="{{ article['href'] }}" class="has-text-centered image">
+                <img src="{{ article['thumb'] }}" width="{{ image_width }}" height="{{ image_height }}" loading="lazy" alt="{{ article['name'] }}" title="{{ article['name'] }}" />
+              </a>
+            </div>
+            <div class="card-content">
+              <div class="title is-5 mb-5"><a href="{{ article['href'] }}">{{ article['name'] }}</a></div>
+              {% if article.show_date %}
+              <div class="is-flex is-justify-content-space-between is-align-items-center mb-5">
+                <span class="icon-text">
+                  <span class="icon has-text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="24" width="24">
+                      <path d="M10.3125 3.125V1.875m-5.625 1.25V1.875M2.03125 5h10.9375M6.25 8.75h2.5m-1.25 -1.25v2.5m-5.625 -3.7225c0 -1.3218750000000001 0 -1.983125 0.2725 -2.488125a2.435 2.435 0 0 1 1.0925 -1.031875C3.775 2.5 4.475 2.5 5.875 2.5h3.25c1.4000000000000001 0 2.1 0 2.6350000000000002 0.2575 0.470625 0.22625 0.8525 0.5874999999999999 1.0925 1.03125 0.2725 0.5062500000000001 0.2725 1.1675 0.2725 2.489375v3.07c0 1.3218750000000001 0 1.983125 -0.2725 2.488125a2.435 2.435 0 0 1 -1.0925 1.031875C11.225000000000001 13.125 10.525 13.125 9.125 13.125H5.875c-1.4000000000000001 0 -2.1 0 -2.6350000000000002 -0.2575a2.435 2.435 0 0 1 -1.0925 -1.03125C1.875 11.33 1.875 10.66875 1.875 9.346875z" stroke-width="1"></path>
+                    </svg>
+                  </span>
+                  <span class="has-text-grey">{{ article.date_published }}</span>
+                </span>
+                <span class="icon-text ml-2">
+                  <span class="icon has-text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="24" width="24">
+                      <path d="M1.59375 8.37875c-0.17 -0.233125 -0.255 -0.35000000000000003 -0.31375 -0.5750000000000001a1.5375 1.5375 0 0 1 0 -0.6068749999999999c0.05875 -0.225625 0.14375000000000002 -0.3425 0.31375 -0.5750000000000001C2.524375 5.34375 4.564375 3.125 7.5 3.125c2.935625 0 4.975625 2.21875 5.90625 3.4962500000000003 0.17 0.233125 0.255 0.35000000000000003 0.31375 0.5750000000000001a1.5375 1.5375 0 0 1 0 0.6068749999999999c-0.05875 0.225625 -0.14375000000000002 0.3425 -0.31375 0.5750000000000001C12.475624999999999 9.65625 10.435625 11.875 7.5 11.875c-2.935625 0 -4.975625 -2.21875 -5.90625 -3.4962500000000003" stroke-width="1"></path>
+                      <path d="M7.5 8.75a1.25 1.25 0 1 0 0 -2.5 1.25 1.25 0 0 0 0 2.5" stroke-width="1"></path>
+                    </svg>
+                  </span>
+                  <span class="has-text-grey">{{ article.viewed }}</span>
+                </span>
+              </div>  
+              {% endif %}
+              <div class="announcement">
+                <p class="text">{{ article['description'] }} <a href="{{ article.href }}">{{ button_more }}</a></p>                  
+              </div>
+            </div>
+            </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
         </div>
       </div>
       {{ column_right }}
