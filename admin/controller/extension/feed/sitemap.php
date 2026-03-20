@@ -54,6 +54,12 @@ class ControllerExtensionFeedSitemap extends Controller {
       $data['feed_sitemap_status'] = $this->config->get('feed_sitemap_status');
     }
 
+    if (isset($this->request->post['feed_sitemap_settings'])) {
+      $data['feed_sitemap_settings'] = $this->request->post['feed_sitemap_settings'];
+    } else {
+      $data['feed_sitemap_settings'] = $this->config->get('feed_sitemap_settings');
+    }
+
     if (isset($this->request->post['feed_sitemap_cron_token'])) {
       $data['feed_sitemap_cron_token'] = $this->request->post['feed_sitemap_cron_token'];
     } elseif ($this->config->get('feed_sitemap_cron_token')) {

@@ -9,7 +9,10 @@ $_['text_edit']        = 'Edit Sitemap';
 
 // Entry
 $_['entry_status']     = 'Status';
-$_['entry_feed_url']   = 'Feed Url';
+$_['entry_include_blog_categories'] = 'Include Blog Categories';
+$_['entry_include_blog_articles'] = 'Include Blog Articles';
+$_['entry_feed_url']   = 'Sitemap URL';
+$_['entry_cron_url']   = 'Cron URL';
 
 $_['button_generate']   = 'Generate Now';
 

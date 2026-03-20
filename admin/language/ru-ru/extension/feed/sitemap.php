@@ -13,6 +13,8 @@ $_['text_edit']        = 'Редактирование';
 
 // Entry
 $_['entry_status']     = 'Статус';
+$_['entry_include_blog_categories'] = 'Включить категории блога';
+$_['entry_include_blog_articles'] = 'Включить статьи блога';
 $_['entry_feed_url']   = 'Ссылка на карту сайта';
 $_['entry_cron_url']   = 'Ссылка на cron-задачу';
 

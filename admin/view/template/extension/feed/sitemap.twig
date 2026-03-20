@@ -38,24 +38,67 @@
                 <option value="0" selected="selected">{{ text_disabled }}</option>
                 {% endif %}
               </select>
+              <input type="hidden" name="feed_sitemap_cron_token" value="{{ feed_sitemap_cron_token }}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">{{ entry_include_blog_categories }}</label>
+            <div class="col-sm-10">
+              <label class="radio-inline">
+                <input type="radio" name="feed_sitemap_settings[blog_categories]" value="1" {{
+                  feed_sitemap_settings.blog_categories ? 'checked="checked"' : '' }} />
+                {{ text_yes }}
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="feed_sitemap_settings[blog_categories]" value="0" {{ not
+                  feed_sitemap_settings.blog_categories ? 'checked="checked"' : '' }} />
+                {{ text_no }}
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">{{ entry_include_blog_articles }}</label>
+            <div class="col-sm-10">
+              <label class="radio-inline">
+                <input type="radio" name="feed_sitemap_settings[blog_articles]" value="1" {{
+                  feed_sitemap_settings.blog_articles ? 'checked="checked"' : '' }} />
+                {{ text_yes }}
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="feed_sitemap_settings[blog_articles]" value="0" {{ not
+                  feed_sitemap_settings.blog_articles ? 'checked="checked"' : '' }} />
+                {{ text_no }}
+              </label>
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label" for="input-feed-url">{{ entry_feed_url }}</label>
             <div class="col-sm-10">
-              <input type="text" readonly id="input-feed-url" class="form-control" value="{{ feed_url }}">
+              <div class="input-group">
+                <div id="input-feed-url" class="form-control">{{ feed_url }}</div>
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-primary"
+                    onclick="copyToClipboard('#input-feed-url', event)">
+                    <i class="fa fa-copy"></i>
+                  </button>
+                </span>
+              </div>
               <small class="text-info">{{ help_feed_url }}</small>
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label" for="input-cron-url">{{ entry_cron_url }}</label>
             <div class="col-sm-10">
-              <input type="text" readonly id="input-cron-url" class="form-control" value="{{ cron_url }}">
-              <input type="hidden" name="feed_sitemap_cron_token" value="{{ feed_sitemap_cron_token }}">
+              <div class="input-group">
+                <div id="input-cron-url" class="form-control">{{ cron_url }}</div>
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-primary"
+                    onclick="copyToClipboard('#input-cron-url', event)">
+                    <i class="fa fa-copy"></i>
+                  </button>
+                </span>
+              </div>              
               <small class="text-info">{{ help_cron_url }}</small>
-              <div style="margin-top: 10px;">
-                <button type="button" id="generate" class="btn btn-primary">{{ button_generate }}</button>
-              </div>
             </div>
           </div>
         </form>

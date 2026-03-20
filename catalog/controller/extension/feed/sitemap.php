@@ -8,6 +8,7 @@ class ControllerExtensionFeedSitemap extends Controller {
       $this->load->model('catalog/product');
       $this->load->model('tool/image');
 
+      $settings = $this->config->get('feed_sitemap_settings');
       $products = $this->model_catalog_product->getProducts();
 
       foreach ($products as $product) {
@@ -48,6 +49,34 @@ class ControllerExtensionFeedSitemap extends Controller {
           $output .= '  <loc>' . $this->url->link('product/product', 'manufacturer_id=' . $manufacturer['manufacturer_id'] . '&product_id=' . $product['product_id']) . '</loc>';
           $output .= '  <changefreq>weekly</changefreq>';
           $output .= '  <priority>1.0</priority>';
+          $output .= '</url>';
+        }
+      }
+
+      if($settings['blog_categories']) {
+        $this->load->model('blog/category');
+
+        $blog_categories = $this->model_blog_category->getCategories();
+
+        foreach ($blog_categories as $blog_category) {
+          $output .= '<url>';
+          $output .= '  <loc>' . $this->url->link('blog/category', 'blog_category_id=' . $blog_category['blog_category_id']) . '</loc>';
+          $output .= '  <changefreq>weekly</changefreq>';
+          $output .= '  <priority>0.6</priority>';
+          $output .= '</url>';
+        }
+      }
+
+      if($settings['blog_articles']) {
+        $this->load->model('blog/article');
+
+        $blog_articles = $this->model_blog_article->getArticles();
+
+        foreach ($blog_articles as $blog_article) {
+          $output .= '<url>';
+          $output .= '  <loc>' . $this->url->link('blog/article', 'blog_category_id&article_id=' . $blog_article['article_id']) . '</loc>';
+          $output .= '  <changefreq>weekly</changefreq>';
+          $output .= '  <priority>0.6</priority>';
           $output .= '</url>';
         }
       }
@@ -80,7 +109,8 @@ class ControllerExtensionFeedSitemap extends Controller {
 
       $this->load->model('catalog/product');
       $this->load->model('tool/image');
-
+      
+      $settings = $this->config->get('feed_sitemap_settings');
       $products = $this->model_catalog_product->getProducts();
 
       foreach ($products as $product) {
@@ -121,6 +151,34 @@ class ControllerExtensionFeedSitemap extends Controller {
           $output .= '  <loc>' . $this->url->link('product/product', 'manufacturer_id=' . $manufacturer['manufacturer_id'] . '&product_id=' . $product['product_id']) . '</loc>';
           $output .= '  <changefreq>weekly</changefreq>';
           $output .= '  <priority>1.0</priority>';
+          $output .= '</url>';
+        }
+      }
+
+      if($settings['blog_categories']) {
+        $this->load->model('blog/category');
+
+        $blog_categories = $this->model_blog_category->getCategories();
+
+        foreach ($blog_categories as $blog_category) {
+          $output .= '<url>';
+          $output .= '  <loc>' . $this->url->link('blog/category', 'blog_category_id=' . $blog_category['blog_category_id']) . '</loc>';
+          $output .= '  <changefreq>weekly</changefreq>';
+          $output .= '  <priority>0.6</priority>';
+          $output .= '</url>';
+        }
+      }
+
+      if($settings['blog_articles']) {
+        $this->load->model('blog/article');
+
+        $blog_articles = $this->model_blog_article->getArticles();
+
+        foreach ($blog_articles as $blog_article) {
+          $output .= '<url>';
+          $output .= '  <loc>' . $this->url->link('blog/article', 'blog_category_id&article_id=' . $blog_article['article_id']) . '</loc>';
+          $output .= '  <changefreq>weekly</changefreq>';
+          $output .= '  <priority>0.6</priority>';
           $output .= '</url>';
         }
       }
