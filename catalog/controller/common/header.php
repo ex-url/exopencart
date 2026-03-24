@@ -127,11 +127,11 @@ class ControllerCommonHeader extends Controller {
     $data['shopping_cart'] = $this->url->link('checkout/cart');
     $data['checkout'] = $this->url->link('checkout/checkout', '', true);
     $data['contact'] = $this->url->link('information/contact');
-    $data['telephone'] = $this->config->get('config_telephone');
-    $data['tel_link'] = normalizePhone($this->config->get('config_telephone'));
+    $data['telephone'] = $this->config->get('config_show_telephone_header') ? $this->config->get('config_telephone') : '';
+    $data['tel_link'] = $this->config->get('config_show_telephone_header') ? normalizePhone($this->config->get('config_telephone')) : '';
     $data['fax'] = $this->config->get('config_fax');
     $data['fax_link'] = normalizePhone($this->config->get('config_fax'));
-    $data['email'] = $this->config->get('config_email');
+    $data['email'] = $this->config->get('config_show_email_header') ? $this->config->get('config_email') : '';
     $data['social_media'] = $this->config->get('config_social_media');
 
     $data['language'] = $this->load->controller('common/language');

@@ -666,6 +666,62 @@ class ControllerSettingStore extends Controller {
       $data['config_order_status_id'] = '';
     }
 
+    if (isset($this->request->post['config_show_telephone_header'])) {
+      $data['config_show_telephone_header'] = $this->request->post['config_show_telephone_header'];
+    } elseif (isset($store_info['config_show_telephone_header'])) {
+      $data['config_show_telephone_header'] = $store_info['config_show_telephone_header'];
+    } else {
+      $data['config_show_telephone_header'] = 0;
+    }
+
+    if (isset($this->request->post['config_show_telephone_footer'])) {
+      $data['config_show_telephone_footer'] = $this->request->post['config_show_telephone_footer'];
+    } elseif (isset($store_info['config_show_telephone_footer'])) {
+      $data['config_show_telephone_footer'] = $store_info['config_show_telephone_footer'];
+    } else {
+      $data['config_show_telephone_footer'] = 0;
+    }
+
+    if (isset($this->request->post['config_show_telephone_contacts'])) {
+      $data['config_show_telephone_contacts'] = $this->request->post['config_show_telephone_contacts'];
+    } elseif (isset($store_info['config_show_telephone_contacts'])) {
+      $data['config_show_telephone_contacts'] = $store_info['config_show_telephone_contacts'];
+    } else {
+      $data['config_show_telephone_contacts'] = 0;
+    }
+
+    if (isset($this->request->post['config_show_email_header'])) {
+      $data['config_show_email_header'] = $this->request->post['config_show_email_header'];
+    } elseif (isset($store_info['config_show_email_header'])) {
+      $data['config_show_email_header'] = $store_info['config_show_email_header'];
+    } else {
+      $data['config_show_email_header'] = 0;
+    }
+
+    if (isset($this->request->post['config_show_email_footer'])) {
+      $data['config_show_email_footer'] = $this->request->post['config_show_email_footer'];
+    } elseif (isset($store_info['config_show_email_footer'])) {
+      $data['config_show_email_footer'] = $store_info['config_show_email_footer'];
+    } else {
+      $data['config_show_email_footer'] = 0;
+    }
+
+    if (isset($this->request->post['config_show_email_contacts'])) {
+      $data['config_show_email_contacts'] = $this->request->post['config_show_email_contacts'];
+    } elseif (isset($store_info['config_show_email_contacts'])) {
+      $data['config_show_email_contacts'] = $store_info['config_show_email_contacts'];
+    } else {
+      $data['config_show_email_contacts'] = 0;
+    }
+
+    if (isset($this->request->post['config_show_contact_form'])) {
+      $data['config_show_contact_form'] = $this->request->post['config_show_contact_form'];
+    } elseif (isset($store_info['config_show_contact_form'])) {
+      $data['config_show_contact_form'] = $store_info['config_show_contact_form'];
+    } else {
+      $data['config_show_contact_form'] = 0;
+    }
+
     $this->load->model('localisation/order_status');
 
     $data['order_statuses'] = $this->model_localisation_order_status->getOrderStatuses();

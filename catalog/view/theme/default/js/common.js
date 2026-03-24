@@ -453,6 +453,19 @@ $(document).ready(function () {
       $(this).removeClass('has-background-danger');
       $(this).addClass('has-background-success');
     }
+
+    if ($(this).parent().find('.mobile-contacts-list').hasClass('shown')) {
+      $(document).one('click', function closeMenu(e) {
+        const $parent = $('.mobile-contacts-trigger').parent();
+        
+        if (!$(e.target).closest($parent).length) {
+          $parent.find('.mobile-contacts-list').removeClass('shown');
+          $('.mobile-contacts-trigger').removeClass('shown has-background-danger').addClass('has-background-success');
+        } else {
+          $(document).one('click', closeMenu);
+        }
+      });
+    }
   });
 
   let phone_scroll_point = $('header').height();

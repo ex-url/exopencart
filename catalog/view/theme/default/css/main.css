@@ -615,6 +615,8 @@ input[type="search"]::-webkit-search-results-decoration {
   border-radius: 36px;
   padding: 12px;
   transition: all 0.2s ease;
+  z-index: 2;
+  position: relative;
   animation: rotatedshake 4s cubic-bezier(.36, .07, .19, .97) infinite;
 }
 
@@ -624,16 +626,17 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .mobile-contacts-list {
   position: absolute;
-  bottom: calc(100% + 5px);
+  bottom: 1.5rem;
   box-shadow: 0 2px 12px 0 rgb(0 0 0 / 20%);
   border-radius: 32px;
   text-align: center;
-  transition: all 0.5s ease;
-  right: -20rem;
+  transition: all 0.3s ease;
+  right: 1.5rem;
+  transform: scale(0);
+  transform-origin: 100% 100%;
 }
-
 .mobile-contacts-list.shown {
-  transform: translateX(-20rem);
+  transform: scale(1);
 }
 
 .mobile-contacts-list>a {
@@ -894,6 +897,7 @@ footer .scroll-top-trigger.shown {
 
   .mobile-contacts.shown {
     transform: translateX(-7rem);
+    z-index: 2;
   }
 }
 

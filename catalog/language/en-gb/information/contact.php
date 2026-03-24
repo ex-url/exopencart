@@ -14,17 +14,16 @@ $_['text_open']      = 'Opening Times';
 $_['text_comment']   = 'Comments';
 $_['text_submit']    = 'Submit';
 $_['text_reset']     = 'Reset';
-$_['text_message']   = '<p>Your enquiry has been successfully sent to the store owner!</p>';
+$_['text_success']   = 'Your enquiry has been successfully sent to the store owner!';
+$_['text_agree']     = 'I agree to the processing of personal data under article <a href="%s" class="agree">%s</a>';
+$_['text_subject']   = 'New message from the website';
 
 // Entry
 $_['entry_name']     = 'Your Name';
 $_['entry_email']    = 'E-Mail Address';
-$_['entry_enquiry']  = 'Enquiry';
-
-// Email
-$_['email_subject']  = 'Enquiry %s';
+$_['entry_message']   = 'Your Message';
 
 // Errors
 $_['error_name']     = 'Name must be between 3 and 32 characters!';
 $_['error_email']    = 'E-Mail Address does not appear to be valid!';
-$_['error_enquiry']  = 'Enquiry must be between 10 and 3000 characters!';
+$_['error_message']   = 'Message must be between 10 and 1000 characters!';

@@ -89,6 +89,21 @@ function copyToClipboard(element, event) {
 }
 
 $(document).ready(function () {
+  // init incoming polling 
+  setInterval(function() {
+    $.ajax({
+      url: 'index.php?route=customer/incoming/poll&user_token=' + getURLVar('user_token'),
+      dataType: 'json',
+      success: function(json) {
+        if (json.total) {
+          $('#incoming-requests .badge').text(json.total).fadeIn();
+        } else {
+          $('#incoming-requests .badge').text(json.total).fadeOut();
+        }
+      }
+    });
+  }, 10000);
+
   //Form Submit for IE Browser
   $('button[type=\'submit\']').on('click', function () {
     $("form[id*='form-']").submit();

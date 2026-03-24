@@ -20,3 +20,4 @@ $_['text_new_customer']    		  = 'Пользователя';
 $_['text_new_download']           = 'Загрузку';
 $_['text_new_manufacturer']		  = 'Производителя';
 $_['text_new_product']     		  = 'Товар';
+$_['text_incoming']     		   = 'Входящие запросы';

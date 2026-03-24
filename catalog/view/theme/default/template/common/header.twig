@@ -91,6 +91,7 @@
             </div>
             <div class="column is-narrow">
               <div class="header-contacts is-hidden-mobile">
+                {% if email %}
                 <a class="email icon-text mr-4 is-hidden-touch" href="mailto:{{ email }}">
                   <span class="icon has-text-primary">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="24" width="24">
@@ -99,6 +100,8 @@
                   </span>
                   <span class="has-text-weight-bold ">{{ email }}</span>
                 </a>
+                {% endif %}
+                {% if telephone %}
                 <a class="icon-text" rel="nofollow" href="tel:{{ tel_link }}">
                   <span class="icon has-text-primary">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -109,6 +112,7 @@
                   </span>
                   <span class="has-text-weight-bold ">{{ telephone }}</span>
                 </a>
+                {% endif %}
                 {% if fax %}
                 <a class="icon-text ml-4 is-hidden-touch" rel="nofollow" href="tel:{{ fax_link }}">
                   <span class="icon has-text-primary">

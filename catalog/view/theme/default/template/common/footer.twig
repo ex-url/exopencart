@@ -54,6 +54,7 @@
       </svg>
     </button>
     <div class="mobile-contacts-list p-5 has-background-white">
+      {% if telephone %}
       <a href="tel:{{ tel_link }}" class="footer-phone is-flex is-align-items-center is-justify-content-center">
         <span class="icon is-medium has-text-primary mr-1">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -64,6 +65,7 @@
         </span>
         <span class="has-text-black has-text-weight-bold is-size-5">{{ telephone }}</span>
       </a>
+      {% endif %}
       {% if fax %}
       <a href="tel:{{ fax_link }}" class="is-flex is-align-items-center is-justify-content-center">
         <span class="icon is-medium has-text-link mr-1">
@@ -76,6 +78,7 @@
         <span class="has-text-black has-text-weight-bold is-size-5">{{ fax }}</span>
       </a>
       {% endif %}
+      {% if email %}
       <a href="mailto:{{ email }}" class="is-flex is-align-items-center is-justify-content-center mt-3">
         <span class="icon is-medium has-text-link mr-1">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="24" width="24">
@@ -84,8 +87,9 @@
         </span>
         <span class="has-text-black has-text-weight-bold is-size-5">{{ email }}</span>
       </a>
+      {% endif %}
       {% if social_media %}
-      <div class="mt-5 is-flex is-justify-content-center is-align-items-center">
+      <div class="is-flex is-justify-content-center is-align-items-center {{ telephone or fax or email ? 'mt-5' : '' }}">
         {% for item in social_media %}
         {% if item.header %}
         <a href="{{ item.url }}" target="_blank" class="{{ item.name }} px-2">

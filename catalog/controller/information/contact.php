@@ -7,26 +7,6 @@ class ControllerInformationContact extends Controller {
 
     $this->document->setTitle($this->language->get('heading_title'));
 
-    if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-      $mail = new Mail($this->config->get('config_mail_engine'));
-      $mail->parameter = $this->config->get('config_mail_parameter');
-      $mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
-      $mail->smtp_username = $this->config->get('config_mail_smtp_username');
-      $mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
-      $mail->smtp_port = $this->config->get('config_mail_smtp_port');
-      $mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
-
-      $mail->setTo($this->config->get('config_email'));
-      $mail->setFrom($this->request->post['email']);
-      $mail->setReplyTo($this->request->post['email']);
-      $mail->setSender(html_entity_decode($this->request->post['name'], ENT_QUOTES, 'UTF-8'));
-      $mail->setSubject(html_entity_decode(sprintf($this->language->get('email_subject'), $this->request->post['name'] . ' (' . $this->request->post['email'] . ')'), ENT_QUOTES, 'UTF-8'));
-      $mail->setText($this->request->post['enquiry']);
-      $mail->send();
-
-      $this->response->redirect($this->url->link('information/contact/success'));
-    }
-
     $data['breadcrumbs'] = array();
 
     $data['breadcrumbs'][] = array(
@@ -38,28 +18,6 @@ class ControllerInformationContact extends Controller {
       'text' => $this->language->get('heading_title'),
       'href' => $this->url->link('information/contact')
     );
-
-    if (isset($this->error['name'])) {
-      $data['error_name'] = $this->error['name'];
-    } else {
-      $data['error_name'] = '';
-    }
-
-    if (isset($this->error['email'])) {
-      $data['error_email'] = $this->error['email'];
-    } else {
-      $data['error_email'] = '';
-    }
-
-    if (isset($this->error['enquiry'])) {
-      $data['error_enquiry'] = $this->error['enquiry'];
-    } else {
-      $data['error_enquiry'] = '';
-    }
-
-    $data['button_submit'] = $this->language->get('button_submit');
-
-    $data['action'] = $this->url->link('information/contact', '', true);
 
     $this->load->model('tool/image');
 
@@ -73,14 +31,39 @@ class ControllerInformationContact extends Controller {
     $data['address'] = nl2br($this->config->get('config_address'));
     $data['geocode'] = $this->config->get('config_geocode');
     $data['geocode_hl'] = $this->config->get('config_language');
-    $data['telephone'] = $this->config->get('config_telephone');
-    $data['telephone_link'] = normalizePhone($this->config->get('config_telephone'));
-    $data['email_address'] = $this->config->get('config_email');
+    $data['telephone'] = $this->config->get('config_show_telephone_contacts') ? $this->config->get('config_telephone') : '';
+    $data['telephone_link'] = $this->config->get('config_show_telephone_contacts') ? normalizePhone($this->config->get('config_telephone')) : '';
+    $data['email_address'] = $this->config->get('config_show_email_contacts') ? $this->config->get('config_email') : '';
     $data['social_media'] = $this->config->get('config_social_media');
     $data['fax'] = $this->config->get('config_fax');
     $data['fax_link'] = normalizePhone($this->config->get('config_fax'));
     $data['open'] = nl2br($this->config->get('config_open'));
     $data['comment'] = $this->config->get('config_comment');
+
+    if($this->config->get('config_show_contact_form')) {
+      $data['show_form'] = $this->config->get('config_show_contact_form');
+
+      if ($this->config->get('config_account_id')) {
+        $this->load->model('catalog/information');
+
+        $information_info = $this->model_catalog_information->getInformation($this->config->get('config_account_id'));
+
+        if ($information_info) {
+          $data['text_agree'] = sprintf($this->language->get('text_agree'), $this->url->link('information/information/agree', 'information_id=' . $this->config->get('config_account_id'), true), $information_info['title']);
+        } else {
+          $data['text_agree'] = '';
+        }
+      } else {
+        $data['text_agree'] = '';
+      }
+
+      // Captcha
+      if ($this->config->get('captcha_' . $this->config->get('config_captcha') . '_status') && in_array('contact', (array)$this->config->get('config_captcha_page'))) {
+        $data['captcha'] = $this->load->controller('extension/captcha/' . $this->config->get('config_captcha'), $this->error);
+      } else {
+        $data['captcha'] = '';
+      }
+    }    
 
     $data['locations'] = array();
 
@@ -124,12 +107,6 @@ class ControllerInformationContact extends Controller {
       $data['email'] = $this->customer->getEmail();
     }
 
-    if (isset($this->request->post['enquiry'])) {
-      $data['enquiry'] = $this->request->post['enquiry'];
-    } else {
-      $data['enquiry'] = '';
-    }
-
     // Captcha
     if ($this->config->get('captcha_' . $this->config->get('config_captcha') . '_status') && in_array('contact', (array)$this->config->get('config_captcha_page'))) {
       $data['captcha'] = $this->load->controller('extension/captcha/' . $this->config->get('config_captcha'), $this->error);
@@ -147,20 +124,80 @@ class ControllerInformationContact extends Controller {
     $this->response->setOutput($this->load->view('information/contact', $data));
   }
 
+  public function sender() {
+    $this->load->language('information/contact');
+    $json = [];
+
+    if ($this->config->get('config_show_contact_form') && $this->request->server['REQUEST_METHOD'] == 'POST' && $this->validate()) {
+
+      $mail = new Mail($this->config->get('config_mail_engine'));
+      $mail->parameter = $this->config->get('config_mail_parameter');
+      $mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
+      $mail->smtp_username = $this->config->get('config_mail_smtp_username');
+      $mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
+      $mail->smtp_port = $this->config->get('config_mail_smtp_port');
+      $mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
+
+      $message['message'] = $this->request->post['message'];
+
+      $mail->setTo($this->config->get('config_email'));
+      $mail->setFrom(isset($this->request->post['email']) ? $this->request->post['email'] : $this->config->get('config_email'));
+      $mail->setReplyTo(isset($this->request->post['email']) ? $this->request->post['email'] : $this->config->get('config_email'));
+      $mail->setSender(html_entity_decode($this->request->post['name'], ENT_QUOTES, 'UTF-8'));
+      $mail->setSubject(html_entity_decode($this->config->get('config_name') . ' - ' . $this->language->get('text_subject'), ENT_QUOTES, 'UTF-8'));
+      $mail->setHtml($this->load->view('mail/contacts', $message));
+
+      if (!$json) {
+        $this->load->model('tool/incoming');
+
+        $incoming = array(
+          'customer_id' => $this->customer->isLogged() ? $this->customer->getId() : 0,
+          'type' => 'contacts',
+          'name' => $this->request->post['name'],
+          'email' => isset($this->request->post['email']) ? $this->request->post['email'] : '',
+          'telephone' => isset($this->request->post['telephone']) ? $this->request->post['telephone'] : '',
+          'message' => $this->request->post['message'],
+          'ip' => $this->request->server['REMOTE_ADDR'],
+          'page_url' => isset($this->request->server['HTTP_REFERER']) ? $this->request->server['HTTP_REFERER'] : ''
+        );
+
+        $this->model_tool_incoming->add($incoming);
+
+        try {
+          $mail->send();
+          $json['success'] = $this->language->get('text_success');
+        } catch (Exception $e) {
+          $this->log->write('Mail send error in contacts form: ' . $e->getMessage());
+          $json['error']['mail'] = $this->language->get('error_mail_send');
+        }
+      }
+
+    } else {
+      $json['error'] = $this->error;
+    }
+
+    $this->response->addHeader('Content-Type: application/json');
+    $this->response->setOutput(json_encode($json));
+  }
+
   protected function validate() {
-    if ((utf8_strlen($this->request->post['name']) < 3) || (utf8_strlen($this->request->post['name']) > 32)) {
+
+    if (strlen($this->request->post['name']) <= 1) {
       $this->error['name'] = $this->language->get('error_name');
     }
 
-    if (!filter_var($this->request->post['email'], FILTER_VALIDATE_EMAIL)) {
+    if (isset($this->request->post['email']) && (utf8_strlen($this->request->post['email']) > 96 || !filter_var($this->request->post['email'], FILTER_VALIDATE_EMAIL))) {
       $this->error['email'] = $this->language->get('error_email');
     }
 
-    if ((utf8_strlen($this->request->post['enquiry']) < 10) || (utf8_strlen($this->request->post['enquiry']) > 3000)) {
-      $this->error['enquiry'] = $this->language->get('error_enquiry');
+    if (isset($this->request->post['phone']) && (utf8_strlen($this->request->post['phone']) < 10)) {
+      $this->error['phone'] = $this->language->get('error_phone');
     }
 
-    // Captcha
+    if (!isset($this->request->post['agree'])) {
+      $this->error['agree'] = $this->language->get('error_agree');
+    }
+
     if ($this->config->get('captcha_' . $this->config->get('config_captcha') . '_status') && in_array('contact', (array)$this->config->get('config_captcha_page'))) {
       $captcha = $this->load->controller('extension/captcha/' . $this->config->get('config_captcha') . '/validate');
 
@@ -170,36 +207,5 @@ class ControllerInformationContact extends Controller {
     }
 
     return !$this->error;
-  }
-
-  public function success() {
-    $this->load->language('information/contact');
-
-    $this->document->setTitle($this->language->get('heading_title'));
-
-    $data['breadcrumbs'] = array();
-
-    $data['breadcrumbs'][] = array(
-      'text' => $this->language->get('text_home'),
-      'href' => $this->url->link('common/home')
-    );
-
-    $data['breadcrumbs'][] = array(
-      'text' => $this->language->get('heading_title'),
-      'href' => $this->url->link('information/contact')
-    );
-
-    $data['text_message'] = $this->language->get('text_success');
-
-    $data['continue'] = $this->url->link('common/home');
-
-    $data['column_left'] = $this->load->controller('common/column_left');
-    $data['column_right'] = $this->load->controller('common/column_right');
-    $data['content_top'] = $this->load->controller('common/content_top');
-    $data['content_bottom'] = $this->load->controller('common/content_bottom');
-    $data['footer'] = $this->load->controller('common/footer');
-    $data['header'] = $this->load->controller('common/header');
-
-    $this->response->setOutput($this->load->view('common/success', $data));
   }
 }

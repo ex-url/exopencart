@@ -33,11 +33,11 @@ class ControllerCommonFooter extends Controller {
     $data['order'] = $this->url->link('account/order', '', true);
     $data['wishlist'] = $this->url->link('account/wishlist', '', true);
     $data['newsletter'] = $this->url->link('account/newsletter', '', true);
-    $data['telephone'] = $this->config->get('config_telephone');
-    $data['tel_link'] = normalizePhone($this->config->get('config_telephone'));
+    $data['telephone'] = $this->config->get('config_show_telephone_footer') ? $this->config->get('config_telephone') : '';
+    $data['tel_link'] = $this->config->get('config_show_telephone_footer') ? normalizePhone($this->config->get('config_telephone')) : '';
     $data['fax'] = $this->config->get('config_fax');
     $data['fax_link'] = normalizePhone($this->config->get('config_fax'));
-    $data['email'] = $this->config->get('config_email');
+    $data['email'] = $this->config->get('config_show_email_footer') ? $this->config->get('config_email') : '';
     $data['social_media'] = $this->config->get('config_social_media');
 
     $data['powered'] = sprintf($this->language->get('text_powered'), $this->config->get('config_name'), date('Y', time()));

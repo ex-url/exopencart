@@ -1459,6 +1459,100 @@
                 </div>
               </fieldset>
               <fieldset>
+                <legend>{{ text_contacts }}</legend>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">{{ entry_show_telephone_header }}</label>
+                  <div class="col-sm-10">
+                    <label class="radio-inline">
+                      <input type="radio" name="config_show_telephone_header" value="1" {{ config_show_telephone_header ? 'checked' : '' }}>
+                      {{ text_yes }}
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="config_show_telephone_header" value="0" {{ not config_show_telephone_header ? 'checked' : '' }}>
+                      {{ text_no }}
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">{{ entry_show_telephone_footer }}</label>
+                  <div class="col-sm-10">
+                    <label class="radio-inline">
+                      <input type="radio" name="config_show_telephone_footer" value="1" {{ config_show_telephone_footer ? 'checked' : '' }}>
+                      {{ text_yes }}
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="config_show_telephone_footer" value="0" {{ not config_show_telephone_footer ? 'checked' : '' }}>
+                      {{ text_no }}
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">{{ entry_show_telephone_contacts }}</label>
+                  <div class="col-sm-10">
+                    <label class="radio-inline">
+                      <input type="radio" name="config_show_telephone_contacts" value="1" {{ config_show_telephone_contacts ? 'checked' : '' }}>
+                      {{ text_yes }}
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="config_show_telephone_contacts" value="0" {{ not config_show_telephone_contacts ? 'checked' : '' }}>
+                      {{ text_no }}
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">{{ entry_show_email_header }}</label>
+                  <div class="col-sm-10">
+                    <label class="radio-inline">
+                      <input type="radio" name="config_show_email_header" value="1" {{ config_show_email_header ? 'checked' : '' }}>
+                      {{ text_yes }}
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="config_show_email_header" value="0" {{ not config_show_email_header ? 'checked' : '' }}>
+                      {{ text_no }}
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">{{ entry_show_email_footer }}</label>
+                  <div class="col-sm-10">
+                    <label class="radio-inline">
+                      <input type="radio" name="config_show_email_footer" value="1" {{ config_show_email_footer ? 'checked' : '' }}>
+                      {{ text_yes }}
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="config_show_email_footer" value="0" {{ not config_show_email_footer ? 'checked' : '' }}>
+                      {{ text_no }}
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">{{ entry_show_email_contacts }}</label>
+                  <div class="col-sm-10">
+                    <label class="radio-inline">
+                      <input type="radio" name="config_show_email_contacts" value="1" {{ config_show_email_contacts ? 'checked' : '' }}>
+                      {{ text_yes }}
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="config_show_email_contacts" value="0" {{ not config_show_email_contacts ? 'checked' : '' }}>
+                      {{ text_no }}
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">{{ entry_show_form }}</label>
+                  <div class="col-sm-10">
+                    <label class="radio-inline">
+                      <input type="radio" name="config_show_contact_form" value="1" {{ config_show_contact_form ? 'checked' : '' }}>
+                      {{ text_yes }}
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="config_show_contact_form" value="0" {{ not config_show_contact_form ? 'checked' : '' }}>
+                      {{ text_no }}
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset>
                 <legend>{{ text_return }}</legend>
                 <div class="form-group">
                   <label class="col-sm-2 control-label" for="input-return"><span data-toggle="tooltip"

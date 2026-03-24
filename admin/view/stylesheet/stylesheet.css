@@ -139,6 +139,18 @@ a:hover, a:focus {
   padding-right: 10px;
 }
 
+#incoming-requests {
+    display: block;
+    position: relative;
+}
+
+#incoming-requests .badge {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: #e3503e;
+}
+
 /* Desktop */
 @media (min-width: 768px) {
   #header .navbar-header {

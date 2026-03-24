@@ -754,6 +754,48 @@ class ControllerSettingSetting extends Controller {
       $data['config_order_status_id'] = $this->config->get('config_order_status_id');
     }
 
+    if (isset($this->request->post['config_show_telephone_header'])) {
+      $data['config_show_telephone_header'] = $this->request->post['config_show_telephone_header'];
+    } else {
+      $data['config_show_telephone_header'] = $this->config->get('config_show_telephone_header');
+    }
+
+    if (isset($this->request->post['config_show_telephone_footer'])) {
+      $data['config_show_telephone_footer'] = $this->request->post['config_show_telephone_footer'];
+    } else {
+      $data['config_show_telephone_footer'] = $this->config->get('config_show_telephone_footer');
+    }
+
+    if (isset($this->request->post['config_show_telephone_contacts'])) {
+      $data['config_show_telephone_contacts'] = $this->request->post['config_show_telephone_contacts'];
+    } else {
+      $data['config_show_telephone_contacts'] = $this->config->get('config_show_telephone_contacts');
+    }
+
+    if (isset($this->request->post['config_show_email_header'])) {
+      $data['config_show_email_header'] = $this->request->post['config_show_email_header'];
+    } else {
+      $data['config_show_email_header'] = $this->config->get('config_show_email_header');
+    }
+
+    if (isset($this->request->post['config_show_email_footer'])) {
+      $data['config_show_email_footer'] = $this->request->post['config_show_email_footer'];
+    } else {
+      $data['config_show_email_footer'] = $this->config->get('config_show_email_footer');
+    }
+
+    if (isset($this->request->post['config_show_email_contacts'])) {
+      $data['config_show_email_contacts'] = $this->request->post['config_show_email_contacts'];
+    } else {
+      $data['config_show_email_contacts'] = $this->config->get('config_show_email_contacts');
+    }
+
+    if (isset($this->request->post['config_show_contact_form'])) {
+      $data['config_show_contact_form'] = $this->request->post['config_show_contact_form'];
+    } else {
+      $data['config_show_contact_form'] = $this->config->get('config_show_contact_form');
+    }
+
     if (isset($this->request->post['config_processing_status'])) {
       $data['config_processing_status'] = $this->request->post['config_processing_status'];
     } elseif ($this->config->get('config_processing_status')) {
