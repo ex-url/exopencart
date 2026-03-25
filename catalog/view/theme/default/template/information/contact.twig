@@ -349,16 +349,20 @@
                   return;
                 }
 
-                if (json['success']) {
+                if (json['success']) {                  
 
-                  $form.trigger('reset');
-                  $form.parents('.modal').removeClass('is-active');
+                  $('#contacts-modal').addClass('is-animated');
 
-                  notification({
-                    type: 'success',
-                    text: json['success'],
+                  $('#contacts-modal .modal-background').one('animationend', function () {
+                    $('#contacts-modal').removeClass('is-animated is-active');
+                    history.replaceState(null, null, window.location.pathname + window.location.search);
+                    $form.trigger('reset');
+
+                    notification({
+                      type: 'success',
+                      text: json['success'],
+                    });
                   });
-                  
                 }
               }
             })
