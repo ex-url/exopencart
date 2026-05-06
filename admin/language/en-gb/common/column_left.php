@@ -17,6 +17,7 @@ $_['text_customer_approval']    = 'Customer Approvals';
 $_['text_custom_field']         = 'Custom Fields';
 $_['text_dashboard']            = 'Dashboard';
 $_['text_design']               = 'Design';
+$_['text_redirect']             = 'Redirects';
 $_['text_download']             = 'Downloads';
 $_['text_log']                  = 'Error Logs';
 $_['text_event']                = 'Events';

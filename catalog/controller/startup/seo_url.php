@@ -22,6 +22,37 @@ class ControllerStartupSeoUrl extends Controller {
 
 		// Decode URL
 		if (isset($this->request->get['_route_'])) {
+			$redirect_path = rawurldecode(trim((string)$this->request->get['_route_'], '/'));
+
+			if ($redirect_path !== '') {
+				$this->load->model('tool/redirect');
+				$redirect_info = $this->model_tool_redirect->getRedirectByOldPath($redirect_path);
+
+				if ($redirect_info) {
+					$status = (int)$redirect_info['status'];
+
+					if ($status === 301 || $status === 302) {
+						$target = trim((string)$redirect_info['new']);
+
+						if ($target === '' || $target === '/') {
+							$target = $this->url->link('common/home');
+						} elseif (strpos($target, 'http://') !== 0 && strpos($target, 'https://') !== 0) {
+							$target = '/' . ltrim($target, '/');
+							$base = !empty($this->request->server['HTTPS']) ? $this->config->get('config_ssl') : $this->config->get('config_url');
+							$target = rtrim($base, '/') . $target;
+						}
+
+						$this->response->redirect($target, $status);
+						return;
+					}
+
+					if ($status === 410) {
+						$this->request->get['route'] = 'product/gone';
+						return;
+					}
+				}
+			}
+			
 			$parts = explode('/', $this->request->get['_route_']);
 
 			//seopro prepare route

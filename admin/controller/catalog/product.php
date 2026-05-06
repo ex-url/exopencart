@@ -1197,14 +1197,6 @@ class ControllerCatalogProduct extends Controller {
       $data['sort_order'] = 1;
     }
 
-    if (isset($this->request->post['redirect'])) {
-      $data['redirect'] = $this->request->post['redirect'];
-    } elseif (!empty($product_info)) {
-      $data['redirect'] = $product_info['redirect'];
-    } else {
-      $data['redirect'] = '';
-    }
-
     $this->load->model('localisation/stock_status');
 
     $data['stock_statuses'] = $this->model_localisation_stock_status->getStockStatuses();

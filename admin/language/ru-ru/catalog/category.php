@@ -49,7 +49,6 @@ $_['entry_column']           = 'Столбцы';
 $_['entry_sort_order']       = 'Порядок сортировки';
 $_['entry_sort_param']       = 'Параметр сортировки';
 $_['entry_sort_direction']   = 'Направление сортировки';
-$_['entry_redirect']         = 'Редирект 301';
 $_['entry_status']           = 'Статус';
 $_['entry_noindex']          = 'Индексация';
 $_['entry_layout']           = 'Изменить макет';

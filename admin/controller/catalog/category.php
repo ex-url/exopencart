@@ -476,14 +476,6 @@ class ControllerCatalogCategory extends Controller {
 			$data['sort_direction'] = 'ASC';
 		}
 
-		if (isset($this->request->post['redirect'])) {
-			$data['redirect'] = $this->request->post['redirect'];
-		} elseif (!empty($category_info)) {
-			$data['redirect'] = $category_info['redirect'];
-		} else {
-			$data['redirect'] = '';
-		}
-
 		if (isset($this->request->post['product_related'])) {
 			$products = $this->request->post['product_related'];
 		} elseif (isset($category_info)) {

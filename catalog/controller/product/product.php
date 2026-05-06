@@ -163,10 +163,6 @@ class ControllerProductProduct extends Controller {
 
     if ($product_info) {
 
-      if ($product_info['redirect'] != '') {
-        header('Location: ' . $product_info['redirect'], true, 301);
-      }
-
       $url = '';
 
       if (isset($this->request->get['path'])) {

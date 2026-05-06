@@ -1,0 +1,159 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right">
+        <a href="{{ download }}" data-toggle="tooltip" title="{{ button_download }}" class="btn btn-primary"><i class="fa fa-download"></i></a>
+        <button type="button" id="button-upload" data-toggle="tooltip" title="{{ button_upload }}" class="btn btn-success"><i class="fa fa-upload"></i></button>
+        <a href="{{ add }}" data-toggle="tooltip" title="{{ button_add }}" class="btn btn-primary"><i class="fa fa-plus"></i></a>
+        <button type="button" data-toggle="tooltip" title="{{ button_delete }}" class="btn btn-danger" onclick="confirm('{{ text_confirm }}') ? $('#form-redirect').submit() : false;"><i class="fa fa-trash-o"></i></button>
+      </div>
+      <h1>{{ heading_title }}</h1>
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    {% if error_warning %}
+    <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+    {% if success %}
+    <div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> {{ success }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+    <div class="row">
+      <div id="filter-redirect" class="col-md-3 col-md-push-9 col-sm-12 hidden-sm hidden-xs">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-filter"></i> {{ text_filter }}</h3>
+          </div>
+          <div class="panel-body">
+            <div class="form-group">
+              <label class="control-label" for="input-filter-old">{{ entry_old }}</label>
+              <input type="text" name="filter_old" value="{{ filter_old }}" placeholder="{{ entry_old }}" id="input-filter-old" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="input-filter-new">{{ entry_new }}</label>
+              <input type="text" name="filter_new" value="{{ filter_new }}" placeholder="{{ entry_new }}" id="input-filter-new" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="input-filter-status">{{ entry_status }}</label>
+              <select name="filter_status" id="input-filter-status" class="form-control">
+                <option value=""></option>
+                {% if filter_status == '301' %}
+                <option value="301" selected="selected">301</option>
+                {% else %}
+                <option value="301">301</option>
+                {% endif %}
+                {% if filter_status == '302' %}
+                <option value="302" selected="selected">302</option>
+                {% else %}
+                <option value="302">302</option>
+                {% endif %}
+                {% if filter_status == '410' %}
+                <option value="410" selected="selected">410</option>
+                {% else %}
+                <option value="410">410</option>
+                {% endif %}
+              </select>
+            </div>
+            <div class="text-right">
+              <button type="button" id="button-filter" class="btn btn-default"><i class="fa fa-filter"></i> {{ button_filter }}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9 col-md-pull-3 col-sm-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-list"></i> {{ text_list }}</h3>
+          </div>
+          <div class="panel-body">
+            <form action="{{ delete }}" method="post" enctype="multipart/form-data" id="form-redirect">
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);" /></td>
+                      <td class="text-left">{% if sort == 'old' %}<a href="{{ sort_old }}" class="{{ order|lower }}">{{ column_old }}</a>{% else %}<a href="{{ sort_old }}">{{ column_old }}</a>{% endif %}</td>
+                      <td class="text-left">{% if sort == 'new' %}<a href="{{ sort_new }}" class="{{ order|lower }}">{{ column_new }}</a>{% else %}<a href="{{ sort_new }}">{{ column_new }}</a>{% endif %}</td>
+                      <td class="text-left">{% if sort == 'status' %}<a href="{{ sort_status }}" class="{{ order|lower }}">{{ column_status }}</a>{% else %}<a href="{{ sort_status }}">{{ column_status }}</a>{% endif %}</td>
+                      <td class="text-right">{{ column_action }}</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% if redirects %}
+                    {% for redirect in redirects %}
+                    <tr>
+                      <td class="text-center">{% if redirect.redirect_id in selected %}
+                        <input type="checkbox" name="selected[]" value="{{ redirect.redirect_id }}" checked="checked" />
+                        {% else %}
+                        <input type="checkbox" name="selected[]" value="{{ redirect.redirect_id }}" />
+                        {% endif %}</td>
+                      <td class="text-left">{{ redirect.old }}</td>
+                      <td class="text-left">{{ redirect.new }}</td>
+                      <td class="text-left">{{ redirect.status }}</td>
+                      <td class="text-right"><a href="{{ redirect.edit }}" data-toggle="tooltip" title="{{ button_edit }}" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                    <tr>
+                      <td class="text-center" colspan="5">{{ text_no_results }}</td>
+                    </tr>
+                    {% endif %}
+                  </tbody>
+                </table>
+              </div>
+            </form>
+            <form action="{{ upload }}" method="post" enctype="multipart/form-data" id="form-upload" style="display: none;">
+              <input type="file" name="file" id="input-upload-file" accept=".csv,text/csv" />
+            </form>
+            <div class="row">
+              <div class="col-sm-6 text-left">{{ pagination }}</div>
+              <div class="col-sm-6 text-right">{{ results }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript"><!--
+$('#button-filter').on('click', function() {
+	var url = 'index.php?route=design/redirect&user_token={{ user_token }}';
+
+	var filter_old = $('input[name=\'filter_old\']').val();
+	if (filter_old) {
+		url += '&filter_old=' + encodeURIComponent(filter_old);
+	}
+
+	var filter_new = $('input[name=\'filter_new\']').val();
+	if (filter_new) {
+		url += '&filter_new=' + encodeURIComponent(filter_new);
+	}
+
+	var filter_status = $('select[name=\'filter_status\']').val();
+	if (filter_status) {
+		url += '&filter_status=' + encodeURIComponent(filter_status);
+	}
+
+	location = url;
+});
+
+$('#button-upload').on('click', function() {
+  $('#input-upload-file').trigger('click');
+});
+
+$('#input-upload-file').on('change', function() {
+  if (this.files && this.files.length) {
+    $('#form-upload').submit();
+  }
+});
+//--></script>
+</div>
+{{ footer }}

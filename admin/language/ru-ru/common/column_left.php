@@ -25,6 +25,7 @@ $_['text_dashboard']                   = 'Панель управления';
 $_['text_design']                      = 'Дизайн';
 $_['text_download']                    = 'Файлы для скачивания';
 $_['text_seomanager']                  = 'SEO Менеджер';
+$_['text_redirect']                    = 'Редиректы';
 $_['text_log']                         = 'Журнал ошибок';
 $_['text_event']                       = 'События';
 $_['text_extension']                   = 'Расширения';
