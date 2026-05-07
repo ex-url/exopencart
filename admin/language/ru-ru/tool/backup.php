@@ -1,23 +1,23 @@
 <?php
-// *	@source		See SOURCE.txt for source and other copyright.
-// *	@license	GNU General Public License version 3; see LICENSE.txt
-
 // Heading
 $_['heading_title']    = 'База данных';
 
 // Text
 $_['text_backup']      = 'Архивировать базу данных';
 $_['text_success']     = 'База данных импортирована!';
+$_['text_success_reset'] = 'Демо-контент сброшен!';
 $_['text_list']        = 'Список загрузок';
+$_['text_reset_warning'] = 'Демо-контент будет удалён. Если хотите продолжить, нажмите кнопку Сбросить.';
 
 // Entry
 $_['entry_progress']   = 'Процесс';
 $_['entry_export']     = 'Экспорт';
-
+$_['entry_reset']      = 'Сброс демо контента';
 
 // Tab
 $_['tab_backup']       = 'Экспорт';
 $_['tab_restore']      = 'Импорт';
+$_['tab_reset']        = 'Сброс';
 
 // Error
 $_['error_permission'] = 'У вас недостаточно прав для внесения изменений!';

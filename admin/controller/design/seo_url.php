@@ -537,9 +537,9 @@ class ControllerDesignSeoUrl extends Controller {
 			}
 		}
 
-		if (!$this->request->post['keyword']) {
-			$this->error['keyword'] = $this->language->get('error_keyword');
-		}
+		// if (!$this->request->post['keyword']) {
+		// 	$this->error['keyword'] = $this->language->get('error_keyword');
+		// }
 
 		return !$this->error;
 	}

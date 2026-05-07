@@ -156,5 +156,22 @@ class ControllerToolBackup extends Controller {
 
 			$this->response->setOutput($this->model_tool_backup->backup($this->request->post['backup']));		
 		}
-	}	
+	}
+	
+	public function reset() {
+		$this->load->language('tool/backup');
+		$this->load->model('tool/backup');
+
+		$json = array();
+
+		if($this->user->hasPermission('modify', 'tool/backup')) {
+			$this->model_tool_backup->reset();
+			$json['success'] = $this->language->get('text_success_reset');
+		} else {
+			$json['error'] = $this->language->get('error_permission');
+		}		
+
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+	}
 }
