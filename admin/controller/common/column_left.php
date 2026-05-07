@@ -367,15 +367,7 @@ class ControllerCommonColumnLeft extends Controller {
           'href'     => $this->url->link('design/seo_url', 'user_token=' . $this->session->data['user_token'], true),
           'children' => array()
         );
-      }
-
-      if ($this->user->hasPermission('access', 'design/redirect')) {
-        $design[] = array(
-          'name'     => $this->language->get('text_redirect'),
-          'href'     => $this->url->link('design/redirect', 'user_token=' . $this->session->data['user_token'], true),
-          'children' => array()
-        );
-      }
+      }      
 
       if ($design) {
         $data['menus'][] = array(
@@ -431,6 +423,14 @@ class ControllerCommonColumnLeft extends Controller {
         $system[] = array(
           'name'     => $this->language->get('text_setting'),
           'href'     => $this->url->link('setting/store', 'user_token=' . $this->session->data['user_token'], true),
+          'children' => array()
+        );
+      }
+
+      if ($this->user->hasPermission('access', 'setting/redirect')) {
+        $system[] = array(
+          'name'     => $this->language->get('text_redirect'),
+          'href'     => $this->url->link('setting/redirect', 'user_token=' . $this->session->data['user_token'], true),
           'children' => array()
         );
       }

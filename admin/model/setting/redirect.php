@@ -1,5 +1,5 @@
 <?php
-class ModelDesignRedirect extends Model {
+class ModelSettingRedirect extends Model {
 	public function addRedirect($data) {
 		$this->db->query("INSERT INTO `" . DB_PREFIX . "redirect` SET old = '" . $this->db->escape($data['old']) . "', new = '" . $this->db->escape($data['new']) . "', status = '" . (int)$data['status'] . "'");
 

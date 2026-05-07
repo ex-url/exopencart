@@ -1,6 +1,6 @@
 <?php
 // Heading
-$_['heading_title']    = 'Backup &amp; Restore';
+$_['heading_title']    = 'Database';
 
 // Text
 $_['text_success']     = 'Success: You have successfully imported your database!';

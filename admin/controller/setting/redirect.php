@@ -1,26 +1,26 @@
 <?php
-class ControllerDesignRedirect extends Controller {
+class ControllerSettingRedirect extends Controller {
 	private $error = array();
 
 	public function index() {
-		$this->load->language('design/redirect');
+		$this->load->language('setting/redirect');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
-		$this->load->model('design/redirect');
+		$this->load->model('setting/redirect');
 
 		$this->getList();
 	}
 
 	public function add() {
-		$this->load->language('design/redirect');
+		$this->load->language('setting/redirect');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
-		$this->load->model('design/redirect');
+		$this->load->model('setting/redirect');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-			$redirect_id = $this->model_design_redirect->addRedirect($this->request->post);
+			$redirect_id = $this->model_setting_redirect->addRedirect($this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -52,9 +52,9 @@ class ControllerDesignRedirect extends Controller {
 
 			if(isset($this->request->post['apply']) && $this->request->post['apply'] == 1) {
 				$url .= '&redirect_id=' . $redirect_id;
-				$this->response->redirect($this->url->link('design/redirect/edit', 'user_token=' . $this->session->data['user_token'] . $url, true));
+				$this->response->redirect($this->url->link('setting/redirect/edit', 'user_token=' . $this->session->data['user_token'] . $url, true));
 			} else {
-				$this->response->redirect($this->url->link('design/redirect', 'user_token=' . $this->session->data['user_token'] . $url, true));
+				$this->response->redirect($this->url->link('setting/redirect', 'user_token=' . $this->session->data['user_token'] . $url, true));
 			}
 		}
 
@@ -62,14 +62,14 @@ class ControllerDesignRedirect extends Controller {
 	}
 
 	public function edit() {
-		$this->load->language('design/redirect');
+		$this->load->language('setting/redirect');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
-		$this->load->model('design/redirect');
+		$this->load->model('setting/redirect');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-			$this->model_design_redirect->editRedirect($this->request->get['redirect_id'], $this->request->post);
+			$this->model_setting_redirect->editRedirect($this->request->get['redirect_id'], $this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -101,9 +101,9 @@ class ControllerDesignRedirect extends Controller {
 
 			if(isset($this->request->post['apply']) && $this->request->post['apply'] == 1) {
 				$url .= '&redirect_id=' . $this->request->get['redirect_id'];
-				$this->response->redirect($this->url->link('design/redirect/edit', 'user_token=' . $this->session->data['user_token'] . $url, true));
+				$this->response->redirect($this->url->link('setting/redirect/edit', 'user_token=' . $this->session->data['user_token'] . $url, true));
 			} else {
-				$this->response->redirect($this->url->link('design/redirect', 'user_token=' . $this->session->data['user_token'] . $url, true));
+				$this->response->redirect($this->url->link('setting/redirect', 'user_token=' . $this->session->data['user_token'] . $url, true));
 			}
 		}
 
@@ -111,15 +111,15 @@ class ControllerDesignRedirect extends Controller {
 	}
 
 	public function delete() {
-		$this->load->language('design/redirect');
+		$this->load->language('setting/redirect');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
-		$this->load->model('design/redirect');
+		$this->load->model('setting/redirect');
 
 		if (isset($this->request->post['selected']) && $this->validateDelete()) {
 			foreach ($this->request->post['selected'] as $redirect_id) {
-				$this->model_design_redirect->deleteRedirect($redirect_id);
+				$this->model_setting_redirect->deleteRedirect($redirect_id);
 			}
 
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -150,7 +150,7 @@ class ControllerDesignRedirect extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 
-			$this->response->redirect($this->url->link('design/redirect', 'user_token=' . $this->session->data['user_token'] . $url, true));
+			$this->response->redirect($this->url->link('setting/redirect', 'user_token=' . $this->session->data['user_token'] . $url, true));
 		}
 
 		$this->getList();
@@ -228,13 +228,13 @@ class ControllerDesignRedirect extends Controller {
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),
-			'href' => $this->url->link('design/redirect', 'user_token=' . $this->session->data['user_token'] . $url, true)
+			'href' => $this->url->link('setting/redirect', 'user_token=' . $this->session->data['user_token'] . $url, true)
 		);
 
-		$data['add'] = $this->url->link('design/redirect/add', 'user_token=' . $this->session->data['user_token'] . $url, true);
-		$data['download'] = $this->url->link('design/redirect/download', 'user_token=' . $this->session->data['user_token'] . $url, true);
-		$data['upload'] = $this->url->link('design/redirect/upload', 'user_token=' . $this->session->data['user_token'] . $url, true);
-		$data['delete'] = $this->url->link('design/redirect/delete', 'user_token=' . $this->session->data['user_token'] . $url, true);
+		$data['add'] = $this->url->link('setting/redirect/add', 'user_token=' . $this->session->data['user_token'] . $url, true);
+		$data['download'] = $this->url->link('setting/redirect/download', 'user_token=' . $this->session->data['user_token'] . $url, true);
+		$data['upload'] = $this->url->link('setting/redirect/upload', 'user_token=' . $this->session->data['user_token'] . $url, true);
+		$data['delete'] = $this->url->link('setting/redirect/delete', 'user_token=' . $this->session->data['user_token'] . $url, true);
 
 		$data['redirects'] = array();
 
@@ -248,9 +248,9 @@ class ControllerDesignRedirect extends Controller {
 			'limit'              => $this->config->get('config_limit_admin')
 		);
 
-		$redirect_total = $this->model_design_redirect->getTotalRedirects($filter_data);
+		$redirect_total = $this->model_setting_redirect->getTotalRedirects($filter_data);
 
-		$results = $this->model_design_redirect->getRedirects($filter_data);
+		$results = $this->model_setting_redirect->getRedirects($filter_data);
 
 		foreach ($results as $result) {
 			$data['redirects'][] = array(
@@ -258,7 +258,7 @@ class ControllerDesignRedirect extends Controller {
 				'old'        => $result['old'],
 				'new'        => $result['new'],
 				'status'     => $result['status'],
-				'edit'       => $this->url->link('design/redirect/edit', 'user_token=' . $this->session->data['user_token'] . '&redirect_id=' . $result['redirect_id'] . $url, true)
+				'edit'       => $this->url->link('setting/redirect/edit', 'user_token=' . $this->session->data['user_token'] . '&redirect_id=' . $result['redirect_id'] . $url, true)
 			);
 		}
 
@@ -308,9 +308,9 @@ class ControllerDesignRedirect extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-		$data['sort_old'] = $this->url->link('design/redirect', 'user_token=' . $this->session->data['user_token'] . '&sort=old' . $url, true);
-		$data['sort_new'] = $this->url->link('design/redirect', 'user_token=' . $this->session->data['user_token'] . '&sort=new' . $url, true);
-		$data['sort_status'] = $this->url->link('design/redirect', 'user_token=' . $this->session->data['user_token'] . '&sort=status' . $url, true);
+		$data['sort_old'] = $this->url->link('setting/redirect', 'user_token=' . $this->session->data['user_token'] . '&sort=old' . $url, true);
+		$data['sort_new'] = $this->url->link('setting/redirect', 'user_token=' . $this->session->data['user_token'] . '&sort=new' . $url, true);
+		$data['sort_status'] = $this->url->link('setting/redirect', 'user_token=' . $this->session->data['user_token'] . '&sort=status' . $url, true);
 
 		$url = '';
 
@@ -338,7 +338,7 @@ class ControllerDesignRedirect extends Controller {
 		$pagination->total = $redirect_total;
 		$pagination->page = $page;
 		$pagination->limit = $this->config->get('config_limit_admin');
-		$pagination->url = $this->url->link('design/redirect', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}', true);
+		$pagination->url = $this->url->link('setting/redirect', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}', true);
 
 		$data['pagination'] = $pagination->render();
 
@@ -355,16 +355,16 @@ class ControllerDesignRedirect extends Controller {
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
-		$this->response->setOutput($this->load->view('design/redirect_list', $data));
+		$this->response->setOutput($this->load->view('setting/redirect_list', $data));
 	}
 
 	public function download() {
-		$this->load->language('design/redirect');
-		$this->load->model('design/redirect');
+		$this->load->language('setting/redirect');
+		$this->load->model('setting/redirect');
 
-		if (!$this->user->hasPermission('access', 'design/redirect')) {
+		if (!$this->user->hasPermission('access', 'setting/redirect')) {
 			$this->session->data['error_warning'] = $this->language->get('error_permission');
-			$this->response->redirect($this->url->link('design/redirect', 'user_token=' . $this->session->data['user_token'], true));
+			$this->response->redirect($this->url->link('setting/redirect', 'user_token=' . $this->session->data['user_token'], true));
 		}
 
 		$filter_old = isset($this->request->get['filter_old']) ? $this->request->get['filter_old'] : '';
@@ -385,7 +385,7 @@ class ControllerDesignRedirect extends Controller {
 			$filter_data['order'] = $this->request->get['order'];
 		}
 
-		$redirects = $this->model_design_redirect->getRedirects($filter_data);
+		$redirects = $this->model_setting_redirect->getRedirects($filter_data);
 
 		$filename = 'redirects_' . date('Y-m-d_H-i-s') . '.csv';
 
@@ -416,8 +416,8 @@ class ControllerDesignRedirect extends Controller {
 	}
 
 	public function upload() {
-		$this->load->language('design/redirect');
-		$this->load->model('design/redirect');
+		$this->load->language('setting/redirect');
+		$this->load->model('setting/redirect');
 
 		$url = '';
 
@@ -445,9 +445,9 @@ class ControllerDesignRedirect extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-		if (!$this->user->hasPermission('modify', 'design/redirect')) {
+		if (!$this->user->hasPermission('modify', 'setting/redirect')) {
 			$this->session->data['error_warning'] = $this->language->get('error_permission');
-			$this->response->redirect($this->url->link('design/redirect', 'user_token=' . $this->session->data['user_token'] . $url, true));
+			$this->response->redirect($this->url->link('setting/redirect', 'user_token=' . $this->session->data['user_token'] . $url, true));
 		}
 
 		if (isset($this->request->files['file']['tmp_name']) && is_uploaded_file($this->request->files['file']['tmp_name'])) {
@@ -514,10 +514,10 @@ class ControllerDesignRedirect extends Controller {
 					'status' => $status
 				);
 
-				$existing_old_id = $this->model_design_redirect->checkOldUniqueness($old);
+				$existing_old_id = $this->model_setting_redirect->checkOldUniqueness($old);
 
 				if ($redirect_id > 0) {
-					$redirect_info = $this->model_design_redirect->getRedirect($redirect_id);
+					$redirect_info = $this->model_setting_redirect->getRedirect($redirect_id);
 
 					if (!$redirect_info) {
 						$this->log->write('Redirect CSV import: skipped line ' . $line . ' because redirect_id ' . $redirect_id . ' was not found');
@@ -529,14 +529,14 @@ class ControllerDesignRedirect extends Controller {
 						continue;
 					}
 
-					$this->model_design_redirect->editRedirect($redirect_id, $redirect_data);
+					$this->model_setting_redirect->editRedirect($redirect_id, $redirect_data);
 					$updated++;
 				} else {
 					if ($existing_old_id) {
-						$this->model_design_redirect->editRedirect($existing_old_id, $redirect_data);
+						$this->model_setting_redirect->editRedirect($existing_old_id, $redirect_data);
 						$updated++;
 					} else {
-						$this->model_design_redirect->addRedirect($redirect_data);
+						$this->model_setting_redirect->addRedirect($redirect_data);
 						$added++;
 					}
 				}
@@ -545,10 +545,10 @@ class ControllerDesignRedirect extends Controller {
 			fclose($handle);
 
 			$this->session->data['success'] = sprintf($this->language->get('text_upload_success'), $total, $added, $updated);
-			$this->response->redirect($this->url->link('design/redirect', 'user_token=' . $this->session->data['user_token'] . $url, true));
+			$this->response->redirect($this->url->link('setting/redirect', 'user_token=' . $this->session->data['user_token'] . $url, true));
 		} else {
 			$this->session->data['error_warning'] = $this->language->get('error_upload');
-			$this->response->redirect($this->url->link('design/redirect', 'user_token=' . $this->session->data['user_token'] . $url, true));
+			$this->response->redirect($this->url->link('setting/redirect', 'user_token=' . $this->session->data['user_token'] . $url, true));
 		}
 	}
 
@@ -602,19 +602,19 @@ class ControllerDesignRedirect extends Controller {
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),
-			'href' => $this->url->link('design/redirect', 'user_token=' . $this->session->data['user_token'] . $url, true)
+			'href' => $this->url->link('setting/redirect', 'user_token=' . $this->session->data['user_token'] . $url, true)
 		);
 
 		if (!isset($this->request->get['redirect_id'])) {
-			$data['action'] = $this->url->link('design/redirect/add', 'user_token=' . $this->session->data['user_token'] . $url, true);
+			$data['action'] = $this->url->link('setting/redirect/add', 'user_token=' . $this->session->data['user_token'] . $url, true);
 		} else {
-			$data['action'] = $this->url->link('design/redirect/edit', 'user_token=' . $this->session->data['user_token'] . '&redirect_id=' . $this->request->get['redirect_id'] . $url, true);
+			$data['action'] = $this->url->link('setting/redirect/edit', 'user_token=' . $this->session->data['user_token'] . '&redirect_id=' . $this->request->get['redirect_id'] . $url, true);
 		}
 
-		$data['cancel'] = $this->url->link('design/redirect', 'user_token=' . $this->session->data['user_token'] . $url, true);
+		$data['cancel'] = $this->url->link('setting/redirect', 'user_token=' . $this->session->data['user_token'] . $url, true);
 
 		if (isset($this->request->get['redirect_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
-			$redirect_info = $this->model_design_redirect->getRedirect($this->request->get['redirect_id']);
+			$redirect_info = $this->model_setting_redirect->getRedirect($this->request->get['redirect_id']);
 		}
 
 		if (isset($this->request->post['old'])) {
@@ -645,11 +645,11 @@ class ControllerDesignRedirect extends Controller {
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
-		$this->response->setOutput($this->load->view('design/redirect_form', $data));
+		$this->response->setOutput($this->load->view('setting/redirect_form', $data));
 	}
 
 	protected function validateForm() {
-		if (!$this->user->hasPermission('modify', 'design/redirect')) {
+		if (!$this->user->hasPermission('modify', 'setting/redirect')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 
@@ -685,7 +685,7 @@ class ControllerDesignRedirect extends Controller {
 	}
 
 	protected function validateDelete() {
-		if (!$this->user->hasPermission('modify', 'design/redirect')) {
+		if (!$this->user->hasPermission('modify', 'setting/redirect')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 

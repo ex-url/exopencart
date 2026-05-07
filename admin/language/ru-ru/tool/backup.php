@@ -3,7 +3,7 @@
 // *	@license	GNU General Public License version 3; see LICENSE.txt
 
 // Heading
-$_['heading_title']    = 'Бэкап / Восстановление';
+$_['heading_title']    = 'База данных';
 
 // Text
 $_['text_backup']      = 'Архивировать базу данных';
