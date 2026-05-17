@@ -139,7 +139,7 @@
                     <a href="{{ product.href }}" class="is-flex is-justify-content-center" aria-label="{{ product.name }}">
                       <img src="{{ product.thumb }}" loading="lazy" alt="{{ product.name }}" title="{{ product.name }}" />
                     </a>
-                    <span class="stock tag {{ product.quantity ? 'is-success' : 'is-danger' }} is-light">{{ product.stock }}</span>
+                    <span class="stock tag {{ product.quantity > 0 ? 'is-success' : 'is-danger' }} is-light">{{ product.stock }}</span>
                     {% if product.stickers %}
                     <span class="stickers is-block mb-0">
                     {% for sticker in product.stickers %}

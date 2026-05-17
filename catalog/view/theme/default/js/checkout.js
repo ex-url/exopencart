@@ -382,7 +382,7 @@ async function confirmCheckout() {
       dataType: 'html',
       cache: false,
       success: function (html) {
-        $('#checkout-total .box').html(html);
+        $('#checkout-total .total-inner').html(html);
       },
       error: function (err) {
         console.error('AJAX Error:', err);

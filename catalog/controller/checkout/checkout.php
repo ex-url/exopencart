@@ -95,7 +95,7 @@ class ControllerCheckoutCheckout extends Controller {
     $zone_info = $this->model_localisation_zone->getZone($this->config->get('config_zone_id'));
 
     // Set default payment and shipping address
-    if (!isset($this->session->data['shipping_address'])) {
+    if (!isset($this->session->data['shipping_address']) || empty($this->session->data['shipping_address'])) {
       if ($this->config->get('config_ask_payment_address')) {
         $data['billing_required'] = true;
         $data['payment_address'] = $this->load->controller('checkout/payment_address');
