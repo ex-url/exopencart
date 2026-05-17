@@ -50,7 +50,15 @@
               <span class="has-text-grey">{{ viewed }}</span>
             </span>          
           </div>  
-          {% endif %}          
+          {% endif %}
+          {% if video %}
+            <figure class="image is-16by9">
+              <iframe class="has-ratio box p-0" width="100%" height="auto" src="{{ video }}" frameborder="0" allowfullscreen></iframe>
+            </figure>
+            <div class="video mb-5">
+              
+            </div>
+          {% endif %}       
           {% if images %}
           <div id="article-images" class="swiper mb-5">            
             <div class="swiper-wrapper">

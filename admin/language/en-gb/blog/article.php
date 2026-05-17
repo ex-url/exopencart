@@ -30,6 +30,7 @@ $_['entry_keyword']          = 'SEO URL';
 $_['entry_store']            = 'Stores';
 $_['entry_title']            = 'Image title';
 $_['entry_image']            = 'Image';
+$_['entry_video']            = 'Video';
 $_['entry_additional_image'] = 'Additional images';
 $_['entry_status']           = 'Status';
 $_['entry_noindex']          = 'Index';
@@ -53,6 +54,7 @@ $_['help_related_product']   = '(Autocomplete)';
 $_['help_tag']          	 = 'comma separated';
 $_['help_noindex']           = 'indexing in search engines Google, Yandex, Bing and other';
 $_['help_show_date']        = 'Show date and views of the article in the article list and on the article page';
+$_['help_video']            = 'Video for embedding on the article page. Supported videos from YouTube, Vimeo, and other video hosting services. To embed a video, use the code from the "Share" field on the video page.';
 
 // Error
 $_['error_warning']          = 'Warning: Please check the form carefully for errors!';

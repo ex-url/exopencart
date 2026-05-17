@@ -162,6 +162,7 @@ class ControllerBlogArticle extends Controller {
 
       $this->load->model('tool/image');
 
+      $data['video'] = $article_info['video'];
       $data['images'] = array();
       $data['image_width'] = $this->config->get('configblog_image_article_width');
       $data['image_height'] = $this->config->get('configblog_image_article_height');

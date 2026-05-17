@@ -528,6 +528,14 @@ class ControllerBlogArticle extends Controller {
     } else {
       $data['image'] = '';
     }
+    
+    if (isset($this->request->post['video'])) {
+      $data['video'] = $this->request->post['video'];
+    } elseif (!empty($article_info)) {
+      $data['video'] = $article_info['video'];
+    } else {
+      $data['video'] = '';
+    }
 
     $this->load->model('tool/image');
 
