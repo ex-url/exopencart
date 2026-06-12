@@ -136,6 +136,7 @@ class ControllerSettingStore extends Controller {
         'store_id' => $result['store_id'],
         'name'     => $result['name'],
         'url'      => $result['url'],
+        'copy'     => $this->url->link('setting/store/add', 'user_token=' . $this->session->data['user_token'] . '&copy_id=' . $result['store_id'], true),
         'edit'     => $this->url->link('setting/store/edit', 'user_token=' . $this->session->data['user_token'] . '&store_id=' . $result['store_id'], true)
       );
     }
@@ -268,6 +269,12 @@ class ControllerSettingStore extends Controller {
       $this->load->model('setting/setting');
 
       $store_info = $this->model_setting_setting->getSetting('config', $this->request->get['store_id']);
+    }
+
+    if (isset($this->request->get['copy_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
+      $this->load->model('setting/setting');
+
+      $store_info = $this->model_setting_setting->getSetting('config', $this->request->get['copy_id']);
     }
 
     $data['user_token'] = $this->session->data['user_token'];

@@ -51,7 +51,12 @@
                     {% endif %}</td>
                   <td class="text-left">{{ store.name }}</td>
                   <td class="text-left">{{ store.url }}</td>
-                  <td class="text-right"><a href="{{ store.edit }}" data-toggle="tooltip" title="{{ button_edit }}" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
+                  <td class="text-right">
+                    {% if store.store_id != 0 %}
+                    <a href="{{ store.copy }}" data-toggle="tooltip" title="{{ button_copy }}" class="btn btn-info"><i class="fa fa-clone"></i></a>
+                    {% endif %}                    
+                    <a href="{{ store.edit }}" data-toggle="tooltip" title="{{ button_edit }}" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+                  </td>
                 </tr>
                 {% endfor %}
                 {% else %}
