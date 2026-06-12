@@ -30,6 +30,7 @@ body.dark {
   --border-light: rgb(255 255 255 / 10%);
 
   --shadow-default: 0 1px 3px 0 rgb(255 255 255 / 25%);
+  --shadow-default-dark: 0 -1px 1px 0 rgb(255 255 255 / 25%);
 
   --hover-bg: #222222;
   --active-bg: #1f1f1f;
@@ -249,7 +250,7 @@ body.dark {
 .dark .box,
 .dark .card {
   background-color: var(--black-bis);
-  box-shadow: var(--shadow-default);
+  box-shadow: var(--shadow-default-dark);
   color: var(--text-secondary);
 }
 
@@ -263,7 +264,7 @@ body.dark {
 
 .dark .panel {
   background: var(--black-bis);
-  box-shadow: var(--shadow-default);
+  box-shadow: var(--shadow-default-dark);
 }
 
 .dark .panel-block,

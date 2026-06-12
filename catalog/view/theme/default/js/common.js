@@ -73,9 +73,9 @@ const cart = {
       dataType: 'json',
       beforeSend: function () {
         if ($item && $item.length) {
-          spinner.add($item, 'is-absolute', 100, 0.8);
+          spinner.add($item, 1, 0.8);
         } else {
-          spinner.add('#cart-form', 'is-absolute', 100, 0.8);
+          spinner.add('#cart-form', 1, 0.8);
         }
       },
       success: function (json) {
@@ -203,23 +203,22 @@ const wishlist = {
 
 const spinner = {
 
-  add: function (parent, position = 'is-absolute', size = 100, opacity = 1) {
-    const markup = `<div class="loading"><div class="spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>`;
+  add: function (parent, size = 1, opacity = 1) {
+    const $parent = $(parent);
+    let $loading = $parent.find('.loading');
 
-    if (!$(parent).find('.loading').length) {
-      $(parent).append(markup);
+    if (!$loading.length) {
+      $parent.append('<div class="loading is-absolute" role="status" aria-busy="true"><span class="spinner has-text-primary"></span></div>');
+      $loading = $parent.find('.loading');
     }
 
-    $(parent).find('.loading').addClass(position);
-
-    if (size != 100) {
-      $(parent).find('.spinner').attr('style', 'transform: scale(' + size + '%)');
+    if (size !== 1) {
+      $loading.find('.spinner').css('transform', 'scale(' + size + ')');
     }
 
-    if (opacity != 1) {
-      $(parent).find('.loading').attr('style', 'opacity:' + opacity);
+    if (opacity !== 1) {
+      $loading.css('opacity', opacity);
     }
-
   },
 
   remove: function (parent) {
