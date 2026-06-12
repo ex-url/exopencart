@@ -20,7 +20,7 @@ class ControllerLocalisationLocation extends Controller {
 		$this->load->model('localisation/location');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-			$this->model_localisation_location->addLocation($this->request->post);
+			$location_id = $this->model_localisation_location->addLocation($this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -38,7 +38,11 @@ class ControllerLocalisationLocation extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 
-			$this->response->redirect($this->url->link('localisation/location', 'user_token=' . $this->session->data['user_token'] . $url, true));
+			if(isset($this->request->post['apply']) && $this->request->post['apply'] == 1) {
+				$this->response->redirect($this->url->link('localisation/location/edit', 'user_token=' . $this->session->data['user_token'] . '&location_id=' . $location_id, true));
+			} else {
+				$this->response->redirect($this->url->link('localisation/location', 'user_token=' . $this->session->data['user_token'] . $url, true));
+			}
 		}
 
 		$this->getForm();
@@ -70,7 +74,12 @@ class ControllerLocalisationLocation extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 
-			$this->response->redirect($this->url->link('localisation/location', 'user_token=' . $this->session->data['user_token'] . $url, true));
+			if(isset($this->request->post['apply']) && $this->request->post['apply'] == 1) {
+				$this->response->redirect($this->url->link('localisation/location/edit', 'user_token=' . $this->session->data['user_token'] . '&location_id=' . $this->request->get['location_id'], true));
+			} else {
+				$this->response->redirect($this->url->link('localisation/location', 'user_token=' . $this->session->data['user_token'] . $url, true));
+			}
+
 		}
 
 		$this->getForm();
@@ -176,6 +185,7 @@ class ControllerLocalisationLocation extends Controller {
 				'location_id' => $result['location_id'],
 				'name'        => $result['name'],
 				'address'     => $result['address'],
+				'copy'        => $this->url->link('localisation/location/add', 'user_token=' . $this->session->data['user_token'] . '&copy_id=' . $result['location_id'] . $url, true),
 				'edit'        => $this->url->link('localisation/location/edit', 'user_token=' . $this->session->data['user_token'] . '&location_id=' . $result['location_id'] . $url, true)
 			);
 		}
@@ -245,7 +255,8 @@ class ControllerLocalisationLocation extends Controller {
 		$this->response->setOutput($this->load->view('localisation/location_list', $data));
 	}
 
-	protected function getForm() {
+	protected function getForm() {		
+
 		$data['text_form'] = !isset($this->request->get['location_id']) ? $this->language->get('text_add') : $this->language->get('text_edit');
 
 		if (isset($this->error['warning'])) {
@@ -258,6 +269,30 @@ class ControllerLocalisationLocation extends Controller {
 			$data['error_name'] = $this->error['name'];
 		} else {
 			$data['error_name'] = '';
+		}
+
+		if (isset($this->error['postcode'])) {
+			$data['error_postcode'] = $this->error['postcode'];
+		} else {
+			$data['error_postcode'] = '';
+		}
+
+		if (isset($this->error['zone_id'])) {
+			$data['error_zone_id'] = $this->error['zone_id'];
+		} else {
+			$data['error_zone_id'] = '';
+		}
+
+		if (isset($this->error['city'])) {
+			$data['error_city'] = $this->error['city'];
+		} else {
+			$data['error_city'] = '';
+		}
+
+		if (isset($this->error['coords'])) {
+			$data['error_coords'] = $this->error['coords'];
+		} else {
+			$data['error_coords'] = '';
 		}
 
 		if (isset($this->error['address'])) {
@@ -310,16 +345,79 @@ class ControllerLocalisationLocation extends Controller {
 			$location_info = $this->model_localisation_location->getLocation($this->request->get['location_id']);
 		}
 
+		if (isset($this->request->get['copy_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
+			$location_info = $this->model_localisation_location->getLocation($this->request->get['copy_id']);
+		}
+
 		$data['user_token'] = $this->session->data['user_token'];
 
 		$this->load->model('setting/store');
+
+		$data['stores'] = array();
+
+		$data['stores'][] = array(
+			'store_id' => 0,
+			'name'     => $this->language->get('text_default')
+		);
+
+		$stores = $this->model_setting_store->getStores();
+
+		foreach ($stores as $store) {
+			$data['stores'][] = array(
+				'store_id' => $store['store_id'],
+				'name'     => $store['name']
+			);
+		}
 
 		if (isset($this->request->post['name'])) {
 			$data['name'] = $this->request->post['name'];
 		} elseif (!empty($location_info)) {
 			$data['name'] = $location_info['name'];
 		} else {
-			$data['name'] =   '';
+			$data['name'] = '';
+		}
+
+		if (isset($this->request->post['store_id'])) {
+			$data['store_id'] = $this->request->post['store_id'];
+		} elseif (!empty($location_info)) {
+			$data['store_id'] = $location_info['store_id'];
+		} else {
+			$data['store_id'] = 0;
+		}
+
+		if (isset($this->request->post['postcode'])) {
+			$data['postcode'] = $this->request->post['postcode'];
+		} elseif (!empty($location_info)) {
+			$data['postcode'] = $location_info['postcode'];
+		} else {
+			$data['postcode'] = '';
+		}
+
+		$this->load->model('localisation/country');
+		$data['countries'] = $this->model_localisation_country->getCountries();
+
+		if (isset($this->request->post['country_id'])) {
+			$data['country_id'] = $this->request->post['country_id'];
+		} elseif (!empty($location_info)) {
+			$data['country_id'] = $location_info['country_id'];
+		} else {
+			$data['country_id'] = $this->config->get('config_country_id');
+		}
+
+		if (isset($this->request->post['zone_id'])) {
+			$data['zone_id'] = $this->request->post['zone_id'];
+		} elseif (!empty($location_info)) {
+			$data['zone_id'] = $location_info['zone_id'];
+		} else {
+			$data['zone_id'] = $this->config->get('config_zone_id');
+		}
+
+		if (isset($this->request->post['city'])) {
+			$data['city'] = $this->request->post['city'];
+		} elseif (!empty($location_info)) {
+			$data['city'] = $location_info['city'];
+		} else {
+			$data['city'] = '';
 		}
 
 		if (isset($this->request->post['address'])) {
@@ -336,6 +434,14 @@ class ControllerLocalisationLocation extends Controller {
 			$data['geocode'] = $location_info['geocode'];
 		} else {
 			$data['geocode'] = '';
+		}
+
+		if (isset($this->request->post['coords'])) {
+			$data['coords'] = $this->request->post['coords'];
+		} elseif (!empty($location_info)) {
+			$data['coords'] = $location_info['coords'];
+		} else {
+			$data['coords'] = '';
 		}
 
 		if (isset($this->request->post['telephone'])) {
@@ -404,6 +510,26 @@ class ControllerLocalisationLocation extends Controller {
 
 		if ((utf8_strlen($this->request->post['name']) < 3) || (utf8_strlen($this->request->post['name']) > 32)) {
 			$this->error['name'] = $this->language->get('error_name');
+		}
+
+		if ((utf8_strlen($this->request->post['postcode']) < 3) || (utf8_strlen($this->request->post['postcode']) > 32)) {
+			$this->error['postcode'] = $this->language->get('error_postcode');
+		}
+
+		if (!$this->request->post['zone_id']) {
+			$this->error['zone_id'] = $this->language->get('error_zone_id');
+		}
+
+		if ((utf8_strlen($this->request->post['city']) < 1) || (utf8_strlen($this->request->post['postcode']) > 64)) {
+			$this->error['city'] = $this->language->get('error_city');
+		}
+
+		if (!strpos($this->request->post['coords'], ',')) {
+			$this->error['coords'] = $this->language->get('error_coords_comma');
+		}
+
+		if ((utf8_strlen($this->request->post['coords']) < 3) || (utf8_strlen($this->request->post['name']) > 32)) {
+			$this->error['coords'] = $this->language->get('error_coords');
 		}
 
 		if ((utf8_strlen($this->request->post['address']) < 3) || (utf8_strlen($this->request->post['address']) > 128)) {

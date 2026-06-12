@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Jun 12, 2026 at 06:59 PM
+-- Generation Time: Jun 12, 2026 at 08:30 PM
 -- Server version: 5.7.41-log
 -- PHP Version: 7.4.33
 
@@ -2899,11 +2899,17 @@ INSERT INTO `oc_length_class_description` (`length_class_id`, `language_id`, `ti
 
 CREATE TABLE `oc_location` (
   `location_id` int(11) NOT NULL,
+  `store_id` int(11) NOT NULL,
+  `country_id` int(11) NOT NULL,
+  `zone_id` int(11) NOT NULL,
+  `city` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `postcode` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
   `address` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `telephone` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
   `fax` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
   `geocode` varchar(512) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `coords` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `open` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `comment` text COLLATE utf8mb4_unicode_ci NOT NULL
@@ -2913,9 +2919,9 @@ CREATE TABLE `oc_location` (
 -- Dumping data for table `oc_location`
 --
 
-INSERT INTO `oc_location` (`location_id`, `name`, `address`, `telephone`, `fax`, `geocode`, `image`, `open`, `comment`) VALUES
-(1, 'EXSHOP New York', '727 5th Avenue, New York, NY 10022', '+1 777 420 69 69', '', 'https://yandex.ru/map-widget/v1/?um=constructor%3A36e9897273a12d1bc6318f6a480b67c81a628b41f5d85836c1154641ab59affa&amp;amp;source=constructor', 'catalog/demo/locations/exshop_ny.webp', '09:00 - 21:00', ''),
-(2, 'EXSHOP Москва', 'Пресненская наб., 12, Москва', '+ 7 999 420 69 69', '', 'https://yandex.ru/map-widget/v1/?um=constructor%3A354b483500874f8eddd417b2dbabfb1b1f17e2ebad7a10948b6a684d2fea15a4&amp;amp;source=constructor', 'catalog/demo/locations/exshop_msk.webp', '10:00 - 20:00', '');
+INSERT INTO `oc_location` (`location_id`, `store_id`, `country_id`, `zone_id`, `city`, `name`, `postcode`, `address`, `telephone`, `fax`, `geocode`, `coords`, `image`, `open`, `comment`) VALUES
+(1, 0, 223, 3655, 'New York', 'EXSHOP New York', '10022', '727 5th Avenue, New York, NY 10022', '+1 777 420 69 69', '', 'https://yandex.ru/map-widget/v1/?um=constructor%3A36e9897273a12d1bc6318f6a480b67c81a628b41f5d85836c1154641ab59affa&amp;amp;source=constructor', '40.714627, 74.002863', 'catalog/demo/locations/exshop_ny.webp', '09:00 - 21:00', ''),
+(2, 0, 176, 2761, 'Москва', 'EXSHOP Москва', '123112', 'Пресненская наб., 12, Москва', '+ 7 999 420 69 69', '', 'https://yandex.ru/map-widget/v1/?um=constructor%3A354b483500874f8eddd417b2dbabfb1b1f17e2ebad7a10948b6a684d2fea15a4&amp;amp;source=constructor', '55.755864, 37.617698', 'catalog/demo/locations/exshop_msk.webp', '10:00 - 20:00', '');
 
 -- --------------------------------------------------------
 
@@ -6785,7 +6791,7 @@ INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES
 ('443e9d37c8cdaca7e0b974a6cb', '{\"user_id\":\"1\",\"user_token\":\"ow7x7g8FdJRdeZlYUxUiwqRXgguuEP7g\",\"language\":\"ru-ru\",\"currency\":\"RUB\",\"payment_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"\",\"address_2\":\"\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\\u041c\\u043e\\u0441\\u043a\\u043e\\u0432\\u0441\\u043a\\u0430\\u044f \\u043e\\u0431\\u043b\\u0430\\u0441\\u0442\\u044c\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"shipping_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"EXSHOP \\u041c\\u043e\\u0441\\u043a\\u0432\\u0430\",\"address_2\":\"\\u041f\\u0440\\u0435\\u0441\\u043d\\u0435\\u043d\\u0441\\u043a\\u0430\\u044f \\u043d\\u0430\\u0431., 12, \\u041c\\u043e\\u0441\\u043a\\u0432\\u0430\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"guest\":{\"customer_group_id\":\"1\",\"firstname\":\"\\u0412\\u0430\\u0441\\u0438\\u043b\\u0438\\u0439\",\"lastname\":\"\\u0417\\u0430\\u043b\\u0443\\u043f\\u0438\\u043d\",\"telephone\":\"+7 987 654 32 10\",\"email\":\"info@exurl.ru\",\"agree\":1,\"custom_field\":[]},\"captcha\":\"a594d3\",\"comment\":\"\",\"account\":\"guest\",\"order_id\":1}', '2026-06-18 16:18:19'),
 ('47e12918889958ce4fcf5a44e2', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-06-16 17:37:34'),
 ('7e73be14a3515543006723df20', '{\"api_id\":\"8\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-06-16 18:46:58'),
-('82932dea9835933afc578164b8', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"payment_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"\",\"address_2\":\"\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\\u041c\\u043e\\u0441\\u043a\\u043e\\u0432\\u0441\\u043a\\u0430\\u044f \\u043e\\u0431\\u043b\\u0430\\u0441\\u0442\\u044c\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"shipping_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"\",\"address_2\":\"\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\\u041c\\u043e\\u0441\\u043a\\u043e\\u0432\\u0441\\u043a\\u0430\\u044f \\u043e\\u0431\\u043b\\u0430\\u0441\\u0442\\u044c\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"guest\":{\"customer_group_id\":\"1\"},\"payment_methods\":{\"cod\":{\"code\":\"cod\",\"title\":\"\\u041e\\u043f\\u043b\\u0430\\u0442\\u0430 \\u043f\\u0440\\u0438 \\u0434\\u043e\\u0441\\u0442\\u0430\\u0432\\u043a\\u0435\",\"terms\":\"\\u041d\\u0430\\u043b\\u0438\\u0447\\u043d\\u044b\\u043c\\u0438 \\u0438\\u043b\\u0438 \\u043a\\u0430\\u0440\\u0442\\u043e\\u0439\",\"sort_order\":\"1\"},\"bank_transfer\":{\"code\":\"bank_transfer\",\"title\":\"\\u041e\\u043f\\u043b\\u0430\\u0442\\u0430 \\u043e\\u043d\\u043b\\u0430\\u0439\\u043d\",\"terms\":\"\\u041a\\u0430\\u0440\\u0442\\u043e\\u0439 \\u0438\\u043b\\u0438 QR-\\u043a\\u043e\\u0434\\u043e\\u043c\",\"sort_order\":\"2\"}},\"shipping_methods\":{\"pickup\":{\"title\":\"\\u0421\\u0430\\u043c\\u043e\\u0432\\u044b\\u0432\\u043e\\u0437\",\"quote\":{\"pickup\":{\"code\":\"pickup.pickup\",\"title\":\"\\u0421\\u0430\\u043c\\u043e\\u0432\\u044b\\u0432\\u043e\\u0437\",\"description\":\"\\u0421\\u043e \\u0441\\u043a\\u043b\\u0430\\u0434\\u0430 \\u0438\\u043b\\u0438 \\u041f\\u0412\\u0417\",\"cost\":0,\"tax_class_id\":0,\"text\":\"0 \\u20bd\"}},\"sort_order\":\"1\",\"error\":false},\"flat\":{\"title\":\"\\u0414\\u043e\\u0441\\u0442\\u0430\\u0432\\u043a\\u0430 \\u0434\\u043e \\u0430\\u0434\\u0440\\u0435\\u0441\\u0430\",\"quote\":{\"flat\":{\"code\":\"flat.flat\",\"title\":\"\\u0414\\u043e\\u0441\\u0442\\u0430\\u0432\\u043a\\u0430 \\u0434\\u043e \\u0430\\u0434\\u0440\\u0435\\u0441\\u0430\",\"description\":\"\\u0411\\u0435\\u0441\\u043f\\u043b\\u0430\\u0442\\u043d\\u043e \\u043f\\u0440\\u0438 \\u0437\\u0430\\u043a\\u0430\\u0437\\u0435 \\u043e\\u0442 <b>10 000 \\u20bd<\\/b>\",\"cost\":0,\"tax_class_id\":\"0\",\"text\":\"0 \\u20bd\"}},\"sort_order\":\"2\",\"error\":false}},\"shipping_method\":{\"code\":\"pickup.pickup\",\"title\":\"\\u0421\\u0430\\u043c\\u043e\\u0432\\u044b\\u0432\\u043e\\u0437\",\"description\":\"\\u0421\\u043e \\u0441\\u043a\\u043b\\u0430\\u0434\\u0430 \\u0438\\u043b\\u0438 \\u041f\\u0412\\u0417\",\"cost\":0,\"tax_class_id\":0,\"text\":\"0 \\u20bd\"},\"user_id\":\"1\",\"user_token\":\"5qdiTu9nbNgyU5iJX3r5B1BycboaQcky\"}', '2026-07-12 21:59:56'),
+('82932dea9835933afc578164b8', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"payment_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"\",\"address_2\":\"\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\\u041c\\u043e\\u0441\\u043a\\u043e\\u0432\\u0441\\u043a\\u0430\\u044f \\u043e\\u0431\\u043b\\u0430\\u0441\\u0442\\u044c\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"shipping_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"\",\"address_2\":\"\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\\u041c\\u043e\\u0441\\u043a\\u043e\\u0432\\u0441\\u043a\\u0430\\u044f \\u043e\\u0431\\u043b\\u0430\\u0441\\u0442\\u044c\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"guest\":{\"customer_group_id\":\"1\"},\"payment_methods\":{\"cod\":{\"code\":\"cod\",\"title\":\"\\u041e\\u043f\\u043b\\u0430\\u0442\\u0430 \\u043f\\u0440\\u0438 \\u0434\\u043e\\u0441\\u0442\\u0430\\u0432\\u043a\\u0435\",\"terms\":\"\\u041d\\u0430\\u043b\\u0438\\u0447\\u043d\\u044b\\u043c\\u0438 \\u0438\\u043b\\u0438 \\u043a\\u0430\\u0440\\u0442\\u043e\\u0439\",\"sort_order\":\"1\"},\"bank_transfer\":{\"code\":\"bank_transfer\",\"title\":\"\\u041e\\u043f\\u043b\\u0430\\u0442\\u0430 \\u043e\\u043d\\u043b\\u0430\\u0439\\u043d\",\"terms\":\"\\u041a\\u0430\\u0440\\u0442\\u043e\\u0439 \\u0438\\u043b\\u0438 QR-\\u043a\\u043e\\u0434\\u043e\\u043c\",\"sort_order\":\"2\"}},\"shipping_methods\":{\"pickup\":{\"title\":\"\\u0421\\u0430\\u043c\\u043e\\u0432\\u044b\\u0432\\u043e\\u0437\",\"quote\":{\"pickup\":{\"code\":\"pickup.pickup\",\"title\":\"\\u0421\\u0430\\u043c\\u043e\\u0432\\u044b\\u0432\\u043e\\u0437\",\"description\":\"\\u0421\\u043e \\u0441\\u043a\\u043b\\u0430\\u0434\\u0430 \\u0438\\u043b\\u0438 \\u041f\\u0412\\u0417\",\"cost\":0,\"tax_class_id\":0,\"text\":\"0 \\u20bd\"}},\"sort_order\":\"1\",\"error\":false},\"flat\":{\"title\":\"\\u0414\\u043e\\u0441\\u0442\\u0430\\u0432\\u043a\\u0430 \\u0434\\u043e \\u0430\\u0434\\u0440\\u0435\\u0441\\u0430\",\"quote\":{\"flat\":{\"code\":\"flat.flat\",\"title\":\"\\u0414\\u043e\\u0441\\u0442\\u0430\\u0432\\u043a\\u0430 \\u0434\\u043e \\u0430\\u0434\\u0440\\u0435\\u0441\\u0430\",\"description\":\"\\u0411\\u0435\\u0441\\u043f\\u043b\\u0430\\u0442\\u043d\\u043e \\u043f\\u0440\\u0438 \\u0437\\u0430\\u043a\\u0430\\u0437\\u0435 \\u043e\\u0442 <b>10 000 \\u20bd<\\/b>\",\"cost\":0,\"tax_class_id\":\"0\",\"text\":\"0 \\u20bd\"}},\"sort_order\":\"2\",\"error\":false}},\"shipping_method\":{\"code\":\"pickup.pickup\",\"title\":\"\\u0421\\u0430\\u043c\\u043e\\u0432\\u044b\\u0432\\u043e\\u0437\",\"description\":\"\\u0421\\u043e \\u0441\\u043a\\u043b\\u0430\\u0434\\u0430 \\u0438\\u043b\\u0438 \\u041f\\u0412\\u0417\",\"cost\":0,\"tax_class_id\":0,\"text\":\"0 \\u20bd\"},\"user_id\":\"1\",\"user_token\":\"5qdiTu9nbNgyU5iJX3r5B1BycboaQcky\"}', '2026-07-12 23:30:30'),
 ('a40b8ad33ec11f6fbb198cc5b8', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-06-16 17:37:33'),
 ('e4215e01f4d1cf8b367a79e584', '{\"api_id\":\"8\"}', '2026-06-16 18:46:58'),
 ('f82c86ad491bce839fb67b69d1', '{\"user_id\":\"1\",\"user_token\":\"ayjb0JYs93I0OzFrFABrX95MiPdiZaEv\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-06-21 08:40:16');
@@ -13047,7 +13053,7 @@ ALTER TABLE `oc_layout_module`
 -- AUTO_INCREMENT for table `oc_layout_route`
 --
 ALTER TABLE `oc_layout_route`
-  MODIFY `layout_route_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=257;
+  MODIFY `layout_route_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=299;
 
 --
 -- AUTO_INCREMENT for table `oc_length_class`
@@ -13059,7 +13065,7 @@ ALTER TABLE `oc_length_class`
 -- AUTO_INCREMENT for table `oc_location`
 --
 ALTER TABLE `oc_location`
-  MODIFY `location_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `location_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `oc_manufacturer`
@@ -13275,7 +13281,7 @@ ALTER TABLE `oc_seo_url`
 -- AUTO_INCREMENT for table `oc_setting`
 --
 ALTER TABLE `oc_setting`
-  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52162;
+  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52324;
 
 --
 -- AUTO_INCREMENT for table `oc_statistics`
@@ -13293,7 +13299,7 @@ ALTER TABLE `oc_stock_status`
 -- AUTO_INCREMENT for table `oc_store`
 --
 ALTER TABLE `oc_store`
-  MODIFY `store_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `store_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `oc_tax_class`
