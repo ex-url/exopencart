@@ -789,6 +789,27 @@
                   <input type="hidden" name="config_icon" value="{{ config_icon }}" id="input-icon" />
                 </div>
               </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-og-fallback">{{ entry_og_fallback }}</label>
+                <div class="col-sm-10">
+                  <a href="" id="thumb-og-fallback" data-toggle="image" class="img-thumbnail">
+                    <img src="{{ og_fallback }}" alt="" title="" data-placeholder="{{ placeholder }}" />
+                  </a>
+                  <input type="hidden" name="config_og_fallback" value="{{ config_og_fallback }}" id="input-og-fallback" />
+                </div>
+              </div>
+              <div class="form-group required">
+                <label class="col-sm-2 control-label" for="input-og-fallback-width"><span data-toggle="tooltip"
+                    title="{{ help_og_fallback_size }}">{{ entry_og_fallback_size }}</span></label>
+                <div class="col-sm-2">
+                  <input type="text" name="config_og_fallback_width" value="{{ config_og_fallback_width }}"
+                    placeholder="{{ entry_og_fallback_width }}" id="input-og-fallback-width" class="form-control" />
+                </div>
+                <div class="col-sm-2">
+                  <input type="text" name="config_og_fallback_height" value="{{ config_og_fallback_height }}"
+                    placeholder="{{ entry_og_fallback_height }}" id="input-og-fallback-height" class="form-control" />
+                </div>
+              </div>
             </div>
             <div class="tab-pane" id="tab-server">
               <div class="form-group">

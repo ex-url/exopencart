@@ -773,12 +773,44 @@ class ControllerSettingStore extends Controller {
       $data['config_logo_height'] = 60;
     }
 
+    if (isset($this->request->post['config_og_fallback'])) {
+      $data['config_og_fallback'] = $this->request->post['config_og_fallback'];
+    } elseif (isset($store_info['config_og_fallback'])) {
+      $data['config_og_fallback'] = $store_info['config_og_fallback'];
+    } else {
+      $data['config_og_fallback'] = '';
+    }
+
+    if (isset($this->request->post['config_og_fallback_width'])) {
+      $data['config_og_fallback_width'] = $this->request->post['config_og_fallback_width'];
+    } elseif (isset($store_info['config_og_fallback_width'])) {
+      $data['config_og_fallback_width'] = $store_info['config_og_fallback_width'];
+    } else {
+      $data['config_og_fallback_width'] = 200;
+    }
+
+    if (isset($this->request->post['config_og_fallback_height'])) {
+      $data['config_og_fallback_height'] = $this->request->post['config_og_fallback_height'];
+    } elseif (isset($store_info['config_og_fallback_height'])) {
+      $data['config_og_fallback_height'] = $store_info['config_og_fallback_height'];
+    } else {
+      $data['config_og_fallback_height'] = 200;
+    }
+
     if (isset($this->request->post['config_logo']) && is_file(DIR_IMAGE . $this->request->post['config_logo'])) {
       $data['logo'] = $this->model_tool_image->resize($this->request->post['config_logo'], 100, 100);
     } elseif (isset($store_info['config_logo']) && is_file(DIR_IMAGE . $store_info['config_logo'])) {
       $data['logo'] = $this->model_tool_image->resize($store_info['config_logo'], 100, 100);
     } else {
       $data['logo'] = $this->model_tool_image->resize('no_image.png', 100, 100);
+    }
+
+    if (isset($this->request->post['config_og_fallback']) && is_file(DIR_IMAGE . $this->request->post['config_og_fallback'])) {
+      $data['og_fallback'] = $this->model_tool_image->resize($this->request->post['config_og_fallback'], 100, 100);
+    } elseif (isset($store_info['config_og_fallback']) && is_file(DIR_IMAGE . $store_info['config_og_fallback'])) {
+      $data['og_fallback'] = $this->model_tool_image->resize($store_info['config_og_fallback'], 100, 100);
+    } else {
+      $data['og_fallback'] = $this->model_tool_image->resize('no_image.png', 100, 100);
     }
 
     $data['placeholder'] = $this->model_tool_image->resize('no_image.png', 100, 100);
