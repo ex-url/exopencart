@@ -72,8 +72,7 @@ button {
   position: relative;
 }
 
-#menu .not-logged,
-#menu .logged {
+#menu .logged-status {
   display: block;
   position: absolute;
   width: 6px;
@@ -148,13 +147,6 @@ button {
 .category-menu {
   border: 1px solid #ededed;
   overflow: hidden;
-}
-
-#login-modal .modal-card {
-  min-height: 386px;
-  border-radius: 18px;
-  box-shadow: 0 5px 10px 0 rgb(0 0 0 / 20%);
-  max-width: 400px;
 }
 
 #account-login .login-form {

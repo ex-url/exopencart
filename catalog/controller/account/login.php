@@ -118,13 +118,25 @@ class ControllerAccountLogin extends Controller {
     $data['register'] = $this->url->link('account/register', '', true);
     $data['forgotten'] = $this->url->link('account/forgotten', '', true);
 
-    // Added strpos check to pass McAfee PCI compliance test (http://forum.opencart.com/viewtopic.php?f=10&t=12043&p=151494#p151295)
-    if (isset($this->request->post['redirect']) && (strpos($this->request->post['redirect'], $this->config->get('config_url')) !== false || strpos($this->request->post['redirect'], $this->config->get('config_ssl')) !== false)) {
-      $data['redirect'] = $this->request->post['redirect'];
-    } elseif (isset($this->session->data['redirect'])) {
-      $data['redirect'] = $this->session->data['redirect'];
+    $allowed_redirects = [
+      'checkout/checkout',
+      'account/account',
+      'account/edit',
+      'account/password',
+      'account/address',
+      'account/wishlist',
+      'account/order',
+      'account/download',
+      'account/recurring',
+      'affiliate/account',
+      'affiliate/edit',
+      'affiliate/password',
+      'affiliate/payment',
+      'affiliate/tracking'
+    ];
 
-      unset($this->session->data['redirect']);
+    if (isset($this->request->get['redirect']) && in_array($this->request->get['redirect'], $allowed_redirects)) {
+      $data['redirect'] = $this->url->link($this->request->get['redirect'], '', true);
     } else {
       $data['redirect'] = '';
     }
@@ -157,31 +169,6 @@ class ControllerAccountLogin extends Controller {
     $data['header'] = $this->load->controller('common/header');
 
     $this->response->setOutput($this->load->view('account/login', $data));
-  }
-
-  public function modal() {
-    $this->load->model('account/customer');
-
-    if ($this->customer->isLogged()) {
-      $this->response->redirect($this->url->link('account/account', '', true));
-    }
-
-    $this->load->language('account/login');
-
-    $data['action'] = $this->url->link('account/login', '', true);
-    $data['register'] = $this->url->link('account/register', '', true);
-    $data['forgotten'] = $this->url->link('account/forgotten', '', true);
-
-    // Added strpos check to pass McAfee PCI compliance test (http://forum.opencart.com/viewtopic.php?f=10&t=12043&p=151494#p151295)
-    if (isset($this->request->post['redirect']) && (strpos($this->request->post['redirect'], $this->config->get('config_url')) !== false || strpos($this->request->post['redirect'], $this->config->get('config_ssl')) !== false)) {
-      $data['redirect'] = $this->request->post['redirect'];
-    } elseif (isset($this->session->data['redirect'])) {
-      $data['redirect'] = $this->session->data['redirect'];
-    } else {
-      $data['redirect'] = '';
-    }
-
-    $this->response->setOutput($this->load->view('account/login_modal', $data));
   }
 
   protected function validate() {

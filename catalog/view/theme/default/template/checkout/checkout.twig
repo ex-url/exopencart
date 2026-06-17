@@ -35,7 +35,7 @@
                   <div class="is-flex is-justify-content-space-between is-align-items-center">
                     <span>{{ text_customer }}</span>
                     {% if not logged %}
-                    <button class="button is-primary is-light login-trigger" data-redirect="/index.php?route=checkout/checkout">{{ text_login }}</button>
+                    <a href="{{ login }}" class="button is-primary is-light">{{ text_login }}</a>
                     {% endif %}
                   </div>
                 </div>

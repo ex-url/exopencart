@@ -83,7 +83,6 @@
               </span>
               <span class="has-background-danger has-text-white badge">{{ wishlist_badge_products }}</span>
             </a>
-            {% if logged %}
             <a rel="nofollow" class="account has-text-primary" href="{{ account }}">
               <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="24" width="24">
@@ -92,20 +91,8 @@
                   <path d="M10.625 12c-0.198125 -3.8668750000000003 -6.051875 -3.8668750000000003 -6.25 0" stroke-width="1"></path>
                 </svg>
               </span>
-              <span class="has-background-success logged"></span>
-            </a>
-            {% else %}
-            <span class="account login-trigger has-text-primary is-clickable">
-              <span class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="24" width="24">
-                  <path d="M5.9375 5.6875a1.5625 1.5625 0 1 0 3.125 0 1.5625 1.5625 0 1 0 -3.125 0" stroke-width="1"></path>
-                  <path d="M1.875 7.5a5.625 5.625 0 1 0 11.25 0 5.625 5.625 0 1 0 -11.25 0" stroke-width="1"></path>
-                  <path d="M10.625 12c-0.198125 -3.8668750000000003 -6.051875 -3.8668750000000003 -6.25 0" stroke-width="1"></path>
-                </svg>
-              </span>
-              <span class="has-background-danger not-logged"></span>
-            </span>
-            {% endif %}            
+              <span class="logged-status {{ logged ? 'has-background-success' : 'has-background-danger' }}"></span>
+            </a>          
             <a href="{{ cart }}" class="cart-icon has-text-primary">
               <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="24" width="24">

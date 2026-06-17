@@ -47,8 +47,6 @@ class ControllerAccountRegister extends Controller {
 			'href' => $this->url->link('account/register', '', true)
 		);
 
-		$data['text_account_already'] = sprintf($this->language->get('text_account_already'), $this->url->link('account/login', '', true));
-
 		if (isset($this->error['warning'])) {
 			$data['error_warning'] = $this->error['warning'];
 		} else {
@@ -206,6 +204,8 @@ class ControllerAccountRegister extends Controller {
 		} else {
 			$data['text_agree'] = '';
 		}
+
+		$data['login'] = $this->url->link('account/login', '', true);
 
 		if (isset($this->request->post['agree'])) {
 			$data['agree'] = $this->request->post['agree'];

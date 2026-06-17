@@ -27,12 +27,12 @@
       {% endif %}
       <div id="content" class="{{ class }} mb-5">{{ content_top }}
         {% if error_warning %}
-        <div class="notification is-danger is-light">
+        <div class="notification is-danger is-light has-text-centered">
           {{ error_warning }}
         </div>
         {% endif %}
         <form class="box mx-auto" style="max-width: 480px" action="{{ action }}" method="post" enctype="multipart/form-data">
-          <h1 class="title is-4 is-flex is-align-items-center">
+          <h1 class="title is-4 is-flex is-align-items-center is-justify-content-center">
             <span class="icon is-medium has-text-primary">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="32" width="32">
                 <path d="M5.625 4.6875a1.875 1.875 0 1 0 3.75 0 1.875 1.875 0 1 0 -3.75 0" stroke-width="1"></path>
@@ -64,7 +64,7 @@
             <label class="label">{{ entry_firstname }}</label>
             <div class="control">
               <input type="text" name="firstname" value="{{ firstname }}" placeholder="{{ entry_firstname }}"
-                class="input">
+                class="input {{ error_firstname ? 'is-danger' : '' }}">
             </div>
             {% if error_firstname %}
             <p class="help is-danger">{{ error_firstname }}</p>
@@ -74,7 +74,7 @@
             <label class="label">{{ entry_lastname }}</label>
             <div class="control">
               <input type="text" name="lastname" value="{{ lastname }}" placeholder="{{ entry_lastname }}"
-                class="input">
+                class="input {{ error_lastname ? 'is-danger' : '' }}">
             </div>
             {% if error_lastname %}
             <p class="help is-danger">{{ error_lastname }}</p>
@@ -84,7 +84,7 @@
             <label class="label">{{ entry_telephone }}</label>
             <div class="control">
               <input type="text" name="telephone" value="{{ telephone }}" placeholder="{{ entry_telephone }}"
-                class="input">
+                class="input {{ error_telephone ? 'is-danger' : '' }}">
             </div>
             {% if error_telephone %}
             <p class="help is-danger">{{ error_telephone }}</p>
@@ -93,7 +93,7 @@
           <div class="field required native-field">
             <label class="label">{{ entry_email }}</label>
             <div class="control">
-              <input type="email" name="email" value="{{ email }}" placeholder="{{ entry_email }}" class="input">
+              <input type="email" name="email" value="{{ email }}" placeholder="{{ entry_email }}" class="input {{ error_email ? 'is-danger' : '' }}">
             </div>
             {% if error_email %}
             <p class="help is-danger">{{ error_email }}</p>
@@ -102,7 +102,7 @@
           <div class="field required native-field">
             <label class="label">{{ entry_password }}</label>
             <div class="control">
-              <input type="password" name="password" value="" placeholder="{{ entry_password }}" class="input">
+              <input type="password" name="password" value="" placeholder="{{ entry_password }}" class="input {{ error_password ? 'is-danger' : '' }}">
             </div>
             {% if error_password %}
             <p class="help is-danger">{{ error_password }}</p>
@@ -111,7 +111,7 @@
           <div class="field required native-field">
             <label class="label">{{ entry_confirm }}</label>
             <div class="control">
-              <input type="password" name="confirm" value="" placeholder="{{ entry_confirm }}" class="input">
+              <input type="password" name="confirm" value="" placeholder="{{ entry_confirm }}" class="input {{ error_confirm ? 'is-danger' : '' }}">
             </div>
             {% if error_confirm %}
             <p class="help is-danger">{{ error_confirm }}</p>
@@ -126,7 +126,7 @@
             <div class="control">
               <select name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]"
                 id="custom-field{{ custom_field.custom_field_id }}"
-                id="custom-field{{ custom_field.custom_field_id }}" class="input">
+                id="custom-field{{ custom_field.custom_field_id }}" class="input {{ error_custom_field[custom_field.custom_field_id] ? 'is-danger' : '' }}">
                 <option value="">{{ text_select }}</option>
                 {% for custom_field_value in custom_field.custom_field_value %}
                 {% if account_custom_field[custom_field.custom_field_id] and
@@ -228,7 +228,7 @@
               <textarea name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]"
                 rows="5" placeholder="{{ custom_field.name }}" id="custom-field{{ custom_field.custom_field_id }}"
                 id="custom-field{{ custom_field.custom_field_id }}"
-                class="input">{% if account_custom_field[custom_field.custom_field_id] %}{{ account_custom_field[custom_field.custom_field_id] }}{% else %}{{ custom_field.value }}{% endif %}</textarea>
+                class="input {{ error_custom_field[custom_field.custom_field_id] ? 'is-danger' : '' }}">{% if account_custom_field[custom_field.custom_field_id] %}{{ account_custom_field[custom_field.custom_field_id] }}{% else %}{{ custom_field.value }}{% endif %}</textarea>
               {% if error_custom_field[custom_field.custom_field_id] %}
               <div class="help is-danger">{{ error_custom_field[custom_field.custom_field_id] }}</div>
               {% endif %}
@@ -240,7 +240,7 @@
             <label class="label">{{ custom_field.name }}</label>
             <div class="control">
               <button type="button" id="button-custom-field {{ custom_field.custom_field_id }}"
-                id="custom-field{{ custom_field.custom_field_id }}" class="btn btn-default"><i
+                id="custom-field{{ custom_field.custom_field_id }}" class="btn btn-default {{ error_custom_field[custom_field.custom_field_id] ? 'is-danger' : '' }}"><i
                   class="fa fa-upload"></i> {{ button_upload }}</button>
               <input type="hidden"
                 name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]"
@@ -256,7 +256,7 @@
             <label class="label" for="custom-field{{ custom_field.custom_field_id }}">{{ custom_field.name
               }}</label>
             <div class="control">
-              <input id="custom-field{{ custom_field.custom_field_id }}" class="input" type="date"
+              <input id="custom-field{{ custom_field.custom_field_id }}" class="input {{ error_custom_field[custom_field.custom_field_id] ? 'is-danger' : '' }}" type="date"
                 name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]"
                 value="{% if account_custom_field[custom_field.custom_field_id] %}{{ account_custom_field[custom_field.custom_field_id] }}{% else %}{{ custom_field.value }}{% endif %}"
                 placeholder="{{ custom_field.name }}" id="custom-field{{ custom_field.custom_field_id }}" />
@@ -276,7 +276,7 @@
                   name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]"
                   value="{% if account_custom_field[custom_field.custom_field_id] %}{{ account_custom_field[custom_field.custom_field_id] }}{% else %}{{ custom_field.value }}{% endif %}"
                   placeholder="{{ custom_field.name }}" data-date-format="HH:mm"
-                  id="custom-field{{ custom_field.custom_field_id }}" class="input" />
+                  id="custom-field{{ custom_field.custom_field_id }}" class="input {{ error_custom_field[custom_field.custom_field_id] ? 'is-danger' : '' }}" />
                 <span class="input-group-btn">
                   <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
                 </span>
@@ -297,7 +297,7 @@
                   name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]"
                   value="{% if account_custom_field[custom_field.custom_field_id] %}{{ account_custom_field[custom_field.custom_field_id] }}{% else %}{{ custom_field.value }}{% endif %}"
                   placeholder="{{ custom_field.name }}" data-date-format="YYYY-MM-DD HH:mm"
-                  id="custom-field{{ custom_field.custom_field_id }}" class="input" />
+                  id="custom-field{{ custom_field.custom_field_id }}" class="input {{ error_custom_field[custom_field.custom_field_id] ? 'is-danger' : '' }}" />
                 <span class="input-group-btn">
                   <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
                 </span>
@@ -328,7 +328,30 @@
           </div>
           {% endif %}
           <div class="buttons">
-            <button type="submit" class="button is-success is-medium is-fullwidth">{{ button_register }}</button>
+            <button type="submit" class="button is-success is-medium is-fullwidth">
+              <span class="icon is-medium">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="32" width="32">
+                  <path d="M5.625 4.6875a1.875 1.875 0 1 0 3.75 0 1.875 1.875 0 1 0 -3.75 0" stroke-width="1"></path>
+                  <path d="M12.1875 12.8125c-0.296875 -5.833125 -9.078125 -5.833125 -9.375 0m3.4375 -1.25h2.5m-1.25 -1.25v2.5" stroke-width="1"></path>
+                </svg>
+              </span>
+              <span>{{ button_register }}</span>
+            </button>
+          </div>
+          <div class="my-5 is-size-5 has-text-centered">
+            {{ text_account_already }}
+          </div>
+          <div class="buttons">
+            <input type="hidden" name="redirect" value="{{ redirect }}" />
+            <a href="{{ login }}" class="button is-primary is-medium is-fullwidth">
+              <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="20" width="20">
+                  <path d="M8.435 13.125H4.0625c-0.690625 0 -1.25 -0.719375 -1.25 -1.606875V3.48125c0 -0.8868750000000001 0.559375 -1.60625 1.25 -1.60625h4.375" stroke-width="1"></path>
+                  <path d="M8.125 9.6875 5.9375 7.5 8.125 5.3125m4.0625 2.185h-6.25" stroke-width="1"></path>
+                </svg>
+              </span>
+              <span>{{ button_login }}</span>                               
+            </a>
           </div>
         </form>
       </div>
@@ -390,7 +413,7 @@
             $(element).removeClass('is-loading');
           },
           success: function (json) {
-            $(element).parent().find('.help is-danger').remove();
+            $(element).parent().find('.help.is-danger').remove();
 
             if (json['error']) {
               $(element).parent().find('input').after('<div class="help is-danger">' + json['error'] + '</div>');
@@ -436,6 +459,17 @@
   });
 
   $('input[name="customer_group_id"]:checked').trigger('change');
+
+  setTimeout(function () {
+    $('.notification').fadeOut('slow', function () {
+      $(this).remove();
+    });
+
+    $('form ').find('.help.is-danger').fadeOut(200, function () {
+      $(this).remove();
+    });
+    $('form ').find('.input.is-danger').removeClass('is-danger');
+  }, 5000);
 
 </script>
 

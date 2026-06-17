@@ -114,7 +114,7 @@ class ControllerCommonMenu extends Controller {
 
       $data['compare'] = $this->url->link('product/compare');
       $data['wishlist'] = $this->url->link('account/wishlist');
-      $data['account'] = $this->url->link('account/account', '', true);
+      $data['account'] = $this->customer->isLogged() ? $this->url->link('account/account', '', true) : $this->url->link('account/login', '', true);
       $data['cart'] = $this->url->link('checkout/cart');
 
       $this->cache->set($cache_key, $data);

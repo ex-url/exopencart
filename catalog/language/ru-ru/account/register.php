@@ -8,7 +8,7 @@ $_['heading_title']        = 'Регистрация';
 // Text
 $_['text_account']         = 'Аккаунт';
 $_['text_register']        = 'Регистрация';
-$_['text_account_already'] = 'Если Вы уже зарегистрированы, перейдите на страницу <a href="%s">входа в систему</a>.';
+$_['text_account_already'] = 'Уже есть аккаунт?';
 $_['text_your_details']    = 'Контактные данные';
 $_['text_your_address']    = 'Ваш Адрес';
 $_['text_newsletter']      = 'Рассылка новостей';
@@ -22,7 +22,7 @@ $_['button_register']      = 'Создать аккаунт';
 $_['entry_customer_group'] = 'Группа покупателей';
 $_['entry_firstname']      = 'Имя';
 $_['entry_lastname']       = 'Фамилия';
-$_['entry_email']          = 'E-Mail';
+$_['entry_email']          = 'Электронная почта';
 $_['entry_telephone']      = 'Телефон';
 $_['entry_fax']            = 'Факс';
 $_['entry_company']        = 'Компания';

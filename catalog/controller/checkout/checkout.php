@@ -72,6 +72,7 @@ class ControllerCheckoutCheckout extends Controller {
       $data['error_warning'] = '';
     }
 
+    $data['login'] = $this->url->link('account/login', '&redirect=checkout/checkout', true);
     $data['logged'] = $this->customer->isLogged();
     $data['checkout_guest'] = $this->config->get('config_checkout_guest');
     $data['shipping_required'] = $this->cart->hasShipping();
