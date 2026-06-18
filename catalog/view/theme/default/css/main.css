@@ -756,7 +756,7 @@ footer .scroll-top-trigger.shown {
     z-index: 3;
     width: auto;
     justify-content: center !important;
-    box-shadow: 0 0 5px 0 rgb(0 0 0 / 15%);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
     border-radius: 5rem;
     background: rgb(255 255 255 / 80%) !important;
     backdrop-filter: blur(1rem);
