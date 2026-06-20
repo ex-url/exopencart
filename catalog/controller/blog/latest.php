@@ -6,9 +6,7 @@ class ControllerBlogLatest extends Controller {
   public function index() {
 
     $this->load->language('blog/latest');
-
     $this->load->model('blog/article');
-
     $this->load->model('tool/image');
 
     if ($this->config->get('config_noindex_disallow_params')) {
@@ -74,6 +72,16 @@ class ControllerBlogLatest extends Controller {
     $this->document->setDescription($this->config->get('configblog_meta_description')[$this->config->get('config_language_id')]);
     $this->document->setKeywords($this->config->get('configblog_meta_keyword')[$this->config->get('config_language_id')]);
 
+    if(isset($this->request->get['user_id'])) {
+      $author_info = $this->model_blog_article->getArticleAuthor($this->request->get['user_id']);
+
+      if($author_info) {
+        $data['heading_title'] = sprintf($this->language->get('heading_title_author'), $author_info['firstname'] . ' ' . $author_info['lastname']);
+        $this->document->setTitle(sprintf($this->language->get('heading_title_author'), $author_info['firstname'] . ' ' . $author_info['lastname']));
+        $this->document->setDescription(sprintf($this->language->get('author_meta_description'), $author_info['firstname'] . ' ' . $author_info['lastname']));
+      }
+    }
+
     $data['breadcrumbs'] = array();
 
     $data['breadcrumbs'][] = array(
@@ -112,6 +120,12 @@ class ControllerBlogLatest extends Controller {
       $url .= '&limit=' . $this->request->get['limit'];
     }
 
+    if (isset($this->request->get['user_id'])) {
+      $url .= '&user_id=' . $this->request->get['user_id'];
+    }
+
+    $this->document->setOgUrl($this->url->link('blog/latest', $url, true));
+
     $data['text_refine'] = $this->language->get('text_refine');
     $data['text_views'] = $this->language->get('text_views');
     $data['text_empty'] = $this->language->get('text_empty');
@@ -141,6 +155,10 @@ class ControllerBlogLatest extends Controller {
       'limit'              => $limit
     );
 
+    if(isset($this->request->get['user_id'])) {
+      $article_data['filter_user_id'] = $this->request->get['user_id'];
+    }
+
     $article_total = $this->model_blog_article->getTotalArticles($article_data);
 
     $results = $this->model_blog_article->getArticles($article_data);
@@ -164,6 +182,16 @@ class ControllerBlogLatest extends Controller {
         $rating = false;
       }
 
+      $author = '';
+
+      if($result['show_author'] && $result['user_id']) {
+        $author_info = $this->model_blog_article->getArticleAuthor($result['user_id']);
+
+        if($author_info) {
+          $author = $author_info['firstname'] . ' ' . $author_info['lastname'];
+        }
+      }
+
       $data['articles'][] = array(
         'article_id'  => $result['article_id'],
         'thumb'       => $image,
@@ -171,6 +199,9 @@ class ControllerBlogLatest extends Controller {
         'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('configblog_article_description_length')) . '..',
         'date_published'  => date($this->language->get('date_format_short'), strtotime($result['date_published'])),
         'show_date'  => $result['show_date'],
+        'show_viewed'  => $result['show_viewed'],
+        'show_author'  => $result['show_author'],
+        'author'      => $author,
         'viewed'      => $result['viewed'],
         'rating'      => $rating,
         'reviews'     => sprintf($this->language->get('text_reviews'), (int)$result['reviews']),

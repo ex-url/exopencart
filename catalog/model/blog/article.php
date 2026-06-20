@@ -18,6 +18,7 @@ class ModelBlogArticle extends Model {
 
     if ($query->num_rows) {
       return array(
+        'user_id'       => $query->row['user_id'],
         'meta_title'       => $query->row['meta_title'],
         'noindex'          => $query->row['noindex'],
         'meta_h1'          => $query->row['meta_h1'],
@@ -35,6 +36,8 @@ class ModelBlogArticle extends Model {
         'status'           => $query->row['status'],
         'date_published'   => $query->row['date_published'],
         'show_date'        => $query->row['show_date'],
+        'show_viewed'      => $query->row['show_viewed'],
+        'show_author'      => $query->row['show_author'],
         'date_modified'    => $query->row['date_modified'],
         'viewed'           => $query->row['viewed']
       );
@@ -131,6 +134,10 @@ class ModelBlogArticle extends Model {
         } else {
           $sql .= " AND a2c.blog_category_id = '" . (int)$data['filter_blog_category_id'] . "'";
         }
+      }
+
+      if(!empty($data['filter_user_id'])) {
+        $sql .= " AND p.user_id = '" . (int)$data['filter_user_id'] . "'";
       }
 
       $sql .= " GROUP BY p.article_id";
@@ -422,6 +429,10 @@ class ModelBlogArticle extends Model {
         }
       }
 
+      if(!empty($data['filter_user_id'])) {
+        $sql .= " AND p.user_id = '" . (int)$data['filter_user_id'] . "'";
+      }
+
       $query = $this->db->query($sql);
 
       $article_data = $query->row['total'];
@@ -430,5 +441,11 @@ class ModelBlogArticle extends Model {
     }
 
     return $article_data;
+  }
+
+  public function getArticleAuthor($user_id) {
+    $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "user WHERE user_id = '" . (int)$user_id . "'");
+
+    return $query->row;
   }
 }

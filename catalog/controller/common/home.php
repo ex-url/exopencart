@@ -4,6 +4,7 @@ class ControllerCommonHome extends Controller {
 		$this->document->setTitle($this->config->get('config_meta_title'));
 		$this->document->setDescription($this->config->get('config_meta_description'));
 		$this->document->setKeywords($this->config->get('config_meta_keyword'));
+		$this->document->setOgUrl($this->url->link('common/home'));
 
 		if (isset($this->request->get['route'])) {
 			$canonical = $this->url->link('common/home');

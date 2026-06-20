@@ -26,15 +26,49 @@
   {% if keywords %}
   <meta name="keywords" content="{{ keywords }}" />
   {% endif %}
-  <meta property="og:title" content="{{ title }}" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="{{ og_url }}" />
-  {% if og_image %}
-  <meta property="og:image" content="{{ og_image }}" />
-  {% else %}
-  <meta property="og:image" content="{{ logo }}" />
-  {% endif %}
   <meta property="og:site_name" content="{{ name }}" />
+  <meta property="og:locale" content="{{ og_lang }}" />
+  <meta property="og:type" content="{{ og_type }}" />
+  <meta property="og:url" content="{{ og_url }}" />
+  <meta property="og:title" content="{{ title }}" />
+  {% if description %}
+  <meta property="og:description" content="{{ description }}" />
+  {% endif %}
+  <meta property="og:image" content="{{ og_image }}" />
+  <meta property="og:image:alt" content="{{ og_image_alt }}" />
+  <meta property="og:image:width" content="{{ og_fallback_width }}" />
+  <meta property="og:image:height" content="{{ og_fallback_height }}" />
+  {% if og_product_price %}
+  <meta property="product:price:amount" content="{{ og_product_price }}" />
+  {% endif %}
+  {% if og_product_currency %}
+  <meta property="product:price:currency" content="{{ og_product_currency }}" />
+  {% endif %}
+  {% if og_product_brand %}
+  <meta property="product:brand" content="{{ og_product_brand }}" />
+  {% endif %}
+  {% if og_product_availability %}
+  <meta property="product:availability" content="{{ og_product_availability }}" />
+  {% endif %}
+  {% if og_product_sku %}
+  <meta property="product:retailer_item_id" content="{{ og_product_sku }}" />
+  {% endif %}
+  {% if og_product_condition %}
+  <meta property="product:condition" content="{{ og_product_condition }}" />
+  {% endif %}
+  {% if og_published %}
+  <meta property="article:published_time" content="{{ og_published }}" />
+  {% endif %}
+  {% if og_modified %}
+  <meta property="article:modified_time" content="{{ og_modified }}" />
+  {% endif %}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ title }}" />
+  {% if description %}
+  <meta name="twitter:description" content="{{ description }}" />
+  {% endif %}
+  <meta name="twitter:image" content="{{ og_image }}" />
+  <meta name="twitter:image:alt" content="{{ og_image_alt }}" />
   <link href="{{ fonts_css }}" as="style" rel="preload" />
   <link href="{{ fonts_css }}" type="text/css" rel="stylesheet" />
   {% for link in links %}

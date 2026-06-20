@@ -4,7 +4,7 @@
 
 class ModelBlogArticle extends Model {
   public function addArticle($data) {
-    $this->db->query("INSERT INTO " . DB_PREFIX . "article SET status = '" . (int)$data['status'] . "', noindex = '" . (int)$data['noindex'] . "', sort_order = '" . (int)$data['sort_order'] . "', video = '" . $this->db->escape($data['video']) . "', show_date = '" . (int)$data['show_date'] . "', date_published = '" . $this->db->escape($data['date_published']) . "', date_added = NOW()");
+    $this->db->query("INSERT INTO " . DB_PREFIX . "article SET user_id = '" . (int)$this->user->getId() . "', status = '" . (int)$data['status'] . "', noindex = '" . (int)$data['noindex'] . "', sort_order = '" . (int)$data['sort_order'] . "', video = '" . $this->db->escape($data['video']) . "', show_date = '" . (int)$data['show_date'] . "', show_viewed = '" . (int)$data['show_viewed'] . "', show_author = '" . (int)$data['show_author'] . "', date_published = '" . $this->db->escape($data['date_published']) . "', date_added = NOW()");
 
     $article_id = $this->db->getLastId();
 
@@ -91,7 +91,7 @@ class ModelBlogArticle extends Model {
 
   public function editArticle($article_id, $data) {
 
-    $this->db->query("UPDATE " . DB_PREFIX . "article SET status = '" . (int)$data['status'] . "', noindex = '" . (int)$data['noindex'] . "', sort_order = '" . (int)$data['sort_order'] . "', video = '" . $this->db->escape($data['video']) . "', show_date = '" . (int)$data['show_date'] . "', date_published = '" . $this->db->escape($data['date_published']) . "', date_modified = NOW() WHERE article_id = '" . (int)$article_id . "'");
+    $this->db->query("UPDATE " . DB_PREFIX . "article SET status = '" . (int)$data['status'] . "', noindex = '" . (int)$data['noindex'] . "', sort_order = '" . (int)$data['sort_order'] . "', video = '" . $this->db->escape($data['video']) . "', show_date = '" . (int)$data['show_date'] . "', show_viewed = '" . (int)$data['show_viewed'] . "', show_author = '" . (int)$data['show_author'] . "', date_published = '" . $this->db->escape($data['date_published']) . "', date_modified = NOW() WHERE article_id = '" . (int)$article_id . "'");
 
     if (isset($data['image'])) {
       $this->db->query("UPDATE " . DB_PREFIX . "article SET image = '" . $this->db->escape($data['image']) . "' WHERE article_id = '" . (int)$article_id . "'");

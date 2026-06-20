@@ -49,6 +49,8 @@ class ControllerInformationInformation extends Controller {
 				'href' => $this->url->link('information/information', 'information_id=' .  $information_id)
 			);
 
+			$this->document->setOgUrl($this->url->link('information/information', 'information_id=' .  $information_id, true));
+
 			$data['description'] = html_entity_decode($information_info['description'], ENT_QUOTES, 'UTF-8');
 
 			$data['continue'] = $this->url->link('common/home');

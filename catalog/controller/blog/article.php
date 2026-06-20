@@ -7,6 +7,9 @@ class ControllerBlogArticle extends Controller {
 
   public function index() {
     $this->load->language('blog/article');
+    $this->load->model('blog/review');
+    $this->load->model('blog/category');
+    $this->load->model('blog/article');
 
     $data['breadcrumbs'] = array();
 
@@ -15,8 +18,6 @@ class ControllerBlogArticle extends Controller {
       'href'      => $this->url->link('common/home'),
       'separator' => false
     );
-
-    $this->load->model('blog/category');
 
     if (isset($this->request->get['blog_category_id'])) {
       $blog_category_id = '';
@@ -64,8 +65,6 @@ class ControllerBlogArticle extends Controller {
     } else {
       $article_id = 0;
     }
-
-    $this->load->model('blog/article');
 
     $article_info = $this->model_blog_article->getArticle($article_id);
 
@@ -118,11 +117,24 @@ class ControllerBlogArticle extends Controller {
       }
 
       $data['show_date'] = $article_info['show_date'];
+      $data['show_viewed'] = $article_info['show_viewed'];
+      $data['show_author'] = $show_author = $article_info['show_author'];
+
+      $data['author'] = '';
+
+      if ($show_author) {
+        $author_info = $this->model_blog_article->getArticleAuthor($article_info['user_id']);
+
+        if($author_info) {
+          $data['author'] = $author_info['firstname'] . ' ' . $author_info['lastname'];
+          $data['author_href'] = $this->url->link('blog/latest', 'user_id=' . $article_info['user_id']);
+        }
+      }
+
       $data['viewed'] = $article_info['viewed'];
       $data['date_published'] = date('d.m.Y', strtotime($article_info['date_published']));
       $data['date_published_iso'] = date(DATE_ATOM, strtotime($article_info['date_published']));
-
-      $this->load->model('blog/review');
+      $this->document->setOgPublished($data['date_published_iso']);
 
       $data['text_related'] = $this->language->get('text_related');
       $data['text_related_product'] = $this->language->get('text_related_product');

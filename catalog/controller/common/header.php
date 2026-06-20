@@ -4,9 +4,11 @@
 
 class ControllerCommonHeader extends Controller {
   public function index() {
-    // Analytics
+
     $this->load->model('setting/extension');
+    $this->load->model('setting/store');
     $this->load->model('tool/image');
+    $this->load->language('common/header');
 
     $data['analytics'] = array();
 
@@ -72,14 +74,14 @@ class ControllerCommonHeader extends Controller {
     $data['styles'] = !$this->config->get('developer_css') ? $this->document->getStyles() : $this->getCompressedStyles();
     $data['scripts'] = !$this->config->get('developer_js') ? $this->document->getScripts('header') : $this->getCompressedScripts();
     $data['compress_js'] = $this->config->get('developer_js');
-    $data['lang'] = $this->language->get('code');
+    $data['lang'] = $this->language->get('code');    
     $data['direction'] = $this->language->get('direction');
     $data['name'] = $this->config->get('config_name');
     $data['city'] = $this->config->get('config_city');
     $data['show_stores'] = $this->config->get('module_store_status');
 
-    $logo_width = $this->config->get('config_logo_width') ? (int)$this->config->get('config_logo_width') : 200;
-    $logo_height = $this->config->get('config_logo_height') ? (int)$this->config->get('config_logo_height') : 40;
+    $data['logo_width'] = $logo_width = $this->config->get('config_logo_width') ? (int)$this->config->get('config_logo_width') : 200;
+    $data['logo_height'] = $logo_height = $this->config->get('config_logo_height') ? (int)$this->config->get('config_logo_height') : 40;
 
     if (is_file(DIR_IMAGE . $this->config->get('config_logo'))) {
       $data['logo'] = $this->model_tool_image->resize($this->config->get('config_logo'), $logo_width * 2, $logo_height * 2);
@@ -87,19 +89,43 @@ class ControllerCommonHeader extends Controller {
       $data['logo'] = '';
     }
 
-    $data['logo_width'] = $logo_width;
-    $data['logo_height'] = $logo_height;
+    $data['og_fallback_width'] = $og_fallback_width = $this->config->get('config_og_fallback_width');
+    $data['og_fallback_height'] = $og_fallback_height =  $this->config->get('config_og_fallback_height');
 
-    $this->load->language('common/header');
+    if (!$this->document->getOgImage()) {
+      $og_fallback = $this->model_tool_image->resize(
+        $this->config->get('config_og_fallback'),
+        $og_fallback_width,
+        $og_fallback_height
+      );
 
-    $host = isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1')) ? HTTPS_SERVER : HTTP_SERVER;
-    if ($this->request->server['REQUEST_URI'] == '/') {
-      $data['og_url'] = $this->url->link('common/home');
-    } else {
-      $data['og_url'] = $host . substr($this->request->server['REQUEST_URI'], 1, (strlen($this->request->server['REQUEST_URI']) - 1));
+      if ($og_fallback) {
+        $this->document->setOgImage($og_fallback);
+      }
     }
 
     $data['og_image'] = $this->document->getOgImage();
+
+    if (!$this->document->getOgImageAlt()) {
+      $this->document->setOgImageAlt($this->config->get('config_name'));
+    }
+
+    $data['og_lang'] = str_replace('-', '_', $this->language->get('code'));
+    $data['og_image_alt'] = $this->document->getOgImageAlt();
+    $data['og_type'] = $this->document->getOgType();
+    $data['og_url'] = $this->document->getOgUrl();
+    $data['og_product_price'] = $this->document->getOgProductPrice();
+    $data['og_product_currency'] = $this->document->getOgProductCurrency();
+    $data['og_product_brand'] = $this->document->getOgProductBrand();
+    $data['og_product_availability'] = $this->document->getOgAvailability();
+    $data['og_product_sku'] = $this->document->getOgSku();
+    $data['og_product_condition'] = $this->document->getOgCondition();
+    $data['og_published'] = $this->document->getOgPublished();
+    $data['og_modified'] = $this->document->getOgModified();
+    $data['og_author'] = $this->document->getOgAuthor();
+    $data['og_publisher'] = $this->document->getOgPublisher();
+    $data['og_publisher'] = $this->document->getOgPublisher();
+    $data['og_prefix'] = $this->document->getOgPrefix();
 
     // Wishlist
     if ($this->customer->isLogged()) {
@@ -135,7 +161,6 @@ class ControllerCommonHeader extends Controller {
     $data['social_media'] = $this->config->get('config_social_media');
 
     $data['language'] = $this->load->controller('common/language');
-    $data['currency'] = $this->load->controller('common/currency');
     $data['currency'] = $this->load->controller('common/currency');
 
     if ($this->config->get('configblog_blog_menu')) {

@@ -124,6 +124,18 @@ class ControllerProductCategory extends Controller {
 
     if ($category_info) {
 
+      $og_fallback_width = $this->config->get('config_og_fallback_width');
+      $og_fallback_height =  $this->config->get('config_og_fallback_height');
+
+      if($category_info['image']) {
+        $og_image = $this->model_tool_image->resize($category_info['image'], $og_fallback_width, $og_fallback_height);
+      } else {
+        $og_image = $this->model_tool_image->resize($this->config->get('config_og_fallback'), $og_fallback_width, $og_fallback_height);
+      }
+
+      $this->document->setOgImage($og_image);
+      $this->document->setOgImageAlt($category_info['name']);
+
       if ($category_info['meta_title']) {
         $this->document->setTitle($category_info['meta_title']);
       } else {
@@ -413,6 +425,7 @@ class ControllerProductCategory extends Controller {
 
         if (($request_url != $canonical_url) || $this->config->get('config_canonical_self')) {
           $this->document->addLink($canonical_url, 'canonical');
+          $this->document->setOgUrl($canonical_url);
         }
 
         if ($this->config->get('config_add_prevnext')) {

@@ -4,6 +4,8 @@
 
 // Heading
 $_['heading_title']     = 'Блог';
+$_['heading_title_author']     = 'Блог автора %s';
+$_['author_meta_description']     = 'Читайте статьи автора %s';
 
 // Text
 $_['text_product']      = 'Статьи';

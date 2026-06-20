@@ -591,6 +591,22 @@ class ControllerBlogArticle extends Controller {
       $data['show_date'] = 1;
     }
 
+    if (isset($this->request->post['show_viewed'])) {
+      $data['show_viewed'] = $this->request->post['show_viewed'];
+    } elseif (!empty($article_info)) {
+      $data['show_viewed'] = $article_info['show_viewed'];
+    } else {
+      $data['show_viewed'] = 1;
+    }
+
+    if (isset($this->request->post['show_author'])) {
+      $data['show_author'] = $this->request->post['show_author'];
+    } elseif (!empty($article_info)) {
+      $data['show_author'] = $article_info['show_author'];
+    } else {
+      $data['show_author'] = 1;
+    }
+
     if (isset($this->request->post['date_published'])) {
       $data['date_published'] = $this->request->post['date_published'];
     } elseif (!empty($article_info)) {

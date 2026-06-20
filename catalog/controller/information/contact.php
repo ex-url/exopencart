@@ -6,6 +6,8 @@ class ControllerInformationContact extends Controller {
     $this->load->language('information/contact');
 
     $this->document->setTitle($this->language->get('heading_title'));
+    $this->document->setDescription($this->language->get('text_meta_description'));
+    $this->document->setOgUrl($this->url->link('information/contact', '', true));
 
     $data['breadcrumbs'] = array();
 

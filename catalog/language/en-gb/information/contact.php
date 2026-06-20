@@ -4,6 +4,7 @@ $_['heading_title']  = 'Contact Us';
 
 // Text
 $_['text_location']  = 'Our Location';
+$_['text_meta_description']  = 'Contact us for any inquiries. Our support team is always ready to assist you.';
 $_['text_store']     = 'Our Stores';
 $_['text_contact']   = 'Contact Form';
 $_['text_on_map']    = 'On map';

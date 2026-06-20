@@ -4,6 +4,8 @@
 
 // Heading
 $_['heading_title']     = 'Blog';
+$_['heading_title_author']     = 'Blog by %s';
+$_['author_meta_description']     = 'Read articles by %s';
 
 // Text
 $_['text_product']      = 'Articles';

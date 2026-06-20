@@ -16,6 +16,7 @@ class ControllerProductProduct extends Controller {
     );
 
     $this->load->model('catalog/category');
+    $this->load->model('tool/image');
 
     if (isset($this->request->get['path'])) {
       $path = '';
@@ -224,6 +225,22 @@ class ControllerProductProduct extends Controller {
         $this->document->setTitle($product_info['name']);
       }
 
+      if($product_info['image']) {
+        $og_image = $this->model_tool_image->resize(
+          $product_info['image'], 
+          $this->config->get('config_og_fallback_width'), 
+          $this->config->get('config_og_fallback_height')
+        );
+      } else {
+        $og_image = $this->model_tool_image->resize(
+          $this->config->get('config_og_fallback'), 
+          $this->config->get('config_og_fallback_width'), 
+          $this->config->get('config_og_fallback_height')
+        );
+      }
+
+      $this->document->setOgImage($og_image);
+
       if ($product_info['noindex'] <= 0 && $this->config->get('config_noindex_status')) {
         $this->document->setRobots('noindex,follow');
       }
@@ -236,6 +253,10 @@ class ControllerProductProduct extends Controller {
 
       $template_folder = $this->config->get('theme_default_directory');
 
+      $this->document->setOgType('product');
+      $this->document->setOgProductCurrency($this->session->data['currency']);
+      $this->document->setOgImageAlt($product_info['name']);
+      $this->document->setOgCondition('new');
       $this->document->setDescription($product_info['meta_description']);
       $this->document->setKeywords($product_info['meta_keyword']);
       $this->document->addLink($this->url->link('product/product', 'product_id=' . $this->request->get['product_id']), 'canonical');
@@ -253,8 +274,10 @@ class ControllerProductProduct extends Controller {
 
       $data['product_id'] = (int)$this->request->get['product_id'];
       $data['manufacturer'] = $product_info['manufacturer'];
+      $this->document->setOgProductBrand($product_info['manufacturer']);
       $data['manufacturers'] = $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $product_info['manufacturer_id']);
       $data['model'] = $product_info['model'];
+      $this->document->setOgSku($product_info['model']);
       $data['reward'] = $product_info['reward'];
       $data['points'] = $product_info['points'];
       $data['quantity'] = rtrim(rtrim(number_format((float)$product_info['quantity'], 4, '.', ''), '0'), '.');
@@ -271,13 +294,14 @@ class ControllerProductProduct extends Controller {
 
       if ($product_info['quantity'] <= 0) {
         $data['stock'] = $product_info['stock_status'];
+        $this->document->setOgAvailability('out of stock');
       } elseif ($this->config->get('config_stock_display')) {
         $data['stock'] = $product_info['quantity_unit'] ? rtrim(rtrim(number_format((float)$product_info['quantity'], 4, '.', ''), '0'), '.') . ' ' . $product_info['quantity_unit'] : rtrim(rtrim(number_format((float)$product_info['quantity'], 4, '.', ''), '0'), '.');
+        $this->document->setOgAvailability('in stock');
       } else {
         $data['stock'] = $this->language->get('text_instock');
+        $this->document->setOgAvailability('in stock');
       }
-
-      $this->load->model('tool/image');
 
       if ($product_info['image']) {
         if ($this->config->get('config_product_popup_image_mode') === 'original') {
@@ -315,6 +339,7 @@ class ControllerProductProduct extends Controller {
       if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
         $data['price'] = $this->currency->format($this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
         $data['price_numeric'] = $this->currency->format($this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency'], '', false);
+        $this->document->setOgProductPrice($data['price_numeric']);
       } else {
         $data['price'] = false;
       }
@@ -324,6 +349,7 @@ class ControllerProductProduct extends Controller {
         $tax_price = (float)$product_info['special'];
         $data['discount'] = round(100 - ($product_info['special'] / $product_info['price'] * 100));
         $data['price_numeric'] = $this->currency->format($this->tax->calculate($product_info['special'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency'], '', false);
+        $this->document->setOgProductPrice($data['price_numeric']);
       } else {
         $data['special'] = false;
         $tax_price = (float)$product_info['price'];

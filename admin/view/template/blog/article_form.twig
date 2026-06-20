@@ -153,6 +153,32 @@
                 </div>
               </div>
               <div class="form-group">
+                <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="{{ help_show_viewed }}">{{ entry_show_viewed }}</span></label>
+                <div class="col-sm-10">
+                  <label class="radio-inline">
+                    <input type="radio" name="show_viewed" value="1" {{ show_viewed ? 'checked' : '' }}>
+                    {{ text_yes }}
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" name="show_viewed" value="0" {{ not show_viewed ? 'checked' : '' }}>
+                    {{ text_no }}
+                  </label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="{{ help_show_author }}">{{ entry_show_author }}</span></label>
+                <div class="col-sm-10">
+                  <label class="radio-inline">
+                    <input type="radio" name="show_author" value="1" {{ show_author ? 'checked' : '' }}>
+                    {{ text_yes }}
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" name="show_author" value="0" {{ not show_author ? 'checked' : '' }}>
+                    {{ text_no }}
+                  </label>
+                </div>
+              </div>
+              <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-sort-order">{{ entry_sort_order }}</label>
                 <div class="col-sm-10">
                   <input type="text" name="sort_order" value="{{ sort_order }}" placeholder="{{ entry_sort_order }}"

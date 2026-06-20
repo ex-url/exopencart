@@ -4,6 +4,7 @@ $_['heading_title']     = 'Find Your Favorite Brand';
 
 // Text
 $_['text_brand']        = 'Brand';
+$_['text_meta_description'] = 'List of product manufacturers available in our online store. Choose a manufacturer to see their products.';
 $_['text_index']        = 'Brand Index:';
 $_['text_error']        = 'Brand not found!';
 $_['text_empty']        = 'There are no products to list.';

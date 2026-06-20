@@ -35,7 +35,9 @@ $_['entry_additional_image'] = 'Additional images';
 $_['entry_status']           = 'Status';
 $_['entry_noindex']          = 'Index';
 $_['entry_date_published']   = 'Date Published';
-$_['entry_show_date']        = 'Show Date and Views';
+$_['entry_show_date']        = 'Show Date';
+$_['entry_show_viewed']      = 'Show Views';
+$_['entry_show_author']      = 'Show Author';
 $_['entry_sort_order']       = 'Sort Order';
 $_['entry_category']         = 'Categories';
 $_['entry_main_category']    = 'Main Category';
@@ -53,7 +55,9 @@ $_['help_related']           = '(Autocomplete)';
 $_['help_related_product']   = '(Autocomplete)';
 $_['help_tag']          	 = 'comma separated';
 $_['help_noindex']           = 'indexing in search engines Google, Yandex, Bing and other';
-$_['help_show_date']        = 'Show date and views of the article in the article list and on the article page';
+$_['help_show_date']        = 'Show date of the article in the article list and on the article page';
+$_['help_show_viewed']      = 'Show views of the article in the article list and on the article page';
+$_['help_show_author']      = 'Show author of the article in the article list and on the article page';
 $_['help_video']            = 'Video for embedding on the article page. Supported videos from YouTube, Vimeo, and other video hosting services. To embed a video, use the code from the "Share" field on the video page.';
 
 // Error

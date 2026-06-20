@@ -8,11 +8,6 @@
  * @link		https://www.opencart.com
  */
 
-/**
- * Document class
- */
-
-
 class Document {
   private $title;
   private $robots;
@@ -22,7 +17,22 @@ class Document {
   private $links = array();
   private $styles = array();
   private $scripts = array();
+  private $schema = array();
+  private $og_url;
+  private $og_type = 'website';
   private $og_image;
+  private $og_image_alt;
+  private $og_product_price;
+  private $og_product_currency;
+  private $og_product_brand;
+  private $og_product_availability;
+  private $og_product_sku;
+  private $og_product_condition;
+  private $og_published;
+  private $og_modified;
+  private $og_author;
+  private $og_publisher;
+  private $og_prefix;
 
   /**
    *
@@ -175,11 +185,130 @@ class Document {
     }
   }
 
+  public function addSchema($json) {
+    $this->schema[] = $json;
+  }
+
+  public function getSchema() {
+    return $this->schema;
+  }
+
+  public function setOgType($type) {
+    $this->og_type = $type;
+  }
+
+  public function getOgType() {
+    return $this->og_type;
+  }
+
   public function setOgImage($image) {
     $this->og_image = $image;
   }
 
   public function getOgImage() {
     return $this->og_image;
+  }
+
+  public function setOgImageAlt($alt) {
+    $this->og_image_alt = $alt;
+  }
+
+  public function getOgImageAlt() {
+    return $this->og_image_alt;
+  }
+
+  public function setOgUrl($url) {
+    $this->og_url = $url;
+  }
+
+  public function getOgUrl() {
+    return $this->og_url;
+  }
+
+  public function setOgProductPrice($price) {
+    $this->og_product_price = $price;
+  }
+
+  public function getOgProductPrice() {
+    return $this->og_product_price;
+  }
+
+  public function setOgProductCurrency($currency) {
+    $this->og_product_currency = $currency;
+  }
+
+  public function getOgProductCurrency() {
+    return $this->og_product_currency;
+  }
+
+  public function setOgProductBrand($brand) {
+    $this->og_product_brand = $brand;
+  }
+
+  public function getOgProductBrand() {
+    return $this->og_product_brand;
+  }
+
+  public function setOgAvailability($availability) {
+    $this->og_product_availability = $availability;
+  }
+
+  public function getOgAvailability() {
+    return $this->og_product_availability;
+  }
+
+  public function setOgSku($sku) {
+    $this->og_product_sku = $sku;
+  }
+
+  public function getOgSku() {
+    return $this->og_product_sku;
+  }
+
+  public function setOgCondition($condition) {
+    $this->og_product_condition = $condition;
+  }
+
+  public function getOgCondition() {
+    return $this->og_product_condition;
+  }
+
+  public function setOgPublished($published) {
+    $this->og_published = $published;
+  }
+
+  public function getOgPublished() {
+    return $this->og_published;
+  }
+
+  public function setOgModified($modified) {
+    $this->og_modified = $modified;
+  }
+
+  public function getOgModified() {
+    return $this->og_modified;
+  }
+  public function setOgAuthor($author) {
+    $this->og_author = $author;
+  }
+
+  public function getOgAuthor() {
+    return $this->og_author;
+  }
+
+  public function setOgPublisher($publisher) {
+    $this->og_publisher = $publisher;
+  }
+
+  public function getOgPublisher() {
+    return $this->og_publisher;
+  }
+
+  public function setOgPrefix($prefix) {
+    $this->og_prefix = $prefix;
+  }
+
+  public function getOgPrefix() {
+    return $this->og_prefix;
   }
 }

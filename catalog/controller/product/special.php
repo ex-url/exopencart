@@ -2,9 +2,7 @@
 class ControllerProductSpecial extends Controller {
   public function index() {
     $this->load->language('product/special');
-
     $this->load->model('catalog/product');
-
     $this->load->model('tool/image');
 
     if ($this->config->get('config_noindex_disallow_params')) {
@@ -51,6 +49,8 @@ class ControllerProductSpecial extends Controller {
     }
 
     $this->document->setTitle($this->language->get('heading_title'));
+    $this->document->setDescription($this->language->get('text_meta_description'));
+    $this->document->setOgUrl($this->url->link('product/special', '', true));
 
     $data['breadcrumbs'] = array();
 

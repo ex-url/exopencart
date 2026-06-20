@@ -176,7 +176,7 @@ button {
 }
 
 .product-card .card-content,
-.blog-card .card-content {
+.blog-card .card-content, .blog-card .card-content .announcement {
   flex: 1;
 }
 

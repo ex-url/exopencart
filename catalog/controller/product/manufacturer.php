@@ -2,12 +2,12 @@
 class ControllerProductManufacturer extends Controller {
   public function index() {
     $this->load->language('product/manufacturer');
-
     $this->load->model('catalog/manufacturer');
-
     $this->load->model('tool/image');
 
     $this->document->setTitle($this->language->get('heading_title'));
+    $this->document->setDescription($this->language->get('text_meta_description'));
+    $this->document->setOgUrl($this->url->link('product/manufacturer', '', true));
 
     $data['breadcrumbs'] = array();
 
@@ -56,11 +56,8 @@ class ControllerProductManufacturer extends Controller {
 
   public function info() {
     $this->load->language('product/manufacturer');
-
     $this->load->model('catalog/manufacturer');
-
     $this->load->model('catalog/product');
-
     $this->load->model('tool/image');
 
     if (isset($this->request->get['manufacturer_id'])) {
@@ -128,6 +125,8 @@ class ControllerProductManufacturer extends Controller {
 
     if ($manufacturer_info) {
 
+      $this->document->setOgUrl($this->url->link('product/manufacturer/info', 'manufacturer_id=' . $manufacturer_id, true));
+
       if ($manufacturer_info['meta_title']) {
         $this->document->setTitle($manufacturer_info['meta_title']);
       } else {
@@ -151,9 +150,25 @@ class ControllerProductManufacturer extends Controller {
 
       if ($manufacturer_info['image']) {
         $data['thumb'] = $this->model_tool_image->resize($manufacturer_info['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_manufacturer_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_manufacturer_height'), $this->config->get('config_category_image_mode'));
+      
+        $og_image = $this->model_tool_image->resize(
+          $manufacturer_info['image'], 
+          $this->config->get('config_og_fallback_width'), 
+          $this->config->get('config_og_fallback_height')
+        );
+
       } else {
         $data['thumb'] = '';
+
+        $og_image = $this->model_tool_image->resize(
+          $this->config->get('config_og_fallback'), 
+          $this->config->get('config_og_fallback_width'), 
+          $this->config->get('config_og_fallback_height')
+        );
       }
+
+      $this->document->setOgImage($og_image);
+      $this->document->setOgImageAlt($manufacturer_info['name']);
 
       $url = '';
 

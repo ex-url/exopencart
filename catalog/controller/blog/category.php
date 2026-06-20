@@ -5,11 +5,8 @@
 class ControllerBlogCategory extends Controller {
   public function index() {
     $this->load->language('blog/category');
-
     $this->load->model('blog/category');
-
     $this->load->model('blog/article');
-
     $this->load->model('tool/image');
 
     if ($this->config->get('config_noindex_disallow_params')) {
@@ -126,6 +123,7 @@ class ControllerBlogCategory extends Controller {
       $this->document->setDescription($category_info['meta_description']);
       $this->document->setKeywords($category_info['meta_keyword']);
       $this->document->addLink($this->url->link('blog/category', 'blog_category_id=' . $this->request->get['blog_category_id']), 'canonical');
+      $this->document->setOgUrl($this->url->link('blog/category', 'blog_category_id=' . $this->request->get['blog_category_id'], true));
 
       $data['text_refine'] = $this->language->get('text_refine');
       $data['text_empty'] = $this->language->get('text_empty');
@@ -146,9 +144,25 @@ class ControllerBlogCategory extends Controller {
 
       if ($category_info['image']) {
         $data['thumb'] = $this->model_tool_image->resize($category_info['image'], $this->config->get('configblog_image_category_width'), $this->config->get('configblog_image_category_height'));
+      
+        $og_image = $this->model_tool_image->resize(
+          $category_info['image'], 
+          $this->config->get('config_og_fallback_width'), 
+          $this->config->get('config_og_fallback_height')
+        );
+
       } else {
         $data['thumb'] = '';
+
+        $og_image = $this->model_tool_image->resize(
+          $this->config->get('config_og_fallback'), 
+          $this->config->get('config_og_fallback_width'), 
+          $this->config->get('config_og_fallback_height')
+        );
       }
+
+      $this->document->setOgImage($og_image);
+      $this->document->setOgImageAlt($category_info['name']);
 
       $data['description'] = html_entity_decode($category_info['description'], ENT_QUOTES, 'UTF-8');
       $data['configblog_review_status'] = $this->config->get('configblog_review_status');
@@ -218,13 +232,26 @@ class ControllerBlogCategory extends Controller {
           $rating = false;
         }
 
+        $author = '';
+
+        if($result['show_author'] && $result['user_id']) {
+          $author_info = $this->model_blog_article->getArticleAuthor($result['user_id']);
+
+          if($author_info) {
+            $author = $author_info['firstname'] . ' ' . $author_info['lastname'];
+          }
+        }
+
         $data['articles'][] = array(
           'article_id'  => $result['article_id'],
           'thumb'       => $image,
           'name'        => $result['name'],
           'description' => utf8_substr(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8'), 0, $this->config->get('configblog_article_description_length')) . '...',
           'date_published'  => date($this->language->get('date_format_short'), strtotime($result['date_published'])),
-          'show_date'  => $result['show_date'],
+          'show_date'   => $result['show_date'],
+          'show_author' => $result['show_author'],
+          'show_viewed' => $result['show_viewed'],
+          'author'      => $author,
           'viewed'      => $result['viewed'],
           'rating'      => $result['rating'],
           'href'        => $this->url->link('blog/article', 'blog_category_id=' . $this->request->get['blog_category_id'] . '&article_id=' . $result['article_id'] . $url)
