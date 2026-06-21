@@ -91,6 +91,8 @@ class ControllerProductSearch extends Controller {
       $url .= '&search=' . urlencode(html_entity_decode($this->request->get['search'], ENT_QUOTES, 'UTF-8'));
     }
 
+    $this->document->setOgUrl($this->url->link('product/search', $url));
+
     if (isset($this->request->get['tag'])) {
       $url .= '&tag=' . urlencode(html_entity_decode($this->request->get['tag'], ENT_QUOTES, 'UTF-8'));
     }

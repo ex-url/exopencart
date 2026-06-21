@@ -134,6 +134,7 @@ class ControllerBlogArticle extends Controller {
       $data['viewed'] = $article_info['viewed'];
       $data['date_published'] = date('d.m.Y', strtotime($article_info['date_published']));
       $data['date_published_iso'] = date(DATE_ATOM, strtotime($article_info['date_published']));
+      $this->document->setOgType('article');
       $this->document->setOgPublished($data['date_published_iso']);
 
       $data['text_related'] = $this->language->get('text_related');
@@ -167,8 +168,6 @@ class ControllerBlogArticle extends Controller {
       $data['rating'] = (int)$article_info['rating'];
       $data['description'] = html_entity_decode($article_info['description'], ENT_QUOTES, 'UTF-8');
 
-      $data['articles'] = array();
-
       $data['button_more'] = $this->language->get('button_more');
       $data['text_views'] = $this->language->get('text_views');
 
@@ -197,6 +196,7 @@ class ControllerBlogArticle extends Controller {
         );
       }
 
+      $data['articles'] = array();
       $results = $this->model_blog_article->getArticleRelated($this->request->get['article_id']);
 
       foreach ($results as $result) {
@@ -212,6 +212,16 @@ class ControllerBlogArticle extends Controller {
           $rating = false;
         }
 
+        $author = '';
+
+        if($result['show_author'] && $result['user_id']) {
+          $author_info = $this->model_blog_article->getArticleAuthor($result['user_id']);
+
+          if($author_info) {
+            $author = $author_info['firstname'] . ' ' . $author_info['lastname'];
+          }
+        }
+
         $data['articles'][] = array(
           'article_id' => $result['article_id'],
           'thumb'      => $image,
@@ -220,6 +230,9 @@ class ControllerBlogArticle extends Controller {
           'rating'     => $rating,
           'date_published'  => date($this->language->get('date_format_short'), strtotime($result['date_published'])),
           'show_date'  => $result['show_date'],
+          'show_viewed'  => $result['show_viewed'],
+          'show_author'  => $result['show_author'],
+          'author'  => $author,
           'viewed'      => $result['viewed'],
           'reviews'    => sprintf($this->language->get('text_reviews'), (int)$result['reviews']),
           'href'       => $this->url->link('blog/article', 'article_id=' . $result['article_id']),

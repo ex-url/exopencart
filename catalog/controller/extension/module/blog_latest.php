@@ -42,6 +42,16 @@ class ControllerExtensionModuleBlogLatest extends Controller {
           $rating = false;
         }
 
+        $author = '';
+
+        if($result['show_author'] && $result['user_id']) {
+          $author_info = $this->model_blog_article->getArticleAuthor($result['user_id']);
+
+          if($author_info) {
+            $author = $author_info['firstname'] . ' ' . $author_info['lastname'];
+          }
+        }
+
         $data['articles'][] = array(
           'article_id'  => $result['article_id'],
           'thumb'       => $image,
@@ -49,6 +59,10 @@ class ControllerExtensionModuleBlogLatest extends Controller {
           'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('configblog_article_description_length')) . '..',
           'rating'      => $rating,
           'date_published'  => date($this->language->get('date_format_short'), strtotime($result['date_published'])),
+          'show_date'   => $result['show_date'],
+          'show_author' => $result['show_author'],
+          'show_viewed' => $result['show_viewed'],
+          'author'      => $author,
           'viewed'      => $result['viewed'],
           'href'        => $this->url->link('blog/article', 'article_id=' . $result['article_id'])
         );
