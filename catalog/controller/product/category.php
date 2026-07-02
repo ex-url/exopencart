@@ -52,6 +52,15 @@ class ControllerProductCategory extends Controller {
 
     $data['breadcrumbs'] = array();
 
+    $breadcrumbsItemList[] = [
+      "@type" => "ListItem",
+      "position" => 1,
+      "name" => $this->language->get('text_home'),
+      "item" => $this->url->link('common/home')
+    ];
+
+    $schema_position = 2;
+
     $data['breadcrumbs'][] = array(
       'text' => $this->language->get('text_home'),
       'href' => $this->url->link('common/home')
@@ -92,6 +101,15 @@ class ControllerProductCategory extends Controller {
             'text' => $category_info['name'],
             'href' => $this->url->link('product/category', 'path=' . $path . $url)
           );
+
+          $breadcrumbsItemList[] = [
+            "@type" => "ListItem",
+            "position" => $schema_position,
+            "name" => $category_info['name'],
+            "item" => $this->url->link('product/category', 'path=' . $path)
+          ];
+
+          $schema_position++;
         }
       }
     } else {
@@ -163,13 +181,29 @@ class ControllerProductCategory extends Controller {
         'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'])
       );
 
+      $breadcrumbsItemList[] = [
+        "@type" => "ListItem",
+        "position" => $schema_position,
+        "name" => $category_info['name'],
+        "item" => $this->url->link('product/category', 'path=' . $this->request->get['path'])
+      ];
+
+      $breadcrumbs_schema = [
+        "@context" => "https://schema.org",
+        "@type" => "BreadcrumbList",
+        "@id" => $this->url->link('product/category', 'path=' . $this->request->get['path']) . "#breadcrumb",
+        "itemListElement" => $breadcrumbsItemList,
+      ];
+
+      $this->document->addSchema($breadcrumbs_schema);
+
       if ($category_info['image']) {
         $data['thumb'] = $this->model_tool_image->resize($category_info['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_category_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_category_height'), $this->config->get('config_category_image_mode'));
       } else {
         $data['thumb'] = '';
       }
 
-      $data['description'] = html_entity_decode($category_info['description'], ENT_QUOTES, 'UTF-8');
+      $data['description'] = $description = html_entity_decode($category_info['description'], ENT_QUOTES, 'UTF-8');
       $data['stickers'] = json_decode($category_info['stickers'], true) ?? [];
       $data['compare'] = $this->url->link('product/compare');
 
@@ -222,6 +256,9 @@ class ControllerProductCategory extends Controller {
 
       $results = $this->model_catalog_product->getProducts($filter_data);
 
+      $itemList = [];
+      $itemPosition = 1;
+
       foreach ($results as $result) {
         if ($result['image']) {
           $image = $this->model_tool_image->resize($result['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_product_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_product_height'), $this->config->get('config_product_list_image_mode'));
@@ -273,7 +310,39 @@ class ControllerProductCategory extends Controller {
           'rating'      => $result['rating'],
           'href'        => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $result['product_id'] . $url)
         );
+
+        $itemList[] = [
+          "@type" => "ListItem",
+          "position" => $itemPosition,
+          "item" => [
+            "@type" => "WebPage",
+            "@id" => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $result['product_id']) . "#webpage",
+            "url" => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $result['product_id']),
+            "name" => $result['name'],
+          ],
+        ];
+
+        $itemPosition++;
       }
+
+      $category_schema = [
+        "@context" => "https://schema.org",
+        "@type" => "CollectionPage",
+        "@id" => $this->url->link('product/category', 'path=' . $this->request->get['path']) . "#webpage",
+        "name" => $category_info['name'],
+        "description" => strip_tags($description),
+        "url" => $this->url->link('product/category', 'path=' . $this->request->get['path']),
+        "isPartOf" => [
+          "@id" => $this->url->link('common/home') . "#website"
+        ],
+        "breadcrumb" => $this->url->link('product/category', 'path=' . $this->request->get['path']) . "#breadcrumb",
+        "mainEntity" => [
+          "@type" => "ItemList",
+          "itemListElement" => $itemList
+        ]
+      ];
+
+      $this->document->addSchema($category_schema);
 
       $url = '';
 

@@ -4,10 +4,15 @@ class ControllerInformationContact extends Controller {
 
   public function index() {
     $this->load->language('information/contact');
+    $this->load->model('localisation/country');
+    $this->load->model('localisation/zone');
 
     $this->document->setTitle($this->language->get('heading_title'));
     $this->document->setDescription($this->language->get('text_meta_description'));
     $this->document->setOgUrl($this->url->link('information/contact', '', true));
+
+    $contact_url = $this->url->link('information/contact');
+    $organization_id = $this->url->link('common/home') . '#organization';
 
     $data['breadcrumbs'] = array();
 
@@ -16,10 +21,53 @@ class ControllerInformationContact extends Controller {
       'href' => $this->url->link('common/home')
     );
 
+    $breadcrumbsItemList[] = [
+      "@type" => "ListItem",
+      "position" => 1,
+      "name" => $this->language->get('text_home'),
+      "item" => $this->config->get('site_ssl')
+    ];
+
     $data['breadcrumbs'][] = array(
       'text' => $this->language->get('heading_title'),
       'href' => $this->url->link('information/contact')
     );
+
+    $breadcrumbsItemList[] = [
+      "@type" => "ListItem",
+      "position" => 2,
+      "name" => $this->language->get('heading_title'),
+      "item" => $this->url->link('information/contact')
+    ];
+
+    $breadcrumbs_schema = [
+      "@context" => "https://schema.org",
+      "@type" => "BreadcrumbList",
+      "@id" => $contact_url . "#breadcrumb",
+      "itemListElement" => $breadcrumbsItemList,
+    ];
+
+    $this->document->addSchema($breadcrumbs_schema);
+
+    $contact_schema = [
+      "@context" => "https://schema.org",
+      "@type" => "ContactPage",
+      "@id" => $contact_url . "#contact-page",
+      "url" => $contact_url,
+      "name" => $this->language->get('heading_title'),
+      "description" => $this->language->get('text_meta_description'),
+      "isPartOf" => [
+        "@id" => $this->config->get('site_ssl') . "#website"
+      ],
+      "about" => [
+        "@id" => $organization_id
+      ],
+      "breadcrumb" => [
+        "@id" => $contact_url . "#breadcrumb"
+      ]
+    ];
+
+    $this->document->addSchema($contact_schema);
 
     $this->load->model('tool/image');
 
@@ -94,6 +142,60 @@ class ControllerInformationContact extends Controller {
           'open'        => nl2br($location_info['open']),
           'comment'     => $location_info['comment']
         );
+
+        $zone_info = !empty($location_info['zone_id']) ? $this->model_localisation_zone->getZone($location_info['zone_id']) : [];
+        $country_info = !empty($location_info['country_id']) ? $this->model_localisation_country->getCountry($location_info['country_id']) : [];
+
+        if (!empty($location_info['coords'])) {
+          $coords = explode(',', $location_info['coords']);
+        } elseif (!empty($location_info['geocode'])) {
+          $coords = explode(',', $location_info['geocode']);
+        } else {
+          $coords = [];
+        }
+
+        $location_schema = [
+          "@context" => "https://schema.org",
+          "@type" => "Store",
+          "@id" => $this->config->get('site_ssl') . "#localbusiness" . $location_info['location_id'],
+          "name" => $location_info['name'],
+          "image" => $image,
+          "url" => $this->config->get('site_ssl'),
+          "telephone" => normalizePhone($location_info['telephone']),
+          "address" => [
+            "@type" => "PostalAddress",
+            "streetAddress" => $location_info['address'],
+            "addressLocality" => !empty($location_info['city']) ? $location_info['city'] : '',
+            "addressRegion" => !empty($zone_info['name']) ? $zone_info['name'] : '',
+            "postalCode" => !empty($location_info['postcode']) ? $location_info['postcode'] : '',
+            "addressCountry" => !empty($country_info['iso_code_2']) ? $country_info['iso_code_2'] : ''
+          ],
+          "geo" => [
+            "@type" => "GeoCoordinates",
+            "latitude" => isset($coords[0]) ? trim($coords[0]) : '',
+            "longitude" => isset($coords[1]) ? trim($coords[1]) : '',
+          ],
+          "areaServed" => [
+            "@type" => "City",
+            "name" => !empty($location_info['city']) ? $location_info['city'] : ''
+          ],
+          "branchOf" => [
+            "@type" => "Organization",
+            "@id" => $organization_id,
+            "name" => $this->config->get('config_name'),
+            "url" => $this->config->get('site_ssl')
+          ]
+        ];
+
+        if (!empty($location_info['fax'])) {
+          $location_schema['faxNumber'] = normalizePhone($location_info['fax']);
+        }
+
+        if (!empty($this->config->get('config_email'))) {
+          $location_schema['email'] = $this->config->get('config_email');
+        }
+
+        $this->document->addSchema($location_schema);
       }
     }
 

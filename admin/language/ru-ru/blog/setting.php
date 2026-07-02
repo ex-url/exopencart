@@ -30,6 +30,7 @@ $_['entry_name']                       = 'Название';
 $_['entry_meta_title']                 = 'Мета-тег Title';
 $_['entry_html_h1']                    = 'HTML-тег H1';
 $_['entry_meta_description']           = 'Мета-тег Description';
+$_['entry_blog_description']           = 'Описание блога';
 $_['entry_meta_keyword']               = 'Мета-тег Keywords';
 
 // Help

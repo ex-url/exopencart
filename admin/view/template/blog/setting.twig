@@ -41,8 +41,8 @@
                   <label class="col-sm-2 control-label" for="input-name">{{ entry_name }}</label>
                   <div class="col-sm-10">
                     {% for language in languages %}
-                    <div class="input-group">
-                      <div class="input-group-addon">
+                    <div class="input-group" style="margin-bottom: 10px;">
+                      <div class="input-group-addon" style="margin-bottom: 10px;">
                         <img src="language/{{ language.code }}/{{ language.code }}.png" title="{{ language.name }}" />
                       </div>
                       <input type="text" name="configblog_name[{{ language.language_id }}]" value="{{ configblog_name[language.language_id] }}" placeholder="{{ entry_name }}" id="input-name{{ language.language_id}}" class="form-control" />
@@ -54,7 +54,7 @@
                   <label class="col-sm-2 control-label" for="input-h1">{{ entry_html_h1 }}</label>
                   <div class="col-sm-10">
                     {% for language in languages %}
-                    <div class="input-group">
+                    <div class="input-group" style="margin-bottom: 10px;">
                       <div class="input-group-addon">
                         <img src="language/{{ language.code }}/{{ language.code }}.png" title="{{ language.name }}" />
                       </div>
@@ -67,11 +67,11 @@
                   <label class="col-sm-2 control-label" for="input-meta-title">{{ entry_meta_title }}</label>
                   <div class="col-sm-10">
                     {% for language in languages %}
-                    <div class="input-group">
+                    <div class="input-group" style="margin-bottom: 10px;">
                       <div class="input-group-addon">
                         <img src="language/{{ language.code }}/{{ language.code }}.png" title="{{ language.name }}" />
                       </div>
-                      <input type="text" name="configblog_meta_title[{{ language.language_id }}]" value="{{ configblog_meta_title[language.language_id] }}" placeholder="{{ entry_meta_title }}" id="input-name{{ language.language_id}}" class="form-control" />
+                      <input type="text" name="configblog_meta_title[{{ language.language_id }}]" value="{{ configblog_meta_title[language.language_id] }}" placeholder="{{ entry_meta_title }}" id="input-meta-title{{ language.language_id }}" class="form-control" />
                     </div>
                     {% endfor %}
                   </div>
@@ -80,11 +80,24 @@
                   <label class="col-sm-2 control-label" for="input-meta-description">{{ entry_meta_description }}</label>
                   <div class="col-sm-10">
                     {% for language in languages %}
-                    <div class="input-group">
+                    <div class="input-group" style="margin-bottom: 10px;">
                       <div class="input-group-addon">
                         <img src="language/{{ language.code }}/{{ language.code }}.png" title="{{ language.name }}" />
                       </div>
-                      <textarea name="configblog_meta_description[{{ language.language_id }}]" rows="5" placeholder="{{ entry_meta_description }}" id="input-meta-description" class="form-control">{{ configblog_meta_description[language.language_id] }}</textarea>
+                      <textarea name="configblog_meta_description[{{ language.language_id }}]" rows="5" placeholder="{{ entry_meta_description }}" id="input-meta-description{{ language.language_id }}" class="form-control">{{ configblog_meta_description[language.language_id] }}</textarea>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="input-blog-description">{{ entry_blog_description }}</label>
+                  <div class="col-sm-10">
+                    {% for language in languages %}
+                    <div class="input-group" style="margin-bottom: 10px;">
+                      <div class="input-group-addon">
+                        <img src="language/{{ language.code }}/{{ language.code }}.png" title="{{ language.name }}" />
+                      </div>
+                      <textarea name="configblog_blog_description[{{ language.language_id }}]" rows="5" placeholder="{{ entry_blog_description }}" id="input-blog-description{{ language.language_id }}" class="form-control">{{ configblog_blog_description[language.language_id] }}</textarea>
                     </div>
                     {% endfor %}
                   </div>
@@ -93,11 +106,11 @@
                   <label class="col-sm-2 control-label" for="input-meta-keyword">{{ entry_meta_keyword }}</label>
                   <div class="col-sm-10">
                     {% for language in languages %}
-                    <div class="input-group">
+                    <div class="input-group" style="margin-bottom: 10px;">
                       <div class="input-group-addon">
                         <img src="language/{{ language.code }}/{{ language.code }}.png" title="{{ language.name }}" />
                       </div>
-                      <textarea name="configblog_meta_keyword[{{ language.language_id }}]" rows="5" placeholder="{{ entry_meta_keyword }}" id="input-meta-description" class="form-control">{{ configblog_meta_keyword[language.language_id] }}</textarea>
+                      <textarea name="configblog_meta_keyword[{{ language.language_id }}]" rows="5" placeholder="{{ entry_meta_keyword }}" id="input-meta-keyword{{ language.language_id }}" class="form-control">{{ configblog_meta_keyword[language.language_id] }}</textarea>
                     </div>
                     {% endfor %}
                   </div>

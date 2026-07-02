@@ -127,6 +127,8 @@ class ControllerCommonHeader extends Controller {
     $data['og_publisher'] = $this->document->getOgPublisher();
     $data['og_prefix'] = $this->document->getOgPrefix();
 
+    $data['schema'] = $this->document->getSchema();
+
     // Wishlist
     if ($this->customer->isLogged()) {
       $this->load->model('account/wishlist');

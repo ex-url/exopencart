@@ -185,8 +185,8 @@ class Document {
     }
   }
 
-  public function addSchema($json) {
-    $this->schema[] = $json;
+  public function addSchema($schema = array()) {
+    $this->schema[] = json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
   }
 
   public function getSchema() {

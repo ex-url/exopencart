@@ -83,6 +83,13 @@
   {% for script in scripts %}
   <script src="{{ script }}"></script>
   {% endfor %}
+  {% if schema %}
+  {% for data in schema %}
+  <script type="application/ld+json">
+    {{ data }}
+  </script>
+  {% endfor %}
+  {% endif %}
   {% for analytic in analytics %}
   {{ analytic }}
   {% endfor %}

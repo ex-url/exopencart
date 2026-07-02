@@ -7,6 +7,10 @@ class ControllerProductProduct extends Controller {
 
   public function index() {
     $this->load->language('product/product');
+    $this->load->model('catalog/category');
+    $this->load->model('tool/image');
+    $this->load->model('localisation/country');
+    $this->load->model('localisation/zone');
 
     $data['breadcrumbs'] = array();
 
@@ -15,8 +19,14 @@ class ControllerProductProduct extends Controller {
       'href' => $this->url->link('common/home')
     );
 
-    $this->load->model('catalog/category');
-    $this->load->model('tool/image');
+    $breadcrumbsItemList[] = [
+      "@type" => "ListItem",
+      "position" => 1,
+      "name" => $this->language->get('text_home'),
+      "item" => $this->config->get('site_ssl')
+    ];
+
+    $schema_position = 2;
 
     if (isset($this->request->get['path'])) {
       $path = '';
@@ -39,6 +49,15 @@ class ControllerProductProduct extends Controller {
             'text' => $category_info['name'],
             'href' => $this->url->link('product/category', 'path=' . $path)
           );
+
+          $breadcrumbsItemList[] = [
+            "@type" => "ListItem",
+            "position" => $schema_position,
+            "name" => $category_info['name'],
+            "item" => $this->url->link('product/category', 'path=' . $path)
+          ];
+
+          $schema_position++;
         }
       }
 
@@ -68,6 +87,15 @@ class ControllerProductProduct extends Controller {
           'text' => $category_info['name'],
           'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . $url)
         );
+
+        $breadcrumbsItemList[] = [
+          "@type" => "ListItem",
+          "position" => $schema_position,
+          "name" => $category_info['name'],
+          "item" => $this->url->link('product/category', 'path=' . $this->request->get['path'])
+        ];
+
+        $schema_position++;
       }
     }
 
@@ -164,6 +192,8 @@ class ControllerProductProduct extends Controller {
 
     if ($product_info) {
 
+      $product_url = $this->url->link('product/product', 'product_id=' . $this->request->get['product_id']);
+
       $url = '';
 
       if (isset($this->request->get['path'])) {
@@ -216,8 +246,24 @@ class ControllerProductProduct extends Controller {
 
       $data['breadcrumbs'][] = array(
         'text' => $product_info['name'],
-        'href' => $this->url->link('product/product', $url . '&product_id=' . $this->request->get['product_id'])
+        'href' => $product_url
       );
+
+      $breadcrumbsItemList[] = [
+        "@type" => "ListItem",
+        "position" => $schema_position,
+        "name" => $product_info['name'],
+        "item" => $product_url
+      ];
+
+      $breadcrumbs_schema = [
+        "@context" => "https://schema.org",
+        "@type" => "BreadcrumbList",
+        "@id" => $product_url . "#breadcrumb",
+        "itemListElement" => $breadcrumbsItemList,
+      ];
+
+      $this->document->addSchema($breadcrumbs_schema);
 
       if ($product_info['meta_title']) {
         $this->document->setTitle($product_info['meta_title']);
@@ -303,6 +349,8 @@ class ControllerProductProduct extends Controller {
         $this->document->setOgAvailability('in stock');
       }
 
+      $schema_images = [];
+
       if ($product_info['image']) {
         if ($this->config->get('config_product_popup_image_mode') === 'original') {
           $data['popup'] = '/image/' . $product_info['image'];
@@ -310,13 +358,15 @@ class ControllerProductProduct extends Controller {
           $data['popup'] = $this->model_tool_image->resize($product_info['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_popup_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_popup_height'), $this->config->get('config_product_popup_image_mode'));
         }
       } else {
-        $data['popup'] = '';
+        $data['popup'] = $this->model_tool_image->resize('no_image.png', $this->config->get('theme_' . $this->config->get('config_theme') . '_image_popup_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_popup_height'), $this->config->get('config_product_popup_image_mode'));;
       }
+
+      $schema_images[] = $data['popup'];
 
       if ($product_info['image']) {
         $data['thumb'] = $this->model_tool_image->resize($product_info['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_thumb_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_thumb_height'), $this->config->get('config_product_thumb_image_mode'));
       } else {
-        $data['thumb'] = '';
+        $data['thumb'] = $this->model_tool_image->resize('no_image.png', $this->config->get('theme_' . $this->config->get('config_theme') . '_image_thumb_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_thumb_height'), $this->config->get('config_product_thumb_image_mode'));
       }
 
       $data['images'] = array();
@@ -329,6 +379,8 @@ class ControllerProductProduct extends Controller {
           'thumb' => $this->model_tool_image->resize($result['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_thumb_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_thumb_height'), $this->config->get('config_product_thumb_image_mode')),
           'title' => $result['title']
         );
+
+        $schema_images[] = $this->model_tool_image->resize($result['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_thumb_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_thumb_height'), $this->config->get('config_product_thumb_image_mode'));
       }
 
       $data['image_width'] = $this->config->get('theme_' . $this->config->get('config_theme') . '_image_thumb_width');
@@ -451,6 +503,106 @@ class ControllerProductProduct extends Controller {
       }
 
       $data['share'] = $this->url->link('product/product', 'product_id=' . (int)$this->request->get['product_id']);
+
+      $country = $this->model_localisation_country->getCountry($this->config->get('config_country_id'));
+      $zone = $this->model_localisation_zone->getZone($this->config->get('config_zone_id'));
+
+      $product_schema = [
+        "@context" => "https://schema.org",
+        "@type" => "ItemPage",
+        "@id" => $product_url . "#webpage",
+        "url" => $product_url,
+        "name" => $product_info['name'],
+        "description" => strip_tags(html_entity_decode($product_info['meta_description'] ?? $product_info['description'], ENT_QUOTES, 'UTF-8')),
+        "isPartOf" => [
+          "@id" => $this->config->get('site_ssl') . "#website"
+        ],
+        "breadcrumb" => [
+          "@id" => $product_url . "#breadcrumb"
+        ],
+        "mainEntity" => [
+          "@type" => "Product",
+          "@id" => $product_url . "#product",
+          "name" => $product_info['name'],
+          "image" => $schema_images,
+          "description" => strip_tags(html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8')),
+          "sku" => $product_info['model'],
+          "brand" => [
+            "@type" => "Brand",
+            "name" => $product_info['manufacturer']
+          ],
+          "offers" => [
+            "@type" => "Offer",
+            "url" => $product_url,
+            "priceCurrency" => $this->session->data['currency'],
+            "price" => $product_info['special'] ? (float)$product_info['special'] : (float)$product_info['price'],
+            "priceValidUntil" => date('Y-m-d', strtotime('+30 days')),
+            "itemCondition" => "https://schema.org/NewCondition",
+            "availability" => $product_info['quantity'] > 0
+              ? "https://schema.org/InStock"
+              : "https://schema.org/OutOfStock",
+            "eligibleRegion" => ["@type" => "Country", "name" => $country['iso_code_2']],
+            "seller" => [
+              "@type" => "Organization",
+              "name" => $this->config->get('config_name'),
+              "url" => $this->config->get('site_ssl')
+            ],
+
+            // uncomment the following lines if you want to add return policy and shipping details to the product schema
+
+            // "hasMerchantReturnPolicy" => [
+            //   "@type" => "MerchantReturnPolicy",
+            //   "applicableCountry" => $country['iso_code_2'],
+            //   "returnPolicyCategory" => "https://schema.org/MerchantReturnFiniteReturnWindow",
+            //   "merchantReturnDays" => 14,
+            //   "returnFees" => "https://schema.org/FreeReturn"
+            // ],
+            // "shippingDetails" => [
+            //   "@type" => "OfferShippingDetails",
+            //   "deliveryTime" => [
+            //     "@type" => "ShippingDeliveryTime",
+            //     "businessDays" => [
+            //       "@type" => "OpeningHoursSpecification",
+            //       "dayOfWeek" => ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+            //     ],
+            //     "handlingTime" => [
+            //       "@type" => "QuantitativeValue",
+            //       "minValue" => 0,
+            //       "maxValue" => 1,
+            //       "unitCode" => "DAY"
+            //     ],
+            //     "transitTime" => [
+            //       "@type" => "QuantitativeValue",
+            //       "minValue" => 1,
+            //       "maxValue" => 14,
+            //       "unitCode" => "DAY"
+            //     ]
+            //   ],
+            //   "shippingRate" => [
+            //     "@type" => "ShippingRateSettings",
+            //     "freeShippingThreshold" => [
+            //       "@type" => "MonetaryAmount",
+            //       "value" => 10000,
+            //       "currency" => $this->session->data['currency']
+            //     ]
+            //   ]
+            // ]
+          ]
+        ]
+      ];
+
+      if((int)$product_info['reviews'] > 0) {
+        $product_schema['mainEntity']['aggregateRating'] = [
+          "@type" => "AggregateRating",
+          "ratingValue" => (float)$product_info['rating'],
+          "bestRating" => "5",
+          "worstRating" => "1",
+          "reviewCount" => (int)$product_info['reviews']
+        ];
+      }
+
+      $this->document->addSchema($product_schema);
+      $this->document->setOgPrefix('og: http://ogp.me/ns# product: http://ogp.me/ns/product#');
 
       $data['attribute_groups'] = $this->model_catalog_product->getProductAttributes($this->request->get['product_id']);
 

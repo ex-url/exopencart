@@ -81,6 +81,7 @@ $_['entry_theme_toggle']             = 'Show theme toggle';
 $_['entry_country']                  = 'Country';
 $_['entry_zone']                     = 'Region / State';
 $_['entry_city']                     = 'City';
+$_['entry_postal']                   = 'Postal Code';
 $_['entry_timezone']                 = 'Timezone';
 $_['entry_language']                 = 'Language';
 $_['entry_admin_language']           = 'Administration Language';

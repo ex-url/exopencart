@@ -59,6 +59,13 @@ class ControllerProductSpecial extends Controller {
       'href' => $this->url->link('common/home')
     );
 
+    $breadcrumbsItemList[] = [
+      "@type" => "ListItem",
+      "position" => 1,
+      "name" => $this->language->get('text_home'),
+      "item" => $this->url->link('common/home')
+    ];
+
     $url = '';
 
     if (isset($this->request->get['sort'])) {
@@ -82,6 +89,22 @@ class ControllerProductSpecial extends Controller {
       'href' => $this->url->link('product/special', $url)
     );
 
+    $breadcrumbsItemList[] = [
+      "@type" => "ListItem",
+      "position" => 2,
+      "name" => $this->language->get('heading_title'),
+      "item" => $this->url->link('product/special')
+    ];
+
+    $breadcrumbs_schema = [
+      "@context" => "https://schema.org",
+      "@type" => "BreadcrumbList",
+      "@id" => $this->url->link('product/special') . "#breadcrumb",
+      "itemListElement" => $breadcrumbsItemList,
+    ];
+
+    $this->document->addSchema($breadcrumbs_schema);
+
     $data['text_compare'] = sprintf($this->language->get('text_compare'), (isset($this->session->data['compare']) ? count($this->session->data['compare']) : 0));
 
     $data['compare'] = $this->url->link('product/compare');
@@ -98,6 +121,9 @@ class ControllerProductSpecial extends Controller {
     $product_total = $this->model_catalog_product->getTotalProductSpecials();
 
     $results = $this->model_catalog_product->getProductSpecials($filter_data);
+
+    $itemList = [];
+    $itemPosition = 1;
 
     foreach ($results as $result) {
       if ($result['image']) {
@@ -150,7 +176,38 @@ class ControllerProductSpecial extends Controller {
         'rating'      => $result['rating'],
         'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'] . $url)
       );
+
+      $itemList[] = [
+        "@type" => "ListItem",
+        "position" => $itemPosition,
+        "item" => [
+          "@type" => "WebPage",
+          "@id" => $this->url->link('product/product', 'product_id=' . $result['product_id']) . "#webpage",
+          "url" => $this->url->link('product/product', 'product_id=' . $result['product_id']),
+          "name" => $result['name'],
+        ],
+      ];
+
+      $itemPosition++;
     }
+
+    $special_schema = [
+      "@context" => "https://schema.org",
+      "@type" => "CollectionPage",
+      "@id" => $this->url->link('product/special') . "#webpage",
+      "name" => $this->language->get('heading_title'),
+      "description" => $this->language->get('text_meta_description'),
+      "url" => $this->url->link('product/special'),
+      "isPartOf" => [
+        "@id" => $this->config->get('site_ssl') . "#website"
+      ],
+      "mainEntity" => [
+        "@type" => "ItemList",
+        "itemListElement" => $itemList
+      ]
+    ];
+
+    $this->document->addSchema($special_schema);
 
     $url = '';
 

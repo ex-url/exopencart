@@ -15,6 +15,13 @@ class ControllerInformationInformation extends Controller {
 			'href' => $this->url->link('common/home')
 		);
 
+		$breadcrumbsItemList[] = [
+      "@type" => "ListItem",
+      "position" => 1,
+      "name" => $this->language->get('text_home'),
+      "item" => $this->config->get('site_ssl')
+    ];
+
 		if (isset($this->request->get['information_id'])) {
 			$information_id = (int)$this->request->get['information_id'];
 		} else {
@@ -48,6 +55,22 @@ class ControllerInformationInformation extends Controller {
 				'text' => $information_info['title'],
 				'href' => $this->url->link('information/information', 'information_id=' .  $information_id)
 			);
+
+			$breadcrumbsItemList[] = [
+				"@type" => "ListItem",
+				"position" => 2,
+				"name" => $information_info['title'],
+				"item" => $this->url->link('information/information', 'information_id=' .  $information_id)
+			];
+
+			$breadcrumbs_schema = [
+        "@context" => "https://schema.org",
+        "@type" => "BreadcrumbList",
+        "@id" => $this->url->link('information/information', 'information_id=' .  $information_id) . "#breadcrumb",
+        "itemListElement" => $breadcrumbsItemList,
+      ];
+
+			$this->document->addSchema($breadcrumbs_schema);
 
 			$this->document->setOgUrl($this->url->link('information/information', 'information_id=' .  $information_id, true));
 

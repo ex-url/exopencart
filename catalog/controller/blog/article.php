@@ -10,6 +10,7 @@ class ControllerBlogArticle extends Controller {
     $this->load->model('blog/review');
     $this->load->model('blog/category');
     $this->load->model('blog/article');
+    $this->load->model('tool/image');
 
     $data['breadcrumbs'] = array();
 
@@ -18,6 +19,15 @@ class ControllerBlogArticle extends Controller {
       'href'      => $this->url->link('common/home'),
       'separator' => false
     );
+
+    $breadcrumbsItemList[] = [
+      "@type" => "ListItem",
+      "position" => 1,
+      "name" => $this->language->get('text_home'),
+      "item" => $this->config->get('site_ssl')
+    ];
+
+    $schema_position = 2;
 
     if (isset($this->request->get['blog_category_id'])) {
       $blog_category_id = '';
@@ -36,6 +46,15 @@ class ControllerBlogArticle extends Controller {
             'text'      => $category_info['name'],
             'href'      => $this->url->link('blog/category', 'blog_category_id=' . $blog_category_id)
           );
+
+          $breadcrumbsItemList[] = [
+            "@type" => "ListItem",
+            "position" => $schema_position,
+            "name" => $category_info['name'],
+            "item" => $this->url->link('blog/category', 'blog_category_id=' . $blog_category_id)
+          ];
+
+          $schema_position++;
         }
       }
     }
@@ -91,10 +110,28 @@ class ControllerBlogArticle extends Controller {
         $url .= '&filter_news_id=' . $this->request->get['filter_news_id'];
       }
 
+      $article_url = $this->url->link('blog/article', 'blog_category_id=&article_id=' . $this->request->get['article_id']);
+
       $data['breadcrumbs'][] = array(
         'text' => $article_info['name'],
-        'href' => $this->url->link('blog/article', 'article_id=' . $this->request->get['article_id'])
+        'href' => $article_url
       );
+
+      $breadcrumbsItemList[] = [
+        "@type" => "ListItem",
+        "position" => $schema_position,
+        "name" => $article_info['name'],
+        "item" => $article_url
+      ];
+
+      $breadcrumbs_schema = [
+        "@context" => "https://schema.org",
+        "@type" => "BreadcrumbList",
+        "@id" => $article_url . "#breadcrumb",
+        "itemListElement" => $breadcrumbsItemList,
+      ];
+
+      $this->document->addSchema($breadcrumbs_schema);
 
       if ($article_info['meta_title']) {
         $this->document->setTitle($article_info['meta_title']);
@@ -125,17 +162,20 @@ class ControllerBlogArticle extends Controller {
       if ($show_author) {
         $author_info = $this->model_blog_article->getArticleAuthor($article_info['user_id']);
 
-        if($author_info) {
+        if ($author_info) {
           $data['author'] = $author_info['firstname'] . ' ' . $author_info['lastname'];
           $data['author_href'] = $this->url->link('blog/latest', 'user_id=' . $article_info['user_id']);
         }
       }
 
       $data['viewed'] = $article_info['viewed'];
-      $data['date_published'] = date('d.m.Y', strtotime($article_info['date_published']));
-      $data['date_published_iso'] = date(DATE_ATOM, strtotime($article_info['date_published']));
-      $this->document->setOgType('article');
-      $this->document->setOgPublished($data['date_published_iso']);
+
+      if ($article_info['show_date']) {
+        $data['date_published'] = date('d.m.Y', strtotime($article_info['date_published']));
+        $data['date_published_iso'] = date(DATE_ATOM, strtotime($article_info['date_published']));
+        $this->document->setOgType('article');
+        $this->document->setOgPublished($data['date_published_iso']);
+      }
 
       $data['text_related'] = $this->language->get('text_related');
       $data['text_related_product'] = $this->language->get('text_related_product');
@@ -163,6 +203,74 @@ class ControllerBlogArticle extends Controller {
         $data['captcha'] = '';
       }
 
+      $webpage_schema = [
+        "@context" => "https://schema.org",
+        "@type" => "WebPage",
+        "@id" => $article_url . "#webpage",
+        "url" => $article_url,
+        "name" => $article_info['name'],
+        "isPartOf" => [
+          "@id" => $this->config->get('site_ssl') . "#website"
+        ],
+        "breadcrumb" => [
+          "@id" => $article_url . "#breadcrumb"
+        ],
+        "mainEntity" => [
+          "@id" => $article_url . "#blog-posting"
+        ]
+      ];
+
+      $this->document->addSchema($webpage_schema);
+
+      $schema_author = [
+        "@type" => "Organization",
+        "name" => $this->config->get('config_name'),
+        "url" => $this->config->get('site_ssl')
+      ];
+
+      if ($article_info['show_author'] && !empty($article_info['user_id'])) {
+        $schema_author_info = $this->model_blog_article->getArticleAuthor($article_info['user_id']);
+
+        if ($schema_author_info) {
+          $schema_author = [
+            "@type" => "Person",
+            "name" => trim($schema_author_info['firstname'] . ' ' . $schema_author_info['lastname']),
+            "url" => $this->url->link('blog/latest', 'user_id=' . $article_info['user_id'])
+          ];
+        }
+      }
+
+      $article_schema = [
+        "@context" => "https://schema.org",
+        "@type" => "BlogPosting",
+        "@id" => $article_url . "#blog-posting",
+        "url" => $article_url,
+        "headline" => $article_info['name'],
+        "description" => strip_tags(html_entity_decode($article_info['description'], ENT_QUOTES, 'UTF-8')),
+        "image" => $this->model_tool_image->resize($article_info['image'], $this->config->get('configblog_image_article_width'), $this->config->get('configblog_image_article_height'), 'crop'),
+        "datePublished" => date('c', strtotime($article_info['date_published'])),
+        "dateModified" => date('c', strtotime($article_info['date_modified'])),
+        "author" => $schema_author,
+        "publisher" => [
+          "@type" => "Organization",
+          "name" => $this->config->get('config_name'),
+          "logo" => [
+            "@type" => "ImageObject",
+            "url" => $this->model_tool_image->resize($this->config->get('config_icon'), $this->config->get('config_logo_width'), $this->config->get('config_logo_height'), 'crop')
+          ]
+        ],
+        "mainEntityOfPage" => [
+          "@id" => $article_url . "#webpage"
+        ],
+        "isPartOf" => [
+          "@type" => "Blog",
+          "name" => $this->config->get('configblog_name')[$this->config->get('config_language_id')],
+          "url" => $this->url->link('blog/latest')
+        ]
+      ];
+
+      $this->document->addSchema($article_schema);
+
       $data['article_review'] = (int)$article_info['article_review'];
       $data['reviews'] = sprintf($this->language->get('text_reviews'), (int)$article_info['reviews']);
       $data['rating'] = (int)$article_info['rating'];
@@ -170,8 +278,6 @@ class ControllerBlogArticle extends Controller {
 
       $data['button_more'] = $this->language->get('button_more');
       $data['text_views'] = $this->language->get('text_views');
-
-      $this->load->model('tool/image');
 
       $data['video'] = $article_info['video'];
       $data['images'] = array();
@@ -214,10 +320,10 @@ class ControllerBlogArticle extends Controller {
 
         $author = '';
 
-        if($result['show_author'] && $result['user_id']) {
+        if ($result['show_author'] && $result['user_id']) {
           $author_info = $this->model_blog_article->getArticleAuthor($result['user_id']);
 
-          if($author_info) {
+          if ($author_info) {
             $author = $author_info['firstname'] . ' ' . $author_info['lastname'];
           }
         }
@@ -447,7 +553,7 @@ class ControllerBlogArticle extends Controller {
         exit('Error: Headers already sent out!');
       }
     } else {
-      $this->redirect(HTTP_SERVER . 'index.php?route=account/download');
+      $this->response->redirect(HTTP_SERVER . 'index.php?route=account/download');
     }
   }
 

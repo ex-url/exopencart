@@ -2,19 +2,19 @@
 <main id="product-page">
   {{ content_top }}
   <div class="container">
-    <nav class="breadcrumb py-4" aria-label="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <nav class="breadcrumb py-4" aria-label="breadcrumbs">
       <ul>
-        {% for key, breadcrumb in breadcrumbs %}
-        {% if key < (breadcrumbs|length - 1) %} <li itemprop="itemListElement" itemscope
-          itemtype="https://schema.org/ListItem">
-          <a href="{{ breadcrumb.href }}" itemprop="item">{{ breadcrumb.text }}</a>
-          </li>
-          {% else %}
-          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-            <span itemprop="item">{{ breadcrumb.text }}</span>
-          </li>
-          {% endif %}
-          {% endfor %}
+      {% for key, breadcrumb in breadcrumbs %}
+        {% if key < (breadcrumbs|length - 1) %} 
+        <li>
+          <a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a>
+        </li>
+        {% else %}
+        <li>
+          <span>{{ breadcrumb.text }}</span>
+        </li>
+        {% endif %}
+      {% endfor %}
       </ul>
     </nav>
     <div class="columns is-multiline">
@@ -26,7 +26,7 @@
       {% else %}
       {% set class = 'column is-12' %}
       {% endif %}
-      <div id="content" class="{{ class }}" itemscope itemtype="https://schema.org/Product">        
+      <div id="content" class="{{ class }}">        
         <div class="tabs mb-5 has-background-white-bis">
           <ul>
             <li class="is-active" data-target="#heading">
@@ -53,12 +53,12 @@
           {% set class = 'column is-6-desktop is-12-tablet is-12-mobile' %}
           {% endif %}
           <div class="{{ class }}">
-            <div id="product-images" class="swiper box p-0 is-clipped mb-5" itemscope itemtype="https://schema.org/ImageGallery">
+            <div id="product-images" class="swiper box p-0 is-clipped mb-5">
               <div class="swiper-wrapper">
                 {% if thumb %}
                 <div class="swiper-slide">
                   <a href="{{ popup }}" data-fancybox="product" data-caption="{{ heading_title }}">
-                    <img src="{{ thumb }}" itemprop="image" width="{{ image_width }}" height="{{ image_heigth }}"
+                    <img src="{{ thumb }}" width="{{ image_width }}" height="{{ image_heigth }}"
                       title="{{ heading_title }}" alt="{{ heading_title }}" />
                   </a>
                 </div>
@@ -68,7 +68,7 @@
                 <div class="swiper-slide">
                   <a href="{{ image.popup }}" data-fancybox="product"
                     data-caption="{{ image.title ? image.title : heading_title }}">
-                    <img src="{{ image.thumb }}" itemprop="image" width="{{ image_width }}" height="{{ image_heigth }}"
+                    <img src="{{ image.thumb }}" width="{{ image_width }}" height="{{ image_heigth }}"
                       title="{{ image.title ? image.title : heading_title }}"
                       alt="{{ image.title ? image.title : heading_title }}" />
                   </a>
@@ -99,15 +99,15 @@
           {% set class = 'column is-6-desktop is-12-tablet is-12-mobile' %}
           {% endif %}
           <div id="product" class="product-info {{ class }}">
-            <div id="product-main" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-              <h1 class="title is-3 has-text-weight-normal" id="heading" itemprop="name">{{ heading_title }}</h1>
+            <div id="product-main">
+              <h1 class="title is-3 has-text-weight-normal" id="heading">{{ heading_title }}</h1>
               <div class="is-flex is-justify-content-space-between">
                 {% if price %}
                 <div class="price is-relative is-size-2-desktop is-size-2-tablet is-size-3-mobile mb-5">
                   {% if not special %}
-                  <span class="has-text-weight-bold actual-price" itemprop="price">{{ price }}{% if quantity_unit %}<small class="has-text-grey"> / {{ quantity_unit }}</small>{% endif %}</span>
+                  <span class="has-text-weight-bold actual-price">{{ price }}{% if quantity_unit %}<small class="has-text-grey"> / {{ quantity_unit }}</small>{% endif %}</span>
                   {% else %}
-                  <span class="has-text-weight-bold actual-price" itemprop="price">{{ special }}{% if quantity_unit %}<small class="has-text-grey"> / {{ quantity_unit }}</small>{% endif %}</span>
+                  <span class="has-text-weight-bold actual-price">{{ special }}{% if quantity_unit %}<small class="has-text-grey"> / {{ quantity_unit }}</small>{% endif %}</span>
                   <span class="has-text-grey is-size-4 old-price">{{ price }}</span>
                   {% endif %}
                   {% if tax %}
@@ -166,9 +166,7 @@
                 </li>
                 <li class="is-flex is-justify-content-space-between is-align-items-center py-1">
                   <span class="pr-1">{{ text_stock }}</span>
-                  <span
-                    class="tag has-text-weight-bold {{ quantity > 0 ? 'is-success' : 'is-danger' }} is-light"
-                    itemprop="availability">{{ stock }}</span>
+                  <span class="tag has-text-weight-bold {{ quantity > 0 ? 'is-success' : 'is-danger' }} is-light">{{ stock }}</span>
                 </li>
                 {% if manufacturer %}
                 <li class="is-flex is-justify-content-space-between is-align-items-center py-1">
@@ -443,7 +441,7 @@
               <hr>
             </div>
             {% endif %}
-            <div id="product-description" itemprop="description" class="content">
+            <div id="product-description" class="content">
               {{ description }}
             </div>
             {% if tags %}
@@ -806,14 +804,14 @@
               {% endif %}
               {% for article in articles %}
               <div class="{{ class }}">
-                <article class="blog-card card" itemprop="item" itemscope itemtype="https://schema.org/BlogPosting" >
+                <article class="blog-card card">
                   <div class="card-image">
                     <a href="{{ article['href'] }}" class="has-text-centered image">
-                      <img src="{{ article['thumb'] }}" width="{{ image_width }}" height="{{ image_height }}" loading="lazy" alt="{{ article['name'] }}" title="{{ article['name'] }}" itemprop="image"/>
+                      <img src="{{ article['thumb'] }}" width="{{ image_width }}" height="{{ image_height }}" loading="lazy" alt="{{ article['name'] }}" title="{{ article['name'] }}"/>
                     </a>
                   </div>
                   <div class="card-content is-flex is-flex-direction-column is-justify-content-space-between">
-                    <div class="title is-5 mb-5" itemprop="headline"><a href="{{ article['href'] }}" itemprop="url">{{ article['name'] }}</a></div>
+                    <div class="title is-5 mb-5"><a href="{{ article['href'] }}">{{ article['name'] }}</a></div>
                     <div class="announcement">
                       <p class="text">{{ article['description'] }} <a href="{{ article.href }}">{{ button_more }}</a></p>
                     </div>

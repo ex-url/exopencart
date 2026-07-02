@@ -2,16 +2,16 @@
 <main id="information-contact">
   {{ content_top }}
   <div class="container">
-    <nav class="breadcrumb py-4" aria-label="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <nav class="breadcrumb py-4" aria-label="breadcrumbs">
       <ul>
         {% for key, breadcrumb in breadcrumbs %}
         {% if key < (breadcrumbs|length - 1) %}
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="{{ breadcrumb.href }}" itemprop="item">{{ breadcrumb.text }}</a>
+        <li>
+          <a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a>
         </li>
         {% else %}
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <span itemprop="item">{{ breadcrumb.text }}</span>
+        <li>
+          <span>{{ breadcrumb.text }}</span>
         </li>
         {% endif %}
         {% endfor %}
@@ -32,7 +32,7 @@
             <h1 class="title is-1">{{ heading_title }}</h1>
             <hr>
           </div>
-          <div class="column is-4-desktop is-6-tablet is-12-mobile" itemscope itemtype="https://schema.org/Organization">
+          <div class="column is-4-desktop is-6-tablet is-12-mobile">
             <div class="block">
               <p class="mb-5">
                 <span class="icon-text is-flew-wrap-nowrap">
@@ -42,7 +42,7 @@
                       <path d="M2 11h1v1H2zm2 0h1v1H4zm-2 2h1v1H2zm2 0h1v1H4zm4-4h1v1H8zm2 0h1v1h-1zm-2 2h1v1H8zm2 0h1v1h-1zm2-2h1v1h-1zm0 2h1v1h-1zM8 7h1v1H8zm2 0h1v1h-1zm2 0h1v1h-1zM8 5h1v1H8zm2 0h1v1h-1zm2 0h1v1h-1zm0-2h1v1h-1z"/>
                     </svg>
                   </span>
-                  <span itemprop="name">{{ store }}</span>
+                  <span>{{ store }}</span>
                 </span>
               </p>
               {% if address %}
@@ -54,7 +54,7 @@
                       <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                     </svg>
                   </span>
-                  <span itemprop="streetAddress">{{ address }}</span>
+                  <span>{{ address }}</span>
                 </span>
               </p>
               {% endif %}
@@ -82,7 +82,7 @@
                       <path d="M22 9.75C21.59 9.75 21.25 9.41 21.25 9C21.25 5.55 18.45 2.75 15 2.75C14.59 2.75 14.25 2.41 14.25 2C14.25 1.59 14.59 1.25 15 1.25C19.27 1.25 22.75 4.73 22.75 9C22.75 9.41 22.41 9.75 22 9.75Z"></path>
                     </svg>
                   </span>
-                  <span class="has-text-weight-bold has-text-black" itemprop="telephone">{{ telephone }}</span>
+                  <span class="has-text-weight-bold has-text-black">{{ telephone }}</span>
                 </span>
               </a>
               {% endif %}
@@ -96,7 +96,7 @@
                       <path d="M22 9.75C21.59 9.75 21.25 9.41 21.25 9C21.25 5.55 18.45 2.75 15 2.75C14.59 2.75 14.25 2.41 14.25 2C14.25 1.59 14.59 1.25 15 1.25C19.27 1.25 22.75 4.73 22.75 9C22.75 9.41 22.41 9.75 22 9.75Z"></path>
                     </svg>
                   </span>
-                  <span class="has-text-weight-bold has-text-black" itemprop="telephone">{{ fax }}</span>
+                  <span class="has-text-weight-bold has-text-black">{{ fax }}</span>
                 </span>
               </a>
               {% endif %}

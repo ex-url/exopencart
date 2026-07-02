@@ -30,6 +30,7 @@ $_['entry_name']                       = 'Name';
 $_['entry_meta_title']                 = 'Meta Title';
 $_['entry_html_h1']                    = 'Html Tag H1';
 $_['entry_meta_description']           = 'Meta Tag Description';
+$_['entry_blog_description']           = 'Blog Description';
 $_['entry_meta_keyword']               = 'Meta Tag Keywords';
 
 // Help

@@ -9,6 +9,8 @@ class ControllerBlogLatest extends Controller {
     $this->load->model('blog/article');
     $this->load->model('tool/image');
 
+    $disallow_params = [];
+
     if ($this->config->get('config_noindex_disallow_params')) {
       $params = explode("\r\n", $this->config->get('config_noindex_disallow_params'));
       if (!empty($params)) {
@@ -82,6 +84,8 @@ class ControllerBlogLatest extends Controller {
       }
     }
 
+    $data['description'] = $this->config->get('configblog_blog_description')[$this->config->get('config_language_id')];
+
     $data['breadcrumbs'] = array();
 
     $data['breadcrumbs'][] = array(
@@ -101,6 +105,53 @@ class ControllerBlogLatest extends Controller {
       'text' => $name,
       'href' => $this->url->link('blog/latest')
     );
+
+    $blog_url = $this->url->link('blog/latest');
+
+    $breadcrumbsItemList = [];
+
+    $breadcrumbsItemList[] = [
+      "@type" => "ListItem",
+      "position" => 1,
+      "name" => $this->language->get('text_home'),
+      "item" => $this->config->get('site_ssl')
+    ];
+
+    $breadcrumbsItemList[] = [
+      "@type" => "ListItem",
+      "position" => 2,
+      "name" => $name,
+      "item" => $blog_url
+    ];
+
+    $breadcrumbs_schema = [
+      "@context" => "https://schema.org",
+      "@type" => "BreadcrumbList",
+      "@id" => $blog_url . "#breadcrumb",
+      "itemListElement" => $breadcrumbsItemList,
+    ];
+
+    $this->document->addSchema($breadcrumbs_schema);
+
+    $webpage_schema = [
+      "@context" => "https://schema.org",
+      "@type" => "WebPage",
+      "@id" => $blog_url . "#webpage",
+      "url" => $blog_url,
+      "name" => $name,
+      "description" => strip_tags(html_entity_decode($this->config->get('configblog_blog_description')[$this->config->get('config_language_id')], ENT_QUOTES, 'UTF-8')),
+      "isPartOf" => [
+        "@id" => $this->config->get('site_ssl') . "#website"
+      ],
+      "breadcrumb" => [
+        "@id" => $blog_url . "#breadcrumb"
+      ],
+      "mainEntity" => [
+        "@id" => $blog_url . "#blog"
+      ]
+    ];
+
+    $this->document->addSchema($webpage_schema);
 
     $url = '';
 
@@ -169,6 +220,8 @@ class ControllerBlogLatest extends Controller {
     $data['image_width'] = $image_width;
     $data['image_height'] = $image_height;
 
+    $blogItemList = [];
+
     foreach ($results as $result) {
       if ($result['image']) {
         $image = $this->model_tool_image->resize($result['image'], $image_width, $image_height, 'crop');
@@ -207,7 +260,31 @@ class ControllerBlogLatest extends Controller {
         'reviews'     => sprintf($this->language->get('text_reviews'), (int)$result['reviews']),
         'href'        => $this->url->link('blog/article',  '&article_id=' . $result['article_id'])
       );
+
+      $blogItemList[] = [
+        "@type" => "BlogPosting",
+        "@id" => $this->url->link('blog/article', 'article_id=' . $result['article_id']) . "#blog-posting",
+        "headline" => $result['name'],
+        "image" => $image,
+        "url" => $this->url->link('blog/article', 'article_id=' . $result['article_id']),
+        "datePublished" => date('Y-m-d', strtotime($result['date_published']))
+      ];
     }
+
+    $blog_schema = [
+      "@context" => "https://schema.org",
+      "@type" => "Blog",
+      "@id" => $blog_url . "#blog",
+      "url" => $blog_url,
+      "name" => $name,
+      "description" => strip_tags(html_entity_decode($this->config->get('configblog_blog_description')[$this->config->get('config_language_id')], ENT_QUOTES, 'UTF-8')),
+      "isPartOf" => [
+        "@id" => $this->config->get('site_ssl') . "#website"
+      ],
+      "blogPost" => $blogItemList
+    ];
+
+    $this->document->addSchema($blog_schema);
 
     $url = '';
 

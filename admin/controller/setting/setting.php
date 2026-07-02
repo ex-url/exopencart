@@ -281,6 +281,12 @@ class ControllerSettingSetting extends Controller {
       $data['config_city'] = $this->config->get('config_city');
     }
 
+    if (isset($this->request->post['config_postal'])) {
+      $data['config_postal'] = $this->request->post['config_postal'];
+    } else {
+      $data['config_postal'] = $this->config->get('config_postal');
+    }
+
     if (isset($this->request->post['config_owner'])) {
       $data['config_owner'] = $this->request->post['config_owner'];
     } else {

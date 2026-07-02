@@ -9,14 +9,14 @@
       </div>
       {% for article in articles %}
       <div class="column is-4-desktop is-6-tablet is-12-mobile">
-        <article class="blog-card card" itemprop="item" itemscope itemtype="https://schema.org/BlogPosting" >
+        <article class="blog-card card">
           <div class="card-image">
             <a href="{{ article['href'] }}" class="has-text-centered image">
-              <img src="{{ article['thumb'] }}" width="{{ image_width }}" height="{{ image_height }}" loading="lazy" alt="{{ article['name'] }}" title="{{ article['name'] }}" itemprop="image"/>
+              <img src="{{ article['thumb'] }}" width="{{ image_width }}" height="{{ image_height }}" loading="lazy" alt="{{ article['name'] }}" title="{{ article['name'] }}"/>
             </a>
           </div>
           <div class="card-content is-flex is-flex-direction-column is-justify-content-space-between">
-            <div class="title is-5 mb-5" itemprop="headline"><a href="{{ article['href'] }}" itemprop="url">{{ article['name'] }}</a></div>
+            <div class="title is-5 mb-5">{{ article['name'] }}</a></div>
             <div class="announcement">
               <p class="text">{{ article['description'] }} <a href="{{ article.href }}">{{ button_more }}</a></p>
             </div>

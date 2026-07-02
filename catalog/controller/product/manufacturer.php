@@ -16,10 +16,33 @@ class ControllerProductManufacturer extends Controller {
       'href' => $this->url->link('common/home')
     );
 
+    $breadcrumbsItemList[] = [
+      "@type" => "ListItem",
+      "position" => 1,
+      "name" => $this->language->get('text_home'),
+      "item" => $this->url->link('common/home')
+    ];
+
     $data['breadcrumbs'][] = array(
       'text' => $this->language->get('text_brand'),
       'href' => $this->url->link('product/manufacturer')
     );
+
+    $breadcrumbsItemList[] = [
+      "@type" => "ListItem",
+      "position" => 2,
+      "name" => $this->language->get('text_brand'),
+      "item" => $this->url->link('product/manufacturer')
+    ];
+
+    $breadcrumbs_schema = [
+      "@context" => "https://schema.org",
+      "@type" => "BreadcrumbList",
+      "@id" => $this->url->link('product/manufacturer') . "#breadcrumb",
+      "itemListElement" => $breadcrumbsItemList,
+    ];
+
+    $this->document->addSchema($breadcrumbs_schema);
 
     $data['categories'] = array();
 
@@ -116,10 +139,24 @@ class ControllerProductManufacturer extends Controller {
       'href' => $this->url->link('common/home')
     );
 
+    $breadcrumbsItemList[] = [
+      "@type" => "ListItem",
+      "position" => 1,
+      "name" => $this->language->get('text_home'),
+      "item" => $this->url->link('common/home')
+    ];
+
     $data['breadcrumbs'][] = array(
       'text' => $this->language->get('text_brand'),
       'href' => $this->url->link('product/manufacturer')
     );
+
+    $breadcrumbsItemList[] = [
+      "@type" => "ListItem",
+      "position" => 2,
+      "name" => $this->language->get('text_brand'),
+      "item" => $this->url->link('product/manufacturer')
+    ];
 
     $manufacturer_info = $this->model_catalog_manufacturer->getManufacturer($manufacturer_id);
 
@@ -193,6 +230,22 @@ class ControllerProductManufacturer extends Controller {
         'href' => $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] . $url)
       );
 
+      $breadcrumbsItemList[] = [
+        "@type" => "ListItem",
+        "position" => 3,
+        "name" => $manufacturer_info['name'],
+        "item" => $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'])
+      ];
+
+      $breadcrumbs_schema = [
+        "@context" => "https://schema.org",
+        "@type" => "BreadcrumbList",
+        "@id" => $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id']) . "#breadcrumb",
+        "itemListElement" => $breadcrumbsItemList,
+      ];
+
+      $this->document->addSchema($breadcrumbs_schema);
+
       $data['text_compare'] = sprintf($this->language->get('text_compare'), (isset($this->session->data['compare']) ? count($this->session->data['compare']) : 0));
 
       $data['compare'] = $this->url->link('product/compare');
@@ -210,6 +263,9 @@ class ControllerProductManufacturer extends Controller {
       $product_total = $this->model_catalog_product->getTotalProducts($filter_data);
 
       $results = $this->model_catalog_product->getProducts($filter_data);
+
+      $itemList = [];
+      $itemPosition = 1;
 
       foreach ($results as $result) {
         if ($result['image']) {
@@ -262,7 +318,38 @@ class ControllerProductManufacturer extends Controller {
           'rating'      => $result['rating'],
           'href'        => $this->url->link('product/product', 'manufacturer_id=' . $result['manufacturer_id'] . '&product_id=' . $result['product_id'] . $url)
         );
+
+        $itemList[] = [
+          "@type" => "ListItem",
+          "position" => $itemPosition,
+          "item" => [
+            "@type" => "WebPage",
+            "@id" => $this->url->link('product/product', 'product_id=' . $result['product_id']) . "#webpage",
+            "url" => $this->url->link('product/product', 'product_id=' . $result['product_id']),
+            "name" => $result['name'],
+          ],
+        ];
+
+        $itemPosition++;
       }
+
+      $manufacturer_schema = [
+        "@context" => "https://schema.org",
+        "@type" => "CollectionPage",
+        "@id" => $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id']) . "#webpage",
+        "name" => $manufacturer_info['name'],
+        "description" => strip_tags(html_entity_decode($manufacturer_info['description'], ENT_QUOTES, 'UTF-8')),
+        "url" => $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id']),
+        "isPartOf" => [
+          "@id" => HTTPS_SERVER . "#website"
+        ],
+        "mainEntity" => [
+          "@type" => "ItemList",
+          "itemListElement" => $itemList
+        ]
+      ];
+
+      $this->document->addSchema($manufacturer_schema);
 
       $url = '';
 
