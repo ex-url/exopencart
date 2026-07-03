@@ -60,8 +60,8 @@ $_['entry_related_article']  = 'Featured Articles:';
 $_['help_filter']            = '(Autocomplete)';
 $_['help_sticker_content']   = 'Sticker content, can contain HTML tags';
 $_['help_sticker_class']     = 'HTML class of the sticker, for example, tag is-warning';
-$_['help_top']               = 'Display in the top menu bar. Only works for the top parent categories.';
-$_['help_column']            = 'Number of columns to use for the bottom 3 categories. Only works for the top parent categories.';
+$_['help_top']               = 'Display in the main menu';
+$_['help_column']            = 'Number of columns (have no effect by default, but can be used in templates with dropdown menu support)';
 $_['help_related']           = '(Autocomplete)';
 
 // Error

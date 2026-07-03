@@ -42,10 +42,12 @@ class ControllerCommonMenu extends Controller {
                 'filter_sub_category' => true
               );
 
-              $children_data[] = array(
-                'name'  => $child['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
-                'href'  => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id'])
-              );
+              if($child['top']) {
+                $children_data[] = array(
+                  'name'  => $child['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
+                  'href'  => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id'])
+                );
+              }
             }
 
             // Level 1
