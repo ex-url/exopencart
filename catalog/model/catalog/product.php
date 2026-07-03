@@ -494,7 +494,15 @@ class ModelCatalogProduct extends Model {
 
 		$product_data = array();
 
-		$query = $this->db->query("SELECT product_id FROM " . DB_PREFIX . "product_to_category WHERE product_id != '" . (int)$product_id . "' AND category_id = '" . (int)$category_id . "' LIMIT " . (int)$limit);
+		$query = $query = $this->db->query("
+        SELECT p.product_id 
+        FROM " . DB_PREFIX . "product_to_category pc
+        LEFT JOIN " . DB_PREFIX . "product p ON (pc.product_id = p.product_id)
+        WHERE pc.product_id != '" . (int)$product_id . "' 
+        AND pc.category_id = '" . (int)$category_id . "'
+        AND p.status = 1
+        LIMIT " . (int)$limit
+    );
 
 		foreach ($query->rows as $product) {
 			$product_data[$product['product_id']] = $this->getProduct($product['product_id']);

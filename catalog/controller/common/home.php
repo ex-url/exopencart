@@ -30,9 +30,6 @@ class ControllerCommonHome extends Controller {
 
     $country = $this->model_localisation_country->getCountry($this->config->get('config_country_id'));
     $zone = $this->model_localisation_zone->getZone($this->config->get('config_zone_id'));
-    $languages = $this->model_localisation_language->getLanguages();
-
-    $this->log->write($this->session->data);
 
     $organization_schema = [
       "@context" => "https://schema.org",
