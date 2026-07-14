@@ -206,6 +206,7 @@ class ControllerAccountRegister extends Controller {
 		}
 
 		$data['login'] = $this->url->link('account/login', '', true);
+		$data['auth'] = $this->load->controller('extension/module/auth');
 
 		if (isset($this->request->post['agree'])) {
 			$data['agree'] = $this->request->post['agree'];

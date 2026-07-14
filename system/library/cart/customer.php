@@ -9,6 +9,7 @@ class Customer {
 	private $telephone;
 	private $newsletter;
 	private $address_id;
+	private $incomplete;
 
 	public function __construct($registry) {
 		$this->config = $registry->get('config');
@@ -28,6 +29,10 @@ class Customer {
 				$this->telephone = $customer_query->row['telephone'];
 				$this->newsletter = $customer_query->row['newsletter'];
 				$this->address_id = $customer_query->row['address_id'];
+
+				if(!$customer_query->row['firstname'] || !$customer_query->row['lastname'] || !$customer_query->row['email'] || !$customer_query->row['telephone']) {
+					$this->incomplete = true;
+				}
 
 				$this->db->query("UPDATE " . DB_PREFIX . "customer SET language_id = '" . (int)$this->config->get('config_language_id') . "', ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "' WHERE customer_id = '" . (int)$this->customer_id . "'");
 
@@ -84,6 +89,10 @@ class Customer {
 
 	public function isLogged() {
 		return $this->customer_id;
+	}
+
+	public function isIncomplete() {
+		return $this->incomplete;
 	}
 
 	public function getId() {

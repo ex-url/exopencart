@@ -136,7 +136,7 @@ class ControllerAccountLogin extends Controller {
     ];
 
     if (isset($this->request->get['redirect']) && in_array($this->request->get['redirect'], $allowed_redirects)) {
-      $data['redirect'] = $this->url->link($this->request->get['redirect'], '', true);
+      $data['redirect'] = $this->session->data['redirect'] = $this->url->link($this->request->get['redirect'], '', true);
     } else {
       $data['redirect'] = '';
     }
@@ -160,6 +160,8 @@ class ControllerAccountLogin extends Controller {
     } else {
       $data['password'] = '';
     }
+
+    $data['auth'] = $this->load->controller('extension/module/auth');
 
     $data['column_left'] = $this->load->controller('common/column_left');
     $data['column_right'] = $this->load->controller('common/column_right');

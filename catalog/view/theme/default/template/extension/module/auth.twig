@@ -1,0 +1,175 @@
+<div class="auth mb-5 has-text-centered">
+  <div class="columns is-mobile is-multiline is-variable is-1 is-align-items-center">
+    {% if yandex_status %}
+    <div class="column is-12">
+      <script src="https://yastatic.net/s3/passport-sdk/autofill/v1/sdk-suggest-with-polyfills-latest.js"></script>
+      <div id="yandexAuth"></div>
+      <script>
+        window.YaAuthSuggest.init(
+          {
+            client_id: '{{ yandex_client_id }}',
+            response_type: 'token',
+            redirect_uri: '{{ yandex_redirect_uri }}'
+          },
+          '{{ yandex_token_page_origin }}',
+          {
+            view: "button",
+            parentId: "yandexAuth",
+            buttonSize: 's',
+            buttonView: 'main',
+            buttonTheme: 'light',
+            buttonBorderRadius: '4',
+            buttonIcon: 'ya',
+          }
+        )
+          .then(({ handler }) => handler())
+          .then(data => {
+            return fetch('{{ yandex_redirect_uri }}', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                access_token: data.access_token
+              })
+            });
+          })
+          .then(async response => {
+            if (!response.ok) {
+              alert("{{ error_yandex_server }}");
+            }
+
+            const json = await response.json();
+
+            if (json.redirect) {
+              location.href = json.redirect;
+            }
+          })
+          .catch(error => {
+            console.error('{{ error_yandex_server }}', error);
+          });
+      </script>
+      <style>
+        #yandexAuth iframe {
+          z-index: 1 !important;
+        }
+      </style>
+    </div>
+    {% endif %}
+    {% if vk_status %}
+    <div class="column is-12">
+      <div id="vkAuth"></div>
+      <script nonce="csp_nonce" src="https://unpkg.com/@vkid/sdk@<3.0.0/dist-sdk/umd/index.js"></script>
+      <script nonce="csp_nonce" type="text/javascript">
+        if ('VKIDSDK' in window) {
+          const VKID = window.VKIDSDK;
+
+          VKID.Config.init({
+            app: {{ vk_application_id }},
+            redirectUrl: '{{ vk_redirect_uri }}',
+            responseMode: VKID.ConfigResponseMode.Callback,
+            source: VKID.ConfigSource.LOWCODE,
+            scope: 'email, phone',
+          });
+
+        const oneTap = new VKID.OneTap();
+
+        oneTap.render({
+          container: document.getElementById('vkAuth'),
+          fastAuthEnabled: true,
+          showAlternativeLogin: false,
+          styles: {
+            height: 40,
+            borderRadius: 4,
+          }
+        })
+          .on(VKID.WidgetEvents.ERROR, vkidOnError)
+          .on(VKID.OneTapInternalEvents.LOGIN_SUCCESS, function (payload) {
+            const code = payload.code;
+            const deviceId = payload.device_id;
+
+            VKID.Auth.exchangeCode(code, deviceId)
+              .then(data => {
+
+                return fetch('/index.php?route=extension/module/auth/vk', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    access_token: data.access_token
+                  })
+                });
+
+              })
+              .then(async response => {
+                if (!response.ok) {
+                  alert("{{ error_vk_server }}");
+                }
+
+                const json = await response.json();
+
+                if (json.redirect) {
+                  location.href = json.redirect;
+                }
+              })
+              .catch(vkidOnError);
+          });
+
+        function vkidOnError(error) {
+          console.error('{{ error_vk_server }}', error);
+          alert('{{ error_vk_server }}');
+        }
+        }
+      </script>
+    </div>
+    {% endif %}
+    {% if google_status %}
+    <div class="column is-12">
+      <div id="googleAuth"></div>
+      <script src="https://accounts.google.com/gsi/client" async></script>
+      <script>
+        window.onload = function () {
+          const width = document.getElementById("googleAuth").getBoundingClientRect().width;
+
+          google.accounts.id.initialize({
+            client_id: "{{ google_client_id }}",
+            callback: handleGoogleAuth
+          });
+
+          google.accounts.id.renderButton(
+            document.getElementById("googleAuth"),
+            { theme: "outline", size: "large", width: width }
+          );
+        }
+
+        function handleGoogleAuth(response) {
+
+          fetch('{{ google_redirect_uri }}', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              credential: response.credential
+            })
+          })
+          .then(function(response) {
+            return response.json();
+          })
+          .then(function(json) {
+            if (json.error) {
+              alert(json.error);
+              return;
+            }
+            
+            if (json.redirect) {
+              window.location.href = json.redirect;
+            }
+          })
+          .catch(function(error) {
+            console.error('Google auth error', error);
+            alert("{{ error_google_server }}");
+          });
+        }
+      </script>
+    </div>
+    {% endif %}
+  </div>
+</div>

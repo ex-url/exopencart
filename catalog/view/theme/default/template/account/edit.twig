@@ -30,6 +30,9 @@
       {% endif %}
       <div id="content" class="{{ class }}">
         <h1 class="title is-3">{{ heading_title }}</h1>
+        {% if incomplete %}
+        <div class="notification is-danger is-light">{{ error_incomplete }}</div>
+        {% endif %}
         <form action="{{ action }}" method="post" enctype="multipart/form-data">
           <fieldset class="columns is-multiline">
             <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile field-wrapper">

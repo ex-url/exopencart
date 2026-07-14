@@ -1,0 +1,166 @@
+{{ header }}
+<main id="collect-page">
+  {{ content_top }}
+  <div class="container">
+    <nav class="breadcrumb py-4" aria-label="breadcrumbs">
+      <ul>
+        {% for key, breadcrumb in breadcrumbs %}
+        {% if key < (breadcrumbs|length - 1) %} <li>
+          <a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a>
+          </li>
+          {% else %}
+          <li>
+            <span>{{ breadcrumb.text }}</span>
+          </li>
+          {% endif %}
+          {% endfor %}
+      </ul>
+    </nav>
+    <div class="columns is-multiline">
+      {{ column_left }}
+      {% if column_left and column_right %}
+      {% set class = 'column is-6-fullhd is-6-widescreen is-6-desktop is-12-tablet is-12-mobile' %}
+      {% elseif column_left or column_right %}
+      {% set class = 'column is-9-fullhd is-9-widescreen is-9-desktop is-12-tablet is-12-mobile' %}
+      {% else %}
+      {% set class = 'column is-12' %}
+      {% endif %}
+      <div id="content" class="{{ class }}">
+        <div class="pb-5">
+          <form id="collect-form" class="box mx-auto" style="max-width: 420px">
+            <div class="notification is-info is-light has-text-centered is-size-5">
+              {{ text_collect_description }}
+            </div>
+            {% if not firstname %}
+            <div class="field native-field">
+              <label class="label">{{ entry_firstname }}</label>
+              <div class="control">
+                <input type="text" name="firstname" value="{{ firstname }}" placeholder="{{ entry_firstname }}"
+                  class="input">
+              </div>
+            </div>
+            {% endif %}
+            {% if not lastname %}
+            <div class="field native-field">
+              <label class="label">{{ entry_lastname }}</label>
+              <div class="control">
+                <input type="text" name="lastname" value="{{ lastname }}" placeholder="{{ entry_lastname }}"
+                  class="input">
+              </div>
+            </div>
+            {% endif %}
+            {% if not telephone %}
+            <div class="field native-field">
+              <label class="label">{{ entry_telephone }}</label>
+              <div class="control">
+                <input type="text" name="telephone" value="{{ telephone }}" placeholder="{{ entry_telephone }}"
+                  class="input">
+              </div>
+            </div>
+            {% endif %}
+            {% if not email %}
+            <div class="field native-field">
+              <label class="label">{{ entry_email }}</label>
+              <div class="control">
+                <input type="email" name="email" value="{{ email }}" placeholder="{{ entry_email }}" class="input">
+              </div>
+            </div>
+            {% endif %}
+            {% if text_agree %}
+            <div class="field required">
+              <div class="checkbox">
+                <label class="label has-text-weight-normal is-size-7">
+                  <input type="checkbox" name="agree" {{ agree ? 'checked' : '' }} value="1">
+                  {{ text_agree }}
+                </label>
+              </div>
+            </div>
+            {% endif %}
+            <div class="buttons">
+              <button type="submit" class="button is-success is-medium is-fullwidth">
+                <span class="icon is-medium">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round"
+                    stroke-linejoin="round" stroke="currentColor" height="32" width="32">
+                    <path d="M5.625 4.6875a1.875 1.875 0 1 0 3.75 0 1.875 1.875 0 1 0 -3.75 0" stroke-width="1"></path>
+                    <path
+                      d="M12.1875 12.8125c-0.296875 -5.833125 -9.078125 -5.833125 -9.375 0m3.4375 -1.25h2.5m-1.25 -1.25v2.5"
+                      stroke-width="1"></path>
+                  </svg>
+                </span>
+                <span>{{ button_register }}</span>
+              </button>
+            </div>
+            <div class="my-5 is-size-5 has-text-centered">
+              {{ text_account_already }}
+            </div>
+            <div class="buttons">
+              <a href="{{ login }}" class="button is-primary is-medium is-fullwidth">
+                <span class="icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round"
+                    stroke-linejoin="round" stroke="currentColor" height="20" width="20">
+                    <path
+                      d="M8.435 13.125H4.0625c-0.690625 0 -1.25 -0.719375 -1.25 -1.606875V3.48125c0 -0.8868750000000001 0.559375 -1.60625 1.25 -1.60625h4.375"
+                      stroke-width="1"></path>
+                    <path d="M8.125 9.6875 5.9375 7.5 8.125 5.3125m4.0625 2.185h-6.25" stroke-width="1"></path>
+                  </svg>
+                </span>
+                <span>{{ button_login }}</span>
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+      {{ column_right }}
+    </div>
+  </div>
+  {{ content_bottom }}
+</main>
+<script>
+  $('#collect-form').on('submit', function (e) {
+    e.preventDefault();
+
+    let $form = $(this);
+    let $submit = $form.find('button[type="submit"]');
+
+    $form.find('.help.is-danger').remove();
+    $form.find('.input.is-danger').removeClass('is-danger');
+
+    $.ajax({
+      type: 'POST',
+      url: '/index.php?route=extension/module/auth/collect',
+      data: $form.serialize(),
+      dataType: 'json',
+      beforeSend: function () {
+        $submit.addClass('is-loading');
+      },
+      success: function (json) {
+        $submit.removeClass('is-loading');
+
+        if (json['error']) {
+          for (let key in json['error']) {
+            $form.find('input[name="' + key + '"]').parents('.field').append('<p class="help is-danger">' + json['error'][key] + '</p>');
+            $form.find('input[name="' + key + '"]').addClass('is-danger');
+          }
+        }
+
+        if(json.redirect) {
+          location.href = json.redirect;
+        }
+      },
+      complete: function () {
+        $submit.removeClass('is-loading');
+      },
+      error: function (err) {
+        console.log(err);
+      }
+    })
+  });
+
+  $('#collect-form input').on('focus', function () {
+    let $form = $('#collect-form');
+
+    $form.find('.help.is-danger').remove();
+    $form.find('.input.is-danger').removeClass('is-danger');
+  })
+</script>
+{{ footer }}

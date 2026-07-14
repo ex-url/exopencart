@@ -13,7 +13,12 @@ class ControllerCheckoutCheckout extends Controller {
       $this->response->redirect($this->url->link('checkout/cart'));
     }
 
-    //unset($this->session->data['guest']);
+    if($this->customer->isIncomplete()) {
+      $this->session->data['redirect'] = $this->url->link('checkout/checkout', true);
+      $this->response->redirect($this->url->link('account/edit'));      
+    }
+    
+    unset($this->session->data['redirect']);
 
     $this->load->model('tool/image');
     $this->load->model('tool/upload');

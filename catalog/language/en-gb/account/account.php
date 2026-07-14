@@ -24,3 +24,5 @@ $_['text_transactions']   = 'Transactions';
 $_['text_affiliate_add']  = 'Register for an affiliate account';
 $_['text_affiliate_edit'] = 'Edit your affiliate information';
 $_['text_tracking']       = 'Custom affiliate tracking code';
+
+$_['error_incomplete']   = "<b>Profile is incomplete!</b> Please provide the missing data to place orders.";

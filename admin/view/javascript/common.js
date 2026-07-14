@@ -88,6 +88,12 @@ function copyToClipboard(element, event) {
   }
 }
 
+function togglePasswordVisibility(inputId) {
+  const $input = $('#' + inputId);
+  const type = $input.attr('type') === 'password' ? 'text' : 'password';
+  $input.attr('type', type);
+}
+
 $(document).ready(function () {
   // init incoming polling 
   setInterval(function() {

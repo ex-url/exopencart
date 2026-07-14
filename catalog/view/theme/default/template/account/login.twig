@@ -39,7 +39,7 @@
           </span>
         </div>
         {% endif %}
-        <div class="box mx-auto" style="max-width: 480px;">
+        <div class="box mx-auto" style="max-width: 420px;">
           <div class="title is-4 is-flex is-align-items-center is-justify-content-center">
             <span class="icon is-medium has-text-primary">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="32" width="32">
@@ -48,6 +48,10 @@
             </span>
             <span class="ml-2">{{ text_login }}</span>            
           </div>
+          {% if auth %}
+          {{ auth }}
+          <div class="is-size-5 has-text-centered">{{ text_login_password }}</div>
+          {% endif %}
           <form action="{{ action }}" method="post" enctype="multipart/form-data">
             <div class="field">
               <label class="label" for="input-email">{{ entry_email }}</label>

@@ -5,6 +5,7 @@ $_['heading_title']        = 'Register Account';
 // Text
 $_['text_account']         = 'Account';
 $_['text_register']        = 'Register';
+$_['text_create_account']  = 'Create account';
 $_['text_account_already'] = 'Already have an account?';
 $_['text_your_details']    = 'Your Personal Details';
 $_['text_newsletter']      = 'Newsletter';

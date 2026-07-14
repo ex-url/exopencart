@@ -24,7 +24,11 @@ class ControllerAccountEdit extends Controller {
 
 			$this->session->data['success'] = $this->language->get('text_success');
 
-			$this->response->redirect($this->url->link('account/account', '', true));
+			if(!empty($this->session->data['redirect'])) {
+				$this->response->redirect($this->session->data['redirect']);
+			} else {
+				$this->response->redirect($this->url->link('account/account', '', true));
+			}
 		}
 
 		$data['breadcrumbs'] = array();
@@ -117,6 +121,8 @@ class ControllerAccountEdit extends Controller {
 		} else {
 			$data['telephone'] = '';
 		}
+
+		$data['incomplete'] = $this->customer->isIncomplete();
 
 		// Custom Fields
 		$data['custom_fields'] = array();

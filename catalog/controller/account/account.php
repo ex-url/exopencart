@@ -101,6 +101,8 @@ class ControllerAccountAccount extends Controller {
       $page = 1;
     }
 
+    $data['incomplete'] = $this->customer->isIncomplete();
+
     $data['orders'] = array();
 
     $this->load->model('account/order');

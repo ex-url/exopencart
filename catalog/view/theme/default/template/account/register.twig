@@ -31,7 +31,7 @@
           {{ error_warning }}
         </div>
         {% endif %}
-        <form class="box mx-auto" style="max-width: 480px" action="{{ action }}" method="post" enctype="multipart/form-data">
+        <form class="box mx-auto" style="max-width: 420px" action="{{ action }}" method="post" enctype="multipart/form-data">
           <h1 class="title is-4 is-flex is-align-items-center is-justify-content-center">
             <span class="icon is-medium has-text-primary">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="32" width="32">
@@ -41,6 +41,10 @@
             </span>
             <span class="ml-2">{{ heading_title }}</span>            
           </h1>
+          {% if auth %}
+          {{ auth }}
+          <div class="is-size-5 has-text-centered">{{ text_create_account }}</div>
+          {% endif %}
           <div class="field {{ customer_groups|length > 1 ? 'required' : 'is-hidden' }}">
             <label class="label">{{ entry_customer_group }}</label>
             <div class="control">
@@ -312,7 +316,7 @@
           {% if text_agree %}
           <div class="field required">
             <div class="checkbox">
-              <label class="label has-text-weight-normal">
+              <label class="label has-text-weight-normal is-size-7">
                 <input type="checkbox" name="agree" {{ agree ? 'checked' : '' }} value="1">
                 {{ text_agree }}
               </label>

@@ -8,6 +8,7 @@ $_['heading_title']        = 'Регистрация';
 // Text
 $_['text_account']         = 'Аккаунт';
 $_['text_register']        = 'Регистрация';
+$_['text_create_account']  = 'Создать учётную запись';
 $_['text_account_already'] = 'Уже есть аккаунт?';
 $_['text_your_details']    = 'Контактные данные';
 $_['text_your_address']    = 'Ваш Адрес';

@@ -24,6 +24,14 @@
       <div id="content" class="{{ class }} mb-5">
         {{ content_top }}
         <h1 class="title is-3">{{ text_my_account }}</h1>
+        {% if incomplete %}
+        <div class="notification is-danger is-light pr-5">
+          <div class="is-flex is-flex-wrap-wrap is-align-items-center is-justify-content-space-between">
+            <div>{{ error_incomplete }}</div>
+            <a href="{{edit}}" class="button is-danger is-small">{{ button_edit }}</a>
+          </div>
+        </div>
+        {% endif %}
         <div class="block">
           {% if orders %}
           <div class="title is-5">
