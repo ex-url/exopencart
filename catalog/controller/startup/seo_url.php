@@ -13,7 +13,7 @@ class ControllerStartupSeoUrl extends Controller {
 	//seopro end
 
 	public function index() {
-		
+
 		// Add rewrite to url class
 		if ($this->config->get('config_seo_url')) {
 			$this->url->addRewrite($this);
@@ -52,11 +52,11 @@ class ControllerStartupSeoUrl extends Controller {
 					}
 				}
 			}
-			
+
 			$parts = explode('/', $this->request->get['_route_']);
 
 			//seopro prepare route
-			if($this->config->get('config_seo_pro')){
+			if ($this->config->get('config_seo_pro')) {
 				$parts = $this->seo_pro->prepareRoute($parts);
 			}
 			//seopro prepare route end
@@ -96,7 +96,7 @@ class ControllerStartupSeoUrl extends Controller {
 						$this->request->get['route'] = $query->row['query'];
 					}
 				} else {
-					if(!$this->config->get('config_seo_pro')){
+					if (!$this->config->get('config_seo_pro')) {
 						$this->request->get['route'] = 'error/not_found';
 					}
 
@@ -118,7 +118,7 @@ class ControllerStartupSeoUrl extends Controller {
 		}
 
 		//seopro validate
-		if($this->config->get('config_seo_pro')){
+		if ($this->config->get('config_seo_pro')) {
 			$this->seo_pro->validate();
 		}
 		//seopro validate
@@ -128,7 +128,7 @@ class ControllerStartupSeoUrl extends Controller {
 	public function rewrite($link) {
 		$url_info = parse_url(str_replace('&amp;', '&', $link));
 
-		if($this->config->get('config_seo_pro')){
+		if ($this->config->get('config_seo_pro')) {
 			$url = null;
 		} else {
 			$url = '';
@@ -139,12 +139,9 @@ class ControllerStartupSeoUrl extends Controller {
 		parse_str($url_info['query'], $data);
 
 		//seo_pro baseRewrite
-		if($this->config->get('config_seo_pro')){
+		if ($this->config->get('config_seo_pro')) {
 			list($url, $data, $postfix) =  $this->seo_pro->baseRewrite($data, (int)$this->config->get('config_language_id'));
 		}
-
-
-
 
 		//seo_pro baseRewrite
 
@@ -193,17 +190,17 @@ class ControllerStartupSeoUrl extends Controller {
 			}
 		}
 
-		if($this->config->get('config_seo_pro')) {
+		if ($this->config->get('config_seo_pro')) {
 			$condition = ($url !== null);
 		} else {
 			$condition = $url;
 		}
 
 		if ($condition) {
-			if($this->config->get('config_seo_pro')){
-				if($this->config->get('config_page_postfix') && $postfix) {
+			if ($this->config->get('config_seo_pro')) {
+				if ($this->config->get('config_page_postfix') && $postfix) {
 					$url .= $this->config->get('config_page_postfix');
-				} elseif($this->config->get('config_seopro_addslash') || !empty( $query)) {
+				} elseif ($this->config->get('config_seopro_addslash') || !empty($query)) {
 					$url .= '/';
 				}
 			}

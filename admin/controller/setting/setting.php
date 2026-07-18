@@ -1306,10 +1306,22 @@ class ControllerSettingSetting extends Controller {
       $data['config_seo_pro'] = $this->config->get('config_seo_pro');
     }
 
+    if (isset($this->request->post['config_seo_url_flat_structure'])) {
+      $data['config_seo_url_flat_structure'] = $this->request->post['config_seo_url_flat_structure'];
+    } else {
+      $data['config_seo_url_flat_structure'] = $this->config->get('config_seo_url_flat_structure');
+    }
+
     if (isset($this->request->post['config_seo_url_include_path'])) {
       $data['config_seo_url_include_path'] = $this->request->post['config_seo_url_include_path'];
     } else {
       $data['config_seo_url_include_path'] = $this->config->get('config_seo_url_include_path');
+    }
+
+    if (isset($this->request->post['config_seo_url_product_prefix'])) {
+      $data['config_seo_url_product_prefix'] = $this->request->post['config_seo_url_product_prefix'];
+    } else {
+      $data['config_seo_url_product_prefix'] = $this->config->get('config_seo_url_product_prefix');
     }
 
     if (isset($this->request->post['config_seo_url_cache'])) {
