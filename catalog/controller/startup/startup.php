@@ -136,9 +136,20 @@ class ControllerStartupStartup extends Controller {
 		// Tracking Code
 		if (isset($this->request->get['tracking'])) {
 			setcookie('tracking', $this->request->get['tracking'], time() + 3600 * 24 * 1000, '/');
+
+			if(empty($this->session->data['marketing_code'])) {
+				$this->db->query("UPDATE `" . DB_PREFIX . "marketing` SET clicks = (clicks + 1) WHERE code = '" . $this->db->escape($this->request->get['tracking']) . "'");
+				$this->session->data['marketing_code'] = $this->request->get['tracking'];
+			}
 		
-			$this->db->query("UPDATE `" . DB_PREFIX . "marketing` SET clicks = (clicks + 1) WHERE code = '" . $this->db->escape($this->request->get['tracking']) . "'");
-		}		
+			$this->load->model('account/customer');
+			$affiliate = $this->model_account_customer->getAffiliateByTracking($this->request->get['tracking']);
+
+			if($affiliate && empty($this->session->data['affiliate_id'])) {
+				$this->model_account_customer->updateAffiliateClicks($affiliate['customer_id']);
+				$this->session->data['affiliate_id'] = $affiliate['customer_id'];
+			}
+		}
 		
 		// Currency
 		$code = '';

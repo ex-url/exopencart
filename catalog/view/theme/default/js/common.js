@@ -685,10 +685,23 @@ function formatBytes(bytes, decimals = 2) {
   return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`;
 }
 
-function copyToClipboard(element) {
-  let $hidden = $('<input type="text" value=""  />');
-  $('body').append($hidden);
-  $hidden.val($(element).text().trim()).select();
-  document.execCommand("copy");
-  $hidden.remove();
+function copyToClipboard(selector, callback) {
+
+  let text = $(selector).val() ? $(selector).val() : $(selector).text();
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(function() {
+      if (typeof callback === 'function') {
+        callback();
+      }
+    });
+  } else {
+    var temp = $('<input>');
+    $('body').append(temp);
+    temp.val(text).select();
+    document.execCommand('copy');
+    temp.remove();
+    if (typeof callback === 'function') {
+      callback();
+    }
+  }
 }

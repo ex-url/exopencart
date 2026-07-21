@@ -328,14 +328,17 @@ class ModelCheckoutOrder extends Model {
           foreach ($order_options as $order_option) {
             $this->db->query("UPDATE " . DB_PREFIX . "product_option_value SET quantity = (quantity - " . (int)$order_product['quantity'] . ") WHERE product_option_value_id = '" . (int)$order_option['product_option_value_id'] . "' AND subtract = '1'");
           }
-        }
+        }        
+      }
 
-        // Add commission if sale is linked to affiliate referral.
+      // Add commission if sale is linked to affiliate referral.
+      if (!in_array($order_info['order_status_id'], $this->config->get('config_complete_status')) && in_array($order_status_id, $this->config->get('config_complete_status'))) {
         if ($order_info['affiliate_id'] && $this->config->get('config_affiliate_auto')) {
+          
           $this->load->model('account/customer');
 
           if (!$this->model_account_customer->getTotalTransactionsByOrderId($order_id)) {
-            $this->model_account_customer->addTransaction($order_info['affiliate_id'], $this->language->get('text_order_id') . ' #' . $order_id, $order_info['commission'], $order_id);
+            $this->model_account_customer->addTransaction($order_info['affiliate_id'], $this->language->get('text_order_affiliate_commission') . ' #' . $order_id, $order_info['commission'], $order_id);
           }
         }
       }
@@ -370,14 +373,16 @@ class ModelCheckoutOrder extends Model {
             $this->{'model_extension_total_' . $order_total['code']}->unconfirm($order_id);
           }
         }
+      }
 
-        // Remove commission if sale is linked to affiliate referral.
+      // Remove commission if sale is linked to affiliate referral.
+      if (in_array($order_info['order_status_id'], $this->config->get('config_complete_status')) && !in_array($order_status_id, $this->config->get('config_complete_status'))) {
         if ($order_info['affiliate_id']) {
           $this->load->model('account/customer');
 
           $this->model_account_customer->deleteTransactionByOrderId($order_id);
         }
-      }
+      }      
 
       $this->cache->delete('product');
     }

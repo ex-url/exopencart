@@ -80,6 +80,7 @@ $_['button_rule_add']               = 'Добавить правило';
 $_['button_module_add']             = 'Добавить модуль';
 $_['button_link_add']               = 'Добавить ссылку';
 $_['button_approve']                = 'Одобрить';
+$_['button_reject']                 = 'Отклонить';
 $_['button_reset']                  = 'Сбросить';
 $_['button_generate']               = 'Генерировать';
 $_['button_voucher_add']            = 'Добавить подарочный сертификат';

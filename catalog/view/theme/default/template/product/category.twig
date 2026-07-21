@@ -41,9 +41,9 @@
         <hr>
         {% if categories %}
         <div class="title is-4 has-text-grey">{{ text_refine }}</div>
-          <div class="block category-children">
+          <div class="category-children buttons">
             {% for category in categories %}
-            <a href="{{ category.href }}" class="tag is-link is-light is-medium mb-1">{{ category.name }}</a>
+            <a href="{{ category.href }}" class="button is-small">{{ category.name }}</a>
             {% endfor %}
           </div>
         {% endif %}

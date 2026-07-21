@@ -9,12 +9,12 @@ class ControllerAccountAffiliate extends Controller {
 		if (!$this->customer->isLogged()) {
 			$this->session->data['redirect'] = $this->url->link('account/affiliate', '', true);
 
-			$this->response->redirect($this->url->link('affiliate/login', '', true));
+			$this->response->redirect($this->url->link('account/login', '', true));
 		}
 
 		$this->load->language('account/affiliate');
 
-		$this->document->setTitle($this->language->get('heading_title'));
+		$this->document->setTitle($this->language->get('text_create'));
 		$this->document->setRobots('noindex,follow');
 
 		$this->load->model('account/customer');
@@ -34,12 +34,12 @@ class ControllerAccountAffiliate extends Controller {
 		if (!$this->customer->isLogged()) {
 			$this->session->data['redirect'] = $this->url->link('account/affiliate', '', true);
 
-			$this->response->redirect($this->url->link('affiliate/login', '', true));
+			$this->response->redirect($this->url->link('account/login', '', true));
 		}
 
 		$this->load->language('account/affiliate');
 
-		$this->document->setTitle($this->language->get('heading_title'));
+		$this->document->setTitle($this->language->get('text_edit'));
 		$this->document->setRobots('noindex,follow');
 
 		$this->load->model('account/customer');
@@ -70,44 +70,26 @@ class ControllerAccountAffiliate extends Controller {
 
 		if ($this->request->get['route'] == 'account/affiliate/add') {
 			$data['breadcrumbs'][] = array(
-				'text' => $this->language->get('text_affiliate'),
+				'text' => $this->language->get('text_create'),
 				'href' => $this->url->link('account/affiliate/add', '', true)
 			);
 		} else {
 			$data['breadcrumbs'][] = array(
-				'text' => $this->language->get('text_affiliate'),
+				'text' => $this->language->get('text_edit'),
 				'href' => $this->url->link('account/affiliate/edit', '', true)
 			);
 		}
 
-		if (isset($this->error['warning'])) {
-			$data['error_warning'] = $this->error['warning'];
+		if (isset($this->error['agree'])) {
+			$data['error_agree'] = $this->error['agree'];
 		} else {
-			$data['error_warning'] = '';
+			$data['error_agree'] = '';
 		}
 
-		if (isset($this->error['cheque'])) {
-			$data['error_cheque'] = $this->error['cheque'];
+		if (isset($this->error['tax'])) {
+			$data['error_tax'] = $this->error['tax'];
 		} else {
-			$data['error_cheque'] = '';
-		}
-
-		if (isset($this->error['paypal'])) {
-			$data['error_paypal'] = $this->error['paypal'];
-		} else {
-			$data['error_paypal'] = '';
-		}
-
-		if (isset($this->error['bank_account_name'])) {
-			$data['error_bank_account_name'] = $this->error['bank_account_name'];
-		} else {
-			$data['error_bank_account_name'] = '';
-		}
-
-		if (isset($this->error['bank_account_number'])) {
-			$data['error_bank_account_number'] = $this->error['bank_account_number'];
-		} else {
-			$data['error_bank_account_number'] = '';
+			$data['error_tax'] = '';
 		}
 
 		if (isset($this->error['custom_field'])) {
@@ -117,6 +99,12 @@ class ControllerAccountAffiliate extends Controller {
 		}
 
 		$data['action'] = $this->url->link($this->request->get['route'], '', true);
+
+		if($this->request->get['route'] == 'account/affiliate/edit') {
+			$data['heading_title'] = $this->language->get('text_edit');
+		} else {
+			$data['heading_title'] = $this->language->get('text_create');
+		}
 
 		if ($this->request->get['route'] == 'account/affiliate/edit' && $this->request->server['REQUEST_METHOD'] != 'POST') {
 			$affiliate_info = $this->model_account_customer->getAffiliate($this->customer->getId());
@@ -146,68 +134,12 @@ class ControllerAccountAffiliate extends Controller {
 			$data['tax'] = '';
 		}
 
-		if (isset($this->request->post['payment'])) {
-			$data['payment'] = $this->request->post['payment'];
+		if (isset($this->request->post['payment_details'])) {
+			$data['payment_details'] = $this->request->post['payment_details'];
 		} elseif (!empty($affiliate_info)) {
-			$data['payment'] = $affiliate_info['payment'];
+			$data['payment_details'] = $affiliate_info['payment_details'];
 		} else {
-			$data['payment'] = 'cheque';
-		}
-
-		if (isset($this->request->post['cheque'])) {
-			$data['cheque'] = $this->request->post['cheque'];
-		} elseif (!empty($affiliate_info)) {
-			$data['cheque'] = $affiliate_info['cheque'];
-		} else {
-			$data['cheque'] = '';
-		}
-
-		if (isset($this->request->post['paypal'])) {
-			$data['paypal'] = $this->request->post['paypal'];
-		} elseif (!empty($affiliate_info)) {
-			$data['paypal'] = $affiliate_info['paypal'];
-		} else {
-			$data['paypal'] = '';
-		}
-
-		if (isset($this->request->post['bank_name'])) {
-			$data['bank_name'] = $this->request->post['bank_name'];
-		} elseif (!empty($affiliate_info)) {
-			$data['bank_name'] = $affiliate_info['bank_name'];
-		} else {
-			$data['bank_name'] = '';
-		}
-
-		if (isset($this->request->post['bank_branch_number'])) {
-			$data['bank_branch_number'] = $this->request->post['bank_branch_number'];
-		} elseif (!empty($affiliate_info)) {
-			$data['bank_branch_number'] = $affiliate_info['bank_branch_number'];
-		} else {
-			$data['bank_branch_number'] = '';
-		}
-
-		if (isset($this->request->post['bank_swift_code'])) {
-			$data['bank_swift_code'] = $this->request->post['bank_swift_code'];
-		} elseif (!empty($affiliate_info)) {
-			$data['bank_swift_code'] = $affiliate_info['bank_swift_code'];
-		} else {
-			$data['bank_swift_code'] = '';
-		}
-
-		if (isset($this->request->post['bank_account_name'])) {
-			$data['bank_account_name'] = $this->request->post['bank_account_name'];
-		} elseif (!empty($affiliate_info)) {
-			$data['bank_account_name'] = $affiliate_info['bank_account_name'];
-		} else {
-			$data['bank_account_name'] = ' ';
-		}
-
-		if (isset($this->request->post['bank_account_number'])) {
-			$data['bank_account_number'] = $this->request->post['bank_account_number'];
-		} elseif (!empty($affiliate_info)) {
-			$data['bank_account_number'] = $affiliate_info['bank_account_number'];
-		} else {
-			$data['bank_account_number'] = '';
+			$data['payment_details'] = '';
 		}
 
 		// Custom Fields
@@ -258,20 +190,11 @@ class ControllerAccountAffiliate extends Controller {
 	}
 
 	protected function validate() {
-		if ($this->request->post['payment'] == 'cheque' && !$this->request->post['cheque']) {
-			$this->error['cheque'] = $this->language->get('error_cheque');
-		} elseif (($this->request->post['payment'] == 'paypal') && ((utf8_strlen($this->request->post['paypal']) > 96) || !filter_var($this->request->post['paypal'], FILTER_VALIDATE_EMAIL))) {
-			$this->error['paypal'] = $this->language->get('error_paypal');
-		} elseif ($this->request->post['payment'] == 'bank') {
-			if ($this->request->post['bank_account_name'] == '') {
-				$this->error['bank_account_name'] = $this->language->get('error_bank_account_name');
-			}
 
-			if ($this->request->post['bank_account_number'] == '') {
-				$this->error['bank_account_number'] = $this->language->get('error_bank_account_number');
-			}
+		if(empty($this->request->post['tax'])) {
+			$this->error['tax'] = $this->language->get('error_tax');
 		}
-
+		
 		// Custom field validation
 		$this->load->model('account/custom_field');
 
@@ -296,7 +219,7 @@ class ControllerAccountAffiliate extends Controller {
 			$information_info = $this->model_catalog_information->getInformation($this->config->get('config_affiliate_id'));
 
 			if ($information_info && !isset($this->request->post['agree'])) {
-				$this->error['warning'] = sprintf($this->language->get('error_agree'), $information_info['title']);
+				$this->error['agree'] = sprintf($this->language->get('error_agree'), $information_info['title']);
 			}
 		}
 

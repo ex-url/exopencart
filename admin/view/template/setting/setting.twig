@@ -1442,6 +1442,31 @@
                   </div>
                 </div>
                 <div class="form-group">
+                  <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="{{ help_affiliate_allow_payout }}">{{
+                      entry_affiliate_allow_payout }}</span></label>
+                  <div class="col-sm-10">
+                    <label class="radio-inline">
+                      <input type="radio" name="config_affiliate_allow_payout" value="1" {{ config_affiliate_allow_payout ? 'checked' : '' }}>
+                      {{ text_yes }}
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="config_affiliate_allow_payout" value="0" {{ not config_affiliate_allow_payout ? 'checked' : ''
+                        }}>
+                      {{ text_no }}
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="input-affiliate-payout-minimum">
+                    <span data-toggle="tooltip" title="{{ help_affiliate_payout_minimum }}">{{ entry_affiliate_payout_minimum }}</span>
+                  </label>
+                  <div class="col-sm-10">
+                    <input type="text" name="config_affiliate_payout_minimum" value="{{ config_affiliate_payout_minimum }}"
+                      placeholder="{{ entry_affiliate_payout_minimum }}" id="input-affiliate-payout-minimum"
+                      class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group">
                   <label class="col-sm-2 control-label" for="input-affiliate"><span data-toggle="tooltip"
                       title="{{ help_affiliate }}">{{ entry_affiliate }}</span></label>
                   <div class="col-sm-10">

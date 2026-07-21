@@ -4,6 +4,7 @@
 
 // Text
 $_['text_success']           = 'Ваш заказ обновлен!';
+$_['text_order_affiliate_commission'] = 'Комиссия партнёра за заказ';
 
 // Error
 $_['error_permission']       = 'Вы не имеете разрешения на доступ к API!';

@@ -6,6 +6,7 @@
 $_['text_subject']      = '%s - Заказ %s';
 $_['text_received']     = 'Вы получили заказ.';
 $_['text_order_id']     = '№ заказа:';
+$_['text_order_affiliate_commission'] = 'Комиссия партнёра за заказ';
 $_['text_date_added']   = 'Дата добавления:';
 $_['text_order_status'] = 'Состояние заказа:';
 $_['text_product']      = 'Товары';

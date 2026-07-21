@@ -23,6 +23,7 @@ $_['text_fax']                   = 'Fax';
 $_['text_invoice']               = 'Invoice';
 $_['text_reward']                = 'Reward Points';
 $_['text_affiliate']             = 'Affiliate';
+$_['text_order_affiliate_commission'] = 'Affiliate commission for order';
 $_['text_order']                 = 'Order (#%s)';
 $_['text_payment_address']       = 'Payment Address';
 $_['text_shipping_address']      = 'Shipping Address';

@@ -18,6 +18,9 @@ class ControllerAccountTracking extends Controller {
 
 		if ($affiliate_info) {
 			$this->load->language('account/tracking');
+			
+			$template_folder = $this->config->get('theme_default_directory');
+    	$this->document->addScript('catalog/view/theme/' . $template_folder . '/js/qrcode.js');
 
 			$this->document->setTitle($this->language->get('heading_title'));
 			$this->document->setRobots('noindex,follow');
@@ -41,8 +44,8 @@ class ControllerAccountTracking extends Controller {
 
 			$data['text_description'] = sprintf($this->language->get('text_description'), $this->config->get('config_name'));
 
-			$data['host'] = HTTPS_SERVER . 'index.php?tracking=';
-			$data['code'] = $affiliate_info['tracking'];
+			$data['host'] = HTTPS_SERVER;
+			$data['code'] = '?tracking=' . $affiliate_info['tracking'];
 
 			$data['continue'] = $this->url->link('account/account', '', true);
 

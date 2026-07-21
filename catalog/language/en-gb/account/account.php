@@ -1,28 +1,23 @@
 <?php
+// *	@source		See SOURCE.txt for source and other copyright.
+// *	@license	GNU General Public License version 3; see LICENSE.txt
+
 // Heading
-$_['heading_title']       = 'My account';
+$_['heading_title']      = 'Account';
 
 // Text
-$_['text_account']        = 'Account';
-$_['text_my_account']     = 'My account';
-$_['text_my_orders']      = 'My orders';
-$_['text_my_affiliate']   = 'My affiliate account';
-$_['text_my_newsletter']  = 'Newsletter';
-$_['text_edit']           = 'Edit your account information';
-$_['text_password']       = 'Change your password';
-$_['text_address']        = 'Modify your address book entries';
-$_['text_credit_card']    = 'Manage stored credit cards';
-$_['text_wishlist']       = 'Modify your wish list';
-$_['text_order']          = 'View your order history';
-$_['text_download']       = 'Downloads';
-$_['text_reward']         = 'Reward points';
-$_['text_return']         = 'Return requests';
-$_['text_transaction']    = 'Transactions';
-$_['text_newsletter']     = 'Newsletter';
-$_['text_recurring']      = 'Recurring payments';
+$_['text_account']       = 'Account';
+$_['text_clicks']       = 'Clicks';
+$_['text_orders']       = 'Orders';
+$_['text_conversion']   = 'Conversion';
+$_['text_commission']   = 'Your commission';
+$_['text_balance']   = 'Balance';
 $_['text_transactions']   = 'Transactions';
-$_['text_affiliate_add']  = 'Register for an affiliate account';
-$_['text_affiliate_edit'] = 'Edit your affiliate information';
-$_['text_tracking']       = 'Custom affiliate tracking code';
+$_['text_links']   = 'Referral links';
+$_['text_partner_details']   = 'Partner details';
+$_['text_become_partner']   = 'Become a partner';
+
+$_['button_get_link']   = 'Get link';
+$_['button_edit']   = 'Edit';
 
 $_['error_incomplete']   = "<b>Profile is incomplete!</b> Please provide the missing data to place orders.";

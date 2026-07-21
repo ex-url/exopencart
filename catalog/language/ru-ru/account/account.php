@@ -7,25 +7,17 @@ $_['heading_title']      = 'Личный кабинет';
 
 // Text
 $_['text_account']       = 'Личный кабинет';
-$_['text_my_account']    = 'Личный кабинет';
-$_['text_my_orders']     = 'Заказы';
-$_['text_my_affiliate']  = 'Партнерство';
-$_['text_my_newsletter'] = 'Подписка';
-$_['text_edit']          = 'Контакты';
-$_['text_password']      = 'Пароль';
-$_['text_address']       = 'Адреса';
-$_['text_credit_card']   = 'Кредитные карты';
-$_['text_wishlist']      = 'Закладки';
-$_['text_order']         = 'Заказы';
-$_['text_download']      = 'Файлы';
-$_['text_reward']        = 'Баллы';
-$_['text_return']        = 'Возвраты';
-$_['text_transaction']   = 'Операции';
-$_['text_newsletter']    = 'Подписаться или отказаться от подписки на рассылку новостей';
-$_['text_recurring']     = 'Подписки';
-$_['text_transactions']  = 'Расчёты';
-$_['text_affiliate_add']  = 'Стать партнером';
-$_['text_affiliate_edit'] = 'Информация партнера';
-$_['text_tracking']       = 'Реферальный код';
+$_['text_clicks']       = 'Клики';
+$_['text_orders']       = 'Заказы';
+$_['text_conversion']   = 'Конверсия';
+$_['text_commission']   = 'Ваша комиссия';
+$_['text_balance']   = 'Баланс';
+$_['text_transactions']   = 'Транзакции';
+$_['text_links']   = 'Реферальные ссылки';
+$_['text_partner_details']   = 'Данные партнёра';
+$_['text_become_partner']   = 'Стать партнёром';
+
+$_['button_get_link']   = 'Получить ссылку';
+$_['button_edit']   = 'Редактировать';
 
 $_['error_incomplete']   = "<b>Профиль не заполнен!</b> Укажите недостающие данные для оформления заказов.";

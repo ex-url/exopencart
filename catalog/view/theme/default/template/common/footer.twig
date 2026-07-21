@@ -1,37 +1,15 @@
 <footer class="footer has-background-light">
   <div class="container">
-    <div class="columns is-mobile is-multiline">
+    <div class="mx-3 mb-5 has-text-centered">
       {% if informations %}
-      <div class="column is-4-widescreen is-4-desktop is-6-tablet is-12-mobile">
-        <div class="title is-5">{{ text_information }}</div>
-        <ul class="list-unstyled">
-          {% for information in informations %}
-          <li><a href="{{ information.href }}">{{ information.title }}</a></li>
-          {% endfor %}
-        </ul>
-      </div>
+        {% for information in informations %}
+        <a href="{{ information.href }}" class="mx-2">{{ information.title }}</a>
+        {% endfor %}
       {% endif %}
-      <div class="column is-4-widescreen is-4-desktop is-6-tablet is-12-mobile">
-        <div class="title is-5">{{ text_service }}</div>
-        <ul class="list-unstyled">
-          <li><a href="{{ contact }}">{{ text_contact }}</a></li>
-          <li><a href="{{ return }}">{{ text_return }}</a></li>
-          <li><a href="{{ sitemap }}">{{ text_sitemap }}</a></li>
-        </ul>
-      </div>
-      <div class="column is-4-widescreen is-4-desktop is-6-tablet is-12-mobile">
-        <div class="title is-5">{{ text_extra }}</div>
-        <ul class="list-unstyled">
-          <li><a href="{{ voucher }}">{{ text_voucher }}</a></li>
-          <li><a href="{{ affiliate }}">{{ text_affiliate }}</a></li>
-          <li><a href="{{ special }}">{{ text_special }}</a></li>
-        </ul>
-      </div>
     </div>
-    <hr>
-    <div class="columns is-multiline">
+    <div class="columns is-multiline is-size-7">
       <div class="column is-6-desktop is-6-tablet is-12-mobile has-text-left-desktop has-text-left-tablet has-text-centered-mobile">
-        {{ copyright }}
+        {{ copyright }} | <a href="{{ sitemap }}">{{ text_sitemap }}</a>
       </div>
       <div class="column is-6-desktop is-6-tablet is-12-mobile has-text-right-desktop has-text-right-tablet has-text-centered-mobile">
         {{ powered }}

@@ -24,6 +24,7 @@ $_['text_telephone']             = 'Телефон';
 $_['text_invoice']               = 'Счет';
 $_['text_reward']                = 'Бонусные баллы';
 $_['text_affiliate']             = 'Партнер';
+$_['text_order_affiliate_commission'] = 'Комиссия партнёра за заказ';
 $_['text_order']                 = 'Заказ (#%s)';
 $_['text_payment_address']       = 'Адрес оплаты';
 $_['text_shipping_address']      = 'Адрес доставки';

@@ -5,6 +5,7 @@
         <td class="text-left">{{ column_date_added }}</td>
         <td class="text-left">{{ column_description }}</td>
         <td class="text-right">{{ column_amount }}</td>
+        <td class="text-left">{{ column_status }}</td>
       </tr>
     </thead>
     <tbody>
@@ -14,16 +15,31 @@
         <td class="text-left">{{ transaction.date_added }}</td>
         <td class="text-left">{{ transaction.description }}</td>
         <td class="text-right">{{ transaction.amount }}</td>
+        <td class="text-right">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="label label-{{ transaction.status == 1 ? 'success' : (transaction.status == 2 ? 'danger' : 'default') }}">{{ transaction.status_text }}</span>
+            {% if transaction.status == 0 %}
+            <div class="buttons">
+              <span class="transaction-approve btn btn-xs btn-success" data-transaction-id="{{ transaction.transaction_id }}" data-toggle="tooltip" title="{{ button_approve }}">
+                <i class="fa fa-thumbs-up"></i>
+              </span>
+              <span class="transaction-reject btn btn-xs btn-danger" data-transaction-id="{{ transaction.transaction_id }}" data-toggle="tooltip" title="{{ button_reject }}">
+                <i class="fa fa-thumbs-down"></i>
+              </span>
+            </div>
+            {% endif %}
+          </div>
+        </td>
       </tr>
       {% endfor %}
       <tr>
         <td>&nbsp;</td>
         <td class="text-right"><b>{{ text_balance }}</b></td>
-        <td class="text-right">{{ balance }}</td>
+        <td class="text-right"><b>{{ balance }}</b></td>
       </tr>
       {% else %}
       <tr>
-        <td class="text-center" colspan="3">{{ text_no_results }}</td>
+        <td class="text-center" colspan="4">{{ text_no_results }}</td>
       </tr>
       {% endif %}
     </tbody>

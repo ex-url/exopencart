@@ -1,6 +1,7 @@
 <?php
 // Text
 $_['text_success']           = 'Success: You have modified orders!';
+$_['text_order_affiliate_commission'] = 'Affiliate commission for order';
 
 // Error
 $_['error_permission']       = 'Warning: You do not have permission to access the API!';

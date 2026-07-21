@@ -1,35 +1,22 @@
 <?php
-// Heading
-$_['heading_title']             = 'Your Affiliate Information';
+// *	@source		See SOURCE.txt for source and other copyright.
+// *	@license	GNU General Public License version 3; see LICENSE.txt
 
 // Text
+$_['text_create']               = 'Become a partner';
+$_['text_edit']                 = 'Partner details';
 $_['text_account']              = 'Account';
-$_['text_affiliate']            = 'Affiliate';
-$_['text_my_affiliate']         = 'My Affiliate Account';
-$_['text_payment']              = 'Payment Information';
-$_['text_cheque']               = 'Cheque';
-$_['text_paypal']               = 'PayPal';
-$_['text_bank']                 = 'Bank Transfer';
-$_['text_success']              = 'Success: Your account has been successfully updated.';
-$_['text_agree']                = 'I have read and agree to the <a href="%s" class="agree"><b>%s</b></a>';
+$_['text_affiliate']            = 'Affiliate section';
+$_['text_success']              = 'Your account has been successfully updated.';
+$_['text_agree']                = 'I agree to the terms and conditions under article <a href="%s" class="agree"><b>%s</b></a>';
 
 // Entry
 $_['entry_company']             = 'Company';
-$_['entry_website']             = 'Web Site';
+$_['entry_website']             = 'Website';
 $_['entry_tax']                 = 'Tax ID';
-$_['entry_payment']             = 'Payment Method';
-$_['entry_cheque']              = 'Cheque Payee Name';
-$_['entry_paypal']              = 'PayPal Email Account';
-$_['entry_bank_name']           = 'Bank Name';
-$_['entry_bank_branch_number']  = 'ABA/BSB number (Branch Number)';
-$_['entry_bank_swift_code']     = 'SWIFT Code';
-$_['entry_bank_account_name']   = 'Account Name';
-$_['entry_bank_account_number'] = 'Account Number';
+$_['entry_payment_details']     = 'Payment details';
 
 // Error
-$_['error_agree']               = 'Warning: You must agree to the %s!';
-$_['error_cheque']              = 'Cheque Payee Name required!';
-$_['error_paypal']              = 'PayPal Email Address does not appear to be valid!';
-$_['error_bank_account_name']   = 'Account Name required!';
-$_['error_bank_account_number'] = 'Account Number required!';
-$_['error_custom_field']        = '%s required!';
+$_['error_agree']               = 'You must confirm agreement to %s!';
+$_['error_tax']                 = 'You must provide a Tax ID!';
+$_['error_custom_field']        = '%s is required!';

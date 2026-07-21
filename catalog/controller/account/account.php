@@ -75,16 +75,17 @@ class ControllerAccountAccount extends Controller {
 
     $affiliate_info = $this->model_account_customer->getAffiliate($this->customer->getId());
 
-    if (!$affiliate_info) {
-      $data['affiliate'] = $this->url->link('account/affiliate/add', '', true);
-    } else {
-      $data['affiliate'] = $this->url->link('account/affiliate/edit', '', true);
-    }
-
     if ($affiliate_info) {
       $data['tracking'] = $this->url->link('account/tracking', '', true);
+      $data['affiliate_action'] = $this->url->link('account/affiliate/edit', '', true);
+      $data['affiliate'] = $affiliate_info;
+      $data['balance'] = $this->currency->format($this->customer->getBalance(), $this->session->data['currency']);
+      $data['transaction'] = $this->url->link('account/transaction', '', true);
+      $data['affiliate_sales'] = $affiliate_sales = $this->model_account_customer->getTotalOrdersByTracking($affiliate_info['tracking']);
+      $data['conversion_rate'] = ($affiliate_sales > 0 && $affiliate_info['clicks'] > 0) ? round($affiliate_sales / $affiliate_info['clicks']  * 100, 2) : 0;
     } else {
       $data['tracking'] = '';
+      $data['affiliate_action'] = $this->url->link('account/affiliate/add', '', true);
     }
 
     $this->load->language('account/order');

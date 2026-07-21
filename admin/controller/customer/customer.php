@@ -888,68 +888,12 @@ class ControllerCustomerCustomer extends Controller {
 			$data['tax'] = '';
 		}
 
-		if (isset($this->request->post['payment'])) {
-			$data['payment'] = $this->request->post['payment'];
+		if (isset($this->request->post['payment_details'])) {
+			$data['payment_details'] = $this->request->post['payment_details'];
 		} elseif (!empty($affiliate_info)) {
-			$data['payment'] = $affiliate_info['payment'];
+			$data['payment_details'] = $affiliate_info['payment_details'];
 		} else {
-			$data['payment'] = 'cheque';
-		}
-
-		if (isset($this->request->post['cheque'])) {
-			$data['cheque'] = $this->request->post['cheque'];
-		} elseif (!empty($affiliate_info)) {
-			$data['cheque'] = $affiliate_info['cheque'];
-		} else {
-			$data['cheque'] = '';
-		}
-
-		if (isset($this->request->post['paypal'])) {
-			$data['paypal'] = $this->request->post['paypal'];
-		} elseif (!empty($affiliate_info)) {
-			$data['paypal'] = $affiliate_info['paypal'];
-		} else {
-			$data['paypal'] = '';
-		}
-
-		if (isset($this->request->post['bank_name'])) {
-			$data['bank_name'] = $this->request->post['bank_name'];
-		} elseif (!empty($affiliate_info)) {
-			$data['bank_name'] = $affiliate_info['bank_name'];
-		} else {
-			$data['bank_name'] = '';
-		}
-
-		if (isset($this->request->post['bank_branch_number'])) {
-			$data['bank_branch_number'] = $this->request->post['bank_branch_number'];
-		} elseif (!empty($affiliate_info)) {
-			$data['bank_branch_number'] = $affiliate_info['bank_branch_number'];
-		} else {
-			$data['bank_branch_number'] = '';
-		}
-
-		if (isset($this->request->post['bank_swift_code'])) {
-			$data['bank_swift_code'] = $this->request->post['bank_swift_code'];
-		} elseif (!empty($affiliate_info)) {
-			$data['bank_swift_code'] = $affiliate_info['bank_swift_code'];
-		} else {
-			$data['bank_swift_code'] = '';
-		}
-
-		if (isset($this->request->post['bank_account_name'])) {
-			$data['bank_account_name'] = $this->request->post['bank_account_name'];
-		} elseif (!empty($affiliate_info)) {
-			$data['bank_account_name'] = $affiliate_info['bank_account_name'];
-		} else {
-			$data['bank_account_name'] = '';
-		}
-
-		if (isset($this->request->post['bank_account_number'])) {
-			$data['bank_account_number'] = $this->request->post['bank_account_number'];
-		} elseif (!empty($affiliate_info)) {
-			$data['bank_account_number'] = $affiliate_info['bank_account_number'];
-		} else {
-			$data['bank_account_number'] = '';
+			$data['payment_details'] = '';
 		}
 
 		if (isset($this->request->post['custom_field'])) {
@@ -1068,24 +1012,6 @@ class ControllerCustomerCustomer extends Controller {
 		}
 
 		if ($this->request->post['affiliate']) {
-			if ($this->request->post['payment'] == 'cheque') {
-				if ($this->request->post['cheque'] == '') {
-					$this->error['cheque'] = $this->language->get('error_cheque');
-				}
-			} elseif ($this->request->post['payment'] == 'paypal') {
-				if ((utf8_strlen($this->request->post['paypal']) > 96) || !filter_var($this->request->post['paypal'], FILTER_VALIDATE_EMAIL)) {
-					$this->error['paypal'] = $this->language->get('error_paypal');
-				}
-			} elseif ($this->request->post['payment'] == 'bank') {
-				// if ($this->request->post['bank_account_name'] == '') {
-				// 	$this->error['bank_account_name'] = $this->language->get('error_bank_account_name');
-				// }
-
-				if ($this->request->post['bank_account_number'] == '') {
-					$this->error['bank_account_number'] = $this->language->get('error_bank_account_number');
-				}
-			}
-
 			if (!$this->request->post['tracking']) {
 				$this->error['tracking'] = $this->language->get('error_tracking');
 			}
@@ -1266,11 +1192,20 @@ class ControllerCustomerCustomer extends Controller {
 
 		$results = $this->model_customer_customer->getTransactions($this->request->get['customer_id'], ($page - 1) * $limit, $limit);
 
+		$statuses = [
+			$this->language->get('text_status_pending'),
+			$this->language->get('text_status_success'),
+			$this->language->get('text_status_reject')
+		];
+
 		foreach ($results as $result) {
 			$data['transactions'][] = array(
+				'transaction_id' => $result['customer_transaction_id'],
 				'amount'      => $this->currency->format($result['amount'], $this->config->get('config_currency')),
 				'description' => $result['description'],
-				'date_added'  => date($this->language->get('date_format_short'), strtotime($result['date_added']))
+				'date_added'  => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
+				'status' => $result['status'],
+				'status_text' => $statuses[$result['status']]
 			);
 		}
 
@@ -1289,6 +1224,56 @@ class ControllerCustomerCustomer extends Controller {
 		$data['results'] = sprintf($this->language->get('text_pagination'), ($transaction_total) ? (($page - 1) * $limit) + 1 : 0, ((($page - 1) * $limit) > ($transaction_total - $limit)) ? $transaction_total : ((($page - 1) * $limit) + $limit), $transaction_total, ceil($transaction_total / $limit));
 
 		$this->response->setOutput($this->load->view('customer/customer_transaction', $data));
+	}
+
+	public function transactionApprove() {
+		$this->load->language('customer/customer');
+
+		$json = array();
+
+		if (!$this->user->hasPermission('modify', 'customer/customer')) {
+			$json['error'] = $this->language->get('error_permission');
+		} else {
+			$this->load->model('customer/customer');
+
+			if (isset($this->request->get['transaction_id'])) {
+				$transaction_id = $this->request->get['transaction_id'];
+			} else {
+				$transaction_id = 0;
+			}
+
+			$this->model_customer_customer->approveTransaction($transaction_id);
+
+			$json['success'] = $this->language->get('text_success');
+		}
+
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+	}
+
+	public function transactionReject() {
+		$this->load->language('customer/customer');
+
+		$json = array();
+
+		if (!$this->user->hasPermission('modify', 'customer/customer')) {
+			$json['error'] = $this->language->get('error_permission');
+		} else {
+			$this->load->model('customer/customer');
+
+			if (isset($this->request->get['transaction_id'])) {
+				$transaction_id = $this->request->get['transaction_id'];
+			} else {
+				$transaction_id = 0;
+			}
+
+			$this->model_customer_customer->rejectTransaction($transaction_id);
+
+			$json['success'] = $this->language->get('text_success');
+		}
+
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
 	}
 
 	public function addTransaction() {

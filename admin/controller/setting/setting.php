@@ -886,6 +886,18 @@ class ControllerSettingSetting extends Controller {
       $data['config_affiliate_commission'] = '5.00';
     }
 
+    if (isset($this->request->post['config_affiliate_allow_payout'])) {
+      $data['config_affiliate_allow_payout'] = $this->request->post['config_affiliate_allow_payout'];
+    } else {
+      $data['config_affiliate_allow_payout'] = $this->config->get('config_affiliate_allow_payout');
+    }
+
+    if (isset($this->request->post['config_affiliate_payout_minimum'])) {
+      $data['config_affiliate_payout_minimum'] = $this->request->post['config_affiliate_payout_minimum'];
+    } else {
+      $data['config_affiliate_payout_minimum'] = $this->config->get('config_affiliate_payout_minimum');
+    }
+
     if (isset($this->request->post['config_affiliate_id'])) {
       $data['config_affiliate_id'] = $this->request->post['config_affiliate_id'];
     } else {

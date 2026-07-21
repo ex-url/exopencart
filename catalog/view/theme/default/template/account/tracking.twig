@@ -1,28 +1,14 @@
 {{ header }}
 <main id="account-tracking">
   <div class="container">
-    <style>
-    #account-tracking .box {
-        word-break: break-all;
-    }
-    .autocomplete .dropdown-menu {
-      background: #fff;
-      box-shadow: 0 5px 10px 0 rgb(0 0 0 / 30%);
-      border-radius: 8px;
-    }
-    .autocomplete .dropdown-menu li {
-        padding: 5px 12px;
-    }
-    </style>
     <nav class="breadcrumb py-4" aria-label="breadcrumbs">
       <ul>
         {% for key, breadcrumb in breadcrumbs %}
-        {% if key < (breadcrumbs|length - 1) %}
-        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
-        {% else %}
-        <li><span>{{ breadcrumb.text }}</span></li>
-        {% endif %}
-        {% endfor %}
+        {% if key < (breadcrumbs|length - 1) %} <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+          {% else %}
+          <li><span>{{ breadcrumb.text }}</span></li>
+          {% endif %}
+          {% endfor %}
       </ul>
     </nav>
     <div class="columns is-multiline mb-5">{{ column_left }}
@@ -38,57 +24,81 @@
         <div class="content">
           <p>{{ text_description }}</p>
         </div>
-        <form class="columns is-mobile is-multiline">
-          <div class="column is-12">
-            <div class="title is-6">
-              {{ entry_code }}
-            </div>
-            <div class="content">
-              {{ text_common_tracking }}
-            </div>
-            <div class="block">
-              <div class="box common-tracking">
-                {{ host }}{{ code }}
+        <div class="columns is-mobile is-multiline">
+          <div id="link-column" class="column is-6-desktop is-6-tablet is-12-mobile">
+            <div class="box">
+              <div class="title is-6">
+                {{ text_link }}
               </div>
-              <input type="hidden" id="input-code" value="{{ code }}">
-            </div>
-            <div class="block">
-              <span class="button is-primary is-light copy-common-tracking">
-                <span class="icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1zM3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4z"/>
-                  </svg>
+              <div class="block is-clipped">
+                <span class="icon-text is-flex-wrap-nowrap">
+                  <span class="icon has-text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5m-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3" />
+                    </svg>
+                  </span>
+                  <span id="reflink">{{ host }}{{ code }}</span>
                 </span>
-                <span>{{ text_copy }}</span>
-              </span>
+              </div>
+              <div class="block">
+                <span id="copy-trigger" class="button is-primary is-light"
+                  onclick="copyToClipboard('#reflink', function(){notification({type: 'success', text: '{{ text_copied }}'})})">
+                  <span class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1zM3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4z" />
+                    </svg>
+                  </span>
+                  <span>{{ text_copy }}</span>
+                </span>
+              </div>
             </div>
           </div>
-          <div class="column is-12">
-            <div class="field">
-              <label class="label" for="input-generator"><span data-toggle="tooltip" title="{{ help_generator }}">{{ entry_generator }}</span></label>
-              <div class="control autocomplete">
-                <input type="text" name="product" value="" placeholder="{{ entry_generator }}" id="input-generator" class="input" />
+          <div class="column is-6-desktop is-6-tablet is-12-mobile">
+            <div class="box">
+              <div class="is-flex">
+                <div class="p-1" style="background-color: white;">
+                  <div id="qrcode" style="width: 122px; height: 122px; overflow: hidden;"></div>
+                </div>
+                <div class="ml-4">
+                  <div class="title is-6">
+                    {{ text_qr_code }}
+                  </div>
+                  <div class="buttons">
+                    <button id="save-qrcode" class="button is-primary is-light" onclick="downloadQRCode()">{{
+                      button_download }}</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
           <div class="column is-12">
-            <div class="box particular-tracking">
-              {{ entry_link }}
-            </div>
-            <div class="block">
-              <span class="button is-primary is-light copy-particular-tracking">
-                <span class="icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1zM3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4z"/>
-                  </svg>
-                </span>
-                <span>{{ text_copy }}</span>
-              </span>
+            <div class="box">
+              <div class="title is-6">
+                {{ text_generator }}
+              </div>
+              <div class="control">
+                <input type="text" class="input" id="generator" placeholder="{{ entry_link }}">
+              </div>
+              <div class="buttons mb-0 mt-3">
+                <button class="button is-primary mb-0" onclick="generate()">{{ button_generate }}</button>
+              </div>
             </div>
           </div>
-        </form>
+        </div>
         <div class="buttons">
-          <a href="{{ continue }}" class="button is-primary is-outlined">{{ button_continue }}</a>
+          <a href="{{ continue }}" class="button is-primary is-light">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                  d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
+              </svg>
+            </span>
+            <span>{{ button_back }}</span>
+          </a>
         </div>
         {{ content_bottom }}
       </div>
@@ -97,165 +107,67 @@
   </div>
 </main>
 <script>
-// Autocomplete */
-(function ($) {
-  $.fn.autocomplete = function (option) {
-    return this.each(function () {
-      this.timer = null;
-      this.items = new Array();
+  $(document).ready(function () {
 
-      $.extend(this, option);
+    const qrContainer = document.getElementById("qrcode");
 
-      $(this).attr('autocomplete', 'off');
+    createQRCode(qrContainer, '{{host}}{{code}}');
 
-      // Focus
-      $(this).on('focus', function () {
-        this.request();
-      });
+  });
 
-      // Blur
-      $(this).on('blur', function () {
-        setTimeout(function (object) {
-          object.hide();
-        }, 200, this);
-      });
+  function createQRCode(container, link) {
 
-      // Keydown
-      $(this).on('keydown', function (event) {
-        switch (event.keyCode) {
-          case 27: // escape
-            this.hide();
-            break;
-          default:
-            this.request();
-            break;
-        }
-      });
+    $(container).empty();
 
-      // Click
-      this.click = function (event) {
-        event.preventDefault();
-
-        value = $(event.target).parent().attr('data-value');
-
-        if (value && this.items[value]) {
-          this.select(this.items[value]);
-        }
-      }
-
-      // Show
-      this.show = function () {
-        var pos = $(this).position();
-
-        $(this).siblings('ul.dropdown-menu').css({
-          top: pos.top + $(this).outerHeight(),
-          left: pos.left
-        });
-
-        $(this).siblings('ul.dropdown-menu').show();
-      }
-
-      // Hide
-      this.hide = function () {
-        $(this).siblings('ul.dropdown-menu').hide();
-      }
-
-      // Request
-      this.request = function () {
-        clearTimeout(this.timer);
-
-        this.timer = setTimeout(function (object) {
-          object.source($(object).val(), $.proxy(object.response, object));
-        }, 200, this);
-      }
-
-      // Response
-      this.response = function (json) {
-        html = '';
-
-        if (json.length) {
-          for (i = 0; i < json.length; i++) {
-            this.items[json[i]['value']] = json[i];
-          }
-
-          for (i = 0; i < json.length; i++) {
-            if (!json[i]['category']) {
-              html += '<li data-value="' + json[i]['value'] + '"><a href="#">' + json[i]['label'] + '</a></li>';
-            }
-          }
-
-          // Get all the ones with a categories
-          var category = new Array();
-
-          for (i = 0; i < json.length; i++) {
-            if (json[i]['category']) {
-              if (!category[json[i]['category']]) {
-                category[json[i]['category']] = new Array();
-                category[json[i]['category']]['name'] = json[i]['category'];
-                category[json[i]['category']]['item'] = new Array();
-              }
-
-              category[json[i]['category']]['item'].push(json[i]);
-            }
-          }
-
-          for (i in category) {
-            html += '<li class="dropdown-header">' + category[i]['name'] + '</li>';
-
-            for (j = 0; j < category[i]['item'].length; j++) {
-              html += '<li data-value="' + category[i]['item'][j]['value'] + '"><a href="#">&nbsp;&nbsp;&nbsp;' + category[i]['item'][j]['label'] + '</a></li>';
-            }
-          }
-        }
-
-        if (html) {
-          this.show();
-        } else {
-          this.hide();
-        }
-
-        $(this).siblings('ul.dropdown-menu').html(html);
-      }
-
-      $(this).after('<ul class="dropdown-menu"></ul>');
-      $(this).siblings('ul.dropdown-menu').delegate('a', 'click', $.proxy(this.click, this));
-
+    const qrcode = new QRCode(container, {
+      text: link,
+      width: 1024,
+      height: 1024,
+      colorDark: "#000000",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.H
     });
   }
-})(window.jQuery);
-$(document).ready(function () {
-  $('input[name="product"]').autocomplete({
-  	source: function(request, response) {
-  		$.ajax({
-  			url: 'index.php?route=account/tracking/autocomplete&filter_name=' +  encodeURIComponent(request) + '&tracking=' + encodeURIComponent($('#input-code').val()),
-  			dataType: 'json',
-  			success: function(json) {
-  				response($.map(json, function(item) {
-  					return {
-  						label: item['name'],
-  						value: item['link']
-  					}
-  				}));
-  			}
-  		});
-  	},
-  	select: function(item) {
-  		$('input[name="product"]').val(item['label']);
-  		$('.particular-tracking').text(item['value']);
-  	}
-  });
 
-  $('.copy-common-tracking').on('click', function () {
-    copyToClipboard('.common-tracking');
-    $(this).toggleClass('is-success');
-  });
+  function downloadQRCode() {
+    const img = document.querySelector('#qrcode img');
 
-  $('.copy-particular-tracking').on('click', function () {
-    copyToClipboard('.particular-tracking');
-    $(this).toggleClass('is-success');
-  });
+    fetch(img.src)
+      .then(res => res.blob())
+      .then(blob => {
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.download = 'qrcode.png';
+        link.href = url;
+        link.click();
+        URL.revokeObjectURL(url);
+      });
+  }
 
+  function generate() {
+    const link = $('#generator').val() + '{{ code }}';
 
-});
+    if (link.startsWith(window.location.origin)) {
+      $('#reflink').text(link);
+
+      const qrContainer = document.getElementById("qrcode");
+      createQRCode(qrContainer, link);
+
+      document.getElementById("link-column").scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+
+      $('#copy-trigger').click();
+
+      $('#generator').val('')
+
+    } else {
+      $('#generator').after('<p class="help is-danger">' + '{{ error_link }}' + '</p>');
+      setTimeout(function () {
+        $('#generator').next().remove();
+      }, 3000)
+    }
+  }
 </script>
 {{ footer }}

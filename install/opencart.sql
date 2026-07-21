@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Jul 18, 2026 at 09:01 AM
+-- Generation Time: Jul 21, 2026 at 05:21 PM
 -- Server version: 5.7.41-log
 -- PHP Version: 7.4.33
 
@@ -62,8 +62,7 @@ CREATE TABLE `oc_api` (
 --
 
 INSERT INTO `oc_api` (`api_id`, `username`, `key`, `status`, `date_added`, `date_modified`) VALUES
-(8, 'Default', 'HbEnWYrjw9ERfHwTJQFuprbLndUwVx2O4b4Ya1TkQpX8VuSsYLpKfWDOjWbXheELXo5nv8P992ZiUTqMCcgS9K5DnnVrgeUyjEt73aUG5J9QqvPr6OLWhnpdHE0UdicjHgRusTVB9u1gcBiQpVQalZjownZwGO7jJsZzDrRGNr5YqAe8iM7Drx9lEdK3YkLLwWgnlpIqtIYFOr7x6JmhzFR677sh6tLWtJt9dyaEFkEppK9WfZm3i5nS8rFLOdES', 1, '2026-02-16 13:42:17', '2026-05-06 20:59:01'),
-(9, 'Default', 'wJMNzhsA9j41kreMxcUTtoUPRWfZ2IebgQ81LVY03jegeI4kMDWCA7AZwKA032Z7ktEcWPvhgLtoS5X2IqVIgr0w9Q1EunPDqxN00EUQpGALflOVli5qP61QWgk1n4GkzoHkzwQzBG0VswCCDxXRKkYYaXMkMXvDP0oupnOFFvsFYxGMhT3t5A7o0Hhy94rXJ7fvSqtb8T5qr1vPAsws45nO8x1jcpsCoZiGeWGeVP9ojNWvrfcSZZfF9i0HBDa4', 1, '2026-07-14 07:33:36', '2026-07-14 07:33:36');
+(9, 'Default', 'wJMNzhsA9j41kreMxcUTtoUPRWfZ2IebgQ81LVY03jegeI4kMDWCA7AZwKA032Z7ktEcWPvhgLtoS5X2IqVIgr0w9Q1EunPDqxN00EUQpGALflOVli5qP61QWgk1n4GkzoHkzwQzBG0VswCCDxXRKkYYaXMkMXvDP0oupnOFFvsFYxGMhT3t5A7o0Hhy94rXJ7fvSqtb8T5qr1vPAsws45nO8x1jcpsCoZiGeWGeVP9ojNWvrfcSZZfF9i0HBDa4', 1, '2026-07-14 07:33:36', '2026-07-21 10:20:50');
 
 -- --------------------------------------------------------
 
@@ -96,7 +95,8 @@ INSERT INTO `oc_api_ip` (`api_ip_id`, `api_id`, `ip`) VALUES
 (13, 3, '172.16.238.1'),
 (14, 5, '172.16.238.1'),
 (15, 7, '172.16.238.1'),
-(16, 8, '172.16.238.1');
+(16, 8, '172.16.238.1'),
+(17, 9, '172.16.238.1');
 
 -- --------------------------------------------------------
 
@@ -118,13 +118,11 @@ CREATE TABLE `oc_api_session` (
 --
 
 INSERT INTO `oc_api_session` (`api_session_id`, `api_id`, `session_id`, `ip`, `date_added`, `date_modified`) VALUES
-(871, 8, '0f3197e54af47a1c8fae5fb17e', '172.16.238.1', '2026-07-03 10:03:22', '2026-07-03 10:03:22'),
-(870, 8, '1221899193c06fe24021ab3a5a', '172.16.238.1', '2026-06-20 13:10:04', '2026-06-20 13:10:04'),
-(869, 8, 'e4215e01f4d1cf8b367a79e584', '172.16.238.1', '2026-05-17 18:46:58', '2026-05-17 18:46:58'),
-(867, 8, '28fbbbb2a5cb5c1e9bf80a0f16', '172.16.238.1', '2026-05-17 18:46:45', '2026-05-17 18:46:45'),
-(868, 8, '7e73be14a3515543006723df20', '172.16.238.1', '2026-05-17 18:46:52', '2026-05-17 15:46:58'),
-(872, 9, '53aa603629f113870528592baf', '172.16.238.1', '2026-07-14 12:12:09', '2026-07-14 12:12:09'),
-(873, 9, '9285243b6cbf3a3f9f3b345d6c', '172.16.238.1', '2026-07-16 15:29:20', '2026-07-16 15:29:20');
+(954, 9, '5baad225427881e3fa1fca2ec9', '172.16.238.1', '2026-07-21 19:57:44', '2026-07-21 16:58:14'),
+(952, 9, 'b1690c9666de37854202465730', '172.16.238.1', '2026-07-21 17:09:41', '2026-07-21 17:09:41'),
+(953, 9, '4d7474d037a185c50af2cf2adb', '172.16.238.1', '2026-07-21 19:57:33', '2026-07-21 19:57:33'),
+(955, 9, '965e11db09b358c9f9325241a6', '172.16.238.1', '2026-07-21 20:19:06', '2026-07-21 17:19:09'),
+(956, 9, 'fdcf72c16b5defb168a3391faa', '172.16.238.1', '2026-07-21 20:19:09', '2026-07-21 20:19:09');
 
 -- --------------------------------------------------------
 
@@ -973,18 +971,6 @@ CREATE TABLE `oc_cart` (
   `date_added` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `oc_cart`
---
-
-INSERT INTO `oc_cart` (`cart_id`, `api_id`, `customer_id`, `session_id`, `product_id`, `recurring_id`, `option`, `quantity`, `date_added`) VALUES
-(38, 0, 105, '9a0cc7f2b3bbcf43fd5499ad2a', 1, 0, '[]', '1.0000', '2026-01-10 11:45:32'),
-(57, 0, 111, 'bb09ddfb4174edb9caeda631fd', 63, 0, '[]', '1.0000', '2026-01-11 12:57:10'),
-(68, 0, 116, 'b450baf83cb5c5430c704aeab5', 17, 0, '[]', '16.0000', '2026-01-11 13:43:04'),
-(69, 0, 119, '4ee62af966930cfe0026d47e6b', 49, 0, '[]', '1.0000', '2026-04-27 16:23:55'),
-(80, 0, 120, '15d2f247f47dd9c4fdbafbde41', 21, 0, '[]', '1.0000', '2026-06-17 16:39:43'),
-(82, 0, 120, '15d2f247f47dd9c4fdbafbde41', 10, 0, '[]', '5.0000', '2026-06-19 10:30:21');
-
 -- --------------------------------------------------------
 
 --
@@ -1766,8 +1752,8 @@ CREATE TABLE `oc_currency` (
 --
 
 INSERT INTO `oc_currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbol_right`, `decimal_place`, `value`, `status`, `date_modified`) VALUES
-(1, 'Рубль', 'RUB', '', ' ₽', '0', 1.00000000, 1, '2026-07-18 11:57:41'),
-(2, 'US Dollar', 'USD', '$', '', '2', 0.01275531, 1, '2026-07-18 11:57:41');
+(1, 'Рубль', 'RUB', '', ' ₽', '0', 1.00000000, 1, '2026-07-20 15:47:53'),
+(2, 'US Dollar', 'USD', '$', '', '2', 0.01275531, 1, '2026-07-20 15:47:53');
 
 -- --------------------------------------------------------
 
@@ -1826,19 +1812,13 @@ CREATE TABLE `oc_customer_affiliate` (
   `company` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
   `website` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tracking` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `clicks` int(11) NOT NULL,
   `commission` decimal(4,2) NOT NULL DEFAULT '0.00',
   `tax` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payment` varchar(6) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `cheque` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `paypal` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `bank_name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `bank_branch_number` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `bank_swift_code` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `bank_account_name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `bank_account_number` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payment_details` varchar(1024) COLLATE utf8mb4_unicode_ci NOT NULL,
   `custom_field` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` tinyint(1) NOT NULL,
-  `date_added` datetime NOT NULL
+  `date_added` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1948,25 +1928,6 @@ CREATE TABLE `oc_customer_login` (
   `date_modified` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `oc_customer_login`
---
-
-INSERT INTO `oc_customer_login` (`customer_login_id`, `email`, `ip`, `total`, `date_added`, `date_modified`) VALUES
-(2, '', '79.126.71.216', 1, '2022-07-20 16:15:22', '2022-07-20 16:15:22'),
-(9, '', '89.178.93.120', 1, '2022-08-05 18:09:42', '2022-08-05 18:09:42'),
-(23, 'kris@krfex.ru', '212.102.39.196', 1, '2022-11-04 11:04:51', '2022-11-04 11:04:51'),
-(20, 'donotstoptry@gmail.com', '89.178.93.120', 2, '2022-10-24 18:44:46', '2022-10-24 18:44:46'),
-(24, 'daniel@ocean.ru', '212.102.39.196', 1, '2022-11-04 11:05:03', '2022-11-04 11:05:03'),
-(31, 'sokovnin1988@mail.ru', '88.147.173.223', 1, '2022-12-30 16:38:44', '2022-12-30 16:38:44'),
-(29, 'soev', '88.147.184.145', 1, '2022-11-15 10:29:59', '2022-11-15 10:29:59'),
-(30, '', '176.59.119.178', 1, '2022-11-25 16:30:28', '2022-11-25 16:30:28'),
-(32, 'sokovnin1988@mail.ru', '88.147.179.183', 1, '2023-02-21 15:58:23', '2023-02-21 15:58:23'),
-(33, 'sokovnin1988@mail.ru', '88.147.174.227', 1, '2023-03-18 16:03:03', '2023-03-18 16:03:03'),
-(34, 'jambot@mambetov.ru', '172.16.238.1', 3, '2024-01-22 11:32:52', '2024-03-10 13:43:06'),
-(42, '', '172.16.238.1', 7, '2025-12-17 20:31:32', '2025-12-17 20:37:57'),
-(55, 'info@exurl.ru', '172.16.238.1', 1, '2026-06-24 09:06:43', '2026-06-24 09:06:43');
-
 -- --------------------------------------------------------
 
 --
@@ -2028,6 +1989,7 @@ CREATE TABLE `oc_customer_transaction` (
   `order_id` int(11) NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `amount` decimal(15,4) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '1',
   `date_added` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -2648,11 +2610,12 @@ CREATE TABLE `oc_information` (
 --
 
 INSERT INTO `oc_information` (`information_id`, `top`, `bottom`, `sort_order`, `status`, `noindex`) VALUES
-(9, 0, 0, 0, 1, 1),
-(13, 1, 1, 4, 1, 1),
+(9, 0, 1, 0, 1, 1),
+(13, 1, 1, 2, 1, 1),
 (10, 0, 0, 2, 1, 1),
-(12, 1, 1, 3, 1, 1),
-(11, 0, 1, 0, 1, 1);
+(12, 1, 1, 1, 1, 1),
+(11, 0, 1, 0, 1, 1),
+(14, 0, 1, 4, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -2677,15 +2640,17 @@ CREATE TABLE `oc_information_description` (
 
 INSERT INTO `oc_information_description` (`information_id`, `language_id`, `title`, `description`, `meta_title`, `meta_description`, `meta_keyword`, `meta_h1`) VALUES
 (11, 1, 'Условия возврата', '&lt;p&gt;Понимаю, тема неприятная, но придется проглотить горькую пилюлю, порой клиенты хотят вернуть товар, так что вы сможете похвастаться тем, что у вас на сайте есть автоматизированная система возврата товаров с историей статусов и удобным интерфейсом, как для клиентов, так и для менеджеров. Не благодарите.&lt;/p&gt;', '', '', '', ''),
-(9, 2, 'Terms and conditions', '&lt;p&gt;In a good way, the legal aspects of the interaction of your customers with you through the functionality of this site should be indicated here, but in general you are free to write anything here, so go ahead.&lt;br&gt;&lt;/p&gt;', '', '', '', ''),
-(10, 1, 'Правила партнерства', 'Поскольку платформа из коробки имеет базовый функционал партнерских вознаграждений за размещение ссылок на отдельные товары/услуги или весь сайт, здесь есть смысл обозначить условия партнерства с вами. С условиями этой статьи будет необходимо согласиться при регистрации партерского аккаунта.', '', '', '', ''),
 (9, 1, 'Правила и условия', 'По-хорошему здесь должны быть обозначены юричидеские аспекты взаимодействия ваших клиентов с вами посредством функционала данного сайта, но вообще вы вольны написать здесь что угодно, так что дерзайте.', '', '', '', ''),
 (10, 2, 'Partnership rules', '&lt;p&gt;Since the platform out of the box has the basic functionality of affiliate rewards for posting links to individual products / services or the entire site, it makes sense here to indicate the terms of partnership with you. Your customers will need to agree to the terms of this article when registering an affiliate account.&lt;br&gt;&lt;/p&gt;', '', '', '', ''),
+(9, 2, 'Terms and conditions', '&lt;p&gt;In a good way, the legal aspects of the interaction of your customers with you through the functionality of this site should be indicated here, but in general you are free to write anything here, so go ahead.&lt;br&gt;&lt;/p&gt;', '', '', '', ''),
+(10, 1, 'Правила партнёрства', 'Поскольку платформа из коробки имеет базовый функционал партнёрских вознаграждений за размещение ссылок на отдельные товары/услуги или весь сайт, здесь есть смысл обозначить условия партнерства с вами. С условиями этой статьи будет необходимо согласиться при регистрации партнёрского аккаунта.', '', '', '', ''),
 (11, 2, 'Return conditions', '&lt;p&gt;I understand that the topic is unpleasant, but you have to swallow a bitter pill, sometimes customers want to return the goods, so you can brag that you have an automated system for returning goods on your site with a history of statuses and a convenient interface, both for customers and managers. Don\'t thank.&lt;br&gt;&lt;/p&gt;', '', '', '', ''),
-(12, 1, 'Оплата', '&lt;p&gt;Раз уже вы решили продовать что-то онлайн, неплохой идеей будет проинформировать потенциальных клиентов о способах оплаты ваших товаров и услуг. Текст этой статьи как раз предназначен для целей этого информирования. Здесь может быть не только просто текст, а форматированный текст, заголовки, подзаголовки, колонки, списки, изображения, видео, что душе угодно, ибо тут произвольный HTML.&lt;/p&gt;', '', 'Пример мета-описания для страницы оплаты', '', ''),
-(13, 2, 'Delivery', '&lt;p&gt;If you\'re selling physical products, chances are you\'re shipping your products to your customers, right? It was a rhetorical question. Here you can (and actually need to) talk about the conditions and methods of delivery, your customers will thank you.&lt;br&gt;&lt;/p&gt;', '', '', '', ''),
+(12, 2, 'Payment', '&lt;p&gt;Once you\'ve decided to sell something online, it\'s a good idea to inform potential customers about how to pay for your products and services. The text of this article is just intended for the purposes of this information. There can be not only just text, but formatted text, headings, subheadings, columns, lists, images, videos, whatever your heart desires, because here is arbitrary HTML.&lt;br&gt;&lt;/p&gt;', '', 'Meta description example for payment page', '', ''),
 (13, 1, 'Доставка', 'Если вы продаете физические товары, скорее всего вы осуществляете доставка ваших товаров до ваших же покупателей, верно? Это был риторический вопрос. Тут можно (а вообще-то нужно) рассказать об условиях и способах доставки, ваши клиенты скажут вам спасибо.', '', '', '', ''),
-(12, 2, 'Payment', '&lt;p&gt;Once you\'ve decided to sell something online, it\'s a good idea to inform potential customers about how to pay for your products and services. The text of this article is just intended for the purposes of this information. There can be not only just text, but formatted text, headings, subheadings, columns, lists, images, videos, whatever your heart desires, because here is arbitrary HTML.&lt;br&gt;&lt;/p&gt;', '', 'Meta description example for payment page', '', '');
+(13, 2, 'Delivery', '&lt;p&gt;If you\'re selling physical products, chances are you\'re shipping your products to your customers, right? It was a rhetorical question. Here you can (and actually need to) talk about the conditions and methods of delivery, your customers will thank you.&lt;br&gt;&lt;/p&gt;', '', '', '', ''),
+(12, 1, 'Оплата', '&lt;p&gt;Раз уже вы решили продовать что-то онлайн, неплохой идеей будет проинформировать потенциальных клиентов о способах оплаты ваших товаров и услуг. Текст этой статьи как раз предназначен для целей этого информирования. Здесь может быть не только просто текст, а форматированный текст, заголовки, подзаголовки, колонки, списки, изображения, видео, что душе угодно, ибо тут произвольный HTML.&lt;/p&gt;', '', 'Пример мета-описания для страницы оплаты', '', ''),
+(14, 2, 'Affiliate program', '&lt;p&gt;The affiliate program is completely free and allows participants to earn additional income by placing links to our entire store, as well as to individual products and services. Each purchase made through an affiliate link earns an agency commission. The standard commission rate is &lt;b&gt;5%&lt;/b&gt;. &lt;/p&gt;&lt;p&gt; You can find detailed information about the terms in the &lt;a href=&quot;/index.php?route=information/information/agree&amp;amp;information_id=10&quot; rel=&quot;noindex&quot; class=&quot;agree&quot;&gt;&lt;b&gt;Partnership Rules&lt;/b&gt;&lt;/a&gt; section&lt;/p&gt;\r\n&lt;div class=&quot;columns is-multiline&quot;&gt;\r\n  &lt;div class=&quot;column&quot;&gt;\r\n    &lt;div class=&quot;box has-text-centered&quot;&gt;\r\n      &lt;span class=&quot;icon is-large has-text-primary&quot;&gt;\r\n        &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;\r\n          &lt;path d=&quot;M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4&quot;&gt;&lt;/path&gt;\r\n          &lt;path d=&quot;M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z&quot;&gt;&lt;/path&gt;\r\n        &lt;/svg&gt;\r\n      &lt;/span&gt;\r\n      &lt;div class=&quot;is-size-5 mt-3&quot;&gt;Create an account&lt;/div&gt;\r\n    &lt;/div&gt;\r\n  &lt;/div&gt;\r\n  &lt;div class=&quot;column&quot;&gt;\r\n    &lt;div class=&quot;box has-text-centered&quot;&gt;\r\n      &lt;span class=&quot;icon is-large has-text-primary&quot;&gt;\r\n        &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;\r\n          &lt;path d=&quot;M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5m-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3&quot;&gt;&lt;/path&gt;\r\n        &lt;/svg&gt;\r\n      &lt;/span&gt;\r\n      &lt;div class=&quot;is-size-5 mt-3&quot;&gt;Become a partner&lt;/div&gt;\r\n    &lt;/div&gt;\r\n  &lt;/div&gt;\r\n  &lt;div class=&quot;column&quot;&gt;\r\n    &lt;div class=&quot;box has-text-centered&quot;&gt;\r\n      &lt;span class=&quot;icon is-large has-text-primary&quot;&gt;\r\n        &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;\r\n          &lt;path d=&quot;M5 6.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m1.138-1.496A6.6 6.6 0 0 1 7.964 4.5c.666 0 1.303.097 1.893.273a.5.5 0 0 0 .286-.958A7.6 7.6 0 0 0 7.964 3.5c-.734 0-1.441.103-2.102.292a.5.5 0 1 0 .276.962&quot;&gt;&lt;/path&gt;\r\n          &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M7.964 1.527c-2.977 0-5.571 1.704-6.32 4.125h-.55A1 1 0 0 0 .11 6.824l.254 1.46a1.5 1.5 0 0 0 1.478 1.243h.263c.3.513.688.978 1.145 1.382l-.729 2.477a.5.5 0 0 0 .48.641h2a.5.5 0 0 0 .471-.332l.482-1.351c.635.173 1.31.267 2.011.267.707 0 1.388-.095 2.028-.272l.543 1.372a.5.5 0 0 0 .465.316h2a.5.5 0 0 0 .478-.645l-.761-2.506C13.81 9.895 14.5 8.559 14.5 7.069q0-.218-.02-.431c.261-.11.508-.266.705-.444.315.306.815.306.815-.417 0 .223-.5.223-.461-.026a1 1 0 0 0 .09-.255.7.7 0 0 0-.202-.645.58.58 0 0 0-.707-.098.74.74 0 0 0-.375.562c-.024.243.082.48.32.654a2 2 0 0 1-.259.153c-.534-2.664-3.284-4.595-6.442-4.595M2.516 6.26c.455-2.066 2.667-3.733 5.448-3.733 3.146 0 5.536 2.114 5.536 4.542 0 1.254-.624 2.41-1.67 3.248a.5.5 0 0 0-.165.535l.66 2.175h-.985l-.59-1.487a.5.5 0 0 0-.629-.288c-.661.23-1.39.359-2.157.359a6.6 6.6 0 0 1-2.157-.359.5.5 0 0 0-.635.304l-.525 1.471h-.979l.633-2.15a.5.5 0 0 0-.17-.534 4.65 4.65 0 0 1-1.284-1.541.5.5 0 0 0-.446-.275h-.56a.5.5 0 0 1-.492-.414l-.254-1.46h.933a.5.5 0 0 0 .488-.393m12.621-.857a.6.6 0 0 1-.098.21l-.044-.025c-.146-.09-.157-.175-.152-.223a.24.24 0 0 1 .117-.173c.049-.027.08-.021.113.012a.2.2 0 0 1 .064.199&quot;&gt;&lt;/path&gt;\r\n        &lt;/svg&gt;\r\n      &lt;/span&gt;\r\n      &lt;div class=&quot;is-size-5 mt-3&quot;&gt;Start earning&lt;/div&gt;\r\n    &lt;/div&gt;\r\n  &lt;/div&gt;\r\n&lt;/div&gt;\r\n&lt;div class=&quot;buttons is-centered&quot;&gt;\r\n  &lt;a href=&quot;/index.php?route=account/register&quot; class=&quot;button is-success is-medium&quot;&gt;Become a partner&lt;/a&gt;\r\n&lt;/div&gt;', '', '', '', ''),
+(14, 1, 'Партнёрская программа', '&lt;p&gt;Партнерская программа совершенно бесплатна и позволяет участникам получать дополнительный доход путём размещения ссылок как на весь наш магазин, так и на отдельные товары и услуги. Каждая покупка, совершённая по партнёрской ссылке, приносит агентскую комиссию. Стандартный размер комиссии составляет &lt;b&gt;5%&lt;/b&gt;. &lt;/p&gt;&lt;p&gt; Подробную информацию об условиях вы можете найти в разделе &lt;a href=&quot;/index.php?route=information/information/agree&amp;amp;information_id=10&quot; rel=&quot;noindex&quot; class=&quot;agree&quot;&gt;&lt;b&gt;Правила партнёрства&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;\r\n&lt;div class=&quot;columns is-multiline&quot;&gt;\r\n  &lt;div class=&quot;column&quot;&gt;\r\n    &lt;div class=&quot;box has-text-centered&quot;&gt;\r\n      &lt;span class=&quot;icon is-large has-text-primary&quot;&gt;\r\n        &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;\r\n          &lt;path d=&quot;M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4&quot;&gt;&lt;/path&gt;\r\n          &lt;path d=&quot;M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z&quot;&gt;&lt;/path&gt;\r\n        &lt;/svg&gt;\r\n      &lt;/span&gt;\r\n      &lt;div class=&quot;is-size-5 mt-3&quot;&gt;Создайте аккаунт&lt;/div&gt;\r\n    &lt;/div&gt;\r\n  &lt;/div&gt;\r\n  &lt;div class=&quot;column&quot;&gt;\r\n    &lt;div class=&quot;box has-text-centered&quot;&gt;\r\n      &lt;span class=&quot;icon is-large has-text-primary&quot;&gt;\r\n        &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;\r\n          &lt;path d=&quot;M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5m-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3&quot;&gt;&lt;/path&gt;\r\n        &lt;/svg&gt;\r\n      &lt;/span&gt;\r\n      &lt;div class=&quot;is-size-5 mt-3&quot;&gt;Станьте партнёром&lt;/div&gt;\r\n    &lt;/div&gt;\r\n  &lt;/div&gt;\r\n  &lt;div class=&quot;column&quot;&gt;\r\n    &lt;div class=&quot;box has-text-centered&quot;&gt;\r\n      &lt;span class=&quot;icon is-large has-text-primary&quot;&gt;\r\n        &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;\r\n          &lt;path d=&quot;M5 6.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m1.138-1.496A6.6 6.6 0 0 1 7.964 4.5c.666 0 1.303.097 1.893.273a.5.5 0 0 0 .286-.958A7.6 7.6 0 0 0 7.964 3.5c-.734 0-1.441.103-2.102.292a.5.5 0 1 0 .276.962&quot;&gt;&lt;/path&gt;\r\n          &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M7.964 1.527c-2.977 0-5.571 1.704-6.32 4.125h-.55A1 1 0 0 0 .11 6.824l.254 1.46a1.5 1.5 0 0 0 1.478 1.243h.263c.3.513.688.978 1.145 1.382l-.729 2.477a.5.5 0 0 0 .48.641h2a.5.5 0 0 0 .471-.332l.482-1.351c.635.173 1.31.267 2.011.267.707 0 1.388-.095 2.028-.272l.543 1.372a.5.5 0 0 0 .465.316h2a.5.5 0 0 0 .478-.645l-.761-2.506C13.81 9.895 14.5 8.559 14.5 7.069q0-.218-.02-.431c.261-.11.508-.266.705-.444.315.306.815.306.815-.417 0 .223-.5.223-.461-.026a1 1 0 0 0 .09-.255.7.7 0 0 0-.202-.645.58.58 0 0 0-.707-.098.74.74 0 0 0-.375.562c-.024.243.082.48.32.654a2 2 0 0 1-.259.153c-.534-2.664-3.284-4.595-6.442-4.595M2.516 6.26c.455-2.066 2.667-3.733 5.448-3.733 3.146 0 5.536 2.114 5.536 4.542 0 1.254-.624 2.41-1.67 3.248a.5.5 0 0 0-.165.535l.66 2.175h-.985l-.59-1.487a.5.5 0 0 0-.629-.288c-.661.23-1.39.359-2.157.359a6.6 6.6 0 0 1-2.157-.359.5.5 0 0 0-.635.304l-.525 1.471h-.979l.633-2.15a.5.5 0 0 0-.17-.534 4.65 4.65 0 0 1-1.284-1.541.5.5 0 0 0-.446-.275h-.56a.5.5 0 0 1-.492-.414l-.254-1.46h.933a.5.5 0 0 0 .488-.393m12.621-.857a.6.6 0 0 1-.098.21l-.044-.025c-.146-.09-.157-.175-.152-.223a.24.24 0 0 1 .117-.173c.049-.027.08-.021.113.012a.2.2 0 0 1 .064.199&quot;&gt;&lt;/path&gt;\r\n        &lt;/svg&gt;\r\n      &lt;/span&gt;\r\n      &lt;div class=&quot;is-size-5 mt-3&quot;&gt;Начните зарабатывать&lt;/div&gt;\r\n    &lt;/div&gt;\r\n  &lt;/div&gt;\r\n&lt;/div&gt;\r\n&lt;div class=&quot;buttons is-centered&quot;&gt;\r\n  &lt;a href=&quot;/index.php?route=account/register&quot; class=&quot;button is-success is-medium&quot;&gt;Стать партнёром&lt;/a&gt;\r\n&lt;/div&gt;', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -2708,7 +2673,8 @@ INSERT INTO `oc_information_to_layout` (`information_id`, `store_id`, `layout_id
 (13, 0, 0),
 (11, 0, 0),
 (9, 0, 0),
-(10, 0, 0);
+(10, 0, 0),
+(14, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -2730,7 +2696,8 @@ INSERT INTO `oc_information_to_store` (`information_id`, `store_id`) VALUES
 (10, 0),
 (11, 0),
 (12, 0),
-(13, 0);
+(13, 0),
+(14, 0);
 
 -- --------------------------------------------------------
 
@@ -3587,9 +3554,9 @@ INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `is
 (5, '42073', '', '', '', '', '', '', '', '4.0000', 0, 5, 'catalog/demo/products/42073_0.jpg', 2, 1, '139990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (6, '42074', '', '', '', '', '', '', '', '5.0000', 0, 5, 'catalog/demo/products/42074_0.jpg', 1, 1, '134990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (7, '42075', '', '', '', '', '', '', '', '6.0000', 0, 5, 'catalog/demo/products/42075_0.jpg', 1, 1, '129990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, 1, 0, '2022-11-11 12:51:32', '2025-12-26 14:51:40', 1),
-(8, '42076', '', '', '', '', '', '', '', '7.0000', 0, 5, 'catalog/demo/products/42076_0.jpg', 2, 1, '128370.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, 1, 5, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(8, '42076', '', '', '', '', '', '', '', '7.0000', 0, 5, 'catalog/demo/products/42076_0.jpg', 2, 1, '128370.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, 1, 8, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (9, '42077', '', '', '', '', '', '', '', '8.0000', 0, 5, 'catalog/demo/products/42077_0.jpg', 2, 1, '124999.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(10, '42078', '', '', '', '', '', '', '', '9.0000', 0, 5, 'catalog/demo/products/42078_0.jpg', 2, 1, '124990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, 1, 16, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
+(10, '42078', '', '', '', '', '', '', '', '9.0000', 0, 5, 'catalog/demo/products/42078_0.jpg', 2, 1, '124990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, 1, 22, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (11, '42117', '', '', '', '', '', '', '', '10.0000', 0, 5, 'catalog/demo/products/42117_0.jpg', 1, 1, '274990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (12, '42118', '', '', '', '', '', '', '', '11.0000', 0, 5, 'catalog/demo/products/42118_0.jpg', 1, 1, '201990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (13, '42119', '', '', '', '', '', '', '', '12.0000', 0, 5, 'catalog/demo/products/42119_0.jpg', 1, 1, '179990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
@@ -3606,7 +3573,7 @@ INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `is
 (24, '42168', '', '', '', '', '', '', '', '23.0000', 0, 5, 'catalog/demo/products/42168_0.jpg', 0, 1, '70380.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (25, '42169', '', '', '', '', '', '', '', '24.0000', 0, 5, 'catalog/demo/products/42169_0.jpg', 0, 1, '8290.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (26, '42170', '', '', '', '', '', '', '', '25.0000', 0, 5, 'catalog/demo/products/42170_0.jpg', 0, 1, '5950.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(27, '42171', '', '', '', '', '', '', '', '26.0000', 0, 5, 'catalog/demo/products/42171_0.jpg', 0, 1, '5660.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, 1, 1, '2022-11-11 12:51:32', '2025-12-24 11:11:33', 1),
+(27, '42171', '', '', '', '', '', '', '', '26.0000', 0, 5, 'catalog/demo/products/42171_0.jpg', 0, 1, '5660.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, 1, 2, '2022-11-11 12:51:32', '2025-12-24 11:11:33', 1),
 (28, '42172', '', '', '', '', '', '', '', '27.0000', 0, 5, 'catalog/demo/products/42172_0.jpg', 0, 1, '5399.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (29, '42173', '', '', '', '', '', '', '', '28.0000', 0, 5, 'catalog/demo/products/42173_0.jpg', 0, 1, '5290.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, 1, 6, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (30, '42174', '', '', '', '', '', '', '', '0.0000', 0, 5, 'catalog/demo/products/42174_0.jpg', 0, 1, '4890.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
@@ -3624,11 +3591,11 @@ INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `is
 (42, '42232', '', '', '', '', '', '', '', '12.0000', 0, 5, 'catalog/demo/products/42232_0.jpg', 0, 1, '6590.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, 1, 0, '2022-11-11 12:51:32', '2025-12-22 16:12:33', 1),
 (43, '42233', '', '', '', '', '', '', '', '13.0000', 1, 5, 'catalog/demo/products/42233_0.jpg', 0, 1, '5990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, 1, 2, '2022-11-11 12:51:32', '2026-03-03 13:59:35', 1),
 (44, '42234', '', '', '', '', '', '', '', '14.0000', 0, 5, 'catalog/demo/products/42234_0.jpg', 0, 1, '5890.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
-(45, '42235', '', '', '', '', '', '', '', '15.0000', 0, 5, 'catalog/demo/products/42235_0.jpg', 0, 1, '5230.0000', 0, 9, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, 1, 6, '2022-11-11 12:51:32', '2026-05-06 20:56:00', 1),
+(45, '42235', '', '', '', '', '', '', '', '15.0000', 0, 5, 'catalog/demo/products/42235_0.jpg', 0, 1, '5230.0000', 0, 9, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, 1, 9, '2022-11-11 12:51:32', '2026-05-06 20:56:00', 1),
 (46, '42236', '', '', '', '', '', '', '', '16.0000', 0, 5, 'catalog/demo/products/42236_0.jpg', 0, 1, '4990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (47, '42237', '', '', '', '', '', '', '', '17.0000', 0, 5, 'catalog/demo/products/42237_0.jpg', 0, 1, '4990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, 1, 0, '2022-11-11 12:51:32', '2022-11-14 16:15:51', 1),
 (48, '42238', '', '', '', '', '', '', '', '18.0000', 0, 5, 'catalog/demo/products/42238_0.jpg', 1, 1, '4990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, 1, 1, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
-(49, '42239', '', '', '', '', '', '', '', '19.0000', 0, 5, 'catalog/demo/products/42239_0.jpg', 2, 1, '4890.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, 1, 3, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
+(49, '42239', '', '', '', '', '', '', '', '19.0000', 0, 5, 'catalog/demo/products/42239_0.jpg', 2, 1, '4890.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, 1, 5, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (50, '42240', '', '', '', '', '', '', '', '20.0000', 0, 5, 'catalog/demo/products/42240_0.jpg', 2, 1, '4890.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (51, '42279', '', '', '', '', '', '', '', '21.0000', 0, 5, 'catalog/demo/products/42279_0.jpg', 5, 1, '402990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, 1, 0, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
 (52, '42280', '', '', '', '', '', '', '', '22.0000', 0, 5, 'catalog/demo/products/42280_0.jpg', 1, 1, '334990.0000', 0, 0, '2022-11-11 00:00:00', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, '1.0000', 100, 1, 17, '2022-11-11 12:51:33', '2022-11-14 16:15:51', 1),
@@ -6612,15 +6579,14 @@ INSERT INTO `oc_seo_url` (`seo_url_id`, `store_id`, `language_id`, `query`, `key
 (202, 0, 2, 'product_id=100', 'bluetooth-speakers-sven-ms-2250-2-1-black'),
 (1832, 0, 2, 'blog_category_id=72', 'news'),
 (1831, 0, 1, 'blog_category_id=72', 'progrev'),
-(507, 0, 2, 'information_id=9', 'terms-and-conditions'),
-(506, 0, 1, 'information_id=9', 'pravila-i-usloviya'),
-(1381, 0, 1, 'information_id=10', 'pravila-partnerstva'),
+(2004, 0, 2, 'information_id=9', 'terms-and-conditions'),
+(2003, 0, 1, 'information_id=9', 'pravila-i-usloviya'),
 (508, 0, 1, 'information_id=11', 'usloviya-vozvrata'),
 (509, 0, 2, 'information_id=11', 'return-conditions'),
-(1920, 0, 2, 'information_id=12', 'payment'),
-(1919, 0, 1, 'information_id=12', 'oplata'),
-(1051, 0, 2, 'information_id=13', 'delivery'),
-(1050, 0, 1, 'information_id=13', 'dostavka'),
+(2000, 0, 2, 'information_id=12', 'payment'),
+(1999, 0, 1, 'information_id=12', 'oplata'),
+(2002, 0, 2, 'information_id=13', 'delivery'),
+(2001, 0, 1, 'information_id=13', 'dostavka'),
 (1388, 0, 2, 'product_id=1', 'smartphone-samsung-galaxy-z-fold-4-12-256gb-sm-f936b-beige'),
 (1387, 0, 1, 'product_id=1', 'smartfon-samsung-galaxy-z-fold-4-12-256gb-sm-f936b-bezhevyj'),
 (517, 0, 1, 'product_id=2', 'smartfon-samsung-galaxy-z-fold-4-sm-f936b-512gb-12gb-ser-zelen-3g-4g-2sim-7-6-amoled-1812x2176-and'),
@@ -6747,7 +6713,7 @@ INSERT INTO `oc_seo_url` (`seo_url_id`, `store_id`, `language_id`, `query`, `key
 (1154, 0, 1, 'information/contact', 'kontakty'),
 (1155, 0, 2, 'information/contact', 'contacts'),
 (1156, 0, 1, 'blog/latest', 'blog'),
-(1382, 0, 2, 'information_id=10', 'partnership-rules'),
+(1987, 0, 1, 'information_id=10', 'pravila-partnerstva'),
 (1943, 0, 1, 'article_id=128', 'ty-vsyo-eshchyo-dumaesh-chto-opencart-eto-tolko-magazin-pora-prosnutsya'),
 (1875, 0, 1, 'article_id=129', 'defoltnyy-shablon-opencart-na-bulma-vmesto-bootstrap-eto-ne-prikhot-a-zdravyy-smysl'),
 (1876, 0, 2, 'article_id=129', 'bulma-as-the-default-opencart-template-instead-of-bootstrap-not-a-whim-just-common-sense'),
@@ -6799,7 +6765,10 @@ INSERT INTO `oc_seo_url` (`seo_url_id`, `store_id`, `language_id`, `query`, `key
 (1847, 0, 1, 'article_id=144', 'kak-pravilno-keshirovat-zaprosy-k-bd-v-opencart-po-kliku-i-bez-storonnikh-moduley'),
 (1970, 0, 1, 'article_id=126', 'chem-zhe-tak-khorosh-opencart-a-chto-zastavlyaet-krasnet-i-stydlivo-pryatat-glaza'),
 (1971, 0, 2, 'article_id=126', 'whats-so-damn-good-about-opencart-and-what-makes-you-want-to-crawl-under-the-table-in-embarrassment'),
-(1985, 0, 2, 'category_id=6', 'charging-device');
+(1985, 0, 2, 'category_id=6', 'charging-device'),
+(1988, 0, 2, 'information_id=10', 'partnership-rules'),
+(2016, 0, 2, 'information_id=14', 'affiliate-program'),
+(2015, 0, 1, 'information_id=14', 'partnyorskaya-programma');
 
 -- --------------------------------------------------------
 
@@ -6818,17 +6787,109 @@ CREATE TABLE `oc_session` (
 --
 
 INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES
+('01c6c1918b2a44f8721ef7ca9e', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"USD\"}', '2026-08-20 10:26:43'),
+('025bee5d55dc92e8601508c47f', '{\"language\":\"ru-ru\",\"marketing_code\":\"XcNNJmO2\",\"affiliate_id\":\"126\",\"currency\":\"RUB\"}', '2026-08-18 11:07:00'),
+('02b2b2321732f70a98a6760a7e', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-08-20 16:01:45'),
+('0a62e10d9f78e1a9f8e7873fce', '{\"language\":\"ru-ru\",\"marketing_code\":\"1dJkGly2\",\"affiliate_id\":\"126\",\"currency\":\"RUB\",\"customer_id\":\"127\",\"shipping_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"EXSHOP New York\",\"address_2\":\"727 5th Avenue, New York, NY 10022\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"payment_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"\",\"address_2\":\"\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\\u041c\\u043e\\u0441\\u043a\\u043e\\u0432\\u0441\\u043a\\u0430\\u044f \\u043e\\u0431\\u043b\\u0430\\u0441\\u0442\\u044c\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"last_order_id\":4}', '2026-08-19 19:08:00'),
 ('0f3197e54af47a1c8fae5fb17e', '{\"api_id\":\"8\"}', '2026-08-02 10:03:22'),
-('1221899193c06fe24021ab3a5a', '{\"api_id\":\"8\"}', '2026-07-20 13:10:04'),
+('13bc44e5da16740886b4109989', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-08-20 12:01:02'),
+('13e3df8a51f308cae58b441427', '{\"api_id\":\"9\"}', '2026-08-19 13:49:55'),
 ('15d2f247f47dd9c4fdbafbde41', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"captcha\":\"eb61cb\",\"user_id\":\"1\",\"file_manager_directory\":\"\\/shared\\/httpd\\/exopencart\\/htdocs\\/image\\/catalog\",\"guest\":{\"customer_group_id\":\"1\"},\"path\":\"1\",\"payment_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"\",\"address_2\":\"\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\\u041c\\u043e\\u0441\\u043a\\u043e\\u0432\\u0441\\u043a\\u0430\\u044f \\u043e\\u0431\\u043b\\u0430\\u0441\\u0442\\u044c\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"shipping_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"\",\"address_2\":\"\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\\u041c\\u043e\\u0441\\u043a\\u043e\\u0432\\u0441\\u043a\\u0430\\u044f \\u043e\\u0431\\u043b\\u0430\\u0441\\u0442\\u044c\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"payment_methods\":{\"cod\":{\"code\":\"cod\",\"title\":\"\\u041e\\u043f\\u043b\\u0430\\u0442\\u0430 \\u043f\\u0440\\u0438 \\u0434\\u043e\\u0441\\u0442\\u0430\\u0432\\u043a\\u0435\",\"terms\":\"\\u041d\\u0430\\u043b\\u0438\\u0447\\u043d\\u044b\\u043c\\u0438 \\u0438\\u043b\\u0438 \\u043a\\u0430\\u0440\\u0442\\u043e\\u0439\",\"sort_order\":\"1\"},\"bank_transfer\":{\"code\":\"bank_transfer\",\"title\":\"\\u041e\\u043f\\u043b\\u0430\\u0442\\u0430 \\u043e\\u043d\\u043b\\u0430\\u0439\\u043d\",\"terms\":\"\\u041a\\u0430\\u0440\\u0442\\u043e\\u0439 \\u0438\\u043b\\u0438 QR-\\u043a\\u043e\\u0434\\u043e\\u043c\",\"sort_order\":\"2\"}},\"shipping_methods\":{\"pickup\":{\"title\":\"\\u0421\\u0430\\u043c\\u043e\\u0432\\u044b\\u0432\\u043e\\u0437\",\"quote\":{\"pickup\":{\"code\":\"pickup.pickup\",\"title\":\"\\u0421\\u0430\\u043c\\u043e\\u0432\\u044b\\u0432\\u043e\\u0437\",\"description\":\"\\u0421\\u043e \\u0441\\u043a\\u043b\\u0430\\u0434\\u0430 \\u0438\\u043b\\u0438 \\u041f\\u0412\\u0417\",\"cost\":0,\"tax_class_id\":0,\"text\":\"0 \\u20bd\"}},\"sort_order\":\"1\",\"error\":false},\"flat\":{\"title\":\"\\u0414\\u043e\\u0441\\u0442\\u0430\\u0432\\u043a\\u0430 \\u0434\\u043e \\u0430\\u0434\\u0440\\u0435\\u0441\\u0430\",\"quote\":{\"flat\":{\"code\":\"flat.flat\",\"title\":\"\\u0414\\u043e\\u0441\\u0442\\u0430\\u0432\\u043a\\u0430 \\u0434\\u043e \\u0430\\u0434\\u0440\\u0435\\u0441\\u0430\",\"description\":\"\\u0411\\u0435\\u0441\\u043f\\u043b\\u0430\\u0442\\u043d\\u043e \\u043f\\u0440\\u0438 \\u0437\\u0430\\u043a\\u0430\\u0437\\u0435 \\u043e\\u0442 <b>10 000 \\u20bd<\\/b>\",\"cost\":0,\"tax_class_id\":\"0\",\"text\":\"0 \\u20bd\"}},\"sort_order\":\"2\",\"error\":false}},\"user_token\":\"PAvZqvjk1gsxjRuRpeYeVyFENWyc8gZf\",\"redirect\":\"https:\\/\\/exopencart.loc\\/index.php?route=account\\/edit\"}', '2026-08-13 11:52:05'),
-('1a21b86629bd019b55f350c144', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"user_id\":\"1\",\"user_token\":\"vU1canEbSTGvyzKuRiiegOm31WwXbfNv\",\"guest\":{\"customer_group_id\":\"1\"},\"auth_pending\":{\"provider\":\"vk\",\"provider_user_id\":\"18370354\",\"firstname\":\"\\u0415\\u0432\\u0433\\u0435\\u043d\\u0438\\u0439\",\"lastname\":\"\\u0421\\u043e\\u043a\\u043e\\u0432\\u043d\\u0438\\u043d\",\"email\":\"exurl@vk.com\",\"telephone\":\"\",\"timestamp\":1784019372},\"captcha\":\"39b8a5\",\"redirect\":\"https:\\/\\/exopencart.loc\\/index.php?route=account\\/account\"}', '2026-08-17 12:01:13'),
+('1a21b86629bd019b55f350c144', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"auth_pending\":{\"provider\":\"vk\",\"provider_user_id\":\"18370354\",\"firstname\":\"\\u0415\\u0432\\u0433\\u0435\\u043d\\u0438\\u0439\",\"lastname\":\"\\u0421\\u043e\\u043a\\u043e\\u0432\\u043d\\u0438\\u043d\",\"email\":\"exurl@vk.com\",\"telephone\":\"\",\"timestamp\":1784019372},\"captcha\":\"4ed3e5\",\"marketing_code\":\"XcNNJmO2\",\"affiliate_id\":\"126\",\"last_order_id\":2,\"shipping_address\":false,\"user_id\":\"1\",\"user_token\":\"VdvceGAWuXcZngC57BGJ5jqB6p402jA6\",\"redirect\":\"https:\\/\\/exopencart.loc\\/index.php?route=account\\/account\"}', '2026-08-20 20:21:50'),
+('1d9435c1a5ccb71e0c07fb91fd', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-08-20 11:12:53'),
+('1e93f83d70be0db9690747a3a4', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-08-20 11:43:36'),
+('2539e3935ea279e217109e2c3e', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-08-20 11:44:17'),
+('258c0a18f749a6082ae5210c5a', '{\"api_id\":\"9\"}', '2026-08-19 13:49:57'),
+('27c49051f85276cf5056245187', '{\"language\":\"en-gb\",\"marketing_code\":\"1dJkGly2\",\"affiliate_id\":\"126\",\"currency\":\"RUB\"}', '2026-08-19 13:52:30'),
 ('2a4e99049e13b488e733436340', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-08-13 10:54:42'),
+('33e696d54073502cf02a969f3e', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-08-20 11:12:30'),
+('3c233d53de501f738e32e7f931', '{\"api_id\":\"9\"}', '2026-08-20 12:02:58'),
+('40a51499420680b18d5f666922', '{\"api_id\":\"9\"}', '2026-08-20 16:01:30'),
+('4349ef6fa7ad3c7c5b07512cbf', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"USD\"}', '2026-08-20 10:23:33'),
+('45aa06f22d697bec9d9c30310a', '{\"api_id\":\"9\"}', '2026-08-20 11:57:21'),
+('46bc21549dec3030eedfcbb2c6', '{\"api_id\":\"9\"}', '2026-08-20 12:46:46'),
+('46ff212edb3fbbec6adca40155', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"USD\"}', '2026-08-20 10:30:30'),
+('4c0cd0716524132bc947458da8', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-08-20 12:44:49'),
+('4d7474d037a185c50af2cf2adb', '{\"api_id\":\"9\"}', '2026-08-20 19:57:33'),
+('4dd4576dcc86807e4092df066b', '{\"api_id\":\"9\"}', '2026-08-20 11:47:49'),
+('4f72244e278c9781487ca5c57f', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"USD\"}', '2026-08-20 10:26:50'),
 ('53aa603629f113870528592baf', '{\"api_id\":\"9\"}', '2026-08-13 12:12:09'),
+('554aac734a1931c430f46c086f', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-08-20 11:12:09'),
+('564e7d072c80ee67ad256d08c6', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-08-20 11:07:21'),
+('56aa5f7ee38c0048b4cbe0d036', '{\"api_id\":\"9\"}', '2026-08-20 12:34:37'),
+('58f83f5f912c695ee74f083abb', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-08-20 12:48:53'),
+('5aa56ee656a86e7a9266483078', '{\"api_id\":\"9\"}', '2026-08-20 11:54:32'),
+('5baad225427881e3fa1fca2ec9', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-08-20 19:58:14'),
+('5c660ca3654ffbdc5fdae48763', '{\"api_id\":\"9\"}', '2026-08-20 10:21:22'),
+('6382fd2049b4255b7f29df8df1', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-08-20 11:54:06'),
+('66ddf795bf9bab04a2e487d62b', '{\"api_id\":\"9\"}', '2026-08-20 12:44:49'),
 ('673f0ae6368c649b08d500deff', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-08-13 10:54:42'),
+('674798565dd8fd0d67658bf213', '{\"api_id\":\"9\"}', '2026-08-20 16:01:47'),
+('688b00398a2f8a53d9cda96347', '{\"api_id\":\"9\",\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-08-20 14:39:06'),
+('6890c9036aa274e839b442f28c', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-08-20 11:48:23'),
+('6c5c58a3e3ff82ccbe4933b745', '{\"api_id\":\"9\"}', '2026-08-20 10:19:37'),
+('6fade869ed4d942690f2307d16', '{\"language\":\"en-gb\",\"marketing_code\":\"1dJkGly2\",\"affiliate_id\":\"126\",\"currency\":\"RUB\"}', '2026-08-19 13:55:42'),
 ('727d56d8ffa1343fbbedfbf99b', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-08-17 12:01:10'),
+('7731358e037b8b6fd012335e6d', '{\"language\":\"ru-ru\",\"marketing_code\":\"1dJkGly2\",\"affiliate_id\":\"126\",\"currency\":\"RUB\",\"customer_id\":\"127\",\"shipping_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"EXSHOP New York\",\"address_2\":\"727 5th Avenue, New York, NY 10022\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"payment_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"\",\"address_2\":\"\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\\u041c\\u043e\\u0441\\u043a\\u043e\\u0432\\u0441\\u043a\\u0430\\u044f \\u043e\\u0431\\u043b\\u0430\\u0441\\u0442\\u044c\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"last_order_id\":19}', '2026-08-20 16:01:09'),
+('7b2bb0c2781b04fe8835125d3b', '{\"api_id\":\"9\"}', '2026-08-20 11:48:25'),
 ('80e2cf55f5f0f92043d596261d', 'false', '2026-08-13 10:55:11'),
+('822135dd358383c52932c27b41', '{\"api_id\":\"9\"}', '2026-08-20 12:01:02'),
+('8b78938a6d53d3f91db3bec81d', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-08-20 14:22:27'),
+('8bfdd3da5cea7b4109d4cfa94c', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-08-20 12:48:15'),
+('8c9b14a03765828d0a8fd83f52', '{\"api_id\":\"9\"}', '2026-08-20 10:22:37'),
+('8ca97189b0c1c554119552e140', '{\"api_id\":\"9\"}', '2026-08-20 14:39:00'),
 ('9285243b6cbf3a3f9f3b345d6c', '{\"api_id\":\"9\"}', '2026-08-15 15:29:20'),
-('f9c22346c79b6729b37d6493a3', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-08-17 12:01:10');
+('965e11db09b358c9f9325241a6', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-08-20 20:19:09'),
+('97a05e6966a1671d3b3244ee1c', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-08-20 11:47:49'),
+('97e7baa08a657f7ac5831cbc36', '{\"api_id\":\"9\"}', '2026-08-20 11:57:41'),
+('99f364d990d12d98f7f2216183', '{\"api_id\":\"9\"}', '2026-08-20 12:48:56'),
+('9d12f2ef9c89a5ee837afe24a5', '{\"api_id\":\"9\"}', '2026-08-20 12:22:55'),
+('9e787798ab2e50cfc357f1bdd0', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"USD\"}', '2026-08-20 10:23:49'),
+('9f55c51ade4d28eb127e4e8044', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"marketing_code\":\"XcNNJmO2\",\"affiliate_id\":\"126\"}', '2026-08-17 22:56:34'),
+('9fe339b641894a84b0e7363fd5', '{\"api_id\":\"9\"}', '2026-08-20 12:22:35'),
+('a0765e484f97ccfe358cdc7edf', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-08-20 14:18:19'),
+('a2cb6913639406ceeb161c14b2', '{\"api_id\":\"9\"}', '2026-08-20 11:48:18'),
+('ab1ba741d123e62d42a3ebcc9c', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-08-20 12:47:08'),
+('abce4eddefcfa51fd9f8cd6964', '{\"api_id\":\"9\"}', '2026-08-20 11:54:40'),
+('ac0db9fdca277d8824f26f906b', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-08-20 11:54:38'),
+('b046b6d5efb086672535ceb141', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-08-20 12:31:39'),
+('b0f029675d4d83190291b6fb19', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-08-19 21:56:12'),
+('b1690c9666de37854202465730', '{\"api_id\":\"9\"}', '2026-08-20 17:09:41'),
+('b22a9413135b029d485004cc88', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"USD\"}', '2026-08-20 11:02:58'),
+('b614372075ffbf590680eebb14', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"USD\"}', '2026-08-20 10:21:22'),
+('bab6206dcb4bf2d947f71f427e', '{\"api_id\":\"9\"}', '2026-08-20 10:19:35'),
+('bb6fbb9bec19463e0cfff0218c', '{\"api_id\":\"9\"}', '2026-08-20 11:07:27'),
+('bba83feb561bbc4e5769bc3576', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-08-20 14:17:14'),
+('bd327e53a91cf891abba3f816d', '{\"api_id\":\"9\"}', '2026-08-20 11:57:42'),
+('bf7885b018088e0b4a33542198', '{\"language\":\"ru-ru\",\"marketing_code\":\"1dJkGly2\",\"affiliate_id\":\"126\",\"currency\":\"RUB\",\"payment_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"\",\"address_2\":\"\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\\u041c\\u043e\\u0441\\u043a\\u043e\\u0432\\u0441\\u043a\\u0430\\u044f \\u043e\\u0431\\u043b\\u0430\\u0441\\u0442\\u044c\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"shipping_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"EXSHOP New York\",\"address_2\":\"727 5th Avenue, New York, NY 10022\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"captcha\":\"91feb6\",\"account\":\"register\",\"customer_id\":\"127\",\"last_order_id\":3}', '2026-08-19 13:49:51'),
+('c0998fa15f0d6606ce39eab28d', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-08-20 14:21:31'),
+('c0f8e84d20b66d3b7f04b85dd8', '{\"api_id\":\"9\"}', '2026-08-20 12:26:59'),
+('c159cfd805c92782b10eb6d541', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-08-20 12:22:35'),
+('c32dac2be4d6a0f8f996a184d8', '{\"api_id\":\"9\"}', '2026-08-20 11:43:36'),
+('c54b2276d334e3fdc9aa6ec1c2', '{\"api_id\":\"9\"}', '2026-08-20 11:54:06'),
+('ca91ad598272a95624f48d5011', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-08-20 11:59:02'),
+('caebb59effa787b2dc21b94447', '{\"api_id\":\"9\"}', '2026-08-20 12:34:39'),
+('cca77e46a4a4fc9aebd6757aaa', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-08-20 12:02:58'),
+('d0030e310c7471a460f5186acb', '{\"api_id\":\"9\"}', '2026-08-20 12:47:12'),
+('d0a690da309e1f23197516a2c9', '{\"api_id\":\"9\"}', '2026-08-20 11:07:24'),
+('d1d40cbee2385cf11424cba137', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-08-20 17:09:41'),
+('d5bbe499d6a11517aee104ec56', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"last_order_id\":5}', '2026-08-20 10:21:44'),
+('d6dd5ce4b81bfaf97f8388e2bc', '{\"api_id\":\"9\"}', '2026-08-20 12:00:24'),
+('d770ebca740bd8b26f040af621', '{\"api_id\":\"9\"}', '2026-08-20 11:44:19'),
+('d7b38f7e9ad68b9c7f5542b4a5', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-08-20 12:26:59'),
+('da4b1f3577162b5e5c3ddc17a2', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-08-20 11:57:21'),
+('df071e612f44b6a64f3ab90cf1', '{\"api_id\":\"9\"}', '2026-08-20 12:41:29'),
+('e0327ae58e6e0a067f7abbd4aa', '{\"api_id\":\"9\"}', '2026-08-20 12:33:49'),
+('e57a179d16d9d958a46125f033', '{\"api_id\":\"9\",\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2026-08-20 12:48:22'),
+('eaf587b850216c6b38efd2cadc', '{\"api_id\":\"9\"}', '2026-08-20 12:00:23'),
+('eb165a65476614889ae56d3fc2', '{\"api_id\":\"9\"}', '2026-08-20 12:44:16'),
+('ed7ae0772f553833126baf9303', '{\"api_id\":\"9\"}', '2026-08-20 14:22:28'),
+('f2e8efc83337d91036a256aecd', '{\"language\":\"ru-ru\",\"marketing_code\":\"eFL3kZ0B\",\"affiliate_id\":\"128\",\"currency\":\"RUB\",\"payment_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"\",\"address_2\":\"\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\\u041c\\u043e\\u0441\\u043a\\u043e\\u0432\\u0441\\u043a\\u0430\\u044f \\u043e\\u0431\\u043b\\u0430\\u0441\\u0442\\u044c\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"shipping_address\":{\"address_id\":0,\"country_id\":\"176\",\"zone_id\":\"2751\",\"firstname\":\"\",\"lastname\":\"\",\"company\":\"\",\"address_1\":\"EXSHOP New York\",\"address_2\":\"727 5th Avenue, New York, NY 10022\",\"address_format\":\"{postcode} {zone} {city} {address_1} {address_2}\",\"postcode\":\"\",\"city\":\"\",\"zone\":\"\",\"zone_code\":\"\",\"country\":\"\\u0420\\u043e\\u0441\\u0441\\u0438\\u0439\\u0441\\u043a\\u0430\\u044f \\u0424\\u0435\\u0434\\u0435\\u0440\\u0430\\u0446\\u0438\\u044f\",\"custom_field\":null},\"captcha\":\"9b6c49\",\"account\":\"register\",\"customer_id\":\"129\",\"last_order_id\":20}', '2026-08-20 19:57:17'),
+('f531c581e3a51c861d05620f13', '{\"api_id\":\"9\"}', '2026-08-20 14:39:08'),
+('f9c22346c79b6729b37d6493a3', '{\"language\":\"en-gb\",\"currency\":\"RUB\"}', '2026-08-17 12:01:10'),
+('fb8bf43cc3f835e94b8109834a', '{\"api_id\":\"9\"}', '2026-08-20 12:31:39'),
+('fcf96b556c12f21620691b0808', '{\"api_id\":\"9\"}', '2026-08-20 11:59:02'),
+('fdcf72c16b5defb168a3391faa', '{\"api_id\":\"9\"}', '2026-08-20 20:19:09');
 
 -- --------------------------------------------------------
 
@@ -6860,11 +6921,11 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (53774, 0, 'configblog', 'configblog_image_article_width', '450', 0),
 (35513, 0, 'payment_bank_transfer', 'payment_bank_transfer_order_status_id', '2', 0),
 (35514, 0, 'payment_bank_transfer', 'payment_bank_transfer_geo_zone_id', '0', 0),
-(2178, 0, 'payment_cod', 'payment_cod_sort_order', '1', 0),
-(2177, 0, 'payment_cod', 'payment_cod_status', '1', 0),
-(2176, 0, 'payment_cod', 'payment_cod_geo_zone_id', '0', 0),
-(2175, 0, 'payment_cod', 'payment_cod_order_status_id', '1', 0),
-(2174, 0, 'payment_cod', 'payment_cod_total', '0.01', 0),
+(64210, 0, 'payment_cod', 'payment_cod_sort_order', '1', 0),
+(64209, 0, 'payment_cod', 'payment_cod_status', '1', 0),
+(64208, 0, 'payment_cod', 'payment_cod_geo_zone_id', '0', 0),
+(64207, 0, 'payment_cod', 'payment_cod_order_status_id', '1', 0),
+(64206, 0, 'payment_cod', 'payment_cod_total', '0.01', 0),
 (36382, 0, 'shipping_flat', 'shipping_flat_sort_order', '2', 0),
 (36379, 0, 'shipping_flat', 'shipping_flat_tax_class_id', '0', 0),
 (36380, 0, 'shipping_flat', 'shipping_flat_geo_zone_id', '0', 0),
@@ -7016,160 +7077,162 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (53758, 0, 'configblog', 'configblog_name', '{\"1\":\"\\u0411\\u043b\\u043e\\u0433\",\"2\":\"Blog\"}', 1),
 (53759, 0, 'configblog', 'configblog_html_h1', '{\"1\":\"\\u0411\\u043b\\u043e\\u0433\",\"2\":\"Blog\"}', 1),
 (53760, 0, 'configblog', 'configblog_meta_title', '{\"1\":\"\\u0417\\u0430\\u0433\\u043e\\u043b\\u043e\\u0432\\u043e\\u043a \\u0434\\u043b\\u044f \\u0431\\u043b\\u043e\\u0433\\u0430\",\"2\":\"Title for the blog\"}', 1),
-(61952, 0, 'config', 'config_canonical_method', '1', 0),
-(61953, 0, 'config', 'config_canonical_self', '1', 0),
-(61954, 0, 'config', 'config_add_prevnext', '0', 0),
-(61955, 0, 'config', 'config_noindex_status', '1', 0),
-(61956, 0, 'config', 'config_noindex_disallow_params', 'page\r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    ', 0),
 (40188, 0, 'developer', 'developer_css', '0', 0),
 (40187, 0, 'developer', 'developer_sass', '0', 0),
 (40186, 0, 'developer', 'developer_theme', '0', 0),
-(61946, 0, 'config', 'config_seo_url_cache', '0', 0),
-(61947, 0, 'config', 'config_seopro_addslash', '0', 0),
-(61948, 0, 'config', 'config_seopro_lowercase', '1', 0),
-(61949, 0, 'config', 'config_page_postfix', '', 0),
-(61950, 0, 'config', 'config_valide_param_flag', '0', 0),
-(61951, 0, 'config', 'config_valide_params', 'block\r\nfrommarket\r\ngclid\r\nfbclid\r\nkeyword\r\nlist_type\r\nopenstat\r\nopenstat_service\r\nopenstat_campaign\r\nopenstat_ad\r\nopenstat_source\r\nposition\r\nsource\r\ntracking\r\ntype\r\nyclid\r\nymclid\r\nuri\r\nurltype\r\nutm_source\r\nutm_medium\r\nutm_campaign\r\nutm_term\r\nutm_content', 0),
-(61937, 0, 'config', 'config_file_max_size', '10000000', 0),
-(61938, 0, 'config', 'config_file_ext_allowed', 'zip\r\ntxt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc', 0),
-(61939, 0, 'config', 'config_file_mime_allowed', 'text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/tiff\r\nimage/svg+xml\r\napplication/zip\r\n&quot;application/zip&quot;\r\napplication/x-zip\r\n&quot;application/x-zip&quot;\r\napplication/x-zip-compressed\r\n&quot;application/x-zip-compressed&quot;\r\napplication/rar\r\n&quot;application/rar&quot;\r\napplication/x-rar\r\n&quot;application/x-rar&quot;\r\napplication/x-rar-compressed\r\n&quot;application/x-rar-compressed&quot;\r\napplication/octet-stream\r\n&quot;application/octet-stream&quot;\r\naudio/mpeg\r\nvideo/quicktime\r\napplication/pdf', 0),
-(61940, 0, 'config', 'config_error_display', '1', 0),
-(61941, 0, 'config', 'config_error_log', '1', 0),
-(61942, 0, 'config', 'config_error_filename', 'error.log', 0),
-(61943, 0, 'config', 'config_seo_pro', '1', 0),
-(61944, 0, 'config', 'config_seo_url_flat_structure', '0', 0),
-(61945, 0, 'config', 'config_seo_url_include_path', '1', 0),
-(61933, 0, 'config', 'config_secure', '1', 0),
-(61934, 0, 'config', 'config_password', '1', 0),
-(61935, 0, 'config', 'config_shared', '0', 0),
-(61936, 0, 'config', 'config_encryption', '1kv5A0hYwjmPfkFX4vBpwBUMQWdzNM4InQAbJQI0h2axK9yaAb9Xj8WOBW85aXVGQuCHydp3sLNgvI9M9hdUqRwxKiUQTLC2917fWDQJ9w1pr0JkGTLfIOvTRdhDPPtQSm3Has2E1npdnOWr0LJ22SyIKPRDC39SIE4IBLu1nj9ScQnP6IZAInizwr2Lfl7GYXqtW74dNsFAUuEgLuja1znjFO9SpCrFSRIaWhQ9fJ60eL1QnxAWlKSIDB2kD62hFNkg9zWpX9MwV6wBLzJJpmLRobGKfT0c7ItIU3gHbHksLkVcXsXFwUy0j2lk85j7tC5VcYT2RhY8Ladu9wkQX943oaBUonGrNmz7tFFeCd22FjjfaKiY7fO1j3C0fXGuqjbria4WhjrOLFOq1kvNB5KC0DyA7hRv1GtZ6n8HvSJAVABIfIIaQnyyjpurJx8fFZ07XjiOPX7AV5V8RbJhUHTc8rG3gegWZf7EdHrXKMrvBkeCjAQQzZMG7VwzuVkvyv7yvp5OwAiG7q46U6yieJLlVvoA6mZqiB3hQR2TrdS2JOvZX2GF46Bk04A0TTphWeswG52SkIPzZjz5SLxzn6jWs8rK4g6JhYyIvuJG7Zej2jz0se89c9Qdlo0JfyLhZ8zNTH2OIiGiik4rc9m4I9ZQfALyf7qXXXdeBfQoLVD8rBNDEgeIyQumhtNl5RrjfbeoM4ILLg1u09ahqaamBblLkHMLCWJj5KTjSjC9IXWPPcUqgEdoIsegZFL5DG9QroQmQrTtc2yBxbm0uG4LTVfwau56U9hW52fa25DujBfWtDD7YvwHvrthODTEkwWqYkpROJqOsjN8FUqaeTyeRfeP4Bg1mOeEqSSCTI8CqZGEMpQdWkKNk9NrufgTjd4tPCEZW6kloP4FfrJz4g86iydyXOnG1R7sOKD3rcUHPjHvr6tpR54n3FDwrzbY1NGyInY4381R3JNIVaxHcA0YEbrYftReTttSL5Tk6WjF4IV6RDFJW4fMsUEmcpo5jgNN', 0),
+(64655, 0, 'config', 'config_valide_params', 'block\r\nfrommarket\r\ngclid\r\nfbclid\r\nkeyword\r\nlist_type\r\nopenstat\r\nopenstat_service\r\nopenstat_campaign\r\nopenstat_ad\r\nopenstat_source\r\nposition\r\nsource\r\ntracking\r\ntype\r\nyclid\r\nymclid\r\nuri\r\nurltype\r\nutm_source\r\nutm_medium\r\nutm_campaign\r\nutm_term\r\nutm_content', 0),
+(64656, 0, 'config', 'config_canonical_method', '1', 0),
+(64657, 0, 'config', 'config_canonical_self', '1', 0),
+(64658, 0, 'config', 'config_add_prevnext', '0', 0),
+(64659, 0, 'config', 'config_noindex_status', '1', 0),
+(64660, 0, 'config', 'config_noindex_disallow_params', 'page\r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    \r\n                    ', 0),
+(64654, 0, 'config', 'config_valide_param_flag', '0', 0),
+(64653, 0, 'config', 'config_page_postfix', '', 0),
+(64652, 0, 'config', 'config_seopro_lowercase', '1', 0),
+(64651, 0, 'config', 'config_seopro_addslash', '0', 0),
+(64650, 0, 'config', 'config_seo_url_cache', '0', 0),
+(64649, 0, 'config', 'config_seo_url_include_path', '0', 0),
+(64648, 0, 'config', 'config_seo_url_flat_structure', '1', 0),
+(64645, 0, 'config', 'config_error_log', '1', 0),
+(64646, 0, 'config', 'config_error_filename', 'error.log', 0),
+(64647, 0, 'config', 'config_seo_pro', '1', 0),
+(64644, 0, 'config', 'config_error_display', '1', 0),
+(64643, 0, 'config', 'config_file_mime_allowed', 'text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/tiff\r\nimage/svg+xml\r\napplication/zip\r\n&quot;application/zip&quot;\r\napplication/x-zip\r\n&quot;application/x-zip&quot;\r\napplication/x-zip-compressed\r\n&quot;application/x-zip-compressed&quot;\r\napplication/rar\r\n&quot;application/rar&quot;\r\napplication/x-rar\r\n&quot;application/x-rar&quot;\r\napplication/x-rar-compressed\r\n&quot;application/x-rar-compressed&quot;\r\napplication/octet-stream\r\n&quot;application/octet-stream&quot;\r\naudio/mpeg\r\nvideo/quicktime\r\napplication/pdf', 0),
+(64640, 0, 'config', 'config_encryption', '1kv5A0hYwjmPfkFX4vBpwBUMQWdzNM4InQAbJQI0h2axK9yaAb9Xj8WOBW85aXVGQuCHydp3sLNgvI9M9hdUqRwxKiUQTLC2917fWDQJ9w1pr0JkGTLfIOvTRdhDPPtQSm3Has2E1npdnOWr0LJ22SyIKPRDC39SIE4IBLu1nj9ScQnP6IZAInizwr2Lfl7GYXqtW74dNsFAUuEgLuja1znjFO9SpCrFSRIaWhQ9fJ60eL1QnxAWlKSIDB2kD62hFNkg9zWpX9MwV6wBLzJJpmLRobGKfT0c7ItIU3gHbHksLkVcXsXFwUy0j2lk85j7tC5VcYT2RhY8Ladu9wkQX943oaBUonGrNmz7tFFeCd22FjjfaKiY7fO1j3C0fXGuqjbria4WhjrOLFOq1kvNB5KC0DyA7hRv1GtZ6n8HvSJAVABIfIIaQnyyjpurJx8fFZ07XjiOPX7AV5V8RbJhUHTc8rG3gegWZf7EdHrXKMrvBkeCjAQQzZMG7VwzuVkvyv7yvp5OwAiG7q46U6yieJLlVvoA6mZqiB3hQR2TrdS2JOvZX2GF46Bk04A0TTphWeswG52SkIPzZjz5SLxzn6jWs8rK4g6JhYyIvuJG7Zej2jz0se89c9Qdlo0JfyLhZ8zNTH2OIiGiik4rc9m4I9ZQfALyf7qXXXdeBfQoLVD8rBNDEgeIyQumhtNl5RrjfbeoM4ILLg1u09ahqaamBblLkHMLCWJj5KTjSjC9IXWPPcUqgEdoIsegZFL5DG9QroQmQrTtc2yBxbm0uG4LTVfwau56U9hW52fa25DujBfWtDD7YvwHvrthODTEkwWqYkpROJqOsjN8FUqaeTyeRfeP4Bg1mOeEqSSCTI8CqZGEMpQdWkKNk9NrufgTjd4tPCEZW6kloP4FfrJz4g86iydyXOnG1R7sOKD3rcUHPjHvr6tpR54n3FDwrzbY1NGyInY4381R3JNIVaxHcA0YEbrYftReTttSL5Tk6WjF4IV6RDFJW4fMsUEmcpo5jgNN', 0),
+(64641, 0, 'config', 'config_file_max_size', '10000000', 0),
+(64642, 0, 'config', 'config_file_ext_allowed', 'zip\r\ntxt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc', 0),
+(64639, 0, 'config', 'config_shared', '0', 0),
+(64631, 0, 'config', 'config_compression', '9', 0),
+(64632, 0, 'config', 'config_cache_product', '0', 0),
+(64633, 0, 'config', 'config_cache_product_attribute', '0', 0),
+(64634, 0, 'config', 'config_cache_product_option', '0', 0),
+(64635, 0, 'config', 'config_cache_warmer', '0', 0),
+(64636, 0, 'config', 'config_cache_warmer_key', '', 0),
+(64637, 0, 'config', 'config_secure', '1', 0),
 (44977, 0, 'menu_default', 'menu_default_status', '1', 0),
 (47316, 0, 'feed_sitemap', 'feed_sitemap_cron_token', 'JxPGumpCxnRYYdel2bZK6ZPggYaKYwpd', 0),
 (47315, 0, 'feed_sitemap', 'feed_sitemap_status', '1', 0),
-(61932, 0, 'config', 'config_cache_warmer_key', '', 0),
-(61931, 0, 'config', 'config_cache_warmer', '0', 0),
-(61924, 0, 'config', 'config_maintenance', '0', 0),
-(61925, 0, 'config', 'config_seo_url', '1', 0),
-(61926, 0, 'config', 'config_robots', 'abot\r\ndbot\r\nebot\r\nhbot\r\nkbot\r\nlbot\r\nmbot\r\nnbot\r\nobot\r\npbot\r\nrbot\r\nsbot\r\ntbot\r\nvbot\r\nybot\r\nzbot\r\nbot.\r\nbot/\r\n_bot\r\n.bot\r\n/bot\r\n-bot\r\n:bot\r\n(bot\r\ncrawl\r\nslurp\r\nspider\r\nseek\r\naccoona\r\nacoon\r\nadressendeutschland\r\nah-ha.com\r\nahoy\r\naltavista\r\nananzi\r\nanthill\r\nappie\r\narachnophilia\r\narale\r\naraneo\r\naranha\r\narchitext\r\naretha\r\narks\r\nasterias\r\natlocal\r\natn\r\natomz\r\naugurfind\r\nbackrub\r\nbannana_bot\r\nbaypup\r\nbdfetch\r\nbig brother\r\nbiglotron\r\nbjaaland\r\nblackwidow\r\nblaiz\r\nblog\r\nblo.\r\nbloodhound\r\nboitho\r\nbooch\r\nbradley\r\nbutterfly\r\ncalif\r\ncassandra\r\nccubee\r\ncfetch\r\ncharlotte\r\nchurl\r\ncienciaficcion\r\ncmc\r\ncollective\r\ncomagent\r\ncombine\r\ncomputingsite\r\ncsci\r\ncurl\r\ncusco\r\ndaumoa\r\ndeepindex\r\ndelorie\r\ndepspid\r\ndeweb\r\ndie blinde kuh\r\ndigger\r\nditto\r\ndmoz\r\ndocomo\r\ndownload express\r\ndtaagent\r\ndwcp\r\nebiness\r\nebingbong\r\ne-collector\r\nejupiter\r\nemacs-w3 search engine\r\nesther\r\nevliya celebi\r\nezresult\r\nfalcon\r\nfelix ide\r\nferret\r\nfetchrover\r\nfido\r\nfindlinks\r\nfireball\r\nfish search\r\nfouineur\r\nfunnelweb\r\ngazz\r\ngcreep\r\ngenieknows\r\ngetterroboplus\r\ngeturl\r\nglx\r\ngoforit\r\ngolem\r\ngrabber\r\ngrapnel\r\ngralon\r\ngriffon\r\ngromit\r\ngrub\r\ngulliver\r\nhamahakki\r\nharvest\r\nhavindex\r\nhelix\r\nheritrix\r\nhku www octopus\r\nhomerweb\r\nhtdig\r\nhtml index\r\nhtml_analyzer\r\nhtmlgobble\r\nhubater\r\nhyper-decontextualizer\r\nia_archiver\r\nibm_planetwide\r\nichiro\r\niconsurf\r\niltrovatore\r\nimage.kapsi.net\r\nimagelock\r\nincywincy\r\nindexer\r\ninfobee\r\ninformant\r\ningrid\r\ninktomisearch.com\r\ninspector web\r\nintelliagent\r\ninternet shinchakubin\r\nip3000\r\niron33\r\nisraeli-search\r\nivia\r\njack\r\njakarta\r\njavabee\r\njetbot\r\njumpstation\r\nkatipo\r\nkdd-explorer\r\nkilroy\r\nknowledge\r\nkototoi\r\nkretrieve\r\nlabelgrabber\r\nlachesis\r\nlarbin\r\nlegs\r\nlibwww\r\nlinkalarm\r\nlink validator\r\nlinkscan\r\nlockon\r\nlwp\r\nlycos\r\nmagpie\r\nmantraagent\r\nmapoftheinternet\r\nmarvin/\r\nmattie\r\nmediafox\r\nmediapartners\r\nmercator\r\nmerzscope\r\nmicrosoft url control\r\nminirank\r\nmiva\r\nmj12\r\nmnogosearch\r\nmoget\r\nmonster\r\nmoose\r\nmotor\r\nmultitext\r\nmuncher\r\nmuscatferret\r\nmwd.search\r\nmyweb\r\nnajdi\r\nnameprotect\r\nnationaldirectory\r\nnazilla\r\nncsa beta\r\nnec-meshexplorer\r\nnederland.zoek\r\nnetcarta webmap engine\r\nnetmechanic\r\nnetresearchserver\r\nnetscoop\r\nnewscan-online\r\nnhse\r\nnokia6682/\r\nnomad\r\nnoyona\r\nnutch\r\nnzexplorer\r\nobjectssearch\r\noccam\r\nomni\r\nopen text\r\nopenfind\r\nopenintelligencedata\r\norb search\r\nosis-project\r\npack rat\r\npageboy\r\npagebull\r\npage_verifier\r\npanscient\r\nparasite\r\npartnersite\r\npatric\r\npear.\r\npegasus\r\nperegrinator\r\npgp key agent\r\nphantom\r\nphpdig\r\npicosearch\r\npiltdownman\r\npimptrain\r\npinpoint\r\npioneer\r\npiranha\r\nplumtreewebaccessor\r\npogodak\r\npoirot\r\npompos\r\npoppelsdorf\r\npoppi\r\npopular iconoclast\r\npsycheclone\r\npublisher\r\npython\r\nrambler\r\nraven search\r\nroach\r\nroad runner\r\nroadhouse\r\nrobbie\r\nrobofox\r\nrobozilla\r\nrules\r\nsalty\r\nsbider\r\nscooter\r\nscoutjet\r\nscrubby\r\nsearch.\r\nsearchprocess\r\nsemanticdiscovery\r\nsenrigan\r\nsg-scout\r\nshai\'hulud\r\nshark\r\nshopwiki\r\nsidewinder\r\nsift\r\nsilk\r\nsimmany\r\nsite searcher\r\nsite valet\r\nsitetech-rover\r\nskymob.com\r\nsleek\r\nsmartwit\r\nsna-\r\nsnappy\r\nsnooper\r\nsohu\r\nspeedfind\r\nsphere\r\nsphider\r\nspinner\r\nspyder\r\nsteeler/\r\nsuke\r\nsuntek\r\nsupersnooper\r\nsurfnomore\r\nsven\r\nsygol\r\nszukacz\r\ntach black widow\r\ntarantula\r\ntempleton\r\n/teoma\r\nt-h-u-n-d-e-r-s-t-o-n-e\r\ntheophrastus\r\ntitan\r\ntitin\r\ntkwww\r\ntoutatis\r\nt-rex\r\ntutorgig\r\ntwiceler\r\ntwisted\r\nucsd\r\nudmsearch\r\nurl check\r\nupdated\r\nvagabondo\r\nvalkyrie\r\nverticrawl\r\nvictoria\r\nvision-search\r\nvolcano\r\nvoyager/\r\nvoyager-hc\r\nw3c_validator\r\nw3m2\r\nw3mir\r\nwalker\r\nwallpaper\r\nwanderer\r\nwauuu\r\nwavefire\r\nweb core\r\nweb hopper\r\nweb wombat\r\nwebbandit\r\nwebcatcher\r\nwebcopy\r\nwebfoot\r\nweblayers\r\nweblinker\r\nweblog monitor\r\nwebmirror\r\nwebmonkey\r\nwebquest\r\nwebreaper\r\nwebsitepulse\r\nwebsnarf\r\nwebstolperer\r\nwebvac\r\nwebwalk\r\nwebwatch\r\nwebwombat\r\nwebzinger\r\nwhizbang\r\nwhowhere\r\nwild ferret\r\nworldlight\r\nwwwc\r\nwwwster\r\nxenu\r\nxget\r\nxift\r\nxirq\r\nyandex\r\nyanga\r\nyeti\r\nyodao\r\nzao\r\nzippp\r\nzyborg', 0),
-(61930, 0, 'config', 'config_cache_product_option', '0', 0),
-(61927, 0, 'config', 'config_compression', '9', 0),
-(61928, 0, 'config', 'config_cache_product', '0', 0),
-(61929, 0, 'config', 'config_cache_product_attribute', '0', 0),
-(61923, 0, 'config', 'config_mail_alert_email', '', 0),
-(61922, 0, 'config', 'config_mail_alert', '[\"order\"]', 1),
-(61921, 0, 'config', 'config_mail_smtp_timeout', '5', 0),
-(61920, 0, 'config', 'config_mail_smtp_port', '25', 0),
-(61919, 0, 'config', 'config_mail_smtp_password', '', 0),
-(61918, 0, 'config', 'config_mail_smtp_username', '', 0),
-(61917, 0, 'config', 'config_mail_smtp_hostname', '', 0),
-(61916, 0, 'config', 'config_mail_parameter', '', 0),
-(61915, 0, 'config', 'config_mail_engine', 'mail', 0),
-(61914, 0, 'config', 'config_product_popup_image_mode', 'scale', 0),
-(61913, 0, 'config', 'config_product_thumb_image_mode', 'default', 0),
-(61912, 0, 'config', 'config_product_list_image_mode', 'default', 0),
-(61911, 0, 'config', 'config_category_image_mode', 'default', 0),
-(61910, 0, 'config', 'config_og_fallback_height', '315', 0),
-(61909, 0, 'config', 'config_og_fallback_width', '600', 0),
-(61906, 0, 'config', 'config_logo_height', '36', 0),
-(61907, 0, 'config', 'config_icon', 'catalog/favicon.png', 0),
-(61908, 0, 'config', 'config_og_fallback', 'catalog/og_fallback.png', 0),
-(61905, 0, 'config', 'config_logo_width', '147', 0),
-(61904, 0, 'config', 'config_logo', 'catalog/logo.png', 0),
-(61903, 0, 'config', 'config_captcha_page', '[\"register\",\"guest\",\"review\",\"return\",\"contact\"]', 1),
-(61901, 0, 'config', 'config_return_status_id', '1', 0),
-(61902, 0, 'config', 'config_captcha', 'basic', 0),
-(61900, 0, 'config', 'config_return_id', '9', 0),
-(61899, 0, 'config', 'config_show_contact_form', '1', 0),
-(61898, 0, 'config', 'config_show_email_contacts', '1', 0),
-(61897, 0, 'config', 'config_show_email_footer', '1', 0),
-(61896, 0, 'config', 'config_show_email_header', '1', 0),
-(61895, 0, 'config', 'config_show_telephone_contacts', '1', 0),
-(61894, 0, 'config', 'config_show_telephone_footer', '1', 0),
-(61892, 0, 'config', 'config_affiliate_id', '10', 0),
-(61893, 0, 'config', 'config_show_telephone_header', '1', 0),
-(61891, 0, 'config', 'config_affiliate_commission', '5', 0),
-(61890, 0, 'config', 'config_affiliate_auto', '0', 0),
-(61889, 0, 'config', 'config_affiliate_approval', '0', 0),
-(61888, 0, 'config', 'config_affiliate_group_id', '1', 0),
-(61887, 0, 'config', 'config_stock_checkout', '0', 0),
-(61886, 0, 'config', 'config_stock_warning', '1', 0),
-(61885, 0, 'config', 'config_stock_display', '0', 0),
-(61884, 0, 'config', 'config_api_id', '9', 0),
-(61883, 0, 'config', 'config_fraud_status_id', '16', 0),
-(61882, 0, 'config', 'config_complete_status', '[\"3\",\"15\",\"5\"]', 1),
-(61881, 0, 'config', 'config_processing_status', '[\"2\",\"3\",\"1\",\"12\",\"5\"]', 1),
-(61878, 0, 'config', 'config_checkout_guest', '1', 0),
-(61879, 0, 'config', 'config_checkout_id', '9', 0),
-(61880, 0, 'config', 'config_order_status_id', '1', 0),
-(61877, 0, 'config', 'config_cart_weight', '1', 0),
-(61876, 0, 'config', 'config_ask_payment_address', '0', 0),
-(61875, 0, 'config', 'config_invoice_prefix', 'INV-2026-00', 0),
-(61874, 0, 'config', 'config_account_id', '9', 0),
-(61873, 0, 'config', 'config_login_attempts', '5', 0),
-(61872, 0, 'config', 'config_customer_price', '0', 0),
-(61871, 0, 'config', 'config_customer_group_display', '[\"1\"]', 1),
-(61870, 0, 'config', 'config_customer_group_id', '1', 0),
-(61869, 0, 'config', 'config_customer_search', '0', 0),
-(61868, 0, 'config', 'config_customer_activity', '0', 0),
-(61867, 0, 'config', 'config_customer_online', '0', 0),
-(61866, 0, 'config', 'config_tax_customer', 'shipping', 0),
-(61865, 0, 'config', 'config_tax_default', 'shipping', 0),
-(61864, 0, 'config', 'config_tax', '0', 0),
-(61863, 0, 'config', 'config_voucher_max', '1000', 0),
-(61862, 0, 'config', 'config_voucher_min', '1', 0),
-(61861, 0, 'config', 'config_review_images_limit', '5', 0),
-(61860, 0, 'config', 'config_review_images', '0', 0),
-(61859, 0, 'config', 'config_review_guest', '1', 0),
-(61858, 0, 'config', 'config_review_status', '1', 0),
-(61857, 0, 'config', 'config_show_product_siblings', '1', 0),
-(61854, 0, 'config', 'config_special_sort_order', 'ASC', 0),
-(61856, 0, 'config', 'config_show_options_price', '1', 0),
-(61855, 0, 'config', 'config_out_of_stock_to_end', '0', 0),
-(61853, 0, 'config', 'config_special_sort_param', 'p.sort_order', 0),
-(61852, 0, 'config', 'config_search_sort_order', 'ASC', 0),
-(61851, 0, 'config', 'config_search_sort_param', 'p.sort_order', 0),
-(61850, 0, 'config', 'config_manufacturer_sort_order', 'ASC', 0),
-(61849, 0, 'config', 'config_manufacturer_sort_param', 'p.sort_order', 0),
-(61847, 0, 'config', 'config_category_sort_param', 'p.price', 0),
-(61848, 0, 'config', 'config_category_sort_order', 'ASC', 0),
-(61846, 0, 'config', 'config_limit_autocomplete', '10', 0),
-(61845, 0, 'config', 'config_limit_admin', '30', 0),
-(61844, 0, 'config', 'config_product_count', '0', 0),
-(61843, 0, 'config', 'config_weight_class_id', '1', 0),
-(61841, 0, 'config', 'config_currency_engine', 'cbr', 0),
-(61842, 0, 'config', 'config_length_class_id', '1', 0),
-(61839, 0, 'config', 'config_currency', 'RUB', 0),
-(61840, 0, 'config', 'config_currency_auto', '1', 0),
-(61838, 0, 'config', 'config_admin_language', 'ru-ru', 0),
-(61837, 0, 'config', 'config_language', 'ru-ru', 0),
-(61836, 0, 'config', 'config_timezone', 'Europe/Moscow', 0),
-(61835, 0, 'config', 'config_postal', '110050', 0),
-(61834, 0, 'config', 'config_city', 'Москва', 0),
-(61833, 0, 'config', 'config_zone_id', '2751', 0),
-(61832, 0, 'config', 'config_country_id', '176', 0),
-(61831, 0, 'config', 'config_location', '[\"1\",\"2\"]', 1),
-(61828, 0, 'config', 'config_image', '', 0),
-(61829, 0, 'config', 'config_open', '10:00 - 18:00', 0),
-(61830, 0, 'config', 'config_comment', '', 0),
-(61827, 0, 'config', 'config_social_media', '[{\"name\":\"whatsapp\",\"url\":\"https:\\/\\/wa.me\\/79994206969\",\"icon\":\"&lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;   &lt;path d=&quot;M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232&quot;&gt;&lt;\\/path&gt; &lt;\\/svg&gt;\",\"contact\":\"1\",\"header\":\"1\"},{\"name\":\"telegram\",\"url\":\"https:\\/\\/t.me\\/exopencart\",\"icon\":\"&lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;   &lt;path d=&quot;M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z&quot;\\/&gt; &lt;\\/svg&gt;\",\"contact\":\"1\",\"header\":\"1\"},{\"name\":\"xcom\",\"url\":\"https:\\/\\/x.com\\/exopencart\",\"icon\":\"&lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;   &lt;path d=&quot;M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z&quot;\\/&gt; &lt;\\/svg&gt;\",\"contact\":\"1\",\"header\":\"1\"}]', 1),
-(61826, 0, 'config', 'config_fax', '', 0),
-(61825, 0, 'config', 'config_telephone', '+1 777 420 69 69', 0),
-(61824, 0, 'config', 'config_email', 'info@exopencart.ru', 0),
-(61821, 0, 'config', 'config_owner', 'EX LTD', 0),
-(61822, 0, 'config', 'config_address', 'Planet Earth, Solar System, Milky Way, Universe', 0),
-(61823, 0, 'config', 'config_geocode', 'https://yandex.ru/map-widget/v1/?um=constructor%3Acf0da8fa05f10eb5764f1e0487b4b2a963a2a02ad1c06290acc58a05f78e5230&amp;amp;source=constructor', 0),
-(61820, 0, 'config', 'config_name', 'exopencart', 0),
-(61819, 0, 'config', 'config_layout_id', '4', 0),
-(61818, 0, 'config', 'config_theme_toggle', '1', 0),
-(61817, 0, 'config', 'config_default_theme', 'light', 0),
-(61816, 0, 'config', 'config_pwa_install', '0', 0),
-(61814, 0, 'config', 'config_theme', 'default', 0),
-(61815, 0, 'config', 'config_pwa_mode', '0', 0),
-(61813, 0, 'config', 'config_meta_keyword', '', 0),
-(61809, 0, 'config', 'config_meta_title', 'Modern OpenCart Without Module Hell | Demo', 0),
-(61810, 0, 'config', 'config_title_seo_phrase', '{\"1\":\"\",\"2\":\"\"}', 1),
-(61811, 0, 'config', 'config_heading_seo_phrase', '{\"1\":\"\",\"2\":\"\"}', 1),
-(61812, 0, 'config', 'config_meta_description', 'Tired of 30+ conflicting extensions? Exopencart delivers a clean, fast OpenCart fork: Bulma theme, rewritten checkout, bulk discounts, fractional quantities, dark mode, live search, and built-in Telegram bot. Stable and production-ready. Explore the demo.', 0);
+(64638, 0, 'config', 'config_password', '1', 0),
+(64630, 0, 'config', 'config_robots', 'abot\r\ndbot\r\nebot\r\nhbot\r\nkbot\r\nlbot\r\nmbot\r\nnbot\r\nobot\r\npbot\r\nrbot\r\nsbot\r\ntbot\r\nvbot\r\nybot\r\nzbot\r\nbot.\r\nbot/\r\n_bot\r\n.bot\r\n/bot\r\n-bot\r\n:bot\r\n(bot\r\ncrawl\r\nslurp\r\nspider\r\nseek\r\naccoona\r\nacoon\r\nadressendeutschland\r\nah-ha.com\r\nahoy\r\naltavista\r\nananzi\r\nanthill\r\nappie\r\narachnophilia\r\narale\r\naraneo\r\naranha\r\narchitext\r\naretha\r\narks\r\nasterias\r\natlocal\r\natn\r\natomz\r\naugurfind\r\nbackrub\r\nbannana_bot\r\nbaypup\r\nbdfetch\r\nbig brother\r\nbiglotron\r\nbjaaland\r\nblackwidow\r\nblaiz\r\nblog\r\nblo.\r\nbloodhound\r\nboitho\r\nbooch\r\nbradley\r\nbutterfly\r\ncalif\r\ncassandra\r\nccubee\r\ncfetch\r\ncharlotte\r\nchurl\r\ncienciaficcion\r\ncmc\r\ncollective\r\ncomagent\r\ncombine\r\ncomputingsite\r\ncsci\r\ncurl\r\ncusco\r\ndaumoa\r\ndeepindex\r\ndelorie\r\ndepspid\r\ndeweb\r\ndie blinde kuh\r\ndigger\r\nditto\r\ndmoz\r\ndocomo\r\ndownload express\r\ndtaagent\r\ndwcp\r\nebiness\r\nebingbong\r\ne-collector\r\nejupiter\r\nemacs-w3 search engine\r\nesther\r\nevliya celebi\r\nezresult\r\nfalcon\r\nfelix ide\r\nferret\r\nfetchrover\r\nfido\r\nfindlinks\r\nfireball\r\nfish search\r\nfouineur\r\nfunnelweb\r\ngazz\r\ngcreep\r\ngenieknows\r\ngetterroboplus\r\ngeturl\r\nglx\r\ngoforit\r\ngolem\r\ngrabber\r\ngrapnel\r\ngralon\r\ngriffon\r\ngromit\r\ngrub\r\ngulliver\r\nhamahakki\r\nharvest\r\nhavindex\r\nhelix\r\nheritrix\r\nhku www octopus\r\nhomerweb\r\nhtdig\r\nhtml index\r\nhtml_analyzer\r\nhtmlgobble\r\nhubater\r\nhyper-decontextualizer\r\nia_archiver\r\nibm_planetwide\r\nichiro\r\niconsurf\r\niltrovatore\r\nimage.kapsi.net\r\nimagelock\r\nincywincy\r\nindexer\r\ninfobee\r\ninformant\r\ningrid\r\ninktomisearch.com\r\ninspector web\r\nintelliagent\r\ninternet shinchakubin\r\nip3000\r\niron33\r\nisraeli-search\r\nivia\r\njack\r\njakarta\r\njavabee\r\njetbot\r\njumpstation\r\nkatipo\r\nkdd-explorer\r\nkilroy\r\nknowledge\r\nkototoi\r\nkretrieve\r\nlabelgrabber\r\nlachesis\r\nlarbin\r\nlegs\r\nlibwww\r\nlinkalarm\r\nlink validator\r\nlinkscan\r\nlockon\r\nlwp\r\nlycos\r\nmagpie\r\nmantraagent\r\nmapoftheinternet\r\nmarvin/\r\nmattie\r\nmediafox\r\nmediapartners\r\nmercator\r\nmerzscope\r\nmicrosoft url control\r\nminirank\r\nmiva\r\nmj12\r\nmnogosearch\r\nmoget\r\nmonster\r\nmoose\r\nmotor\r\nmultitext\r\nmuncher\r\nmuscatferret\r\nmwd.search\r\nmyweb\r\nnajdi\r\nnameprotect\r\nnationaldirectory\r\nnazilla\r\nncsa beta\r\nnec-meshexplorer\r\nnederland.zoek\r\nnetcarta webmap engine\r\nnetmechanic\r\nnetresearchserver\r\nnetscoop\r\nnewscan-online\r\nnhse\r\nnokia6682/\r\nnomad\r\nnoyona\r\nnutch\r\nnzexplorer\r\nobjectssearch\r\noccam\r\nomni\r\nopen text\r\nopenfind\r\nopenintelligencedata\r\norb search\r\nosis-project\r\npack rat\r\npageboy\r\npagebull\r\npage_verifier\r\npanscient\r\nparasite\r\npartnersite\r\npatric\r\npear.\r\npegasus\r\nperegrinator\r\npgp key agent\r\nphantom\r\nphpdig\r\npicosearch\r\npiltdownman\r\npimptrain\r\npinpoint\r\npioneer\r\npiranha\r\nplumtreewebaccessor\r\npogodak\r\npoirot\r\npompos\r\npoppelsdorf\r\npoppi\r\npopular iconoclast\r\npsycheclone\r\npublisher\r\npython\r\nrambler\r\nraven search\r\nroach\r\nroad runner\r\nroadhouse\r\nrobbie\r\nrobofox\r\nrobozilla\r\nrules\r\nsalty\r\nsbider\r\nscooter\r\nscoutjet\r\nscrubby\r\nsearch.\r\nsearchprocess\r\nsemanticdiscovery\r\nsenrigan\r\nsg-scout\r\nshai\'hulud\r\nshark\r\nshopwiki\r\nsidewinder\r\nsift\r\nsilk\r\nsimmany\r\nsite searcher\r\nsite valet\r\nsitetech-rover\r\nskymob.com\r\nsleek\r\nsmartwit\r\nsna-\r\nsnappy\r\nsnooper\r\nsohu\r\nspeedfind\r\nsphere\r\nsphider\r\nspinner\r\nspyder\r\nsteeler/\r\nsuke\r\nsuntek\r\nsupersnooper\r\nsurfnomore\r\nsven\r\nsygol\r\nszukacz\r\ntach black widow\r\ntarantula\r\ntempleton\r\n/teoma\r\nt-h-u-n-d-e-r-s-t-o-n-e\r\ntheophrastus\r\ntitan\r\ntitin\r\ntkwww\r\ntoutatis\r\nt-rex\r\ntutorgig\r\ntwiceler\r\ntwisted\r\nucsd\r\nudmsearch\r\nurl check\r\nupdated\r\nvagabondo\r\nvalkyrie\r\nverticrawl\r\nvictoria\r\nvision-search\r\nvolcano\r\nvoyager/\r\nvoyager-hc\r\nw3c_validator\r\nw3m2\r\nw3mir\r\nwalker\r\nwallpaper\r\nwanderer\r\nwauuu\r\nwavefire\r\nweb core\r\nweb hopper\r\nweb wombat\r\nwebbandit\r\nwebcatcher\r\nwebcopy\r\nwebfoot\r\nweblayers\r\nweblinker\r\nweblog monitor\r\nwebmirror\r\nwebmonkey\r\nwebquest\r\nwebreaper\r\nwebsitepulse\r\nwebsnarf\r\nwebstolperer\r\nwebvac\r\nwebwalk\r\nwebwatch\r\nwebwombat\r\nwebzinger\r\nwhizbang\r\nwhowhere\r\nwild ferret\r\nworldlight\r\nwwwc\r\nwwwster\r\nxenu\r\nxget\r\nxift\r\nxirq\r\nyandex\r\nyanga\r\nyeti\r\nyodao\r\nzao\r\nzippp\r\nzyborg', 0),
+(64629, 0, 'config', 'config_seo_url', '1', 0),
+(64628, 0, 'config', 'config_maintenance', '0', 0),
+(64627, 0, 'config', 'config_mail_alert_email', '', 0),
+(64626, 0, 'config', 'config_mail_alert', '[\"order\"]', 1),
+(64625, 0, 'config', 'config_mail_smtp_timeout', '5', 0),
+(64624, 0, 'config', 'config_mail_smtp_port', '25', 0),
+(64623, 0, 'config', 'config_mail_smtp_password', '', 0),
+(64622, 0, 'config', 'config_mail_smtp_username', '', 0),
+(64621, 0, 'config', 'config_mail_smtp_hostname', '', 0),
+(64620, 0, 'config', 'config_mail_parameter', '', 0),
+(64619, 0, 'config', 'config_mail_engine', 'mail', 0),
+(64618, 0, 'config', 'config_product_popup_image_mode', 'scale', 0),
+(64617, 0, 'config', 'config_product_thumb_image_mode', 'default', 0),
+(64616, 0, 'config', 'config_product_list_image_mode', 'default', 0),
+(64615, 0, 'config', 'config_category_image_mode', 'default', 0),
+(64614, 0, 'config', 'config_og_fallback_height', '315', 0),
+(64613, 0, 'config', 'config_og_fallback_width', '600', 0),
+(64612, 0, 'config', 'config_og_fallback', 'catalog/og_fallback.png', 0),
+(64611, 0, 'config', 'config_icon', 'catalog/favicon.png', 0),
+(64610, 0, 'config', 'config_logo_height', '36', 0),
+(64608, 0, 'config', 'config_logo', 'catalog/logo.png', 0),
+(64609, 0, 'config', 'config_logo_width', '147', 0),
+(64607, 0, 'config', 'config_captcha_page', '[\"register\",\"guest\",\"review\",\"return\",\"contact\"]', 1),
+(64606, 0, 'config', 'config_captcha', 'basic', 0),
+(64605, 0, 'config', 'config_return_status_id', '1', 0),
+(64604, 0, 'config', 'config_return_id', '9', 0),
+(64603, 0, 'config', 'config_show_contact_form', '1', 0),
+(64602, 0, 'config', 'config_show_email_contacts', '1', 0),
+(64601, 0, 'config', 'config_show_email_footer', '1', 0),
+(64600, 0, 'config', 'config_show_email_header', '1', 0),
+(64599, 0, 'config', 'config_show_telephone_contacts', '1', 0),
+(64598, 0, 'config', 'config_show_telephone_footer', '1', 0),
+(64597, 0, 'config', 'config_show_telephone_header', '1', 0),
+(64596, 0, 'config', 'config_affiliate_id', '10', 0),
+(64595, 0, 'config', 'config_affiliate_payout_minimum', '5000', 0),
+(64594, 0, 'config', 'config_affiliate_allow_payout', '1', 0),
+(64593, 0, 'config', 'config_affiliate_commission', '5', 0),
+(64592, 0, 'config', 'config_affiliate_auto', '1', 0),
+(64591, 0, 'config', 'config_affiliate_approval', '0', 0),
+(64590, 0, 'config', 'config_affiliate_group_id', '1', 0),
+(64589, 0, 'config', 'config_stock_checkout', '0', 0),
+(64588, 0, 'config', 'config_stock_warning', '1', 0),
+(64586, 0, 'config', 'config_api_id', '9', 0),
+(64587, 0, 'config', 'config_stock_display', '0', 0),
+(64585, 0, 'config', 'config_fraud_status_id', '16', 0),
+(64583, 0, 'config', 'config_processing_status', '[\"7\",\"9\",\"13\",\"8\",\"10\",\"1\",\"15\",\"2\",\"11\",\"12\",\"16\"]', 1),
+(64584, 0, 'config', 'config_complete_status', '[\"5\",\"3\"]', 1),
+(64582, 0, 'config', 'config_order_status_id', '1', 0),
+(64581, 0, 'config', 'config_checkout_id', '9', 0),
+(64580, 0, 'config', 'config_checkout_guest', '1', 0),
+(64579, 0, 'config', 'config_cart_weight', '1', 0),
+(64578, 0, 'config', 'config_ask_payment_address', '0', 0),
+(64577, 0, 'config', 'config_invoice_prefix', 'INV-2026-00', 0),
+(64576, 0, 'config', 'config_account_id', '9', 0),
+(64575, 0, 'config', 'config_login_attempts', '5', 0),
+(64574, 0, 'config', 'config_customer_price', '0', 0),
+(64573, 0, 'config', 'config_customer_group_display', '[\"1\"]', 1),
+(64572, 0, 'config', 'config_customer_group_id', '1', 0),
+(64571, 0, 'config', 'config_customer_search', '0', 0),
+(64570, 0, 'config', 'config_customer_activity', '0', 0),
+(64569, 0, 'config', 'config_customer_online', '0', 0),
+(64568, 0, 'config', 'config_tax_customer', 'shipping', 0),
+(64565, 0, 'config', 'config_voucher_max', '1000', 0),
+(64566, 0, 'config', 'config_tax', '0', 0),
+(64567, 0, 'config', 'config_tax_default', 'shipping', 0),
+(64564, 0, 'config', 'config_voucher_min', '1', 0),
+(64563, 0, 'config', 'config_review_images_limit', '5', 0),
+(64562, 0, 'config', 'config_review_images', '0', 0),
+(64561, 0, 'config', 'config_review_guest', '1', 0),
+(64560, 0, 'config', 'config_review_status', '1', 0),
+(64559, 0, 'config', 'config_show_product_siblings', '1', 0),
+(64558, 0, 'config', 'config_show_options_price', '1', 0),
+(64557, 0, 'config', 'config_out_of_stock_to_end', '0', 0),
+(64556, 0, 'config', 'config_special_sort_order', 'ASC', 0),
+(64555, 0, 'config', 'config_special_sort_param', 'p.sort_order', 0),
+(64554, 0, 'config', 'config_search_sort_order', 'ASC', 0),
+(64553, 0, 'config', 'config_search_sort_param', 'p.sort_order', 0),
+(64552, 0, 'config', 'config_manufacturer_sort_order', 'ASC', 0),
+(64551, 0, 'config', 'config_manufacturer_sort_param', 'p.sort_order', 0),
+(64550, 0, 'config', 'config_category_sort_order', 'ASC', 0),
+(64549, 0, 'config', 'config_category_sort_param', 'p.price', 0),
+(64548, 0, 'config', 'config_limit_autocomplete', '10', 0),
+(64528, 0, 'config', 'config_fax', '', 0),
+(64529, 0, 'config', 'config_social_media', '[{\"name\":\"whatsapp\",\"url\":\"https:\\/\\/wa.me\\/79994206969\",\"icon\":\"&lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;   &lt;path d=&quot;M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232&quot;&gt;&lt;\\/path&gt; &lt;\\/svg&gt;\",\"contact\":\"1\",\"header\":\"1\"},{\"name\":\"telegram\",\"url\":\"https:\\/\\/t.me\\/exopencart\",\"icon\":\"&lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;   &lt;path d=&quot;M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z&quot;\\/&gt; &lt;\\/svg&gt;\",\"contact\":\"1\",\"header\":\"1\"},{\"name\":\"xcom\",\"url\":\"https:\\/\\/x.com\\/exopencart\",\"icon\":\"&lt;svg xmlns=&quot;http:\\/\\/www.w3.org\\/2000\\/svg&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 16 16&quot;&gt;   &lt;path d=&quot;M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z&quot;\\/&gt; &lt;\\/svg&gt;\",\"contact\":\"1\",\"header\":\"1\"}]', 1),
+(64547, 0, 'config', 'config_limit_admin', '30', 0),
+(64546, 0, 'config', 'config_product_count', '0', 0),
+(64545, 0, 'config', 'config_weight_class_id', '1', 0),
+(64544, 0, 'config', 'config_length_class_id', '1', 0),
+(64543, 0, 'config', 'config_currency_engine', 'cbr', 0),
+(64542, 0, 'config', 'config_currency_auto', '1', 0),
+(64541, 0, 'config', 'config_currency', 'RUB', 0),
+(64540, 0, 'config', 'config_admin_language', 'ru-ru', 0),
+(64539, 0, 'config', 'config_language', 'ru-ru', 0),
+(64538, 0, 'config', 'config_timezone', 'Europe/Moscow', 0),
+(64537, 0, 'config', 'config_postal', '110050', 0),
+(64536, 0, 'config', 'config_city', 'Москва', 0),
+(64530, 0, 'config', 'config_image', '', 0),
+(64531, 0, 'config', 'config_open', '10:00 - 18:00', 0),
+(64532, 0, 'config', 'config_comment', '', 0),
+(64533, 0, 'config', 'config_location', '[\"1\",\"2\"]', 1),
+(64534, 0, 'config', 'config_country_id', '176', 0),
+(64535, 0, 'config', 'config_zone_id', '2751', 0),
+(64527, 0, 'config', 'config_telephone', '+1 777 420 69 69', 0),
+(64524, 0, 'config', 'config_address', 'Planet Earth, Solar System, Milky Way, Universe', 0),
+(64525, 0, 'config', 'config_geocode', 'https://yandex.ru/map-widget/v1/?um=constructor%3Acf0da8fa05f10eb5764f1e0487b4b2a963a2a02ad1c06290acc58a05f78e5230&amp;amp;source=constructor', 0),
+(64526, 0, 'config', 'config_email', 'info@exopencart.ru', 0),
+(64523, 0, 'config', 'config_owner', 'EX LTD', 0),
+(64522, 0, 'config', 'config_name', 'exopencart', 0),
+(64521, 0, 'config', 'config_layout_id', '4', 0),
+(64520, 0, 'config', 'config_theme_toggle', '1', 0),
+(64519, 0, 'config', 'config_default_theme', 'light', 0),
+(64518, 0, 'config', 'config_pwa_install', '0', 0),
+(64517, 0, 'config', 'config_pwa_mode', '0', 0),
+(64516, 0, 'config', 'config_theme', 'default', 0),
+(64514, 0, 'config', 'config_meta_description', 'Tired of 30+ conflicting extensions? Exopencart delivers a clean, fast OpenCart fork: Bulma theme, rewritten checkout, bulk discounts, fractional quantities, dark mode, live search, and built-in Telegram bot. Stable and production-ready. Explore the demo.', 0),
+(64515, 0, 'config', 'config_meta_keyword', '', 0),
+(64513, 0, 'config', 'config_heading_seo_phrase', '{\"1\":\"\",\"2\":\"\"}', 1),
+(64511, 0, 'config', 'config_meta_title', 'Modern OpenCart Without Module Hell | Demo', 0),
+(64512, 0, 'config', 'config_title_seo_phrase', '{\"1\":\"\",\"2\":\"\"}', 1);
 
 -- --------------------------------------------------------
 
@@ -7212,7 +7275,7 @@ CREATE TABLE `oc_statistics` (
 --
 
 INSERT INTO `oc_statistics` (`statistics_id`, `code`, `value`) VALUES
-(1, 'order_sale', '14079707.8000'),
+(1, 'order_sale', '25933307.8000'),
 (2, 'order_processing', '0.0000'),
 (3, 'order_complete', '0.0000'),
 (4, 'order_other', '0.0000'),
@@ -7440,7 +7503,7 @@ CREATE TABLE `oc_user_group` (
 --
 
 INSERT INTO `oc_user_group` (`user_group_id`, `name`, `permission`) VALUES
-(1, 'Administrator', '{\"access\":[\"blog\\/article\",\"blog\\/category\",\"blog\\/review\",\"blog\\/setting\",\"catalog\\/attribute\",\"catalog\\/attribute_group\",\"catalog\\/category\",\"catalog\\/download\",\"catalog\\/filter\",\"catalog\\/information\",\"catalog\\/manufacturer\",\"catalog\\/option\",\"catalog\\/product\",\"catalog\\/recurring\",\"catalog\\/review\",\"common\\/column_left\",\"common\\/developer\",\"common\\/filemanager\",\"common\\/profile\",\"common\\/security\",\"customer\\/custom_field\",\"customer\\/customer\",\"customer\\/customer_approval\",\"customer\\/customer_group\",\"customer\\/incoming\",\"design\\/banner\",\"design\\/layout\",\"design\\/seo_url\",\"design\\/theme\",\"design\\/translation\",\"event\\/language\",\"event\\/statistics\",\"event\\/theme\",\"extension\\/advertise\\/google\",\"extension\\/analytics\\/google\",\"extension\\/captcha\\/basic\",\"extension\\/captcha\\/google\",\"extension\\/captcha\\/yandex\",\"extension\\/currency\\/cbr\",\"extension\\/currency\\/ecb\",\"extension\\/currency\\/fixer\",\"extension\\/currency\\/nbu\",\"extension\\/dashboard\\/activity\",\"extension\\/dashboard\\/chart\",\"extension\\/dashboard\\/customer\",\"extension\\/dashboard\\/map\",\"extension\\/dashboard\\/online\",\"extension\\/dashboard\\/order\",\"extension\\/dashboard\\/recent\",\"extension\\/dashboard\\/sale\",\"extension\\/extension\\/advertise\",\"extension\\/extension\\/analytics\",\"extension\\/extension\\/captcha\",\"extension\\/extension\\/currency\",\"extension\\/extension\\/dashboard\",\"extension\\/extension\\/feed\",\"extension\\/extension\\/fraud\",\"extension\\/extension\\/menu\",\"extension\\/extension\\/module\",\"extension\\/extension\\/payment\",\"extension\\/extension\\/report\",\"extension\\/extension\\/shipping\",\"extension\\/extension\\/theme\",\"extension\\/extension\\/total\",\"extension\\/feed\\/google_base\",\"extension\\/feed\\/sitemap\",\"extension\\/feed\\/unisender\",\"extension\\/feed\\/yandex_market\",\"extension\\/feed\\/yandex_turbo\",\"extension\\/fraud\\/fraudlabspro\",\"extension\\/fraud\\/ip\",\"extension\\/fraud\\/maxmind\",\"extension\\/menu\\/default\",\"extension\\/module\\/account\",\"extension\\/module\\/amazon_login\",\"extension\\/module\\/amazon_pay\",\"extension\\/module\\/anycategories\",\"extension\\/module\\/banner\",\"extension\\/module\\/bestseller\",\"extension\\/module\\/blog_category\",\"extension\\/module\\/blog_featured\",\"extension\\/module\\/blog_latest\",\"extension\\/module\\/carousel\",\"extension\\/module\\/category\",\"extension\\/module\\/divido_calculator\",\"extension\\/module\\/exbot\",\"extension\\/module\\/extheme\",\"extension\\/module\\/featured\",\"extension\\/module\\/featured_article\",\"extension\\/module\\/featured_product\",\"extension\\/module\\/filter\",\"extension\\/module\\/google_hangouts\",\"extension\\/module\\/html\",\"extension\\/module\\/information\",\"extension\\/module\\/klarna_checkout_module\",\"extension\\/module\\/latest\",\"extension\\/module\\/laybuy_layout\",\"extension\\/module\\/paypal_smart_button\",\"extension\\/module\\/pilibaba_button\",\"extension\\/module\\/pp_braintree_button\",\"extension\\/module\\/privacy\",\"extension\\/module\\/sagepay_direct_cards\",\"extension\\/module\\/sagepay_server_cards\",\"extension\\/module\\/slideshow\",\"extension\\/module\\/special\",\"extension\\/module\\/store\",\"extension\\/payment\\/alipay\",\"extension\\/payment\\/alipay_cross\",\"extension\\/payment\\/amazon_login_pay\",\"extension\\/payment\\/authorizenet_aim\",\"extension\\/payment\\/authorizenet_sim\",\"extension\\/payment\\/bank_transfer\",\"extension\\/payment\\/bluepay_hosted\",\"extension\\/payment\\/bluepay_redirect\",\"extension\\/payment\\/cardconnect\",\"extension\\/payment\\/cardinity\",\"extension\\/payment\\/cheque\",\"extension\\/payment\\/cod\",\"extension\\/payment\\/divido\",\"extension\\/payment\\/eway\",\"extension\\/payment\\/firstdata\",\"extension\\/payment\\/firstdata_remote\",\"extension\\/payment\\/free_checkout\",\"extension\\/payment\\/g2apay\",\"extension\\/payment\\/globalpay\",\"extension\\/payment\\/globalpay_remote\",\"extension\\/payment\\/klarna_account\",\"extension\\/payment\\/klarna_checkout\",\"extension\\/payment\\/klarna_invoice\",\"extension\\/payment\\/laybuy\",\"extension\\/payment\\/liqpay\",\"extension\\/payment\\/nochex\",\"extension\\/payment\\/ocstore_w1\",\"extension\\/payment\\/paymate\",\"extension\\/payment\\/paypal\",\"extension\\/payment\\/paypoint\",\"extension\\/payment\\/payza\",\"extension\\/payment\\/perpetual_payments\",\"extension\\/payment\\/pilibaba\",\"extension\\/payment\\/pp_braintree\",\"extension\\/payment\\/pp_express\",\"extension\\/payment\\/pp_payflow\",\"extension\\/payment\\/pp_payflow_iframe\",\"extension\\/payment\\/pp_pro\",\"extension\\/payment\\/pp_pro_iframe\",\"extension\\/payment\\/pp_standard\",\"extension\\/payment\\/realex\",\"extension\\/payment\\/realex_remote\",\"extension\\/payment\\/sagepay_direct\",\"extension\\/payment\\/sagepay_server\",\"extension\\/payment\\/sagepay_us\",\"extension\\/payment\\/securetrading_pp\",\"extension\\/payment\\/securetrading_ws\",\"extension\\/payment\\/skrill\",\"extension\\/payment\\/squareup\",\"extension\\/payment\\/twocheckout\",\"extension\\/payment\\/web_payment_software\",\"extension\\/payment\\/webmoney_wmb\",\"extension\\/payment\\/webmoney_wme\",\"extension\\/payment\\/webmoney_wmk\",\"extension\\/payment\\/webmoney_wmr\",\"extension\\/payment\\/webmoney_wmu\",\"extension\\/payment\\/webmoney_wmv\",\"extension\\/payment\\/webmoney_wmz\",\"extension\\/payment\\/wechat_pay\",\"extension\\/payment\\/worldpay\",\"extension\\/report\\/customer_activity\",\"extension\\/report\\/customer_order\",\"extension\\/report\\/customer_reward\",\"extension\\/report\\/customer_search\",\"extension\\/report\\/customer_transaction\",\"extension\\/report\\/marketing\",\"extension\\/report\\/product_purchased\",\"extension\\/report\\/product_viewed\",\"extension\\/report\\/sale_coupon\",\"extension\\/report\\/sale_order\",\"extension\\/report\\/sale_return\",\"extension\\/report\\/sale_shipping\",\"extension\\/report\\/sale_tax\",\"extension\\/shipping\\/auspost\",\"extension\\/shipping\\/ec_ship\",\"extension\\/shipping\\/fedex\",\"extension\\/shipping\\/flat\",\"extension\\/shipping\\/free\",\"extension\\/shipping\\/item\",\"extension\\/shipping\\/parcelforce_48\",\"extension\\/shipping\\/pickup\",\"extension\\/shipping\\/royal_mail\",\"extension\\/shipping\\/ups\",\"extension\\/shipping\\/usps\",\"extension\\/shipping\\/weight\",\"extension\\/theme\\/default\",\"extension\\/total\\/coupon\",\"extension\\/total\\/credit\",\"extension\\/total\\/handling\",\"extension\\/total\\/klarna_fee\",\"extension\\/total\\/low_order_fee\",\"extension\\/total\\/reward\",\"extension\\/total\\/shipping\",\"extension\\/total\\/sub_total\",\"extension\\/total\\/tax\",\"extension\\/total\\/total\",\"extension\\/total\\/voucher\",\"localisation\\/country\",\"localisation\\/currency\",\"localisation\\/geo_zone\",\"localisation\\/language\",\"localisation\\/length_class\",\"localisation\\/location\",\"localisation\\/order_status\",\"localisation\\/quantity_class\",\"localisation\\/return_action\",\"localisation\\/return_reason\",\"localisation\\/return_status\",\"localisation\\/stock_status\",\"localisation\\/tax_class\",\"localisation\\/tax_rate\",\"localisation\\/weight_class\",\"localisation\\/zone\",\"mail\\/affiliate\",\"mail\\/customer\",\"mail\\/forgotten\",\"mail\\/return\",\"mail\\/reward\",\"mail\\/transaction\",\"marketing\\/contact\",\"marketing\\/coupon\",\"marketing\\/marketing\",\"marketplace\\/api\",\"marketplace\\/event\",\"marketplace\\/extension\",\"marketplace\\/install\",\"marketplace\\/installer\",\"marketplace\\/modification\",\"report\\/online\",\"report\\/report\",\"report\\/statistics\",\"sale\\/order\",\"sale\\/recurring\",\"sale\\/return\",\"sale\\/voucher\",\"sale\\/voucher_theme\",\"search\\/search\",\"setting\\/redirect\",\"setting\\/setting\",\"setting\\/store\",\"startup\\/error\",\"startup\\/event\",\"startup\\/login\",\"startup\\/permission\",\"startup\\/router\",\"startup\\/sass\",\"startup\\/startup\",\"tool\\/backup\",\"tool\\/log\",\"tool\\/upload\",\"user\\/api\",\"user\\/user\",\"user\\/user_permission\",\"extension\\/module\\/auth\",\"extension\\/module\\/auth\"],\"modify\":[\"blog\\/article\",\"blog\\/category\",\"blog\\/review\",\"blog\\/setting\",\"catalog\\/attribute\",\"catalog\\/attribute_group\",\"catalog\\/category\",\"catalog\\/download\",\"catalog\\/filter\",\"catalog\\/information\",\"catalog\\/manufacturer\",\"catalog\\/option\",\"catalog\\/product\",\"catalog\\/recurring\",\"catalog\\/review\",\"common\\/column_left\",\"common\\/developer\",\"common\\/filemanager\",\"common\\/profile\",\"common\\/security\",\"customer\\/custom_field\",\"customer\\/customer\",\"customer\\/customer_approval\",\"customer\\/customer_group\",\"customer\\/incoming\",\"design\\/banner\",\"design\\/layout\",\"design\\/seo_url\",\"design\\/theme\",\"design\\/translation\",\"event\\/language\",\"event\\/statistics\",\"event\\/theme\",\"extension\\/advertise\\/google\",\"extension\\/analytics\\/google\",\"extension\\/captcha\\/basic\",\"extension\\/captcha\\/google\",\"extension\\/captcha\\/yandex\",\"extension\\/currency\\/cbr\",\"extension\\/currency\\/ecb\",\"extension\\/currency\\/fixer\",\"extension\\/currency\\/nbu\",\"extension\\/dashboard\\/activity\",\"extension\\/dashboard\\/chart\",\"extension\\/dashboard\\/customer\",\"extension\\/dashboard\\/map\",\"extension\\/dashboard\\/online\",\"extension\\/dashboard\\/order\",\"extension\\/dashboard\\/recent\",\"extension\\/dashboard\\/sale\",\"extension\\/extension\\/advertise\",\"extension\\/extension\\/analytics\",\"extension\\/extension\\/captcha\",\"extension\\/extension\\/currency\",\"extension\\/extension\\/dashboard\",\"extension\\/extension\\/feed\",\"extension\\/extension\\/fraud\",\"extension\\/extension\\/menu\",\"extension\\/extension\\/module\",\"extension\\/extension\\/payment\",\"extension\\/extension\\/report\",\"extension\\/extension\\/shipping\",\"extension\\/extension\\/theme\",\"extension\\/extension\\/total\",\"extension\\/feed\\/google_base\",\"extension\\/feed\\/sitemap\",\"extension\\/feed\\/unisender\",\"extension\\/feed\\/yandex_market\",\"extension\\/feed\\/yandex_turbo\",\"extension\\/fraud\\/fraudlabspro\",\"extension\\/fraud\\/ip\",\"extension\\/fraud\\/maxmind\",\"extension\\/menu\\/default\",\"extension\\/module\\/account\",\"extension\\/module\\/amazon_login\",\"extension\\/module\\/amazon_pay\",\"extension\\/module\\/anycategories\",\"extension\\/module\\/banner\",\"extension\\/module\\/bestseller\",\"extension\\/module\\/blog_category\",\"extension\\/module\\/blog_featured\",\"extension\\/module\\/blog_latest\",\"extension\\/module\\/carousel\",\"extension\\/module\\/category\",\"extension\\/module\\/divido_calculator\",\"extension\\/module\\/exbot\",\"extension\\/module\\/extheme\",\"extension\\/module\\/featured\",\"extension\\/module\\/featured_article\",\"extension\\/module\\/featured_product\",\"extension\\/module\\/filter\",\"extension\\/module\\/google_hangouts\",\"extension\\/module\\/html\",\"extension\\/module\\/information\",\"extension\\/module\\/klarna_checkout_module\",\"extension\\/module\\/latest\",\"extension\\/module\\/laybuy_layout\",\"extension\\/module\\/paypal_smart_button\",\"extension\\/module\\/pilibaba_button\",\"extension\\/module\\/pp_braintree_button\",\"extension\\/module\\/privacy\",\"extension\\/module\\/sagepay_direct_cards\",\"extension\\/module\\/sagepay_server_cards\",\"extension\\/module\\/slideshow\",\"extension\\/module\\/special\",\"extension\\/module\\/store\",\"extension\\/payment\\/alipay\",\"extension\\/payment\\/alipay_cross\",\"extension\\/payment\\/amazon_login_pay\",\"extension\\/payment\\/authorizenet_aim\",\"extension\\/payment\\/authorizenet_sim\",\"extension\\/payment\\/bank_transfer\",\"extension\\/payment\\/bluepay_hosted\",\"extension\\/payment\\/bluepay_redirect\",\"extension\\/payment\\/cardconnect\",\"extension\\/payment\\/cardinity\",\"extension\\/payment\\/cheque\",\"extension\\/payment\\/cod\",\"extension\\/payment\\/divido\",\"extension\\/payment\\/eway\",\"extension\\/payment\\/firstdata\",\"extension\\/payment\\/firstdata_remote\",\"extension\\/payment\\/free_checkout\",\"extension\\/payment\\/g2apay\",\"extension\\/payment\\/globalpay\",\"extension\\/payment\\/globalpay_remote\",\"extension\\/payment\\/klarna_account\",\"extension\\/payment\\/klarna_checkout\",\"extension\\/payment\\/klarna_invoice\",\"extension\\/payment\\/laybuy\",\"extension\\/payment\\/liqpay\",\"extension\\/payment\\/nochex\",\"extension\\/payment\\/ocstore_w1\",\"extension\\/payment\\/paymate\",\"extension\\/payment\\/paypal\",\"extension\\/payment\\/paypoint\",\"extension\\/payment\\/payza\",\"extension\\/payment\\/perpetual_payments\",\"extension\\/payment\\/pilibaba\",\"extension\\/payment\\/pp_braintree\",\"extension\\/payment\\/pp_express\",\"extension\\/payment\\/pp_payflow\",\"extension\\/payment\\/pp_payflow_iframe\",\"extension\\/payment\\/pp_pro\",\"extension\\/payment\\/pp_pro_iframe\",\"extension\\/payment\\/pp_standard\",\"extension\\/payment\\/realex\",\"extension\\/payment\\/realex_remote\",\"extension\\/payment\\/sagepay_direct\",\"extension\\/payment\\/sagepay_server\",\"extension\\/payment\\/sagepay_us\",\"extension\\/payment\\/securetrading_pp\",\"extension\\/payment\\/securetrading_ws\",\"extension\\/payment\\/skrill\",\"extension\\/payment\\/squareup\",\"extension\\/payment\\/twocheckout\",\"extension\\/payment\\/web_payment_software\",\"extension\\/payment\\/webmoney_wmb\",\"extension\\/payment\\/webmoney_wme\",\"extension\\/payment\\/webmoney_wmk\",\"extension\\/payment\\/webmoney_wmr\",\"extension\\/payment\\/webmoney_wmu\",\"extension\\/payment\\/webmoney_wmv\",\"extension\\/payment\\/webmoney_wmz\",\"extension\\/payment\\/wechat_pay\",\"extension\\/payment\\/worldpay\",\"extension\\/report\\/customer_activity\",\"extension\\/report\\/customer_order\",\"extension\\/report\\/customer_reward\",\"extension\\/report\\/customer_search\",\"extension\\/report\\/customer_transaction\",\"extension\\/report\\/marketing\",\"extension\\/report\\/product_purchased\",\"extension\\/report\\/product_viewed\",\"extension\\/report\\/sale_coupon\",\"extension\\/report\\/sale_order\",\"extension\\/report\\/sale_return\",\"extension\\/report\\/sale_shipping\",\"extension\\/report\\/sale_tax\",\"extension\\/shipping\\/auspost\",\"extension\\/shipping\\/ec_ship\",\"extension\\/shipping\\/fedex\",\"extension\\/shipping\\/flat\",\"extension\\/shipping\\/free\",\"extension\\/shipping\\/item\",\"extension\\/shipping\\/parcelforce_48\",\"extension\\/shipping\\/pickup\",\"extension\\/shipping\\/royal_mail\",\"extension\\/shipping\\/ups\",\"extension\\/shipping\\/usps\",\"extension\\/shipping\\/weight\",\"extension\\/theme\\/default\",\"extension\\/total\\/coupon\",\"extension\\/total\\/credit\",\"extension\\/total\\/handling\",\"extension\\/total\\/klarna_fee\",\"extension\\/total\\/low_order_fee\",\"extension\\/total\\/reward\",\"extension\\/total\\/shipping\",\"extension\\/total\\/sub_total\",\"extension\\/total\\/tax\",\"extension\\/total\\/total\",\"extension\\/total\\/voucher\",\"localisation\\/country\",\"localisation\\/currency\",\"localisation\\/geo_zone\",\"localisation\\/language\",\"localisation\\/length_class\",\"localisation\\/location\",\"localisation\\/order_status\",\"localisation\\/quantity_class\",\"localisation\\/return_action\",\"localisation\\/return_reason\",\"localisation\\/return_status\",\"localisation\\/stock_status\",\"localisation\\/tax_class\",\"localisation\\/tax_rate\",\"localisation\\/weight_class\",\"localisation\\/zone\",\"mail\\/affiliate\",\"mail\\/customer\",\"mail\\/forgotten\",\"mail\\/return\",\"mail\\/reward\",\"mail\\/transaction\",\"marketing\\/contact\",\"marketing\\/coupon\",\"marketing\\/marketing\",\"marketplace\\/api\",\"marketplace\\/event\",\"marketplace\\/extension\",\"marketplace\\/install\",\"marketplace\\/installer\",\"marketplace\\/modification\",\"report\\/online\",\"report\\/report\",\"report\\/statistics\",\"sale\\/order\",\"sale\\/recurring\",\"sale\\/return\",\"sale\\/voucher\",\"sale\\/voucher_theme\",\"search\\/search\",\"setting\\/redirect\",\"setting\\/setting\",\"setting\\/store\",\"startup\\/error\",\"startup\\/event\",\"startup\\/login\",\"startup\\/permission\",\"startup\\/router\",\"startup\\/sass\",\"startup\\/startup\",\"tool\\/backup\",\"tool\\/log\",\"tool\\/upload\",\"user\\/api\",\"user\\/user\",\"user\\/user_permission\",\"extension\\/module\\/auth\",\"extension\\/module\\/auth\"],\"hiden\":[\"extension\\/module\\/amazon_login\",\"extension\\/module\\/amazon_pay\",\"extension\\/module\\/divido_calculator\",\"extension\\/module\\/featured_article\",\"extension\\/module\\/featured_product\",\"extension\\/module\\/google_hangouts\",\"extension\\/module\\/klarna_checkout_module\",\"extension\\/module\\/laybuy_layout\",\"extension\\/module\\/paypal_smart_button\",\"extension\\/module\\/pilibaba_button\",\"extension\\/module\\/pp_braintree_button\",\"extension\\/module\\/sagepay_direct_cards\",\"extension\\/module\\/sagepay_server_cards\",\"extension\\/payment\\/alipay\",\"extension\\/payment\\/alipay_cross\",\"extension\\/payment\\/amazon_login_pay\",\"extension\\/payment\\/authorizenet_aim\",\"extension\\/payment\\/authorizenet_sim\",\"extension\\/payment\\/bluepay_hosted\",\"extension\\/payment\\/bluepay_redirect\",\"extension\\/payment\\/cardconnect\",\"extension\\/payment\\/cardinity\",\"extension\\/payment\\/divido\",\"extension\\/payment\\/eway\",\"extension\\/payment\\/firstdata\",\"extension\\/payment\\/firstdata_remote\",\"extension\\/payment\\/g2apay\",\"extension\\/payment\\/globalpay\",\"extension\\/payment\\/globalpay_remote\",\"extension\\/payment\\/klarna_account\",\"extension\\/payment\\/klarna_checkout\",\"extension\\/payment\\/klarna_invoice\",\"extension\\/payment\\/laybuy\",\"extension\\/payment\\/liqpay\",\"extension\\/payment\\/nochex\",\"extension\\/payment\\/ocstore_w1\",\"extension\\/payment\\/paymate\",\"extension\\/payment\\/paypal\",\"extension\\/payment\\/paypoint\",\"extension\\/payment\\/payza\",\"extension\\/payment\\/perpetual_payments\",\"extension\\/payment\\/pilibaba\",\"extension\\/payment\\/pp_braintree\",\"extension\\/payment\\/pp_express\",\"extension\\/payment\\/pp_payflow\",\"extension\\/payment\\/pp_payflow_iframe\",\"extension\\/payment\\/pp_pro\",\"extension\\/payment\\/pp_pro_iframe\",\"extension\\/payment\\/pp_standard\",\"extension\\/payment\\/realex\",\"extension\\/payment\\/realex_remote\",\"extension\\/payment\\/sagepay_direct\",\"extension\\/payment\\/sagepay_server\",\"extension\\/payment\\/sagepay_us\",\"extension\\/payment\\/securetrading_pp\",\"extension\\/payment\\/securetrading_ws\",\"extension\\/payment\\/skrill\",\"extension\\/payment\\/squareup\",\"extension\\/payment\\/twocheckout\",\"extension\\/payment\\/web_payment_software\",\"extension\\/payment\\/webmoney_wmb\",\"extension\\/payment\\/webmoney_wme\",\"extension\\/payment\\/webmoney_wmk\",\"extension\\/payment\\/webmoney_wmr\",\"extension\\/payment\\/webmoney_wmu\",\"extension\\/payment\\/webmoney_wmv\",\"extension\\/payment\\/webmoney_wmz\",\"extension\\/payment\\/wechat_pay\",\"extension\\/payment\\/worldpay\",\"extension\\/shipping\\/auspost\",\"extension\\/shipping\\/ec_ship\",\"extension\\/shipping\\/fedex\",\"extension\\/shipping\\/parcelforce_48\",\"extension\\/shipping\\/royal_mail\",\"extension\\/shipping\\/ups\",\"extension\\/shipping\\/usps\"]}'),
+(1, 'Administrator', '{\"access\":[\"blog\\/article\",\"blog\\/category\",\"blog\\/review\",\"blog\\/setting\",\"catalog\\/attribute\",\"catalog\\/attribute_group\",\"catalog\\/category\",\"catalog\\/download\",\"catalog\\/filter\",\"catalog\\/information\",\"catalog\\/manufacturer\",\"catalog\\/option\",\"catalog\\/product\",\"catalog\\/recurring\",\"catalog\\/review\",\"common\\/column_left\",\"common\\/developer\",\"common\\/filemanager\",\"common\\/profile\",\"common\\/security\",\"customer\\/custom_field\",\"customer\\/customer\",\"customer\\/customer_approval\",\"customer\\/customer_group\",\"customer\\/incoming\",\"design\\/banner\",\"design\\/layout\",\"design\\/seo_url\",\"design\\/theme\",\"design\\/translation\",\"event\\/language\",\"event\\/statistics\",\"event\\/theme\",\"extension\\/advertise\\/google\",\"extension\\/analytics\\/google\",\"extension\\/captcha\\/basic\",\"extension\\/captcha\\/google\",\"extension\\/captcha\\/yandex\",\"extension\\/currency\\/cbr\",\"extension\\/currency\\/ecb\",\"extension\\/currency\\/fixer\",\"extension\\/currency\\/nbu\",\"extension\\/dashboard\\/activity\",\"extension\\/dashboard\\/chart\",\"extension\\/dashboard\\/customer\",\"extension\\/dashboard\\/map\",\"extension\\/dashboard\\/online\",\"extension\\/dashboard\\/order\",\"extension\\/dashboard\\/recent\",\"extension\\/dashboard\\/sale\",\"extension\\/extension\\/advertise\",\"extension\\/extension\\/analytics\",\"extension\\/extension\\/captcha\",\"extension\\/extension\\/currency\",\"extension\\/extension\\/dashboard\",\"extension\\/extension\\/feed\",\"extension\\/extension\\/fraud\",\"extension\\/extension\\/menu\",\"extension\\/extension\\/module\",\"extension\\/extension\\/payment\",\"extension\\/extension\\/report\",\"extension\\/extension\\/shipping\",\"extension\\/extension\\/theme\",\"extension\\/extension\\/total\",\"extension\\/feed\\/google_base\",\"extension\\/feed\\/sitemap\",\"extension\\/feed\\/unisender\",\"extension\\/feed\\/yandex_market\",\"extension\\/feed\\/yandex_turbo\",\"extension\\/fraud\\/fraudlabspro\",\"extension\\/fraud\\/ip\",\"extension\\/fraud\\/maxmind\",\"extension\\/menu\\/default\",\"extension\\/module\\/account\",\"extension\\/module\\/amazon_login\",\"extension\\/module\\/amazon_pay\",\"extension\\/module\\/anycategories\",\"extension\\/module\\/banner\",\"extension\\/module\\/bestseller\",\"extension\\/module\\/blog_category\",\"extension\\/module\\/blog_featured\",\"extension\\/module\\/blog_latest\",\"extension\\/module\\/carousel\",\"extension\\/module\\/category\",\"extension\\/module\\/divido_calculator\",\"extension\\/module\\/exbot\",\"extension\\/module\\/extheme\",\"extension\\/module\\/featured\",\"extension\\/module\\/featured_article\",\"extension\\/module\\/featured_product\",\"extension\\/module\\/filter\",\"extension\\/module\\/google_hangouts\",\"extension\\/module\\/html\",\"extension\\/module\\/information\",\"extension\\/module\\/klarna_checkout_module\",\"extension\\/module\\/latest\",\"extension\\/module\\/laybuy_layout\",\"extension\\/module\\/paypal_smart_button\",\"extension\\/module\\/pilibaba_button\",\"extension\\/module\\/pp_braintree_button\",\"extension\\/module\\/privacy\",\"extension\\/module\\/sagepay_direct_cards\",\"extension\\/module\\/sagepay_server_cards\",\"extension\\/module\\/slideshow\",\"extension\\/module\\/special\",\"extension\\/module\\/store\",\"extension\\/payment\\/alipay\",\"extension\\/payment\\/alipay_cross\",\"extension\\/payment\\/amazon_login_pay\",\"extension\\/payment\\/authorizenet_aim\",\"extension\\/payment\\/authorizenet_sim\",\"extension\\/payment\\/bank_transfer\",\"extension\\/payment\\/bluepay_hosted\",\"extension\\/payment\\/bluepay_redirect\",\"extension\\/payment\\/cardconnect\",\"extension\\/payment\\/cardinity\",\"extension\\/payment\\/cheque\",\"extension\\/payment\\/cod\",\"extension\\/payment\\/divido\",\"extension\\/payment\\/eway\",\"extension\\/payment\\/firstdata\",\"extension\\/payment\\/firstdata_remote\",\"extension\\/payment\\/free_checkout\",\"extension\\/payment\\/g2apay\",\"extension\\/payment\\/globalpay\",\"extension\\/payment\\/globalpay_remote\",\"extension\\/payment\\/klarna_account\",\"extension\\/payment\\/klarna_checkout\",\"extension\\/payment\\/klarna_invoice\",\"extension\\/payment\\/laybuy\",\"extension\\/payment\\/liqpay\",\"extension\\/payment\\/nochex\",\"extension\\/payment\\/ocstore_w1\",\"extension\\/payment\\/paymate\",\"extension\\/payment\\/paypal\",\"extension\\/payment\\/paypoint\",\"extension\\/payment\\/payza\",\"extension\\/payment\\/perpetual_payments\",\"extension\\/payment\\/pilibaba\",\"extension\\/payment\\/pp_braintree\",\"extension\\/payment\\/pp_express\",\"extension\\/payment\\/pp_payflow\",\"extension\\/payment\\/pp_payflow_iframe\",\"extension\\/payment\\/pp_pro\",\"extension\\/payment\\/pp_pro_iframe\",\"extension\\/payment\\/pp_standard\",\"extension\\/payment\\/realex\",\"extension\\/payment\\/realex_remote\",\"extension\\/payment\\/sagepay_direct\",\"extension\\/payment\\/sagepay_server\",\"extension\\/payment\\/sagepay_us\",\"extension\\/payment\\/securetrading_pp\",\"extension\\/payment\\/securetrading_ws\",\"extension\\/payment\\/skrill\",\"extension\\/payment\\/squareup\",\"extension\\/payment\\/twocheckout\",\"extension\\/payment\\/web_payment_software\",\"extension\\/payment\\/webmoney_wmb\",\"extension\\/payment\\/webmoney_wme\",\"extension\\/payment\\/webmoney_wmk\",\"extension\\/payment\\/webmoney_wmr\",\"extension\\/payment\\/webmoney_wmu\",\"extension\\/payment\\/webmoney_wmv\",\"extension\\/payment\\/webmoney_wmz\",\"extension\\/payment\\/wechat_pay\",\"extension\\/payment\\/worldpay\",\"extension\\/report\\/customer_activity\",\"extension\\/report\\/customer_order\",\"extension\\/report\\/customer_reward\",\"extension\\/report\\/customer_search\",\"extension\\/report\\/customer_transaction\",\"extension\\/report\\/marketing\",\"extension\\/report\\/product_purchased\",\"extension\\/report\\/product_viewed\",\"extension\\/report\\/sale_coupon\",\"extension\\/report\\/sale_order\",\"extension\\/report\\/sale_return\",\"extension\\/report\\/sale_shipping\",\"extension\\/report\\/sale_tax\",\"extension\\/shipping\\/auspost\",\"extension\\/shipping\\/ec_ship\",\"extension\\/shipping\\/fedex\",\"extension\\/shipping\\/flat\",\"extension\\/shipping\\/free\",\"extension\\/shipping\\/item\",\"extension\\/shipping\\/parcelforce_48\",\"extension\\/shipping\\/pickup\",\"extension\\/shipping\\/royal_mail\",\"extension\\/shipping\\/ups\",\"extension\\/shipping\\/usps\",\"extension\\/shipping\\/weight\",\"extension\\/theme\\/default\",\"extension\\/total\\/coupon\",\"extension\\/total\\/credit\",\"extension\\/total\\/handling\",\"extension\\/total\\/klarna_fee\",\"extension\\/total\\/low_order_fee\",\"extension\\/total\\/reward\",\"extension\\/total\\/shipping\",\"extension\\/total\\/sub_total\",\"extension\\/total\\/tax\",\"extension\\/total\\/total\",\"extension\\/total\\/voucher\",\"localisation\\/country\",\"localisation\\/currency\",\"localisation\\/geo_zone\",\"localisation\\/language\",\"localisation\\/length_class\",\"localisation\\/location\",\"localisation\\/order_status\",\"localisation\\/quantity_class\",\"localisation\\/return_action\",\"localisation\\/return_reason\",\"localisation\\/return_status\",\"localisation\\/stock_status\",\"localisation\\/tax_class\",\"localisation\\/tax_rate\",\"localisation\\/weight_class\",\"localisation\\/zone\",\"mail\\/affiliate\",\"mail\\/customer\",\"mail\\/forgotten\",\"mail\\/return\",\"mail\\/reward\",\"mail\\/transaction\",\"marketing\\/contact\",\"marketing\\/coupon\",\"marketing\\/marketing\",\"marketplace\\/api\",\"marketplace\\/event\",\"marketplace\\/extension\",\"marketplace\\/install\",\"marketplace\\/installer\",\"marketplace\\/modification\",\"report\\/online\",\"report\\/report\",\"report\\/statistics\",\"sale\\/order\",\"sale\\/recurring\",\"sale\\/return\",\"sale\\/voucher\",\"sale\\/voucher_theme\",\"search\\/search\",\"setting\\/redirect\",\"setting\\/setting\",\"setting\\/store\",\"startup\\/error\",\"startup\\/event\",\"startup\\/login\",\"startup\\/permission\",\"startup\\/router\",\"startup\\/sass\",\"startup\\/startup\",\"tool\\/backup\",\"tool\\/log\",\"tool\\/upload\",\"user\\/api\",\"user\\/user\",\"user\\/user_permission\",\"extension\\/module\\/auth\",\"extension\\/module\\/auth\",\"extension\\/module\\/auth\"],\"modify\":[\"blog\\/article\",\"blog\\/category\",\"blog\\/review\",\"blog\\/setting\",\"catalog\\/attribute\",\"catalog\\/attribute_group\",\"catalog\\/category\",\"catalog\\/download\",\"catalog\\/filter\",\"catalog\\/information\",\"catalog\\/manufacturer\",\"catalog\\/option\",\"catalog\\/product\",\"catalog\\/recurring\",\"catalog\\/review\",\"common\\/column_left\",\"common\\/developer\",\"common\\/filemanager\",\"common\\/profile\",\"common\\/security\",\"customer\\/custom_field\",\"customer\\/customer\",\"customer\\/customer_approval\",\"customer\\/customer_group\",\"customer\\/incoming\",\"design\\/banner\",\"design\\/layout\",\"design\\/seo_url\",\"design\\/theme\",\"design\\/translation\",\"event\\/language\",\"event\\/statistics\",\"event\\/theme\",\"extension\\/advertise\\/google\",\"extension\\/analytics\\/google\",\"extension\\/captcha\\/basic\",\"extension\\/captcha\\/google\",\"extension\\/captcha\\/yandex\",\"extension\\/currency\\/cbr\",\"extension\\/currency\\/ecb\",\"extension\\/currency\\/fixer\",\"extension\\/currency\\/nbu\",\"extension\\/dashboard\\/activity\",\"extension\\/dashboard\\/chart\",\"extension\\/dashboard\\/customer\",\"extension\\/dashboard\\/map\",\"extension\\/dashboard\\/online\",\"extension\\/dashboard\\/order\",\"extension\\/dashboard\\/recent\",\"extension\\/dashboard\\/sale\",\"extension\\/extension\\/advertise\",\"extension\\/extension\\/analytics\",\"extension\\/extension\\/captcha\",\"extension\\/extension\\/currency\",\"extension\\/extension\\/dashboard\",\"extension\\/extension\\/feed\",\"extension\\/extension\\/fraud\",\"extension\\/extension\\/menu\",\"extension\\/extension\\/module\",\"extension\\/extension\\/payment\",\"extension\\/extension\\/report\",\"extension\\/extension\\/shipping\",\"extension\\/extension\\/theme\",\"extension\\/extension\\/total\",\"extension\\/feed\\/google_base\",\"extension\\/feed\\/sitemap\",\"extension\\/feed\\/unisender\",\"extension\\/feed\\/yandex_market\",\"extension\\/feed\\/yandex_turbo\",\"extension\\/fraud\\/fraudlabspro\",\"extension\\/fraud\\/ip\",\"extension\\/fraud\\/maxmind\",\"extension\\/menu\\/default\",\"extension\\/module\\/account\",\"extension\\/module\\/amazon_login\",\"extension\\/module\\/amazon_pay\",\"extension\\/module\\/anycategories\",\"extension\\/module\\/banner\",\"extension\\/module\\/bestseller\",\"extension\\/module\\/blog_category\",\"extension\\/module\\/blog_featured\",\"extension\\/module\\/blog_latest\",\"extension\\/module\\/carousel\",\"extension\\/module\\/category\",\"extension\\/module\\/divido_calculator\",\"extension\\/module\\/exbot\",\"extension\\/module\\/extheme\",\"extension\\/module\\/featured\",\"extension\\/module\\/featured_article\",\"extension\\/module\\/featured_product\",\"extension\\/module\\/filter\",\"extension\\/module\\/google_hangouts\",\"extension\\/module\\/html\",\"extension\\/module\\/information\",\"extension\\/module\\/klarna_checkout_module\",\"extension\\/module\\/latest\",\"extension\\/module\\/laybuy_layout\",\"extension\\/module\\/paypal_smart_button\",\"extension\\/module\\/pilibaba_button\",\"extension\\/module\\/pp_braintree_button\",\"extension\\/module\\/privacy\",\"extension\\/module\\/sagepay_direct_cards\",\"extension\\/module\\/sagepay_server_cards\",\"extension\\/module\\/slideshow\",\"extension\\/module\\/special\",\"extension\\/module\\/store\",\"extension\\/payment\\/alipay\",\"extension\\/payment\\/alipay_cross\",\"extension\\/payment\\/amazon_login_pay\",\"extension\\/payment\\/authorizenet_aim\",\"extension\\/payment\\/authorizenet_sim\",\"extension\\/payment\\/bank_transfer\",\"extension\\/payment\\/bluepay_hosted\",\"extension\\/payment\\/bluepay_redirect\",\"extension\\/payment\\/cardconnect\",\"extension\\/payment\\/cardinity\",\"extension\\/payment\\/cheque\",\"extension\\/payment\\/cod\",\"extension\\/payment\\/divido\",\"extension\\/payment\\/eway\",\"extension\\/payment\\/firstdata\",\"extension\\/payment\\/firstdata_remote\",\"extension\\/payment\\/free_checkout\",\"extension\\/payment\\/g2apay\",\"extension\\/payment\\/globalpay\",\"extension\\/payment\\/globalpay_remote\",\"extension\\/payment\\/klarna_account\",\"extension\\/payment\\/klarna_checkout\",\"extension\\/payment\\/klarna_invoice\",\"extension\\/payment\\/laybuy\",\"extension\\/payment\\/liqpay\",\"extension\\/payment\\/nochex\",\"extension\\/payment\\/ocstore_w1\",\"extension\\/payment\\/paymate\",\"extension\\/payment\\/paypal\",\"extension\\/payment\\/paypoint\",\"extension\\/payment\\/payza\",\"extension\\/payment\\/perpetual_payments\",\"extension\\/payment\\/pilibaba\",\"extension\\/payment\\/pp_braintree\",\"extension\\/payment\\/pp_express\",\"extension\\/payment\\/pp_payflow\",\"extension\\/payment\\/pp_payflow_iframe\",\"extension\\/payment\\/pp_pro\",\"extension\\/payment\\/pp_pro_iframe\",\"extension\\/payment\\/pp_standard\",\"extension\\/payment\\/realex\",\"extension\\/payment\\/realex_remote\",\"extension\\/payment\\/sagepay_direct\",\"extension\\/payment\\/sagepay_server\",\"extension\\/payment\\/sagepay_us\",\"extension\\/payment\\/securetrading_pp\",\"extension\\/payment\\/securetrading_ws\",\"extension\\/payment\\/skrill\",\"extension\\/payment\\/squareup\",\"extension\\/payment\\/twocheckout\",\"extension\\/payment\\/web_payment_software\",\"extension\\/payment\\/webmoney_wmb\",\"extension\\/payment\\/webmoney_wme\",\"extension\\/payment\\/webmoney_wmk\",\"extension\\/payment\\/webmoney_wmr\",\"extension\\/payment\\/webmoney_wmu\",\"extension\\/payment\\/webmoney_wmv\",\"extension\\/payment\\/webmoney_wmz\",\"extension\\/payment\\/wechat_pay\",\"extension\\/payment\\/worldpay\",\"extension\\/report\\/customer_activity\",\"extension\\/report\\/customer_order\",\"extension\\/report\\/customer_reward\",\"extension\\/report\\/customer_search\",\"extension\\/report\\/customer_transaction\",\"extension\\/report\\/marketing\",\"extension\\/report\\/product_purchased\",\"extension\\/report\\/product_viewed\",\"extension\\/report\\/sale_coupon\",\"extension\\/report\\/sale_order\",\"extension\\/report\\/sale_return\",\"extension\\/report\\/sale_shipping\",\"extension\\/report\\/sale_tax\",\"extension\\/shipping\\/auspost\",\"extension\\/shipping\\/ec_ship\",\"extension\\/shipping\\/fedex\",\"extension\\/shipping\\/flat\",\"extension\\/shipping\\/free\",\"extension\\/shipping\\/item\",\"extension\\/shipping\\/parcelforce_48\",\"extension\\/shipping\\/pickup\",\"extension\\/shipping\\/royal_mail\",\"extension\\/shipping\\/ups\",\"extension\\/shipping\\/usps\",\"extension\\/shipping\\/weight\",\"extension\\/theme\\/default\",\"extension\\/total\\/coupon\",\"extension\\/total\\/credit\",\"extension\\/total\\/handling\",\"extension\\/total\\/klarna_fee\",\"extension\\/total\\/low_order_fee\",\"extension\\/total\\/reward\",\"extension\\/total\\/shipping\",\"extension\\/total\\/sub_total\",\"extension\\/total\\/tax\",\"extension\\/total\\/total\",\"extension\\/total\\/voucher\",\"localisation\\/country\",\"localisation\\/currency\",\"localisation\\/geo_zone\",\"localisation\\/language\",\"localisation\\/length_class\",\"localisation\\/location\",\"localisation\\/order_status\",\"localisation\\/quantity_class\",\"localisation\\/return_action\",\"localisation\\/return_reason\",\"localisation\\/return_status\",\"localisation\\/stock_status\",\"localisation\\/tax_class\",\"localisation\\/tax_rate\",\"localisation\\/weight_class\",\"localisation\\/zone\",\"mail\\/affiliate\",\"mail\\/customer\",\"mail\\/forgotten\",\"mail\\/return\",\"mail\\/reward\",\"mail\\/transaction\",\"marketing\\/contact\",\"marketing\\/coupon\",\"marketing\\/marketing\",\"marketplace\\/api\",\"marketplace\\/event\",\"marketplace\\/extension\",\"marketplace\\/install\",\"marketplace\\/installer\",\"marketplace\\/modification\",\"report\\/online\",\"report\\/report\",\"report\\/statistics\",\"sale\\/order\",\"sale\\/recurring\",\"sale\\/return\",\"sale\\/voucher\",\"sale\\/voucher_theme\",\"search\\/search\",\"setting\\/redirect\",\"setting\\/setting\",\"setting\\/store\",\"startup\\/error\",\"startup\\/event\",\"startup\\/login\",\"startup\\/permission\",\"startup\\/router\",\"startup\\/sass\",\"startup\\/startup\",\"tool\\/backup\",\"tool\\/log\",\"tool\\/upload\",\"user\\/api\",\"user\\/user\",\"user\\/user_permission\",\"extension\\/module\\/auth\",\"extension\\/module\\/auth\",\"extension\\/module\\/auth\"],\"hiden\":[\"extension\\/module\\/amazon_login\",\"extension\\/module\\/amazon_pay\",\"extension\\/module\\/divido_calculator\",\"extension\\/module\\/featured_article\",\"extension\\/module\\/featured_product\",\"extension\\/module\\/google_hangouts\",\"extension\\/module\\/klarna_checkout_module\",\"extension\\/module\\/laybuy_layout\",\"extension\\/module\\/paypal_smart_button\",\"extension\\/module\\/pilibaba_button\",\"extension\\/module\\/pp_braintree_button\",\"extension\\/module\\/sagepay_direct_cards\",\"extension\\/module\\/sagepay_server_cards\",\"extension\\/payment\\/alipay\",\"extension\\/payment\\/alipay_cross\",\"extension\\/payment\\/amazon_login_pay\",\"extension\\/payment\\/authorizenet_aim\",\"extension\\/payment\\/authorizenet_sim\",\"extension\\/payment\\/bluepay_hosted\",\"extension\\/payment\\/bluepay_redirect\",\"extension\\/payment\\/cardconnect\",\"extension\\/payment\\/cardinity\",\"extension\\/payment\\/divido\",\"extension\\/payment\\/eway\",\"extension\\/payment\\/firstdata\",\"extension\\/payment\\/firstdata_remote\",\"extension\\/payment\\/g2apay\",\"extension\\/payment\\/globalpay\",\"extension\\/payment\\/globalpay_remote\",\"extension\\/payment\\/klarna_account\",\"extension\\/payment\\/klarna_checkout\",\"extension\\/payment\\/klarna_invoice\",\"extension\\/payment\\/laybuy\",\"extension\\/payment\\/liqpay\",\"extension\\/payment\\/nochex\",\"extension\\/payment\\/ocstore_w1\",\"extension\\/payment\\/paymate\",\"extension\\/payment\\/paypal\",\"extension\\/payment\\/paypoint\",\"extension\\/payment\\/payza\",\"extension\\/payment\\/perpetual_payments\",\"extension\\/payment\\/pilibaba\",\"extension\\/payment\\/pp_braintree\",\"extension\\/payment\\/pp_express\",\"extension\\/payment\\/pp_payflow\",\"extension\\/payment\\/pp_payflow_iframe\",\"extension\\/payment\\/pp_pro\",\"extension\\/payment\\/pp_pro_iframe\",\"extension\\/payment\\/pp_standard\",\"extension\\/payment\\/realex\",\"extension\\/payment\\/realex_remote\",\"extension\\/payment\\/sagepay_direct\",\"extension\\/payment\\/sagepay_server\",\"extension\\/payment\\/sagepay_us\",\"extension\\/payment\\/securetrading_pp\",\"extension\\/payment\\/securetrading_ws\",\"extension\\/payment\\/skrill\",\"extension\\/payment\\/squareup\",\"extension\\/payment\\/twocheckout\",\"extension\\/payment\\/web_payment_software\",\"extension\\/payment\\/webmoney_wmb\",\"extension\\/payment\\/webmoney_wme\",\"extension\\/payment\\/webmoney_wmk\",\"extension\\/payment\\/webmoney_wmr\",\"extension\\/payment\\/webmoney_wmu\",\"extension\\/payment\\/webmoney_wmv\",\"extension\\/payment\\/webmoney_wmz\",\"extension\\/payment\\/wechat_pay\",\"extension\\/payment\\/worldpay\",\"extension\\/shipping\\/auspost\",\"extension\\/shipping\\/ec_ship\",\"extension\\/shipping\\/fedex\",\"extension\\/shipping\\/parcelforce_48\",\"extension\\/shipping\\/royal_mail\",\"extension\\/shipping\\/ups\",\"extension\\/shipping\\/usps\"]}'),
 (10, 'Demonstration', '{\"access\":[\"blog\\/article\",\"blog\\/category\",\"blog\\/review\",\"blog\\/setting\",\"catalog\\/attribute\",\"catalog\\/attribute_group\",\"catalog\\/category\",\"catalog\\/download\",\"catalog\\/filter\",\"catalog\\/information\",\"catalog\\/manufacturer\",\"catalog\\/option\",\"catalog\\/product\",\"catalog\\/recurring\",\"catalog\\/review\",\"common\\/column_left\",\"common\\/developer\",\"common\\/filemanager\",\"common\\/profile\",\"common\\/security\",\"customer\\/custom_field\",\"customer\\/customer\",\"customer\\/customer_approval\",\"customer\\/customer_group\",\"design\\/banner\",\"design\\/layout\",\"design\\/seo_url\",\"design\\/theme\",\"design\\/translation\",\"event\\/language\",\"event\\/statistics\",\"event\\/theme\",\"extension\\/advertise\\/google\",\"extension\\/analytics\\/google\",\"extension\\/captcha\\/basic\",\"extension\\/captcha\\/google\",\"extension\\/currency\\/cbr\",\"extension\\/currency\\/ecb\",\"extension\\/currency\\/fixer\",\"extension\\/currency\\/nbu\",\"extension\\/dashboard\\/activity\",\"extension\\/dashboard\\/chart\",\"extension\\/dashboard\\/customer\",\"extension\\/dashboard\\/map\",\"extension\\/dashboard\\/online\",\"extension\\/dashboard\\/order\",\"extension\\/dashboard\\/recent\",\"extension\\/dashboard\\/sale\",\"extension\\/extension\\/advertise\",\"extension\\/extension\\/analytics\",\"extension\\/extension\\/captcha\",\"extension\\/extension\\/currency\",\"extension\\/extension\\/dashboard\",\"extension\\/extension\\/feed\",\"extension\\/extension\\/fraud\",\"extension\\/extension\\/menu\",\"extension\\/extension\\/module\",\"extension\\/extension\\/payment\",\"extension\\/extension\\/report\",\"extension\\/extension\\/shipping\",\"extension\\/extension\\/theme\",\"extension\\/extension\\/total\",\"extension\\/feed\\/google_base\",\"extension\\/feed\\/google_sitemap\",\"extension\\/feed\\/unisender\",\"extension\\/feed\\/yandex_market\",\"extension\\/feed\\/yandex_turbo\",\"extension\\/fraud\\/fraudlabspro\",\"extension\\/fraud\\/ip\",\"extension\\/fraud\\/maxmind\",\"extension\\/menu\\/default\",\"extension\\/module\\/account\",\"extension\\/module\\/amazon_login\",\"extension\\/module\\/amazon_pay\",\"extension\\/module\\/anycategories\",\"extension\\/module\\/banner\",\"extension\\/module\\/bestseller\",\"extension\\/module\\/blog_category\",\"extension\\/module\\/blog_featured\",\"extension\\/module\\/blog_latest\",\"extension\\/module\\/carousel\",\"extension\\/module\\/category\",\"extension\\/module\\/divido_calculator\",\"extension\\/module\\/exbot\",\"extension\\/module\\/extheme\",\"extension\\/module\\/featured\",\"extension\\/module\\/featured_article\",\"extension\\/module\\/featured_product\",\"extension\\/module\\/filter\",\"extension\\/module\\/google_hangouts\",\"extension\\/module\\/html\",\"extension\\/module\\/information\",\"extension\\/module\\/klarna_checkout_module\",\"extension\\/module\\/latest\",\"extension\\/module\\/laybuy_layout\",\"extension\\/module\\/paypal_smart_button\",\"extension\\/module\\/pilibaba_button\",\"extension\\/module\\/pp_braintree_button\",\"extension\\/module\\/privacy\",\"extension\\/module\\/sagepay_direct_cards\",\"extension\\/module\\/sagepay_server_cards\",\"extension\\/module\\/slideshow\",\"extension\\/module\\/special\",\"extension\\/module\\/store\",\"extension\\/payment\\/alipay\",\"extension\\/payment\\/alipay_cross\",\"extension\\/payment\\/amazon_login_pay\",\"extension\\/payment\\/authorizenet_aim\",\"extension\\/payment\\/authorizenet_sim\",\"extension\\/payment\\/bank_transfer\",\"extension\\/payment\\/bluepay_hosted\",\"extension\\/payment\\/bluepay_redirect\",\"extension\\/payment\\/cardconnect\",\"extension\\/payment\\/cardinity\",\"extension\\/payment\\/cheque\",\"extension\\/payment\\/cod\",\"extension\\/payment\\/divido\",\"extension\\/payment\\/eway\",\"extension\\/payment\\/firstdata\",\"extension\\/payment\\/firstdata_remote\",\"extension\\/payment\\/free_checkout\",\"extension\\/payment\\/g2apay\",\"extension\\/payment\\/globalpay\",\"extension\\/payment\\/globalpay_remote\",\"extension\\/payment\\/klarna_account\",\"extension\\/payment\\/klarna_checkout\",\"extension\\/payment\\/klarna_invoice\",\"extension\\/payment\\/laybuy\",\"extension\\/payment\\/liqpay\",\"extension\\/payment\\/nochex\",\"extension\\/payment\\/ocstore_w1\",\"extension\\/payment\\/paymate\",\"extension\\/payment\\/paypal\",\"extension\\/payment\\/paypoint\",\"extension\\/payment\\/payza\",\"extension\\/payment\\/perpetual_payments\",\"extension\\/payment\\/pilibaba\",\"extension\\/payment\\/pp_braintree\",\"extension\\/payment\\/pp_express\",\"extension\\/payment\\/pp_payflow\",\"extension\\/payment\\/pp_payflow_iframe\",\"extension\\/payment\\/pp_pro\",\"extension\\/payment\\/pp_pro_iframe\",\"extension\\/payment\\/pp_standard\",\"extension\\/payment\\/realex\",\"extension\\/payment\\/realex_remote\",\"extension\\/payment\\/sagepay_direct\",\"extension\\/payment\\/sagepay_server\",\"extension\\/payment\\/sagepay_us\",\"extension\\/payment\\/securetrading_pp\",\"extension\\/payment\\/securetrading_ws\",\"extension\\/payment\\/skrill\",\"extension\\/payment\\/squareup\",\"extension\\/payment\\/twocheckout\",\"extension\\/payment\\/web_payment_software\",\"extension\\/payment\\/webmoney_wmb\",\"extension\\/payment\\/webmoney_wme\",\"extension\\/payment\\/webmoney_wmk\",\"extension\\/payment\\/webmoney_wmr\",\"extension\\/payment\\/webmoney_wmu\",\"extension\\/payment\\/webmoney_wmv\",\"extension\\/payment\\/webmoney_wmz\",\"extension\\/payment\\/wechat_pay\",\"extension\\/payment\\/worldpay\",\"extension\\/report\\/customer_activity\",\"extension\\/report\\/customer_order\",\"extension\\/report\\/customer_reward\",\"extension\\/report\\/customer_search\",\"extension\\/report\\/customer_transaction\",\"extension\\/report\\/marketing\",\"extension\\/report\\/product_purchased\",\"extension\\/report\\/product_viewed\",\"extension\\/report\\/sale_coupon\",\"extension\\/report\\/sale_order\",\"extension\\/report\\/sale_return\",\"extension\\/report\\/sale_shipping\",\"extension\\/report\\/sale_tax\",\"extension\\/shipping\\/auspost\",\"extension\\/shipping\\/ec_ship\",\"extension\\/shipping\\/fedex\",\"extension\\/shipping\\/flat\",\"extension\\/shipping\\/free\",\"extension\\/shipping\\/item\",\"extension\\/shipping\\/parcelforce_48\",\"extension\\/shipping\\/pickup\",\"extension\\/shipping\\/royal_mail\",\"extension\\/shipping\\/ups\",\"extension\\/shipping\\/usps\",\"extension\\/shipping\\/weight\",\"extension\\/theme\\/default\",\"extension\\/total\\/coupon\",\"extension\\/total\\/credit\",\"extension\\/total\\/handling\",\"extension\\/total\\/klarna_fee\",\"extension\\/total\\/low_order_fee\",\"extension\\/total\\/reward\",\"extension\\/total\\/shipping\",\"extension\\/total\\/sub_total\",\"extension\\/total\\/tax\",\"extension\\/total\\/total\",\"extension\\/total\\/voucher\",\"localisation\\/country\",\"localisation\\/currency\",\"localisation\\/geo_zone\",\"localisation\\/language\",\"localisation\\/length_class\",\"localisation\\/location\",\"localisation\\/order_status\",\"localisation\\/return_action\",\"localisation\\/return_reason\",\"localisation\\/return_status\",\"localisation\\/stock_status\",\"localisation\\/tax_class\",\"localisation\\/tax_rate\",\"localisation\\/weight_class\",\"localisation\\/zone\",\"mail\\/affiliate\",\"mail\\/customer\",\"mail\\/forgotten\",\"mail\\/return\",\"mail\\/reward\",\"mail\\/transaction\",\"marketing\\/contact\",\"marketing\\/coupon\",\"marketing\\/marketing\",\"marketplace\\/api\",\"marketplace\\/event\",\"marketplace\\/extension\",\"marketplace\\/install\",\"marketplace\\/installer\",\"marketplace\\/modification\",\"report\\/online\",\"report\\/report\",\"report\\/statistics\",\"sale\\/order\",\"sale\\/recurring\",\"sale\\/return\",\"sale\\/voucher\",\"sale\\/voucher_theme\",\"search\\/search\",\"setting\\/setting\",\"setting\\/store\",\"startup\\/error\",\"startup\\/event\",\"startup\\/login\",\"startup\\/permission\",\"startup\\/router\",\"startup\\/sass\",\"startup\\/startup\",\"tool\\/backup\",\"tool\\/log\",\"tool\\/upload\",\"user\\/api\",\"user\\/user\",\"user\\/user_permission\"]}');
 
 -- --------------------------------------------------------
@@ -12848,13 +12911,13 @@ ALTER TABLE `oc_api`
 -- AUTO_INCREMENT for table `oc_api_ip`
 --
 ALTER TABLE `oc_api_ip`
-  MODIFY `api_ip_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `api_ip_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `oc_api_session`
 --
 ALTER TABLE `oc_api_session`
-  MODIFY `api_session_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=874;
+  MODIFY `api_session_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=957;
 
 --
 -- AUTO_INCREMENT for table `oc_article`
@@ -12902,7 +12965,7 @@ ALTER TABLE `oc_blog_category`
 -- AUTO_INCREMENT for table `oc_cart`
 --
 ALTER TABLE `oc_cart`
-  MODIFY `cart_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `cart_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT for table `oc_category`
@@ -12944,7 +13007,7 @@ ALTER TABLE `oc_currency`
 -- AUTO_INCREMENT for table `oc_customer`
 --
 ALTER TABLE `oc_customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
 
 --
 -- AUTO_INCREMENT for table `oc_customer_activity`
@@ -12974,13 +13037,13 @@ ALTER TABLE `oc_customer_history`
 -- AUTO_INCREMENT for table `oc_customer_ip`
 --
 ALTER TABLE `oc_customer_ip`
-  MODIFY `customer_ip_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
+  MODIFY `customer_ip_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=162;
 
 --
 -- AUTO_INCREMENT for table `oc_customer_login`
 --
 ALTER TABLE `oc_customer_login`
-  MODIFY `customer_login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `customer_login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `oc_customer_reward`
@@ -12998,7 +13061,7 @@ ALTER TABLE `oc_customer_search`
 -- AUTO_INCREMENT for table `oc_customer_transaction`
 --
 ALTER TABLE `oc_customer_transaction`
-  MODIFY `customer_transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `customer_transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `oc_custom_field`
@@ -13028,7 +13091,7 @@ ALTER TABLE `oc_event`
 -- AUTO_INCREMENT for table `oc_extension`
 --
 ALTER TABLE `oc_extension`
-  MODIFY `extension_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
+  MODIFY `extension_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 
 --
 -- AUTO_INCREMENT for table `oc_extension_install`
@@ -13070,13 +13133,13 @@ ALTER TABLE `oc_googleshopping_product`
 -- AUTO_INCREMENT for table `oc_incoming`
 --
 ALTER TABLE `oc_incoming`
-  MODIFY `incoming_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `incoming_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `oc_information`
 --
 ALTER TABLE `oc_information`
-  MODIFY `information_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `information_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `oc_language`
@@ -13160,25 +13223,25 @@ ALTER TABLE `oc_option_value`
 -- AUTO_INCREMENT for table `oc_order`
 --
 ALTER TABLE `oc_order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `oc_order_history`
 --
 ALTER TABLE `oc_order_history`
-  MODIFY `order_history_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `order_history_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT for table `oc_order_option`
 --
 ALTER TABLE `oc_order_option`
-  MODIFY `order_option_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `order_option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `oc_order_product`
 --
 ALTER TABLE `oc_order_product`
-  MODIFY `order_product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `order_product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `oc_order_recurring`
@@ -13208,7 +13271,7 @@ ALTER TABLE `oc_order_status`
 -- AUTO_INCREMENT for table `oc_order_total`
 --
 ALTER TABLE `oc_order_total`
-  MODIFY `order_total_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `order_total_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `oc_order_voucher`
@@ -13322,13 +13385,13 @@ ALTER TABLE `oc_review_article`
 -- AUTO_INCREMENT for table `oc_seo_url`
 --
 ALTER TABLE `oc_seo_url`
-  MODIFY `seo_url_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1987;
+  MODIFY `seo_url_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2017;
 
 --
 -- AUTO_INCREMENT for table `oc_setting`
 --
 ALTER TABLE `oc_setting`
-  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61957;
+  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64663;
 
 --
 -- AUTO_INCREMENT for table `oc_statistics`

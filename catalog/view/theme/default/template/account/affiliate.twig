@@ -1,25 +1,23 @@
 {{ header }}
 <main id="account-affiliate">
   <div class="container">
-    <nav class="breadcrumb py-4" aria-label="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <nav class="breadcrumb py-4" aria-label="breadcrumbs">
       <ul>
         {% for key, breadcrumb in breadcrumbs %}
         {% if key < (breadcrumbs|length - 1) %}
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="{{ breadcrumb.href }}" itemprop="item">{{ breadcrumb.text }}</a>
+        <li>
+          <a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a>
         </li>
         {% else %}
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <span itemprop="item">{{ breadcrumb.text }}</span>
+        <li>
+          <span>{{ breadcrumb.text }}</span>
         </li>
         {% endif %}
         {% endfor %}
       </ul>
     </nav>
-    {% if error_warning %}
-    <div class="notification is-danger is-light">{{ error_warning }}</div>
-    {% endif %}
-    <div class="columns is-multiline">{{ column_left }}
+    <div class="columns is-multiline">
+      {{ column_left }}
       {% if column_left and column_right %}
       {% set class = 'column is-6-fullhd is-6-widescreen is-6-desktop is-12-tablet is-12-mobile' %}
       {% elseif column_left or column_right %}
@@ -27,15 +25,11 @@
       {% else %}
       {% set class = 'column is-12' %}
       {% endif %}
-      <div id="content" class="{{ class }}">{{ content_top }}
+      <div id="content" class="{{ class }}">
+        {{ content_top }}
         <h1 class="title is-3">{{ heading_title }}</h1>
-        <form action="{{ action }}" method="post" enctype="multipart/form-data">
+        <form id="affiliate-form" action="{{ action }}" method="post" enctype="multipart/form-data">
           <fieldset class="columns is-mobile is-multiline">
-            <legend class="column is-12">
-              <div class="title is-5">
-                {{ text_my_affiliate }}
-              </div>
-            </legend>
             <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile field-wrapper">
               <div class="field">
                 <label class="label" for="input-company">{{ entry_company }}</label>
@@ -52,127 +46,26 @@
                 </div>
               </div>
             </div>
-          </fieldset>
-          <fieldset class="columns is-mobile is-multiline">
-            <legend class="column is-12">
-              <div class="title is-5">
-                {{ text_payment }}
+            <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile">
+              <div class="field">
+                <label class="label" for="input-payment-details">{{ entry_payment_details }}</label>
+                <div class="control">
+                  <textarea name="payment_details" id="input-payment-details" class="textarea" placeholder="{{ entry_payment_details }}">{{ payment_details }}</textarea>
+                </div>
               </div>
-            </legend>
+            </div>
             <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile">
               <div class="field">
                 <label class="label" for="input-tax">{{ entry_tax }}</label>
                 <div class="control">
                   <input type="text" name="tax" value="{{ tax }}" placeholder="{{ entry_tax }}" id="input-tax" class="input" />
-                </div>
-              </div>
-            </div>
-            <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile">
-              <div class="field">
-                <label class="label">{{ entry_payment }}</label>
-                <div class="control">
-                  <label class="radio">
-                    {% if payment == 'cheque' %}
-                    <input type="radio" name="payment" value="cheque" checked="checked" />
-                    {% else %}
-                    <input type="radio" name="payment" value="cheque" />
-                    {% endif %}
-                    {{ text_cheque }}
-                  </label>
-                  <label class="radio">
-                    {% if payment == 'paypal' %}
-                    <input type="radio" name="payment" value="paypal" checked="checked" />
-                    {% else %}
-                    <input type="radio" name="payment" value="paypal" />
-                    {% endif %}
-                    {{ text_paypal }}
-                  </label>
-                  <label class="radio">
-                    {% if payment == 'bank' %}
-                    <input type="radio" name="payment" value="bank" checked="checked" />
-                    {% else %}
-                    <input type="radio" name="payment" value="bank" />
-                    {% endif %}
-                    {{ text_bank }}
-                  </label>
-                </div>
-              </div>
-            </div>
-          </fieldset>
-          <div id="payment-cheque" class="columns is-mobile is-multiline payment">
-            <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile">
-              <div class="field">
-                <label class="label" for="input-cheque">{{ entry_cheque }}</label>
-                <div class="control">
-                  <input type="text" name="cheque" value="{{ cheque }}" placeholder="{{ entry_cheque }}" id="input-cheque" class="input" />
-                  {% if error_cheque %}
-                  <div class="help is-danger">{{ error_cheque }}</div>
+                  {% if error_tax %}
+                  <div class="help is-danger">{{ error_tax }}</div>
                   {% endif %}
                 </div>
               </div>
             </div>
-          </div>
-          <div id="payment-paypal" class="columns is-mobile is-multiline payment">
-            <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile">
-              <div class="field">
-                <label class="label" for="input-paypal">{{ entry_paypal }}</label>
-                <div class="control">
-                  <input type="text" name="paypal" value="{{ paypal }}" placeholder="{{ entry_paypal }}" id="input-paypal" class="input" />
-                  {% if error_paypal %}
-                  <div class="help is-danger">{{ error_paypal }}</div>
-                  {% endif %}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="columns is-mobile is-multiline payment" id="payment-bank">
-            <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile">
-              <div class="field">
-                <label class="label" for="input-bank-name">{{ entry_bank_name }}</label>
-                <div class="control">
-                  <input type="text" name="bank_name" value="{{ bank_name }}" placeholder="{{ entry_bank_name }}" id="input-bank-name" class="input" />
-                </div>
-              </div>
-            </div>
-            <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile">
-              <div class="field">
-                <label class="label" for="input-bank-branch-number">{{ entry_bank_branch_number }}</label>
-                <div class="control">
-                  <input type="text" name="bank_branch_number" value="{{ bank_branch_number }}" placeholder="{{ entry_bank_branch_number }}" id="input-bank-branch-number" class="input" />
-                </div>
-              </div>
-            </div>
-            <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile">
-              <div class="field">
-                <label class="label" for="input-bank-swift-code">{{ entry_bank_swift_code }}</label>
-                <div class="control">
-                  <input type="text" name="bank_swift_code" value="{{ bank_swift_code }}" placeholder="{{ entry_bank_swift_code }}" id="input-bank-swift-code" class="input" />
-                </div>
-              </div>
-            </div>
-            <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile is-hidden">
-              <div class="field">
-                <label class="label" for="input-bank-account-name">{{ entry_bank_account_name }}</label>
-                <div class="control">
-                  <input type="text" name="bank_account_name" value="{{ bank_account_name }}" placeholder="{{ entry_bank_account_name }}" id="input-bank-account-name" class="input" />
-                  {% if error_bank_account_name %}
-                  <div class="help is-danger">{{ error_bank_account_name }}</div>
-                  {% endif %}
-                </div>
-              </div>
-            </div>
-            <div class="column is-6-fullhd is-6-widescreen is-6-desktop is-6-tablet is-12-mobile">
-              <div class="field">
-                <label class="label" for="input-bank-account-number">{{ entry_bank_account_number }}</label>
-                <div class="control">
-                  <input type="text" name="bank_account_number" value="{{ bank_account_number }}" placeholder="{{ entry_bank_account_number }}" id="input-bank-account-number" class="input" />
-                  {% if error_bank_account_number %}
-                  <div class="help is-danger">{{ error_bank_account_number }}</div>
-                  {% endif %}
-                </div>
-              </div>
-            </div>
-          </div>
+          </fieldset>          
           {% for custom_field in custom_fields %}
           {% if custom_field.location == 'account' %}
           {% if custom_field.type == 'select' %}
@@ -347,12 +240,15 @@
             {% endif %}
             {{ text_agree }}
           </label>
+          {% if error_agree %}
+          <div class="help is-danger">{{ error_agree }}</div>
+          {% endif %}
           <div class="buttons my-5">
-            <button type="submit" value="" class="button is-primary">{{ button_continue }}</button>
+            <button type="submit" value="" class="button is-primary mb-0">{{ button_continue }}</button>
           </div>
           {% else %}
           <div class="buttons my-5">
-              <button type="submit" value="" class="button is-primary">{{ button_continue }}</button>
+            <button type="submit" value="" class="button is-primary">{{ button_continue }}</button>
           </div>
           {% endif %}
         </form>
@@ -364,13 +260,9 @@
 </main>
 <script>
 
-$('input[name="payment"]').on('change', function() {
-  $('.payment').hide();
-
-  $('#payment-' + this.value).show();
+$('#affiliate-form').on('change', function() {
+  $(this).find('.help.is-danger').remove();
 });
-
-$('input[name="payment"]:checked').trigger('change');
 
 // Sort the custom fields
 $('.custom-field[data-sort]').detach().each(function() {

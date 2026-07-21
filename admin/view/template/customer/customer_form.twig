@@ -541,6 +541,20 @@
               <fieldset>
                 <legend>{{ text_affiliate }}</legend>
                 <div class="form-group">
+                  <label class="col-sm-2 control-label" for="input-affiliate">{{ entry_status }}</label>
+                  <div class="col-sm-10">
+                    <select name="affiliate" id="input-affiliate" class="form-control">
+                      {% if affiliate %}
+                      <option value="1" selected="selected">{{ text_enabled }}</option>
+                      <option value="0">{{ text_disabled }}</option>
+                      {% else %}
+                      <option value="1">{{ text_enabled }}</option>
+                      <option value="0" selected="selected">{{ text_disabled }}</option>
+                      {% endif %}
+                     </select>
+                  </div>
+                </div>
+                <div class="form-group">
                   <label class="col-sm-2 control-label" for="input-company">{{ entry_company }}</label>
                   <div class="col-sm-10">
                     <input type="text" name="company" value="{{ company }}" placeholder="{{ entry_company }}" id="input-company" class="form-control" />
@@ -713,104 +727,11 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 control-label">{{ entry_payment }}</label>
+                  <label class="col-sm-2 control-label" for="input-payment-details">{{ entry_payment_details }}</label>
                   <div class="col-sm-10">
-                    <div class="radio">
-                      <label>{% if payment == 'cheque' %}
-                        <input type="radio" name="payment" value="cheque" checked="checked" />
-                        {% else %}
-                        <input type="radio" name="payment" value="cheque" />
-                        {% endif %}
-                        {{ text_cheque }}</label>
-                    </div>
-                    <div class="radio">
-                      <label> {% if payment == 'paypal' %}
-                        <input type="radio" name="payment" value="paypal" checked="checked" />
-                        {% else %}
-                        <input type="radio" name="payment" value="paypal" />
-                        {% endif %}
-                        {{ text_paypal }}</label>
-                    </div>
-                    <div class="radio">
-                      <label> {% if payment == 'bank' %}
-                        <input type="radio" name="payment" value="bank" checked="checked" />
-                        {% else %}
-                        <input type="radio" name="payment" value="bank" />
-                        {% endif %}
-                        {{ text_bank }}</label>
-                    </div>
+                    <textarea rows="5" name="payment_details" placeholder="{{ entry_payment_details }}" id="input-payment-details" class="form-control">{{ payment_details }}</textarea>
                   </div>
-                </div>
-                <div id="payment-cheque" class="payment">
-                  <div class="form-group required">
-                    <label class="col-sm-2 control-label" for="input-cheque">{{ entry_cheque }}</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="cheque" value="{{ cheque }}" placeholder="{{ entry_cheque }}" id="input-cheque" class="form-control" />
-                      {% if error_cheque %}
-                      <div class="text-danger">{{ error_cheque }}</div>
-                      {% endif %}</div>
-                  </div>
-                </div>
-                <div id="payment-paypal" class="payment">
-                  <div class="form-group required">
-                    <label class="col-sm-2 control-label" for="input-paypal">{{ entry_paypal }}</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="paypal" value="{{ paypal }}" placeholder="{{ entry_paypal }}" id="input-paypal" class="form-control" />
-                      {% if error_paypal %}
-                      <div class="text-danger">{{ error_paypal }}</div>
-                      {% endif %}</div>
-                  </div>
-                </div>
-                <div id="payment-bank" class="payment">
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label" for="input-bank-name">{{ entry_bank_name }}</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="bank_name" value="{{ bank_name }}" placeholder="{{ entry_bank_name }}" id="input-bank-name" class="form-control" />
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label" for="input-bank-branch-number">{{ entry_bank_branch_number }}</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="bank_branch_number" value="{{ bank_branch_number }}" placeholder="{{ entry_bank_branch_number }}" id="input-bank-branch-number" class="form-control" />
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label" for="input-bank-swift-code">{{ entry_bank_swift_code }}</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="bank_swift_code" value="{{ bank_swift_code }}" placeholder="{{ entry_bank_swift_code }}" id="input-bank-swift-code" class="form-control" />
-                    </div>
-                  </div>
-                  <div class="form-group required">
-                    <label class="col-sm-2 control-label" for="input-bank-account-name">{{ entry_bank_account_name }}</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="bank_account_name" value="{{ bank_account_name }}" placeholder="{{ entry_bank_account_name }}" id="input-bank-account-name" class="form-control" />
-                      {% if error_bank_account_name %}
-                      <div class="text-danger">{{ error_bank_account_name }}</div>
-                      {% endif %}</div>
-                  </div>
-                  <div class="form-group required">
-                    <label class="col-sm-2 control-label" for="input-bank-account-number">{{ entry_bank_account_number }}</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="bank_account_number" value="{{ bank_account_number }}" placeholder="{{ entry_bank_account_number }}" id="input-bank-account-number" class="form-control" />
-                      {% if error_bank_account_number %}
-                      <div class="text-danger">{{ error_bank_account_number }}</div>
-                      {% endif %}</div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label" for="input-affiliate">{{ entry_status }}</label>
-                  <div class="col-sm-10">
-                    <select name="affiliate" id="input-affiliate" class="form-control">
-                      {% if affiliate %}
-                      <option value="1" selected="selected">{{ text_enabled }}</option>
-                      <option value="0">{{ text_disabled }}</option>
-                      {% else %}
-                      <option value="1">{{ text_enabled }}</option>
-                      <option value="0" selected="selected">{{ text_disabled }}</option>
-                      {% endif %}
-                     </select>
-                  </div>
-                </div>
+                </div>                
               </fieldset>
             </div>
             {% if customer_id %}
@@ -1281,6 +1202,65 @@
       }
     });
   });
+
+  $('body').on('click', '.transaction-approve', function(e) {
+    e.preventDefault();
+    $button = $(this);
+
+    $.ajax({
+      url: 'index.php?route=customer/customer/transactionApprove&user_token={{ user_token }}&transaction_id=' + $button.data('transaction-id'),
+      type: 'get',
+      dataType: 'json',
+      beforeSend: function() {
+        $button.prop('disabled', true);
+      },
+      complete: function() {
+        $button.prop('disabled', false);
+      },
+      success: function(json) {
+        if (json['error']) {
+           $('#tab-transaction').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+        }
+
+        if (json['success']) {
+          $('#transaction').load('index.php?route=customer/customer/transaction&user_token={{ user_token }}&customer_id={{ customer_id }}');
+        }
+      },
+      error: function(xhr, ajaxOptions, thrownError) {
+        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+      }
+    });
+  });
+
+  $('body').on('click', '.transaction-reject', function(e) {
+    e.preventDefault();
+    $button = $(this);
+
+    $.ajax({
+      url: 'index.php?route=customer/customer/transactionReject&user_token={{ user_token }}&transaction_id=' + $button.data('transaction-id'),
+      type: 'get',
+      dataType: 'json',
+      beforeSend: function() {
+        $button.prop('disabled', true);
+      },
+      complete: function() {
+        $button.prop('disabled', false);
+      },
+      success: function(json) {
+        if (json['error']) {
+           $('#tab-transaction').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+        }
+
+        if (json['success']) {
+          $('#transaction').load('index.php?route=customer/customer/transaction&user_token={{ user_token }}&customer_id={{ customer_id }}');
+        }
+      },
+      error: function(xhr, ajaxOptions, thrownError) {
+        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+      }
+    });
+  });
+
   //--></script>
   <script type="text/javascript"><!--
   $('#reward').delegate('.pagination a', 'click', function(e) {

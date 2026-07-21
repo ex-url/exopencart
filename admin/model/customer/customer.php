@@ -46,7 +46,7 @@ class ModelCustomerCustomer extends Model {
 		}
 		
 		if ($data['affiliate']) {
-			$this->db->query("REPLACE INTO " . DB_PREFIX . "customer_affiliate SET customer_id = '" . (int)$customer_id . "', company = '" . $this->db->escape($data['company']) . "', website = '" . $this->db->escape($data['website']) . "', tracking = '" . $this->db->escape($data['tracking']) . "', commission = '" . (float)$data['commission'] . "', tax = '" . $this->db->escape($data['tax']) . "', payment = '" . $this->db->escape($data['payment']) . "', cheque = '" . $this->db->escape($data['cheque']) . "', paypal = '" . $this->db->escape($data['paypal']) . "', bank_name = '" . $this->db->escape($data['bank_name']) . "', bank_branch_number = '" . $this->db->escape($data['bank_branch_number']) . "', bank_swift_code = '" . $this->db->escape($data['bank_swift_code']) . "', bank_account_name = '" . $this->db->escape($data['bank_account_name']) . "', bank_account_number = '" . $this->db->escape($data['bank_account_number']) . "', status = '" . (int)$data['affiliate'] . "', date_added = NOW()");
+			$this->db->query("REPLACE INTO " . DB_PREFIX . "customer_affiliate SET customer_id = '" . (int)$customer_id . "', company = '" . $this->db->escape($data['company']) . "', website = '" . $this->db->escape($data['website']) . "', tracking = '" . $this->db->escape($data['tracking']) . "', commission = '" . (float)$data['commission'] . "', tax = '" . $this->db->escape($data['tax']) . "', payment_details = '" . $this->db->escape($data['payment_details']) . "', status = '" . (int)$data['affiliate'] . "', date_added = NOW()");
 		}		
 	}
 
@@ -408,9 +408,17 @@ class ModelCustomerCustomer extends Model {
 	}
 
 	public function getTransactionTotal($customer_id) {
-		$query = $this->db->query("SELECT SUM(amount) AS total FROM " . DB_PREFIX . "customer_transaction WHERE customer_id = '" . (int)$customer_id . "'");
+		$query = $this->db->query("SELECT SUM(amount) AS total FROM " . DB_PREFIX . "customer_transaction WHERE customer_id = '" . (int)$customer_id . "' AND status = 1");
 
 		return $query->row['total'];
+	}
+
+	public function approveTransaction($transaction_id) {
+		$this->db->query("UPDATE " . DB_PREFIX . "customer_transaction SET status = 1 WHERE customer_transaction_id = '" . (int)$transaction_id . "'");
+	}
+
+	public function rejectTransaction($transaction_id) {
+		$this->db->query("UPDATE " . DB_PREFIX . "customer_transaction SET status = 2 WHERE customer_transaction_id = '" . (int)$transaction_id . "'");
 	}
 
 	public function getTotalTransactionsByOrderId($order_id) {

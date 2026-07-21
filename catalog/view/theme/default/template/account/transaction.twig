@@ -4,12 +4,11 @@
     <nav class="breadcrumb py-4" aria-label="breadcrumbs">
       <ul>
         {% for key, breadcrumb in breadcrumbs %}
-        {% if key < (breadcrumbs|length - 1) %}
-        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
-        {% else %}
-        <li><span>{{ breadcrumb.text }}</span></li>
-        {% endif %}
-        {% endfor %}
+        {% if key < (breadcrumbs|length - 1) %} <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+          {% else %}
+          <li><span>{{ breadcrumb.text }}</span></li>
+          {% endif %}
+          {% endfor %}
       </ul>
     </nav>
     <div class="columns is-multiline">{{ column_left }}
@@ -22,14 +21,20 @@
       {% endif %}
       <div id="content" class="{{ class }}">{{ content_top }}
         <h1 class="title is-3">{{ heading_title }}</h1>
-        <p>{{ text_total }} <b>{{ total }}</b></p>
-        <div class="table-container mt-5">
+        <div class="is-flex is-align-items-center is-justify-content-space-between">
+          <p>{{ text_total }} <b>{{ total }}</b></p>
+          {% if allow_payout %}
+          <button class="payout-trigger button is-primary">{{ button_payout }}</button>
+          {% endif %}
+        </div>
+        <div class="transactions table-container mt-5">
           <table class="table is-bordered is-fullwidth">
             <thead>
               <tr>
                 <td>{{ column_date_added }}</td>
                 <td>{{ column_description }}</td>
                 <td>{{ column_amount }}</td>
+                <td>{{ column_status }}</td>
               </tr>
             </thead>
             <tbody>
@@ -38,12 +43,18 @@
               <tr>
                 <td>{{ transaction.date_added }}</td>
                 <td>{{ transaction.description }}</td>
-                <td>{{ transaction.amount }}</td>
+                <td><b>{{ transaction.amount }}</b></td>
+                <td>
+                  <span
+                    class="tag{{ transaction.status == 0 ? ' is-primary'}}{{ transaction.status == 1 ? ' is-success'}}{{ transaction.status == 2 ? ' is-danger'}} is-light">
+                    {{ transaction.status_text }}
+                  </span>
+                </td>
               </tr>
               {% endfor %}
               {% else %}
               <tr>
-                <td colspan="3">{{ text_empty }}</td>
+                <td colspan="4">{{ text_empty }}</td>
               </tr>
               {% endif %}
             </tbody>
@@ -62,4 +73,117 @@
     </div>
   </div>
 </main>
+{% if allow_payout %}
+<div class="modal" id="payout-modal">
+  <div class="modal-background"></div>
+  <div class="modal-card" style="max-width: 420px;">
+    <div class="modal-card-head has-background-white">
+      <p class="modal-card-title {{ form_heading_html_class }}"><b>{{ text_payout_request }}</b></p>
+      <button class="delete is-large" aria-label="close"></button>
+    </div>
+    <div class="modal-card-body">
+      {% if balance < payout_minimum %}
+      <div class="notification is-danger is-light has-text-centered">
+        <p>{{ text_payout_minimum }}</p>
+      </div>
+      {% else %}
+      <form id="payout-form">
+        <div class="has-text-centered mb-3">
+          <p class="is-size-5 mb-3">{{ text_total }} <b>{{ total }}</b></p>
+          <p class="has-text-info">{{ text_payout_minimum }}</p>
+        </div>
+        <div class="field has-text-centered">
+          <input class="input is-medium has-text-centered" type="text" name="amount" placeholder="{{ entry_payout_amount }}" value="{{ name }}">
+        </div>
+      </form>
+      {% endif %}
+    </div>
+    {% if balance > payout_minimum %}
+    <div class="modal-card-foot">
+      <button class="button is-primary is-medium is-fullwidth" type="submit" form="payout-form">{{ button_request }}</button>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<script>
+  $('body').on('click', '.payout-trigger, #payout-modal .modal-background, #payout-modal .delete', function (e) {
+    if ($(e.currentTarget).hasClass('modal-background') || $(e.currentTarget).hasClass('delete')) {
+      $('#payout-modal').addClass('is-animated');
+
+      $('#payout-modal .modal-background').one('animationend', function () {
+        $('#payout-modal').removeClass('is-animated is-active');
+        history.replaceState(null, null, window.location.pathname + window.location.search);
+      });
+    } else {
+      $('#payout-modal').addClass('is-active');
+      history.pushState(null, null, window.location.pathname + '#payout-modal');
+    }
+  });
+
+  $('#payout-form').on('submit', function (e) {
+    e.preventDefault();
+
+    let $form = $(this);
+    let $button = $('#payout-modal button[type="submit"]');
+
+    $.ajax({
+      url: '/index.php?route=account/transaction/payout',
+      type: 'post',
+      data: $form.serialize(),
+      dataType: 'json',
+      beforeSend: function () {
+        $button.addClass('is-loading');
+      },
+      complete: function () {
+        $button.removeClass('is-loading');
+      },
+      success: function (json) {
+        $button.removeClass('is-loading');
+        $form.find('.help.is-danger').remove();
+
+        if ($form.find('.google-captcha').length) {
+          $form.find('.google-captcha .help.is-danger').remove();
+        }
+
+        if (json['error']) {
+
+          $form.find('input, textarea, checkbox').each(function (i, el) {
+            if (json['error'][$(el).attr('name')]) {
+              $(el).parents('.field').append('<p class="help is-danger">' + json['error'][$(el).attr('name')] + '</p>');
+            }
+          });
+
+          if ($form.find('.google-captcha').length && json['error']['captcha']) {
+            $form.find('.google-captcha').append('<p class="help is-danger">' + json['error']['captcha'] + '</p>');
+          }
+
+          setTimeout(function () {
+            $form.find('.help.is-danger').remove();
+          }, 5000);
+
+          return;
+        }
+
+        if (json['success']) {
+
+          $('#payout-modal').addClass('is-animated');
+          $('.transactions').load('/index.php?route=account/transaction .transactions > *');
+
+          $('#payout-modal .modal-background').one('animationend', function () {
+            $('#payout-modal').removeClass('is-animated is-active');
+            history.replaceState(null, null, window.location.pathname + window.location.search);
+            $form.trigger('reset');
+
+            notification({
+              type: 'success',
+              text: json['success'],
+            });
+          });
+        }
+      }
+    })
+  });
+</script>
+{% endif %}
 {{ footer }}
