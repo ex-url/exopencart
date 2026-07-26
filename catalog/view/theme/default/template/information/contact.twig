@@ -322,10 +322,6 @@
                 $button.removeClass('is-loading');
                 $form.find('.help.is-danger').remove();
 
-                if ($form.find('.google-captcha').length) {
-                  $form.find('.google-captcha .help.is-danger').remove();
-                }
-
                 if (json['error']) {
 
                   $form.find('input, textarea, checkbox').each(function (i, el) {
@@ -334,17 +330,13 @@
                     }
                   });
 
-                  if ($form.find('.google-captcha').length && json['error']['captcha']) {
-                    $form.find('.google-captcha').append('<p class="help is-danger">' + json['error']['captcha'] + '</p>');
+                  if ($form.find('.captcha').length && json['error']['captcha']) {
+                    $form.find('.captcha').append('<p class="help is-danger">' + json['error']['captcha'] + '</p>');
                   }
 
                   $('html, body').animate({
                     scrollTop: $form.find('.help.is-danger').first().offset().top - 100
                   }, 500);
-
-                  setTimeout(function () {
-                    $form.find('.help.is-danger').remove();
-                  }, 5000);
 
                   return;
                 }
@@ -366,6 +358,10 @@
                 }
               }
             })
+          });
+
+          $('#contacts-form input').on('focus', function(e) {
+            $('#contacts-form').find('.help.is-danger').remove();
           });
         </script>
         {% endif %}

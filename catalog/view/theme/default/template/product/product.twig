@@ -568,7 +568,7 @@
                 {% endif %}
                 {{ captcha }}
                 <div class="buttons">
-                  <button type="button" id="button-review" class="button is-primary">
+                  <button type="button" id="button-review" class="button is-primary is-medium pl-5">
                     <span class="icon">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="24" width="24">
                         <path d="M7.5 13.125a5.625 5.625 0 1 0 -5.625 -5.625c0 0.8999999999999999 0.21125000000000002 1.75 0.5874999999999999 2.5043749999999996 0.283125 0.569375 -0.110625 1.3375000000000001 -0.260625 1.8981249999999998a0.73125 0.73125 0 0 0 0.895625 0.895625c0.560625 -0.15 1.3287499999999999 -0.54375 1.8981249999999998 -0.26A5.6025 5.6025 0 0 0 7.5 13.125" stroke-width="1"></path>
@@ -1160,14 +1160,12 @@
               $form.find('input[name="' + key + '"], textarea[name="' + key + '"]').addClass('is-danger');
             }
 
-            if ($('.google-captcha').length && key == 'captcha') {
-              $form.find('.google-captcha').append('<p class="help is-danger">' + json['error'][key] + '</p>');
+            if ($('.captcha').length && key == 'captcha') {
+              $form.find('.captcha').append('<p class="help is-danger">' + json['error'][key] + '</p>');
             }
           }
 
-          if ($form.find('.help.is-danger').length) {
-            console.log('scroll');
-            
+          if ($form.find('.help.is-danger').length) {            
             let offset = $(window).width() > 768 ? 180 : 90;
             $('html, body').stop().animate({ scrollTop: $form.find('.help.is-danger').first().offset().top - offset });
           }
@@ -1207,6 +1205,11 @@
         }
       }
     });
+  });
+
+  $('#form-review input').on('focus', function () {
+    $('#form-review').find('.help.is-danger').remove();
+    $('#form-review').find('.input.is-danger, .textarea.is-danger').removeClass('is-danger');
   });
 
   $(document).ready(function () {

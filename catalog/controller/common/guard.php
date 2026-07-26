@@ -19,7 +19,12 @@ class ControllerCommonGuard extends Controller {
 
     $template_folder = $this->config->get('theme_default_directory');
 
-    $data['style'] = '/catalog/view/theme/' . $template_folder . '/css/ui.min.css';
+    $this->document->addScript('catalog/view/theme/' . $template_folder . '/js/excaptcha.js');    
+    $this->document->addStyle('catalog/view/theme/' . $template_folder . '/css/ui.min.css');
+    $this->document->addStyle('catalog/view/theme/' . $template_folder . '/css/excaptcha.css');
+
+    $data['styles'] = $this->document->getStyles();
+    $data['scripts'] = $this->document->getScripts('header');
 
     if (is_file(DIR_IMAGE . $this->config->get('config_icon'))) {
       $data['favicon'] = $this->model_tool_image->resize($this->config->get('config_icon'), 256, 256);

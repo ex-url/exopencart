@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-  $('body').on('blur', '#checkout-customer-form input', updateCheckoutCustomer);
+  $('body').on('change', '#checkout-customer-form input', updateCheckoutCustomer);
   $('body').on('blur', '#payment-address-form input, #payment-address-form select', updatePaymentAddress);
   $('body').on('change', '#shipping-pickup-form', updatePickupPoint);
   $('body').on('blur', '#shipping-address-form input, #shipping-address-form select', updateShippingAddress);

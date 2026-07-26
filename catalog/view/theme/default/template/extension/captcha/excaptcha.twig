@@ -1,0 +1,42 @@
+<div class="excaptcha field required mb-3" style="max-width: 420px;" id="excaptcha-{{ module }}"
+     data-module="{{ module }}"
+     data-challenge-id="{{ challenge_id }}"
+     data-target="{{ target }}"
+     data-tolerance="{{ tolerance }}"
+     data-validate-url="{{ validate_url }}"
+     data-challenge-url="{{ challenge_url }}"
+     data-lang="{{ lang|e('html_attr') }}">
+  <div class="captcha-container">
+    <label class="label">{{text_captcha }}</label>
+    <div class="slider-wrapper">
+      <div class="progress-text"></div>
+      <div class="slider-container">
+        <div class="slider-track"></div>
+        <div class="target-circle">
+          <span class="icon is-large">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" height="100" width="100">
+              <path d="M13.125 7.5h-1.875M3.75 7.5H1.875m5.625 -3.75V1.875m0 11.25v-1.875" stroke-width="1"></path>
+              <path d="M1.875 7.5a5.625 5.625 0 1 0 11.25 0 5.625 5.625 0 1 0 -11.25 0" stroke-width="1"></path>
+            </svg>
+          </span>
+        </div>
+        <div class="slider-thumb">
+          <span class="arrow icon is-medium">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="white" height="48" width="48">
+              <path d="m7.5 11.25 3.75 -3.75 -3.75 -3.75M3.75 11.25l3.75 -3.75 -3.75 -3.75" stroke-width="1"></path>
+            </svg>
+          </span>
+          <span class="check icon is-medium">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" stroke-linecap="round" stroke-linejoin="round" stroke="white" height="48" width="48">
+              <path d="m3.75 8.51625 1.0037500000000001 1.07625c0.55375 0.59375 0.830625 0.8899999999999999 1.140625 0.98375 0.2725 0.081875 0.5625 0.06 0.8218749999999999 -0.0625 0.29562499999999997 -0.14 0.5325 -0.475625 1.0075 -1.1475L11.25 4.375" stroke-width="1"></path>
+            </svg>
+          </span>
+        </div>
+      </div>
+    </div>
+    <input type="hidden" name="captcha" value="" class="captcha-token">
+  </div>
+  {% if error_captcha %}
+  <p class="help is-danger">{{ error_captcha }}</p>
+  {% endif %}
+</div>

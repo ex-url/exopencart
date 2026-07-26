@@ -114,16 +114,23 @@ class ControllerStartupStartup extends Controller {
 		$this->registry->set('language', $language);
 
 		// Set the config language_id
-		$this->config->set('config_language_id', $languages[$code]['language_id']);
+		$this->config->set('config_language_id', $languages[$code]['language_id']);		
 
 		// Forced captcha on the first visit
 		if ($this->config->get('config_forced_captcha') && !isset($this->session->data['captcha_passed'])) {
-			$route = isset($this->request->get['route']) ? $this->request->get['route'] : '';
-			if (
-				strpos($route, 'common/guard')        !== 0 &&
-				strpos($route, 'extension/captcha')   !== 0
-			) {
-				$this->response->redirect($this->url->link('common/guard', '', true));
+			$this->log->write($this->session->data);
+			// check if it's an API call
+			if (isset($this->session->data['api_id'])) {
+				// api is trusted
+				$this->session->data['captcha_passed'] = true;
+			} else {
+				$route = isset($this->request->get['route']) ? $this->request->get['route'] : '';
+				if (
+					strpos($route, 'common/guard')        !== 0 &&
+					strpos($route, 'extension/captcha')   !== 0
+				) {
+					$this->response->redirect($this->url->link('common/guard', '', true));
+				}
 			}
 		}
 

@@ -301,7 +301,7 @@
                 </div>
                 {{ captcha }}
                 <div class="buttons">
-                  <button type="button" id="button-comment" class="button is-primary">{{ button_send }}</button>
+                  <button type="button" id="button-comment" class="button is-primary is-medium">{{ button_send }}</button>
                 </div>
                 {% else %}
                 {{ text_login }}
@@ -356,8 +356,8 @@ $('#button-comment').on('click', function() {
             $("#form-comment").find('input[name="' + key + '"], textarea[name="' + key + '"]').addClass('is-danger');
           }
 
-          if($('.google-captcha').length && key == 'captcha') {
-            $("#form-comment").find('.google-captcha').append('<p class="help is-danger">' + json['error'][key] + '</p>');
+          if($('.captcha').length && key == 'captcha') {
+            $("#form-comment").find('.captcha').append('<p class="help is-danger">' + json['error'][key] + '</p>');
           }
         }
 
@@ -376,6 +376,11 @@ $('#button-comment').on('click', function() {
       }
     }
   });
+});
+
+$('#form-comment input').on('focus', function () {
+  $("#form-comment").find('.help.is-danger').remove();
+  $("#form-comment").find('.input.is-danger, .textarea.is-danger').removeClass('is-danger');
 });
 
 {% if images %}
