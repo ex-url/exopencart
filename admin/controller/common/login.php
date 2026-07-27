@@ -11,6 +11,10 @@ class ControllerCommonLogin extends Controller {
 			$this->response->redirect($this->url->link('common/dashboard', 'user_token=' . $this->session->data['user_token'], true));
 		}
 
+		if($this->request->server['REQUEST_METHOD'] == 'GET' && $this->config->get('config_admin_code') != '' && (!isset($this->request->get['code']) || $this->request->get['code'] != $this->config->get('config_admin_code'))) {
+			$this->response->redirect('/');
+		}
+
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 			$this->session->data['user_token'] = token(32);
 

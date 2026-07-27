@@ -1158,6 +1158,12 @@ class ControllerSettingSetting extends Controller {
       $data['config_mail_alert_email'] = $this->config->get('config_mail_alert_email');
     }
 
+    if (isset($this->request->post['config_admin_code'])) {
+      $data['config_admin_code'] = $this->request->post['config_admin_code'];
+    } else {
+      $data['config_admin_code'] = $this->config->get('config_admin_code');
+    }
+
     if (isset($this->request->post['config_forced_captcha'])) {
       $data['config_forced_captcha'] = $this->request->post['config_forced_captcha'];
     } else {

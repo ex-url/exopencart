@@ -196,7 +196,8 @@ $_['entry_mail_smtp_username']       = 'SMTP Username';
 $_['entry_mail_smtp_password']       = 'SMTP Password';
 $_['entry_mail_smtp_port']           = 'SMTP Port';
 $_['entry_mail_smtp_timeout']        = 'SMTP Timeout';
-$_['entry_forced_captcha']     = 'Forced CAPTCHA';
+$_['entry_forced_captcha']           = 'Forced CAPTCHA';
+$_['entry_admin_code']               = 'Admin Protection Code';
 $_['entry_secure']                   = 'Use SSL';
 $_['entry_shared']                   = 'Use Shared Sessions';
 $_['entry_robots']                   = 'Robots';
@@ -320,6 +321,7 @@ $_['help_mail_alert']                = 'Select which features you would like to 
 $_['help_mail_alert_email']          = 'Any additional emails you want to receive the alert email, in addition to the main store email. (comma separated).';
 $_['help_secure']                    = 'To use SSL check with your host if a SSL certificate is installed and add the SSL URL to the catalog and admin config files.';
 $_['help_forced_captcha']            = 'Forces users to the CAPTCHA page on their first visit. If the user does not pass the CAPTCHA, they will not be able to continue using the site. Note that search engines will not be able to index the site if this option is enabled. Suitable for closed sites.';
+$_['help_admin_code']                = 'Leave empty if you do not want to protect the admin panel from brute force attacks. Otherwise, when trying to log in to the admin panel, you will need to add the code you specified in this field to the admin panel URL. For example: http://exshop.com/admin/?code=42069';
 $_['help_shared']                    = 'Try to share the session cookie between stores so the cart can be passed between different domains.';
 $_['help_robots']                    = 'A list of web crawler user agents that shared sessions will not be used with. Use separate lines for each user agent.';
 $_['help_seo_url']                   = 'To use SEO URLs, apache module mod-rewrite must be installed and you need to rename the htaccess.txt to .htaccess.';
