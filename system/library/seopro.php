@@ -109,6 +109,9 @@ class SeoPro {
       $this->request->get['route'] = 'product/product';
     } elseif (isset($this->request->get['path'])) {
       $this->request->get['route'] = 'product/category';
+      if ($this->config->get('config_seo_url_flat_structure') && isset($this->request->get['path'])) {
+        $this->request->get['path'] = $this->getPathByCategory((int)$this->request->get['path']);
+      }
     } elseif (isset($this->request->get['manufacturer_id'])) {
       $this->request->get['route'] = 'product/manufacturer/info';
     } elseif (isset($this->request->get['information_id'])) {
