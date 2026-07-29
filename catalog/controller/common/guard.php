@@ -3,9 +3,23 @@ class ControllerCommonGuard extends Controller {
   public function index() {
     $data['error_captcha'] = '';
 
+    // handle soft rate limit
     if ($this->request->server['REQUEST_METHOD'] == 'POST') {
       $error = $this->load->controller('extension/captcha/' . $this->config->get('config_captcha') . '/validate');
 
+      if (!$error && isset($this->session->data['rl_redirect'])) {
+        $ip = $this->request->server['REMOTE_ADDR'];
+        $ua = isset($this->request->server['HTTP_USER_AGENT']) ? $this->request->server['HTTP_USER_AGENT'] : '';
+        $identifier = md5($ip . $ua);
+
+        $this->cache->set('rl_trusted.' . $identifier, 1, 90);
+
+        $redirect = $this->session->data['rl_redirect'];
+        unset($this->session->data['rl_redirect']);
+        $this->response->redirect($redirect);
+      }
+
+      // handle forced captcha
       if (!$error) {
         $this->session->data['captcha_passed'] = true;
         $this->response->redirect($this->url->link('common/home'));
@@ -19,7 +33,7 @@ class ControllerCommonGuard extends Controller {
 
     $template_folder = $this->config->get('theme_default_directory');
 
-    $this->document->addScript('catalog/view/theme/' . $template_folder . '/js/excaptcha.js');    
+    $this->document->addScript('catalog/view/theme/' . $template_folder . '/js/excaptcha.js');
     $this->document->addStyle('catalog/view/theme/' . $template_folder . '/css/ui.min.css');
     $this->document->addStyle('catalog/view/theme/' . $template_folder . '/css/excaptcha.css');
 

@@ -114,11 +114,77 @@ class ControllerStartupStartup extends Controller {
 		$this->registry->set('language', $language);
 
 		// Set the config language_id
-		$this->config->set('config_language_id', $languages[$code]['language_id']);		
+		$this->config->set('config_language_id', $languages[$code]['language_id']);
+
+		// Rate limit
+		if ($this->config->get('config_rl_status')) {
+			$route = isset($this->request->get['route']) ? $this->request->get['route'] : '';
+
+			// Skip rate limit for captcha, API routes and whitelisted IPs
+			$skip_route = (
+				strpos($route, 'common/guard') === 0 ||
+				strpos($route, 'extension/captcha') === 0 ||
+				(isset($this->session->data['api_id']))
+			);
+
+			$ip = $this->request->server['REMOTE_ADDR'];
+			$whitelist = array_map('trim', explode(',', $this->config->get('config_rl_whitelist')));
+			$skip_ip = in_array($ip, $whitelist);
+
+			if (!$skip_route && !$skip_ip) {
+				$soft_limit = (int)$this->config->get('config_rl_soft_limit') ?: 50;
+				$hard_limit = (int)$this->config->get('config_rl_hard_limit') ?: 80;
+				$ban_ttl    = 3600;
+				$window_ttl = 60;
+
+				$ua = isset($this->request->server['HTTP_USER_AGENT']) ? $this->request->server['HTTP_USER_AGENT'] : '';
+				$identifier = md5($ip . $ua);
+
+				if ($this->cache->get('rl_ban.' . $identifier)) {
+					http_response_code(429);
+					exit('Cool down bro, you are too fast. Try again in an hour.');
+				}
+
+				$window = $this->cache->get('rl_count.' . $identifier) ?: ['count' => 0, 'time' => time()];
+
+				if ((time() - $window['time']) > $window_ttl) {
+					$window = ['count' => 1, 'time' => time()];
+				} else {
+					$window['count']++;
+				}
+
+				$this->cache->set('rl_count.' . $identifier, $window, $window_ttl + 10);
+				$count = $window['count'];
+
+				if ($count > $hard_limit) {
+					$this->cache->set('rl_ban.' . $identifier, 1, $ban_ttl);
+					$this->log->write('Rate limit HARD ban: ' . $identifier);
+					http_response_code(429);
+					exit('Cool down bro, you are too fast. Try again in an hour.');
+				}
+
+				$trusted = $this->cache->get('rl_trusted.' . $identifier);
+
+				if (!$trusted && $count > $soft_limit) {
+					$this->log->write('Rate limit SOFT redirect: ' . $identifier . ' Count: ' . $count);
+					$redirect = $this->request->server['REQUEST_URI'] ?? '/';
+
+					if (
+						strpos($redirect, '//') === 0 || 
+						strpos($redirect, 'http') === 0 || 
+						strlen($redirect) > 500
+					) {
+						$redirect = '/';
+					}
+					
+					$this->session->data['rl_redirect'] = $redirect;
+					$this->response->redirect($this->url->link('common/guard', '', true));
+				}
+			}
+		}
 
 		// Forced captcha on the first visit
 		if ($this->config->get('config_forced_captcha') && !isset($this->session->data['captcha_passed'])) {
-			$this->log->write($this->session->data);
 			// check if it's an API call
 			if (isset($this->session->data['api_id'])) {
 				// api is trusted

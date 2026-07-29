@@ -1300,6 +1300,30 @@ class ControllerSettingSetting extends Controller {
       $data['config_encryption'] = $this->config->get('config_encryption');
     }
 
+    if (isset($this->request->post['config_rl_status'])) {
+      $data['config_rl_status'] = $this->request->post['config_rl_status'];
+    } else {
+      $data['config_rl_status'] = $this->config->get('config_rl_status');
+    }
+
+    if (isset($this->request->post['config_rl_soft_limit'])) {
+      $data['config_rl_soft_limit'] = $this->request->post['config_rl_soft_limit'];
+    } else {
+      $data['config_rl_soft_limit'] = $this->config->get('config_rl_soft_limit');
+    }
+
+    if (isset($this->request->post['config_rl_hard_limit'])) {
+      $data['config_rl_hard_limit'] = $this->request->post['config_rl_hard_limit'];
+    } else {
+      $data['config_rl_hard_limit'] = $this->config->get('config_rl_hard_limit');
+    }
+
+    if (isset($this->request->post['config_rl_whitelist'])) {
+      $data['config_rl_whitelist'] = $this->request->post['config_rl_whitelist'];
+    } else {
+      $data['config_rl_whitelist'] = $this->config->get('config_rl_whitelist');
+    }
+
     if (isset($this->request->post['config_compression'])) {
       $data['config_compression'] = $this->request->post['config_compression'];
     } else {
