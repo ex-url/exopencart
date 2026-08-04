@@ -1,0 +1,272 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right">
+        <button type="submit" form="form-payment" data-toggle="tooltip" title="{{ button_save }}"
+          class="btn btn-primary"><i class="fa fa-save"></i></button>
+        <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i
+            class="fa fa-reply"></i></a>
+      </div>
+      <h1>{{ heading_title }}</h1>
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    {% if error_warning %}
+    <div class="alert alert-danger alert-dismissible">
+      <i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-pencil"></i> {{ text_edit }}</h3>
+      </div>
+      <div class="panel-body">
+        <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-payment"
+          class="form-horizontal">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab-general" data-toggle="tab">{{ tab_general }}</a></li>
+            <li><a href="#tab-status" data-toggle="tab">{{ tab_order_status }}</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab-general">
+              <div class="alert alert-info">{{ text_get_account }}</div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-status">{{ entry_status }}</label>
+                <div class="col-sm-10">
+                  <select name="payment_excrypto_status" id="input-status" class="form-control">
+                    {% if payment_excrypto_status %}
+                    <option value="1" selected="selected">{{ text_enabled }}</option>
+                    <option value="0">{{ text_disabled }}</option>
+                    {% else %}
+                    <option value="1">{{ text_enabled }}</option>
+                    <option value="0" selected="selected">{{ text_disabled }}</option>
+                    {% endif %}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group required">
+                <label class="col-sm-2 control-label" for="entry-api_key">{{ entry_api_key }}</label>
+                <div class="col-sm-10">
+                  <div class="input-group">
+                    <input 
+                      type="password" 
+                      name="payment_excrypto_settings[api_key]"
+                      value="{{ payment_excrypto_settings.api_key }}" 
+                      placeholder="{{ entry_api_key }}"
+                      id="input-api-key"
+                      class="form-control"
+                    />
+                    <span class="input-group-btn">
+                      <button type="button" class="toggle-password btn btn-default" onclick="togglePasswordVisibility('input-api-key')"><i class="fa fa-eye"></i></button>
+                    </span>
+                  </div>
+                  {% if error_api_key %}
+                  <div class="text-danger">{{ error_api_key }}</div>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="form-group required">
+                <label class="col-sm-2 control-label" for="entry-ipn-secret">{{ entry_ipn_secret }}</label>
+                <div class="col-sm-10">
+                  <div class="input-group">
+                    <input 
+                      type="password" 
+                      name="payment_excrypto_settings[ipn_secret]"
+                      value="{{ payment_excrypto_settings.ipn_secret }}"
+                      placeholder="{{ entry_ipn_secret }}"
+                      id="input-ipn-secret"
+                      class="form-control"
+                    />
+                    <span class="input-group-btn">
+                      <button type="button" class="toggle-password btn btn-default" onclick="togglePasswordVisibility('input-ipn-secret')"><i class="fa fa-eye"></i></button>
+                    </span>
+                  </div>
+                  {% if error_ipn_secret %}
+                  <div class="text-danger">{{ error_ipn_secret }}</div>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="" class="col-sm-2 control-label">{{ entry_user_pay_fee }}</label>
+                <div class="col-sm-10">
+                  <label class="radio-inline">
+                    <input type="radio" name="payment_excrypto_settings[user_pay_fee]" value="1" {{ payment_excrypto_settings.user_pay_fee ? 'checked' : '' }}>
+                    {{ text_yes }}
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" name="payment_excrypto_settings[user_pay_fee]" value="0" {{ not payment_excrypto_settings.user_pay_fee ? 'checked' : '' }}>
+                    {{ text_no }}
+                  </label>
+                  <div>
+                    <small class="text-info">{{ help_user_pay_fee }}</small>
+                  </div>                  
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-pay-currency">{{ entry_pay_currency }}</label>
+                <div class="col-sm-10">
+                  <select name="payment_excrypto_settings[pay_currency]" id="input-pay-currency" class="form-control">
+                    <option value="">{{ text_pay_currency_by_user }}</option>
+                    {% for coin in coins %}
+                    <option value="{{ coin }}" {{ payment_excrypto_settings.pay_currency == coin ? 'selected' : ''}}>{{ coin }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-sort-order">{{ entry_sort_order }}</label>
+                <div class="col-sm-10">
+                  <input 
+                    type="text" 
+                    name="payment_excrypto_sort_order" 
+                    value="{{ payment_excrypto_sort_order }}"
+                    placeholder="{{ entry_sort_order }}" 
+                    id="input-sort-order" 
+                    class="form-control" 
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="tab-status">
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-waiting-status">{{ entry_waiting_status }}</label>
+                <div class="col-sm-10">
+                  <select name="payment_excrypto_settings[waiting]" id="input-waiting-status" class="form-control">
+                    {% for order_status in order_statuses %}
+                    {% if order_status.order_status_id == payment_excrypto_settings.waiting %}
+                    <option value="{{ order_status.order_status_id }}" selected="selected">{{ order_status.name }}
+                    </option>
+                    {% else %}
+                    <option value="{{ order_status.order_status_id }}">{{ order_status.name }}</option>
+                    {% endif %}
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-sending-status">{{ entry_sending_status }}</label>
+                <div class="col-sm-10">
+                  <select name="payment_excrypto_settings[sending]" id="input-sending-status" class="form-control">
+                    {% for order_status in order_statuses %}
+                    {% if order_status.order_status_id == payment_excrypto_settings.sending %}
+                    <option value="{{ order_status.order_status_id }}" selected="selected">{{ order_status.name }}
+                    </option>
+                    {% else %}
+                    <option value="{{ order_status.order_status_id }}">{{ order_status.name }}</option>
+                    {% endif %}
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-partially_paid-status">
+                  {{ entry_partially_paid_status }}
+                </label>
+                <div class="col-sm-10">
+                  <select name="payment_excrypto_settings[partially_paid]" id="input-partially_paid-status"
+                    class="form-control">
+                    {% for order_status in order_statuses %}
+                    {% if order_status.order_status_id == payment_excrypto_settings.partially_paid %}
+                    <option value="{{ order_status.order_status_id }}" selected="selected">{{ order_status.name }}
+                    </option>
+                    {% else %}
+                    <option value="{{ order_status.order_status_id }}">{{ order_status.name }}</option>
+                    {% endif %}
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-confirming-status">{{ entry_confirming_status
+                  }}</label>
+                <div class="col-sm-10">
+                  <select name="payment_excrypto_settings[confirming]" id="input-confirming-status"
+                    class="form-control">
+                    {% for order_status in order_statuses %}
+                    {% if order_status.order_status_id == payment_excrypto_settings.confirming %}
+                    <option value="{{ order_status.order_status_id }}" selected="selected">{{ order_status.name }}
+                    </option>
+                    {% else %}
+                    <option value="{{ order_status.order_status_id }}">{{ order_status.name }}</option>
+                    {% endif %}
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-confirmed-status">{{ entry_confirmed_status }}</label>
+                <div class="col-sm-10">
+                  <select name="payment_excrypto_settings[confirmed]" id="input-confirmed-status"
+                    class="form-control">
+                    {% for order_status in order_statuses %}
+                    {% if order_status.order_status_id == payment_excrypto_settings.confirmed %}
+                    <option value="{{ order_status.order_status_id }}" selected="selected">{{ order_status.name }}
+                    </option>
+                    {% else %}
+                    <option value="{{ order_status.order_status_id }}">{{ order_status.name }}</option>
+                    {% endif %}
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-finished-status">{{ entry_finished_status }}</label>
+                <div class="col-sm-10">
+                  <select name="payment_excrypto_settings[finished]" id="input-finished-status" class="form-control">
+                    {% for order_status in order_statuses %}
+                    {% if order_status.order_status_id == payment_excrypto_settings.finished %}
+                    <option value="{{ order_status.order_status_id }}" selected="selected">{{ order_status.name }}
+                    </option>
+                    {% else %}
+                    <option value="{{ order_status.order_status_id }}">{{ order_status.name }}</option>
+                    {% endif %}
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-failed-status">{{ entry_failed_status }}</label>
+                <div class="col-sm-10">
+                  <select name="payment_excrypto_settings[failed]" id="input-failed-status" class="form-control">
+                    {% for order_status in order_statuses %}
+                    {% if order_status.order_status_id == payment_excrypto_settings.failed %}
+                    <option value="{{ order_status.order_status_id }}" selected="selected">{{ order_status.name }}
+                    </option>
+                    {% else %}
+                    <option value="{{ order_status.order_status_id }}">{{ order_status.name }}</option>
+                    {% endif %}
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-expired-status">{{ entry_expired_status }}</label>
+                <div class="col-sm-10">
+                  <select name="payment_excrypto_settings[expired]" id="input-expired-status" class="form-control">
+                    {% for order_status in order_statuses %}
+                    {% if order_status.order_status_id == payment_excrypto_settings.expired %}
+                    <option value="{{ order_status.order_status_id }}" selected="selected">{{ order_status.name }}
+                    </option>
+                    {% else %}
+                    <option value="{{ order_status.order_status_id }}">{{ order_status.name }}</option>
+                    {% endif %}
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{{ footer }}

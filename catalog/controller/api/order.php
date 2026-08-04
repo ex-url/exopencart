@@ -735,9 +735,6 @@ class ControllerApiOrder extends Controller {
 	public function deleteBatch() {
 		$this->load->language('api/order');
 
-		$this->log->write('delete batch');
-		$this->log->write($this->session->data);
-
 		$json = array();
 
 		if (!isset($this->session->data['api_id'])) {

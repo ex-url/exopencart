@@ -543,6 +543,7 @@ input[type="search"]::-webkit-search-results-decoration {
   right: 1.5rem;
   transform: scale(0);
   transform-origin: 100% 100%;
+  white-space: nowrap;
 }
 .mobile-contacts-list.shown {
   transform: scale(1);
