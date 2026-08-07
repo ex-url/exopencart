@@ -47,11 +47,9 @@ git clone https://github.com/ex-url/exopencart
 - Yandex Captcha built-in (because sometimes reCAPTCHA just pisses you off)
 - Icons + tooltips for attributes
 - Much nicer-looking notifications
-- 301 redirects for categories/products right from admin
 - Duplicate any module instance with all its settings
 - Easyly add contacts, messengers, social links in system settings
 - Sitemap.xml generation - one-click or via cron
-- The sitemap can now optionally include categories and/or blog articles.
 - Optional .webp thumbnails + CSS/JS minification
 - Built-in Telegram bot webhook support
 - File search in the downloads section of admin (sounds tiny, feels huge when you need it)
@@ -61,6 +59,28 @@ git clone https://github.com/ex-url/exopencart
 - Product-related articles are now displayed on the product page, whereas previously they were merely linked.
 - Now in the settings you can specify whether to display the phone number and email in different places (header, footer, contacts), as well as whether to show the feedback form on the contacts page.
 - A special section for incoming requests has been added, where you can add the username, email or phone number, message, dates of submission/processing by the manager, status, comment, sender's IP, submission page, and the login of the user who processed the request.
+- Ability to duplicate any module instance with all its settings
+- Product-related articles are now displayed on the product page, whereas previously they were merely linked.
+- Optional setting to show similar products on the product page (products from the same category as the currently viewed one).
+- Sitemap settings now allow optionally including categories and/or blog articles.
+- Dedicated Redirects section: specify old URL, new URL and redirect status code.
+- Separate page for discontinued products (returns 410 Gone), works together with the redirects system.
+- Maintenance section now includes a catalog reset tool (categories, products, manufacturers, options, attributes, blog) — start with a clean slate.
+- Blog articles now support video embedding.
+- localisation/location entity expanded with new fields: store_id, postal_code, country, zone_id and GPS coordinates.
+- Ability to copy store locations and multi-stores.
+- Full OpenGraph microdata (og + twitter) with a dedicated fallback image and configurable dimensions in settings.
+- Schema.org microdata added in JSON-LD format.
+- Simple slider captcha with no third-party dependencies.
+- Admin login page protection via a secret GET parameter.
+- Optional captcha on first site visit (makes life harder for bots).
+- Optional rate limiting in two modes: soft (show captcha) and hard (block IP for one hour).
+- Social login via Google, Yandex and VK with optional request for missing data or a warning when not all data was received.
+- Fixed multi-language content display: disabled languages no longer appear in entity forms (previously you had to delete them).
+- Working affiliate program: simple registration, basic stats (clicks, orders, conversion, balance, transaction history) and payout request functionality.
+- “Show in main menu” category option now applies not only to root categories.
+- Optional flat catalog URL structure: /category/category-name, /product/product-name.
+- Ability to specify an author for blog articles.
 
 A bunch of small fixes and tweaks were also made — can't even remember them all. It's better to see once than hear a hundred times (or read about them).
 
